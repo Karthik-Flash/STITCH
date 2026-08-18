@@ -36,3 +36,18 @@ storeandmisc/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local-only working notes and machine-specific config.
+# Kept in the repo folder for convenience, deliberately NOT tracked:
+# they contain absolute local paths, machine setup, and model/runtime
+# details that are specific to one workstation.
+note.txt
+notes.txt
+NOTES.txt
+local_*.txt
+local_*.md
+*.local.yaml
+*.local.json
+models/local_config.yaml
+models/frontier_config.yaml
+scratch/
