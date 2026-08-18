@@ -343,10 +343,7 @@ class TestYosysLatchDetection(unittest.TestCase):
         "found logic loop" warnings, but zero genuine latch lines anywhere.
         Confirms detect_yosys_latches() returns [] on real, large,
         unrelated-warning-bearing output, not just short synthetic strings."""
-        fixture = (
-            _HERE.parent.parent / "docs" / "illustrations" / "pending"
-            / "priority_chain_comb" / "raw_yosys_pipeline.txt"
-        )
+        fixture = _HERE / "fixtures" / "priority_chain_comb_yosys_synth.txt"
         if not fixture.exists():
             self.skipTest(f"fixture not found: {fixture}")
         real_output = fixture.read_text(encoding="utf-8", errors="ignore")
