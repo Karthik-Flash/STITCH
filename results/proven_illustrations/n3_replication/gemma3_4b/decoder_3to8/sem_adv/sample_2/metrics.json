@@ -1,0 +1,59 @@
+{
+  "module": "decoder_3to8",
+  "model": "gemma3:4b",
+  "condition": "sem_adv",
+  "pass": true,
+  "iterations_to_pass": 2,
+  "time_to_pass_sec": 9.73,
+  "total_time_sec": 9.73,
+  "total_iterations": 2,
+  "compile_errors": 0,
+  "sim_errors": 1,
+  "latch_warnings": 0,
+  "loop_warnings": 0,
+  "verilator_catches": 1,
+  "semantic_fired": 1,
+  "verilator_codes_seen": [
+    "UNUSEDSIGNAL"
+  ],
+  "total_prompt_tokens": 2405,
+  "total_completion_tokens": 675,
+  "total_tokens": 3080,
+  "error_types": [
+    "logic_error"
+  ],
+  "per_iter_detail": [
+    {
+      "iter": 1,
+      "prompt_tokens": 572,
+      "completion_tokens": 321,
+      "llm_time_sec": 4.29,
+      "verilator_flag": true,
+      "interp_codes": [
+        "UNUSEDSIGNAL"
+      ],
+      "semantic_fired": true,
+      "yosys_latch": false,
+      "yosys_loop": false,
+      "yosys_cells": 13,
+      "yosys_delta": null,
+      "result": "FAIL",
+      "err_type": "logic_error"
+    },
+    {
+      "iter": 2,
+      "prompt_tokens": 1833,
+      "completion_tokens": 354,
+      "llm_time_sec": 4.68,
+      "verilator_flag": false,
+      "interp_codes": [],
+      "semantic_fired": false,
+      "yosys_latch": false,
+      "yosys_loop": false,
+      "yosys_cells": 21,
+      "yosys_delta": 8,
+      "result": "PASS",
+      "err_type": "PASS"
+    }
+  ]
+}

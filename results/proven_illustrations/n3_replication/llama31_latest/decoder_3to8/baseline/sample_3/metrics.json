@@ -1,0 +1,55 @@
+{
+  "module": "decoder_3to8",
+  "model": "llama3.1:latest",
+  "condition": "baseline",
+  "pass": true,
+  "iterations_to_pass": 2,
+  "time_to_pass_sec": 10.69,
+  "total_time_sec": 10.69,
+  "total_iterations": 2,
+  "compile_errors": 0,
+  "sim_errors": 1,
+  "latch_warnings": 0,
+  "loop_warnings": 0,
+  "verilator_catches": 0,
+  "semantic_fired": 0,
+  "verilator_codes_seen": [],
+  "total_prompt_tokens": 1486,
+  "total_completion_tokens": 455,
+  "total_tokens": 1941,
+  "error_types": [
+    "logic_error"
+  ],
+  "per_iter_detail": [
+    {
+      "iter": 1,
+      "prompt_tokens": 493,
+      "completion_tokens": 218,
+      "llm_time_sec": 6.33,
+      "verilator_flag": false,
+      "interp_codes": [],
+      "semantic_fired": false,
+      "yosys_latch": false,
+      "yosys_loop": false,
+      "yosys_cells": 0,
+      "yosys_delta": null,
+      "result": "FAIL",
+      "err_type": "logic_error"
+    },
+    {
+      "iter": 2,
+      "prompt_tokens": 993,
+      "completion_tokens": 237,
+      "llm_time_sec": 4.03,
+      "verilator_flag": false,
+      "interp_codes": [],
+      "semantic_fired": false,
+      "yosys_latch": false,
+      "yosys_loop": false,
+      "yosys_cells": 0,
+      "yosys_delta": null,
+      "result": "PASS",
+      "err_type": "PASS"
+    }
+  ]
+}

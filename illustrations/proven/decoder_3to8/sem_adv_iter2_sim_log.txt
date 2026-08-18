@@ -1,0 +1,7 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+ALL TESTS PASSED
+/mnt/d/BITS Files/Year 3/3-2/LLM_Verilog Project/AgenticAI/AutoChipAdvFB/STITCHAdv/runs/nightly_20260814_012758/v2/gemma3_4b/sem_adv/decoder_3to8/iter_2/decoder_3to8_tb.v:67: $finish called at 160 (1s)
+

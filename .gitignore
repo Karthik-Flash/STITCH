@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.env
+
+# Simulation artifacts
+*.vvp
+*.vcd
+*.out
+*.log
+
+# Model weights and downloads
+*.gguf
+*.bin
+models/weights/
+
+# Bulky per-iteration run data — commit summaries only
+results/**/iter_*/
+results/**/*.v
+results/**/llm_response.txt
+results/**/sim_log.txt
+results/**/feedback.txt
+
+# HPC pulls and legacy result trees
+runs/hpc_pull/
+results_stitch/
+results_v2/
+storeandmisc/
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

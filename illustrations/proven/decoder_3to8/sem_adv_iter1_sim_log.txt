@@ -1,0 +1,13 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+FAIL en=0 in=0: got 00000001, exp 00000000
+FAIL en=0 in=1: got 00000010, exp 00000000
+FAIL en=0 in=3: got 00001000, exp 00000000
+FAIL en=0 in=5: got 00100000, exp 00000000
+FAIL en=0 in=7: got 10000000, exp 00000000
+FAIL en=0 in=2: got 00000100, exp 00000000
+FAIL: 6 test(s) failed
+/mnt/d/BITS Files/Year 3/3-2/LLM_Verilog Project/AgenticAI/AutoChipAdvFB/STITCHAdv/runs/nightly_20260814_012758/v2/gemma3_4b/sem_adv/decoder_3to8/iter_1/decoder_3to8_tb.v:67: $finish called at 160 (1s)
+
