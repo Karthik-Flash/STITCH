@@ -42,6 +42,8 @@ Thumbs.db
 # they contain absolute local paths, machine setup, and model/runtime
 # details that are specific to one workstation.
 note.txt
+HANDOFF.md
+handoff*.md
 notes.txt
 NOTES.txt
 local_*.txt
