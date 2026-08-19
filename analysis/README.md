@@ -1,7 +1,7 @@
 # analysis/
 
 Scripts that produced the aggregate figures and regime breakdowns cited in
-`evidence/`. They are migrated here as the provenance for those numbers.
+`phase0/evidence/`. They are migrated here as the provenance for those numbers.
 
 ## Status: these scripts require path updates before they will run
 
@@ -23,13 +23,13 @@ unmodified in this repository.
 They were deliberately **not** rewritten during migration. Each one is tied to
 a specific historical run tree, and silently repointing them at new paths would
 produce numbers that look valid but no longer correspond to the data the
-`evidence/` documents cite. Repoint them consciously, against the run tree you
+`phase0/evidence/` documents cite. Repoint them consciously, against the run tree you
 actually mean, when you next need to regenerate a figure.
 
 ## Note on the data they consumed
 
 The raw per-iteration run trees these scripts read (`nightly_*`, `resume_*`,
 `hpc_pull`) were **not migrated** — they belong to the conference-paper work.
-`evidence/combined_results.csv` is the aggregated output that survived, and its
+`phase0/evidence/combined_results.csv` is the aggregated output that survived, and its
 last two columns retain absolute paths into that original tree as provenance.
 Treat those columns as historical annotation, not as resolvable paths.
