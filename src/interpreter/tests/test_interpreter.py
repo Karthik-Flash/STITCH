@@ -508,7 +508,7 @@ class TestLatchDirectiveStructureAware(unittest.TestCase):
         r"$auto$proc_dlatch.cc:427:proc_dlatch$58"
     )
 
-    # The exact shape of illustrations/pending/priority_encoder_valid/broken.v:
+    # The exact shape of phase0/illustrations/pending/priority_encoder_valid/broken.v:
     # a compliant default, and 'valid' unassigned on every other branch.
     BROKEN_DEFAULT_PRESENT = """
 module priority_encoder_valid (

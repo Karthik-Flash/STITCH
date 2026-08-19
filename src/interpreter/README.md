@@ -5,7 +5,7 @@ classification and directive generation. Both the runner and any future
 escalation runner import from it; nothing reimplements this logic locally.
 (That rule exists because a duplicated latch check in the runner was the direct
 cause of one of the five defects recorded in
-`../../evidence/session_2026-08-18_findings.md`.)
+`../../phase0/evidence/session_2026-08-18_findings.md`.)
 
 - **Warning classes and their verification status:** `WARNING_TAXONOMY.md`
 - **Tests:** `tests/test_interpreter.py` — 50 tests. Run with
@@ -114,7 +114,7 @@ grep -c "fell back to the generic" interpreter.log
 
 # 2. Total UNUSEDSIGNAL directives issued (denominator) — from the run's own
 #    per-module metrics, which record every code that fired
-grep -ro '"UNUSEDSIGNAL"' results/<run>/ --include=metrics.json | wc -l
+grep -ro '"UNUSEDSIGNAL"' <phase>/results/<run>/ --include=metrics.json | wc -l
 
 # 3. Which modules fell back, and why (parameterised width vs no source)
 grep "fell back to the generic" interpreter.log | sed 's/.*template - //' | sort | uniq -c

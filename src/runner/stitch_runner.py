@@ -25,7 +25,7 @@ Results are written to results_stitch/<model>/<condition>/<module>/ relative
 to the current working directory; run from the directory you want output in.
 
 Usage:
-  python src/runner/stitch_runner.py --model gemma3:4b --condition all       --modules decoder_3to8 --testbench-dir illustrations/proven
+  python src/runner/stitch_runner.py --model gemma3:4b --condition all       --modules decoder_3to8 --testbench-dir phase0/illustrations/proven
 """
 
 import os, subprocess, re, shutil, sys, json, time, argparse
@@ -227,7 +227,9 @@ def run_yosys_check(v_file, module_name):
     # on every raw_adv/sem_adv iteration in this project's history (has_latches
     # was always False as a direct result — not a Yosys-version difference, as
     # earlier speculated). Verified fix via direct subprocess.run reproduction
-    # before applying — see docs/illustrations/pending/README.md.
+    # before applying — see phase0/illustrations/retired/retired_candidates.md
+    # section 4 (this fix predates the docs/ prefix ever existing in this
+    # repo; that path was never real).
     script   = f'read_verilog "{wsl_path}"; synth -top {module_name}; stat'
     # See run_verilator_lint — `timeout` runs inside WSL so the kill lands on
     # the actual yosys process, not just the wsl.exe launcher on the Windows side.
@@ -905,7 +907,9 @@ BENCHMARK = {
         ),
     },
 
-    # ── Added 2026-08-17 for the docs/illustrations/pending/ verification run.
+    # ── Added 2026-08-17 for a pre-screen verification run (docs/ was never a
+    # real prefix in this repo -- see phase0/illustrations/retired/retired_candidates.md
+    # section 4 for the actual verification record).
     # Neither module existed in the original BENCHMARK dict — without an entry
     # here, --module/--modules for these two would just hit the "not in
     # benchmark" error and exit. Specs are written in the same neutral,
@@ -913,9 +917,9 @@ BENCHMARK = {
     # case that risks the target bug (mode=2'b11 here, same shape as
     # decoder_3to8's disabled-enable case) is deliberately left unstated in
     # the spec text itself — only the testbench defines the expectation.
-    # See docs/illustrations/pending/mode_mux_latch/ and
-    # .../priority_chain_comb/ for the reference broken.v/correct.v/tb.v this
-    # spec was derived from.
+    # Both mode_mux_latch and priority_chain_comb are retired; see
+    # phase0/illustrations/retired/retired_candidates.md sections 3-4 for the
+    # reference broken.v/correct.v/tb.v this spec was derived from.
     "mode_mux_latch": {
         "category": "latch_target",
         "spec": (
@@ -950,7 +954,7 @@ BENCHMARK = {
     # ── Added 2026-08-18 — decoder-mode probe candidates. Same reasoning as
     # mode_mux_latch/priority_chain_comb above: prompt deliberately doesn't
     # state what should happen on the gating condition's "off" branch — only
-    # the testbench defines it. See docs/illustrations/pending/<name>/README.md
+    # the testbench defines it. See phase0/illustrations/retired/retired_candidates.md
     # for the empirically-confirmed UNUSEDSIGNAL mechanism check done before
     # these were added here.
     "counter_with_enable": {
@@ -1058,7 +1062,7 @@ BENCHMARK = {
 
     # ── Added 2026-08-18 — round 2 of counter_with_enable, which resolved
     # outcome (a) (task too easy, gemma3:4b PASS|1 on all three conditions).
-    # See docs/illustrations/pending/counter_with_enable_dir/README.md.
+    # See phase0/illustrations/retired/retired_candidates.md section 2.
     "counter_with_enable_dir": {
         "category": "verilator_target",
         "spec": (
@@ -1074,7 +1078,7 @@ BENCHMARK = {
     },
         # ── Added 2026-08-19 — UNDRIVEN candidate (forgotten OUTPUT, the mirror of
     # the UNUSEDSIGNAL forgotten-input mechanism). Pre-screen 4/4 in
-    # illustrations/pending/adder_with_overflow/README.md.
+    # phase0/illustrations/pending/adder_with_overflow/README.md.
     "adder_with_overflow": {
         "category": "verilator_target",
         "spec": (
@@ -1089,7 +1093,7 @@ BENCHMARK = {
     # cannot reach it at all: rule 3 is scoped to combinational always blocks.
     # The spec describes the state transitions in full and names 'error' in
     # the port list only -- decoder_3to8's recipe shape.
-    # Pre-screen: illustrations/pending/fsm_next_state_error/README.md
+    # Pre-screen: phase0/illustrations/pending/fsm_next_state_error/README.md
     "fsm_next_state_error": {
         "category": "verilator_target",
         "spec": (
@@ -1109,7 +1113,7 @@ BENCHMARK = {
     # default branch, and says nothing about assigning every output INSIDE
     # each branch. Distinct from the retired forgotten-output candidates:
     # the question here is path completeness, not output existence.
-    # Pre-screen: illustrations/pending/priority_encoder_valid/README.md
+    # Pre-screen: phase0/illustrations/pending/priority_encoder_valid/README.md
     "priority_encoder_valid": {
         "category": "latch_target",
         "spec": (
@@ -1121,6 +1125,94 @@ BENCHMARK = {
             "Return only Verilog code.\n"
         ),
     },
+
+    # -- RETIRED 2026-08-19. Real gemma3:4b run: the interpreter fired
+    # UNUSEDSIGNAL on 'enable' correctly and repeatedly (semantic_fired=5 in
+    # sem_adv), but 4 of 6 iterations in every condition hit reg_wire_mismatch
+    # or syntax_error on the internal 'alu_result' signal / mode-mux structure
+    # before the target defect could be the only thing wrong -- too large for
+    # gemma3:4b's convergence horizon within 6 iterations. A follow-up
+    # llama3.1 cross-model check (N=3) confirmed llama3.1 CAN converge (2/3
+    # PASS) but with semantic_fired=0 in every sample -- resampling variance,
+    # not the interpreter, so this module is not attributable evidence on
+    # either model. Full record:
+    # phase0/illustrations/retired/retired_candidates.md section 1a and
+    # phase0/illustrations/retired/datapath_mux_alu/. Superseded by alu_with_enable,
+    # which also retired (see below) -- this module has no live successor.
+    # NOT registered as a runnable module; spec kept as a comment for
+    # provenance only.
+    #
+    # "datapath_mux_alu": {
+    #     "category": "verilator_target",
+    #     "spec": (
+    #         "Write a Verilog-2001 module named datapath_mux_alu with:\n"
+    #         "input [7:0] a, input [7:0] b, input [7:0] bypass,\n"
+    #         "input [1:0] op, input mode, input enable,\n"
+    #         "output reg [7:0] out.\n"
+    #         "Implement a datapath as follows: first compute an ALU result\n"
+    #         "from a and b based on op (00=ADD, 01=SUB, 10=AND, 11=OR). Then\n"
+    #         "select between the ALU result and bypass using mode (0=ALU,\n"
+    #         "1=bypass). Combinational logic only. Return only Verilog code.\n"
+    #     ),
+    # },
+
+    # -- RETIRED 2026-08-19. Redesign of datapath_mux_alu above -- dropped the
+    # mode mux, the bypass port, and the internal 'alu_result' register to fix
+    # datapath_mux_alu's convergence failure. Over-corrected: gemma3:4b wrote
+    # 'enable' correctly on iteration 1 in every condition (PASS|1,
+    # semantic_fired=0) -- the module became too easy, same failure mode as
+    # cmp8_en. llama3.1 converges in the same iteration count in every
+    # condition (no differentiation). Full record:
+    # phase0/illustrations/retired/retired_candidates.md section 1c and
+    # phase0/illustrations/retired/alu_with_enable/. NOT registered as a runnable
+    # module; spec kept as a comment for provenance only.
+    #
+    # "alu_with_enable": {
+    #     "category": "verilator_target",
+    #     "spec": (
+    #         "Write a Verilog-2001 module named alu_with_enable with:\n"
+    #         "input [7:0] a, input [7:0] b, input [1:0] op, input enable,\n"
+    #         "output reg [7:0] out.\n"
+    #         "Implement four operations selected by op:\n"
+    #         "  00: out = a + b (addition)\n"
+    #         "  01: out = a - b (subtraction)\n"
+    #         "  10: out = a AND b (bitwise)\n"
+    #         "  11: out = a OR b (bitwise)\n"
+    #         "Combinational logic only. Return only Verilog code.\n"
+    #     ),
+    # },
+
+    # -- RETIRED 2026-08-19. instr narrowed from [7:0] to [3:0] so every bit
+    # is meaningful, fixing a competing UNUSEDSIGNAL that had captured the
+    # directive ahead of the intended 'valid' (first-match-wins ordering).
+    # That fix worked: gates 1-4 all passed. N=3 replication on gemma3:4b
+    # still retired it as NOISY -- sem_adv never passes across the 3 fresh
+    # samples (0/3), even though sample 3 shows the interpreter firing
+    # UNUSEDSIGNAL on 'valid' cleanly at iteration 3; the run still failed,
+    # regressing into a degenerate syntax-error loop at iteration 4 instead of
+    # applying the fix. baseline and raw_adv are stuck on syntax_error for all
+    # 6 iterations in all 3 samples. Full record:
+    # phase0/illustrations/retired/retired_candidates.md section 1b and
+    # phase0/illustrations/retired/instr_decode_unit/. NOT registered as a runnable
+    # module; spec kept as a comment for provenance only.
+    #
+    # "instr_decode_unit": {
+    #     "category": "verilator_target",
+    #     "spec": (
+    #         "Write a Verilog-2001 module named instr_decode_unit with:\n"
+    #         "input [3:0] instr, input valid,\n"
+    #         "output reg [1:0] alu_op, output reg reg_write,\n"
+    #         "output reg mem_read, output reg mem_write.\n"
+    #         "Decode instr into control signals. The upper two bits instr[3:2]\n"
+    #         "select the operation:\n"
+    #         "  00: ALU operation, reg_write=1, alu_op comes from instr[1:0]\n"
+    #         "  01: LOAD, mem_read=1, reg_write=1, alu_op=0\n"
+    #         "  10: STORE, mem_write=1, alu_op=0\n"
+    #         "  11: NOP, all zero\n"
+    #         "Combinational logic only. Return only Verilog code.\n"
+    #     ),
+    # },
+
 
 }
 

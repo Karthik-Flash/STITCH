@@ -3,7 +3,7 @@
 Changes between the MLCAD paper submission and the journal-extension starting
 point. This covers the pre-Phase-1 work only; Phase 1 has not begun.
 
-Current plan of record: `docs/research_plan_v4.md`.
+Current plan of record: `plans/research_plan_v4.md`.
 
 ---
 
@@ -15,14 +15,17 @@ The journal-extension work was moved out of `AutoChipAdvFB/STITCHAdv/` into a
 dedicated `STITCH_v3/` tree: interpreter, runner, benchmark, results, analysis
 and documentation. Legacy and conference-era result trees were deliberately not
 carried forward. The full old-path-to-new-path mapping, and the list of what
-was left behind and why, is in `docs/RESTRUCTURE_NOTES.md`.
+was left behind and why, was written up as a separate `RESTRUCTURE_NOTES.md`
+at restructure time; that document did not survive into this repository — see
+`git log` around this era, or reconstruct from this changelog, if the mapping
+is needed again.
 
 ### Interpreter — five defects fixed
 
-`interpreter/stitch_interpreter.py` is now the single source of truth for
+`src/interpreter/stitch_interpreter.py` is now the single source of truth for
 warning classification and directive generation. Detail on each defect,
 including how it was found and the dependency chain between them, is in
-`evidence/session_2026-08-18_findings.md`.
+`phase0/evidence/session_2026-08-18_findings.md`.
 
 1. **Latch-keyword substring matching produced false positives.** The keyword
    list matched the Yosys `PROC_DLATCH` pass banner, which prints for every
@@ -67,7 +70,7 @@ A fallback path covers parameterised widths, unparseable headers, and the case
 where no source is available; it emits the original generic template and logs
 that the fallback was taken. **The fallback log is not currently observable** —
 the runner attaches no logging handler, so `INFO` records are discarded. See
-`interpreter/README.md` §Monitoring for the required prerequisite and the
+`src/interpreter/README.md` §Monitoring for the required prerequisite and the
 inspection procedure.
 
 ### Runner
@@ -76,6 +79,12 @@ inspection procedure.
   from `autochip_stitch_runner.py`. The loop logic, prompt construction,
   extraction regex and feedback builders are unchanged from the original, to
   preserve comparability with the published Table 7 results.
+  **Path note (added later, not a rewrite of the above entry):** this file
+  now lives at `src/runner/stitch_runner.py` — same runner, moved and renamed
+  after this entry was written without a follow-up note at the time. The
+  changes listed for the rest of this "Runner" section (Yosys path quoting,
+  latch/loop consolidation, `--testbench-dir`/`--modules`) are the same
+  changes documented in `src/runner/stitch_runner.py`'s own header comment.
 - **Yosys path quoting fixed** (defect 3 above).
 - **Latch detection consolidated into the interpreter.** The runner's local
   duplicate keyword list was deleted; classification now comes exclusively from
@@ -105,7 +114,7 @@ exactly, isolating the effect to interpretation rather than tool presence.
 **Five illustrations retired** after failing a design or empirical gate:
 `priority_chain_comb`, `mode_mux_latch`, `counter_with_enable`,
 `register_with_load`, `seg7_blank`. Reasons are recorded in
-`illustrations/retired/retired_candidates.md` and in the findings
+`phase0/illustrations/retired/retired_candidates.md` and in the findings
 document's module-status table, because they define the design recipe for
 future illustrations.
 
@@ -123,7 +132,7 @@ fallback path.
 Run with:
 
 ```
-python -m unittest discover -s interpreter/tests -p "test_interpreter.py"
+python -m unittest discover -s src/interpreter/tests -p "test_interpreter.py"
 ```
 
 ### Retired files
@@ -137,7 +146,7 @@ entrypoints removed so they cannot be executed. They are retained on disk for
 provenance, so published results remain traceable to the code that generated
 them. Neither was patched: their `stitch_interpreter` imports were already
 broken by the restructure, and defect 3 voids their historical Yosys output
-regardless. Rationale in `docs/RESTRUCTURE_NOTES.md`.
+regardless.
 
 ### Methodology
 
@@ -146,7 +155,7 @@ regardless. Rationale in `docs/RESTRUCTURE_NOTES.md`.
   was byte-identical across all three samples in 6 of 12 replication cells, and
   where it varied the verdict and iteration count did not. Repetition at this
   setting establishes reproducibility, not a variance bound. The resulting
-  decision is recorded in `docs/research_plan_v4.md` §2.
+  decision is recorded in `plans/research_plan_v4.md` §2.
 - **The system prompt is experimental apparatus.** Any defect the system prompt
   explicitly warns against is repaired before any tool fires and cannot
   demonstrate the interpreter. Confirmed on `mode_mux_latch`, whose target
@@ -155,9 +164,12 @@ regardless. Rationale in `docs/RESTRUCTURE_NOTES.md`.
 
 ### Documentation
 
-Added: `docs/research_plan_v4.md` (current plan of record),
-`interpreter/README.md`, `interpreter/WARNING_TAXONOMY.md`,
-`docs/RESTRUCTURE_NOTES.md`, `docs/illustrations/` (index, findings, per-module
-records), and this changelog.
+Added: `plans/research_plan_v4.md` (current plan of record),
+`src/interpreter/README.md`, `src/interpreter/WARNING_TAXONOMY.md`,
+`illustrations/` (index, findings, per-module records — moved to
+`phase0/illustrations/` in the 2026-08-19 phase-0 close-out), and this
+changelog. A `RESTRUCTURE_NOTES.md` was also written at this point but did
+not survive into this repository — see the restructure entry above for what
+it covered.
 
 Plans v2 and v3 are superseded by v4 and retained for history.

@@ -472,7 +472,7 @@ def interpret_comb_loop(yosys_output: str):
 # -- plus a causal join reading "this is why enable=0 returns the previous
 # output", naming an 'enable' port the module need not have.
 #
-# Found against illustrations/pending/priority_encoder_valid/broken.v, whose
+# Found against phase0/illustrations/pending/priority_encoder_valid/broken.v, whose
 # casez ALREADY has `default: begin pos = 3'd0; valid = 1'b0; end`. Option B
 # is therefore a literal no-op there, option A is inapplicable (no `if`
 # exists), and the real repair -- assign the signal in every branch, not only

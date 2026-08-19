@@ -20,6 +20,9 @@ per-module reasoning for the two 2026-08-19 retirements in §1.
 |---|---|---|---|
 | `adder_with_overflow` | `UNDRIVEN` on output | 2026-08-19 | Forgotten-output class is unreachable — §1 |
 | `fsm_next_state_error` | `UNDRIVEN` on output | 2026-08-19 | Forgotten-output class is unreachable — §1 |
+| `datapath_mux_alu` | `UNUSEDSIGNAL` | 2026-08-19 | Too large for gemma3:4b's convergence horizon; llama3.1 N=3 confirms MIXED, not attributable — §1a |
+| `instr_decode_unit` | `UNUSEDSIGNAL` | 2026-08-19 | Mechanism fires cleanly when reached, but gemma3:4b N=3 is NOISY — never passes in 3/3 samples — §1b |
+| `alu_with_enable` | `UNUSEDSIGNAL` | 2026-08-19 | Too easy after the redesign; gemma3:4b PASS\|1 all conditions, `semantic_fired=0` — §1c |
 | `counter_with_enable` | `UNUSEDSIGNAL` | 2026-08-18 | Spec stated the gate-off behaviour — §2 |
 | `counter_with_enable_dir` | `UNUSEDSIGNAL` | 2026-08-18 | Same — §2 |
 | `register_with_load` | `UNUSEDSIGNAL` | 2026-08-18 | Same — §2 |
@@ -105,6 +108,154 @@ Two things follow:
 
 `sem_adv` and `raw_adv` are identical here (PASS|2 both, `semantic_fired = 0`),
 so interpretation contributed exactly nothing either way.
+
+### §1a — `datapath_mux_alu`: too large for the model, not for the tools
+
+Reviewer-requested illustration: a larger module (case-based ALU feeding a
+mode mux feeding an enable gate, 145 Yosys cells) demonstrating the proven
+`UNUSEDSIGNAL` mechanism still holds when the containing module has real
+internal structure. All four pre-screen gates passed. Run against gemma3:4b,
+all three conditions, real evidence at
+`results/new_illustrations/datapath_mux_alu/` (gitignored, not in this repo's
+git history).
+
+**The mechanism fired. The model never got far enough to benefit.** From
+`sem_adv/datapath_mux_alu/metrics.json`:
+
+```
+semantic_fired: 5
+verilator_codes_seen: ['UNUSEDSIGNAL', 'WIDTHEXPAND', 'UNUSEDSIGNAL', 'UNUSEDSIGNAL', 'UNUSEDSIGNAL']
+per-iteration err_type: reg_wire_mismatch, syntax_error, reg_wire_mismatch,
+                        reg_wire_mismatch, logic_error, syntax_error
+```
+
+`UNUSEDSIGNAL` on `enable` fired correctly and repeatedly — the interpreter
+did its job every time it had a chance. But four of six iterations failed on
+`reg_wire_mismatch` or `syntax_error`: basic compile-level defects in the
+model's handling of internal signals, unrelated to the enable gate. `baseline`
+and `raw_adv` show the same pattern (`reg_wire_mismatch`/`syntax_error`
+dominant, `semantic_fired = 0` since neither has the interpreter). None of the
+three conditions ever reached a state where the target defect was the only
+thing wrong, so none passed.
+
+**Retired for module size, not mechanism failure.** 145 cells and six
+declared ports (against `mux4_oe`'s 60 cells, five ports) exceeded
+gemma3:4b's convergence horizon within 6 iterations — the same failure shape
+as retired `seg7_blank` (§2), one level up in scale. Consistent with the
+recipe's "keep it small" condition, which this candidate deliberately relaxed
+at the reviewer's request and which turned out to still bind.
+
+Superseded by `../pending/alu_with_enable/` — same top-level mechanism
+(`UNUSEDSIGNAL` on `enable`), ALU only, mode mux and bypass path dropped.
+Files preserved at `datapath_mux_alu/` in this directory for provenance.
+
+**Update 2026-08-19, same day — llama3.1 cross-model check, N=3: MIXED,
+confirms the module was not attributable evidence either way.** The retired
+`BENCHMARK` entry was temporarily restored (marked explicitly as a
+single-purpose re-registration, not a promotion) to ask a narrower question:
+does a stronger model converge on the same module gemma3:4b could not?
+Three independent samples, gemma3:4b's original spec unchanged, llama3.1
+instead of gemma3:4b:
+
+| Sample | Baseline | Raw_adv | Sem_adv | `semantic_fired` |
+|---|---|---|---|---|
+| 1 | FAIL\|6 | FAIL\|6 | FAIL\|6 | 0 |
+| 2 | FAIL\|6 | FAIL\|6 | **PASS\|4** | 0 |
+| 3 | FAIL\|6 | FAIL\|6 | **PASS\|4** | 0 |
+
+`sem_adv` passes 2/3 — llama3.1 CAN converge on this module where gemma3:4b
+never did in 6 tries in any of its own runs, so "too large for the tools" is
+ruled out; it was specifically too large for gemma3:4b. But
+**`semantic_fired=0` in all three samples, including both passes** — the
+interpreter never fired once. Sem_adv passed without the interpreter firing.
+This is raw_adv/sem_adv divergence via resampling variance, not evidence for
+the STITCH mechanism. Reinforces the confound category defined in
+`../../evidence/phase_d_report.md`. Combined with the single-sample run from
+the previous round (also `PASS|4`, `semantic_fired=0`), that is 3 of 4 total
+`sem_adv` samples passing with the interpreter firing in zero of the four.
+
+One real, reproducible, non-interpreter effect: `baseline` is stuck on
+`reg_wire_mismatch` for all 6 iterations in all 3 samples; `raw_adv` escapes
+it by iteration 3 in every sample via Verilator's raw diagnostic alone.
+`sem_adv` needs one more unproductive iteration on `reg_wire_mismatch` in 2
+of 3 samples before jumping straight to `PASS`, skipping the `logic_error`
+stage `raw_adv` always passes through — a different resampled path under a
+near-identical prompt, not a directive effect. Full per-iteration sequences
+and analysis: `../../evidence/n3_replication_pass2.md`.
+
+`BENCHMARK` entry re-commented out after this check, per the note left with
+it when it was restored. Not re-promoted; not moved out of `retired/`.
+
+---
+
+### §1b — `instr_decode_unit`: mechanism fires cleanly, module does not converge reliably
+
+Real gemma3:4b run, all three conditions, N=3 replication after a single-
+sample `sem_adv PASS|4` in the previous round.
+
+| Sample | Baseline | Raw_adv | Sem_adv | `semantic_fired` |
+|---|---|---|---|---|
+| 1 | FAIL\|6 | FAIL\|6 | FAIL\|6 | 0 |
+| 2 | FAIL\|6 | FAIL\|6 | FAIL\|6 | 0 |
+| 3 | FAIL\|6 | FAIL\|6 | FAIL\|6 | **1**, `UNUSEDSIGNAL` |
+
+**Verdict: NOISY.** `sem_adv` never passes across the 3 samples — 0/3, the
+decisive criterion on its own. Folded in with the previous round's single
+sample (`PASS|4`, `semantic_fired=1`): 1 pass out of 4 total `sem_adv`
+samples collected.
+
+**The mechanism itself is not the problem.** Sample 3's per-iteration
+sequence is `SYNT, SYNT, LGIC, SYNT, SYNT, SYNT`. Iteration 3 is exactly the
+target-defect-only state — `logic_error`, five `FAIL` lines all naming
+`valid`-gated control signals, nothing else wrong — and the interpreter
+converted it correctly: `UNUSEDSIGNAL` on `valid`, the same clean shape as
+`decoder_3to8` and `mux4_oe`. The run still failed. Iteration 4 regressed
+into a degenerate syntax failure
+(`instr_decode_unit.v:1: syntax error \n I give up.`) instead of applying the
+fix — the same failure mode that ends samples 1 and 2 outright. A correct
+directive does not guarantee recovery once the model has entered this state,
+and the interpreter has no vocabulary that reaches it.
+
+`baseline` and `raw_adv` are stuck on `syntax_error` for all 6 iterations, in
+every one of the 3 samples, with zero exceptions across 18 iterations each —
+this module is not reliably reaching a state where any condition's feedback
+can help, gemma3:4b or otherwise, within this benchmark's 6-iteration budget.
+Full per-iteration data: `../../evidence/n3_replication_pass2.md`.
+
+Distinct from `seg7_blank`'s retirement reason (§2): that module is too
+*complex* for convergence at its scale. `instr_decode_unit` is small (11
+Yosys cells) and the blocking failure is a degenerate generation instability,
+not scale.
+
+---
+
+### §1c — `alu_with_enable`: too easy after the redesign
+
+Real run, both models, single sample each — no N=3 needed, same bar as
+`cmp8_en`'s original retirement: a `PASS|1` with `semantic_fired=0`
+unambiguously shows the target defect did not occur, which is a design-gate
+failure, not a statistical question.
+
+| Model | Baseline | Raw_adv | Sem_adv | `semantic_fired` |
+|---|---|---|---|---|
+| gemma3:4b | PASS\|1 | PASS\|1 | PASS\|1 | 0 |
+| llama3.1 | PASS\|2 | PASS\|2 | PASS\|2 | 1 (no efficiency gain) |
+
+`alu_with_enable` was built specifically to fix `datapath_mux_alu`'s
+convergence failure (§1a) by dropping the mode mux, the `bypass` port, and
+the internal `alu_result` register — four ports instead of six, zero internal
+registers. The fix over-corrected: on gemma3:4b the module became simple
+enough that the `enable` gate was written correctly on the very first
+iteration, in every condition. On llama3.1 all three conditions converge in
+the same 2 iterations — `sem_adv` fires `UNUSEDSIGNAL` but produces no
+efficiency gain, the same "no effect" pattern `decoder_3to8` showed on
+llama3.1.
+
+This is the third and last attempt at a larger-module illustration in phase
+0 (`datapath_mux_alu` → `alu_with_enable`, plus the separate
+`instr_decode_unit` line, §1b). None replicated. See
+`../../evidence/phase0_illustration_hunt_findings.md` §3 for what this means
+for the larger-module direction going forward.
 
 ---
 
