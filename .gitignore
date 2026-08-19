@@ -44,6 +44,12 @@ Thumbs.db
 NOTE.txt
 HANDOFF.md
 handoff*.md
+# Exception: handoff.md at repo root is a TRACKED deliverable (the Phase 0 ->
+# Phase 1 handoff written 2026-08-19), not a local working doc. On a
+# case-insensitive filesystem this is the same physical file HANDOFF.md used
+# to be -- that file's content was overwritten when handoff.md was created
+# and is not recoverable (it was gitignored, so git never held a copy).
+!/handoff.md
 notes.txt
 NOTES.txt
 local_*.txt
