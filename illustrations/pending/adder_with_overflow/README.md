@@ -1,20 +1,37 @@
-# `adder_with_overflow` — pending candidate (UNDRIVEN mechanism, new class)
+# `adder_with_overflow` — pending candidate, **spec v2** (UNDRIVEN mechanism)
 
-**Status 2026-08-19: all four pre-screen steps PASS. READY for an LLM run.**
-Not promoted to `proven/` — promotion requires a real model run with on-disk
-before/after evidence, same bar as `decoder_3to8`.
+**Status 2026-08-19: spec v1 retired after a real run. Spec v2 pre-screened
+4/4, READY for an LLM run.** Module, testbench and both reference
+implementations are unchanged from v1 — only the spec text changed.
 
-## Why this candidate exists
+## What happened to v1
 
-Both proven illustrations run through **one** interpreter code, `UNUSEDSIGNAL`,
-on **one** defect shape: a forgotten *input* gate. A reviewer can reasonably
-say the entire effect is one warning code on one module shape.
+v1 ran gemma3:4b on all three conditions and produced **no signal**:
+baseline FAIL|6, raw_adv PASS|2, sem_adv PASS|2, `semantic_fired = 0`
+everywhere. The model assigned `overflow` on iteration 1 of every condition, so
+the target `UNDRIVEN` defect never occurred.
 
-This candidate targets `UNDRIVEN` on a forgotten **output** — the structural
-mirror image. Different Verilator code, different interpreter branch
-(`_classify_undriven_signal` → `output_port`), different defect shape, same
-scope boundary (a static structural fingerprint: a declared port with no
-driver).
+Cause: recipe rule 1. The v1 spec said *"The overflow output indicates
+carry-out"*, which was enough. Same failure as `counter_with_enable` and
+`register_with_load`.
+
+Full record, including a more important secondary finding about `raw_adv`
+diverging from `baseline` for the first time:
+`../../retired/retired_candidates.md` §1. **Read that before quoting any
+number from this module.**
+
+## Spec v2 — the only change
+
+The explanatory clause is deleted. `overflow` is now named in the port list and
+nowhere else:
+
+```
+Write a Verilog-2001 module named adder_with_overflow with:
+input [7:0] a, input [7:0] b, output reg [7:0] sum, output reg overflow.
+Compute sum = a + b. Combinational logic only. Return only Verilog code.
+```
+
+Already applied to `BENCHMARK` in `src/runner/stitch_runner.py`.
 
 ## Target mechanism
 
@@ -25,115 +42,66 @@ driver).
 | Interpreter path | `interpret_verilator` → `_undriven_message` → `output_port` branch |
 | Oracle | `overflow` reads `x`; the testbench uses `!==` so `x` is caught |
 
-## Spec sent to the LLM
+## Pre-screen — all four gates re-run 2026-08-19 against spec v2
 
-Add this to `BENCHMARK` in `src/runner/stitch_runner.py`:
+Real Verilator 5.020 / Yosys 0.33 / Icarus 12.0 via WSL, through the production
+wrappers (`stitch_runner.run_verilator_lint`, `interpret_verilator`).
 
-```
-Write a Verilog-2001 module named adder_with_overflow with:
-input [7:0] a, input [7:0] b, output reg [7:0] sum, output reg overflow.
-Compute sum = a + b using standard binary addition. The overflow output
-indicates carry-out. Combinational logic only. Return only Verilog code.
-```
-
-The spec describes the addition fully and mentions `overflow` in one clause
-without saying how to compute it. That asymmetry is the intended trigger.
-
-## Pre-screen results (2026-08-19)
-
-Real Verilator 5.020 / Yosys 0.33 / Icarus 12.0 via WSL. Steps 1 and 2 run
-through the production wrappers (`stitch_runner.run_verilator_lint`,
-`interpret_verilator`), not a hand-built invocation, so the filtering and
-signal-extraction path is exactly what a real run would take.
-
-### Step 1 — does the target warning fire? **PASS**
-
-`verilator --lint-only -Wall --bbox-unsup` on `broken.v`:
+### Gate 1 — target warning fires: **PASS**
 ```
 %Warning-UNDRIVEN: broken.v:11:22: Signal is not driven: 'overflow'
 %Error: Exiting due to 1 warning(s)
 ```
-Exit code 1, so the runner's `had_meaningful_warnings` is `True` and the
-interpreter is invoked. `correct.v` lints clean — no false positive on the fix.
+Exit 1, so `had_meaningful_warnings = True`. `correct.v` lints clean.
 
-### Step 2 — does the interpreter convert it? **PASS**
-
+### Gate 2 — interpreter converts it: **PASS**
 ```
 codes_fired = ['UNDRIVEN']
-
 *** CRITICAL: Output 'overflow' is declared but never assigned. ***
 Add an assignment: 'overflow = <value>;' in your always block or use assign.
 ```
+The `output_port` branch — not `undeclared`, not the `ambiguous` fallback. The
+prescribed repair applies directly to this defect shape. `correct.v` yields no
+directive.
 
-This is the `output_port` branch — not `undeclared`, not the `ambiguous`
-"check BOTH possibilities" fallback. `_classify_undriven_signal` parsed the
-ANSI port list correctly and knows `overflow` is a declared output. The
-directive names the real signal and prescribes the applicable repair.
+### Gate 3 — `SYSTEM_PROMPT` does not pre-empt it: **PASS**
+Re-checked against all seven rules at `src/runner/stitch_runner.py:92-113` for
+the v2 text. Rule 3 is the only near-miss and does not apply: it mandates a
+`default` branch and an `else` branch, and this module has neither a `case` nor
+an `if` — it is one unconditional assignment. No rule requires assigning every
+declared output.
 
-`correct.v` produces no directive.
-
-### Step 3 — does `SYSTEM_PROMPT` pre-empt the bug? **PASS (it does not)**
-
-Checked against all seven rules at `src/runner/stitch_runner.py:92-113`:
-
-| Rule | Covers this defect? |
-|---|---|
-| 1 wire vs reg | no |
-| 2 non-blocking in clocked | no |
-| 3 default branch + else branch | **no — closest, but it constrains branch coverage inside a block, not which signals get assigned** |
-| 4 sensitivity list | no |
-| 5 Verilog-2001 only | no |
-| 6 begin/end in case branches | no |
-| 7 return only Verilog | no |
-
-No rule says "assign every output you declared." The bug survives the prompt.
-
-### Step 4 — does the testbench oracle catch it? **PASS**
+### Gate 4 — oracle catches it: **PASS**
 
 | | Result |
 |---|---|
 | `correct.v` + tb | `ALL TESTS PASSED` |
 | `broken.v` + tb | `FAIL: 11 test(s) failed` |
 
-Every FAIL line is an `overflow` check. `sum` is correct in `broken.v`, so the
-failure set isolates the target defect exactly — no independent error surface
-(recipe rule 3).
+`sum` is correct in `broken.v`, so all 11 FAIL lines are `overflow` checks —
+the failure set isolates the target defect with no independent error surface.
 
-### Supplementary — what Yosys sees
+## Residual risk — v2 may still land on outcome (c)
 
-Yosys also flags it, as plain text with no interpreter handler:
-```
-Warning: Wire adder_with_overflow.\overflow is used but has no driver.
-```
-This is not converted — `detect_yosys_latches`/`detect_comb_loops` are the only
-Yosys paths, and neither matches. Verilator remains the sole *interpreted*
-source. It does mean `raw_adv` sees **two** tools independently naming
-`overflow` and still gets no repair shape, which strengthens the control rather
-than weakening it.
+Stated plainly, because v1 already burned one run on this:
 
-## Design risk — read before interpreting the run
+- v1 proved this model assigns `overflow` **spontaneously**. Deleting the
+  explanatory clause removes the strongest hint, but `overflow` still sits
+  beside `sum` in a two-output port list on a very small module, and
+  `{overflow, sum} = a + b;` is the idiomatic 9-bit adder pattern.
+- More fundamentally: **a forgotten output may be intrinsically harder to
+  elicit than a forgotten input.** Both proven illustrations
+  (`decoder_3to8`, `mux4_oe`) target a forgotten *input* — a port that is
+  simply never consulted, which is invisible in the written module. An
+  unassigned *output* is conspicuous: it is declared right there and nothing
+  writes it.
 
-The spec states *what* `overflow` means ("indicates carry-out"). That is closer
-to the retired `counter_with_enable` / `register_with_load` failure than to
-`decoder_3to8`, both of which died because the spec spelled out the behaviour
-and the model simply implemented it on iteration 1.
-
-The mitigating difference is that those two specs stated the *gate-off
-behaviour of a port the model would otherwise ignore*, whereas this one names
-a second output without giving its expression. But the honest expectation is a
-real chance of **outcome (c), "too easy"** — PASS|1 on all three conditions,
-like `cmp8_en`.
-
-That is a decision for the run, not for the pre-screen: the mechanism is
-verified sound, so a PASS|1 result is informative (it retires the candidate on
-recipe rule 1) rather than ambiguous. If it does land on PASS|1, the redesign
-is to drop the "indicates carry-out" clause and mention `overflow` in the port
-list only.
+If v2 also lands PASS|1 or PASS|2 with `semantic_fired = 0`, that is not a
+third spec revision — it is evidence for the input/output asymmetry above, and
+should be written up as such rather than iterated on further.
 
 ## Files
 
 - `correct.v` — reference implementation, passes the oracle
-- `broken.v` — hand-written defect shape for the pre-screen, **not** model output
-- testbench: `../adder_with_overflow_tb.v` (flat, runner-readable —
-  `--testbench-dir` wants flat `<module>_tb.v`, and a single copy avoids the
-  drift risk that the nested copies in `proven/` had)
+- `broken.v` — hand-written defect shape, **not** model output
+- testbench: `../adder_with_overflow_tb.v` (flat, runner-readable)

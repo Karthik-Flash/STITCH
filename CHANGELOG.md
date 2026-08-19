@@ -22,7 +22,7 @@ was left behind and why, is in `docs/RESTRUCTURE_NOTES.md`.
 `interpreter/stitch_interpreter.py` is now the single source of truth for
 warning classification and directive generation. Detail on each defect,
 including how it was found and the dependency chain between them, is in
-`illustrations/retired/session_2026-08-18_findings.md`.
+`evidence/session_2026-08-18_findings.md`.
 
 1. **Latch-keyword substring matching produced false positives.** The keyword
    list matched the Yosys `PROC_DLATCH` pass banner, which prints for every
@@ -105,7 +105,7 @@ exactly, isolating the effect to interpretation rather than tool presence.
 **Five illustrations retired** after failing a design or empirical gate:
 `priority_chain_comb`, `mode_mux_latch`, `counter_with_enable`,
 `register_with_load`, `seg7_blank`. Reasons are recorded in
-`illustrations/retired/backup_candidates.md` and in the findings
+`illustrations/retired/retired_candidates.md` and in the findings
 document's module-status table, because they define the design recipe for
 future illustrations.
 

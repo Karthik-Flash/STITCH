@@ -7,7 +7,7 @@
 //   always @(*) begin
 //     sum = a + b;          <-- 'overflow' never assigned anywhere
 //   end
-// Verilator: "Signal is not driven: 'overflow'" (UNDRIVEN)
+// Expected from Verilator: "Signal is not driven: 'overflow'" (UNDRIVEN)
 // iverilog:  every overflow check reads x, so FAIL lines appear on both the
 //            carry and the no-carry vectors -- but nothing says why.
 //

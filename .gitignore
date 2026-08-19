@@ -41,7 +41,7 @@ Thumbs.db
 # Kept in the repo folder for convenience, deliberately NOT tracked:
 # they contain absolute local paths, machine setup, and model/runtime
 # details that are specific to one workstation.
-note.txt
+NOTE.txt
 HANDOFF.md
 handoff*.md
 notes.txt
