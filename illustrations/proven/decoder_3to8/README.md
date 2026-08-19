@@ -24,7 +24,11 @@ instead of `8'b0`.
 | `sem_adv` iter 1 | 1 | FAIL (same bug as above) | `sem_adv_iter1_broken.v`, `sem_adv_iter1_sim_log.txt` |
 | `sem_adv` iter 2 | 2 | **PASS** | `sem_adv_iter2_fixed.v`, `sem_adv_iter2_sim_log.txt` |
 
-`tb.v` is the shared testbench (identical across all three conditions/iterations).
+The testbench is at `../decoder_3to8_tb.v` (flat, runner-readable) — it is the
+shared testbench, identical across all three conditions/iterations. A
+byte-identical nested copy used to sit here as `tb.v`; it was removed
+2026-08-19 so the flat file the runner actually reads is the single source
+of truth and the two cannot drift apart.
 
 ## What actually fired (from `metrics_sem_adv.json`)
 
@@ -52,7 +56,7 @@ this reconstruction is exact, not an approximation).
 
 ## Testbench comment note
 
-`tb.v`'s header comment says *"Yosys: Inferred latch for signal `\out`"* as
+`../decoder_3to8_tb.v`'s header comment says *"Yosys: Inferred latch for signal `\out`"* as
 the expected mechanism — that turned out not to be what actually fired for
 this model/run (it was Verilator's `UNUSEDSIGNAL` on `enable`, per the metrics
 above, not a Yosys latch warning). Left as-is since it's the original

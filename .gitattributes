@@ -1,0 +1,14 @@
+# Frozen evidence — see illustrations/proven/*/LOCKED.md
+#
+# These paths hold the load-bearing evidence for the paper's §5 and
+# plans/research_plan_v4.md §1. `merge=binary` makes git refuse to
+# auto-merge them: a concurrent edit surfaces as a conflict a human must
+# resolve by picking a whole file, instead of git silently interleaving
+# hunks from two branches into the frozen record.
+#
+# This is a guard against accidental coauthor merge edits. It is NOT
+# write protection — a deliberate local edit + commit still goes through.
+illustrations/proven/decoder_3to8/**  merge=binary
+illustrations/proven/mux4_oe/**       merge=binary
+illustrations/proven/decoder_3to8_tb.v  merge=binary
+illustrations/proven/mux4_oe_tb.v       merge=binary

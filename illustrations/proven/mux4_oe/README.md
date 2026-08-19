@@ -29,6 +29,14 @@ the token cost. `raw_adv` matching `baseline` exactly in both cases is the
 important control — the tools alone do nothing, the *interpretation* is what
 moves the outcome.
 
+## Files
+
+The testbench is at `../mux4_oe_tb.v` (flat, runner-readable). A
+byte-identical nested copy used to sit here as `tb.v`; it was removed
+2026-08-19 so the flat file the runner actually reads is the single source
+of truth and the two cannot drift apart. `correct.v` is the reference
+implementation used for the pre-screen, not model output.
+
 ## The mechanism, verified end to end
 
 Iteration 1 (both models) omits `oe` entirely:
