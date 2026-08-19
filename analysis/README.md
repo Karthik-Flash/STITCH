@@ -1,35 +1,36 @@
 # analysis/
 
-Scripts that produced the aggregate figures and regime breakdowns cited in
-`phase0/evidence/`. They are migrated here as the provenance for those numbers.
+Scripts usable against this repo's current results tree. Five other
+pre-migration scripts that never worked against this repo (hardcoded
+paths into a folder tree that was never migrated) moved to
+`../phase0/analysis/` on 2026-08-20 — see that directory's README for
+what they were and why they're archived rather than fixed.
 
-## Status: these scripts require path updates before they will run
+## `aggregate_results.py` — works, needs `--runs`
 
-**Every script in this directory resolves its data root against the
-pre-migration folder layout**, either through a hardcoded absolute path or a
-relative parent-walk that assumed the old tree. None of them will run
-unmodified in this repository.
+Walks one or more run-root folders, finds every `metrics.json`, and merges
+them into one CSV/JSON. **Its default run-root is a stale pre-migration
+path**, so pass `--runs` explicitly against this repo's actual results tree:
 
-| Script | Problem |
-|---|---|
-| `hpc_checkpoint.py` | Hardcoded absolute path to the HPC pull directory, which was not migrated (it is conference-paper territory — see the archived HDLLLM repository) |
-| `phase_d_delta.py` | Hardcoded absolute repository root |
-| `phase_e_replay.py` | Hardcoded absolute repository root |
-| `phase1_verify.py` | `Path(__file__).resolve().parents[3]` — assumed the old nesting depth |
-| `phase2_reconstruct.py` | `Path(__file__).resolve().parents[3]`, plus a reference to a runner that has since been retired |
-| `aggregate_results.py` | Default run-root is resolved relative to the old layout; pass `--runs` explicitly |
-| `stats.py` | Placeholder — confidence-interval and distribution reporting, not yet implemented |
+```
+python aggregate_results.py --runs ..\phase0\results --out combined
+```
 
-They were deliberately **not** rewritten during migration. Each one is tied to
-a specific historical run tree, and silently repointing them at new paths would
-produce numbers that look valid but no longer correspond to the data the
-`phase0/evidence/` documents cite. Repoint them consciously, against the run tree you
-actually mean, when you next need to regenerate a figure.
+Verified 2026-08-20: found 92 `metrics.json` files under
+`phase0/results/`, produced a coherent 41-row summary matching the
+pass-rate numbers already cited in `../phase0/evidence/`. The logic is
+sound — only the default path is wrong.
 
-## Note on the data they consumed
+```
+python aggregate_results.py --help
+```
+for the full flag list (`--runs`, `--prefer`, `--out`).
 
-The raw per-iteration run trees these scripts read (`nightly_*`, `resume_*`,
-`hpc_pull`) were **not migrated** — they belong to the conference-paper work.
-`phase0/evidence/combined_results.csv` is the aggregated output that survived, and its
-last two columns retain absolute paths into that original tree as provenance.
-Treat those columns as historical annotation, not as resolvable paths.
+## `stats.py` — not yet implemented
+
+An 8-line placeholder — no pre-migration path dependency, nothing to
+repoint, nothing to run. Per its own docstring it's for confidence-interval
+and distribution reporting across N≥3 samples per cell, which is a Phase 1
+need (the escalation-vs-baseline-vs-unconditional-STITCH comparison) more
+than a Phase 0 one, which is why it stays here rather than moving to
+`phase0/analysis/` with the genuinely broken scripts.
