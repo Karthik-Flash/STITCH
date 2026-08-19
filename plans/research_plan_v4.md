@@ -33,7 +33,7 @@ warning classification and directive generation.
   and is what `CHANGELOG.md` records.
 - **Five defects found and fixed.** Full detail, including how each was found
   and the dependency chain between them, is in
-  `illustrations/retired/session_2026-08-18_findings.md`. Summary:
+  `evidence/session_2026-08-18_findings.md`. Summary:
   1. Latch-keyword substring matching false-positived on the Yosys pass banner
      and on the negated "No latch inferred" message.
   2. The latch regex required a `Warning:` prefix Yosys 0.33 does not emit for
@@ -74,7 +74,7 @@ gemma3:4b — llama3.1 writes `if (enable)` and omits only the `else`, a
 different defect class it self-corrects from testbench output alone.
 
 **Five retired illustrations**, documented in
-`illustrations/retired/backup_candidates.md` and in the findings doc's
+`illustrations/retired/retired_candidates.md` and in the findings doc's
 module-status table: `priority_chain_comb`, `mode_mux_latch`,
 `counter_with_enable`, `register_with_load`, `seg7_blank`. Each failed a design
 or empirical gate; the reasons are recorded because they define the recipe in
@@ -237,3 +237,4 @@ extension.
 | 4 | MULTIDRIVEN illustration gap — handler exists, has never fired against real model output | §1 |
 | 5 | Fallback-rate monitoring threshold for the UNUSEDSIGNAL parameteriser | `interpreter/README.md` §Monitoring |
 | 6 | **Prerequisite for #5:** the runner does not configure logging, so the fallback log emits nothing at INFO level. Monitoring cannot operate until this is addressed. | `interpreter/README.md` §Monitoring |
+| 7 | ~~`interpret_yosys_latches` emits inapplicable `EXACT FIX` options and a fabricated `enable`-based causal join.~~ **RESOLVED 2026-08-19.** The directive is now structure-aware: it parses the module's case/if structure and emits only the options that apply, including the previously-missing "assign the signal in every branch, not only the default". The fabricated causal join is replaced by one derived from the defect. 11 new tests, built on real captured Yosys output from `priority_encoder_valid/broken.v`. | `illustrations/pending/priority_encoder_valid/README.md` |

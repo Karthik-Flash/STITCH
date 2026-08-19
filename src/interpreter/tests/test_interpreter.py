@@ -488,5 +488,212 @@ class TestUnusedSignalTemplateParameterisation(unittest.TestCase):
             _os.unlink(tmp)
 
 
+class TestLatchDirectiveStructureAware(unittest.TestCase):
+    """interpret_yosys_latches must prescribe a repair that APPLIES to the
+    module in front of it (2026-08-19, plan v4 section 7 item 7).
+
+    The template it replaces emitted two options unconditionally --
+    "add else to every if" and "add default to every case" -- plus a causal
+    join asserting "this is why enable=0 returns the previous output".
+    Against priority_encoder_valid/broken.v, whose casez already HAS a
+    default, option B was a literal no-op, option A was inapplicable (no if
+    exists), and the real repair (assign the signal in every branch, not only
+    the default) was not offered at all. That shape is the one SYSTEM_PROMPT
+    rule 3 steers models into, so it is not exotic.
+    """
+
+    LATCH_LINE = (
+        r"Latch inferred for signal `\priority_encoder_valid.\valid' from "
+        r"process `\priority_encoder_valid.$proc$broken.v:19$1': "
+        r"$auto$proc_dlatch.cc:427:proc_dlatch$58"
+    )
+
+    # The exact shape of illustrations/pending/priority_encoder_valid/broken.v:
+    # a compliant default, and 'valid' unassigned on every other branch.
+    BROKEN_DEFAULT_PRESENT = """
+module priority_encoder_valid (
+    input      [7:0] req,
+    output reg [2:0] pos,
+    output reg       valid
+);
+    always @(*) begin
+        casez (req)
+            8'b1???????: pos = 3'd7;
+            8'b01??????: pos = 3'd6;
+            8'b001?????: pos = 3'd5;
+            8'b0001????: pos = 3'd4;
+            8'b00001???: pos = 3'd3;
+            8'b000001??: pos = 3'd2;
+            8'b0000001?: pos = 3'd1;
+            8'b00000001: pos = 3'd0;
+            default:     begin pos = 3'd0; valid = 1'b0; end
+        endcase
+    end
+endmodule
+"""
+
+    NO_CASE_AT_ALL = """
+module gated_flag (
+    input      en,
+    output reg valid
+);
+    always @(*) begin
+        if (en) valid = 1'b1;
+    end
+endmodule
+"""
+
+    def _directive(self, source, line=None):
+        import tempfile, os as _os
+        with tempfile.NamedTemporaryFile("w", suffix=".v", delete=False,
+                                         encoding="utf-8") as f:
+            f.write(source)
+            tmp = f.name
+        try:
+            return stitch.interpret_yosys_latches([line or self.LATCH_LINE], tmp)
+        finally:
+            _os.unlink(tmp)
+
+    # -- required by task 2e, part 1: real captured Yosys output ------------
+
+    def test_real_yosys_output_detects_valid_only(self):
+        """Real captured synth log: the positive line for 'valid' is picked up
+        and the negative line for 'pos' in the SAME output is rejected."""
+        fixture = _HERE / "fixtures" / "priority_encoder_valid_yosys_synth.txt"
+        raw = fixture.read_text(encoding="utf-8", errors="ignore")
+        self.assertEqual(stitch.detect_yosys_latches(raw), ["valid"])
+
+    def test_real_case_with_default_asks_for_per_branch_assignment(self):
+        """The fix must be per-branch assignment, NOT 'add a default'."""
+        fixture = _HERE / "fixtures" / "priority_encoder_valid_yosys_synth.txt"
+        raw = fixture.read_text(encoding="utf-8", errors="ignore")
+        latch_lines = [l for l in raw.splitlines() if stitch.detect_yosys_latches(l)]
+        self.assertTrue(latch_lines)
+
+        import tempfile, os as _os
+        with tempfile.NamedTemporaryFile("w", suffix=".v", delete=False,
+                                         encoding="utf-8") as f:
+            f.write(self.BROKEN_DEFAULT_PRESENT)
+            tmp = f.name
+        try:
+            d = stitch.interpret_yosys_latches(latch_lines, tmp)
+        finally:
+            _os.unlink(tmp)
+
+        self.assertIn("EVERY branch of the case", d)
+        self.assertIn("'valid'", d)
+        # The no-op advice must be gone: this module already HAS a default.
+        self.assertNotIn("Add a default branch", d)
+        self.assertNotIn("default: valid = <safe value>;", d)
+        # And it must count the branches that actually omit the signal.
+        self.assertIn("8 branch(es)", d)
+
+    # -- required by task 2e, part 2: no case statement ---------------------
+
+    def test_no_case_statement_does_not_offer_the_default_fix(self):
+        """Fix B must not appear for a module with no case statement."""
+        d = self._directive(self.NO_CASE_AT_ALL)
+        self.assertNotIn("Add a default branch", d)
+        self.assertNotIn("endcase", d)
+        self.assertIn("else", d)
+
+    # -- the fabricated causal join ----------------------------------------
+
+    def test_no_fabricated_enable_causal_join(self):
+        """The old template asserted 'this is why enable=0 returns the
+        previous output' regardless of whether an enable port existed."""
+        for src in (self.BROKEN_DEFAULT_PRESENT, self.NO_CASE_AT_ALL):
+            d = self._directive(src)
+            self.assertNotIn("enable=0", d)
+            self.assertIn("not\nassigned on every code path", d)
+
+    # -- the remaining structural shapes ------------------------------------
+
+    def test_case_without_default_but_branches_complete_asks_for_default(self):
+        src = """
+module m (input [1:0] s, output reg [1:0] pos, output reg valid);
+    always @(*) begin
+        case (s)
+            2'd0: begin pos = 2'd0; valid = 1'b1; end
+            2'd1: begin pos = 2'd1; valid = 1'b1; end
+        endcase
+    end
+endmodule
+"""
+        d = self._directive(src)
+        self.assertIn("Add a default branch", d)
+        self.assertNotIn("EVERY branch of the case", d)
+
+    def test_case_without_default_and_incomplete_branches_asks_for_both(self):
+        """A default alone would not fix this -- a listed branch omits it too."""
+        src = """
+module m (input [1:0] s, output reg [1:0] pos, output reg valid);
+    always @(*) begin
+        case (s)
+            2'd0: begin pos = 2'd0; valid = 1'b1; end
+            2'd1: pos = 2'd1;
+        endcase
+    end
+endmodule
+"""
+        d = self._directive(src)
+        self.assertIn("Close BOTH gaps", d)
+        self.assertIn("1 branch(es)", d)
+
+    def test_bit_range_colons_do_not_split_branches(self):
+        """[3:0] inside a case expression must not register as a branch label."""
+        src = """
+module m (input [3:0] s, output reg [7:0] d, output reg valid);
+    always @(*) begin
+        case (s[3:0])
+            4'd0: d = 8'h00;
+            4'd1: begin d = 8'h11; valid = 1'b1; end
+            default: begin d = 8'hFF; valid = 1'b0; end
+        endcase
+    end
+endmodule
+"""
+        d = self._directive(src)
+        self.assertIn("1 branch(es)", d)
+
+    def test_comment_prose_does_not_fool_the_parser(self):
+        """A comment reading 'no default:' must not be seen as a branch."""
+        src = """
+module m (input [1:0] s, output reg [1:0] pos, output reg valid);
+    always @(*) begin
+        // no default: here, this is prose not code
+        case (s)
+            2'd0: pos = 2'd0;
+            2'd1: begin pos = 2'd1; valid = 1'b1; end
+        endcase
+    end
+endmodule
+"""
+        d = self._directive(src)
+        self.assertIn("Close BOTH gaps", d)
+
+    def test_no_source_falls_back_to_generic_advice_and_logs(self):
+        """Without the module, give generic path advice -- never assert a
+        structure that was never inspected."""
+        with self.assertLogs("stitch_interpreter", level="INFO") as cm:
+            d = stitch.interpret_yosys_latches([self.LATCH_LINE])
+        self.assertIn("assigned on EVERY path", d)
+        self.assertNotIn("endcase", d)
+        self.assertTrue(any("fell back to generic advice" in m for m in cm.output))
+
+    def test_multiple_latched_signals_are_all_named(self):
+        line2 = (
+            r"Latch inferred for signal `\m.\ready' from process "
+            r"`\m.$proc$b.v:9$1': $auto$proc_dlatch"
+        )
+        d = stitch.interpret_yosys_latches([self.LATCH_LINE, line2])
+        self.assertIn("'valid'", d)
+        self.assertIn("'ready'", d)
+        self.assertIn("Apply the same repair to 'ready'", d)
+
+    def test_empty_input_returns_empty_string(self):
+        self.assertEqual(stitch.interpret_yosys_latches([]), "")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

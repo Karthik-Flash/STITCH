@@ -393,12 +393,18 @@ def _build_raw_adv_feedback(verilator_out, yosys_report, latch_lines,
 def _build_sem_adv_feedback(verilator_out, yosys_report, latch_lines,
                               iverilog_fb, err_type, has_latch, cell_count,
                               interp_text, interp_codes,
-                              has_loop=False, loop_modules=None):
+                              has_loop=False, loop_modules=None, v_path=None):
     """
     Condition C: All three tools + semantic interpreter.
     The interpreter translates raw warning codes into targeted fix directives.
     This is the STITCH contribution — directives resolve weaker-model failures
     that raw output cannot.
+
+    v_path: the .v file under repair. Added 2026-08-19 so the Yosys latch
+    directive can read the module and offer only the repair options that
+    actually apply to it — the same source-aware treatment interpret_verilator
+    already gets. Optional; omitting it degrades the latch directive to
+    generic advice rather than breaking it.
     """
     loop_modules = loop_modules or []
     hint = _BASE_HINTS.get(err_type, "")
@@ -419,7 +425,7 @@ def _build_sem_adv_feedback(verilator_out, yosys_report, latch_lines,
     # first time; it had a working handler with no wiring into this runner
     # before today, so priority_chain_comb-shaped modules never got a
     # converted directive despite the interpreter supporting it).
-    yosys_interp = interpret_yosys_latches(latch_lines) if has_latch else ""
+    yosys_interp = interpret_yosys_latches(latch_lines, v_path) if has_latch else ""
     loop_interp  = interpret_comb_loop(yosys_report) if has_loop else None
 
     if has_latch:
@@ -689,7 +695,7 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
                 fb = _build_sem_adv_feedback(verilator_out, yosys_report, latch_lines,
                                               iverilog_fb, err_type, has_latch, cell_count,
                                               interp_text, interp_codes,
-                                              has_loop, loop_modules)
+                                              has_loop, loop_modules, v_path)
             messages.append({"role": "user", "content": fb})
 
     if metrics["total_time_sec"] is None:
@@ -1066,6 +1072,56 @@ BENCHMARK = {
             "Sequential logic only, no latches. Return only Verilog code.\n"
         ),
     },
+        # ── Added 2026-08-19 — UNDRIVEN candidate (forgotten OUTPUT, the mirror of
+    # the UNUSEDSIGNAL forgotten-input mechanism). Pre-screen 4/4 in
+    # illustrations/pending/adder_with_overflow/README.md.
+    "adder_with_overflow": {
+        "category": "verilator_target",
+        "spec": (
+            "Write a Verilog-2001 module named adder_with_overflow with:\n"
+            "input [7:0] a, input [7:0] b, output reg [7:0] sum, output reg overflow.\n"
+            "Compute sum = a + b. Combinational logic only. Return only Verilog code.\n"
+        ),
+    },
+
+    # -- Added 2026-08-19. UNDRIVEN on a forgotten output, same class as
+    # adder_with_overflow but on SEQUENTIAL logic, where SYSTEM_PROMPT rule 3
+    # cannot reach it at all: rule 3 is scoped to combinational always blocks.
+    # The spec describes the state transitions in full and names 'error' in
+    # the port list only -- decoder_3to8's recipe shape.
+    # Pre-screen: illustrations/pending/fsm_next_state_error/README.md
+    "fsm_next_state_error": {
+        "category": "verilator_target",
+        "spec": (
+            "Write a Verilog-2001 module named fsm_next_state_error with:\n"
+            "input clk, input rst, input go,\n"
+            "output reg state, output reg error.\n"
+            "On posedge clk, if rst then state resets to 0. Otherwise if go\n"
+            "is asserted, transition state to 1; if go is deasserted, transition\n"
+            "state back to 0. Return only Verilog code.\n"
+        ),
+    },
+
+    # -- Added 2026-08-19. Yosys-latch class, and the only candidate whose
+    # defect Verilator cannot see at all (the case is complete and 'valid' is
+    # both driven and read, so no Verilator code applies) -- Yosys is the sole
+    # source. Occupies a real gap in SYSTEM_PROMPT rule 3: rule 3 mandates a
+    # default branch, and says nothing about assigning every output INSIDE
+    # each branch. Distinct from the retired forgotten-output candidates:
+    # the question here is path completeness, not output existence.
+    # Pre-screen: illustrations/pending/priority_encoder_valid/README.md
+    "priority_encoder_valid": {
+        "category": "latch_target",
+        "spec": (
+            "Write a Verilog-2001 module named priority_encoder_valid with:\n"
+            "input [7:0] req, output reg [2:0] pos, output reg valid.\n"
+            "For each request bit, pos should indicate the highest-priority\n"
+            "requesting bit (bit 7 = highest, bit 0 = lowest). valid should\n"
+            "indicate whether any request is active. Combinational logic only.\n"
+            "Return only Verilog code.\n"
+        ),
+    },
+
 }
 
 

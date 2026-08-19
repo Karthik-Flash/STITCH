@@ -460,8 +460,186 @@ def interpret_comb_loop(yosys_output: str):
     )
 
 
-def interpret_yosys_latches(latch_lines):
-    """Extract signal names from Yosys latch lines and return plain-English fix."""
+# -- Latch directive: structure-aware repair options (2026-08-19) -------------
+# Same class of defect as the pre-parameterisation UNUSEDSIGNAL template, and
+# the same remedy: derive the repair from the module actually under repair
+# instead of asserting a fixed one. The old template emitted two options
+# unconditionally --
+#
+#   A) "Add else branch to every if without one"
+#   B) "Add default to every case statement"
+#
+# -- plus a causal join reading "this is why enable=0 returns the previous
+# output", naming an 'enable' port the module need not have.
+#
+# Found against illustrations/pending/priority_encoder_valid/broken.v, whose
+# casez ALREADY has `default: begin pos = 3'd0; valid = 1'b0; end`. Option B
+# is therefore a literal no-op there, option A is inapplicable (no `if`
+# exists), and the real repair -- assign the signal in every branch, not only
+# in the default -- was not offered at all. That shape is not exotic: it is
+# what SYSTEM_PROMPT rule 3 actively steers models toward, since rule 3
+# mandates a default branch and says nothing about per-output coverage inside
+# the branches.
+#
+# The parser below is deliberately approximate, matching the regex-over-real-
+# parser style used everywhere else in this file. It answers three questions
+# and nothing more: does the block contain an `if`, does it contain a `case`,
+# and within each case does the latching signal get assigned in every branch.
+
+_COMMENT_RE = re.compile(r"//[^\n]*|/\*.*?\*/", re.DOTALL)
+_CASE_OPEN_RE = re.compile(r"\bcase[zx]?\b")
+
+
+def _strip_comments(source_text):
+    """Blank out comments so keyword scans do not match prose. Newlines are
+    preserved so anything downstream keeps the same line structure."""
+    def _blank(m):
+        return re.sub(r"[^\n]", " ", m.group(0))
+    return _COMMENT_RE.sub(_blank, source_text)
+
+
+def _case_block_bodies(code):
+    """Bodies of every case/casez/casex block, innermost text included.
+
+    Scans for case...endcase with a depth counter so a nested case does not
+    terminate its parent early. Returns the text between the case header and
+    the matching endcase.
+    """
+    bodies = []
+    for m in _CASE_OPEN_RE.finditer(code):
+        depth, i = 1, m.end()
+        # Skip the case expression's parenthesised header.
+        paren = code.find("(", i)
+        if paren != -1 and code[i:paren].strip() == "":
+            level = 0
+            while paren < len(code):
+                if code[paren] == "(":
+                    level += 1
+                elif code[paren] == ")":
+                    level -= 1
+                    if level == 0:
+                        paren += 1
+                        break
+                paren += 1
+            i = paren
+        start = i
+        for tok in re.finditer(r"\bcase[zx]?\b|\bendcase\b", code[i:]):
+            depth += 1 if tok.group(0) != "endcase" else -1
+            if depth == 0:
+                bodies.append(code[start:i + tok.start()])
+                break
+    return bodies
+
+
+def _assigns(text, sig):
+    """True if `sig` appears as the left-hand side of an assignment."""
+    return bool(re.search(r"\b" + re.escape(sig) + r"\s*(?:\[[^\]]*\])?\s*<?=", text))
+
+
+def _split_case_branches(body):
+    """Branch chunks of one case body, split at depth-0 branch-label colons.
+
+    Each chunk is one branch's statements, possibly with the NEXT branch's
+    label text trailing on the end -- harmless here, because a label carries
+    no assignment and the only question asked of a chunk is whether it assigns
+    a given signal. Colons inside begin/end blocks, bit ranges and parens are
+    skipped so `[3:0]` and a nested case's labels do not split anything.
+    """
+    depth = bracket = paren = 0
+    cuts = []
+    for tok in re.finditer(r"\bbegin\b|\bend\b|[\[\]():]", body):
+        t = tok.group(0)
+        if   t == "begin": depth += 1
+        elif t == "end":   depth -= 1
+        elif t == "[":     bracket += 1
+        elif t == "]":     bracket -= 1
+        elif t == "(":     paren += 1
+        elif t == ")":     paren -= 1
+        elif t == ":" and depth <= 0 and bracket == 0 and paren == 0:
+            cuts.append(tok.end())
+    return [body[a:b] for a, b in zip(cuts, cuts[1:] + [len(body)])]
+
+
+def _latch_repair_options(sig, source_text):
+    """Repair options that actually apply to this module, most specific first.
+
+    Returns (options, analysed). `analysed` is False when the source could not
+    be inspected, which is the caller's cue to fall back to generic advice
+    rather than assert a structure it never saw.
+    """
+    if not source_text:
+        return [], False
+
+    code = _strip_comments(source_text)
+    options = []
+
+    for body in _case_block_bodies(code):
+        if not _assigns(body, sig):
+            continue                      # this case does not drive sig at all
+        branches = _split_case_branches(body)
+        if not branches:
+            continue
+        has_default = bool(re.search(r"\bdefault\s*:", body))
+        missing = len([b for b in branches if not _assigns(b, sig)])
+        if missing == 0 and has_default:
+            continue                      # already complete in this case
+
+        hoist = (
+            f"     Simplest alternative that covers every path at once: assign\n"
+            f"     '{sig}' unconditionally ONCE immediately BEFORE the case, then\n"
+            f"     let individual branches override it."
+        )
+
+        if missing == 0:
+            # Every listed branch assigns it; only the unlisted values latch.
+            options.append(
+                f"Add a default branch to the case that assigns '{sig}':\n"
+                f"       case (...)\n"
+                f"         ... existing branches ...\n"
+                f"         default: {sig} = <safe value>;   <-- ADD THIS\n"
+                f"       endcase"
+            )
+        elif has_default:
+            # The shape SYSTEM_PROMPT rule 3 steers models into: a compliant
+            # default that still leaves the signal unassigned elsewhere.
+            options.append(
+                f"Assign '{sig}' in EVERY branch of the case, not only in the default.\n"
+                f"     The default branch alone is NOT enough -- {missing} branch(es) assign\n"
+                f"     other signals but not '{sig}', so on those branches '{sig}' keeps\n"
+                f"     its previous value, and that is the latch.\n"
+                f"       case (...)\n"
+                f"         <label>: begin <other signals> = ...; {sig} = ...; end   <-- ADD '{sig}' HERE\n"
+                f"         ...\n"
+                f"       endcase\n"
+                + hoist
+            )
+        else:
+            # No default AND incomplete branches: both gaps must be closed.
+            options.append(
+                f"Close BOTH gaps in the case -- a default alone will not fix it:\n"
+                f"       1. assign '{sig}' in the {missing} branch(es) that currently omit it, and\n"
+                f"       2. add a default branch that also assigns '{sig}'.\n"
+                + hoist
+            )
+
+    if re.search(r"\bif\s*\(", code) and not re.search(r"\belse\b", code):
+        options.append(
+            f"Add an else branch to every if that lacks one:\n"
+            f"       if (condition) {sig} = <value>;\n"
+            f"       else           {sig} = <safe value>;   <-- ADD THIS"
+        )
+
+    return options, True
+
+
+def interpret_yosys_latches(latch_lines, v_path=None):
+    """Convert Yosys latch-inference lines into a fix directive.
+
+    v_path: path to the .v file under repair. Optional -- without it the
+    directive still names the right signal and states the root cause, but it
+    can only give the generic "assign it on every path" advice instead of the
+    specific structural repair, and the fallback is logged.
+    """
     if not latch_lines:
         return ""
 
@@ -479,18 +657,56 @@ def interpret_yosys_latches(latch_lines):
     sig_list = ", ".join(f"'{s}'" for s in signals) if signals else "an output signal"
     first    = signals[0] if signals else "out"
 
+    source_text = None
+    if v_path:
+        try:
+            with open(v_path, "r", encoding="utf-8", errors="ignore") as f:
+                source_text = f.read()
+        except OSError:
+            source_text = None
+
+    options, analysed = _latch_repair_options(first, source_text)
+
+    if not options:
+        why = ("no source file was available to the interpreter"
+               if not analysed else
+               "no case/if structure in the source explained the latch on %r" % first)
+        _LOG.info("Latch directive for %r fell back to generic advice - %s.", first, why)
+        options = [
+            f"Make sure '{first}' is assigned on EVERY path through the always\n"
+            f"     block. The simplest way is one unconditional assignment at the\n"
+            f"     top of the block, before any branching:\n"
+            f"       always @(*) begin\n"
+            f"         {first} = <safe value>;   <-- ADD THIS\n"
+            f"         ... existing logic, which may override it ...\n"
+            f"       end"
+        ]
+
+    if len(options) == 1:
+        # Options are written with a 5-space continuation indent so they line
+        # up under an "  A) " label. With no label there is nothing to line up
+        # under, so pull the continuations back to match.
+        fix_header = "EXACT FIX:"
+        body = "  " + options[0].replace("\n     ", "\n  ")
+    else:
+        fix_header = "EXACT FIX (choose one):"
+        body = "\n\n".join(
+            "  %s) %s" % (chr(ord("A") + i), opt) for i, opt in enumerate(options)
+        )
+
+    also = ""
+    if len(signals) > 1:
+        others = ", ".join("'%s'" % s for s in signals[1:])
+        also = f"\nApply the same repair to {others}.\n"
+
     return (
         f"\n\n*** YOSYS: LATCH INFERRED for signal(s) {sig_list} ***\n\n"
-        f"ROOT CAUSE: Your always block does NOT assign {sig_list} on every\n"
-        f"code path. When the unhandled path is taken, synthesis infers a latch\n"
-        f"that HOLDS THE LAST VALUE — this is why enable=0 returns the previous output.\n\n"
-        f"EXACT FIX (choose one):\n"
-        f"  A) Add else branch to every if without one:\n"
-        f"       if (condition) begin {first} = X; end\n"
-        f"       else           begin {first} = 0; end  <-- ADD THIS\n\n"
-        f"  B) Add default to every case statement:\n"
-        f"       case (sel)\n"
-        f"         ... existing cases ...\n"
-        f"         default: begin {first} = 0; end  <-- ADD THIS\n"
-        f"       endcase"
+        f"ROOT CAUSE: Yosys inferred a latch on '{first}' because it is not\n"
+        f"assigned on every code path through the always block. This means\n"
+        f"'{first}' will hold its previous value on paths where no assignment\n"
+        f"occurs, which is almost certainly not what you intended for a\n"
+        f"combinational output.\n"
+        f"{also}\n"
+        f"{fix_header}\n"
+        f"{body}"
     )

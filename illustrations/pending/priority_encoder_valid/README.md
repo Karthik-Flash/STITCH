@@ -1,12 +1,13 @@
 # `priority_encoder_valid` — pending candidate (Yosys latch mechanism)
 
-**Status 2026-08-19: BLOCKED. Steps 1, 3 and 4 PASS. Step 2 FAILS.**
-Do **not** run an LLM sweep on this candidate yet.
+**Status 2026-08-19: READY. All four gates PASS.** Gate 2 was blocked earlier
+the same day; the interpreter fix landed and it now passes. Registered in
+`BENCHMARK` as `priority_encoder_valid`.
 
-The module design is sound and the tool-level mechanism is exactly what was
-wanted. The blocker is in `interpret_yosys_latches()`, not in this module: the
-directive fires, names the right signal, and then prescribes a repair that is a
-**no-op for this defect shape**. Detail in step 2 below.
+This is the only candidate whose defect **Verilator cannot see at all** — Yosys
+is the sole source — and the only live one targeting *path completeness* rather
+than output existence, the distinction that retired both forgotten-output
+candidates. See `../../../evidence/input_vs_output_asymmetry.md` §5.
 
 ## Why this candidate exists
 
@@ -66,49 +67,53 @@ No `CASEINCOMPLETE` (the case is complete), no `UNDRIVEN`/`UNUSEDSIGNAL`
 the highest-value configuration for the paper: **Yosys is the sole source**, so
 the illustration cannot be explained away as another Verilator result.
 
-### Step 2 — does the interpreter convert it usefully? **FAIL**
+### Step 2 — does the interpreter convert it usefully? **PASS** (fixed 2026-08-19)
 
-It fires and names the right signal. The prescription is wrong.
+Actual directive text, verbatim, through the runner's own
+`_build_sem_adv_feedback`:
 
-Actual directive text, verbatim:
 ```
 *** YOSYS: LATCH INFERRED for signal(s) 'valid' ***
 
-ROOT CAUSE: Your always block does NOT assign 'valid' on every
-code path. When the unhandled path is taken, synthesis infers a latch
-that HOLDS THE LAST VALUE — this is why enable=0 returns the previous output.
+ROOT CAUSE: Yosys inferred a latch on 'valid' because it is not
+assigned on every code path through the always block. This means
+'valid' will hold its previous value on paths where no assignment
+occurs, which is almost certainly not what you intended for a
+combinational output.
 
-EXACT FIX (choose one):
-  A) Add else branch to every if without one:
-       if (condition) begin valid = X; end
-       else           begin valid = 0; end  <-- ADD THIS
-
-  B) Add default to every case statement:
-       case (sel)
-         ... existing cases ...
-         default: begin valid = 0; end  <-- ADD THIS
-       endcase
+EXACT FIX:
+  Assign 'valid' in EVERY branch of the case, not only in the default.
+  The default branch alone is NOT enough -- 8 branch(es) assign
+  other signals but not 'valid', so on those branches 'valid' keeps
+  its previous value, and that is the latch.
+    case (...)
+      <label>: begin <other signals> = ...; valid = ...; end   <-- ADD 'valid' HERE
+      ...
+    endcase
+  Simplest alternative that covers every path at once: assign
+  'valid' unconditionally ONCE immediately BEFORE the case, then
+  let individual branches override it.
 ```
 
-Three defects against this defect shape:
+The branch count (8) is derived from this module, and the option offered is
+the one that actually repairs it.
 
-1. **Fix B is a literal no-op.** `broken.v` already contains
-   `default: begin pos = 3'd0; valid = 1'b0; end`. A model that follows fix B
-   exactly changes nothing. The real repair — *assign `valid` in every branch,
-   not only the default* — is never stated.
-2. **Fix A is inapplicable.** There is no `if` in the module.
-3. **The causal join is fabricated.** *"this is why enable=0 returns the
-   previous output"* names an `enable` port that does not exist here. This is
-   the same defect class as the pre-parameterisation `UNUSEDSIGNAL` template's
-   hard-coded `out = 8'b0;` — a template written against one specific module
-   and asserted generally.
+#### What gate 2 originally caught
 
-The `ROOT CAUSE` sentence is correct and is the useful half. But the section
-labelled `EXACT FIX (choose one)` offers two options, neither of which applies,
-and the evidence doc's own account of *why* the interpreter works puts "the
-repair shape" as contribution 2 of 3. Running this candidate now would confound
-the experiment: a failure could not be attributed between "the mechanism does
-not work on this class" and "the directive text was a no-op."
+Recorded because it is the reason the interpreter changed. The previous
+template emitted two options unconditionally and a fixed causal join:
+
+- **Fix B, "add default to every case statement", was a literal no-op** —
+  `broken.v` already contains `default: begin pos = 3'd0; valid = 1'b0; end`.
+  A model following it exactly would change nothing.
+- **Fix A, "add else to every if", was inapplicable** — there is no `if`.
+- **The causal join was fabricated** — *"this is why enable=0 returns the
+  previous output"*, naming an `enable` port this module does not have.
+
+Only the `ROOT CAUSE` line was correct. Running the candidate in that state
+would have confounded any failure between "the mechanism does not work on this
+class" and "the directive was a no-op". Tracked and closed as
+`plans/research_plan_v4.md` §7 #7.
 
 ### Step 3 — does `SYSTEM_PROMPT` pre-empt the bug? **PASS (it does not)**
 
@@ -129,33 +134,25 @@ failure set isolates the target defect. The first vector (`req = 0`) sets the
 latch to 0 and it holds for the rest of the run, which is a textbook
 demonstration of the failure mode.
 
-## What unblocks this
+## How gate 2 was unblocked
 
-A bounded change to `interpret_yosys_latches()` in
-`src/interpreter/stitch_interpreter.py`:
+`interpret_yosys_latches` now parses the module and emits only the repair
+options that apply to its actual structure — the same treatment
+`_unusedsignal_message` already had. It distinguishes four shapes: a case with
+a default that still omits the signal (this module), a case with complete
+branches but no default, a case with neither, and no case at all. The
+fabricated `enable` clause is replaced by a causal join derived from the
+defect, and the em-dash is gone.
 
-1. Add the missing repair option: *assign the signal in every branch of the
-   case, not only in the default* — or hoist an unconditional default
-   assignment above the case.
-2. Drop the hard-coded `enable=0` clause, or derive it from the module the way
-   `_unusedsignal_message` derives its output ports.
-
-**This change cannot invalidate the proven illustrations.** Verified: all three
+**The change cannot invalidate the proven illustrations.** Verified: all three
 `metrics_*.json` in `illustrations/proven/decoder_3to8/` record
-`latch_warnings: 0`, and the sem_adv result fired `['UNUSEDSIGNAL']` only.
-Neither proven illustration touches `interpret_yosys_latches` at all, so its
-directive text is not on the replication chain.
+`latch_warnings: 0` and fired `['UNUSEDSIGNAL']` only. Neither proven
+illustration touches `interpret_yosys_latches`, so its text is not on the
+replication chain.
 
-Any change needs new tests in `src/interpreter/tests/test_interpreter.py`
-(currently 39 passing), built from the verbatim Yosys string captured above.
-
-## Minor, non-blocking
-
-`interpret_yosys_latches` emits a literal em-dash (U+2014) at offset 214 of the
-directive. Harmless in the prompt, but the runner's `sanitize_ascii()` is
-applied only to generated code, not to feedback text — and CHANGELOG records a
-prior `UnicodeEncodeError` crash from printing a non-ASCII character to a
-cp1252 console. Worth making ASCII the next time this function is touched.
+Test suite is 50 passing, up from 39. The 11 new tests include the real
+captured Yosys output for this module, stored as
+`src/interpreter/tests/fixtures/priority_encoder_valid_yosys_synth.txt`.
 
 ## Files
 

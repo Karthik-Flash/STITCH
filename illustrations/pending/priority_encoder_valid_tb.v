@@ -15,7 +15,7 @@
 // (or holds whatever it last had), because nothing ever drives it high.
 //
 // Yosys:     "Latch inferred for signal `\valid'"
-// Verilator: silent -- the case is complete and valid is both driven and read
+// Expected from Verilator: silent -- the case is complete and valid is both driven and read
 // iverilog:  FAIL lines on every non-zero req vector, with no cause given
 `timescale 1ns/1ps
 module priority_encoder_valid_tb;

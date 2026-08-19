@@ -16,7 +16,7 @@ So: `--testbench-dir illustrations/pending` serves every candidate here.
 
 ## Pre-screen gate — all four steps, before any LLM run
 
-Discipline inherited from `../retired/tool_level_verification_report.md`, which
+Discipline inherited from `../retired/retired_candidates.md` §4, which
 is what caught `traffic_light_fsm` before it cost a run:
 
 1. The target warning actually fires, from real Verilator/Yosys, on a
@@ -35,5 +35,25 @@ A candidate that fails any step is not run.
 
 | Candidate | Mechanism | Sole tool source | Verdict |
 |---|---|---|---|
-| `adder_with_overflow` | `UNDRIVEN` on a forgotten output | Verilator | **READY** — 4/4 pre-screen steps pass |
-| `priority_encoder_valid` | Yosys latch on a partially-assigned output | **Yosys** | **BLOCKED** — step 2 fails; the directive's prescribed fix is a no-op for this shape. Interpreter change needed, not a module redesign. |
+| `priority_encoder_valid` | Yosys latch on a partially-assigned output | **Yosys** | **LIVE** — gates 1, 3, 4 pass. Gate 2 was blocked on the latch directive prescribing a no-op; the interpreter fix landed 2026-08-19, so re-check gate 2 and run |
+| `adder_with_overflow` | `UNDRIVEN` on a forgotten output | Verilator | **RETIRED 2026-08-19** |
+| `fsm_next_state_error` | `UNDRIVEN` on a forgotten output | Verilator | **RETIRED 2026-08-19** |
+
+Both retirements are for one shared reason — the forgotten-output defect class
+does not occur — recorded in `../retired/retired_candidates.md` §1 and analysed
+in `../../evidence/input_vs_output_asymmetry.md`. **Do not build a third
+forgotten-output variant.**
+
+Their directories are kept only as pre-screen scaffolding: the hand-written
+`broken.v`/`correct.v` and the testbench that verified each gate. The real
+evidence is the model output under `results/new_illustrations/`. Safe to delete
+if the tree needs to get smaller.
+
+## Gotcha — do not start a comment with the word `verilator`
+
+Verilator parses any comment whose first token is `verilator` as a
+**metacomment**. A documentation line reading `// Verilator: ...` aborts lint
+with `Unknown verilator comment`, so the warning you are trying to observe
+never fires. Found the hard way on `fsm_next_state_error`; write
+`// Expected from Verilator: ...` instead. Details and the interpreter false
+positive it exposed are in that candidate's README.

@@ -5,10 +5,10 @@ classification and directive generation. Both the runner and any future
 escalation runner import from it; nothing reimplements this logic locally.
 (That rule exists because a duplicated latch check in the runner was the direct
 cause of one of the five defects recorded in
-`../illustrations/retired/session_2026-08-18_findings.md`.)
+`../../evidence/session_2026-08-18_findings.md`.)
 
 - **Warning classes and their verification status:** `WARNING_TAXONOMY.md`
-- **Tests:** `tests/test_interpreter.py` — 39 tests. Run with
+- **Tests:** `tests/test_interpreter.py` — 50 tests. Run with
   `python -m unittest discover -s interpreter/tests -p "test_interpreter.py"`
 
 ---
@@ -34,6 +34,22 @@ port cannot be resolved with confidence:
 The fallback is deliberate — a half-correct assignment naming the wrong signal
 is worse than a generic one. But it is **silent to the model**: the directive
 still looks authoritative, it is just less precise.
+
+### The latch-directive fallback (added 2026-08-19)
+
+`interpret_yosys_latches` now parses the module's `case`/`if` structure to emit
+only repair options that apply to it. When no source is available, or the
+structure does not explain the latch, it falls back to generic "assign it on
+every path" advice and logs at `INFO`:
+
+```
+Latch directive for 'valid' fell back to generic advice - <why>.
+```
+
+Same monitoring story as the `UNUSEDSIGNAL` fallback above, and the same
+prerequisite: the runner attaches no logging handler, so these records go
+nowhere. Count them with `grep -c "fell back to generic advice"` once logging
+is wired.
 
 ### Why this must be checked
 
@@ -84,7 +100,7 @@ logging.basicConfig(
 ```
 
 This is tracked as open question #6 in
-`../docs/research_plan_v4.md` §7. **No code change was made for it
+`../../plans/research_plan_v4.md` §7. **No code change was made for it
 during the doc freeze.**
 
 ### The check itself
