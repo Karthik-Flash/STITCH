@@ -1,0 +1,13 @@
+# Generated run output only. The phase1 SOURCE — escalation_state.py,
+# escalation_runner.py, error_signature.py, v20_specs.py, fixtures/,
+# tests/ — is the actual contribution and must stay tracked; this file
+# exists solely to keep run artifacts out, mirroring the root
+# .gitignore's existing results/**/... rules for phase0's (differently
+# rooted) results tree, which don't reach into phase1/ because they're
+# anchored relative to the repo root.
+#
+# __pycache__/, *.pyc, .pytest_cache/ are already ignored repo-wide by
+# the root .gitignore (those patterns have no internal slash, so they
+# apply at any depth) — not repeated here.
+
+results/
