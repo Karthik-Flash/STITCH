@@ -1,0 +1,7 @@
+# Generated smoke-test/run output only, mirroring phase1/.gitignore's
+# reasoning: the phase2 SOURCE (rtlcoder_adapter.py, smoke_test.py,
+# HPC_RTLCODER_COMMANDS.md) is the actual contribution and stays tracked;
+# this keeps run artifacts (raw/postprocessed model output, sim logs,
+# downloaded weights if ever staged locally) out of git.
+
+results/
