@@ -105,8 +105,19 @@ class IterationRecord:
 
 
 def _extract_code(llm_out: str) -> str:
+    """Mirrors stitch_runner.py's run_one_condition() extraction exactly,
+    including its 2026-08-21 fix: a response with an unclosed ```verilog
+    fence falls through the regex match and used to carry the opening
+    marker itself into the "code", which iverilog's preprocessor then
+    misreads as a macro reference. Duplicated here rather than imported
+    because stitch_runner's version is inline in run_one_condition(), not
+    a standalone function -- keep both in sync if either changes."""
     match = re.search(r"```(?:verilog)?(.*?)```", llm_out, re.DOTALL)
-    return sanitize_ascii(match.group(1).strip() if match else llm_out.strip())
+    if match:
+        code = match.group(1).strip()
+    else:
+        code = re.sub(r"^```(?:verilog)?\s*\n?", "", llm_out.strip())
+    return sanitize_ascii(code)
 
 
 def run_one_replicate(

@@ -296,9 +296,28 @@ def run_iverilog_sim(iter_dir, module_name):
         print("  iverilog:\n    " + preview.replace("\n", "\n    "))
         return False, f"COMPILATION ERROR:\n{err}"
 
+    # FIX 2026-08-21: vvp used to run with no working directory set, so any
+    # testbench doing relative-path file I/O ($readmemh("data.dat", ...) and
+    # the like) could never resolve it -- vvp inherited whatever directory
+    # the wsl.exe launcher started in, not iter_dir where the data file
+    # actually lives. Confirmed via RTLLM's alu/calendar testbenches
+    # (`$readmemh: Unable to open reference.dat for reading`) -- every
+    # design with this pattern failed 100% of the time regardless of the
+    # model's actual logic, which zeroed out multiple RTLLM designs before
+    # a single line of generated code was even evaluated for correctness.
+    # Fix: `cd` into iter_dir inside the WSL bash invocation itself before
+    # running vvp -- a subprocess.run(cwd=...) on the Windows side only
+    # controls where wsl.exe itself starts, not the shell environment once
+    # it's inside WSL, so cwd= alone would not have fixed this. Matches
+    # what rtllm_task_a_screen.py's reference-solution screen already did
+    # correctly (`cd '{wsl_dir}' && ... && vvp sim.vvp`) -- this brings the
+    # real per-iteration runner in line with that. v20/v2 testbenches never
+    # hit this because none of them do relative-path file I/O; RTLLM's do.
     try:
-        sim = subprocess.run(WSL_PREFIX + ["timeout", "30", "vvp", vvp_wsl],
-                             capture_output=True, text=True, encoding="utf-8", timeout=35)
+        iter_dir_wsl = win_to_wsl(iter_dir)
+        sim = subprocess.run(
+            WSL_PREFIX + ["bash", "-lc", f"cd '{iter_dir_wsl}' && timeout 30 vvp {os.path.basename(vvp_out)}"],
+            capture_output=True, text=True, encoding="utf-8", timeout=35)
     except subprocess.TimeoutExpired:
         with open(os.path.join(iter_dir, "sim_log.txt"), "a", encoding="utf-8") as f:
             f.write("\n--- SIMULATION ---\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]\n")
@@ -557,7 +576,23 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
             f.write(llm_out)
 
         match = re.search(r"```(?:verilog)?(.*?)```", llm_out, re.DOTALL)
-        code  = sanitize_ascii(match.group(1).strip() if match else llm_out.strip())
+        if match:
+            code = match.group(1).strip()
+        else:
+            # FIX 2026-08-21: the regex above requires a CLOSING fence to
+            # match. A response that opens ```verilog but never closes it
+            # (runs long, gets cut off, or the model just doesn't close
+            # its fence) used to fall through here with the opening marker
+            # itself still attached to the "raw text" fallback -- iverilog's
+            # preprocessor then reads the leading `verilog as an attempted
+            # macro reference ("macro verilog undefined ... syntax error
+            # ... I give up"), corrupting what may otherwise be a
+            # perfectly compilable module. Confirmed recurring on both
+            # v20 (datapath_mux_alu/gemma3:4b) and RTLLM (alu, ~35% of
+            # iterations) real responses. Strip a leading unclosed fence
+            # marker before falling back to the raw text.
+            code = re.sub(r"^```(?:verilog)?\s*\n?", "", llm_out.strip())
+        code = sanitize_ascii(code)
 
         v_path = os.path.join(iter_dir, f"{module_name}.v")
         with open(v_path, "w", encoding="utf-8") as f:
