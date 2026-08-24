@@ -205,60 +205,31 @@ scp d:\Projects\STITCH\phase2\rtlcoder_adapter.py d:\Projects\STITCH\phase2\smok
 
 ---
 
-## 6. Find iverilog on the target GPU node — BEFORE submitting the smoke test
+## 6. iverilog on the target GPU node — CONFIRMED ANSWER
 
-GPU nodes often don't carry `iverilog` on `PATH` by default (this doc's
-own troubleshooting table flags it) — check (d) of the smoke test needs
-it, so find it now rather than discovering the gap from a failed job
-log. Quick interactive session, no need to wait in the batch queue:
-
-```
-srun --nodelist=gpunode4 --gres=gpu:0 --time=00:05:00 --pty bash -c '
-  echo "--- module avail matches ---"
-  module avail 2>&1 | grep -i "iverilog\|icarus\|verilog"
-  echo "--- which iverilog (no module loaded) ---"
-  which iverilog
-'
-```
-
-Three possible outcomes:
-
-1. **`module avail` lists something** (e.g. `icarus-verilog/12.0`,
-   naming will vary by cluster) — note the exact name. That's what goes
-   into `smoke_test.slurm` below as `module load <name>`.
-2. **`which iverilog` already resolves with no module needed** — rare
-   (system-wide install), but if so, skip the `module load` line
-   entirely in Section 7's script.
-3. **Neither** — no iverilog anywhere on this node. Two fallbacks, in
-   order of effort:
-   - **Point the smoke test at a different node.** Check the others
-     the same way (`srun --nodelist=gpunode6 ...`, etc.) — iverilog is
-     a CPU-only tool, so it doesn't need to be on a GPU-carrying node's
-     default image specifically; whichever node has it, run check (d)
-     there (the model-loading/generation checks still need the GPU
-     node — this would mean splitting the smoke test's compile check
-     onto a second node, a real complication, only worth it if no GPU
-     node has iverilog at all).
-   - **Install a portable iverilog into scratch and PATH it in.**
-     Mirrors AutoChip's own pattern of keeping a self-contained binary
-     under `bin/` instead of depending on the cluster image:
-     ```
-     # On a node WITH internet (or laptop-download + scp, same fallback
-     # pattern as Sections 3-4), build or fetch a static iverilog build,
-     # then:
-     mkdir -p /scratch/soumyaj/RTLCoderHPC/bin
-     # ...place the iverilog/vvp binaries there...
-     export PATH=/scratch/soumyaj/RTLCoderHPC/bin:$PATH   # add to env.sh too
-     ```
-
-Do not leave this as "load whatever the module is" — write the actual
-name (or the fallback you used) into `smoke_test.slurm` before
-submitting, and note it here for the next person:
+Resolved 2026-08-22 via the real smoke test run: this cluster's GPU
+nodes don't carry `iverilog` on `PATH` by default, and there's no
+`module load` for it either — it comes from **oss-cad-suite**, already
+present at `/scratch/soumyaj/oss-cad-suite/bin` (bundles iverilog,
+verilator, and yosys together). Fix is a PATH export, not a module load:
 
 ```
-# Discovered on <date>: module name = ______________
-# (or: fallback used = ______________)
+export PATH=/scratch/soumyaj/oss-cad-suite/bin:$PATH
 ```
+
+Add this to `env.sh` too, so every script that sources it gets it:
+
+```
+cat >> /scratch/soumyaj/RTLCoderHPC/env.sh << 'EOF'
+export PATH=/scratch/soumyaj/oss-cad-suite/bin:$PATH
+EOF
+```
+
+If a future node or a fresh cluster doesn't have oss-cad-suite at that
+path, re-run the discovery this section used to describe
+(`module avail 2>&1 | grep -i "iverilog\|icarus\|verilog"` /
+`which iverilog` via a quick `srun`) before assuming the same path —
+don't hardcode blindly onto a different cluster.
 
 ---
 
@@ -283,13 +254,7 @@ cat > /scratch/soumyaj/RTLCoderHPC/smoke_test.slurm << 'EOF'
 
 source /scratch/soumyaj/RTLCoderHPC/env.sh
 source /scratch/soumyaj/RTLCoderHPC/venv/bin/activate
-
-# From Section 6's discovery step -- REPLACE <ICARUS_MODULE_NAME> with
-# the real name found there. Delete this line entirely if outcome 2
-# applied (iverilog already resolves with no module load), or replace
-# it with the PATH export from outcome 3's fallback if no module exists
-# on this node at all.
-module load <ICARUS_MODULE_NAME>
+export PATH=/scratch/soumyaj/oss-cad-suite/bin:$PATH
 
 cd /scratch/soumyaj/RTLCoderHPC
 python smoke_test.py --module accu --rtllm-root "$RTLLM_ROOT"
@@ -305,8 +270,11 @@ For an H100 node instead, swap the two directives:
 #SBATCH --nodelist=gpunode6
 ```
 
-(and re-run Section 6's discovery step against `gpunode6` specifically
-— module availability isn't guaranteed to match `gpunode4`.)
+**Status: this already ran for real and passed all 4 checks on H100.**
+Kept here as the reference invocation for the twin run below, which
+reuses the same PATH/env pattern. (`/scratch/soumyaj/oss-cad-suite` is a
+scratch path, not node-local, so the PATH export in Section 6 applies
+the same way regardless of which node runs the job.)
 
 ---
 
@@ -349,6 +317,165 @@ you point the SCP, not committed either way.)
 
 ---
 
+## 10. Twin-comparison run (RTLCoder vs. deepseek-coder:6.7b + ladder)
+
+**Design doc: `phase2/TWIN_RUN_PREREG.md` — read that first.** Revised
+2026-08-23: **75 runs** (5 model-conditions x 5 modules x N=3 — RTLCoder
+native+shared, the 3 Ollama models shared-only, since native/shared are
+procedurally identical for them), Pass@8, `baseline` STITCH condition
+only (NOT an interpreter test), **T=0.5/top_p=0.9 matched across every
+model-condition** (overrides the harness's usual T=0.1 for the Ollama
+side — see the prereg doc's temperature section for why, and why this
+run isn't iteration-count-comparable to this project's other, T=0.1,
+results). Estimated ~2.7-6.5h wall-clock, real uncertainty on RTLCoder's
+HPC generation pace — see the prereg doc's estimate table. **Not
+launched by this doc — you launch it yourself after reviewing the
+prereg doc, the run count, and the estimate.**
+
+### 10.1 What's new here vs. the smoke test, and the two real gaps this section fixes
+
+The smoke test validated only the RTLCoder/transformers path. This run
+ALSO drives 3 models through Ollama, and **on HPC Ollama is not like the
+laptop** — found 2026-08-23 when `twin_run.slurm` turned out to not
+exist on HPC at all (it had only ever been shown as a heredoc in this
+doc, never actually created) and the Ollama path had never been
+scripted or tested:
+
+- the `ollama` binary is at `/scratch/soumyaj/AutoChipHPC/bin/ollama`,
+  not on `PATH`;
+- it must be **started as a server** (`ollama serve &`) *inside* the
+  slurm job on the GPU node — nothing is listening by default, unlike a
+  laptop where Ollama commonly runs as a standing background service;
+- the 3 models must already be pulled into an `OLLAMA_MODELS` location
+  the job can read;
+- `twin_run_runner.py` must point its Ollama client at whatever
+  `host:port` that job's server actually bound to, not a hardcoded
+  default that might not match.
+
+**Fixed properly, not papered over**: `phase2/twin_run.slurm` and
+`phase2/pull_ollama_models.slurm` are now real files (not
+copy-paste-from-markdown heredocs — that's likely why the first one
+never got created) that you `scp` up directly. `twin_run_runner.py` now
+reads `$OLLAMA_HOST` itself and builds its own client from it (see that
+file's `OLLAMA_HOST`/`_ollama_client`), rather than reusing
+`stitch_runner_hpc.py`'s hardcoded-localhost:11434 client — the server
+and the client are now structurally bound to the same value, not just
+hoped to match. `twin_run_runner.py` also fails loudly at startup
+(`_verify_ollama_models()`) if any of the 3 models aren't present on the
+server it connects to, as a second check independent of `twin_run.slurm`'s
+own bash-level check.
+
+**Which of the 3 needed models already exist on HPC**: per
+`AutoChip_HPC_Reference.docx`'s own documented pull list
+(`qwen2.5-coder:32b`, `gemma3:27b`, `qwen2.5-coder:14b`), **none** of
+`deepseek-coder:6.7b`, `gemma3:4b`, `llama3.1:latest` were pulled for
+that project — different names, different sizes entirely. All 3 need a
+fresh pull. Confirm this yourself too, in case something changed since
+that doc was written:
+
+```
+export PATH=/scratch/soumyaj/AutoChipHPC/bin:$PATH
+export OLLAMA_MODELS=/scratch/soumyaj/AutoChipHPC/ollama_models  # AutoChip's own dir, read-only check
+ollama list
+```
+
+Also install the `openai` pip package — `stitch_runner_hpc.py` and
+`twin_run_runner.py` both import it for their LLM dispatch, unchanged
+from the original harness, and the smoke test's venv never needed it:
+
+```
+source /scratch/soumyaj/RTLCoderHPC/venv/bin/activate
+pip install openai
+```
+
+### 10.2 Deploy everything, and VERIFY the harness fixes
+
+```
+# On your laptop, from the STITCH repo root
+scp d:\Projects\STITCH\phase2\stitch_runner_hpc.py `
+    d:\Projects\STITCH\phase2\twin_run_runner.py `
+    d:\Projects\STITCH\phase2\twin_run.slurm `
+    d:\Projects\STITCH\phase2\pull_ollama_models.slurm `
+    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/
+```
+
+**Independent post-deploy confirmation that both harness fixes are on
+the file that will actually run** (correctness check #1 -- STILL step 1
+before launch, unchanged by this revision):
+
+```
+# On HPC
+cd /scratch/soumyaj/RTLCoderHPC
+grep -n "cwd=iter_dir" stitch_runner_hpc.py        # bug #2 fix -- expect 2+ matches
+grep -n 'sub(r"\^```' stitch_runner_hpc.py         # bug #1 fix -- expect 1 match
+grep -c "wsl\b" stitch_runner_hpc.py               # expect 0 real invocations
+                                                     # (comments mentioning "WSL" for
+                                                     # context are fine and expected)
+```
+
+If either grep comes back empty, STOP — do not launch. Re-scp the file
+and re-check; do not patch it by hand on the cluster.
+
+### 10.3 Pull the Ollama models — ONE TIME, before ever submitting the run
+
+```
+sbatch /scratch/soumyaj/RTLCoderHPC/pull_ollama_models.slurm
+tail -f /scratch/soumyaj/RTLCoderHPC/logs/ollama_pull_*.log
+```
+
+Waits for readiness, pulls all 3, prints `ollama list` to confirm, exits
+clean. Only needs to be run once — re-run only if a model ever goes
+missing (`OLLAMA_MODELS` gets cleared, cluster storage issue, etc.).
+
+### 10.4 Submit the twin run
+
+```
+sbatch /scratch/soumyaj/RTLCoderHPC/twin_run.slurm
+```
+
+Targets `gpunode6` (H100 80GB HBM3, `gpu_h100_4`), `--time=08:00:00` —
+real margin over the ~2.7-6.5h estimate (see the prereg doc) given
+RTLCoder's HPC pace is unvalidated. In order: sets `PATH` for both
+`ollama` and `iverilog`/`verilator`/`yosys`, starts its own `ollama
+serve` bound to `OLLAMA_HOST=127.0.0.1:11434`, waits for readiness,
+confirms all 3 models present (**fails loudly and exits — does not pull
+inline** — if Section 10.3 was skipped), then runs
+`twin_run_runner.py`. A `trap ... EXIT` guarantees the Ollama server
+gets killed on any exit path (success, an early failure, or `set -e`
+aborting) — not just a `kill` at the bottom that could get skipped.
+Detached and resumable by construction (same incremental-checkpoint
+pattern as every other runner in this project) — if the job is killed
+or times out, re-submitting the same script picks up from
+`master_log.json`'s already-done cells rather than restarting.
+
+### 10.5 Monitoring
+
+```
+squeue -u soumyaj
+tail -f /scratch/soumyaj/RTLCoderHPC/logs/twin_*.log
+```
+
+`twin_run_runner.py` prints a `[N/75] <module> / <model> /
+<prompt_condition> / replicate <k>` line per cell, same progress format
+as every other runner in this project -- use entry count in
+`master_log.json` (not just the console log, which can lag when
+redirected) to judge real progress, same lesson as every prior overnight
+run in this project.
+
+```
+python3 -c "import json; d=json.load(open('/scratch/soumyaj/RTLCoderHPC/results/twin_run/master_log.json')); print(len(d), '/ 75 done;', sum(1 for e in d if e.get('error')), 'errored')"
+```
+
+### 10.6 Download results back
+
+```
+# On your laptop
+scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/logs/twin_*.log ./phase2_twin_logs/
+scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/results/twin_run ./phase2_twin_results
+```
+
+---
+
 ## Troubleshooting
 
 | Problem                                                         | Fix                                                                                                                                                                                                                  |
@@ -356,10 +483,15 @@ you point the SCP, not committed either way.)
 | `RuntimeError: FAILED to load ishorn5/RTLCoder-Deepseek-v1.1` | Almost always means Section 4's download never completed or`HF_HOME` isn't set to where it landed. Re-run the `find`/`du` check in Section 4.                                                                  |
 | `HF_HOME is not set` warning                                  | `source /scratch/soumyaj/RTLCoderHPC/env.sh` before running anything.                                                                                                                                              |
 | `FATAL: .../design_description.txt not found`                 | RTLLM isn't at`$RTLLM_ROOT` — check Section 3, or pass `--rtllm-root` explicitly.                                                                                                                               |
-| `iverilog: command not found` in check (d)                    | Section 6's discovery step wasn't run, or `smoke_test.slurm`'s `module load` line wasn't filled in with what it found. Run Section 6 against the node named in your `#SBATCH --nodelist`, then update the script — don't guess a module name. |
+| `iverilog: command not found` in check (d)                    | The `export PATH=.../oss-cad-suite/bin:$PATH` line (Section 6) is missing from the script, or `env.sh` wasn't sourced first. Confirm with `which iverilog` after sourcing both. |
 | Job stuck in`PD`                                              | `QOSMaxJobsPerUserLimit` — same as AutoChip, cluster caps simultaneous GPU jobs; it starts once another finishes.                                                                                                 |
 | `curl`/`git clone` gets a tiny file or hangs on login node  | Login node blocks outbound internet, same as AutoChip's ollama binary problem — use the sbatch-node path (Sections 3/4) or laptop+SCP fallback.                                                                     |
 | Check (b) generation produces empty output but no exception     | Model loaded onto CPU with no error (rare, but possible if`device_map="auto"` picked CPU due to a GPU allocation issue) — check `device=` in check (a)'s log line; should say `cuda:0`, not `cpu`.          |
+| Twin run: `openai.APIConnectionError` on any of the 3 Ollama models | Ollama server isn't up yet, or died. Check `ollama_twin_*.log`; `twin_run.slurm`'s readiness loop (up to 30s, polling `ollama list`) may need lengthening on a slow node. |
+| Twin run: `FATAL: ollama server never became ready` | Same as above, but the job's own readiness loop already gave up and exited — check `ollama_twin_JOBID.log` for why `ollama serve` itself failed to start (port already in use from a stale process, disk issue under `OLLAMA_MODELS`, etc). |
+| Twin run: `FATAL: ... is missing: [...]` (from `twin_run.slurm` or `twin_run_runner.py`'s own `_verify_ollama_models()`) | Section 10.3 (`pull_ollama_models.slurm`) wasn't run, or was run against a different `OLLAMA_MODELS` path than this job uses. Run it, confirm with `ollama list`, then resubmit — don't let either script pull inline (see the comment in `twin_run.slurm`). |
+| Twin run: `grep` in Section 10.2 comes back empty for either fix | Do NOT launch. Re-scp `stitch_runner_hpc.py` and re-check — this means the deployed file is not the verified one. |
+| Twin run: `alu`/`calendar` failing 100% again, `$readmemh` errors in `sim_log.txt` | The exact symptom bug #2 caused before it was fixed. Means Section 10.2's grep check was skipped or the wrong file got deployed — go back and verify. |
 
 ---
 
@@ -375,3 +507,6 @@ you point the SCP, not committed either way.)
 | `sbatch smoke_test.slurm`  | Submit the smoke test job                  |
 | `du -sh hf_cache`          | Check how much of scratch the weights used |
 | `df -h /scratch/soumyaj`   | Check overall scratch disk usage           |
+| `sbatch pull_ollama_models.slurm` | One-time: pull the 3 Ollama models this run needs |
+| `sbatch twin_run.slurm`    | Submit the twin-comparison run (75 runs)  |
+| `tail -f logs/twin_*.log`  | Live log of the twin run                   |
