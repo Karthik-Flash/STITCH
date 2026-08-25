@@ -90,7 +90,14 @@ sys.path.insert(0, _HERE)
 import stitch_runner_hpc as sr  # noqa: E402
 import rtlcoder_adapter as rc   # noqa: E402
 
-RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLLM")
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
+# FIX 2026-08-25: this default used to be "/scratch/soumyaj/RTLLM" --
+# inconsistent with HPC_RTLCODER_COMMANDS.md's actual documented layout
+# (RTLLM lives at RTLCoderHPC/RTLLM, section 0). Harmless in practice
+# since twin_run.slurm always sources env.sh first, which sets
+# $RTLLM_ROOT explicitly before this module ever loads -- but a latent
+# inconsistency worth closing while touching this file for the 42-module
+# update below, not left for the next person to trip over.
 RESULTS_ROOT = os.path.join(_HERE, "results", "twin_run")
 STAGED_ROOT = os.path.join(RESULTS_ROOT, "_staged")
 MASTER_LOG = os.path.join(RESULTS_ROOT, "master_log.json")
@@ -135,15 +142,91 @@ MAX_ITERS = 8  # Pass@8, per the prereg -- overrides stitch_runner_hpc's
                # here and in TWIN_RUN_PREREG.md, not silently glossed.
 sr.MAX_RETRIES = MAX_ITERS
 
-# (design, category, relative_path_under_RTLLM_ROOT) -- identical set to
-# phase1/rtllm_pilot_runner.py's PILOT_DESIGNS, for direct comparability.
-MODULES = [
-    ("accu",           "Arithmetic",    "Arithmetic/Accumulator/accu"),
-    ("counter_12",     "Control",       "Control/Counter/counter_12"),
-    ("barrel_shifter", "Memory",        "Memory/Shifter/barrel_shifter"),
-    ("alu",            "Miscellaneous", "Miscellaneous/RISC-V/alu"),
-    ("calendar",        "Miscellaneous", "Miscellaneous/Others/calendar"),
-]
+# ── module pool: full 42-module scope (revised 2026-08-25) ─────────────
+# SUPERSEDED: this used to be a hardcoded 5-module pilot subset
+# (accu/counter_12/barrel_shifter/alu/calendar), matching the phase1
+# laptop pilot for direct comparability during pilot-scale validation.
+# The real full run scales to the full 44-compatible-design pool minus
+# EXCLUDE (42) -- loaded dynamically from task_a_screen.json, same
+# pattern phase2/set1_runner.py uses (not shared into a common module;
+# this project's convention is small per-runner staging/loading logic,
+# not a premature shared abstraction -- see e.g. _stage_testbench()
+# below, already duplicated near-identically from
+# phase1/rtllm_pilot_runner.py).
+CATEGORIES = ["Arithmetic", "Control", "Memory", "Miscellaneous"]
+EXCLUDE = {"edge_detect", "square_wave"}  # weak-oracle testbenches -- see
+                                           # IMP_PHASE2_RUNNER_HARDENING_REPORT.md
+                                           # §4/§6. RTLLM-precedent move:
+                                           # matches their own 50->44
+                                           # exclusion for a defect in a
+                                           # golden reference's own
+                                           # testbench, not a
+                                           # detect_outcome()/STITCH issue.
+EXPECTED_MODULE_COUNT = 42
+
+_FLAT_SCREEN_JSON = os.path.join(_HERE, "task_a_screen.json")
+_DEV_SCREEN_JSON = os.path.join(_HERE, "..", "phase1", "results", "rtllm_pilot", "task_a_screen.json")
+TASK_A_SCREEN_JSON = os.environ.get("TASK_A_SCREEN_JSON") or (
+    _FLAT_SCREEN_JSON if os.path.exists(_FLAT_SCREEN_JSON) else _DEV_SCREEN_JSON
+)
+
+
+def _load_module_pool(rtllm_root=RTLLM_ROOT, task_a_screen_json=TASK_A_SCREEN_JSON):
+    """Returns [(design, category, relative_path_under_rtllm_root), ...],
+    sorted by (category, design). See phase2/set1_runner.py's identical
+    function for the full rationale -- duplicated here rather than
+    imported, matching this project's existing per-runner-duplication
+    convention. HARD ASSERTS exactly 42 survive the EXCLUDE filter."""
+    if not os.path.exists(task_a_screen_json):
+        print(f"FATAL: {task_a_screen_json} not found. Deploy it alongside "
+              f"this script (see FULL_RUN_RUNBOOK.md) -- it's the "
+              f"44-compatible-design pool phase1/rtllm_task_a_screen.py "
+              f"already confirmed; this script does not re-derive it.")
+        sys.exit(1)
+    with open(task_a_screen_json, encoding="utf-8") as f:
+        screen = json.load(f)
+    compatible = {(d["category"], d["design"]) for d in screen if d["status"] == "pass"}
+
+    found = []
+    for cat in CATEGORIES:
+        cat_dir = os.path.join(rtllm_root, cat)
+        if not os.path.isdir(cat_dir):
+            continue
+        for sub in sorted(os.listdir(cat_dir)):
+            sub_dir = os.path.join(cat_dir, sub)
+            if not os.path.isdir(sub_dir):
+                continue
+            for design in sorted(os.listdir(sub_dir)):
+                design_dir = os.path.join(sub_dir, design)
+                if (cat, design) in compatible and os.path.isdir(design_dir):
+                    rel = os.path.relpath(design_dir, rtllm_root).replace("\\", "/")
+                    found.append((design, cat, rel))
+
+    all_found_pairs = {(cat, design) for design, cat, _ in found}
+    missing = compatible - all_found_pairs
+    if missing:
+        print(f"WARNING: {len(missing)} design(s) from task_a_screen.json's "
+              f"compatible pool were not found under {rtllm_root}: {sorted(missing)}")
+
+    excluded = [t for t in found if t[0] in EXCLUDE]
+    found = [t for t in found if t[0] not in EXCLUDE]
+    found.sort(key=lambda t: (t[1], t[0]))
+
+    if len(excluded) != len(EXCLUDE):
+        print(f"WARNING: expected to exclude {sorted(EXCLUDE)} (2 designs) "
+              f"but only found {[t[0] for t in excluded]} in the discovered "
+              f"pool -- EXCLUDE may not match what's actually compatible.")
+
+    assert len(found) == EXPECTED_MODULE_COUNT, (
+        f"expected exactly {EXPECTED_MODULE_COUNT} modules after excluding "
+        f"{sorted(EXCLUDE)} from the 44-compatible pool, got {len(found)}. "
+        f"HARD STOP -- do not silently proceed with a different-sized "
+        f"study; investigate task_a_screen.json / the RTLLM checkout first."
+    )
+    return found
+
+
+MODULES = _load_module_pool()
 
 
 # ── RTLCoder-into-call_llm bridge ───────────────────────────────────────────
@@ -299,6 +382,15 @@ def _run_one_cell(design, category, model, prompt_condition, spec, testbench_dir
 
     m = sr.run_one_condition(
         spec=spec, module_name=design, model=model, condition=CONDITION, dependencies=deps,
+        # BUG #3 FIX (2026-08-24): this call used to carry NO pass-
+        # detection override at all -- stitch_runner_hpc.py's
+        # run_iverilog_sim() hardcoded the "PASS"/"ALL TESTS PASSED"
+        # check, which RTLLM's "Your Design Passed" testbenches never
+        # matched, so every genuine pass in the twin pilot was silently
+        # recorded as a failure (see phase2/TWIN_PILOT_ANALYSIS.md's
+        # preamble). All MODULES here are RTLLM designs -- see
+        # pass_detection.py for the registry this now routes through.
+        benchmark="rtllm",
     )
     return {
         "module": design, "category": category, "model": model,
@@ -431,11 +523,27 @@ def _verify_ollama_models():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true",
+                         help="Print the total cell count and exit 0 -- does NOT "
+                              "touch Ollama or iverilog. Pre-flight sanity check "
+                              "before ever launching the real job.")
+    args = parser.parse_args()
+
     total = len(MODULES) * len(MODEL_CONDITIONS) * N_REPLICATES
-    print(f"Modules: {[m[0] for m in MODULES]}")
+    print(f"Modules ({len(MODULES)}): {[m[0] for m in MODULES]}")
     print(f"Model-conditions: {MODEL_CONDITIONS}")
     print(f"Temperature (all model-conditions): {TEMPERATURE}")
     print(f"Ollama client bound to: {_OLLAMA_BASE_URL}")
     print(f"Total runs: {total}")
+
+    if args.dry_run:
+        assert total == 630, (
+            f"dry-run expected exactly 630 total runs (42 modules x 5 "
+            f"model-conditions x N=3), computed {total} -- STOP, do not launch."
+        )
+        print("DRY RUN OK: exactly 630 cells, as locked. Not touching Ollama/iverilog.")
+        sys.exit(0)
+
     _verify_ollama_models()
     run_all()

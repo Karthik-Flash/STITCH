@@ -1,13 +1,29 @@
 #!/bin/bash
-# phase2/twin_run.slurm -- the RTLCoder twin-comparison run (75 runs).
+# phase2/twin_run.slurm -- Set 2: the RTLCoder twin-comparison run, full
+# RTLLM scale (revised 2026-08-25, was the 75-run pilot).
 # Design: phase2/TWIN_RUN_PREREG.md. Deploy + verify steps:
 # phase2/HPC_RTLCODER_COMMANDS.md section 10.
+#
+# SCOPE (revised 2026-08-25): 42 modules (44-compatible RTLLM pool minus
+# EXCLUDE={edge_detect, square_wave} -- weak-oracle testbenches, see
+# IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6) x 5 model-conditions
+# (RTLCoder native+shared, 3 Ollama models shared-only) x N=3 = 630 runs.
+# Module list is loaded from task_a_screen.json AT RUNTIME by
+# twin_run_runner.py (_load_module_pool()) -- NOT hardcoded here or
+# there; the pilot's 5-module subset is retired. Estimated ~82h
+# wall-clock (see FULL_RUN_RUNBOOK.md's estimate table) -- does NOT fit
+# in one job under this partition's 3-day cap, expect 2 sequential
+# sbatches (this script re-submitted after the first hits --time; the
+# runner resumes from master_log.json's already-done cells, same
+# incremental-checkpoint pattern as every other runner in this project).
 #
 # PREREQUISITE, run once, before this: sbatch pull_ollama_models.slurm
 # (this script FAILS LOUDLY, does not pull inline, if any of the 3
 # Ollama models aren't already present -- see step (c) below and
 # twin_run_runner.py's own _verify_ollama_models(), which checks again
-# at the Python level as belt-and-suspenders).
+# at the Python level as belt-and-suspenders). pull_ollama_models.slurm
+# already pulls exactly the 3 models Set 1 (gpunode4) also needs --
+# Set 1 reuses this same pull, no second pull script exists or is needed.
 #
 # Usage: sbatch twin_run.slurm
 #SBATCH --job-name=rtlcoder_twin
@@ -16,7 +32,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem=48G
 #SBATCH --cpus-per-task=8
-#SBATCH --time=08:00:00
+#SBATCH --time=72:00:00
 #SBATCH --output=/scratch/soumyaj/RTLCoderHPC/logs/twin_%j.log
 #SBATCH --error=/scratch/soumyaj/RTLCoderHPC/logs/twin_%j.err
 
@@ -26,6 +42,14 @@ set -e
 source /scratch/soumyaj/RTLCoderHPC/env.sh
 source /scratch/soumyaj/RTLCoderHPC/venv/bin/activate
 export PATH=/scratch/soumyaj/AutoChipHPC/bin:/scratch/soumyaj/oss-cad-suite/bin:$PATH
+# Deployment-path robustness (2026-08-25): stitch_runner_hpc.py is
+# deployed FLAT in this directory (no repo tree around it) -- state
+# where src/interpreter/ (stitch_interpreter.py, pass_detection.py) and
+# task_a_screen.json actually landed explicitly, rather than relying on
+# a "../src/interpreter" relative guess from a flat deploy. See
+# FULL_RUN_RUNBOOK.md's deployment section for exactly what goes where.
+export STITCH_INTERPRETER_DIR=/scratch/soumyaj/RTLCoderHPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/soumyaj/RTLCoderHPC/task_a_screen.json
 echo "=== which ollama / iverilog ==="
 which ollama
 which iverilog

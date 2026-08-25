@@ -140,6 +140,10 @@ def _run_classic(module, model, condition, category, spec, testbench_dir, deps, 
 
     m = stitch_runner.run_one_condition(
         spec=spec, module_name=module, model=model, condition=condition, dependencies=deps,
+        # Every task3_runner.py cell runs against V20_TESTBENCH_DIR or
+        # REGRESSION_TESTBENCH_DIR (phase0-proven) -- the "phase1"
+        # convention. See pass_detection.py.
+        benchmark="phase1",
     )
     err_seq = [it.get("err_type") for it in m["per_iter_detail"]]
     fires, fire_iters = _count_stuck_fires(err_seq)
@@ -177,6 +181,7 @@ def _run_escalation(module, model, condition, category, spec, testbench_dir, dep
         spec=spec, module_name=module, model=model, condition=condition,
         run_replicate=replicate, config=config,
         testbench_dir=testbench_dir, results_dir=results_dir, dependencies=deps,
+        benchmark="phase1",
     )
     s = run_log["summary"]
     err_seq = [it["err_type"] for it in run_log["iterations"]]

@@ -41,47 +41,24 @@ sys.path.insert(0, os.path.join(_HERE, "..", "src", "runner"))
 import stitch_runner  # noqa: E402
 
 sys.path.insert(0, _HERE)
-import escalation_runner  # noqa: E402 -- module import (not `from`) so the
-                           # pass-detection monkeypatch below can rebind its
-                           # run_iverilog_sim name too, see _patch_pass_detection()
 from escalation_runner import run_one_replicate  # noqa: E402
 from escalation_state import EscalationConfig  # noqa: E402
 
-# LAUNCH-BLOCKING FIX, found during pilot sanity-checking before any real
-# run depended on it (same discipline as smoke_test.py catching the
-# escalation_state logging bug in Task 1): stitch_runner.run_iverilog_sim()'s
-# pass-detection heuristic checks for the literal substring "PASS"
-# (case-sensitive) or "ALL TESTS PASSED" -- tuned for v20/v2's testbench
-# convention. RTLLM's actual pass string is "Your Design Passed", which
-# contains neither ("PASS" != "Pass" case-sensitively) -- so every genuine
-# RTLLM pass would be misreported as a failure by the unmodified function.
-# Not fixed by editing stitch_runner.py (shared with phase0's LOCKED
-# regression checks); fixed the same way STUCK_THRESHOLD/TESTBENCH_DIR/
-# RESULTS_DIR are already toggled here -- rebinding the module-global name
-# stitch_runner.run_iverilog_sim (and escalation_runner.py's own separate
-# binding of the same name, imported via `from stitch_runner import
-# run_iverilog_sim` -- reassigning stitch_runner's copy does NOT change
-# escalation_runner's, they are two different names after `from X import Y`)
-# to a wrapper that defers to the real function for the actual compile/sim
-# work and file-writing side effects, then only corrects the verdict.
-_RTLLM_PASS_STRING = "Your Design Passed"
-_original_run_iverilog_sim = stitch_runner.run_iverilog_sim
-
-
-def _rtllm_aware_run_iverilog_sim(iter_dir, module_name):
-    success, feedback = _original_run_iverilog_sim(iter_dir, module_name)
-    if not success and _RTLLM_PASS_STRING in feedback:
-        return True, feedback
-    return success, feedback
-
-
-def _patch_pass_detection():
-    stitch_runner.run_iverilog_sim = _rtllm_aware_run_iverilog_sim
-    escalation_runner.run_iverilog_sim = _rtllm_aware_run_iverilog_sim
-
-
-_patch_pass_detection()
-
+# SUPERSEDED 2026-08-24 -- this file used to carry a hand-rolled,
+# RTLLM-aware monkeypatch here (_rtllm_aware_run_iverilog_sim, wrapping
+# stitch_runner.run_iverilog_sim and escalation_runner.run_iverilog_sim to
+# correct for RTLLM's "Your Design Passed" pass string, which the
+# original hardcoded "PASS"/"ALL TESTS PASSED" check couldn't recognize).
+# That monkeypatch WORKED but was exactly the failure mode it was
+# patching around: a per-runner patch that has to be remembered and
+# re-applied everywhere, which is precisely how the same bug shipped
+# unpatched in phase2/twin_run_runner.py. Replaced by a structural fix:
+# stitch_runner.run_iverilog_sim()/run_one_condition() (and
+# escalation_runner.run_one_replicate()) now take a mandatory `benchmark`
+# keyword argument and route pass/fail through detect_outcome()
+# (src/interpreter/pass_detection.py), which has a real "rtllm" registry
+# entry. This file now just passes benchmark="rtllm" explicitly at each
+# call site below (_run_classic/_run_escalation) -- no monkeypatch needed.
 RTLLM_ROOT = r"D:\Projects\RTLLM"
 REAL_STUCK_THRESHOLD = 2
 N_REPLICATES = 3
@@ -172,6 +149,7 @@ def _run_classic(design, category, model, condition, spec, testbench_dir, deps, 
 
     m = stitch_runner.run_one_condition(
         spec=spec, module_name=design, model=model, condition=condition, dependencies=deps,
+        benchmark="rtllm",
     )
     err_seq = [it.get("err_type") for it in m["per_iter_detail"]]
     fires, fire_iters = _count_stuck_fires(err_seq)
@@ -202,6 +180,7 @@ def _run_escalation(design, category, model, condition, spec, testbench_dir, dep
         spec=spec, module_name=design, model=model, condition=condition,
         run_replicate=replicate, config=config,
         testbench_dir=testbench_dir, results_dir=results_dir, dependencies=deps,
+        benchmark="rtllm",
     )
     s = run_log["summary"]
     err_seq = [it["err_type"] for it in run_log["iterations"]]

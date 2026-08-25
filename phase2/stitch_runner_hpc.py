@@ -53,7 +53,19 @@ against the Windows-side runner.
 import os, subprocess, re, shutil, sys, json, time
 from openai import OpenAI
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "interpreter"))
+# DEPLOYMENT PATH ROBUSTNESS (2026-08-25, added while building Set 1's
+# full-run harness): this file is scp'd FLAT onto HPC (no repo tree
+# around it -- see phase2/FULL_RUN_RUNBOOK.md), so the repo-relative
+# guess "../src/interpreter" only resolves correctly if src/interpreter/
+# happens to land exactly one level above wherever this file is deployed
+# -- an assumption nothing actually verifies. STITCH_INTERPRETER_DIR lets
+# both full-run sbatch scripts (Set 1 and Set 2) state that location
+# explicitly instead of relying on relative-path guesswork; unset, this
+# falls back to the original relative guess unchanged, so local/dev usage
+# (where the repo tree IS there) is unaffected.
+_INTERP_DIR = os.environ.get("STITCH_INTERPRETER_DIR") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "src", "interpreter")
+sys.path.insert(0, _INTERP_DIR)
 from stitch_interpreter import (
     _VERILATOR_INTERP, _LITERAL_FRAGMENT_RE, _extract_signal_name,
     _PORT_DECL_RE, _INTERNAL_DECL_RE, _decl_names,
@@ -61,6 +73,21 @@ from stitch_interpreter import (
     interpret_verilator, interpret_yosys_latches,
     detect_yosys_latches, detect_comb_loops, interpret_comb_loop,
 )
+# FIX 2026-08-24 (Bug #3 class, structural fix): this file's
+# run_iverilog_sim() used to hardcode the SAME case-sensitive "PASS" /
+# "ALL TESTS PASSED" substring check as the Windows/WSL original -- tuned
+# for this project's own v20/v2/phase0 testbenches, not RTLLM's "Your
+# Design Passed" -- and unlike phase1/rtllm_pilot_runner.py (which
+# monkeypatched around this on the Windows side), NOTHING patched it here.
+# This is the actual, live Bug #3: phase2/twin_run_runner.py calls this
+# file's run_one_condition() directly, with no pass-detection override at
+# all, so every RTLLM pass in the twin pilot was silently recorded as a
+# failure. See pass_detection.py's module docstring for the full history.
+# Every caller of run_iverilog_sim()/run_one_condition() must now pass an
+# explicit `benchmark` identifier -- there is no default. (Same sys.path
+# entry as stitch_interpreter's import above already makes this
+# resolvable -- pass_detection.py lives alongside it.)
+from pass_detection import detect_outcome  # noqa: E402
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 MAX_RETRIES      = 6
@@ -246,7 +273,7 @@ def run_yosys_check(v_file, module_name):
 
 
 # ── LAYER 3: IVERILOG + VVP ───────────────────────────────────────────────────
-def run_iverilog_sim(iter_dir, module_name):
+def run_iverilog_sim(iter_dir, module_name, *, benchmark):
     """BUG #2 FIX carried over (2026-08-21 on the Windows/WSL original,
     ported here 2026-08-22): vvp must run with its working directory set
     to iter_dir, or any testbench doing relative-path file I/O
@@ -259,7 +286,13 @@ def run_iverilog_sim(iter_dir, module_name):
     ported: subprocess.run(cwd=iter_dir) directly sets the CHILD
     PROCESS's own working directory here, with no launcher-indirection
     problem to work around (see this file's module docstring) -- no
-    `bash -lc "cd ... && vvp ..."` trick needed."""
+    `bash -lc "cd ... && vvp ..."` trick needed.
+
+    `benchmark` is mandatory (keyword-only, no default) -- BUG #3 FIX
+    (2026-08-24), see this file's module docstring and pass_detection.py.
+    Returns (success: bool, feedback: str, outcome: "PASS"|"FAIL"|
+    "UNKNOWN") -- same 3-tuple contract as the Windows/WSL original after
+    its own Bug #3 fix."""
     vvp_out = os.path.join(iter_dir, "sim.vvp")
     v_files = [f for f in sorted(os.listdir(iter_dir)) if f.endswith(".v")]
 
@@ -270,7 +303,7 @@ def run_iverilog_sim(iter_dir, module_name):
     except subprocess.TimeoutExpired:
         with open(os.path.join(iter_dir, "sim_log.txt"), "w", encoding="utf-8") as f:
             f.write("--- COMPILATION ---\n[TIMEOUT: iverilog did not finish in 20s]\n")
-        return False, "COMPILATION ERROR:\n[TIMEOUT: iverilog did not finish in 20s]"
+        return False, "COMPILATION ERROR:\n[TIMEOUT: iverilog did not finish in 20s]", "FAIL"
 
     with open(os.path.join(iter_dir, "sim_log.txt"), "w", encoding="utf-8") as f:
         f.write(f"--- COMPILATION ---\n{comp.stderr}\n")
@@ -279,7 +312,7 @@ def run_iverilog_sim(iter_dir, module_name):
         err     = strip_paths(comp.stderr)
         preview = "\n".join(err.strip().splitlines()[:10])
         print("  iverilog:\n    " + preview.replace("\n", "\n    "))
-        return False, f"COMPILATION ERROR:\n{err}"
+        return False, f"COMPILATION ERROR:\n{err}", "FAIL"
 
     try:
         sim = subprocess.run(
@@ -288,19 +321,24 @@ def run_iverilog_sim(iter_dir, module_name):
     except subprocess.TimeoutExpired:
         with open(os.path.join(iter_dir, "sim_log.txt"), "a", encoding="utf-8") as f:
             f.write("\n--- SIMULATION ---\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]\n")
-        return False, "SIMULATION FAILED:\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]"
+        return False, "SIMULATION FAILED:\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]", "FAIL"
     output = sim.stdout + sim.stderr
 
     with open(os.path.join(iter_dir, "sim_log.txt"), "a", encoding="utf-8") as f:
         f.write(f"\n--- SIMULATION ---\n{output}\n")
 
-    if "FAIL" in output or (
-            "ALL TESTS PASSED" not in output and "PASS" not in output):
+    # Bug #3 FIX (2026-08-24): see this file's module docstring and
+    # pass_detection.py. UNKNOWN reports as failure to the caller (same
+    # as before this fix) but is returned distinctly so it's visible in
+    # run data instead of silently indistinguishable from a real FAIL.
+    outcome = detect_outcome(output, benchmark)
+    if outcome != "PASS":
         preview = "\n".join(output.strip().splitlines()[:8])
-        print("  sim:\n    " + preview.replace("\n", "\n    "))
-        return False, f"SIMULATION FAILED:\n{output}"
+        tag = "UNKNOWN OUTCOME" if outcome == "UNKNOWN" else "sim"
+        print(f"  {tag}:\n    " + preview.replace("\n", "\n    "))
+        return False, f"SIMULATION FAILED:\n{output}", outcome
 
-    return True, output
+    return True, output, outcome
 
 
 # ── ERROR CLASSIFIER ──────────────────────────────────────────────────────────
@@ -433,7 +471,7 @@ _REWRITE_PROMPT = (
 
 
 # ── MAIN LOOP ──────────────────────────────────────────────────────────────────
-def run_one_condition(spec, module_name, model, condition, dependencies=None):
+def run_one_condition(spec, module_name, model, condition, dependencies=None, *, benchmark):
     """
     Run one condition (baseline | raw_adv | sem_adv) for one module.
     condition controls which feedback builder is used.
@@ -444,6 +482,10 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
     leading unclosed ```verilog fence marker before treating the
     response as raw text -- see the comment at the fallback branch
     below. Confirmed recurring on both v20 and RTLLM real responses.
+
+    `benchmark` is mandatory (keyword-only, no default) -- BUG #3 FIX
+    (2026-08-24), forwarded to run_iverilog_sim()'s detect_outcome() call.
+    See pass_detection.py for why there is no default.
     """
     if dependencies is None:
         dependencies = []
@@ -478,6 +520,7 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
 
     metrics = {
         "module": module_name, "model": model, "condition": condition,
+        "benchmark": benchmark,
         "pass": False, "iterations_to_pass": None,
         "time_to_pass_sec": None, "total_time_sec": None,
         "total_iterations": MAX_RETRIES,
@@ -487,6 +530,10 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
         "verilator_codes_seen": [],
         "total_prompt_tokens": 0, "total_completion_tokens": 0, "total_tokens": 0,
         "error_types": [], "per_iter_detail": [],
+        # Bug #3 class fix: count of iterations where detect_outcome()
+        # returned UNKNOWN -- surfaced here rather than silently folded
+        # into sim_errors. See pass_detection.py.
+        "unknown_outcomes": 0,
     }
 
     t_start         = time.time()
@@ -557,7 +604,14 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
             else:
                 print("  Verilator: clean")
 
-        success, iverilog_fb = run_iverilog_sim(iter_dir, module_name)
+        success, iverilog_fb, sim_outcome = run_iverilog_sim(
+            iter_dir, module_name, benchmark=benchmark)
+        if sim_outcome == "UNKNOWN":
+            metrics["unknown_outcomes"] += 1
+            print(f"  ** UNKNOWN OUTCOME ** (neither a registered pass nor "
+                  f"fail pattern matched for benchmark={benchmark!r} -- "
+                  f"treated as failure below, but flagged here so it's "
+                  f"not silently indistinguishable from a real FAIL)")
         elapsed = time.time() - t_start
 
         yosys_report = "(baseline: skipped)"
@@ -598,6 +652,7 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
             "yosys_latch": has_latch, "yosys_loop": has_loop, "yosys_cells": cell_count,
             "yosys_delta": cell_delta,
             "result": "PASS" if success else "FAIL",
+            "sim_outcome": sim_outcome,  # "PASS" | "FAIL" | "UNKNOWN" -- detect_outcome()'s actual verdict
             "err_type": None,
         }
 

@@ -55,6 +55,16 @@ from stitch_interpreter import (
     # variables already used throughout this file.)
     detect_yosys_latches, detect_comb_loops, interpret_comb_loop,
 )
+# FIX 2026-08-24 (Bug #3 class, structural fix): pass/fail detection used
+# to be a hardcoded, case-sensitive substring check tuned for THIS
+# project's own v20/v2/phase0 testbench convention -- RTLLM's testbenches
+# print "Your Design Passed", which that check couldn't recognize, so
+# every genuine RTLLM pass was silently recorded as a failure wherever
+# this ran unpatched (phase2/twin_run_runner.py, until this fix). See
+# pass_detection.py's module docstring for the full history. Every caller
+# of run_iverilog_sim()/run_one_condition() must now pass an explicit
+# `benchmark` identifier -- there is no default.
+from pass_detection import detect_outcome  # noqa: E402
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 MAX_RETRIES      = 6
@@ -270,7 +280,22 @@ def run_yosys_check(v_file, module_name):
 
 
 # ── LAYER 3: IVERILOG + VVP ───────────────────────────────────────────────────
-def run_iverilog_sim(iter_dir, module_name):
+def run_iverilog_sim(iter_dir, module_name, *, benchmark):
+    """`benchmark` is mandatory (keyword-only, no default) -- it selects
+    which testbench convention's pass/fail strings to look for via
+    detect_outcome() (pass_detection.py). See that module's docstring for
+    why there is deliberately no default here: a default is exactly how
+    Bug #3 shipped (a check silently tuned for one benchmark, reused
+    unmodified against another). Returns (success: bool, feedback: str,
+    outcome: "PASS"|"FAIL"|"UNKNOWN"), where success is True only for a
+    genuine "PASS" outcome -- both "FAIL" and "UNKNOWN" report as failure
+    to callers (feedback text is unchanged from before this fix, so
+    Phase 1's already-published results stay reproducible byte-for-byte),
+    but `outcome` distinguishes them so a caller can log UNKNOWN visibly
+    in run data instead of it being silently indistinguishable from a
+    real FAIL. Compile-stage and simulator-timeout failures (infra, not a
+    detect_outcome() verdict) are reported as outcome="FAIL" too, for a
+    consistently-typed third element."""
     vvp_out     = os.path.join(iter_dir, "sim.vvp")
     v_files_wsl = [win_to_wsl(os.path.join(iter_dir, f))
                    for f in sorted(os.listdir(iter_dir)) if f.endswith(".v")]
@@ -285,7 +310,7 @@ def run_iverilog_sim(iter_dir, module_name):
     except subprocess.TimeoutExpired:
         with open(os.path.join(iter_dir, "sim_log.txt"), "w", encoding="utf-8") as f:
             f.write("--- COMPILATION ---\n[TIMEOUT: iverilog did not finish in 20s]\n")
-        return False, "COMPILATION ERROR:\n[TIMEOUT: iverilog did not finish in 20s]"
+        return False, "COMPILATION ERROR:\n[TIMEOUT: iverilog did not finish in 20s]", "FAIL"
 
     with open(os.path.join(iter_dir, "sim_log.txt"), "w", encoding="utf-8") as f:
         f.write(f"--- COMPILATION ---\n{comp.stderr}\n")
@@ -294,7 +319,7 @@ def run_iverilog_sim(iter_dir, module_name):
         err     = strip_paths(comp.stderr)
         preview = "\n".join(err.strip().splitlines()[:10])
         print("  iverilog:\n    " + preview.replace("\n", "\n    "))
-        return False, f"COMPILATION ERROR:\n{err}"
+        return False, f"COMPILATION ERROR:\n{err}", "FAIL"
 
     # FIX 2026-08-21: vvp used to run with no working directory set, so any
     # testbench doing relative-path file I/O ($readmemh("data.dat", ...) and
@@ -321,19 +346,26 @@ def run_iverilog_sim(iter_dir, module_name):
     except subprocess.TimeoutExpired:
         with open(os.path.join(iter_dir, "sim_log.txt"), "a", encoding="utf-8") as f:
             f.write("\n--- SIMULATION ---\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]\n")
-        return False, "SIMULATION FAILED:\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]"
+        return False, "SIMULATION FAILED:\n[TIMEOUT: vvp did not finish in 30s — likely missing $finish]", "FAIL"
     output = sim.stdout + sim.stderr
 
     with open(os.path.join(iter_dir, "sim_log.txt"), "a", encoding="utf-8") as f:
         f.write(f"\n--- SIMULATION ---\n{output}\n")
 
-    if "FAIL" in output or (
-            "ALL TESTS PASSED" not in output and "PASS" not in output):
+    # Bug #3 class fix (2026-08-24): pass/fail is decided by
+    # detect_outcome() against the caller-supplied `benchmark` convention
+    # -- see pass_detection.py. UNKNOWN (neither a registered pass nor
+    # fail pattern found) reports as failure to the caller (same as
+    # before this fix, for Phase 1 byte-for-byte reproducibility) but is
+    # returned distinctly in `outcome` so it's visible in run data.
+    outcome = detect_outcome(output, benchmark)
+    if outcome != "PASS":
         preview = "\n".join(output.strip().splitlines()[:8])
-        print("  sim:\n    " + preview.replace("\n", "\n    "))
-        return False, f"SIMULATION FAILED:\n{output}"
+        tag = "UNKNOWN OUTCOME" if outcome == "UNKNOWN" else "sim"
+        print(f"  {tag}:\n    " + preview.replace("\n", "\n    "))
+        return False, f"SIMULATION FAILED:\n{output}", outcome
 
-    return True, output
+    return True, output, outcome
 
 
 # ── ERROR CLASSIFIER ──────────────────────────────────────────────────────────
@@ -491,10 +523,13 @@ _REWRITE_PROMPT = (
 
 
 # ── MAIN LOOP ──────────────────────────────────────────────────────────────────
-def run_one_condition(spec, module_name, model, condition, dependencies=None):
+def run_one_condition(spec, module_name, model, condition, dependencies=None, *, benchmark):
     """
     Run one condition (baseline | raw_adv | sem_adv) for one module.
     condition controls which feedback builder is used.
+    `benchmark` is mandatory (keyword-only, no default) -- forwarded to
+    run_iverilog_sim()'s detect_outcome() call; see that function's
+    docstring and pass_detection.py for why there is no default.
     Returns metrics dict.
     """
     if dependencies is None:
@@ -530,6 +565,7 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
 
     metrics = {
         "module": module_name, "model": model, "condition": condition,
+        "benchmark": benchmark,
         "pass": False, "iterations_to_pass": None,
         "time_to_pass_sec": None, "total_time_sec": None,
         "total_iterations": MAX_RETRIES,
@@ -539,6 +575,12 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
         "verilator_codes_seen": [],   # which codes triggered interpretation
         "total_prompt_tokens": 0, "total_completion_tokens": 0, "total_tokens": 0,
         "error_types": [], "per_iter_detail": [],
+        # Bug #3 class fix: count of iterations where detect_outcome()
+        # returned UNKNOWN (neither a registered pass nor fail pattern
+        # matched) -- surfaced here, not silently folded into sim_errors,
+        # so an unexpected testbench output format shows up in the run
+        # summary instead of hiding as an ordinary failure.
+        "unknown_outcomes": 0,
     }
 
     t_start         = time.time()
@@ -626,7 +668,14 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
                 print("  Verilator: clean")
 
         # Layer 2: iverilog + vvp
-        success, iverilog_fb = run_iverilog_sim(iter_dir, module_name)
+        success, iverilog_fb, sim_outcome = run_iverilog_sim(
+            iter_dir, module_name, benchmark=benchmark)
+        if sim_outcome == "UNKNOWN":
+            metrics["unknown_outcomes"] += 1
+            print(f"  ** UNKNOWN OUTCOME ** (neither a registered pass nor "
+                  f"fail pattern matched for benchmark={benchmark!r} -- "
+                  f"treated as failure below, but flagged here so it's "
+                  f"not silently indistinguishable from a real FAIL)")
         elapsed = time.time() - t_start
 
         # Layer 3: Yosys (tools conditions, compile success only)
@@ -687,6 +736,7 @@ def run_one_condition(spec, module_name, model, condition, dependencies=None):
             "yosys_latch": has_latch, "yosys_loop": has_loop, "yosys_cells": cell_count,
             "yosys_delta": cell_delta,
             "result": "PASS" if success else "FAIL",
+            "sim_outcome": sim_outcome,  # "PASS" | "FAIL" | "UNKNOWN" -- detect_outcome()'s actual verdict
             "err_type": None,
         }
 
@@ -1324,6 +1374,10 @@ if __name__ == "__main__":
             m = run_one_condition(
                 spec=cfg["spec"], module_name=mod,
                 model=args.model, condition=cond,
+                # This CLI always runs against BENCHMARK above, which is
+                # always a v20/v2/phase0-proven-convention testbench --
+                # see pass_detection.py's registry docstring.
+                benchmark="phase1",
             )
             if m:
                 all_results.append(m)

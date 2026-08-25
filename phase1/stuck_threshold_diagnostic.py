@@ -144,6 +144,9 @@ def run_all():
                     metrics = stitch_runner.run_one_condition(
                         spec=V20_SPECS[module], module_name=module, model=model,
                         condition="sem_adv", dependencies=dep_files,
+                        # TESTBENCH_DIR is always v20_diagnostic here --
+                        # the "phase1" convention. See pass_detection.py.
+                        benchmark="phase1",
                     )
                 except Exception as e:
                     print(f"  ERROR: {e}")

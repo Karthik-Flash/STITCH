@@ -1,0 +1,8 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+FAIL [duty=4]: counter=3 expected high, got low
+FAIL [duty=4]: counter=255 expected low, got high
+/mnt/d/Projects/STITCH/phase1/results/stuck_threshold_diag/off/replicate_1/deepseek-coder_67b/sem_adv/pwm_generator/iter_2/pwm_generator_tb.v:73: $finish called at 10280000 (1ps)
+

@@ -73,6 +73,10 @@ class TestSemEscalateRestart(unittest.TestCase):
             module_name="decoder_3to8", model="fake-model",
             condition="sem_escalate_restart", run_replicate=1,
             config=config, testbench_dir=_TESTBENCH_DIR, results_dir=self.results_dir,
+            # decoder_3to8 here runs against phase0/illustrations/proven's
+            # real testbench -- the "phase1" convention. See
+            # src/interpreter/pass_detection.py.
+            benchmark="phase1",
         )
 
         summary = result["summary"]

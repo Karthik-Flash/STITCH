@@ -97,6 +97,7 @@ class IterationRecord:
     tokens_used: int
     result: str                    # "pass" | "fail"
     # extra fields kept alongside the required schema, not replacing it:
+    sim_outcome: Optional[str] = None  # "PASS" | "FAIL" | "UNKNOWN" -- detect_outcome()'s actual verdict (Bug #3 fix, 2026-08-24)
     err_type: Optional[str] = None
     prompt_tokens: int = 0
     completion_tokens: int = 0
@@ -130,6 +131,8 @@ def run_one_replicate(
     testbench_dir: str,
     results_dir: str,
     dependencies=None,
+    *,
+    benchmark: str,          # mandatory, no default -- see pass_detection.py / Bug #3 fix (2026-08-24)
 ) -> dict:
     if condition not in ("sem_escalate", "sem_escalate_restart"):
         raise ValueError(f"escalation_runner only implements sem_escalate/sem_escalate_restart, got {condition!r}")
@@ -209,7 +212,11 @@ def run_one_replicate(
                 if interp_text:
                     interpreter_invoked = True
 
-        success, iverilog_fb = run_iverilog_sim(iter_dir, module_name)
+        success, iverilog_fb, sim_outcome = run_iverilog_sim(
+            iter_dir, module_name, benchmark=benchmark)
+        if sim_outcome == "UNKNOWN":
+            print(f"  ** UNKNOWN OUTCOME ** (neither a registered pass nor "
+                  f"fail pattern matched for benchmark={benchmark!r})")
         tool_invocations["vvp"] = 1 if "COMPILATION ERROR" not in iverilog_fb else 0
 
         if use_tools_this_iter and "COMPILATION ERROR" not in iverilog_fb:
@@ -238,7 +245,7 @@ def run_one_replicate(
                 interpreter_invoked=interpreter_invoked,
                 restart_injected=False,
                 tokens_used=pt + ct, prompt_tokens=pt, completion_tokens=ct,
-                result="pass", err_type="PASS",
+                result="pass", sim_outcome=sim_outcome, err_type="PASS",
             ))
             escalation.observe_pass()
             passed = True
@@ -300,7 +307,7 @@ def run_one_replicate(
             interpreter_invoked=interpreter_invoked,
             restart_injected=restart_injected,
             tokens_used=pt + ct, prompt_tokens=pt, completion_tokens=ct,
-            result="fail", err_type=err_type,
+            result="fail", sim_outcome=sim_outcome, err_type=err_type,
             escalated_now=event.escalated_now, streak_len=event.streak_len,
         ))
 

@@ -1,0 +1,7 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+ALL TESTS PASSED
+/mnt/d/Projects/STITCH/phase1/results/stuck_threshold_diag/off/replicate_1/deepseek-coder_67b/sem_adv/alu_8bit/iter_1/alu_8bit_tb.v:54: $finish called at 180000 (1ps)
+

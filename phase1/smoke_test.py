@@ -42,6 +42,9 @@ def main():
         spec=spec, module_name="decoder_3to8", model="gemma3:4b",
         condition="sem_escalate", run_replicate=1, config=config,
         testbench_dir=TESTBENCH_DIR, results_dir=RESULTS_DIR,
+        # decoder_3to8 here runs against phase0/illustrations/proven's
+        # testbench, the "phase1" convention -- see pass_detection.py.
+        benchmark="phase1",
     )
 
     print("\n=== SUMMARY ===")

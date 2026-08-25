@@ -1,0 +1,7 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+===========Your Design Passed===========
+counter_12_tb.v:49: $finish called at 430000 (1ps)
+

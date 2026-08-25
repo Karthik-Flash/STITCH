@@ -26,10 +26,19 @@ import shutil
 import subprocess
 import sys
 
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_HERE, "..", "src", "interpreter"))
+# FIX 2026-08-24 (Bug #3 class): this screen used to carry its own THIRD
+# independent hardcoded pass check (`"Your Design Passed" in sim_out`) --
+# correct for RTLLM (unlike stitch_runner's original check), but still a
+# separate implementation that could silently drift from the other two.
+# Routed through the same shared detect_outcome() everything else now
+# uses. See src/interpreter/pass_detection.py.
+from pass_detection import detect_outcome  # noqa: E402
+
 RTLLM_ROOT = r"D:\Projects\RTLLM"
 CATEGORIES = ["Arithmetic", "Control", "Memory", "Miscellaneous"]
 
-_HERE = os.path.dirname(os.path.abspath(__file__))
 SCRATCH_ROOT = os.path.join(_HERE, "results", "rtllm_pilot", "task_a_screen")
 OUT_JSON = os.path.join(_HERE, "results", "rtllm_pilot", "task_a_screen.json")
 
@@ -147,7 +156,7 @@ def screen_one(category, design, design_dir):
         }
 
     sim_out = sim.stdout + sim.stderr
-    passed = "Your Design Passed" in sim_out
+    passed = detect_outcome(sim_out, "rtllm") == "PASS"
     return {
         "category": category, "design": design,
         "status": "pass" if passed else "sim_fail",

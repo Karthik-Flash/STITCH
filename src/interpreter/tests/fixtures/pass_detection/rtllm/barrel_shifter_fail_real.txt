@@ -1,0 +1,7 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+=========== Test completed with           5 failures ===========
+barrel_shifter_tb.v:33: $finish called at 100 (1s)
+

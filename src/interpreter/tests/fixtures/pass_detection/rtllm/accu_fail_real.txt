@@ -1,0 +1,7 @@
+--- COMPILATION ---
+
+
+--- SIMULATION ---
+===========Error===========
+accu_tb.v:85: $finish called at 150000 (1ps)
+

@@ -15,6 +15,15 @@
 # `ollama list` yourself first if you want to double-check nothing's
 # changed since this comment was written.
 #
+# DUAL-USE (2026-08-25): Set 1 (phase2/set1_runner.py /
+# phase2/set1_run.slurm, gpunode4) needs the EXACT SAME 3 models --
+# deepseek-coder:6.7b, gemma3:4b, llama3.1:latest, nothing more. Set 1's
+# OLLAMA_MODELS points directly at this job's output directory
+# (read-only, safe -- see FULL_RUN_RUNBOOK.md's two-node-independence
+# section) rather than pulling a second copy. Run this script ONCE,
+# before launching either twin_run.slurm OR set1_run.slurm -- there is
+# no separate pull script for Set 1.
+#
 # Usage: sbatch pull_ollama_models.slurm
 #SBATCH --job-name=rtlcoder_ollama_pull
 #SBATCH --partition=gpu_h100_4
