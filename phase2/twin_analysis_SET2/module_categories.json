@@ -1,0 +1,296 @@
+{
+  "JC_counter": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Control",
+    "max_pass_rate": 0.2,
+    "pooled_passes": 3,
+    "pooled_total": 15
+  },
+  "LFSR": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Memory",
+    "max_pass_rate": 0.4667,
+    "pooled_passes": 7,
+    "pooled_total": 15
+  },
+  "LIFObuffer": {
+    "difficulty_tier": "floor",
+    "functional_class": "Memory",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "RAM": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 0.2667,
+    "pooled_passes": 4,
+    "pooled_total": 15
+  },
+  "ROM": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 0.8,
+    "pooled_passes": 12,
+    "pooled_total": 15
+  },
+  "accu": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "adder_16bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.1333,
+    "pooled_passes": 2,
+    "pooled_total": 15
+  },
+  "adder_32bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "adder_8bit": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.3333,
+    "pooled_passes": 5,
+    "pooled_total": 15
+  },
+  "adder_bcd": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "adder_pipe_64bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "alu": {
+    "difficulty_tier": "floor",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "barrel_shifter": {
+    "difficulty_tier": "floor",
+    "functional_class": "Memory",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "calendar": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "protocol",
+    "max_pass_rate": 0.3333,
+    "pooled_passes": 5,
+    "pooled_total": 15
+  },
+  "comparator_3bit": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.9333,
+    "pooled_passes": 14,
+    "pooled_total": 15
+  },
+  "comparator_4bit": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.4667,
+    "pooled_passes": 7,
+    "pooled_total": 15
+  },
+  "counter_12": {
+    "difficulty_tier": "floor",
+    "functional_class": "Control",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "div_16bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "fixed_point_adder": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.3333,
+    "pooled_passes": 5,
+    "pooled_total": 15
+  },
+  "fixed_point_substractor": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.4,
+    "pooled_passes": 6,
+    "pooled_total": 15
+  },
+  "float_multi": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "freq_div": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "signal_processing",
+    "max_pass_rate": 0.2667,
+    "pooled_passes": 4,
+    "pooled_total": 15
+  },
+  "freq_divbyeven": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "signal_processing",
+    "max_pass_rate": 0.7333,
+    "pooled_passes": 11,
+    "pooled_total": 15
+  },
+  "freq_divbyfrac": {
+    "difficulty_tier": "floor",
+    "functional_class": "signal_processing",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "fsm": {
+    "difficulty_tier": "floor",
+    "functional_class": "Control",
+    "max_pass_rate": 0.1333,
+    "pooled_passes": 2,
+    "pooled_total": 15
+  },
+  "instr_reg": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 0.3333,
+    "pooled_passes": 5,
+    "pooled_total": 15
+  },
+  "multi_16bit": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.3333,
+    "pooled_passes": 5,
+    "pooled_total": 15
+  },
+  "multi_booth_8bit": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.2667,
+    "pooled_passes": 4,
+    "pooled_total": 15
+  },
+  "multi_pipe_4bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "multi_pipe_8bit": {
+    "difficulty_tier": "floor",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "parallel2serial": {
+    "difficulty_tier": "floor",
+    "functional_class": "protocol",
+    "max_pass_rate": 0.1333,
+    "pooled_passes": 2,
+    "pooled_total": 15
+  },
+  "pe": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 1.0,
+    "pooled_passes": 15,
+    "pooled_total": 15
+  },
+  "pulse_detect": {
+    "difficulty_tier": "floor",
+    "functional_class": "signal_processing",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "right_shifter": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "Memory",
+    "max_pass_rate": 0.9333,
+    "pooled_passes": 14,
+    "pooled_total": 15
+  },
+  "sequence_detector": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "Control",
+    "max_pass_rate": 0.2667,
+    "pooled_passes": 4,
+    "pooled_total": 15
+  },
+  "serial2parallel": {
+    "difficulty_tier": "floor",
+    "functional_class": "protocol",
+    "max_pass_rate": 0.0,
+    "pooled_passes": 0,
+    "pooled_total": 15
+  },
+  "signal_generator": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "signal_processing",
+    "max_pass_rate": 0.7333,
+    "pooled_passes": 11,
+    "pooled_total": 15
+  },
+  "sub_64bit": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "Arithmetic",
+    "max_pass_rate": 0.8,
+    "pooled_passes": 12,
+    "pooled_total": 15
+  },
+  "synchronizer": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "protocol",
+    "max_pass_rate": 0.7333,
+    "pooled_passes": 11,
+    "pooled_total": 15
+  },
+  "traffic_light": {
+    "difficulty_tier": "floor",
+    "functional_class": "protocol",
+    "max_pass_rate": 0.1333,
+    "pooled_passes": 2,
+    "pooled_total": 15
+  },
+  "up_down_counter": {
+    "difficulty_tier": "ceiling",
+    "functional_class": "Control",
+    "max_pass_rate": 0.9333,
+    "pooled_passes": 14,
+    "pooled_total": 15
+  },
+  "width_8to16": {
+    "difficulty_tier": "recoverable",
+    "functional_class": "arithmetic_misc",
+    "max_pass_rate": 0.4667,
+    "pooled_passes": 7,
+    "pooled_total": 15
+  }
+}

@@ -1,0 +1,18 @@
+module,rtlcoder_shared,deepseek_coder_shared,delta,verdict
+JC_counter,0/3,0/3,0,Tied
+LFSR,2/3,1/3,1,Tied
+RAM,0/3,3/3,-3,Base wins
+adder_8bit,0/3,3/3,-3,Base wins
+calendar,2/3,3/3,-1,Tied
+comparator_4bit,2/3,1/3,1,Tied
+fixed_point_adder,0/3,3/3,-3,Base wins
+fixed_point_substractor,0/3,3/3,-3,Base wins
+freq_div,0/3,0/3,0,Tied
+freq_divbyeven,3/3,3/3,0,Tied
+instr_reg,3/3,2/3,1,Tied
+multi_16bit,1/3,2/3,-1,Tied
+multi_booth_8bit,1/3,0/3,1,Tied
+sequence_detector,1/3,0/3,1,Tied
+signal_generator,2/3,3/3,-1,Tied
+synchronizer,3/3,3/3,0,Tied
+width_8to16,1/3,2/3,-1,Tied
