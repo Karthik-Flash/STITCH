@@ -1,0 +1,1 @@
+Detailed Overview of STITCH
