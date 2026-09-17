@@ -436,8 +436,7 @@ sbatch /scratch/soumyaj/RTLCoderHPC/twin_run.slurm
 Targets `gpunode6` (H100 80GB HBM3, `gpu_h100_4`), `--time=08:00:00` —
 real margin over the ~2.7-6.5h estimate (see the prereg doc) given
 RTLCoder's HPC pace is unvalidated. In order: sets `PATH` for both
-`ollama` and `iverilog`/`verilator`/`yosys`, starts its own `ollama
-serve` bound to `OLLAMA_HOST=127.0.0.1:11434`, waits for readiness,
+`ollama` and `iverilog`/`verilator`/`yosys`, starts its own `ollama serve` bound to `OLLAMA_HOST=127.0.0.1:11434`, waits for readiness,
 confirms all 3 models present (**fails loudly and exits — does not pull
 inline** — if Section 10.3 was skipped), then runs
 `twin_run_runner.py`. A `trap ... EXIT` guarantees the Ollama server
@@ -455,8 +454,7 @@ squeue -u soumyaj
 tail -f /scratch/soumyaj/RTLCoderHPC/logs/twin_*.log
 ```
 
-`twin_run_runner.py` prints a `[N/75] <module> / <model> /
-<prompt_condition> / replicate <k>` line per cell, same progress format
+`twin_run_runner.py` prints a `[N/75] <module> / <model> / <prompt_condition> / replicate <k>` line per cell, same progress format
 as every other runner in this project -- use entry count in
 `master_log.json` (not just the console log, which can lag when
 redirected) to judge real progress, same lesson as every prior overnight
@@ -478,35 +476,35 @@ scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/results/twi
 
 ## Troubleshooting
 
-| Problem                                                         | Fix                                                                                                                                                                                                                  |
-| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RuntimeError: FAILED to load ishorn5/RTLCoder-Deepseek-v1.1` | Almost always means Section 4's download never completed or`HF_HOME` isn't set to where it landed. Re-run the `find`/`du` check in Section 4.                                                                  |
-| `HF_HOME is not set` warning                                  | `source /scratch/soumyaj/RTLCoderHPC/env.sh` before running anything.                                                                                                                                              |
-| `FATAL: .../design_description.txt not found`                 | RTLLM isn't at`$RTLLM_ROOT` — check Section 3, or pass `--rtllm-root` explicitly.                                                                                                                               |
-| `iverilog: command not found` in check (d)                    | The `export PATH=.../oss-cad-suite/bin:$PATH` line (Section 6) is missing from the script, or `env.sh` wasn't sourced first. Confirm with `which iverilog` after sourcing both. |
-| Job stuck in`PD`                                              | `QOSMaxJobsPerUserLimit` — same as AutoChip, cluster caps simultaneous GPU jobs; it starts once another finishes.                                                                                                 |
-| `curl`/`git clone` gets a tiny file or hangs on login node  | Login node blocks outbound internet, same as AutoChip's ollama binary problem — use the sbatch-node path (Sections 3/4) or laptop+SCP fallback.                                                                     |
-| Check (b) generation produces empty output but no exception     | Model loaded onto CPU with no error (rare, but possible if`device_map="auto"` picked CPU due to a GPU allocation issue) — check `device=` in check (a)'s log line; should say `cuda:0`, not `cpu`.          |
-| Twin run: `openai.APIConnectionError` on any of the 3 Ollama models | Ollama server isn't up yet, or died. Check `ollama_twin_*.log`; `twin_run.slurm`'s readiness loop (up to 30s, polling `ollama list`) may need lengthening on a slow node. |
-| Twin run: `FATAL: ollama server never became ready` | Same as above, but the job's own readiness loop already gave up and exited — check `ollama_twin_JOBID.log` for why `ollama serve` itself failed to start (port already in use from a stale process, disk issue under `OLLAMA_MODELS`, etc). |
-| Twin run: `FATAL: ... is missing: [...]` (from `twin_run.slurm` or `twin_run_runner.py`'s own `_verify_ollama_models()`) | Section 10.3 (`pull_ollama_models.slurm`) wasn't run, or was run against a different `OLLAMA_MODELS` path than this job uses. Run it, confirm with `ollama list`, then resubmit — don't let either script pull inline (see the comment in `twin_run.slurm`). |
-| Twin run: `grep` in Section 10.2 comes back empty for either fix | Do NOT launch. Re-scp `stitch_runner_hpc.py` and re-check — this means the deployed file is not the verified one. |
-| Twin run: `alu`/`calendar` failing 100% again, `$readmemh` errors in `sim_log.txt` | The exact symptom bug #2 caused before it was fixed. Means Section 10.2's grep check was skipped or the wrong file got deployed — go back and verify. |
+| Problem                                                                                                                         | Fix                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RuntimeError: FAILED to load ishorn5/RTLCoder-Deepseek-v1.1`                                                                 | Almost always means Section 4's download never completed or`HF_HOME` isn't set to where it landed. Re-run the `find`/`du` check in Section 4.                                                                                                                   |
+| `HF_HOME is not set` warning                                                                                                  | `source /scratch/soumyaj/RTLCoderHPC/env.sh` before running anything.                                                                                                                                                                                               |
+| `FATAL: .../design_description.txt not found`                                                                                 | RTLLM isn't at`$RTLLM_ROOT` — check Section 3, or pass `--rtllm-root` explicitly.                                                                                                                                                                                |
+| `iverilog: command not found` in check (d)                                                                                    | The`export PATH=.../oss-cad-suite/bin:$PATH` line (Section 6) is missing from the script, or `env.sh` wasn't sourced first. Confirm with `which iverilog` after sourcing both.                                                                                  |
+| Job stuck in`PD`                                                                                                              | `QOSMaxJobsPerUserLimit` — same as AutoChip, cluster caps simultaneous GPU jobs; it starts once another finishes.                                                                                                                                                  |
+| `curl`/`git clone` gets a tiny file or hangs on login node                                                                  | Login node blocks outbound internet, same as AutoChip's ollama binary problem — use the sbatch-node path (Sections 3/4) or laptop+SCP fallback.                                                                                                                      |
+| Check (b) generation produces empty output but no exception                                                                     | Model loaded onto CPU with no error (rare, but possible if`device_map="auto"` picked CPU due to a GPU allocation issue) — check `device=` in check (a)'s log line; should say `cuda:0`, not `cpu`.                                                           |
+| Twin run:`openai.APIConnectionError` on any of the 3 Ollama models                                                            | Ollama server isn't up yet, or died. Check`ollama_twin_*.log`; `twin_run.slurm`'s readiness loop (up to 30s, polling `ollama list`) may need lengthening on a slow node.                                                                                        |
+| Twin run:`FATAL: ollama server never became ready`                                                                            | Same as above, but the job's own readiness loop already gave up and exited — check`ollama_twin_JOBID.log` for why `ollama serve` itself failed to start (port already in use from a stale process, disk issue under `OLLAMA_MODELS`, etc).                     |
+| Twin run:`FATAL: ... is missing: [...]` (from `twin_run.slurm` or `twin_run_runner.py`'s own `_verify_ollama_models()`) | Section 10.3 (`pull_ollama_models.slurm`) wasn't run, or was run against a different `OLLAMA_MODELS` path than this job uses. Run it, confirm with `ollama list`, then resubmit — don't let either script pull inline (see the comment in `twin_run.slurm`). |
+| Twin run:`grep` in Section 10.2 comes back empty for either fix                                                               | Do NOT launch. Re-scp`stitch_runner_hpc.py` and re-check — this means the deployed file is not the verified one.                                                                                                                                                   |
+| Twin run:`alu`/`calendar` failing 100% again, `$readmemh` errors in `sim_log.txt`                                       | The exact symptom bug#2 caused before it was fixed. Means Section 10.2's grep check was skipped or the wrong file got deployed — go back and verify.                                                                                                                 |
 
 ---
 
 ## Quick reference card
 
-| Command                      | Description                                |
-| ---------------------------- | ------------------------------------------ |
-| `squeue -u soumyaj`        | Check your running/queued jobs             |
-| `scancel JOBID`            | Cancel a specific job                      |
-| `sinfo -o "%n %G %t"`      | List all nodes with GPU info               |
-| `tail -f logs/smoke_*.log` | Live log of the running smoke test         |
-| `source env.sh`            | Load`HF_HOME`/`RTLLM_ROOT`             |
-| `sbatch smoke_test.slurm`  | Submit the smoke test job                  |
-| `du -sh hf_cache`          | Check how much of scratch the weights used |
-| `df -h /scratch/soumyaj`   | Check overall scratch disk usage           |
+| Command                             | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
+| `squeue -u soumyaj`               | Check your running/queued jobs                    |
+| `scancel JOBID`                   | Cancel a specific job                             |
+| `sinfo -o "%n %G %t"`             | List all nodes with GPU info                      |
+| `tail -f logs/smoke_*.log`        | Live log of the running smoke test                |
+| `source env.sh`                   | Load`HF_HOME`/`RTLLM_ROOT`                    |
+| `sbatch smoke_test.slurm`         | Submit the smoke test job                         |
+| `du -sh hf_cache`                 | Check how much of scratch the weights used        |
+| `df -h /scratch/soumyaj`          | Check overall scratch disk usage                  |
 | `sbatch pull_ollama_models.slurm` | One-time: pull the 3 Ollama models this run needs |
-| `sbatch twin_run.slurm`    | Submit the twin-comparison run (75 runs)  |
-| `tail -f logs/twin_*.log`  | Live log of the twin run                   |
+| `sbatch twin_run.slurm`           | Submit the twin-comparison run (75 runs)          |
+| `tail -f logs/twin_*.log`         | Live log of the twin run                          |
