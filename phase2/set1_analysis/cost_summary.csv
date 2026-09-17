@@ -1,0 +1,5 @@
+condition,n_runs,mean_tokens_per_run,mean_verilator_calls_per_run,mean_yosys_calls_per_run,mean_tool_calls_per_run,mean_iterations_per_run,n_pass,n_valid,pass_rate
+baseline,378,18932.58,0.0000,0.0000,0.0000,4.6958,109,378,0.2884
+sem_adv,378,23985.48,4.7778,1.8175,6.5952,4.7778,103,378,0.2725
+sem_escalate,375,37754.37,3.8613,1.5147,5.3760,6.2107,104,375,0.2773
+sem_escalate_restart,375,33851.38,3.8773,1.6533,5.5307,6.1600,108,375,0.2880

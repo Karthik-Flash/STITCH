@@ -1,0 +1,52 @@
+module,model,baseline,sem_adv,sem_escalate,sem_escalate_restart,verdict
+JC_counter,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+JC_counter,llama3.1:latest,2/3,0/3,2/3,2/3,Protective
+JC_counter,deepseek-coder:6.7b,0/3,0/3,0/3,0/3,Tied
+LFSR,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+LFSR,llama3.1:latest,2/3,1/3,2/3,2/3,Tied
+LFSR,deepseek-coder:6.7b,0/3,1/3,0/3,0/3,Tied
+RAM,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+RAM,llama3.1:latest,0/3,0/3,0/0,0/1,Insufficient data
+RAM,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+adder_8bit,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+adder_8bit,llama3.1:latest,0/3,0/3,0/3,1/3,Tied
+adder_8bit,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+calendar,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+calendar,llama3.1:latest,0/3,0/3,0/3,0/3,Tied
+calendar,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+comparator_4bit,gemma3:4b,1/3,0/3,0/3,0/3,Tied
+comparator_4bit,llama3.1:latest,0/3,0/3,1/3,0/3,Tied
+comparator_4bit,deepseek-coder:6.7b,0/3,0/3,1/3,1/3,Tied
+fixed_point_adder,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+fixed_point_adder,llama3.1:latest,2/3,1/3,0/3,1/3,Baseline wins
+fixed_point_adder,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+fixed_point_substractor,gemma3:4b,3/3,0/3,1/3,2/3,Baseline wins
+fixed_point_substractor,llama3.1:latest,0/3,0/3,0/3,1/3,Tied
+fixed_point_substractor,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+freq_div,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+freq_div,llama3.1:latest,0/3,1/3,0/3,2/3,Escalation wins
+freq_div,deepseek-coder:6.7b,0/3,0/3,0/3,0/3,Tied
+freq_divbyeven,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+freq_divbyeven,llama3.1:latest,3/3,3/3,3/3,3/3,Tied
+freq_divbyeven,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+instr_reg,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+instr_reg,llama3.1:latest,0/3,0/3,0/3,0/3,Tied
+instr_reg,deepseek-coder:6.7b,3/3,3/3,2/3,3/3,Tied
+multi_16bit,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+multi_16bit,llama3.1:latest,0/3,0/3,0/3,0/3,Tied
+multi_16bit,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+multi_booth_8bit,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+multi_booth_8bit,llama3.1:latest,0/3,0/3,0/3,0/3,Tied
+multi_booth_8bit,deepseek-coder:6.7b,0/3,0/3,0/3,0/3,Tied
+sequence_detector,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+sequence_detector,llama3.1:latest,2/3,1/3,0/3,1/3,Baseline wins
+sequence_detector,deepseek-coder:6.7b,0/3,0/3,0/3,0/3,Tied
+signal_generator,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+signal_generator,llama3.1:latest,3/3,3/3,3/3,3/3,Tied
+signal_generator,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+synchronizer,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+synchronizer,llama3.1:latest,3/3,3/3,2/3,2/3,Tied
+synchronizer,deepseek-coder:6.7b,3/3,3/3,3/3,3/3,Tied
+width_8to16,gemma3:4b,0/3,0/3,0/3,0/3,Tied
+width_8to16,llama3.1:latest,0/3,1/3,0/3,0/3,Tied
+width_8to16,deepseek-coder:6.7b,3/3,2/3,3/3,3/3,Tied

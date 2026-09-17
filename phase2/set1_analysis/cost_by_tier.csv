@@ -1,0 +1,13 @@
+tier,condition,n_runs,mean_tokens_per_run,mean_tool_calls_per_run,mean_iterations_per_run
+ceiling,baseline,54,4378.63,0.0000,2.2037
+ceiling,sem_adv,54,5135.15,4.0185,2.4815
+ceiling,sem_escalate,54,5142.11,1.0000,2.5370
+ceiling,sem_escalate_restart,54,6511.67,1.5556,2.8148
+recoverable,baseline,153,16094.29,0.0000,4.4771
+recoverable,sem_adv,153,21330.54,6.7386,4.5948
+recoverable,sem_escalate,150,33637.48,5.6200,5.9867
+recoverable,sem_escalate_restart,151,31065.43,5.7020,5.7815
+floor,baseline,171,26068.10,0.0000,5.6784
+floor,sem_adv,171,32313.69,7.2807,5.6667
+floor,sem_escalate,171,51664.27,6.5439,7.5673
+floor,sem_escalate_restart,170,45010.33,6.6412,7.5588
