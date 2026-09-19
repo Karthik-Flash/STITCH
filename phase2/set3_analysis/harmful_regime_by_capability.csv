@@ -1,0 +1,7 @@
+model,run,temperature,baseline_pass,baseline_n,baseline_rate,sem_adv_pass,sem_adv_n,sem_adv_rate,delta_pp,delta_ci_lo_pp,delta_ci_hi_pp
+gemma3:4b,set1,0.1,4,51,0.0784,0,51,0.0000,-7.84,-18.50,0.62
+llama3.1:8b,set1,0.1,17,51,0.3333,14,51,0.2745,-5.88,-23.04,11.76
+gemma3:27b,set3,0.1,19,51,0.3725,23,51,0.4510,7.84,-10.94,25.87
+qwen2.5-coder:14b,set3,0.1,27,51,0.5294,25,51,0.4902,-3.92,-22.43,14.97
+deepseek-coder:6.7b,set1,0.1,33,51,0.6471,33,51,0.6471,0.00,-18.01,18.01
+qwen2.5-coder:32b,set3,0.1,40,51,0.7843,37,51,0.7255,-5.88,-22.15,10.77

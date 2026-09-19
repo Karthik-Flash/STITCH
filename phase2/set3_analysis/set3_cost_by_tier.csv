@@ -1,0 +1,5 @@
+condition,n_runs,mean_tokens_per_run,mean_tool_calls_per_run,mean_iterations_per_run
+baseline,153,8641.13,0.0000,3.2941
+sem_adv,153,12552.44,5.3137,3.3856
+sem_escalate,153,18466.06,3.8497,3.9935
+sem_escalate_restart,151,18063.02,3.7815,4.0397
