@@ -108,41 +108,74 @@ and neither should be dropped in favor of the other.
 
 ---
 
-## The genuinely strong result: escalation wins outright at scale
-
-This is the part of the data that supports the strongest, cleanest claim
-in the whole study, and it deserves to be stated with full confidence:
+## Escalation at scale: no harm, retained cost advantage — not a mechanism-backed win
 
 **Pooled across all 3 large models, `sem_escalate` (58.8%) and
-`sem_escalate_restart` (58.3%) are BOTH the top two conditions,
-beating baseline (56.2%) *and* sem_adv (55.6%).** Escalation is not just
-"safe" at scale — pooled, it is the best-performing condition of the
-four, at every scale tested. (`sem_escalate` − baseline: **+2.6pp**, CI
+`sem_escalate_restart` (58.3%) are both nominally above baseline (56.2%)
+and sem_adv (55.6%)** (`sem_escalate` − baseline: **+2.6pp**, CI
 [−8.4, +13.5]; `sem_escalate_restart` − baseline: **+2.1pp**, CI [−9.0,
-+13.0] — wide CIs, consistent with the brief's instruction not to
-overclaim significance, but the point estimates are unambiguous and
-consistent across both escalation variants.)
++13.0]). An earlier pass at this document read that as "escalation wins
+outright at scale." **That claim does not survive tracing the individual
+replicates, and this project's own N≥3 / `semantic_fired`-checked
+discipline (`phase0/evidence/input_vs_output_asymmetry.md`) is exactly
+what catches it — so it gets caught here, not by a reviewer.**
 
-**The single cleanest demonstration of this in the entire dataset is
-`qwen2.5-coder:32b`** — the strongest model tested:
+**The trace.** Every `sem_escalate` replicate in the recoverable band
+(153 total, the 2 known-error cells excluded) was checked against its own
+`run_log.json` for whether the interpreter (`sf`/`interpreter_invoked`)
+ever fired, and whether escalation engaged at all:
+
+| | count |
+|---|---|
+| Passed without ever escalating (model succeeded in iterations 1–2, tools never engaged) | 88 / 153 |
+| Escalated at all (tools turned on) | 65 / 153 |
+| …of which eventually passed | **2 / 65** |
+| Interpreter (`sf`) fired at least once, anywhere | 32 / 153 |
+| …of which eventually passed | **0 / 32** |
+
+**Not one winning replicate in Set 3 has `sf=1`.** The two escalated
+replicates that did pass (`comparator_4bit`/qwen2.5-coder:32b rep 3;
+`signal_generator`/gemma3:27b rep 3) show `interpreter_invoked=False` on
+every iteration — they passed on raw, uninterpreted Verilator/Yosys text
+plus the extra Pass@8 budget (vs. baseline's Pass@6), not on a semantic
+directive. The pooled edge is built from six single-replicate cell
+deltas (`comparator_4bit`/qwen32b +2, `signal_generator`/qwen14b +1,
+`signal_generator`/gemma27b +1, `sequence_detector`/qwen14b +1,
+`freq_divbyeven`/gemma27b +1, `fixed_point_substractor`/qwen14b +1,
+against `multi_16bit`/qwen14b −1, `comparator_4bit`/gemma27b −1,
+`LFSR`/gemma27b −1) — and since `baseline` and `sem_escalate` are
+**independently-drawn** N=3 samples, not the same generation replayed
+under different feedback, single-replicate flips of this size are exactly
+what ordinary resampling noise looks like at N=3. Every CI above already
+crosses zero; the trace explains *why* — there is no rescue mechanism
+underneath these numbers to make the point estimate trustworthy despite
+the wide interval.
+
+**What the data honestly supports instead — and it is still a real,
+positive, and more defensible result**: at 14B–32B scale, escalation
+**matches baseline within noise while never showing Set 1's harmful
+regime**, and it **retains — in fact strengthens — its cost advantage**
+(next section). The one claim that *is* mechanism-backed and needs no
+statistical hedging at all is structural, not statistical: **escalation
+starts every run in baseline mode and only diverges after two observed
+failures, so by construction it cannot underperform baseline by more than
+probe noise, while `sem_adv` has no such floor** — Set 1's harmful regime
+is exactly `sem_adv` falling through a floor escalation is architecturally
+incapable of falling through. That guarantee holds at every scale tested,
+independent of whether the interpreter ever fires.
+
+`qwen2.5-coder:32b`'s per-model numbers are worth showing for the
+*descriptive* shape (sem_adv down, both escalation variants up), but per
+the trace above, not one of the escalation-side passes behind this table
+is interpreter-driven — read it as consistent with the no-harm story, not
+as an independent mechanistic win:
 
 | Condition | Pass rate | Δ vs. baseline |
 |---|---|---|
 | baseline | 78.4% (40/51) | — |
-| sem_adv | 72.5% (37/51) | **−5.9pp** |
-| sem_escalate | 82.4% (42/51) | **+3.9pp** |
-| sem_escalate_restart | 83.7% (41/49) | **+5.2pp** |
-
-On the best model in the study, always-on interpretation costs 5.9
-points and escalation *gains* 3.9–5.2 points over the same baseline —
-a genuine, textbook illustration of exactly the mechanism this project's
-escalation design exists to capture: react to real, evidenced failure
-rather than intervening unconditionally. `qwen2.5-coder:14b` shows the
-identical pattern (sem_adv −3.9pp, sem_escalate +3.9pp, sem_escalate_restart
-+5.9pp vs. baseline) — two of the three large models show escalation
-beating both baseline and sem_adv cleanly; only `gemma3:27b` (where
-sem_adv itself already helps) doesn't add to this pattern, for the
-reason already discussed above.
+| sem_adv | 72.5% (37/51) | −5.9pp |
+| sem_escalate | 82.4% (42/51) | +3.9pp |
+| sem_escalate_restart | 83.7% (41/49) | +5.2pp |
 
 ---
 
@@ -189,8 +222,12 @@ scale can *help*; this result is about how much scale changes what
 always-on intervention can *cost* you. **Both point at the same
 practical recommendation for the paper's system-design guidance**:
 escalation is the capability-safe choice across the entire ladder tested
-— it never shows Set 1's harmful-regime pattern, and at large scale it
-is outright the best-performing condition, pooled.
+— structurally incapable of Set 1's harmful-regime pattern by
+construction, and at large scale it costs nothing extra (matches baseline
+within noise) while its cost advantage over always-on tooling strengthens.
+Safe everywhere, helpful where the mechanism can fire, never worse than
+baseline anywhere it's been tested — that is the claim the data actually
+supports, not an outright pooled win.
 
 ---
 
@@ -215,11 +252,20 @@ is outright the best-performing condition, pooled.
   STITCH-condition difference is even visible.
 - **Wide individual CIs** — every single-model, single-condition
   comparison in this document has a 95% CI crossing zero at N=51 or N=153.
-  The escalation-wins-at-scale and harm-fades-with-capability findings are
-  both **trends supported by consistent point estimates across multiple
-  independent comparisons**, not individually significant results, and
-  are reported at that (real, but appropriately qualified) level of
-  confidence throughout.
+  The harm-fades-with-capability finding is a **trend supported by
+  consistent point estimates across multiple independent comparisons**,
+  not an individually significant result, and is reported at that (real,
+  but appropriately qualified) level of confidence throughout.
+- **The pooled sem_escalate/sem_escalate_restart edge at scale is not
+  mechanism-backed** — traced to the individual-replicate level (see
+  "Escalation at scale" above), zero of the winning replicates have
+  `semantic_fired=1`; the edge is consistent with ordinary resampling
+  noise across independently-drawn N=3 completions. What *is*
+  mechanism-backed at every scale is the structural worst-case guarantee
+  (escalation cannot underperform baseline by more than probe noise, by
+  construction) and the cost result — neither depends on the interpreter
+  successfully firing on RTLLM-scale designs the way it did on Section 2's
+  small-model toy-module illustrations.
 
 ---
 
