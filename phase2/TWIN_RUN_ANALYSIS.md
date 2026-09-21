@@ -94,6 +94,75 @@ for RTLCoder-Deepseek-v1.1, and if anything a mild disadvantage against
 its base model** — the honest signal is "leans against," not "proven
 against," given CI overlap.
 
+## Mechanism: why the fine-tuning comparison actually loses
+
+The pooled numbers (41.2% vs. 62.7%) say RTLCoder-Deepseek-v1.1 loses to
+its un-fine-tuned base — they don't say *why*. Traced directly against
+the generated `.v` files under `phase2/results/twin_run/` for all 4
+modules where the fine-tuning twin comparison calls "Base wins"
+(`RAM`, `adder_8bit`, `fixed_point_adder`, `fixed_point_substractor` —
+RTLCoder 0/3 on every one, deepseek-coder 3/3 on every one, per
+`table2_twin_decision.csv`): **all four fail at compilation, on every
+single iteration, across all 8 retries — RTLCoder never changes strategy
+even after 8 rounds of direct `iverilog` error feedback.** Three
+distinct, concrete root causes, not one:
+
+- **`adder_8bit`**: RTLCoder writes a properly hierarchical design — 8
+  instantiations of a `full_adder` submodule — but never emits the
+  `full_adder` definition itself (the harness extracts and compiles a
+  single file). `Unknown module type: full_adder` on iteration 1, still
+  true byte-for-byte on iteration 8.
+- **`RAM`**: RTLCoder writes `for (int i = 0; ...)` — an inline-typed
+  SystemVerilog-2005+ loop variable — which `iverilog`'s default
+  Verilog-2001 mode rejects (`Incomprehensible for loop`). Identical at
+  iteration 8.
+- **`fixed_point_adder`**: RTLCoder writes a parameterized module
+  (`[N-1:0] a`), but the parameter binding against RTLLM's testbench
+  never resolves (`Unable to bind parameter 'N'`, `Dimensions must be
+  constant`).
+- **`fixed_point_substractor`**: RTLLM's own `design_description.txt`
+  states `Module name: fixed_point_subtractor` (correct spelling, and
+  what the testbench instantiates) — RTLCoder ignores the live prompt
+  and writes `fixed_point_substractor`, matching RTLLM's own **folder
+  name** (`RTLLM/Arithmetic/Other/fixed_point_substractor/`) instead.
+  This is memorization from the fine-tuning corpus overriding the actual
+  instruction in front of the model, and it reproduces identically under
+  **both** `native` and `shared` prompts (verified against
+  `phase2/results/twin_run/native/.../fixed_point_substractor/iter_1/`)
+  — not a prompt-format artifact.
+
+**None of this is "RTLCoder writes worse logic."** It writes more
+textbook-idiomatic RTL — real submodule hierarchy, real parameterization
+— than deepseek-coder does, and that sophistication is exactly what
+breaks against this harness's single-file, non-parameterized, plain-
+Verilog compilation pipeline. The bigger tell is that 8 iterations of
+identical, unrecovered failure means the fine-tuning didn't teach the
+model to *repair* from compiler feedback, only to generate — a narrower
+and more specific finding than "fine-tuning didn't help."
+
+**Where RTLCoder is actually strongest.** Broken out by functional class
+(recoverable band, `RTLCoder native` vs. `RTLCoder shared` vs.
+`deepseek-coder shared`, passes out of n):
+
+| Class | RTLCoder native | RTLCoder shared | deepseek-coder shared |
+|---|---|---|---|
+| **signal_processing** (freq_div, freq_divbyeven, signal_generator) | **9/9 (100%)** | 5/9 | 6/9 |
+| **Memory** (LFSR) | **3/3 (100%)** | 2/3 | 1/3 |
+| **Control** (JC_counter, sequence_detector) | 2/6 | 1/6 | **0/6** |
+| Arithmetic (6 modules) | 8/18 | 4/18 | **12/18** |
+| arithmetic_misc (RAM, instr_reg, width_8to16) | 4/9 | 4/9 | **7/9** |
+| protocol (calendar, synchronizer) | 3/6 | 5/6 | **6/6** |
+
+Signal-processing under RTLCoder's **native** prompt is a clean sweep —
+`freq_div` alone is the sharpest single case: native 3/3, while both
+RTLCoder/shared **and** deepseek-coder go 0/3 (a logic/timing bug both
+control conditions hit; RTLCoder's own prompt convention avoids it
+entirely). Control is the other notable case: deepseek-coder collapses
+to 0/6 there while RTLCoder gets partial credit. Arithmetic — anything
+needing submodule hierarchy, generic-width parameters, or exact
+testbench-name matching — is RTLCoder's clear weak spot, for the reasons
+traced above.
+
 ## Prompt-format effect
 
 Full detail: `prompt_format_verdict.md`. RTLCoder native vs. RTLCoder
