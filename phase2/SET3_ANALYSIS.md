@@ -106,6 +106,65 @@ ramp. Both statements belong in the paper — the aggregate trend is the
 headline, the per-model breakdown is the honest mechanism underneath it,
 and neither should be dropped in favor of the other.
 
+### Why gemma3:27b reverses the pattern — a traced hypothesis
+
+The `gemma3:27b` reversal (+7.8pp) is concentrated in two modules —
+`freq_div` (baseline 0/3 → sem_adv 3/3) and `freq_divbyeven` (baseline
+1/3 → sem_adv 3/3) — and both share the **identical root cause**, traced
+directly against the generated `.v` files and `sim_log.txt` under
+`phase2/results/set3_run/`:
+
+**The bug.** gemma3:27b writes ANSI-style output ports (`output CLK_50`)
+and then separately redeclares them as `reg` in the module body
+(`reg CLK_50;`) — a hybrid non-ANSI/ANSI idiom both `iverilog` and
+Verilator reject as a duplicate declaration
+(`'CLK_50' has already been declared in this scope... declared here as a
+net`). This recurs identically across every baseline replicate of both
+modules, and does not appear in a single Qwen-model failure anywhere in
+Set 3 (checked directly against every `freq_div`/`freq_divbyeven` failure
+log for `qwen2.5-coder:14b`/`32b` — zero matches) — this is a
+gemma-specific generation habit, not a benchmark-difficulty artifact.
+
+**Under baseline** (`_build_baseline_feedback`: *"Fix ALL errors... Error
+output: [iverilog's message]"*), gemma3:27b reproduces the identical
+broken declaration for 5 of its 6 iterations (`MAX_RETRIES=6`, same cap
+as sem_adv — not a budget difference), then makes one wrong exploratory
+guess (`reg`→`wire`, still broken) on the last iteration. It never
+reaches the correct fix (`output reg CLK_50`, the ANSI-combined form)
+within budget. All 3 replicates fail 6/6 on both modules.
+
+**Under sem_adv**, the identical underlying error is wrapped in a longer,
+multi-layer, explicitly-labeled template (`_build_sem_adv_feedback`):
+Verilator's independently-worded restatement (`Duplicate declaration of
+signal: 'CLK_50'`) stacked next to iverilog's own message, under an
+explicit *"Read the SEMANTIC DIRECTIVES carefully — they give you the
+exact fix"* framing — **even though no real interpreted directive
+matched in the winning replicate** (`semantic_fired=0` — this is not
+Table 2's gated-input mechanism). Under that framing, gemma3:27b visibly
+explores more within the same 6-iteration budget — `wire` (iter 2) →
+`reg` again (iter 3) → the correct `output reg` form (iter 4, passes) —
+where baseline never got past its first two guesses.
+
+**Hypothesis: post-training alignment/instruction-following disposition,
+not a tokenizer quirk.** Nothing in the traced generations looks like
+token-level corruption — every identifier, literal, and comment inspected
+across every sample is clean ASCII; the bug is a deliberate, repeatable
+*stylistic* habit, not garbled output. What changes between conditions is
+how much explicit, emphatically-labeled, structured feedback text it
+takes to get gemma3:27b to change strategy — sem_adv's multi-layer
+template supplies that framing as a side effect of its length and
+structure, independent of whether the interpreter's semantic layer
+technically fires. Gemma 3 is a heavily RLHF/instruction-tuned
+"helpful-assistant" model line; that kind of alignment training plausibly
+rewards responding well to explicit, clearly-labeled "here is exactly
+what's wrong, read carefully" instructions, and may correspondingly
+under-respond to a terse one-line technical dump — the opposite
+disposition from the Qwen-coder family (code-completion-specialized,
+evidently parsing terse compiler output natively, and showing the
+*ordinary* harmful regime instead). **This is a hypothesis consistent
+with the traced data, not something verifiable against gemma's actual
+training regimen — we have no access to that, and don't claim to.**
+
 ---
 
 ## Escalation at scale: no harm, retained cost advantage — not a mechanism-backed win
