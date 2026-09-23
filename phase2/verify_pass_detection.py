@@ -32,7 +32,7 @@ pass_detection.py's registry, but per the runner-hardening brief it does
 NOT satisfy the pre-sbatch gate -- the version that gates the real HPC
 job must be run ON HPC, against the deployed RTLLM checkout and the same
 Icarus binaries the full run will actually use (see
-phase2/HPC_RTLCODER_COMMANDS.md). That HPC run is a manual step for
+docs/HPC_COMMANDS.md). That HPC run is a manual step for
 whoever has cluster access; this script does not attempt to SSH anywhere.
 
 Usage:

@@ -11,7 +11,7 @@ consumed together in one sitting, a different situation).
 Non-negotiable (see the analysis brief): pass/fail comes ONLY from
 master_log.json's own `pass` field -- detect_outcome() already did that
 work correctly (regression-verified 64/64, see
-IMP_PHASE2_RUNNER_HARDENING_REPORT.md §5). Nothing here re-derives
+docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md §5). Nothing here re-derives
 anything from sim logs.
 """
 import json

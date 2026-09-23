@@ -8,7 +8,7 @@ the new detect_outcome("rtllm") and re-derives per-cell pass/fail the
 SAME way the harness does at run time (first iteration whose simulation
 output reaches "PASS" -- see stitch_runner_hpc.run_iverilog_sim()), then
 diffs the result against phase2/results/twin_run_pilot/corrected_pass.json
--- the ground truth TWIN_PILOT_ANALYSIS.md built by manually re-scanning
+-- the ground truth TWIN_RUN_ANALYSIS.md (Appendix A) built by manually re-scanning
 every log for the literal "Design Passed" substring before this fix
 existed. If detect_outcome() is correct, this script's output must match
 corrected_pass.json exactly, cell for cell.
@@ -61,7 +61,7 @@ def _real_pass_from_disk(cell_dir):
     """Scans every iter_N/sim_log.txt present under cell_dir, in
     iteration order, and returns (real_pass, real_pass_iter) -- the
     iteration of the FIRST simulation whose output detect_outcome()s to
-    "PASS". This is exactly TWIN_PILOT_ANALYSIS.md's stated methodology
+    "PASS". This is exactly the twin-pilot analysis (TWIN_RUN_ANALYSIS.md, Appendix A)'s stated methodology
     ("what this analysis uses instead: the iteration of the first real
     pass"), just automated through the new shared detector instead of a
     manual "Design Passed" grep.

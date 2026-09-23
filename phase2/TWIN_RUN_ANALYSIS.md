@@ -1,6 +1,6 @@
 # Twin run (Set 2) — full-scale analysis
 
-**This document replaces `phase2/TWIN_PILOT_ANALYSIS.md` as the paper's
+**This document replaces the earlier twin pilot analysis (merged below as Appendix A) as the paper's
 Section 7 material.** The pilot (64/75 runs, 5 modules) was a
 correctness check on the harness, not a confirmatory result — its own
 verdict said so explicitly. This is the confirmatory run: 630/630
@@ -23,7 +23,7 @@ modules** this study covers (`edge_detect` and `square_wave` excluded —
 both were found, before this run, to pass with every output stuck at a
 constant wrong value, a defect in each design's own testbench check
 logic, not a `detect_outcome()` issue; see
-`IMP_PHASE2_RUNNER_HARDENING_REPORT.md` §6). Five model-conditions ×
+`docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md` §6). Five model-conditions ×
 N=3 replicates per module: RTLCoder-Deepseek-v1.1 (native and shared
 prompting), deepseek-coder:6.7b, gemma3:4b, and llama3.1:latest (the
 latter three, shared-prompting only — see `TWIN_RUN_PREREG.md` for why
@@ -36,7 +36,7 @@ Verilator/Yosys/interpreter anywhere in this run — this is **not** a
 STITCH-interpreter result in any cell). All pass/fail decisions come
 directly from `master_log.json`'s `pass` field, itself a product of the
 hardened `detect_outcome()` (regression-verified 64/64 against the
-pilot's own corrected ground truth — `IMP_PHASE2_RUNNER_HARDENING_REPORT.md`
+pilot's own corrected ground truth — `docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md`
 §5); nothing in this analysis re-derives anything from a `sim_log.txt`.
 Total passes across the full 42×5 grid: **193/630** (cross-checked
 against `table1.py`'s own independent sum).
@@ -214,7 +214,7 @@ say nothing, positive or negative, about the other 60%.
 
 ## Cross-references — revisiting the pilot's three findings at full N
 
-`TWIN_PILOT_ANALYSIS.md`'s Task 5 verdict stated three findings on 4-5
+The pilot's Task 5 verdict (Appendix A) stated three findings on 4-5
 modules of pilot data. Revisited here with 42 modules / 630 runs:
 
 1. **Pilot**: "No fine-tuning advantage is shown here, in either
@@ -271,3 +271,70 @@ Wilson stays well-behaved at small N and away from p=0.5, which the
 Wald interval does not (it can produce bounds outside [0,1] and
 under-covers near the extremes, both live risks here given `gemma3:4b
 shared`'s 4/51). Not derived by hand; the library call is the citation.
+
+---
+
+## Appendix A — the pilot that preceded this run (merged from the former `TWIN_PILOT_ANALYSIS.md`)
+
+The standalone pilot document was merged here so there is one Twin
+analysis, not two. Everything the pilot produced is either superseded by
+the numbers above or preserved below. The pilot's raw data lives in
+`phase2/results/twin_run_pilot/` (gitignored: `master_log.json` plus the
+manually built `corrected_pass.json`); its three watermarked figures
+("PILOT — 64/75 runs, 5 modules, N=3 at T=0.5, NOT confirmatory") are
+still in `phase2/graphs/`.
+
+**What the pilot was.** A first real HPC attempt at the twin comparison
+(5 modules: `accu`, `counter_12`, `barrel_shifter`, `alu`, `calendar`),
+stopped by the `--time=08:00:00` wall-clock limit at **64 of 75**
+pre-registered runs, 0 errors. The 11 missing runs were all `calendar`
+(the last module in run order), one of them partially executed
+(`calendar / rtlcoder / shared / replicate 2`, iterations 1-5 on disk, no
+verdict). No cell from an incomplete N=3 was folded into any table.
+
+**The bug it exposed (the pilot's real output).** Its raw `pass` field
+was wrong. `stitch_runner_hpc.py` checked for the case-sensitive
+substrings `"PASS"` / `"ALL TESTS PASSED"`; every RTLLM testbench prints
+`"Your Design Passed"`, which contains neither. Re-scanning all 64
+completed cells' `sim_log.txt` files for the literal `"Design Passed"`
+showed **20 of 64 (31%) had actually passed and were recorded as
+failures**, including every `counter_12` cell. It also corrupted
+trajectories: a cell that passed on iteration 1 was then told
+`SIMULATION FAILED` and burned the rest of its 8-iteration cap "fixing"
+correct code, so its recorded iteration count (always the cap) was
+meaningless. The pilot's corrected ground truth (`real_pass`, first real
+pass read from the sim logs) is what
+`phase2/regression_check_twin_pilot.py` later replays to verify the
+structural fix: 64/64 cells reproduced exactly (see
+`docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md` §5). The fix was structural
+(the `detect_outcome()` registry with a required `benchmark` argument),
+not a one-file patch. See `reSTITCH.md` Part 5, Defect C.
+
+**Corrected pilot results (5 modules, N=3, T=0.5).**
+
+| module | model-condition set | corrected pass | classification |
+|---|---|---|---|
+| `accu` | all 5 | 0/15 | floor |
+| `counter_12` | all 5 | 15/15 | ceiling |
+| `barrel_shifter` | all 5 | 1/15 (`deepseek-coder:6.7b` only, iteration 5) | near-floor |
+| `alu` | all 5 | 0/15 | floor |
+| `calendar` | RTLCoder only (4/4) | — | incomplete coverage, not classifiable |
+
+Two named comparisons, on the 4 modules with complete data:
+
+- **Fine-tuning twin (RTLCoder/shared vs deepseek-coder:6.7b/shared):**
+  three modules tie exactly (module ceiling/floor structure, not a model
+  difference); `barrel_shifter` separates 0/3 vs 1/3 *against* RTLCoder,
+  a single replicate, indistinguishable from noise at N=3.
+- **Prompt format (RTLCoder native vs shared):** zero separation on every
+  module with complete data.
+
+The pilot's verdict, kept because the full run confirmed it: *no
+fine-tuning advantage shown in either direction, no prompt-format effect
+readable*, because 4 of 5 modules sat at a uniform ceiling or floor and
+the recoverable band, where a difference could show, was almost entirely
+missed. It also noted (and this remains true of the full run) that the
+design has no STITCH-interpreter axis, since `condition` is fixed at
+`baseline`, so it is a model comparison, never a STITCH validation. The
+"Cross-references" section above records how each pilot finding fared at
+full scale.

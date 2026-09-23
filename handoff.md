@@ -43,7 +43,7 @@ directions to discuss with the user, not a committed plan.
 
 **Phase 2** (`phase2/`, fully committed, `results/` gitignored):
 - `SET1_ANALYSIS.md` — Set 1 (STITCH conditions on 3 small models).
-- `TWIN_RUN_ANALYSIS.md` (+ `TWIN_PILOT_ANALYSIS.md` for the earlier
+- `TWIN_RUN_ANALYSIS.md` (Appendix A holds the earlier
   pilot) — Set 2 (fine-tuning comparison).
 - `SET3_ANALYSIS.md` — Set 3 (STITCH conditions on 3 large models),
   including the just-added gemma3:27b mechanism trace.
@@ -58,8 +58,15 @@ directions to discuss with the user, not a committed plan.
   function directly, the other uses
   `importlib.util.spec_from_file_location`. If you add a fourth `_data.py`
   anywhere, expect this again.
-- `HPC_RTLCODER_COMMANDS.md` — the HPC runbook (deploy/monitor/collect
-  command reference, still accurate).
+- `docs/` (repo root) — repo-level documentation (moved here 2026-09-23; only
+  `handoff.md`, `README.md`, `reSTITCH.md`, `note.txt` and the PDFs stay at
+  the repo root). `docs/FULL_RUN_RUNBOOK.md` is the ordered procedure and
+  go/no-go gates for the three HPC runs; `docs/HPC_COMMANDS.md` is the
+  copy-paste command reference it links into (both current, covering Set 1,
+  Set 2 and Set 3 plus the post-wipe re-provisioning);
+  `docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md` is the pass-detection
+  (Bug #3 class) fix report; `docs/IMP_PHASE0ANALYSIS_CHANGELOG.md` is the
+  pre-Phase-1 changelog.
 - `rtlcoder_adapter.py` / `stitch_runner_hpc.py` — Linux-native HPC ports,
   validated end-to-end on H100.
 
@@ -79,16 +86,23 @@ every micro-edit.
 
 ## HPC cluster and models (get this right — it's asked about often)
 
-**Cluster**: BITS Hyderabad, `soumyaj@hpc.bits-hyderabad.ac.in`. Project
-root `/scratch/soumyaj/RTLCoderHPC/` (40GB home quota). `oss-cad-suite`
-(iverilog/verilator/yosys) at `/scratch/soumyaj/oss-cad-suite/bin`. `ollama`
-binary at `/scratch/soumyaj/AutoChipHPC/bin/ollama` (reused from an earlier
-project, not reinstalled — not on PATH by default, must be exported).
-GPU nodes: `gpunode4` (A100 80GB, `gpu_a100_8`), `gpunode6` (H100 80GB
-HBM3, `gpu_h100_4` — the one actually used for every real Phase 2 run).
-`gpunode5` drains intermittently, avoid it. Full copy-paste command
-sequences live in `phase2/HPC_RTLCODER_COMMANDS.md` — don't reconstruct
-from memory.
+**Cluster**: BITS Hyderabad, `soumyaj@hpc.bits-hyderabad.ac.in`. Scratch
+lives under `/scratch/soumyaj/`, one directory per run: `RTLCoderHPC/`
+(Set 2 / Twin; also holds the shared venv, RTLLM checkout, HF cache and the
+Ollama models for Sets 1-2), `Set1_HPC/` (Set 1), `Set3_HPC/` (Set 3, fully
+self-contained: own venv, RTLLM clone, ollama binary and models).
+`oss-cad-suite` (iverilog/verilator/yosys) at
+`/scratch/soumyaj/oss-cad-suite/bin`. **The scratch tree was wiped once
+mid-project** (RTLLM, oss-cad-suite, the ollama binary, all models and the
+venv); `docs/HPC_COMMANDS.md` Part 5 is the recovery sequence. Ollama does
+not run on the login node, only inside sbatch jobs, and the login node has
+no outbound internet.
+GPU nodes used: `gpunode4` (A100 80GB, `gpu_a100_8`, 5-day cap) ran **Set 1
+and Set 3**; `gpunode6` (H100 80GB, `gpu_h100_4`, 3-day cap) ran **Set 2 /
+Twin**; `gpunode7` (`gpu_h200_8`, 1-day cap) is a Twin fallback needing ~4
+resubmits. Set 1 and Set 2 ran concurrently on different nodes. Full
+copy-paste command sequences live in `docs/HPC_COMMANDS.md` and the ordered
+procedure in `docs/FULL_RUN_RUNBOOK.md` — don't reconstruct from memory.
 
 **Models, exactly as used per run** (do not blur these three sets together):
 - **Set 1** (small-model ladder, 4B–8B, STITCH conditions):
@@ -105,12 +119,16 @@ from memory.
   630 runs.
 - **Set 3** (large-model ladder, 14B–32B, STITCH conditions, mirrors Set 1
   exactly): `qwen2.5-coder:14b`, `qwen2.5-coder:32b`, `gemma3:27b` — all
-  via Ollama. Same 4 conditions, same 42-module pool, N=3, T=0.1.
+  via Ollama. Same 4 conditions, N=3, T=0.1, but **17 recoverable-band
+  modules only** (not the 42-module pool — ceilings/floors excluded since
+  Set 1 showed all conditions coincide there): 3 x 4 x 17 x 3 = 612 runs,
+  2 transient timeouts (both `qwen2.5-coder:32b`), 610 analyzed.
 
 If Phase 3 adds a new model tier or a new benchmark, follow this pattern —
 new `MODELS` list in a new/copied runner, explicit `benchmark=` kwarg for
-pass detection, N=3 minimum, same 42-module RTLLM pool unless there's a
-specific reason to diverge (and if so, say why in the analysis doc, the
+pass detection, N=3 minimum, the 42-module RTLLM pool (or its 17-module
+recoverable-band subset, as Set 3 did) unless there's a specific reason to
+diverge (and if so, say why in the analysis doc, the
 way Set 3 explicitly reused Set 1's difficulty tiers rather than
 recomputing them).
 
@@ -239,7 +257,7 @@ story, not pass-rate win; also fixed 2 harness bugs
 (`stitch_runner.py`, commit `a047d78`). Phase 2 built the HPC
 infrastructure, fixed the pass-detection Bug #3 class structurally
 (`pass_detection.py`), and ran three N=3 confirmatory studies (Set 1/2/3)
-totaling 1512+630+~1512 runs, fully reconciled into `reSTITCH.md`. Earlier
+totaling 630 + 1,512 + 612 = 2,754 runs, fully reconciled into `reSTITCH.md`. Earlier
 handoff versions (Phase 0→1, Phase 1→2) are in git history if the detailed
 reasoning is ever needed — this file only carries forward what's still
 load-bearing.

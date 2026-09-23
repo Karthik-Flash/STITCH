@@ -4,8 +4,8 @@ scale, on gpunode4 (A100, gpu_a100_8). Paper Graph Set 1: does
 sem_escalate beat MLCAD's always-on sem_adv on cost + pass rate.
 
 Setup brief: see git history / handoff for the "STITCH Full HPC Run"
-task this was built under. Read IMP_PHASE2_RUNNER_HARDENING_REPORT.md,
-phase2/HPC_RTLCODER_COMMANDS.md, and phase2/TWIN_RUN_PREREG.md first --
+task this was built under. Read docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md,
+docs/HPC_COMMANDS.md, and phase2/TWIN_RUN_PREREG.md first --
 this run reuses the hardened pass-detection registry and the twin run's
 already-solved Ollama-on-HPC infrastructure, doesn't reinvent either.
 
@@ -36,7 +36,7 @@ SCOPE: 42 modules (44-compatible RTLLM pool minus EXCLUDE, see below) x
 
 EXCLUDE = {"edge_detect", "square_wave"}: both are in the 44-compatible
 pool but pass with every output stuck at a constant wrong value --
-confirmed (IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4) to be a defect in
+confirmed (docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4) to be a defect in
 each design's OWN testbench check logic (edge_detect's error condition
 ANDs two independently-wrong-or-not checks instead of ORing them;
 square_wave's check only looks for "too many consecutive 1s", never
@@ -50,7 +50,7 @@ Pass detection: EVERY call site below routes through the ALREADY-hardened
 sr.run_one_condition()/escalation_runner_hpc.run_one_replicate(), which
 route through detect_outcome(sim_log, "rtllm") internally
 (src/interpreter/pass_detection.py) -- nothing here reimplements any part
-of that. See IMP_PHASE2_RUNNER_HARDENING_REPORT.md.
+of that. See docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md.
 
 Runs on gpunode4 via stitch_runner_hpc.py (the Linux-native HPC port,
 NOT src/runner/stitch_runner.py -- there is no wsl.exe on a compute
@@ -95,7 +95,7 @@ EXPECTED_MODULE_COUNT = 42
 
 # task_a_screen.json is gitignored (phase1/.gitignore) and never
 # committed -- on HPC it's scp'd flat alongside this script (see
-# FULL_RUN_RUNBOOK.md); locally it lives at its real repo path. Try the
+# docs/FULL_RUN_RUNBOOK.md); locally it lives at its real repo path. Try the
 # flat-deploy location first, fall back to the repo-relative dev path.
 _FLAT_SCREEN_JSON = os.path.join(_HERE, "task_a_screen.json")
 _DEV_SCREEN_JSON = os.path.join(_HERE, "..", "phase1", "results", "rtllm_pilot", "task_a_screen.json")
@@ -107,7 +107,7 @@ RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
 # Deliberately the SAME checkout the twin run (Set 2) reads -- RTLLM is
 # read-only I/O for both jobs, on different physical nodes, so sharing
 # one checkout is safe and avoids a second multi-hundred-MB clone. See
-# FULL_RUN_RUNBOOK.md's two-node-independence section.
+# docs/FULL_RUN_RUNBOOK.md's two-node-independence section.
 
 
 def _load_module_pool(rtllm_root=RTLLM_ROOT, task_a_screen_json=TASK_A_SCREEN_JSON):
@@ -124,7 +124,7 @@ def _load_module_pool(rtllm_root=RTLLM_ROOT, task_a_screen_json=TASK_A_SCREEN_JS
     study."""
     if not os.path.exists(task_a_screen_json):
         print(f"FATAL: {task_a_screen_json} not found. Deploy it alongside "
-              f"this script (see FULL_RUN_RUNBOOK.md) -- it's the "
+              f"this script (see docs/FULL_RUN_RUNBOOK.md) -- it's the "
               f"44-compatible-design pool phase1/rtllm_task_a_screen.py "
               f"already confirmed; this script does not re-derive it.")
         sys.exit(1)
@@ -247,7 +247,7 @@ def _verify_ollama_models():
               f"Available: {sorted(available)}. Run "
               f"phase2/pull_ollama_models.slurm once (it already pulls exactly "
               f"these 3 models -- Set 1 reuses Set 2's pull, see "
-              f"FULL_RUN_RUNBOOK.md), then resubmit.")
+              f"docs/FULL_RUN_RUNBOOK.md), then resubmit.")
         sys.exit(1)
     print(f"Ollama models confirmed present at {_OLLAMA_BASE_URL}: {MODELS}")
 

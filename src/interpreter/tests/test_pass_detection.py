@@ -14,7 +14,7 @@ from real HPC/laptop run output:
   - phase1/pwm_generator_fail_real.txt <- .../pwm_generator/iter_2/sim_log.txt
   - rtllm/counter_12_pass_real.txt  <- phase2/results/twin_run_pilot/native/
     replicate_1/rtlcoder-deepseek-v11/baseline/counter_12/iter_1/sim_log.txt
-    (this exact file is the one TWIN_PILOT_ANALYSIS.md's preamble names as
+    (this exact file is the one the twin-pilot analysis (TWIN_RUN_ANALYSIS.md, Appendix A)'s preamble names as
     the smoking-gun example of Bug #3: recorded "pass": false despite this
     literal content)
   - rtllm/accu_fail_real.txt         <- .../accu/iter_2/sim_log.txt (a real
@@ -75,7 +75,7 @@ def test_phase1_real_fail():
 
 
 def test_rtllm_real_pass():
-    """This exact fixture is the counter_12 log TWIN_PILOT_ANALYSIS.md's
+    """This exact fixture is the counter_12 log the twin-pilot analysis (TWIN_RUN_ANALYSIS.md, Appendix A)'s
     preamble names as the concrete example of Bug #3 in action: real
     twin-pilot output, literally "Your Design Passed", that the old
     hardcoded check recorded as a failure. This test is the regression

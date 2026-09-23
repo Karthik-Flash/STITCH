@@ -63,7 +63,7 @@ set -e
 
 # ── (a) PATH + venv ──────────────────────────────────────────────────────
 # venv is a FRESH build here (2026 scratch wipe -- the RTLCoderHPC venv
-# this used to symlink to is gone too; see SET3_RUNBOOK.md's setup
+# this used to symlink to is gone too; see docs/FULL_RUN_RUNBOOK.md's setup
 # section for the `python -m venv` + `pip install openai` steps). No
 # HF_HOME needed -- Ollama-only run, no torch/transformers.
 source /scratch/soumyaj/Set3_HPC/venv/bin/activate
@@ -71,7 +71,7 @@ export PATH=/scratch/soumyaj/Set3_HPC/bin:/scratch/soumyaj/oss-cad-suite/bin:$PA
 export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM
 # Deliberately the SAME checkout Set 1/Set 2 read -- RTLLM is read-only
 # I/O for every job; sharing one checkout avoids yet another
-# multi-hundred-MB clone. See FULL_RUN_RUNBOOK.md / SET3_RUNBOOK.md.
+# multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md / docs/FULL_RUN_RUNBOOK.md.
 export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set3_HPC/src/interpreter
 export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set3_HPC/task_a_screen.json
 export MODULE_CATEGORIES_JSON=/scratch/soumyaj/Set3_HPC/module_categories.json

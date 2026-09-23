@@ -11,7 +11,7 @@
 # scratch wipe): Set 3 originally planned to reuse qwen2.5-coder:14b/32b
 # and gemma3:27b from AutoChipHPC/ollama_models (already pulled for that
 # project, confirmed via manifest listing -- see
-# CC_SET3_SCALE_LADDER_BRIEF.md / set3_runner.py's earlier module
+# phase2/SET3_ANALYSIS.md / set3_runner.py's earlier module
 # docstring). The scratch tree holding that cache was fully wiped, so
 # that reuse is no longer possible -- Set 3 now pulls and owns its own
 # copy, under ITS OWN OLLAMA_MODELS directory, same self-contained

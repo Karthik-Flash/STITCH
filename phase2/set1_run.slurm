@@ -6,12 +6,12 @@
 #
 # SCOPE: 42 modules (44-compatible RTLLM pool minus
 # EXCLUDE={edge_detect, square_wave} -- weak-oracle testbenches, see
-# IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6) x 3 Ollama models
+# docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6) x 3 Ollama models
 # (gemma3:4b, llama3.1:latest, deepseek-coder:6.7b) x 4 conditions
 # (baseline, sem_adv, sem_escalate, sem_escalate_restart) x N=3 =
 # 1,512 runs. Module list is loaded from task_a_screen.json AT RUNTIME
 # by set1_runner.py (_load_module_pool()) -- never hardcoded here or
-# there. Estimated ~198h wall-clock (see FULL_RUN_RUNBOOK.md's estimate
+# there. Estimated ~198h wall-clock (see docs/FULL_RUN_RUNBOOK.md's estimate
 # table) -- does NOT fit in one job under this partition's 5-day cap;
 # expect 2 sequential sbatches (1st fills the 120h cap, 2nd cleans the
 # ~80h remainder). Re-submitting this SAME script picks up cleanly from
@@ -23,14 +23,14 @@
 # (on Node 2 / RTLCoderHPC -- it already pulls exactly the 3 models this
 # run also needs; Set 1 reuses that pull directly, via the SAME
 # OLLAMA_MODELS directory, read-only from here. No separate pull script
-# exists or is needed -- see FULL_RUN_RUNBOOK.md). This script FAILS
+# exists or is needed -- see docs/FULL_RUN_RUNBOOK.md). This script FAILS
 # LOUDLY, does not pull inline, if any of the 3 models aren't already
 # present (step (c) below), and set1_runner.py's own
 # _verify_ollama_models() checks again at the Python level as
 # belt-and-suspenders, same pattern twin_run.slurm/twin_run_runner.py
 # already established.
 #
-# TWO-NODE INDEPENDENCE (see FULL_RUN_RUNBOOK.md for the full checklist):
+# TWO-NODE INDEPENDENCE (see docs/FULL_RUN_RUNBOOK.md for the full checklist):
 # this job binds its OWN ollama serve to 127.0.0.1:11434 -- safe despite
 # twin_run.slurm doing the exact same thing, because gpunode4 and
 # gpunode6 are different physical nodes, each with its own loopback.
@@ -56,13 +56,13 @@ set -e
 # venv is a symlink to RTLCoderHPC's venv (identical Python deps --
 # openai, torch/transformers are NOT needed here, no RTLCoder in Set 1,
 # but reusing one venv is simpler than maintaining two -- see
-# FULL_RUN_RUNBOOK.md step 2). No HF_HOME needed -- Ollama-only run.
+# docs/FULL_RUN_RUNBOOK.md step 2). No HF_HOME needed -- Ollama-only run.
 source /scratch/soumyaj/Set1_HPC/venv/bin/activate
 export PATH=/scratch/soumyaj/AutoChipHPC/bin:/scratch/soumyaj/oss-cad-suite/bin:$PATH
 export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM
 # Deliberately the SAME checkout Set 2 reads -- RTLLM is read-only I/O
 # for both jobs, on different physical nodes; sharing one checkout avoids
-# a second multi-hundred-MB clone. See FULL_RUN_RUNBOOK.md.
+# a second multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md.
 export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set1_HPC/src/interpreter
 export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set1_HPC/task_a_screen.json
 echo "=== which ollama / iverilog ==="
@@ -117,7 +117,7 @@ if [ "$MISSING" -ne 0 ]; then
     echo "  OLLAMA_MODELS=$OLLAMA_MODELS. Run"
     echo "  'sbatch /scratch/soumyaj/RTLCoderHPC/pull_ollama_models.slurm'"
     echo "  once (on Node 2 -- Set 1 does not have its own pull script,"
-    echo "  see FULL_RUN_RUNBOOK.md), then resubmit this job."
+    echo "  see docs/FULL_RUN_RUNBOOK.md), then resubmit this job."
     exit 1  # trap above still fires and kills OLLAMA_PID
 fi
 echo "All 3 Ollama models present."

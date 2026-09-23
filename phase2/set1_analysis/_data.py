@@ -5,7 +5,7 @@ extraction for the Set 1 (STITCH conditions on RTLLM) analysis scripts.
 Non-negotiable (see the analysis brief): pass/fail comes ONLY from
 master_log.json's own `pass` field -- detect_outcome() already did that
 work correctly (regression-verified 64/64, see
-IMP_PHASE2_RUNNER_HARDENING_REPORT.md). Nothing here re-derives anything
+docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md). Nothing here re-derives anything
 from a sim_log.txt.
 
 Difficulty tiers and functional classes are INHERITED VERBATIM from

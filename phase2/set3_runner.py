@@ -4,7 +4,7 @@ sweep as Set 1 (baseline/sem_adv/sem_escalate/sem_escalate_restart), but
 on 3 larger Ollama models (14B-32B) the conference paper's Table 2 tested
 and the extension has not yet run, restricted to the recoverable-band
 module pool only. Runs on gpunode4 (A100, gpu_a100_8), same partition
-Set 1 used -- see CC_SET3_SCALE_LADDER_BRIEF.md for the research
+Set 1 used -- see phase2/SET3_ANALYSIS.md for the research
 question this answers: does the harmful regime (`sem_adv` below
 `baseline` on the recoverable band, `phase2/SET1_ANALYSIS.md`'s tier-split
 result) persist as model capability rises from 4B to 32B, or does it
@@ -112,7 +112,7 @@ EXPECTED_MODULE_COUNT = 17
 
 # task_a_screen.json is gitignored (phase1/.gitignore) and never
 # committed -- on HPC it's scp'd flat alongside this script (see
-# SET3_RUNBOOK.md); locally it lives at its real repo path. Try the
+# docs/FULL_RUN_RUNBOOK.md); locally it lives at its real repo path. Try the
 # flat-deploy location first, fall back to the repo-relative dev path.
 # Identical resolution logic to set1_runner.py.
 _FLAT_SCREEN_JSON = os.path.join(_HERE, "task_a_screen.json")
@@ -123,7 +123,7 @@ TASK_A_SCREEN_JSON = os.environ.get("TASK_A_SCREEN_JSON") or (
 
 # module_categories.json (Twin's tier assignment, REUSED VERBATIM -- see
 # module docstring). Same flat-deploy-first, dev-path-fallback pattern.
-# On HPC this is scp'd flat alongside this script (see SET3_RUNBOOK.md);
+# On HPC this is scp'd flat alongside this script (see docs/FULL_RUN_RUNBOOK.md);
 # locally it lives at its real current repo path (NOTE the rename this
 # session -- phase2/twin_analysis/ -> phase2/twin_analysis_SET2/).
 _FLAT_CATEGORIES_JSON = os.path.join(_HERE, "module_categories.json")
@@ -135,7 +135,7 @@ MODULE_CATEGORIES_JSON = os.environ.get("MODULE_CATEGORIES_JSON") or (
 RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
 # Deliberately the SAME checkout Set 1/Set 2 read -- RTLLM is read-only
 # I/O for every job; sharing one checkout avoids yet another
-# multi-hundred-MB clone. See FULL_RUN_RUNBOOK.md's two-node-independence
+# multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md's two-node-independence
 # section (Set 3 extends the same reasoning to a third node/job).
 
 
@@ -148,7 +148,7 @@ def _load_recoverable_names(categories_json=MODULE_CATEGORIES_JSON):
     immediately, not quietly run a differently-scoped study."""
     if not os.path.exists(categories_json):
         print(f"FATAL: {categories_json} not found. Deploy it alongside "
-              f"this script (see SET3_RUNBOOK.md) -- it's Twin's own "
+              f"this script (see docs/FULL_RUN_RUNBOOK.md) -- it's Twin's own "
               f"tier assignment (phase2/twin_analysis_SET2/categorize.py's "
               f"output); this script does not re-derive it.")
         sys.exit(1)
@@ -180,7 +180,7 @@ def _load_module_pool(rtllm_root=RTLLM_ROOT, task_a_screen_json=TASK_A_SCREEN_JS
 
     if not os.path.exists(task_a_screen_json):
         print(f"FATAL: {task_a_screen_json} not found. Deploy it alongside "
-              f"this script (see SET3_RUNBOOK.md) -- it's the "
+              f"this script (see docs/FULL_RUN_RUNBOOK.md) -- it's the "
               f"44-compatible-design pool phase1/rtllm_task_a_screen.py "
               f"already confirmed; this script does not re-derive it.")
         sys.exit(1)
@@ -294,7 +294,7 @@ def _verify_ollama_models():
               f"these 3 models are expected to already be present under "
               f"OLLAMA_MODELS=/scratch/soumyaj/AutoChipHPC/ollama_models "
               f"(pulled for the AutoChip project). Confirm with `ollama list` "
-              f"against that path (see SET3_RUNBOOK.md); if genuinely "
+              f"against that path (see docs/FULL_RUN_RUNBOOK.md); if genuinely "
               f"missing, pull them there first, then resubmit.")
         sys.exit(1)
     print(f"Ollama models confirmed present at {_OLLAMA_BASE_URL}: {MODELS}")

@@ -46,7 +46,7 @@ rather than silently defaulting:
 
 (edge_detect would also fall under signal_processing by this scheme,
 but it's excluded from this run entirely -- see
-IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6 -- so it never reaches this
+docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6 -- so it never reaches this
 classification; not listed in MISC_SUBCLASS on purpose.)
 
 Usage: python phase2/twin_analysis/categorize.py

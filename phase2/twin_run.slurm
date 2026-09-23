@@ -2,16 +2,16 @@
 # phase2/twin_run.slurm -- Set 2: the RTLCoder twin-comparison run, full
 # RTLLM scale (revised 2026-08-25, was the 75-run pilot).
 # Design: phase2/TWIN_RUN_PREREG.md. Deploy + verify steps:
-# phase2/HPC_RTLCODER_COMMANDS.md section 10.
+# docs/HPC_COMMANDS.md section 10.
 #
 # SCOPE (revised 2026-08-25): 42 modules (44-compatible RTLLM pool minus
 # EXCLUDE={edge_detect, square_wave} -- weak-oracle testbenches, see
-# IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6) x 5 model-conditions
+# docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md §4/§6) x 5 model-conditions
 # (RTLCoder native+shared, 3 Ollama models shared-only) x N=3 = 630 runs.
 # Module list is loaded from task_a_screen.json AT RUNTIME by
 # twin_run_runner.py (_load_module_pool()) -- NOT hardcoded here or
 # there; the pilot's 5-module subset is retired. Estimated ~82h
-# wall-clock (see FULL_RUN_RUNBOOK.md's estimate table) -- does NOT fit
+# wall-clock (see docs/FULL_RUN_RUNBOOK.md's estimate table) -- does NOT fit
 # in one job under this partition's 3-day cap, expect 2 sequential
 # sbatches (this script re-submitted after the first hits --time; the
 # runner resumes from master_log.json's already-done cells, same
@@ -47,7 +47,7 @@ export PATH=/scratch/soumyaj/AutoChipHPC/bin:/scratch/soumyaj/oss-cad-suite/bin:
 # where src/interpreter/ (stitch_interpreter.py, pass_detection.py) and
 # task_a_screen.json actually landed explicitly, rather than relying on
 # a "../src/interpreter" relative guess from a flat deploy. See
-# FULL_RUN_RUNBOOK.md's deployment section for exactly what goes where.
+# docs/FULL_RUN_RUNBOOK.md's deployment section for exactly what goes where.
 export STITCH_INTERPRETER_DIR=/scratch/soumyaj/RTLCoderHPC/src/interpreter
 export TASK_A_SCREEN_JSON=/scratch/soumyaj/RTLCoderHPC/task_a_screen.json
 echo "=== which ollama / iverilog ==="

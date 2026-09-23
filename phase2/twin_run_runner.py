@@ -92,7 +92,7 @@ import rtlcoder_adapter as rc   # noqa: E402
 
 RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
 # FIX 2026-08-25: this default used to be "/scratch/soumyaj/RTLLM" --
-# inconsistent with HPC_RTLCODER_COMMANDS.md's actual documented layout
+# inconsistent with docs/HPC_COMMANDS.md's actual documented layout
 # (RTLLM lives at RTLCoderHPC/RTLLM, section 0). Harmless in practice
 # since twin_run.slurm always sources env.sh first, which sets
 # $RTLLM_ROOT explicitly before this module ever loads -- but a latent
@@ -155,7 +155,7 @@ sr.MAX_RETRIES = MAX_ITERS
 # phase1/rtllm_pilot_runner.py).
 CATEGORIES = ["Arithmetic", "Control", "Memory", "Miscellaneous"]
 EXCLUDE = {"edge_detect", "square_wave"}  # weak-oracle testbenches -- see
-                                           # IMP_PHASE2_RUNNER_HARDENING_REPORT.md
+                                           # docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md
                                            # §4/§6. RTLLM-precedent move:
                                            # matches their own 50->44
                                            # exclusion for a defect in a
@@ -179,7 +179,7 @@ def _load_module_pool(rtllm_root=RTLLM_ROOT, task_a_screen_json=TASK_A_SCREEN_JS
     convention. HARD ASSERTS exactly 42 survive the EXCLUDE filter."""
     if not os.path.exists(task_a_screen_json):
         print(f"FATAL: {task_a_screen_json} not found. Deploy it alongside "
-              f"this script (see FULL_RUN_RUNBOOK.md) -- it's the "
+              f"this script (see docs/FULL_RUN_RUNBOOK.md) -- it's the "
               f"44-compatible-design pool phase1/rtllm_task_a_screen.py "
               f"already confirmed; this script does not re-derive it.")
         sys.exit(1)
@@ -387,7 +387,7 @@ def _run_one_cell(design, category, model, prompt_condition, spec, testbench_dir
         # run_iverilog_sim() hardcoded the "PASS"/"ALL TESTS PASSED"
         # check, which RTLLM's "Your Design Passed" testbenches never
         # matched, so every genuine pass in the twin pilot was silently
-        # recorded as a failure (see phase2/TWIN_PILOT_ANALYSIS.md's
+        # recorded as a failure (see phase2/TWIN_RUN_ANALYSIS.md Appendix A's
         # preamble). All MODULES here are RTLLM designs -- see
         # pass_detection.py for the registry this now routes through.
         benchmark="rtllm",
@@ -498,7 +498,7 @@ def _verify_ollama_models():
     missing model itself: an inline pull mid-run risks silently eating
     real wall-clock budget on a multi-GB download inside the timed job;
     missing models are a setup gap to fix and re-launch, not something
-    to paper over here (see phase2/HPC_RTLCODER_COMMANDS.md's
+    to paper over here (see docs/HPC_COMMANDS.md's
     pull_ollama_models.slurm, a dedicated one-time step)."""
     needed = sorted({m for m, cond in MODEL_CONDITIONS if m != RTLCODER_MODEL})
     try:
@@ -515,7 +515,7 @@ def _verify_ollama_models():
         print(f"FATAL: Ollama server at {_OLLAMA_BASE_URL} is missing: {missing}. "
               f"Available: {sorted(available)}. Run "
               f"phase2/pull_ollama_models.slurm once before launching this run "
-              f"-- see phase2/HPC_RTLCODER_COMMANDS.md §10. Not pulling "
+              f"-- see docs/HPC_COMMANDS.md §10. Not pulling "
               f"inline here (would eat this job's own wall-clock budget on a "
               f"multi-GB download).")
         sys.exit(1)

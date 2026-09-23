@@ -70,7 +70,7 @@ Direct grep across all 50 `testbench.v` files under `D:\Projects\RTLLM`:
 `src/interpreter/tests/test_pass_detection.py` — 13 tests, all passing:
 
 - One real-pass + real-fail test per registered benchmark, using **actual captured `sim_log.txt` fragments** (not synthetic strings), stored as fixtures under `src/interpreter/tests/fixtures/pass_detection/{phase1,rtllm}/`:
-  - `rtllm/counter_12_pass_real.txt` — this is the *exact* file `TWIN_PILOT_ANALYSIS.md`'s preamble names as the smoking-gun example of the live bug (recorded `"pass": false` despite this literal content). This test is the regression guard for that specific finding.
+  - `rtllm/counter_12_pass_real.txt` — this is the *exact* file the twin-pilot analysis (`phase2/TWIN_RUN_ANALYSIS.md`, Appendix A) preamble names as the smoking-gun example of the live bug (recorded `"pass": false` despite this literal content). This test is the regression guard for that specific finding.
   - `rtllm/accu_fail_real.txt`, `rtllm/barrel_shifter_fail_real.txt` — two different real fail wordings (`"===========Error==========="` vs `"Test completed with N failures"`), confirming `fail_patterns` isn't tuned to one observed form.
   - `phase1/alu_8bit_pass_real.txt`, `phase1/pwm_generator_fail_real.txt` — real Phase-1-convention captures.
 - Edge cases (deliberately constructed, documented as such in the file): empty log, warnings-only log, phase1's case-sensitivity guard (lower-case `"passed"` must NOT satisfy the upper-case `"PASS"` pattern — this is literally the Bug #3 mechanism run as a regression guard), pass-word-in-unrelated-text false-positive guard, fail-dominant tie-break for both benchmarks, unregistered-benchmark raise.
@@ -115,7 +115,7 @@ run on an HPC compute node, against the deployed RTLLM checkout and the same Ica
 
 ## 5. Twin-pilot regression check (`phase2/regression_check_twin_pilot.py`)
 
-Replays all 445 real, on-disk `sim_log.txt` files from the 64-run twin pilot (`phase2/results/twin_run_pilot/`, gitignored but present locally) through the new `detect_outcome()`, re-deriving each cell's pass/fail the same way the harness does (first iteration whose simulation reaches PASS), and diffs against `corrected_pass.json` — the manually-verified ground truth `TWIN_PILOT_ANALYSIS.md` built before this fix existed.
+Replays all 445 real, on-disk `sim_log.txt` files from the 64-run twin pilot (`phase2/results/twin_run_pilot/`, gitignored but present locally) through the new `detect_outcome()`, re-deriving each cell's pass/fail the same way the harness does (first iteration whose simulation reaches PASS), and diffs against `corrected_pass.json` — the manually-verified ground truth the twin-pilot analysis (`phase2/TWIN_RUN_ANALYSIS.md`, Appendix A) built before this fix existed.
 
 **Result: 64/64 cells match exactly.** The aggregated grid also reproduces the brief's stated numbers exactly:
 
@@ -135,7 +135,7 @@ No deviation found — the fix is correct and the original manual analysis was c
 
 1. **Run `verify_pass_detection.py` on HPC** against the deployed `$RTLLM_ROOT` and the real Icarus build — this is the actual gate, not the local run reported in §4. Everything needed is in the script; it needs no code changes to run there (dual-mode already handles native Linux).
 2. **8 non-green rows in the local golden/broken check are explained but not eliminated** (§4). None indicate a `detect_outcome()` defect, but they mean `verify_pass_detection.py` itself won't print a clean "ALL GREEN" even on HPC for these 8 designs' *broken* half — the HPC runner should expect and cross-check against this same explained set, not treat non-green broken-rows as an automatic abort signal without reading why.
-3. Re-deploy `phase2/stitch_runner_hpc.py` to HPC (it changed in this fix — new `benchmark` kwarg, `detect_outcome()` import) and re-confirm both prior fix signatures (Bug #1, Bug #2) are still present, per this project's existing deploy-verification discipline (`HPC_RTLCODER_COMMANDS.md`).
+3. Re-deploy `phase2/stitch_runner_hpc.py` to HPC (it changed in this fix — new `benchmark` kwarg, `detect_outcome()` import) and re-confirm both prior fix signatures (Bug #1, Bug #2) are still present, per this project's existing deploy-verification discipline (`docs/HPC_COMMANDS.md`).
 4. Also deploy the new `src/interpreter/pass_detection.py` alongside `stitch_interpreter.py` (same directory, same import pattern) — `stitch_runner_hpc.py` now imports it.
 
 ---

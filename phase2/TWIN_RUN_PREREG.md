@@ -170,7 +170,7 @@ setting.
    pushed). This sidesteps "is the HPC copy stale?" entirely rather than
    trying to inspect a filesystem this session has no access to: it
    doesn't reuse whatever, if anything, already exists on HPC — the
-   deploy step in `HPC_RTLCODER_COMMANDS.md` overwrites it fresh. A
+   deploy step in `docs/HPC_COMMANDS.md` overwrites it fresh. A
    mechanical diff against the real source file (not just a visual
    read) confirmed every function outside the three WSL-specific tool
    invocations is logically byte-identical (only comments/docstrings
@@ -178,7 +178,7 @@ setting.
    WSL/`wsl.exe` invocations remain in the ported file. Both fix
    signatures (`cwd=iter_dir` for bug #2, the fence-stripping `re.sub`
    for bug #1) are grep-verifiable in the shipped file, and
-   `HPC_RTLCODER_COMMANDS.md` has the user run the same grep after
+   `docs/HPC_COMMANDS.md` has the user run the same grep after
    deploying, as an independent second confirmation on the actual node
    — **still step 1 before launch, unchanged by this revision.**
 2. **oss-cad-suite on PATH.** Baked directly into `twin_run.slurm`

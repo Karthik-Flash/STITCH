@@ -15,7 +15,7 @@ are defended BEFORE any real benchmark run:
                            compiles it. This is the exact contract that
                            silently broke RTLLM before (phase1 pilot).
 
-Run this on HPC (see phase2/HPC_RTLCODER_COMMANDS.md) -- it needs the
+Run this on HPC (see docs/HPC_COMMANDS.md) -- it needs the
 real model loaded via transformers and a GPU (or CPU, slow but same code
 path). Native-Linux only: HPC compute nodes run Linux directly, so this
 calls iverilog/vvp as plain subprocesses -- no WSL wrapper, unlike
@@ -226,7 +226,7 @@ def main():
     spec_path = os.path.join(module_dir, "design_description.txt")
     if not os.path.exists(spec_path):
         print(f"FATAL: {spec_path} not found -- pass --rtllm-root pointing "
-              f"at a real RTLLM checkout (see HPC_RTLCODER_COMMANDS.md).")
+              f"at a real RTLLM checkout (see docs/HPC_COMMANDS.md).")
         sys.exit(1)
     with open(spec_path, encoding="utf-8") as f:
         spec = f.read()

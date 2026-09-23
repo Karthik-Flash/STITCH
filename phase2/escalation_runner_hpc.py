@@ -51,7 +51,7 @@ import time
 from dataclasses import asdict, dataclass
 from typing import Optional
 
-# Deploy convention (see phase2/FULL_RUN_RUNBOOK.md): this file and
+# Deploy convention (see docs/FULL_RUN_RUNBOOK.md): this file and
 # stitch_runner_hpc.py are scp'd flat into the SAME directory on HPC
 # (e.g. /scratch/soumyaj/Set1_HPC/ or /scratch/soumyaj/RTLCoderHPC/) --
 # "look in my own directory" is therefore the correct and only assumption
@@ -71,7 +71,7 @@ sys.path.insert(0, _HERE)
 # error_signature.py / escalation_state.py are pure Python (no
 # subprocess/WSL dependency -- confirmed by reading both), so they don't
 # need an HPC-specific port, just deployment somewhere importable. HPC
-# deploy convention (FULL_RUN_RUNBOOK.md): scp'd flat alongside this file
+# deploy convention (docs/FULL_RUN_RUNBOOK.md): scp'd flat alongside this file
 # (found by the sys.path entry above). Local/dev fallback: the repo's
 # real phase1/ location, so this file also runs unmodified from a full
 # repo checkout without duplicating either source file there.
@@ -116,7 +116,7 @@ def _extract_code(llm_out: str) -> str:
     run_one_condition(), not a standalone function -- keep both in sync
     if either changes (same duplication phase1/escalation_runner.py
     already carries against src/runner/stitch_runner.py; flagged as a
-    Bug-#3-shaped divergence risk in IMP_PHASE2_RUNNER_HARDENING_REPORT.md
+    Bug-#3-shaped divergence risk in docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md
     §7 -- unchanged by this port)."""
     match = re.search(r"```(?:verilog)?(.*?)```", llm_out, re.DOTALL)
     if match:

@@ -25,7 +25,7 @@ not from any prior copy that might already exist on HPC. That sidesteps
 the "is the HPC copy old?" question entirely rather than trying to
 inspect a filesystem this session has no access to: this port is
 guaranteed correct at the moment it's written because it's built FROM
-the verified-fixed source, and phase2/HPC_RTLCODER_COMMANDS.md's twin-run
+the verified-fixed source, and docs/HPC_COMMANDS.md's twin-run
 section has the user re-deploy this exact file (not reuse whatever, if
 anything, is already up there) plus a grep-based post-deploy check for
 both fix signatures, so there's an independent confirmation step too.
@@ -55,7 +55,7 @@ from openai import OpenAI
 
 # DEPLOYMENT PATH ROBUSTNESS (2026-08-25, added while building Set 1's
 # full-run harness): this file is scp'd FLAT onto HPC (no repo tree
-# around it -- see phase2/FULL_RUN_RUNBOOK.md), so the repo-relative
+# around it -- see docs/FULL_RUN_RUNBOOK.md), so the repo-relative
 # guess "../src/interpreter" only resolves correctly if src/interpreter/
 # happens to land exactly one level above wherever this file is deployed
 # -- an assumption nothing actually verifies. STITCH_INTERPRETER_DIR lets

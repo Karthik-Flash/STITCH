@@ -37,7 +37,7 @@ convention (for a controlled comparison against deepseek-coder:6.7b under
 identical prompting) is an open decision, NOT made here -- flagged in
 phase1/PHASE1_FINDINGS.md and left for that design conversation.
 
-Usage (on HPC only -- see phase2/HPC_RTLCODER_COMMANDS.md):
+Usage (on HPC only -- see docs/HPC_COMMANDS.md):
     from rtlcoder_adapter import generate
     code = generate(prompt)
 """
@@ -52,7 +52,7 @@ _tokenizer = None
 
 def _check_hf_home():
     """HF_HOME must point at scratch, not home (40GB quota on HPC) -- see
-    HPC_RTLCODER_COMMANDS.md. Warn, don't fail: this matters on HPC, is a
+    docs/HPC_COMMANDS.md. Warn, don't fail: this matters on HPC, is a
     non-issue for a local smoke test off scratch, and transformers will
     still work correctly either way (it just risks filling home quota)."""
     hf_home = os.environ.get("HF_HOME")
@@ -61,7 +61,7 @@ def _check_hf_home():
               "weights under ~/.cache/huggingface by default -- on HPC "
               "that's the 40GB HOME quota, not /scratch. Export HF_HOME "
               "to a scratch path before loading the model there (see "
-              "phase2/HPC_RTLCODER_COMMANDS.md).")
+              "docs/HPC_COMMANDS.md).")
     return hf_home
 
 
@@ -84,7 +84,7 @@ def load_model(model_id=MODEL_ID, device_map="auto"):
     except ImportError as e:
         raise RuntimeError(
             "FAILED to import torch/transformers. Activate the venv set "
-            "up per phase2/HPC_RTLCODER_COMMANDS.md (pip install -r "
+            "up per docs/HPC_COMMANDS.md (pip install -r "
             "requirements first) before running this adapter. "
             f"Underlying error: {type(e).__name__}: {e}"
         ) from e
@@ -102,7 +102,7 @@ def load_model(model_id=MODEL_ID, device_map="auto"):
             "under HF_HOME. Fix: download the weights first, either (a) "
             "via an sbatch job on a compute node with internet, or (b) "
             "on your laptop + `scp` the HF_HOME cache directory over -- "
-            "both documented in phase2/HPC_RTLCODER_COMMANDS.md. Do NOT "
+            "both documented in docs/HPC_COMMANDS.md. Do NOT "
             "retry blindly; this adapter will not silently fall back to "
             "an empty or randomly-initialized model. "
             f"Underlying error: {type(e).__name__}: {e}"
