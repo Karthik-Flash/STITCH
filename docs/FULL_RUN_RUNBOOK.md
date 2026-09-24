@@ -297,3 +297,11 @@ Part 8. The most common causes, in the order to check them:
    `RTLCoderHPC/ollama_models`).
 5. Job pending with `(Resources)`: the node is busy. Wait, or override the node
    and partition at submit time (Part 7.2).
+
+## 9. Phase 3 (planned)
+
+Phase 3 (MPSoC composition + interpreter v3) is a separate run with its own scratch directory and its own procedure:
+follow `phase3/HPC_PHASE3_COMMANDS.md`, Parts A-I (preflight, deploy, gate, model pull, pilot, full run, monitor,
+compose + summary, download). The gate rule carries over from Sets 1-3 and is stricter: **nothing GPU-side is
+submitted before the Part C gate job prints `ALL GATES PASSED`**, and the full 990-run job is not submitted before the
+Part E pilot has been reviewed. Sections 1-8 above describe Sets 1-3 only.

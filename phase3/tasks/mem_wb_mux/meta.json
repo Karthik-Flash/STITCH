@@ -1,0 +1,20 @@
+{
+  "track": "R",
+  "source": "MPSoC Source Codes/processor/mem_wb_mux.v",
+  "top": "mem_wb_mux",
+  "defect_classes": [
+    "LATCH"
+  ],
+  "sim_silent": true,
+  "compose": {
+    "design": "mpsoc",
+    "file": "mem_wb_mux.v"
+  },
+  "instances_in_mpsoc": 1,
+  "expected_v3_classes": [
+    "LATCH"
+  ],
+  "expected_v2_classes": [
+    "LATCH"
+  ]
+}

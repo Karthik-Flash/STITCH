@@ -1,0 +1,153 @@
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:66:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   66 |  register_risc[0]=32'd0;
+      |                  ^
+                 ... For warning description see https://verilator.org/warn/BLKSEQ?v=5.020
+                 ... Use "/* verilator lint_off BLKSEQ */" and lint_on around source to disable this message.
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:67:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   67 |  register_risc[1]=32'd2;
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:68:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   68 |  register_risc[2]=32'd4;
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:69:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   69 |  register_risc[3]=32'd3;
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:70:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   70 |  register_risc[4]=32'd4;
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:71:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   71 |  register_risc[5]=32'd6; 
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:72:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   72 |  register_risc[6]=32'd1; 
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:73:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   73 |  register_risc[7]=32'd2;
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:74:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   74 |  register_risc[8]=32'd1; 
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:75:18: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   75 |  register_risc[9]=32'd10; 
+      |                  ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:76:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   76 |  register_risc[10]=32'd10;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:77:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   77 |  register_risc[11]=32'd11;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:78:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   78 |  register_risc[12]=32'd12;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:79:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   79 |  register_risc[13]=32'd13;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:80:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   80 |  register_risc[14]=32'd14;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:81:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   81 |  register_risc[15]=32'd15;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:82:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   82 |  register_risc[16]=32'd16;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:83:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   83 |  register_risc[17]=32'd17;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:84:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   84 |  register_risc[18]=32'd18;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:85:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   85 |  register_risc[19]=32'd19;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:86:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   86 |  register_risc[20]=32'd20;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:87:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   87 |  register_risc[21]=32'd21;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:88:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   88 |  register_risc[22]=32'd22;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:89:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   89 |  register_risc[23]=32'd23;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:90:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   90 |  register_risc[24]=32'd24;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:91:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   91 |  register_risc[25]=32'd25;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:92:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   92 |  register_risc[26]=32'd26;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:93:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   93 |  register_risc[27]=32'd27;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:94:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   94 |  register_risc[28]=32'd28;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:95:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   95 |  register_risc[29]=32'd29;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:96:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   96 |  register_risc[30]=32'd30;
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:97:19: Blocking assignment '=' in sequential logic process
+                                                                          : ... Suggest using delayed assignment '<='
+   97 |  register_risc[31]=32'd31;
+      |                   ^
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:101:2: Latch inferred for signal 'output_data_1' (not all control paths of combinational always assign a value)
+                                                                         : ... Suggest use of always_latch for intentional latches
+  101 |  always @(*) begin 
+      |  ^~~~~~
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:101:2: Latch inferred for signal 'output_data_2' (not all control paths of combinational always assign a value)
+                                                                         : ... Suggest use of always_latch for intentional latches
+  101 |  always @(*) begin 
+      |  ^~~~~~
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:101:2: Latch inferred for signal 'Decoder.register_risc' (not all control paths of combinational always assign a value)
+                                                                         : ... Suggest use of always_latch for intentional latches
+  101 |  always @(*) begin 
+      |  ^~~~~~
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:101:2: Latch inferred for signal 'sign_extend' (not all control paths of combinational always assign a value)
+                                                                         : ... Suggest use of always_latch for intentional latches
+  101 |  always @(*) begin 
+      |  ^~~~~~
+%Warning-UNOPTFLAT: /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:39:13: Signal unoptimizable: Circular combinational logic: 'Decoder.register_risc'
+   39 |  reg [31:0] register_risc [31:0]; 
+      |             ^~~~~~~~~~~~~
+                    /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:39:13:      Example path: Decoder.register_risc
+                    /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:101:2:      Example path: ALWAYS
+                    /home/claude/stitch_ext/compose/mpsoc_ref/Decoder.v:39:13:      Example path: Decoder.register_risc
+%Error: Exiting due to 37 warning(s)

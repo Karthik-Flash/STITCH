@@ -1,0 +1,19 @@
+%Warning-MULTIDRIVEN: multi.v:1:68: Bits [0:0] of signal 'w' have multiple combinational drivers
+                                  : ... note: In instance 'multi_t'
+                      multi.v:4:12: ... Location of first driver
+    4 |   assign w = d;
+      |            ^
+                      multi.v:5:12: ... Location of other driver
+    5 |   assign w = ~d;
+      |            ^
+                      multi.v:1:68: ... Only the first driver will be respected
+                      ... For warning description see https://verilator.org/warn/MULTIDRIVEN?v=5.020
+                      ... Use "/* verilator lint_off MULTIDRIVEN */" and lint_on around source to disable this message.
+%Warning-MULTIDRIVEN: multi.v:1:58: Signal has multiple driving blocks with different clocking: 'q'
+                      multi.v:3:49: ... Location of first driving block
+    3 |   always @(posedge clk or posedge rst) if (rst) q <= 1'b0;
+      |                                                 ^
+                      multi.v:2:25: ... Location of other driving block
+    2 |   always @(posedge clk) q <= d;
+      |                         ^
+%Error: Exiting due to 2 warning(s)

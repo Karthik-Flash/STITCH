@@ -261,3 +261,40 @@ totaling 630 + 1,512 + 612 = 2,754 runs, fully reconciled into `reSTITCH.md`. Ea
 handoff versions (Phase 0→1, Phase 1→2) are in git history if the detailed
 reasoning is ever needed — this file only carries forward what's still
 load-bearing.
+
+---
+
+## Phase 3 status (2026-09-24)
+
+This section supersedes the "Phase 3 not yet scoped" wording above. Phase 3 is scoped and integrated on branch
+`phase3-setup` (cut from `main` at `672573d`, not pushed, not yet run on the HPC).
+
+**What landed.** `phase3/` (MPSoC composition benchmark: 11 repair tasks, 3 reference designs, 5-condition runner,
+composition tool, 44 tests on frozen real logs, HPC scripts, evidence, docs) and the additive interpreter v3 layer
+`src/interpreter/stitch_interpreter_v3.py` + `_v3_parsers.py`. `src/interpreter/stitch_interpreter.py` is untouched
+(sha256 of the LF-normalised file `42f61a49...2abff`, checked in T0 and again by `validate_tasks.py`). Start with
+`phase3/README.md`, then `phase3/docs/PHASE3_EXPLAINED.md`. The full integration record, with proving output, is
+`phase3/evidence/CC_INTEGRATION_REPORT.md`.
+
+**Findings that matter for reading the runs** (details and numbers in that report):
+- **T4.** No production runner passes bare signal names to `interpret_yosys_latches` (evidence F8 never applied).
+  Production `sem_adv` does print raw tool text next to the directives, so Phase 3's `--sem-include-raw 1` matches.
+  But production keeps far more Yosys text than Phase 3's `raw_tool_text()` (98 vs 2 lines on `probe_latch`, 5,239 vs 40
+  on `mpsoc_Decoder`), so Phase 3 prompts are not byte-comparable to Set 1/3. The nightly `comb_sensitivity` example
+  (in `STITCH_v3\runs\nightly_20260814_012758`, outside this repo, prompts never saved) is a wrong `'process'` BLKSEQ
+  directive from a since-fixed extraction bug, and the row that shows harm is qwen2.5-coder:14b, not llama3.1.
+- **T5.** `phase3/runner/system_prompt.txt` is the production `SYSTEM_PROMPT` (from `phase2/stitch_runner_hpc.py:126`).
+- **T6.** E0 retro-audit of the Set 1/3 passes: 15/195 baseline and 13/188 sem_adv passes are structurally dirty
+  (Yosys failure, latch, loop, truncation), 7.7% and 6.9% pooled. Covers baseline and sem_adv only; the two escalation
+  conditions write `run_log.json` and are not covered yet. `final_rtl()` had a testbench-selection bug (fixed).
+- **T7.** 44 tests pass, Gate 1 passes (11 tasks), the plan is 990 runs, and the mock smoke run and summarizer work,
+  all on Yosys 0.33 / Verilator 5.020 / Icarus 12.0 (the versions the fixtures were captured with).
+
+**Repo housekeeping.** `.gitignore`: `phase3/results/` ignored, and `!phase3/**/*.log` re-includes the frozen tool logs
+(the global `*.log` rule would otherwise drop them). `.gitattributes`: `phase3/**` is LF. `docs/HPC_COMMANDS.md` has a
+Part 9 and a "planned" inventory row; `docs/FULL_RUN_RUNBOOK.md` has a section 9 pointer.
+
+**Next step.** HPC Part A: `phase3/HPC_PHASE3_COMMANDS.md` (preflight, then deploy with `phase3\hpc\deploy_phase3.ps1`,
+then the gate job). Nothing GPU-side before the gate prints `ALL GATES PASSED`; the full run waits for the reviewed
+pilot. Decide first: whether to extend E0 to the escalation conditions, and whether Phase 3's raw feedback should mimic
+production's trimming.

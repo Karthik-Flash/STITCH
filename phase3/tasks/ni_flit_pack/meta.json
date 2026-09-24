@@ -1,0 +1,14 @@
+{
+  "track": "S",
+  "top": "ni_flit_pack",
+  "defect_classes": [
+    "WIDTHTRUNC"
+  ],
+  "sim_silent": false,
+  "seeded": "over-wide concatenations silently truncated",
+  "compose": null,
+  "expected_v3_classes": [
+    "WIDTHTRUNC"
+  ],
+  "expected_v2_classes": []
+}

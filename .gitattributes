@@ -12,3 +12,9 @@ illustrations/proven/decoder_3to8/**  merge=binary
 illustrations/proven/mux4_oe/**       merge=binary
 illustrations/proven/decoder_3to8_tb.v  merge=binary
 illustrations/proven/mux4_oe_tb.v       merge=binary
+
+# --- Phase 3: keep LF in the working tree (sbatch rejects CRLF; logs/fixtures compared byte-wise) ---
+phase3/** text eol=lf
+src/interpreter/stitch_interpreter_v3.py text eol=lf
+src/interpreter/_v3_parsers.py text eol=lf
+phase3/**/*.ps1 text eol=crlf

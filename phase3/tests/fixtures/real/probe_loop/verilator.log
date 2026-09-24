@@ -1,0 +1,11 @@
+%Warning-UNOPTFLAT: loop.v:2:8: Signal unoptimizable: Circular combinational logic: 'loop_t.n1'
+    2 |   wire n1, n2;
+      |        ^~
+                    ... For warning description see https://verilator.org/warn/UNOPTFLAT?v=5.020
+                    ... Use "/* verilator lint_off UNOPTFLAT */" and lint_on around source to disable this message.
+                    loop.v:2:8:      Example path: loop_t.n1
+                    loop.v:4:13:      Example path: ASSIGNW
+                    loop.v:2:12:      Example path: loop_t.n2
+                    loop.v:3:13:      Example path: ASSIGNW
+                    loop.v:2:8:      Example path: loop_t.n1
+%Error: Exiting due to 1 warning(s)

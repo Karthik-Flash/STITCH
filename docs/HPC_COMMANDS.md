@@ -521,6 +521,7 @@ scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/results/set3_r
 | Set 2 (Twin) | RTLCoderHPC | 5 model-conditions | baseline | 42 | 3 | 0.5 | 630 | 0 | gpunode6 H100 |
 | Set 1 | Set1_HPC | 3 small (4B–8B) | 4 | 42 | 3 | 0.1 | 1512 | 6 | gpunode4 A100 |
 | Set 3 | Set3_HPC | 3 large (14B–32B) | 4 | 17 | 3 | 0.1 | 612 | 2 | gpunode4 A100 |
+| Phase 3 (planned) | Phase3_HPC | 6 small-to-medium (3B–14B) | 5 | 11 tasks | 3 | 0.1 | 990 | – | gpunode5 H100 |
 
 Total: 2,754 confirmatory runs. All error rates < 0.5%, all transient Ollama
 timeouts, none structural. Every pass/fail routed through the hardened
@@ -538,3 +539,16 @@ cells before launch.
 | `tar: unrecognized option '--zstd'` | old cluster tar | `conda install -c conda-forge zstd`, then `zstd -d` + `tar xf` |
 | pull job `Invalid qos specification` | restricted partition | use gpunode4/5, not the csis_hyd partition |
 | run PD `(Resources)` | GPU node busy | wait (you are first in line) or override to a free node (Part 7.2) |
+
+---
+
+## Part 9: Phase 3 (MPSoC composition + interpreter v3)
+
+Status: **planned**. The integration is finished on branch `phase3-setup` (2026-09-24); nothing has been run on the
+HPC yet, so the Part 8 row for it carries no error count.
+
+- **Scratch dir:** `/scratch/soumyaj/Phase3_HPC` (fresh; do not rely on `Set1_HPC` / `Set3_HPC` still existing).
+- **Node:** `gpunode5`, partition `gpu_h100_4` (`phase3/hpc/phase3_run.slurm`; `--nodelist=gpunode6` is the fallback, same
+  pattern as Part 7.2).
+- **Size:** 6 models x 11 tasks x 5 conditions x N=3 = **990 runs**, T=0.1, 6 iterations per run in every condition.
+- **Commands:** `phase3/HPC_PHASE3_COMMANDS.md`, Parts A-I. It replaces the per-Set command blocks above for this run.

@@ -1,0 +1,8 @@
+# Phase 3 model ladder, one Ollama tag per line, run in this order (smallest first -> early signal).
+# Tags match Set 1 exactly where the model was used before (llama3.1:latest = 8B), for cross-phase comparability.
+llama3.2:3b
+gemma3:4b
+deepseek-coder:6.7b
+qwen2.5-coder:7b
+llama3.1:latest
+qwen2.5-coder:14b

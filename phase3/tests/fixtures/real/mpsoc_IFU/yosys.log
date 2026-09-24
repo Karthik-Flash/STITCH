@@ -1,0 +1,1959 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v /home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v /home/claude/stitch_ext/compose/mpsoc_ref/Inst_mem_integrated.v /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v; synth -top IFU; check' --
+
+1. Executing Verilog-2005 frontend: /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v
+Parsing Verilog input from `/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v' to AST representation.
+Generating RTLIL representation for module `\IFU'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v
+Parsing Verilog input from `/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v' to AST representation.
+Generating RTLIL representation for module `\address_fetch'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/claude/stitch_ext/compose/mpsoc_ref/Inst_mem_integrated.v
+Parsing Verilog input from `/home/claude/stitch_ext/compose/mpsoc_ref/Inst_mem_integrated.v' to AST representation.
+Generating RTLIL representation for module `\Inst_mem_integrated'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v
+Parsing Verilog input from `/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v' to AST representation.
+Generating RTLIL representation for module `\inst_mem'.
+Warning: Replacing memory \Memory with list of registers. See /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:41
+Note: Assuming pure combinatorial block at /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35.1-164.5 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Note: Assuming pure combinatorial block at /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168.5-239.6 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+5. Executing SYNTH pass.
+
+5.1. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1.1. Analyzing design hierarchy..
+Top module:  \IFU
+Used module:     \Inst_mem_integrated
+Used module:         \inst_mem
+Used module:     \address_fetch
+
+5.1.2. Analyzing design hierarchy..
+Top module:  \IFU
+Used module:     \Inst_mem_integrated
+Used module:         \inst_mem
+Used module:     \address_fetch
+Removed 0 unused modules.
+Mapping positional arguments of cell Inst_mem_integrated.inst_mem_mod (inst_mem).
+Mapping positional arguments of cell IFU.inst_mem_unit (Inst_mem_integrated).
+Mapping positional arguments of cell IFU.fetch_add_unit (address_fetch).
+
+5.2. Executing PROC pass (convert processes to netlists).
+
+5.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 41 switch rules as full_case in process $proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48 in module inst_mem.
+Marked 1 switch rules as full_case in process $proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46 in module inst_mem.
+Marked 1 switch rules as full_case in process $proc$/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:29$4 in module address_fetch.
+Marked 2 switch rules as full_case in process $proc$/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:42$1 in module IFU.
+Removed a total of 0 dead cases.
+
+5.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 91 assignments to connections.
+
+5.2.4. Executing PROC_INIT pass (extract init attributes).
+
+5.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+5.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~45 debug messages>
+
+5.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+     1/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$45_DATA[7:0]$278
+     2/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$44_DATA[7:0]$276
+     3/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$43_DATA[7:0]$274
+     4/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$42_DATA[7:0]$272
+     5/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$41_DATA[7:0]$271
+     6/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$40_DATA[7:0]$269
+     7/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$39_DATA[7:0]$267
+     8/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$38_DATA[7:0]$265
+     9/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$37_DATA[7:0]$264
+    10/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$36_DATA[7:0]$262
+    11/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$35_DATA[7:0]$260
+    12/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$34_DATA[7:0]$258
+    13/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$33_DATA[7:0]$257
+    14/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$32_DATA[7:0]$255
+    15/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$31_DATA[7:0]$253
+    16/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$30_DATA[7:0]$251
+    17/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$29_DATA[7:0]$250
+    18/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$28_DATA[7:0]$248
+    19/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$27_DATA[7:0]$246
+    20/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$26_DATA[7:0]$244
+    21/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$25_DATA[7:0]$243
+    22/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$24_DATA[7:0]$241
+    23/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$23_DATA[7:0]$239
+    24/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$22_DATA[7:0]$237
+    25/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$21_DATA[7:0]$236
+    26/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$20_DATA[7:0]$234
+    27/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$19_DATA[7:0]$232
+    28/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$18_DATA[7:0]$230
+    29/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$17_DATA[7:0]$229
+    30/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$16_DATA[7:0]$227
+    31/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$15_DATA[7:0]$225
+    32/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$14_DATA[7:0]$223
+    33/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$13_DATA[7:0]$222
+    34/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$12_DATA[7:0]$220
+    35/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$11_DATA[7:0]$218
+    36/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$10_DATA[7:0]$216
+    37/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$9_DATA[7:0]$215
+    38/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$8_DATA[7:0]$213
+    39/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$7_DATA[7:0]$211
+    40/121: $2$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$6_DATA[7:0]$209
+    41/121: $1\inst_code[31:0]
+    42/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$9_DATA[7:0]$136
+    43/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$9_ADDR[5:0]$135
+    44/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$8_DATA[7:0]$134
+    45/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$8_ADDR[5:0]$133
+    46/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$7_DATA[7:0]$132
+    47/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$7_ADDR[5:0]$131
+    48/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$6_DATA[7:0]$130
+    49/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$6_ADDR[5:0]$129
+    50/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$45_DATA[7:0]$208
+    51/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$45_ADDR[5:0]$207
+    52/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$44_DATA[7:0]$206
+    53/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$44_ADDR[5:0]$205
+    54/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$43_DATA[7:0]$204
+    55/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$43_ADDR[5:0]$203
+    56/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$42_DATA[7:0]$202
+    57/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$42_ADDR[5:0]$201
+    58/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$41_DATA[7:0]$200
+    59/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$41_ADDR[5:0]$199
+    60/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$40_DATA[7:0]$198
+    61/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$40_ADDR[5:0]$197
+    62/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$39_DATA[7:0]$196
+    63/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$39_ADDR[5:0]$195
+    64/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$38_DATA[7:0]$194
+    65/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$38_ADDR[5:0]$193
+    66/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$37_DATA[7:0]$192
+    67/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$37_ADDR[5:0]$191
+    68/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$36_DATA[7:0]$190
+    69/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$36_ADDR[5:0]$189
+    70/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$35_DATA[7:0]$188
+    71/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$35_ADDR[5:0]$187
+    72/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$34_DATA[7:0]$186
+    73/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$34_ADDR[5:0]$185
+    74/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$33_DATA[7:0]$184
+    75/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$33_ADDR[5:0]$183
+    76/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$32_DATA[7:0]$182
+    77/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$32_ADDR[5:0]$181
+    78/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$31_DATA[7:0]$180
+    79/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$31_ADDR[5:0]$179
+    80/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$30_DATA[7:0]$178
+    81/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$30_ADDR[5:0]$177
+    82/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$29_DATA[7:0]$176
+    83/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$29_ADDR[5:0]$175
+    84/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$28_DATA[7:0]$174
+    85/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$28_ADDR[5:0]$173
+    86/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$27_DATA[7:0]$172
+    87/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$27_ADDR[5:0]$171
+    88/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$26_DATA[7:0]$170
+    89/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$26_ADDR[5:0]$169
+    90/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$25_DATA[7:0]$168
+    91/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$25_ADDR[5:0]$167
+    92/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$24_DATA[7:0]$166
+    93/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$24_ADDR[5:0]$165
+    94/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$23_DATA[7:0]$164
+    95/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$23_ADDR[5:0]$163
+    96/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$22_DATA[7:0]$162
+    97/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$22_ADDR[5:0]$161
+    98/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$21_DATA[7:0]$160
+    99/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$21_ADDR[5:0]$159
+   100/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$20_DATA[7:0]$158
+   101/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$20_ADDR[5:0]$157
+   102/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$19_DATA[7:0]$156
+   103/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$19_ADDR[5:0]$155
+   104/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$18_DATA[7:0]$154
+   105/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$18_ADDR[5:0]$153
+   106/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$17_DATA[7:0]$152
+   107/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$17_ADDR[5:0]$151
+   108/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$16_DATA[7:0]$150
+   109/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$16_ADDR[5:0]$149
+   110/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$15_DATA[7:0]$148
+   111/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$15_ADDR[5:0]$147
+   112/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$14_DATA[7:0]$146
+   113/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$14_ADDR[5:0]$145
+   114/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$13_DATA[7:0]$144
+   115/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$13_ADDR[5:0]$143
+   116/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$12_DATA[7:0]$142
+   117/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$12_ADDR[5:0]$141
+   118/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$11_DATA[7:0]$140
+   119/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$11_ADDR[5:0]$139
+   120/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$10_DATA[7:0]$138
+   121/121: $1$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$10_ADDR[5:0]$137
+Creating decoders for process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46'.
+     1/8: $1\Memory[4][7:0]
+     2/8: $1\Memory[5][7:0]
+     3/8: $1\Memory[6][7:0]
+     4/8: $1\Memory[7][7:0]
+     5/8: $1\Memory[0][7:0]
+     6/8: $1\Memory[1][7:0]
+     7/8: $1\Memory[2][7:0]
+     8/8: $1\Memory[3][7:0]
+Creating decoders for process `\address_fetch.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:29$4'.
+     1/1: $1\inst_address[31:0]
+Creating decoders for process `\IFU.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:42$1'.
+     1/2: $2\PC[31:0]
+     2/2: $1\PC[31:0]
+
+5.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$6_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$6_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$7_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$7_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$8_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$8_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$9_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$9_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$10_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$10_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$11_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$11_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$12_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$12_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$13_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:174$13_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$14_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$14_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$15_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$15_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$16_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$16_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$17_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:175$17_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$18_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$18_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$19_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$19_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$20_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$20_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$21_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:177$21_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$22_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$22_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$23_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$23_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$24_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$24_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$25_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:178$25_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$26_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$26_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$27_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$27_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$28_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$28_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$29_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:179$29_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$30_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$30_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$31_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$31_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$32_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$32_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$33_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:180$33_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$34_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$34_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$35_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$35_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$36_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$36_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$37_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:181$37_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$38_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$38_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$39_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$39_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$40_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$40_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$41_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182$41_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$42_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$42_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$43_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$43_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$44_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$44_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$45_ADDR' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+No latch inferred for signal `\inst_mem.$mem2reg_rd$\Memory$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183$45_DATA' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+Latch inferred for signal `\inst_mem.\inst_code' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48': $auto$proc_dlatch.cc:427:proc_dlatch$3611
+Latch inferred for signal `\inst_mem.\Memory[0]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3622
+Latch inferred for signal `\inst_mem.\Memory[1]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3625
+Latch inferred for signal `\inst_mem.\Memory[2]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3628
+Latch inferred for signal `\inst_mem.\Memory[3]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3631
+Latch inferred for signal `\inst_mem.\Memory[4]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3634
+Latch inferred for signal `\inst_mem.\Memory[5]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3637
+Latch inferred for signal `\inst_mem.\Memory[6]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3640
+Latch inferred for signal `\inst_mem.\Memory[7]' from process `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46': $auto$proc_dlatch.cc:427:proc_dlatch$3643
+Latch inferred for signal `\IFU.\PC' from process `\IFU.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:42$1': $auto$proc_dlatch.cc:427:proc_dlatch$3668
+
+5.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\address_fetch.\inst_address' using process `\address_fetch.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:29$4'.
+  created $dff cell `$procdff$3669' with positive edge clock.
+
+5.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 41 empty switches in `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+Removing empty process `inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:168$48'.
+Found and cleaned up 1 empty switch in `\inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46'.
+Removing empty process `inst_mem.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35$46'.
+Found and cleaned up 1 empty switch in `\address_fetch.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:29$4'.
+Removing empty process `address_fetch.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:29$4'.
+Found and cleaned up 2 empty switches in `\IFU.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:42$1'.
+Removing empty process `IFU.$proc$/home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:42$1'.
+Cleaned up 45 empty switches.
+
+5.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module inst_mem.
+<suppressed ~126 debug messages>
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+<suppressed ~1 debug messages>
+Optimizing module IFU.
+<suppressed ~12 debug messages>
+
+5.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module inst_mem.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module IFU.
+
+5.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \inst_mem..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \IFU..
+Removed 203 unused cells and 601 unused wires.
+<suppressed ~206 debug messages>
+
+5.5. Executing CHECK pass (checking for obvious problems).
+Checking module IFU...
+Checking module Inst_mem_integrated...
+Checking module address_fetch...
+Checking module inst_mem...
+Warning: Wire inst_mem.\Memory[8] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[8] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[9] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[10] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[11] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[12] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[13] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[14] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[15] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[16] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[17] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[18] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[19] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[20] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[21] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[22] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[23] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[24] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[25] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[26] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[27] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[28] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[29] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[30] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[31] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[32] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[33] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[34] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[35] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[36] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[37] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[38] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[39] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[40] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[41] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[42] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[43] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[44] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[45] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[46] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[47] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[48] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[49] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[50] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[51] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[52] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[53] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[54] [0] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [7] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [6] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [5] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [4] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [3] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [2] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [1] is used but has no driver.
+Warning: Wire inst_mem.\Memory[55] [0] is used but has no driver.
+Found and reported 384 problems.
+
+5.6. Executing OPT pass (performing simple optimizations).
+
+5.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+<suppressed ~6132 debug messages>
+Removed a total of 2045 cells.
+
+5.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+5.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+    New ctrl vector for $pmux cell $procmux$1350: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3671 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$1678: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3673 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$1092: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3675 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$2012: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3677 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$712: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3679 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$2353: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3681 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$2700: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3683 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$403: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3685 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$1415: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3687 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$1744: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3689 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$775: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3691 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$1156: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3693 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$2080: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3695 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$2422: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3697 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$464: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3699 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$2770: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3701 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$1480: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3703 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$1811: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3705 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$838: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3707 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$281: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3709 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$2148: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3711 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$1220: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3713 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$2491: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3715 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$526: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3717 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$2840: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3719 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$1546: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3721 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$1878: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3723 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$901: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3725 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$2216: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3727 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$1285: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3729 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$588: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3731 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$2560: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3733 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$2900: { $procmux$2909_CMP $procmux$2908_CMP $procmux$2907_CMP $procmux$2906_CMP $procmux$2905_CMP $procmux$2904_CMP $procmux$2903_CMP $procmux$2902_CMP $procmux$2901_CMP }
+    New ctrl vector for $pmux cell $procmux$1612: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3735 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+    New ctrl vector for $pmux cell $procmux$964: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3737 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$1028: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3739 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$1945: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3741 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$650: { $procmux$1210_CMP $auto$opt_reduce.cc:134:opt_pmux$3743 $procmux$1208_CMP $procmux$1207_CMP $procmux$1206_CMP $procmux$1205_CMP $procmux$1204_CMP $procmux$1203_CMP $procmux$1202_CMP $procmux$1201_CMP $procmux$1200_CMP $procmux$1199_CMP $procmux$1198_CMP $procmux$1197_CMP $procmux$1196_CMP $procmux$1195_CMP $procmux$1194_CMP $procmux$1193_CMP $procmux$1192_CMP $procmux$1191_CMP $procmux$1190_CMP $procmux$1189_CMP $procmux$1188_CMP $procmux$1187_CMP $procmux$1186_CMP $procmux$1185_CMP $procmux$1184_CMP $procmux$1183_CMP $procmux$1182_CMP $procmux$1181_CMP $procmux$1180_CMP $procmux$1179_CMP $procmux$1178_CMP $procmux$1177_CMP $procmux$1176_CMP $procmux$1175_CMP $procmux$1174_CMP $procmux$1173_CMP $procmux$1172_CMP $procmux$1171_CMP $procmux$1170_CMP $procmux$1169_CMP $procmux$1168_CMP $procmux$1167_CMP $procmux$1166_CMP $procmux$1165_CMP $procmux$1164_CMP $procmux$1163_CMP $procmux$1162_CMP $procmux$1161_CMP $procmux$1160_CMP $procmux$1159_CMP $procmux$1158_CMP $procmux$1157_CMP }
+    New ctrl vector for $pmux cell $procmux$2284: { $procmux$1018_CMP $auto$opt_reduce.cc:134:opt_pmux$3745 $procmux$1016_CMP $procmux$1015_CMP $procmux$1014_CMP $procmux$1013_CMP $procmux$1012_CMP $procmux$1011_CMP $procmux$1010_CMP $procmux$1009_CMP $procmux$1008_CMP $procmux$1007_CMP $procmux$1006_CMP $procmux$1005_CMP $procmux$1004_CMP $procmux$1003_CMP $procmux$1002_CMP $procmux$1001_CMP $procmux$1000_CMP $procmux$1255_CMP $procmux$1254_CMP $procmux$1253_CMP $procmux$1252_CMP $procmux$1251_CMP $procmux$1250_CMP $procmux$1249_CMP $procmux$1248_CMP $procmux$1247_CMP $procmux$1246_CMP $procmux$1245_CMP $procmux$1244_CMP $procmux$1243_CMP $procmux$1242_CMP $procmux$1241_CMP $procmux$1240_CMP $procmux$1239_CMP $procmux$1238_CMP $procmux$1237_CMP $procmux$1236_CMP $procmux$1235_CMP $procmux$1234_CMP $procmux$1233_CMP $procmux$1232_CMP $procmux$1231_CMP $procmux$1230_CMP $procmux$1229_CMP $procmux$1228_CMP $procmux$1227_CMP $procmux$1226_CMP $procmux$1225_CMP $procmux$1224_CMP $procmux$1223_CMP $procmux$1222_CMP $procmux$1221_CMP }
+    New ctrl vector for $pmux cell $procmux$2630: { $procmux$1082_CMP $auto$opt_reduce.cc:134:opt_pmux$3747 $procmux$1080_CMP $procmux$1079_CMP $procmux$1078_CMP $procmux$1077_CMP $procmux$1076_CMP $procmux$1075_CMP $procmux$1074_CMP $procmux$1073_CMP $procmux$1072_CMP $procmux$1071_CMP $procmux$1070_CMP $procmux$1069_CMP $procmux$1068_CMP $procmux$1067_CMP $procmux$1066_CMP $procmux$1065_CMP $procmux$1064_CMP $procmux$1063_CMP $procmux$1062_CMP $procmux$1061_CMP $procmux$1060_CMP $procmux$1059_CMP $procmux$1058_CMP $procmux$1057_CMP $procmux$1056_CMP $procmux$1055_CMP $procmux$1054_CMP $procmux$1053_CMP $procmux$1052_CMP $procmux$1051_CMP $procmux$1050_CMP $procmux$1049_CMP $procmux$1048_CMP $procmux$1047_CMP $procmux$1046_CMP $procmux$1045_CMP $procmux$1044_CMP $procmux$1043_CMP $procmux$1042_CMP $procmux$1041_CMP $procmux$1040_CMP $procmux$1039_CMP $procmux$1038_CMP $procmux$1037_CMP $procmux$1036_CMP $procmux$1035_CMP $procmux$1034_CMP $procmux$1033_CMP $procmux$1032_CMP $procmux$1031_CMP $procmux$1030_CMP $procmux$1029_CMP }
+    New ctrl vector for $pmux cell $procmux$342: { $procmux$1146_CMP $auto$opt_reduce.cc:134:opt_pmux$3749 $procmux$1144_CMP $procmux$1143_CMP $procmux$1142_CMP $procmux$1141_CMP $procmux$1140_CMP $procmux$1139_CMP $procmux$1138_CMP $procmux$1137_CMP $procmux$1136_CMP $procmux$1135_CMP $procmux$1134_CMP $procmux$1133_CMP $procmux$1132_CMP $procmux$1131_CMP $procmux$1130_CMP $procmux$1129_CMP $procmux$1128_CMP $procmux$1127_CMP $procmux$1126_CMP $procmux$1125_CMP $procmux$1124_CMP $procmux$1123_CMP $procmux$1122_CMP $procmux$1121_CMP $procmux$1120_CMP $procmux$1119_CMP $procmux$1118_CMP $procmux$1117_CMP $procmux$1116_CMP $procmux$1115_CMP $procmux$1114_CMP $procmux$1113_CMP $procmux$1112_CMP $procmux$1111_CMP $procmux$1110_CMP $procmux$1109_CMP $procmux$1108_CMP $procmux$1107_CMP $procmux$1106_CMP $procmux$1105_CMP $procmux$1104_CMP $procmux$1103_CMP $procmux$1102_CMP $procmux$1101_CMP $procmux$1100_CMP $procmux$1099_CMP $procmux$1098_CMP $procmux$1097_CMP $procmux$1096_CMP $procmux$1095_CMP $procmux$1094_CMP $procmux$1093_CMP }
+  Optimizing cells in module \inst_mem.
+Performed a total of 41 changes.
+
+5.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+<suppressed ~216 debug messages>
+Removed a total of 72 cells.
+
+5.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 1-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3622 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3625 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3628 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3634 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3637 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 1-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3640 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 0 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 1 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 2 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 4 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 5 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 6 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 7 on $auto$proc_dlatch.cc:427:proc_dlatch$3643 ($dlatch) from module inst_mem.
+
+5.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 4 unused cells and 2120 unused wires.
+<suppressed ~6 debug messages>
+
+5.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+5.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+  Optimizing cells in module \inst_mem.
+Performed a total of 1 changes.
+
+5.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+5.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.6.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.6.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+5.6.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.6.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.6.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.6.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.6.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.6.23. Finished OPT passes. (There is nothing left to do.)
+
+5.7. Executing FSM pass (extract and optimize FSM).
+
+5.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+5.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+5.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+5.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+5.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+5.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+5.8. Executing OPT pass (performing simple optimizations).
+
+5.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+5.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$3669 ($dff) from module address_fetch (D = \next_pc, Q = \inst_address, rval = 32'11111111111111111111111111111100).
+
+5.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+5.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.8.16. Finished OPT passes. (There is nothing left to do.)
+
+5.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 31 bits (of 32) from port B of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210 ($add).
+Removed top 26 bits (of 32) from port Y of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210 ($add).
+Removed top 26 bits (of 32) from port A of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210 ($add).
+Removed top 30 bits (of 32) from port B of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212 ($add).
+Removed top 26 bits (of 32) from port Y of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212 ($add).
+Removed top 26 bits (of 32) from port A of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212 ($add).
+Removed top 30 bits (of 32) from port B of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214 ($add).
+Removed top 26 bits (of 32) from port Y of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214 ($add).
+Removed top 26 bits (of 32) from port A of cell inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214 ($add).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1000_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1001_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1002_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1003_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1004_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1005_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1006_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1007_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1008_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1009_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1010_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1011_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1012_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1013_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1014_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1015_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1016_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1017_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1018_CMP0 ($eq).
+Removed top 5 bits (of 6) from port B of cell inst_mem.$procmux$1019_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1053_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1054_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1055_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1056_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1057_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1058_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1059_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1060_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1061_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1062_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1063_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1064_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1065_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1066_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1067_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1068_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1069_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1070_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1071_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1072_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1073_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1074_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1075_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1076_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1077_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1078_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1079_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1080_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1081_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1082_CMP0 ($eq).
+Removed top 5 bits (of 6) from port B of cell inst_mem.$procmux$1083_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1117_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1118_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1119_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1120_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1121_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1122_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1123_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1124_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1125_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1126_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1127_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1128_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1129_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1130_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1131_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1132_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1133_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1134_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1135_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1136_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1137_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1138_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1139_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1140_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1141_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1142_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1143_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1144_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1145_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1146_CMP0 ($eq).
+Removed top 5 bits (of 6) from port B of cell inst_mem.$procmux$1147_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1181_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1182_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1183_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1184_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1185_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1186_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1187_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1188_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1189_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1190_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1191_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1192_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1193_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1194_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1195_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1196_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1197_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1198_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1199_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1200_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1201_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1202_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1203_CMP0 ($eq).
+Removed top 2 bits (of 6) from port B of cell inst_mem.$procmux$1204_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1205_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1206_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1207_CMP0 ($eq).
+Removed top 3 bits (of 6) from port B of cell inst_mem.$procmux$1208_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1209_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell inst_mem.$procmux$1210_CMP0 ($eq).
+Removed top 5 bits (of 6) from port B of cell inst_mem.$procmux$1211_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1245_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1246_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1247_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1248_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1249_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1250_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1251_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1252_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1253_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1254_CMP0 ($eq).
+Removed top 1 bits (of 6) from port B of cell inst_mem.$procmux$1255_CMP0 ($eq).
+Removed top 26 bits (of 32) from port B of cell inst_mem.$procmux$2901_CMP0 ($eq).
+Removed top 26 bits (of 32) from port B of cell inst_mem.$procmux$2902_CMP0 ($eq).
+Removed top 27 bits (of 32) from port B of cell inst_mem.$procmux$2903_CMP0 ($eq).
+Removed top 27 bits (of 32) from port B of cell inst_mem.$procmux$2904_CMP0 ($eq).
+Removed top 27 bits (of 32) from port B of cell inst_mem.$procmux$2905_CMP0 ($eq).
+Removed top 27 bits (of 32) from port B of cell inst_mem.$procmux$2906_CMP0 ($eq).
+Removed top 28 bits (of 32) from port B of cell inst_mem.$procmux$2907_CMP0 ($eq).
+Removed top 28 bits (of 32) from port B of cell inst_mem.$procmux$2908_CMP0 ($eq).
+Removed top 29 bits (of 32) from port B of cell inst_mem.$procmux$2909_CMP0 ($eq).
+Removed top 26 bits (of 32) from wire inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210_Y.
+Removed top 26 bits (of 32) from wire inst_mem.$add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212_Y.
+Removed top 4 bits (of 8) from wire inst_mem.Memory[49].
+
+5.10. Executing PEEPOPT pass (run peephole optimizers).
+
+5.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+5.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module IFU:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module Inst_mem_integrated:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module address_fetch:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module inst_mem:
+  creating $macc model for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210 ($add).
+  creating $macc model for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212 ($add).
+  creating $macc model for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214 ($add).
+  creating $alu model for $macc $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214.
+  creating $alu model for $macc $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212.
+  creating $alu model for $macc $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210.
+  creating $alu cell for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$210: $auto$alumacc.cc:485:replace_alu$3754
+  creating $alu cell for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$212: $auto$alumacc.cc:485:replace_alu$3757
+  creating $alu cell for $add$/home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173$214: $auto$alumacc.cc:485:replace_alu$3760
+  created 3 $alu and 0 $macc cells.
+
+5.13. Executing SHARE pass (SAT-based resource sharing).
+
+5.14. Executing OPT pass (performing simple optimizations).
+
+5.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.14.9. Finished OPT passes. (There is nothing left to do.)
+
+5.15. Executing MEMORY pass.
+
+5.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+5.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+5.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.17. Executing OPT pass (performing simple optimizations).
+
+5.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+<suppressed ~66 debug messages>
+
+5.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+5.17.5. Finished fast OPT passes.
+
+5.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+5.19. Executing OPT pass (performing simple optimizations).
+
+5.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+<suppressed ~4 debug messages>
+
+5.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+    Consolidated identical input bits for $pmux cell $procmux$1350:
+      Old ports: A=8'10110011, B=48'000100010000001000100011101000000101010000000000, Y=$0\inst_code[31:0] [23:16]
+      New ports: A=6'111011, B=36'001001000010010011110000001100000000, Y={ $0\inst_code[31:0] [23] $0\inst_code[31:0] [21:20] $0\inst_code[31:0] [18:16] }
+      New connections: { $0\inst_code[31:0] [22] $0\inst_code[31:0] [19] } = { $0\inst_code[31:0] [18] 1'0 }
+    Consolidated identical input bits for $pmux cell $procmux$1678:
+      Old ports: A=8'10110011, B=48'000100010000001000100011101000000101010000000000, Y=$0\inst_code[31:0] [15:8]
+      New ports: A=6'111011, B=36'001001000010010011110000001100000000, Y={ $0\inst_code[31:0] [15] $0\inst_code[31:0] [13:12] $0\inst_code[31:0] [10:8] }
+      New connections: { $0\inst_code[31:0] [14] $0\inst_code[31:0] [11] } = { $0\inst_code[31:0] [10] 1'0 }
+    Consolidated identical input bits for $pmux cell $procmux$2012:
+      Old ports: A=8'10110011, B=48'000100010000001000100011101000000101010000000000, Y=$0\inst_code[31:0] [7:0]
+      New ports: A=6'111011, B=36'001001000010010011110000001100000000, Y={ $0\inst_code[31:0] [7] $0\inst_code[31:0] [5:4] $0\inst_code[31:0] [2:0] }
+      New connections: { $0\inst_code[31:0] [6] $0\inst_code[31:0] [3] } = { $0\inst_code[31:0] [2] 1'0 }
+    Consolidated identical input bits for $pmux cell $procmux$2353:
+      Old ports: A=8'10110011, B=48'000100010000001000100011101000000101010000000000, Y=$0\inst_code[31:0] [31:24]
+      New ports: A=6'111011, B=36'001001000010010011110000001100000000, Y={ $0\inst_code[31:0] [31] $0\inst_code[31:0] [29:28] $0\inst_code[31:0] [26:24] }
+      New connections: { $0\inst_code[31:0] [30] $0\inst_code[31:0] [27] } = { $0\inst_code[31:0] [26] 1'0 }
+  Optimizing cells in module \inst_mem.
+Performed a total of 4 changes.
+
+5.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.19.6. Executing OPT_SHARE pass.
+
+5.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 192 unused cells and 192 unused wires.
+<suppressed ~193 debug messages>
+
+5.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.19.14. Executing OPT_SHARE pass.
+
+5.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 3 on $auto$proc_dlatch.cc:427:proc_dlatch$3611 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 11 on $auto$proc_dlatch.cc:427:proc_dlatch$3611 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 19 on $auto$proc_dlatch.cc:427:proc_dlatch$3611 ($dlatch) from module inst_mem.
+Setting constant 0-bit at position 27 on $auto$proc_dlatch.cc:427:proc_dlatch$3611 ($dlatch) from module inst_mem.
+
+5.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \IFU..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \Inst_mem_integrated..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inst_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+5.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \IFU.
+  Optimizing cells in module \Inst_mem_integrated.
+  Optimizing cells in module \address_fetch.
+  Optimizing cells in module \inst_mem.
+Performed a total of 0 changes.
+
+5.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+Removed a total of 0 cells.
+
+5.19.22. Executing OPT_SHARE pass.
+
+5.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+
+5.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.19.26. Finished OPT passes. (There is nothing left to do.)
+
+5.20. Executing TECHMAP pass (map to technology primitives).
+
+5.20.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+5.20.2. Continuing TECHMAP pass.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using template $paramod$9970e6a829a899c1fae39c88305c3c80d98a6bfd\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $dlatch.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$d843018565ef722782d28339c99ecf00b278e074\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$32efbfac1c4dc57230cf86180788fdfd12e3b511\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $sdff.
+No more expansions possible.
+<suppressed ~569 debug messages>
+
+5.21. Executing OPT pass (performing simple optimizations).
+
+5.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+<suppressed ~812 debug messages>
+
+5.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+<suppressed ~1134 debug messages>
+Removed a total of 378 cells.
+
+5.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 14 unused cells and 469 unused wires.
+<suppressed ~15 debug messages>
+
+5.21.5. Finished fast OPT passes.
+
+5.22. Executing ABC pass (technology mapping using ABC).
+
+5.22.1. Extracting gate netlist of module `\IFU' to `<abc-temp-dir>/input.blif'..
+Extracted 36 gates and 72 wires to a netlist network with 34 inputs and 33 outputs.
+
+5.22.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.1.2. Re-integrating ABC results.
+ABC RESULTS:            ANDNOT cells:        2
+ABC RESULTS:                OR cells:       30
+ABC RESULTS:               NOR cells:        1
+ABC RESULTS:        internal signals:        5
+ABC RESULTS:           input signals:       34
+ABC RESULTS:          output signals:       33
+Removing temp directory.
+
+5.22.2. Extracting gate netlist of module `\Inst_mem_integrated' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+5.22.3. Extracting gate netlist of module `\address_fetch' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+5.22.4. Extracting gate netlist of module `\inst_mem' to `<abc-temp-dir>/input.blif'..
+Extracted 279 gates and 313 wires to a netlist network with 32 inputs and 25 outputs.
+
+5.22.4.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+5.22.4.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:       11
+ABC RESULTS:              NAND cells:        7
+ABC RESULTS:               NOR cells:        4
+ABC RESULTS:             ORNOT cells:       18
+ABC RESULTS:                OR cells:      132
+ABC RESULTS:            ANDNOT cells:       61
+ABC RESULTS:        internal signals:      256
+ABC RESULTS:           input signals:       32
+ABC RESULTS:          output signals:       25
+Removing temp directory.
+
+5.23. Executing OPT pass (performing simple optimizations).
+
+5.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module IFU.
+Optimizing module Inst_mem_integrated.
+Optimizing module address_fetch.
+Optimizing module inst_mem.
+
+5.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\IFU'.
+Finding identical cells in module `\Inst_mem_integrated'.
+Finding identical cells in module `\address_fetch'.
+Finding identical cells in module `\inst_mem'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+5.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \IFU..
+Finding unused cells or wires in module \Inst_mem_integrated..
+Finding unused cells or wires in module \address_fetch..
+Finding unused cells or wires in module \inst_mem..
+Removed 0 unused cells and 306 unused wires.
+<suppressed ~2 debug messages>
+
+5.23.5. Finished fast OPT passes.
+
+5.24. Executing HIERARCHY pass (managing design hierarchy).
+
+5.24.1. Analyzing design hierarchy..
+Top module:  \IFU
+Used module:     \address_fetch
+Used module:     \Inst_mem_integrated
+Used module:         \inst_mem
+
+5.24.2. Analyzing design hierarchy..
+Top module:  \IFU
+Used module:     \address_fetch
+Used module:     \Inst_mem_integrated
+Used module:         \inst_mem
+Removed 0 unused modules.
+
+5.25. Printing statistics.
+
+=== IFU ===
+
+   Number of wires:                  9
+   Number of wire bits:            164
+   Number of public wires:           7
+   Number of public wire bits:     131
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 67
+     $_ANDNOT_                       2
+     $_DLATCH_N_                    32
+     $_NOR_                          1
+     $_OR_                          30
+     Inst_mem_integrated             1
+     address_fetch                   1
+
+=== Inst_mem_integrated ===
+
+   Number of wires:                  4
+   Number of wire bits:             97
+   Number of public wires:           4
+   Number of public wire bits:      97
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     inst_mem                        1
+
+=== address_fetch ===
+
+   Number of wires:                  4
+   Number of wire bits:             66
+   Number of public wires:           4
+   Number of public wire bits:      66
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 32
+     $_SDFF_PP0_                     2
+     $_SDFF_PP1_                    30
+
+=== inst_mem ===
+
+   Number of wires:                266
+   Number of wire bits:            736
+   Number of public wires:          59
+   Number of public wire bits:     509
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                251
+     $_ANDNOT_                      61
+     $_AND_                          1
+     $_DLATCH_N_                    24
+     $_NAND_                         5
+     $_NOR_                          4
+     $_ORNOT_                       14
+     $_OR_                         130
+     $_XNOR_                         1
+     $_XOR_                         11
+
+=== design hierarchy ===
+
+   IFU                               1
+     Inst_mem_integrated             1
+       inst_mem                      1
+     address_fetch                   1
+
+   Number of wires:                283
+   Number of wire bits:           1063
+   Number of public wires:          74
+   Number of public wire bits:     803
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                348
+     $_ANDNOT_                      63
+     $_AND_                          1
+     $_DLATCH_N_                    56
+     $_NAND_                         5
+     $_NOR_                          5
+     $_ORNOT_                       14
+     $_OR_                         160
+     $_SDFF_PP0_                     2
+     $_SDFF_PP1_                    30
+     $_XNOR_                         1
+     $_XOR_                         11
+
+5.26. Executing CHECK pass (checking for obvious problems).
+Checking module IFU...
+Checking module Inst_mem_integrated...
+Checking module address_fetch...
+Checking module inst_mem...
+Found and reported 0 problems.
+
+6. Executing CHECK pass (checking for obvious problems).
+Checking module IFU...
+Checking module Inst_mem_integrated...
+Checking module address_fetch...
+Checking module inst_mem...
+Found and reported 0 problems.
+
+Warnings: 385 unique messages, 385 total
+End of script. Logfile hash: 1df8bbea7a, CPU: user 1.25s system 0.02s, MEM: 30.23 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 24% 22x opt_expr (0 sec), 10% 3x check (0 sec), ...

@@ -1,0 +1,6 @@
+%Warning-CASEINCOMPLETE: latch.v:3:5: Case values incompletely covered (example pattern 0x2)
+    3 |     case (op)
+      |     ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.020
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

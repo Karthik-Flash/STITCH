@@ -1,0 +1,11 @@
+%Warning-WIDTHTRUNC: dut.v:4:20: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 50 bits.
+                               : ... note: In instance 'ni_flit_pack'
+    4 |   assign head_flit = {flit_type, dest, src, payload};
+      |                    ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.020
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:5:20: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 34 bits.
+                               : ... note: In instance 'ni_flit_pack'
+    5 |   assign body_flit = {flit_type, payload};
+      |                    ^
+%Error: Exiting due to 2 warning(s)

@@ -1,0 +1,36 @@
+%Warning-PINMISSING: more.v:6:7: Cell has missing pin: 'b'
+    6 |   sub u0(.a(wide), .y(y));
+      |       ^~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.020
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: more.v:6:11: Input port connection 'a' expects 8 bits on the pin connection, but pin connection's VARREF 'wide' generates 32 bits.
+                                : ... note: In instance 'more_t'
+    6 |   sub u0(.a(wide), .y(y));
+      |           ^
+%Warning-UNUSEDSIGNAL: more.v:2:32: Signal is not used: 'rst'
+                                  : ... note: In instance 'more_t'
+    2 | module more_t(input clk, input rst, input [3:0] d, input [31:0] wide, input [1:0] s, output reg [3:0] q, output reg [3:0] l, output [7:0] y, output reg p, output [3:0] half);
+      |                                ^~~
+%Warning-UNUSEDSIGNAL: more.v:2:65: Bits of signal are not used: 'wide'[31:8]
+                                  : ... note: In instance 'more_t'
+    2 | module more_t(input clk, input rst, input [3:0] d, input [31:0] wide, input [1:0] s, output reg [3:0] q, output reg [3:0] l, output [7:0] y, output reg p, output [3:0] half);
+      |                                                                 ^~~~
+%Warning-UNDRIVEN: more.v:2:169: Bits of signal are not driven: 'half'[3:2]
+                               : ... note: In instance 'more_t'
+    2 | module more_t(input clk, input rst, input [3:0] d, input [31:0] wide, input [1:0] s, output reg [3:0] q, output reg [3:0] l, output [7:0] y, output reg p, output [3:0] half);
+      |                                                                                                                                                                         ^~~~
+%Warning-LATCH: more.v:3:3: Latch inferred for signal 'l' (not all control paths of combinational always assign a value)
+                          : ... Suggest use of always_latch for intentional latches
+    3 |   always_comb begin if (s == 2'b00) l = d; end
+      |   ^~~~~~~~~~~
+%Warning-BLKSEQ: more.v:4:27: Blocking assignment '=' in sequential logic process
+                            : ... Suggest using delayed assignment '<='
+    4 |   always @(posedge clk) q = d;
+      |                           ^
+%Warning-COMBDLY: more.v:5:17: Non-blocking assignment '<=' in combinational logic process
+                             : ... This will be executed as a blocking assignment '='!
+    5 |   always @(*) p <= d[0];
+      |                 ^~
+                  *** See https://verilator.org/warn/COMBDLY before disabling this,
+                  else you may end up with different sim results.
+%Error: Exiting due to 8 warning(s)

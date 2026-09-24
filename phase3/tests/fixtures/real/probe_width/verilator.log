@@ -1,0 +1,15 @@
+%Warning-WIDTHTRUNC: width.v:2:12: Operator ASSIGNW expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'a' generates 16 bits.
+                                 : ... note: In instance 'width_t'
+    2 |   assign y = a;
+      |            ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.020
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: width.v:3:12: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'b' generates 4 bits.
+                                  : ... note: In instance 'width_t'
+    3 |   assign s = b;
+      |            ^
+%Warning-UNUSEDSIGNAL: width.v:1:29: Bits of signal are not used: 'a'[15:8]
+                                   : ... note: In instance 'width_t'
+    1 | module width_t(input [15:0] a, input [3:0] b, output [7:0] y, output [31:0] s);
+      |                             ^
+%Error: Exiting due to 3 warning(s)

@@ -1,0 +1,25 @@
+{
+  "track": "R",
+  "source": "MPSoC Source Codes/router/register_4bit.v",
+  "top": "register_4bit",
+  "defect_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL(clk)",
+    "MISSING_CLOCK"
+  ],
+  "sim_silent": false,
+  "compose": {
+    "design": "mesh",
+    "file": "register_4bit.v"
+  },
+  "instances_in_mesh2x2": 80,
+  "instances_in_mesh3x3": 180,
+  "intent_note": "commented-out code in the original shows the designer intended @(posedge clk)",
+  "expected_v3_classes": [
+    "MISSING_CLOCK"
+  ],
+  "expected_v2_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL"
+  ]
+}

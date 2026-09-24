@@ -1,0 +1,1 @@
+Captured with Yosys 0.33 (git sha1 2584903a060), Verilator 5.020 2024-01-01, Icarus Verilog 12.0

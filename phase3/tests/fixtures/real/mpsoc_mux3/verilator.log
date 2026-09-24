@@ -1,0 +1,7 @@
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/mux3.v:29:1: Latch inferred for signal 'alu_in' (not all control paths of combinational always assign a value)
+                                                                     : ... Suggest use of always_latch for intentional latches
+   29 | always @(*) begin
+      | ^~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.020
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

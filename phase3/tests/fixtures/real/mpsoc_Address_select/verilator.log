@@ -1,0 +1,15 @@
+%Warning-WIDTHEXPAND: /home/claude/stitch_ext/compose/mpsoc_ref/Address_select.v:38:15: Operator ADD expects 32 bits on the RHS, but RHS's VARREF 'PC' generates 1 bits.
+                                                                                      : ... note: In instance 'Address_select'
+   38 |     J_addr = X+PC;
+      |               ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.020
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/claude/stitch_ext/compose/mpsoc_ref/Address_select.v:24:14: Bits of signal are not used: 'Instruction_code'[11:7]
+                                                                                       : ... note: In instance 'Address_select'
+   24 | input [31:0] Instruction_code,
+      |              ^~~~~~~~~~~~~~~~
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/Address_select.v:33:5: Latch inferred for signal 'J_addr' (not all control paths of combinational always assign a value)
+                                                                               : ... Suggest use of always_latch for intentional latches
+   33 |     always @(*)
+      |     ^~~~~~
+%Error: Exiting due to 3 warning(s)
