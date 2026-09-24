@@ -62,6 +62,23 @@ def lint(design_files, top, cwd, timeout=60):
             "n_hard": sum(codes.get(c, 0) for c in HARD_V)}
 
 
+def count_cells(section: str, cell_re: str) -> int:
+    """Count cells of a type in a Yosys `stat` block, for BOTH table layouts:
+         old (<= ~0.4x):   "     $_DLATCH_N_                    32"
+         new (>= ~0.5x):   "       32   $_DLATCH_N_"   (optionally with an area column in between)
+    One count per line; a cell type listed in several module blocks is summed by the caller's choice of section."""
+    total = 0
+    for line in section.splitlines():
+        if not re.search(cell_re, line):
+            continue
+        toks = line.split()
+        nums = [t for t in toks if re.fullmatch(r"\d+", t)]
+        if not nums:
+            continue
+        total += int(nums[0]) if re.fullmatch(r"\d+", toks[0]) else int(nums[-1])
+    return total
+
+
 def synth(design_files, top, cwd, timeout=600, lib_files=()):
     lib = "".join(f"read_verilog -lib {f}; " for f in lib_files)
     script = (f"{lib}read_verilog {' '.join(design_files)}; hierarchy -check -top {top}; "
@@ -72,7 +89,7 @@ def synth(design_files, top, cwd, timeout=600, lib_files=()):
     loops = len(set(re.findall(r"^Warning: found logic loop in module (\S+)", log, re.M)))
     i = log.rfind("=== design hierarchy ===")
     sec = log[i:] if i >= 0 else log[log.rfind("=== "):] if "=== " in log else ""
-    cells = sum(int(n) for n in re.findall(r"\$_DLATCH\w*\s+(\d+)", sec))
+    cells = count_cells(sec, r"\$_DLATCH\w*")
     err = next((l for l in log.splitlines() if l.startswith("ERROR")), None)
     return {"log": log, "ok": ok, "error": err, "latch_events": len(events), "latch_cells": cells,
             "loops": loops, "timeout": to}

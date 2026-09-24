@@ -18,5 +18,6 @@ echo "== [G1] tasks + live drift check";              python3 phase3/runner/vali
 echo "== [G2] mock end-to-end smoke";                 rm -rf /tmp/p3_gate_$$
 python3 phase3/runner/stitch_runner_p3.py --backend mock --mock-mode fix_on_2 --model gate-mock --reps 1 --out /tmp/p3_gate_$$ | tail -3
 python3 phase3/runner/summarize_p3.py --results /tmp/p3_gate_$$ > /dev/null && echo "summarize OK"
+echo "== [G4] composition bounds on this Yosys (2x2 mesh)"; python3 phase3/runner/check_compose_bounds.py
 echo "== [G3] dry-run";  python3 phase3/runner/stitch_runner_p3.py --dry-run --models $(grep -v '^#' phase3/hpc/models_phase3.txt) | tail -1
 echo "ALL GATES PASSED"

@@ -19,6 +19,10 @@ from p3_eval import evaluate, IVERILOG, VERILATOR, YOSYS   # noqa: E402
 import stitch_interpreter_v3 as V                          # noqa: E402
 
 T = os.path.join(PHASE3_ROOT, "tasks")
+# Latch-bit counts fixed by signal widths (measured on Yosys 0.33). A mismatch on another Yosys version means the
+# `stat` table was parsed wrongly (or mapped differently) -> latch-cell and composition numbers would be wrong.
+EXPECT_INPUT_LATCH_CELLS = {"mux3": 32, "MuxPC": 32, "mem_wb_mux": 32, "register_32bit": 32, "register_4bit": 4,
+                            "riscv_alu_flags": 34}
 
 
 def version(cmd):
@@ -52,12 +56,13 @@ for t in sorted(os.listdir(T)):
         "input_defect_visible": (not i["struct_clean"]) or (not i["func_pass"]),
         "drift_v3_classes": sorted(r3["classes_fired"]) == sorted(m["expected_v3_classes"]),
         "drift_v2_classes": sorted(r2["classes_fired"]) == sorted(m["expected_v2_classes"]),
+        "stat_cell_count": (i["latch_cells"] == EXPECT_INPUT_LATCH_CELLS[t]) if t in EXPECT_INPUT_LATCH_CELLS else True,
     }
     ok = all(checks.values()); ok_all &= ok
     rows.append({"task": t, "ok": ok, "checks": checks, "v3_classes": r3["classes_fired"], "v2_classes": r2["classes_fired"],
                  "input": {k: v for k, v in i.items() if k != "_logs"}, "golden": {k: v for k, v in g.items() if k != "_logs"}})
     print(f"{'OK ' if ok else 'BAD'} {t:<16} golden(func={g['func_pass']},clean={g['struct_clean']}) "
-          f"input(sim={i['sim_outcome']},yosys_ok={i['yosys_ok']},latch_ev={i['latch_events']},vcodes={i['verilator_codes']}) "
+          f"input(sim={i['sim_outcome']},yosys_ok={i['yosys_ok']},latch_ev={i['latch_events']},cells={i['latch_cells']},vcodes={i['verilator_codes']}) "
           f"v2={r2['classes_fired']} v3={r3['classes_fired']}"
           + ("" if ok else f"   FAILED: {[k for k, v in checks.items() if not v]}"))
 out = os.path.join(PHASE3_ROOT, "evidence", "task_validation.json")
