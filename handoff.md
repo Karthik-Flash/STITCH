@@ -267,7 +267,7 @@ load-bearing.
 ## Phase 3 status (2026-09-24)
 
 This section supersedes the "Phase 3 not yet scoped" wording above. Phase 3 is scoped and integrated on branch
-`phase3-setup` (cut from `main` at `672573d`, not pushed, not yet run on the HPC).
+`phase3-setup` (cut from `main` at `61535aa`, not pushed, not yet run on the HPC).
 
 **What landed.** `phase3/` (MPSoC composition benchmark: 11 repair tasks, 3 reference designs, 5-condition runner,
 composition tool, 44 tests on frozen real logs, HPC scripts, evidence, docs) and the additive interpreter v3 layer

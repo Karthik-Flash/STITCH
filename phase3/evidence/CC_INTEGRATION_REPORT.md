@@ -1,6 +1,6 @@
 # Phase 3 integration report (Claude Code, laptop)
 
-Date 2026-09-24. Branch `phase3-setup`, cut from `main` at `672573d`. Nothing was pushed, no ssh/scp/sbatch was run,
+Date 2026-09-24. Branch `phase3-setup`, cut from `main` at `61535aa`. Nothing was pushed, no ssh/scp/sbatch was run,
 and `src/interpreter/stitch_interpreter.py` was not touched (T0 hash below).
 
 ## Outcome per step
