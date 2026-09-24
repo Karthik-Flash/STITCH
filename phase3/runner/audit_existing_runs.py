@@ -13,6 +13,12 @@ Usage:
   python phase3/runner/audit_existing_runs.py --metrics-glob "phase2/results/**/metrics.json" \
       --pass-field passed --condition-field condition --model-field model --module-field module \
       --out phase3/results/e0_audit.jsonl
+
+Phase 2 Sets 1 and 3, all four conditions (metrics.json for baseline / sem_adv, run_log.json for the two escalation
+conditions; the non-recursive glob is much faster than "**" on /mnt/d under WSL):
+  python3 phase3/runner/audit_existing_runs.py --metrics-glob 'phase2/results/set[13]_run/*/*/*/rep*/*.json' \
+      --pass-field pass --condition-field condition --model-field model --module-field module \
+      --out phase3/results/e0_audit_phase2_all4conditions.jsonl
 """
 import argparse
 import glob
@@ -70,6 +76,10 @@ def main():
                 m = json.load(open(mf))
             except Exception:
                 continue
+            # sem_escalate / sem_escalate_restart runs write run_log.json with the run's fields
+            # (pass, condition, model, module, ...) nested under "summary"; baseline / sem_adv write them flat.
+            if isinstance(m.get("summary"), dict):
+                m = m["summary"]
             passed = bool(m.get(a.pass_field))
             if a.only_passes and not passed:
                 continue

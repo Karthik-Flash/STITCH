@@ -267,7 +267,8 @@ load-bearing.
 ## Phase 3 status (2026-09-24)
 
 This section supersedes the "Phase 3 not yet scoped" wording above. Phase 3 is scoped and integrated on branch
-`phase3-setup` (cut from `main` at `61535aa`, not pushed, not yet run on the HPC).
+`phase3-setup` (cut from `main` at `61535aa`; pushed to `origin/phase3-setup` as a backup, not merged; not yet run on
+the HPC).
 
 **What landed.** `phase3/` (MPSoC composition benchmark: 11 repair tasks, 3 reference designs, 5-condition runner,
 composition tool, 44 tests on frozen real logs, HPC scripts, evidence, docs) and the additive interpreter v3 layer
@@ -280,13 +281,16 @@ composition tool, 44 tests on frozen real logs, HPC scripts, evidence, docs) and
 - **T4.** No production runner passes bare signal names to `interpret_yosys_latches` (evidence F8 never applied).
   Production `sem_adv` does print raw tool text next to the directives, so Phase 3's `--sem-include-raw 1` matches.
   But production keeps far more Yosys text than Phase 3's `raw_tool_text()` (98 vs 2 lines on `probe_latch`, 5,239 vs 40
-  on `mpsoc_Decoder`), so Phase 3 prompts are not byte-comparable to Set 1/3. The nightly `comb_sensitivity` example
-  (in `STITCH_v3\runs\nightly_20260814_012758`, outside this repo, prompts never saved) is a wrong `'process'` BLKSEQ
-  directive from a since-fixed extraction bug, and the row that shows harm is qwen2.5-coder:14b, not llama3.1.
+  on `mpsoc_Decoder`), so Phase 3 prompts are not byte-comparable to Set 1/3; decision 2026-09-24: `raw_tool_text()` stays
+  as is. The `comb_sensitivity` harmful-regime example is backed by saved runs outside this repo (the paper's llama3.1 row
+  is `AutoChipAdvFB\AutoChipSTITCH\results_stitch\llama31`, baseline PASS@4, sem_adv FAIL). The directive that misled
+  the model was a `'process'` BLKSEQ extraction fault, fixed since (today's production emits nothing there). Run IDs,
+  the check of the paper's sentences and the PDF locations are in `phase3/docs/JOURNAL_ERRATA_NOTES.md`.
 - **T5.** `phase3/runner/system_prompt.txt` is the production `SYSTEM_PROMPT` (from `phase2/stitch_runner_hpc.py:126`).
-- **T6.** E0 retro-audit of the Set 1/3 passes: 15/195 baseline and 13/188 sem_adv passes are structurally dirty
-  (Yosys failure, latch, loop, truncation), 7.7% and 6.9% pooled. Covers baseline and sem_adv only; the two escalation
-  conditions write `run_log.json` and are not covered yet. `final_rtl()` had a testbench-selection bug (fixed).
+- **T6.** E0 retro-audit of the Set 1/3 passes, all four conditions: 60 of 773 passes are structurally dirty (Yosys
+  failure, latch, loop, truncation), 6.7% to 9.7% per condition with overlapping intervals. 35 of the 60 were first-draft
+  passes, so no feedback round happened. Details: `phase3/evidence/E0_AUDIT_RESULTS.md`. `final_rtl()` had a
+  testbench-selection bug (fixed).
 - **T7.** 44 tests pass, Gate 1 passes (11 tasks), the plan is 990 runs, and the mock smoke run and summarizer work,
   all on Yosys 0.33 / Verilator 5.020 / Icarus 12.0 (the versions the fixtures were captured with).
 
@@ -296,5 +300,4 @@ Part 9 and a "planned" inventory row; `docs/FULL_RUN_RUNBOOK.md` has a section 9
 
 **Next step.** HPC Part A: `phase3/HPC_PHASE3_COMMANDS.md` (preflight, then deploy with `phase3\hpc\deploy_phase3.ps1`,
 then the gate job). Nothing GPU-side before the gate prints `ALL GATES PASSED`; the full run waits for the reviewed
-pilot. Decide first: whether to extend E0 to the escalation conditions, and whether Phase 3's raw feedback should mimic
-production's trimming.
+pilot.

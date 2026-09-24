@@ -1,7 +1,9 @@
 # Phase 3 integration report (Claude Code, laptop)
 
-Date 2026-09-24. Branch `phase3-setup`, cut from `main` at `61535aa`. Nothing was pushed, no ssh/scp/sbatch was run,
-and `src/interpreter/stitch_interpreter.py` was not touched (T0 hash below).
+Date 2026-09-24. Branch `phase3-setup`, cut from `main` at `61535aa`. First pass: nothing pushed. Second pass (E0
+extended to all four conditions, raw-feedback decision, journal errata notes): the branch is pushed to
+`origin/phase3-setup` as a backup and is not merged into `main`. No ssh/scp/sbatch was run, and
+`src/interpreter/stitch_interpreter.py` was not touched (T0 hash below).
 
 ## Outcome per step
 
@@ -13,12 +15,12 @@ and `src/interpreter/stitch_interpreter.py` was not touched (T0 hash below).
 | T1 superseded drop | PASS | nothing left at root; every successor exists in `phase3\` |
 | T2 line endings | PASS + 2 FINDINGS | 0 CR bytes in 321 files; `git add --renormalize` does not stage new files; global `*.log` ignore would have dropped 49 fixture logs |
 | T3 MPSoC identity | PASS | output exactly as expected |
-| T4 runner integration | 2 FINDINGS | T4.1 clean; T4.2 harmful-regime example is a since-fixed bug and the harm case is a different model; T4.3 clean; T4.4 prompts not comparable to Set 1/3 |
+| T4 runner integration | 2 FINDINGS | T4.1 clean; T4.2 the BLKSEQ `'process'` directive is a since-fixed extraction bug, and three baseline-pass / sem_adv-fail cases exist for the example module (section 2, corrected); T4.3 clean; T4.4 prompts not comparable to Set 1/3 (decision recorded) |
 | T5 system prompt | PASS | production prompt written verbatim, 972 bytes, from `phase2/stitch_runner_hpc.py:126` |
-| T6 E0 audit | FINDING | `final_rtl()` picked testbenches in 48% of passes (fixed); 383 passes audited; escalation conditions not covered |
+| T6 E0 audit | PASS (second pass) | `final_rtl()` picked testbenches in 48% of passes (fixed); all four conditions audited: 773 passes, 60 structurally dirty (7.8%); see `E0_AUDIT_RESULTS.md` |
 | T7 local verification | PASS | 44 passed; Gate 1 PASS (11 OK); 990-run plan; mock smoke 55 runs; summarize OK |
 | T8 doc pointers | PASS | append-only: 22 insertions, 0 deletions in `docs/`; `handoff.md` section added |
-| T9 commit | see final message | branch `phase3-setup`, not pushed |
+| T9 commit | DONE | branch `phase3-setup`; first pass `dc5e11b` and `93b23ed`, second pass in `git log`; pushed as a backup, not merged |
 
 ## Findings that may change how the runs are read (need your decision)
 
@@ -43,82 +45,97 @@ and `src/interpreter/stitch_interpreter.py` was not touched (T0 hash below).
   `SEMANTIC ANALYSIS (fix these):` and omits production's "Read the SEMANTIC DIRECTIVES carefully" header, and the task
   is repair-with-code-in-the-prompt, not generation from a spec. The system prompt gap is closed by T5. Cross-phase
   comparisons should be described as "same models, temperature and iteration budget", not "same prompt".
-  I did not change the runner; if you want production-style raw text, that is a one-function change in `raw_tool_text()`.
+- **Decision (2026-09-24): keep `raw_tool_text()` as is.** Phase 3 raw feedback stays filtered to Verilator
+  warning/error lines and Yosys latch, error and logic-loop lines, at most 40 lines per tool. The line counts above are the
+  record of what that choice changes: on `probe_latch` production would show 98 Yosys lines against Phase 3's 2, and on the
+  real `mpsoc_Decoder` 5,239 against 40 (mostly `No latch inferred`, which alone would exceed the runner's 8,192-token
+  context). The filter is one function applied to every condition that shows raw text (raw tools, v2, v3, and escalation
+  once it escalates; baseline shows none), so comparisons within Phase 3 are like for like. This is stated in the paper
+  draft, `phase3/docs/PAPER_SECTION_compositional_integrity.md` section X.6. Cross-phase comparisons should say "same models,
+  temperature and iteration budget", not "same prompt".
 - **T4.1 is clean.** Every production runner (`src/runner/stitch_runner.py:276`, `phase2/stitch_runner_hpc.py:269`, and
   the escalation runners that call `run_yosys_check`) builds `latch_lines` from raw Yosys lines, at most 5, each line
   filtered by `detect_yosys_latches`. Nobody passes bare names, so evidence F8 never affected a published condition.
 
-### 2. The harmful-regime example (T4.2)
+### 2. The harmful-regime example (T4.2), corrected on the second pass
 
-`runs/nightly_20260814_012758/` is not in this repo. It is at
-`D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI\STITCH_v3\runs\nightly_20260814_012758\` (the CSV path pointed
-at `STITCHAdv`, which holds a different nightly). I read it read-only. Its per-iteration `feedback.txt` prompts were
-never saved, so the directive cannot be quoted from disk. `metrics.json` records what fired.
+**Correction to my first pass.** I first looked only at `nightly_20260814_012758`, the run the handoff named, and wrote
+that llama3.1 was not a harm case and qwen2.5-coder:14b was. That is true of that one run only. The conference paper's
+llama3.1 example (Table 7, `comb_sensitivity llama3.1:8b  4 Yes / 6 No`, page 5) comes from an earlier run in which
+llama3.1 is a genuine baseline-pass / sem_adv-fail case, so the paper's attribution is backed by data. The full record,
+with run IDs, per-condition outcomes and the sentences of each PDF that describe the example, is in
+`phase3/docs/JOURNAL_ERRATA_NOTES.md`.
 
-- **llama3.1 `sem_adv` (the run named in the handoff):** BLKSEQ fired at iterations 1 and 3. But baseline and raw_adv
-  also fail for llama3.1 on this module, so this row does not show sem_adv causing a failure.
-- **The row that does show harm is qwen2.5-coder:14b:** baseline PASS and raw_adv PASS (2 iterations each), sem_adv FAIL
-  (6 iterations, BLKSEQ fired at 1, 3 and 5). Under baseline the model rewrote the block as
-  `always @(sel or a or b or c)`. Under sem_adv it changed `=` to `<=` and kept the incomplete `@(sel or a)`.
-- **The directive text, reproduced** by running the real Verilator 5.020 with the runner's flags on the saved
-  `iter_1` source and feeding production `interpret_verilator` without the source path:
+The runs live outside this repo, in the older workspace under `D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI\`
+(the CSV paths point at `STITCHAdv`, which does not hold them). They were read read-only. Cells are
+baseline / raw_adv / sem_adv; `PASS@k` is the iteration of the first pass.
+
+| run (files dated) | llama3.1 | qwen2.5-coder |
+|---|---|---|
+| `AutoChipAdvFB\AutoChipSTITCH\results_stitch` (2026-05-17; the paper's row; a byte-identical copy is `AutoChipAdvFB\results_stitch`) | `llama31`: PASS@4 / FAIL / FAIL, BLKSEQ at iterations 1, 3 | `qwen25-coder_latest`: PASS@2 / FAIL / FAIL, BLKSEQ at 1 |
+| `STITCH_v3\runs\nightly_20260814_012758` (2026-08-14) | `llama31_latest`: FAIL / FAIL / FAIL, BLKSEQ at 1, 3 | `qwen25-coder_14b`: PASS@2 / PASS@2 / FAIL, BLKSEQ at 1, 3, 5 |
+
+So for this module there are three baseline-pass / sem_adv-fail cases, not one: llama3.1 and qwen2.5-coder:latest in the
+paper's run, and qwen2.5-coder:14b in the nightly. The nightly's llama3.1 row is the only llama3.1 row that fails
+everywhere.
+
+- **The directive text is not saved anywhere.** Neither run kept `feedback.txt`, so it cannot be quoted from disk. I
+  reproduced it by running the real Verilator 5.020 with the runner's flags on the saved `iter_1` source and feeding
+  production `interpret_verilator` without the source path:
   ```
   *** CRITICAL: Blocking assignment (=) in clocked always block for 'process'. ***
   In clocked always @(posedge clk) blocks, ALWAYS use non-blocking: 'process <= value;'
   ```
-  It names `'process'` (a word from Verilator's message, not a signal), and the block is not clocked. The real defect
-  is the incomplete sensitivity list.
+  It names `'process'` (a word from Verilator's message, not a signal), and the block is not clocked; the real defect is
+  the incomplete sensitivity list `@(sel or a)`.
 - **Today's production emits nothing for this case.** With the source path (which `sem_adv` passes,
-  `stitch_runner.py:658`) the cross-check drops `'process'` because it is not in the file, and the result is
-  `codes=[]`. The nightly nevertheless recorded `semantic_fired` with BLKSEQ, so it ran an older interpreter. Git
-  cannot date the change (the repo's first commit is 2026-08-18, after the nightly).
-- **Implication for the paper:** as an illustration it shows a wrong directive from a since-fixed extraction bug
-  harming a model, not correct advice harming a model. Set 1's roughly 4-point harm comes from the Phase 2 HPC run (late
-  August, after the repo's first commit that already contains the cross-check), so this finding does not by itself
-  affect it.
+  `stitch_runner.py:658`) the cross-check drops `'process'` because it is not in the file, and the result is `codes=[]`.
+  Both runs nevertheless recorded BLKSEQ as fired, so they ran an older interpreter. The run files are dated 2026-05-17
+  and 2026-08-14; the only interpreter copy I found with the cross-check (`STITCH_v3\interpreter\stitch_interpreter.py`)
+  is dated 2026-08-18, the same day as this repo's first commit, so both runs predate it.
+- **What the saved runs support, and what they do not.** In the paper's run, sem_adv followed the directive (iterations
+  2, 4, 5, 6 switch `=` to `<=`) and never fixed the sensitivity list, while baseline fixed it at iteration 4. All six
+  sem_adv iterations compiled (0 compile errors); every failure is a simulation logic error. The paper's text says
+  "generates syntax errors from iteration three onward", and its token and time figures (22,080 vs 17,688 tokens,
+  452 s vs 1,159 s) are not in any saved data I could reach; the saved run shows 4,152 / 9,360 / 10,130 tokens and
+  127 / 178 / 180 s. Those two points need a check against the paper's artifact (`scripts/recompute_tables.sh`).
+- **Independence of Set 1 and Set 3.** The extension's harm claim (sem_adv about 4 points below baseline on the small
+  models, 30.7% versus 35.3%) comes from the Phase 2 HPC runs on RTLLM, which ran late August with the cross-check
+  already in place, and does not rest on this single cell.
 
-### 3. E0 retro-audit (T6): results, and one coverage gap
+### 3. E0 retro-audit (T6): all four conditions
 
-- **Bug fixed in `audit_existing_runs.py`, `final_rtl()` only.** Each `iter_N/` holds `<module>.v` and a testbench copy
-  `<module>_tb.v`. The original filter excluded only names starting with `tb`/`test`, so the mtime tie-break picked the
-  testbench in **278 of 576** passing runs. After the fix it picks `<module>.v` from the highest iteration in
-  **576 of 576**. The "highest `iter_N` is the final iteration" rule held for all 383 Set 1/3 passes; the only exception
-  in the data is one Set 2 run (`twin_run/.../rtlcoder-deepseek-v11/baseline/calendar`, stale `iter_2..5` dirs beside a
-  1-iteration pass), which is outside E0's scope.
-- **Command run** (WSL, results local and gitignored):
-  `audit_existing_runs.py --metrics-glob 'phase2/results/set[13]_run/**/metrics.json' --pass-field pass
-  --condition-field condition --model-field model --module-field module --out phase3/results/e0_audit_phase2.jsonl`.
-  1,062 metrics files, 383 passing runs audited.
-- **Result: structurally dirty passes**
+Extended on the second pass (your decision 1): `audit_existing_runs.py` now also reads `run_log.json`, whose fields sit
+under a `summary` key, so `sem_escalate` and `sem_escalate_restart` are covered. Results, tables, cause and model
+breakdowns and reading notes are in `phase3/evidence/E0_AUDIT_RESULTS.md`; tables are generated by
+`phase3/runner/e0_breakdown.py`.
 
-  | set | condition | passes | dirty | rate |
-  |---|---|---|---|---|
-  | Set 1 (4B-8B) | baseline | 109 | 11 | 10.1% |
-  | Set 1 | sem_adv | 103 | 10 | 9.7% |
-  | Set 3 (14B-32B) | baseline | 86 | 4 | 4.7% |
-  | Set 3 | sem_adv | 85 | 3 | 3.5% |
-  | pooled | baseline | 195 | 15 | 7.7% |
-  | pooled | sem_adv | 188 | 13 | 6.9% |
+| condition | passes audited | structurally dirty | rate (Wilson 95% CI) |
+|---|---|---|---|
+| baseline | 195 | 15 | 7.7% (4.7-12.3) |
+| sem_adv | 188 | 13 | 6.9% (4.1-11.5) |
+| sem_escalate | 194 | 13 | 6.7% (4.0-11.1) |
+| sem_escalate_restart | 196 | 19 | 9.7% (6.3-14.6) |
+| all four | 773 | 60 | 7.8% (6.1-9.9) |
 
-  By model: deepseek-coder:6.7b 16/111 (14.4%), qwen2.5-coder:14b 6/52 (11.5%), llama3.1 5/63 (7.9%),
-  qwen2.5-coder:32b 1/77 (1.3%), gemma3:4b 0/38, gemma3:27b 0/42. I did not test any of these differences for
-  significance; baseline versus sem_adv is 15/195 against 13/188.
-- **Why runs are dirty** (a run can have several reasons): Yosys hard failure 13 (5 `Async reset ... non-constant`,
-  2 `Multiple edge sensitive events`, 6 SystemVerilog `for (integer i...)` in one RAM module), Yosys latch 5, Verilator
-  `WIDTHTRUNC` 8, `UNOPTFLAT` 6, `LATCH` 3, Yosys loop 1. The async-reset errors are the same class as the
-  `register_1bit` task.
+- The rates overlap across conditions and no significance test was run. 35 of the 60 dirty passes were first-draft passes,
+  so no feedback round happened; the Set 1/3 pass criterion is the testbench, which is why every condition can pass with
+  a defect it cannot see. This does not change any Set 1/3 pass-rate result.
+- **Bug fixed in `audit_existing_runs.py`.** Each `iter_N/` holds `<module>.v` and a testbench copy `<module>_tb.v`. The
+  original `final_rtl()` filter excluded only names starting with `tb`/`test`, so the mtime tie-break picked the
+  testbench in **278 of 576** baseline/sem_adv/Twin passes. After the fix, all 773 audited files are `<module>.v` in the
+  iteration equal to `iterations_to_pass`. The audit script also gained the `summary` unwrapping (decision 1).
+- **Reproducibility.** The earlier 383-run audit was re-run inside the four-condition one and reproduced record for
+  record (383 of 383 identical). The one exception to "highest `iter_N` is the final iteration" in the data is a Set 2 run
+  (`twin_run/.../rtlcoder-deepseek-v11/baseline/calendar`, stale `iter_2..5` dirs beside a 1-iteration pass), which is
+  outside E0's scope.
 - **Spot-check by hand (3 records):** `set1_run/adder_16bit/deepseek-coder_67b/sem_adv/rep1` clean;
   `set3_run/fixed_point_substractor/qwen25-coder_32b/baseline/rep3` sim PASS at iteration 1 with 1 Yosys latch event and
   1 loop; `set1_run/instr_reg/deepseek-coder_67b/baseline/rep1` passed at iteration 2 and the audited file is
-  `iter_2/instr_reg.v` (Yosys `Async reset \rst yields non-constant value`). All three audited files are the last
-  iteration's design, not a testbench.
-- **Coverage gap.** `sem_escalate` and `sem_escalate_restart` runs have no `metrics.json`; they write `run_log.json`
-  with `pass`/`condition`/`model`/`module` nested under a `summary` key (1,054 files, the 8 missing are the documented
-  6 + 2 transient errors). The audit script reads top-level fields only, so **E0 covers baseline and sem_adv but not the
-  two escalation conditions**. The handoff limits the T6 adaptation to `final_rtl()`, so I stopped there. Covering them
-  is a small change (read `m["summary"]` when present) and needs your go-ahead.
+  `iter_2/instr_reg.v` (Yosys `Async reset \rst yields non-constant value`).
 - **Cosmetic:** `p3_eval.synth()` captures `yosys_error` only from lines starting `ERROR`, so errors printed as
-  `file.v:17: ERROR: ...` leave `yosys_error` empty while `yosys_ok` is correctly `False`. Scoring is unaffected.
+  `file.v:17: ERROR: ...` leave `yosys_error` empty (14 of the 30 Yosys failures) while `yosys_ok` is correctly `False`.
+  Scoring is unaffected; not changed.
 
 ## Lower-impact findings
 
@@ -188,9 +205,15 @@ different tool version can show up.
 lines added). No existing line changed. `handoff.md`: new "Phase 3 status" section at the end.
 
 ## Files created or changed
-New: everything under `phase3\` (318 files from the drop), `src/interpreter/stitch_interpreter_v3.py`,
-`src/interpreter/_v3_parsers.py`, `phase3/runner/system_prompt.txt`, this report.
-Edited: `phase3/runner/audit_existing_runs.py` (`final_rtl()` only), `.gitattributes`, `.gitignore`,
-`docs/HPC_COMMANDS.md`, `docs/FULL_RUN_RUNBOOK.md`, `handoff.md`.
-Local only, not committed: `note.txt` (git workflow section appended), `phase3/results/e0_audit_phase2.jsonl`.
-Deleted: root `HANDOFF_PHASE3_CLAUDE_CODE.md`, root `PROD_V2_ON_REAL_LOGS.md`, `STITCH_phase3_drop\`.
+First pass. New: everything under `phase3\` (318 files from the drop), `src/interpreter/stitch_interpreter_v3.py`,
+`src/interpreter/_v3_parsers.py`, `phase3/runner/system_prompt.txt`, this report. Edited: `.gitattributes`,
+`.gitignore`, `docs/HPC_COMMANDS.md`, `docs/FULL_RUN_RUNBOOK.md`, `handoff.md`. Deleted: root
+`HANDOFF_PHASE3_CLAUDE_CODE.md`, root `PROD_V2_ON_REAL_LOGS.md`, `STITCH_phase3_drop\`.
+
+Second pass. New: `phase3/evidence/E0_AUDIT_RESULTS.md`, `phase3/runner/e0_breakdown.py`,
+`phase3/docs/JOURNAL_ERRATA_NOTES.md`. Edited: `phase3/runner/audit_existing_runs.py` (`final_rtl()` in the first pass;
+`run_log.json` `summary` unwrapping and the usage note in the second), `phase3/docs/PAPER_SECTION_compositional_integrity.md`
+(one sentence in X.6), this report (decision, corrected section 2, section 3). The PDFs in the repo root were only read.
+
+Local only, not committed: `note.txt` (git workflow section appended), `phase3/results/e0_audit_phase2.jsonl` (383
+records, superseded) and `phase3/results/e0_audit_phase2_all4conditions.jsonl` (773 records).

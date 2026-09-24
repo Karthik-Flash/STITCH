@@ -74,7 +74,10 @@ The repair set contains the eight real defective leaves plus three seeded RISC-V
 classes absent from the reference: multi-driven crossbar output, flit-packing truncation, and ALU flag latches. Six of
 the eleven are **sim-silent**, meaning the defective input passes its testbench. Five conditions share one iteration
 budget: baseline, raw tools, the production interpreter (v2), v3, and escalation with v3. The model ladder is
-[HPC: 4B–14B, list], with N=3 and T=0.1.
+[HPC: 4B–14B, list], with N=3 and T=0.1. Wherever a condition shows raw tool text (raw tools, v2, v3, and escalation
+once it escalates; baseline shows none), that text is filtered by the same function to Verilator warning and error
+lines and Yosys latch, error and logic-loop lines, at most 40 lines per tool, so conditions differ only in whether tool
+text is shown and whether directives accompany it.
 - **Primary metric:** `clean_pass`, i.e. simulation pass AND a Yosys synthesis pass with 0 latches, 0 loops and no
   hard Verilator warnings.
 - **Silent structural pass:** a baseline run that stops at simulation pass with the defect intact.
