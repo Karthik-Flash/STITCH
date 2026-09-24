@@ -143,116 +143,123 @@ def signature(ev, interp=None) -> str:
     return s + "|" + (interp["signature"] if interp else "")
 
 
-def user_prompt(spec, code, feedback=None, first=False) -> str:
-    head = "Repair the following Verilog-2001 module so that it meets the specification and is synthesizable."
-    p = f"{head}\n\nSPECIFICATION:\n{spec}\n\nCURRENT RTL{' (may contain functional and/or synthesis defects)' if first else ''}:\n```verilog\n{code}```\n"
+def user_prompt(spec, code, feedback=None) -> str:
+    """Neutral wording (no hint that a defect exists); identical for every condition. Conditions differ ONLY in FEEDBACK."""
+    p = f"Here is a Verilog-2001 module and its specification.\n\nSPECIFICATION:\n{spec}\n\nCURRENT RTL:\n```verilog\n{code}```\n"
     if feedback:
-        p += f"\nFEEDBACK FROM THE LAST ATTEMPT:\n{feedback}\n"
-    p += "\nReturn the COMPLETE corrected module in one ```verilog block. Keep the module name and port names as specified."
+        p += f"\nVERIFICATION FEEDBACK ON THE CURRENT RTL:\n{feedback}\n"
+    p += ("\nReturn the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. "
+          "Keep the module name and port names as specified.")
     return p
 
 
-# --------------------------------------------------------------------------- one run
+def build_feedback(ev, cond, escalated, cpath, top, args):
+    """Feedback on one evaluated RTL for one condition. Returns (text, interp_or_None, used_tools)."""
+    fb, interp, used = [sim_feedback(ev)], None, False
+    if cond in ("raw_adv", "sem_adv_v2", "sem_adv_v3") or (cond == "sem_esc_restart_v3" and escalated):
+        used = True
+        if cond == "raw_adv":
+            fb.append(raw_tool_text(ev))
+        else:
+            ver = "v2" if cond == "sem_adv_v2" else "v3"
+            interp = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, version=ver, top=top,
+                                   **({"max_directives": args.max_directives} if ver == "v3" else {}))
+            if interp["fired"]:
+                fb.append("SEMANTIC ANALYSIS (fix these):\n" + interp["text"])
+            if args.sem_include_raw or not interp["fired"]:
+                fb.append(raw_tool_text(ev))
+    elif ev["func_pass"] and not ev["struct_clean"]:
+        fb.append("The design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.")
+    return "\n\n".join(x for x in fb if x), interp, used
+
+
+def _m(ev):
+    return {k: v for k, v in ev.items() if k != "_logs"}
+
+
+def _eval_into(cpath, code, tdir, top, idir):
+    os.makedirs(idir, exist_ok=True)
+    open(cpath, "w").write(code)
+    ev = evaluate(cpath, tdir, top, workdir=idir, keep=True)
+    for k, v in ev["_logs"].items():
+        open(os.path.join(idir, f"{k}.log"), "w").write(v)
+    return ev
+
+
 def run_one(llm, model, cond, task, rep, args, run_dir, gate_cache):
+    """Feedback-first protocol: the defective input is evaluated first (iteration 0) and the condition's feedback on
+    it goes into the FIRST LLM call. Budget = args.max_iters LLM calls for every condition (restarts included).
+    baseline = AutoChip: stops as soon as simulation passes -- including on the unmodified input (0 LLM calls)."""
     tdir = os.path.join(TASKS_DIR, task)
     meta = json.load(open(os.path.join(tdir, "meta.json")))
     top, spec = meta["top"], open(os.path.join(tdir, "spec.md")).read()
     code0 = open(os.path.join(tdir, "input.v")).read()
-    if task not in gate_cache:
-        g = evaluate(os.path.join(tdir, "input.v"), tdir, top)
-        gate_cache[task] = {k: g[k] for k in ("latch_events", "latch_cells", "func_pass", "clean_pass",
-                                              "verilator_warnings_count", "yosys_ok")}
-    before = gate_cache[task]
     if isinstance(llm, Mock):
         llm.bind(tdir)
-    code, feedback = code0, None
-    escalated_at, restarted, stuck, last_sig, restart_armed = None, False, 0, None, False
-    iters, sem_iters, classes_union, tok_in, tok_out, fb_tool_iters = [], [], set(), 0, 0, 0
-    stop_reason, ev, t0 = "budget", None, time.time()
-    for it in range(1, args.max_iters + 1):
-        idir = os.path.join(run_dir, f"iter{it}")
+    cpath0 = os.path.join(run_dir, "iter0", "dut.v")
+    ev0 = _eval_into(cpath0, code0, tdir, top, os.path.join(run_dir, "iter0"))
+    ev, cpath, code = ev0, cpath0, code0
+    iters = [{"iter": 0, "input": True, **_m(ev0)}]
+    escalated_at, restarted, stuck, last_sig = None, False, 0, None
+    sem_iters, classes_union, tok_in, tok_out, fb_tool, calls = [], set(), 0, 0, 0, 0
+    stop_reason, t0 = "budget", time.time()
+    while True:
+        if cond == "baseline" and ev["func_pass"]:
+            stop_reason = "func_pass" if calls else "func_pass_at_input"; break
+        if cond != "baseline" and ev["clean_pass"]:
+            stop_reason = "clean_pass"; break
+        if calls >= args.max_iters:
+            break
+        if cond == "sem_esc_restart_v3":
+            si = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, top=top)
+            sig = signature(ev, si)
+            stuck = stuck + 1 if sig == last_sig else 1
+            last_sig = sig
+            iters[-1]["signature"] = sig
+            if escalated_at is None and stuck >= 2:
+                escalated_at, stuck = calls, 0
+            elif escalated_at is not None and not restarted and stuck >= 2:
+                restarted, stuck, last_sig = True, 0, None
+                iters[-1]["restart"] = True
+                ev, cpath, code = ev0, cpath0, code0          # blank slate: original RTL, fresh feedback on it
+        fb, interp, used = build_feedback(ev, cond, escalated_at is not None, cpath, top, args)
+        fb_tool += int(used)
+        fired = bool(interp and interp["fired"])
+        if fired:
+            sem_iters.append(calls); classes_union |= set(interp["classes_fired"])
+        iters[-1]["feedback_semantic_fired"] = fired
+        iters[-1]["feedback_classes"] = sorted(interp["classes_fired"]) if interp else []
+        feedback = strip_paths(fb, os.path.dirname(cpath), tdir)
+        calls += 1
+        idir = os.path.join(run_dir, f"iter{calls}")
         os.makedirs(idir, exist_ok=True)
-        prompt = user_prompt(spec, code, feedback, first=(feedback is None))
+        prompt = user_prompt(spec, code, feedback)
         open(os.path.join(idir, "prompt.txt"), "w").write(prompt)
         resp, ti, to = llm.chat(args.system_prompt, prompt)
         tok_in += ti or 0; tok_out += to or 0
         open(os.path.join(idir, "response.txt"), "w").write(resp)
-        cand = extract_code(resp)
+        code = extract_code(resp)
         cpath = os.path.join(idir, "dut.v")
-        open(cpath, "w").write(cand)
-        ev = evaluate(cpath, tdir, top, workdir=idir, keep=True)
-        for k, v in ev["_logs"].items():
-            open(os.path.join(idir, f"{k}.log"), "w").write(v)
-        code = cand
-        rec = {"iter": it, **{k: v for k, v in ev.items() if k != "_logs"}}
-        # ---- stopping rule
-        if cond == "baseline" and ev["func_pass"]:
-            iters.append(rec); stop_reason = "func_pass"; break
-        if cond != "baseline" and ev["clean_pass"]:
-            iters.append(rec); stop_reason = "clean_pass"; break
-        # ---- feedback construction (what differs between conditions)
-        fb = [sim_feedback(ev)]
-        interp = None
-        if cond in ("raw_adv", "sem_adv_v2", "sem_adv_v3") or (cond == "sem_esc_restart_v3" and escalated_at):
-            fb_tool_iters += 1
-            if cond == "raw_adv":
-                fb.append(raw_tool_text(ev))
-            else:
-                ver = "v2" if cond == "sem_adv_v2" else "v3"
-                interp = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, version=ver, top=top,
-                                       **({"max_directives": args.max_directives} if ver == "v3" else {}))
-                if interp["fired"]:
-                    fb.append("SEMANTIC ANALYSIS (fix these):\n" + interp["text"])
-                    sem_iters.append(it); classes_union |= set(interp["classes_fired"])
-                if args.sem_include_raw or not interp["fired"]:
-                    fb.append(raw_tool_text(ev))
-        elif cond in ("baseline", "sem_esc_restart_v3") and ev["func_pass"] and not ev["struct_clean"]:
-            fb.append("The design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.")
-        if cond == "sem_esc_restart_v3":
-            sig_interp = interp or IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, top=top)
-            sig = signature(ev, sig_interp)
-            stuck = stuck + 1 if sig == last_sig else 1
-            last_sig = sig
-            rec["signature"] = sig
-            if not escalated_at and stuck >= 2:
-                escalated_at, stuck = it, 0
-                it_interp = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, top=top,
-                                          max_directives=args.max_directives)
-                fb = [sim_feedback(ev)]
-                if it_interp["fired"]:
-                    fb.append("SEMANTIC ANALYSIS (fix these):\n" + it_interp["text"])
-                    sem_iters.append(it); classes_union |= set(it_interp["classes_fired"])
-                if args.sem_include_raw or not it_interp["fired"]:
-                    fb.append(raw_tool_text(ev))
-                fb_tool_iters += 1
-            elif escalated_at and not restarted and stuck >= 2:
-                restarted, stuck, last_sig = True, 0, None
-                rec["restart"] = True
-                code, feedback = code0, None               # blank slate, still escalated
-                iters.append(rec)
-                continue
-        rec["semantic_fired"] = bool(interp and interp["fired"]) or (it in sem_iters)
-        rec["classes_fired"] = sorted(interp["classes_fired"]) if interp else []
-        iters.append(rec)
-        feedback = strip_paths("\n\n".join(x for x in fb if x), idir, tdir)
-    final = iters[-1]
+        ev = _eval_into(cpath, code, tdir, top, idir)
+        iters.append({"iter": calls, **_m(ev)})
+    final = _m(ev)
     m = {
         "model": model, "condition": cond, "task": task, "track": meta["track"], "rep": rep,
-        "timestamp": dt.datetime.now().isoformat(timespec="seconds"),
+        "timestamp": dt.datetime.now().isoformat(timespec="seconds"), "protocol": "feedback_first_v2",
         "interp_v3_version": IV3.V3_VERSION, "base_interp_sha256_lf": IV3.base_fingerprint(),
         "temperature": args.temperature, "max_iters": args.max_iters, "sem_include_raw": args.sem_include_raw,
-        "iterations": len(iters), "stop_reason": stop_reason,
-        "latch_count_before": before["latch_events"], "latch_cells_before": before["latch_cells"],
-        "input_func_pass": before["func_pass"], "input_yosys_ok": before["yosys_ok"],
+        "iterations": calls, "llm_calls": calls, "stop_reason": stop_reason,
+        "latch_count_before": ev0["latch_events"], "latch_cells_before": ev0["latch_cells"],
+        "input_func_pass": ev0["func_pass"], "input_yosys_ok": ev0["yosys_ok"],
         "latch_count_after": final["latch_events"], "latch_cells_after": final["latch_cells"],
         "semantic_fired": bool(sem_iters), "semantic_fired_iters": sem_iters, "classes_fired": sorted(classes_union),
         "verilator_warnings_count": final["verilator_warnings_count"], "verilator_codes_final": final["verilator_codes"],
         "func_pass": final["func_pass"], "clean_pass": final["clean_pass"],
         "silent_structural_pass": final["silent_structural_pass"], "final_yosys_ok": final["yosys_ok"],
-        "final_compile_ok": final["compile_ok"], "final_candidate": os.path.join(run_dir, f"iter{final['iter']}", "dut.v"),
+        "final_compile_ok": final["compile_ok"], "final_candidate": cpath,
         "tokens_in": tok_in, "tokens_out": tok_out, "wall_s": round(time.time() - t0, 1),
-        "tool_feedback_iters": fb_tool_iters, "escalated_at": escalated_at, "restarted": restarted,
-        "top_level_synthesis_pass": None,        # filled by compose.py --from-results
+        "tool_feedback_iters": fb_tool, "escalated_at": escalated_at, "restarted": restarted,
+        "top_level_synthesis_pass": None,
         "per_iter": iters,
     }
     json.dump(m, open(os.path.join(run_dir, "metrics.json"), "w"), indent=1)
