@@ -1,7 +1,8 @@
 # Sourced by every Phase 3 slurm script. Edit ONLY here if a path changes.
+# python3 = oss-cad-suite/py3bin (3.11.6): compute-node /usr/bin/python3 is 3.6 and miniconda3 was broken by the scratch purge.
 export BASE=${PHASE3_BASE:-/scratch/soumyaj/Phase3_HPC}
 export OSS_CAD_BIN=${OSS_CAD_BIN:-/scratch/soumyaj/oss-cad-suite/bin}
-export PATH=$OSS_CAD_BIN:$BASE/bin:$PATH      # iverilog, vvp, yosys, verilator + ollama
+export PATH=/scratch/soumyaj/oss-cad-suite/py3bin:$OSS_CAD_BIN:$BASE/bin:$PATH      # iverilog, vvp, yosys, verilator + ollama
 export STITCH_INTERPRETER_DIR=$BASE/src/interpreter
 export OLLAMA_MODELS=$BASE/ollama_models
 export OLLAMA_HOST=127.0.0.1:11434

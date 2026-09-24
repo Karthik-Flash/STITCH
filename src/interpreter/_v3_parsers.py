@@ -230,10 +230,15 @@ def parse_yosys(raw: str) -> List[Diagnostic]:
     for i, line in enumerate(lines):
         s = line.strip()
         # Latch. NB: case-sensitive -- "No latch inferred for signal" must NOT match.
-        m = re.match(r"Latch inferred for signal `([^']+)' from process `([^']+)'", s)
+        if s.lower().startswith("no latch"):
+            continue
+        # Tolerant across Yosys versions: 0.33 prints "... from process `\\m.$proc$f.v:10$1'"; newer releases may
+        # print location ranges ("f.v:10.2-24.6"), split a signal into bit-chunks ("\\dout [31]"), or omit the
+        # process clause. Only the backticked signal is required (same as production's _LATCH_POSITIVE_RE).
+        m = re.search(r"\bLatch inferred for signal\s+`([^'`]+)'(?:\s+from process\s+`([^'`]+)')?", s)
         if m:
-            sig_full, proc = m.groups()
-            pl = re.search(r"\$proc\$([\w./\-]+\.s?v):(\d+)\$", proc)
+            sig_full, proc = m.group(1), (m.group(2) or "")
+            pl = re.search(r"\$proc\$([\w./\-]+\.s?v):(\d+)", proc)
             diags.append(Diagnostic("yosys", "LATCH", _clean(sig_full), _yosys_mod(sig_full),
                                     pl.group(1) if pl else None, int(pl.group(2)) if pl else None,
                                     {"process": proc, "source": "yosys"}, line))

@@ -12,7 +12,7 @@
 set -euo pipefail
 source "${PHASE3_BASE:-/scratch/soumyaj/Phase3_HPC}/phase3/hpc/common_env.sh"
 start_ollama; trap stop_ollama EXIT
-for m in $(grep -v '^#' $BASE/phase3/hpc/models_phase3.txt); do echo "== pull $m"; ollama pull "$m"; done
+for m in $(grep -v '^#' $BASE/phase3/hpc/models_phase3.txt); do echo "== pull $m"; for t in 1 2 3 4 5; do ollama pull "$m" && break; echo "retry $t"; sleep 60; done; done
 ollama list
 for m in $(grep -v '^#' $BASE/phase3/hpc/models_phase3.txt); do
   ollama list | awk '{print $1}' | grep -qx "$m" || { echo "MISSING $m"; exit 1; }

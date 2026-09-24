@@ -85,13 +85,17 @@ def synth(design_files, top, cwd, timeout=600, lib_files=()):
               f"synth -top {top}; check; stat -top {top}")
     rc, log, to = _run([YOSYS, "-p", script], cwd, timeout)
     ok = rc == 0 and not to and "ERROR:" not in log
-    events = [l for l in log.splitlines() if re.search(r"\bLatch inferred for signal", l) and "No latch" not in l]
+    events = [l for l in log.splitlines() if re.search(r"\bLatch inferred for signal", l) and "no latch" not in l.lower()]
+    # Newer Yosys splits one signal into bit-chunk messages; count distinct signals so numbers are version-stable.
+    latched = {re.sub(r"\s*\[[^\]]*\]\s*$", "", m.group(1)) for l in events
+               for m in [re.search(r"`([^'`]+)'", l)] if m}
     loops = len(set(re.findall(r"^Warning: found logic loop in module (\S+)", log, re.M)))
     i = log.rfind("=== design hierarchy ===")
     sec = log[i:] if i >= 0 else log[log.rfind("=== "):] if "=== " in log else ""
     cells = count_cells(sec, r"\$_DLATCH\w*")
     err = next((l for l in log.splitlines() if l.startswith("ERROR")), None)
-    return {"log": log, "ok": ok, "error": err, "latch_events": len(events), "latch_cells": cells,
+    return {"log": log, "ok": ok, "error": err, "latch_events": len(latched), "latch_messages": len(events),
+            "latch_cells": cells,
             "loops": loops, "timeout": to}
 
 

@@ -49,7 +49,7 @@ import stitch_interpreter as base  # production v2 -- DO NOT EDIT
 from _v3_parsers import (_CLK_RE, _RST_RE, _always_header, _async_reset_block, _snippet, _src_model,
                          parse_verilator, parse_yosys)
 
-V3_VERSION = "3.0.0"
+V3_VERSION = "3.0.1"   # 3.0.1: Yosys-version-tolerant latch parsing (0.69 drift)
 ALL_RULES = ("R1", "R2", "R3", "R4", "R5", "N1", "N2", "N3", "N4", "N5", "N6", "L1")
 PRIO = {"ASYNC_RESET": 0, "COMB_LOOP": 1, "MULTIDRIVEN": 2, "MISSING_CLOCK": 3, "LATCH": 4,
         "UNDRIVEN": 5, "PINMISSING": 6, "WIDTHTRUNC": 7, "WIDTHEXPAND": 8, "UNUSEDSIGNAL": 9,
@@ -115,6 +115,19 @@ def _drop_lines(raw: str, pred) -> str:
     return "\n".join(out)
 
 
+def _block_line_for(src, sig):
+    """Line of the `always` block that first assigns `sig` (1-based), or None."""
+    if not src or not sig:
+        return None
+    last_always = None
+    for i, l in enumerate(src.lines, 1):
+        if re.search(r"\balways\b", l):
+            last_always = i
+        if last_always and re.search(rf"\b{re.escape(sig)}\b\s*(?:\[[^\]]*\])?\s*<?=(?!=)", l):
+            return last_always
+    return None
+
+
 def _lhs_on_line(src, line):
     if not src or not line or line > len(src.lines):
         return None
@@ -151,10 +164,13 @@ def interpret_v3(verilator_out: str, yosys_out: str, v_path: Optional[str] = Non
                   and d.signal and _CLK_RE.match(d.signal)]
     if "R1" in rules and clk_unused:
         clk = clk_unused[0]
+        for d in yd:                       # no line from Yosys (format drift) -> locate the writing block in source
+            if d.code == "LATCH" and not d.line and d.signal:
+                d.line = _block_line_for(src, d.signal.split("[")[0].strip())
         seq = [d for d in yd if d.code == "LATCH" and
                ((_always_header(src, d.line) or "") not in ("@*", "@(*)")) and "edge" not in (_always_header(src, d.line) or "")]
         if seq:
-            sigs = sorted({d.signal.split("[")[0] for d in seq if d.signal})
+            sigs = sorted({d.signal.split("[")[0].strip() for d in seq if d.signal})
             missing_clock_sigs |= set(sigs)
             ln = seq[0].line
             txt = (f"*** CRITICAL: MISSING CLOCK -- {', '.join(repr(s) for s in sigs)} is a REGISTER but is written in a "

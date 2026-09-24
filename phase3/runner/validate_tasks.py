@@ -54,11 +54,19 @@ for t in sorted(os.listdir(T)):
         "input_not_clean": not i["clean_pass"],
         "input_sim_matches_meta": i["func_pass"] == m["sim_silent"],
         "input_defect_visible": (not i["struct_clean"]) or (not i["func_pass"]),
-        "drift_v3_classes": sorted(r3["classes_fired"]) == sorted(m["expected_v3_classes"]),
-        "drift_v2_classes": sorted(r2["classes_fired"]) == sorted(m["expected_v2_classes"]),
+        "drift_v3_classes": sorted(r3["classes_fired"]) in [sorted(c) for c in [m["expected_v3_classes"]] + m.get("expected_v3_classes_alt", [])],
+        "drift_v2_classes": sorted(r2["classes_fired"]) in [sorted(c) for c in [m["expected_v2_classes"]] + m.get("expected_v2_classes_alt", [])],
         "stat_cell_count": (i["latch_cells"] == EXPECT_INPUT_LATCH_CELLS[t]) if t in EXPECT_INPUT_LATCH_CELLS else True,
     }
     ok = all(checks.values()); ok_all &= ok
+    # keep the live logs of this toolchain (new fixtures for the next interpreter release)
+    try:
+        tag = re.sub(r"[^A-Za-z0-9.]+", "_", tools["yosys"].split("(")[0].strip() + "__" + tools["verilator"].split(" rev")[0].strip())
+        ld = os.path.join(PHASE3_ROOT, "evidence", "live_logs", tag, t); os.makedirs(ld, exist_ok=True)
+        for k in ("verilator", "yosys", "sim"):
+            open(os.path.join(ld, k + ".log"), "w").write(L[k])
+    except OSError:
+        pass
     rows.append({"task": t, "ok": ok, "checks": checks, "v3_classes": r3["classes_fired"], "v2_classes": r2["classes_fired"],
                  "input": {k: v for k, v in i.items() if k != "_logs"}, "golden": {k: v for k, v in g.items() if k != "_logs"}})
     print(f"{'OK ' if ok else 'BAD'} {t:<16} golden(func={g['func_pass']},clean={g['struct_clean']}) "

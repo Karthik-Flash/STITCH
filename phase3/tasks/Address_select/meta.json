@@ -21,5 +21,17 @@
     "LATCH",
     "UNUSEDSIGNAL",
     "WIDTHEXPAND"
-  ]
+  ],
+  "expected_v3_classes_alt": [
+    [
+      "LATCH"
+    ]
+  ],
+  "expected_v2_classes_alt": [
+    [
+      "LATCH",
+      "UNUSEDSIGNAL"
+    ]
+  ],
+  "toolchain_note": "Verilator 5.020 warns WIDTHEXPAND on the 1-bit PC in 'X + PC'; Verilator 5.053 does not. The width defect stays sim-visible (testbench FAIL) under both."
 }
