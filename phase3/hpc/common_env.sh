@@ -5,7 +5,8 @@ export OSS_CAD_BIN=${OSS_CAD_BIN:-/scratch/soumyaj/oss-cad-suite/bin}
 export PATH=/scratch/soumyaj/oss-cad-suite/py3bin:$OSS_CAD_BIN:$BASE/bin:$PATH      # iverilog, vvp, yosys, verilator + ollama
 export STITCH_INTERPRETER_DIR=$BASE/src/interpreter
 export OLLAMA_MODELS=$BASE/ollama_models
-export OLLAMA_HOST=127.0.0.1:11434
+# One port per job (11434 + job id mod 1000), so two jobs on one node never share an ollama server.
+export OLLAMA_HOST=127.0.0.1:${OLLAMA_PORT:-$((11434 + ${SLURM_JOB_ID:-0} % 1000))}
 export OLLAMA_KEEP_ALIVE=30m
 export PYTHONUNBUFFERED=1
 [ -f $BASE/venv/bin/activate ] && source $BASE/venv/bin/activate   # optional: runner needs stdlib only

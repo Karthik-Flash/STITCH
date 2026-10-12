@@ -7,7 +7,7 @@ Question: of the Phase 1/2 runs recorded as PASS, how many final RTL files are s
 been measured. The answer is the "silent structural pass" rate of the published conditions.
 
 Layout is repo-specific, so everything is a parameter. Claude Code: confirm the glob and the two
-field names against one real metrics.json before launching (see phase3/HANDOFF_PHASE3_CLAUDE_CODE.md, task T6).
+field names against one real metrics.json before launching (see phase3/docs/archive/HANDOFF_PHASE3_CLAUDE_CODE.md, task T6).
 
 Usage:
   python phase3/runner/audit_existing_runs.py --metrics-glob "phase2/results/**/metrics.json" \

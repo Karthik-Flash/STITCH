@@ -6,3 +6,4 @@ deepseek-coder:6.7b
 qwen2.5-coder:7b
 llama3.1:latest
 qwen2.5-coder:14b
+qwen2.5-coder:32b

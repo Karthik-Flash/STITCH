@@ -186,6 +186,124 @@ scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phas
 
 ---
 
+## Part J: Final batch (baseline_gate control arm + qwen2.5-coder:32b), 2026-09-28
+
+Pre-registered in `evidence/PREREG_FINAL.md` and frozen in `evidence/FREEZE_FINAL.md`. The batch has four jobs:
+
+| job | what | runs | estimate |
+|---|---|---|---|
+| A `phase3_gate_ctrl` | baseline_gate, 6 original models | 198 | ~5 h (7 h worst case) |
+| C `phase3_32b` | qwen2.5-coder:32b, all 6 conditions | 198 | ~3 h (5 h worst case) |
+| D1 | compose A's groups into the three designs | 18 groups | ~1.5 h |
+| D2 | compose C's groups into the three designs | 18 groups | ~1.5 h |
+
+The estimates for A and C come from the 990-run wall times and from the Set 3 32B/14B call-time ratio. Each job
+starts its own ollama server on its own port (`common_env.sh`), so A and C can share gpunode7 when two GPUs are free.
+If only one GPU is free, Slurm queues C behind A.
+
+**1. Deploy (LAPTOP, PowerShell)**
+```powershell
+cd D:\Projects\STITCH
+powershell -ExecutionPolicy Bypass -File phase3\hpc\deploy_phase3.ps1
+```
+It must print `LINE ENDINGS OK`, and its sha256 lines must match `evidence/FREEZE_FINAL.md` section 2.
+
+**2. HPC**
+```bash
+ssh soumyaj@hpc.bits-hyderabad.ac.in
+B=/scratch/soumyaj/Phase3_HPC; cd $B
+find /scratch/soumyaj/oss-cad-suite $B/bin $B/lib $B/ollama_models -exec touch -h {} +   # reset the 30-day purge clock
+df -h /scratch | tail -1                                   # 32B needs ~20 GB free
+ls results/                                                # phase3_gate_ctrl and phase3_32b must NOT exist yet
+sinfo -p gpu_h200_8 -o "%P %l %G"; scontrol show node gpunode7 | grep -E "Gres|AllocTRES"
+F="--partition=gpu_h200_8 --nodelist=gpunode7 --cpus-per-task=4 --mem=32G"
+M6="llama3.2:3b gemma3:4b deepseek-coder:6.7b qwen2.5-coder:7b llama3.1:latest qwen2.5-coder:14b"
+C6="baseline raw_adv sem_adv_v2 sem_adv_v3 sem_esc_restart_v3 baseline_gate"
+G=$(sbatch --parsable $F --gres=gpu:0 --time=01:00:00 phase3/hpc/phase3_gate.slurm)
+P=$(P3_PULL_MODELS="qwen2.5-coder:32b" sbatch --parsable $F --gres=gpu:0 --time=03:00:00 --dependency=afterok:$G phase3/hpc/pull_ollama_models_phase3.slurm)
+A=$(P3_OUT=$B/results/phase3_gate_ctrl P3_MODELS="$M6" P3_EXTRA_ARGS="--conditions baseline_gate" \
+    sbatch --parsable $F --gres=gpu:1 --time=24:00:00 --job-name=phase3_gate_ctrl --dependency=afterok:$G phase3/hpc/phase3_run.slurm)
+C=$(P3_OUT=$B/results/phase3_32b P3_MODELS="qwen2.5-coder:32b" P3_EXTRA_ARGS="--conditions $C6" \
+    sbatch --parsable $F --mem=48G --gres=gpu:1 --time=24:00:00 --job-name=phase3_32b --dependency=afterok:$P phase3/hpc/phase3_run.slurm)
+D1=$(P3_OUT=$B/results/phase3_gate_ctrl sbatch --parsable $F --gres=gpu:0 --time=08:00:00 --dependency=afterok:$A phase3/hpc/phase3_compose.slurm)
+D2=$(P3_OUT=$B/results/phase3_32b sbatch --parsable $F --gres=gpu:0 --time=08:00:00 --dependency=afterok:$C phase3/hpc/phase3_compose.slurm)
+echo "G=$G P=$P A=$A C=$C D1=$D1 D2=$D2" | tee -a $B/logs/final_batch_ids.txt; squeue -u soumyaj
+```
+- `sbatch` passes the calling environment (`--export=ALL` is the default), so the `P3_*` prefixes reach the job.
+- `logs/p3_gate_$G.log` must end with `ALL GATES PASSED`. It prints `G5 PASS` and `plan: ... x 7 model(s) = 1386
+  runs`.
+- `logs/ollama_pull_$P.log` must end with `ALL MODELS PRESENT`. Its `== before` and `== after` listings must show
+  the same IDs for the six original models.
+- If the pull fails for lack of internet on gpunode7, re-submit it on the Part D node instead:
+  `P3_PULL_MODELS="qwen2.5-coder:32b" sbatch --parsable phase3/hpc/pull_ollama_models_phase3.slurm`. Then
+  `scontrol update JobId=$C Dependency=afterok:<new pull id>`.
+- Users can usually only lower a time limit: `scontrol update JobId=$A TimeLimit=12:00:00`. To raise one, resubmit
+  (step 4).
+
+**Status of the whole batch** (read-only; one PASS / FAIL / WAITING line per check: deploy hashes, gate, job
+states, pull digests, gate-arm prompt, job C's port and GPU, progress and ETA):
+```bash
+cd /scratch/soumyaj/Phase3_HPC && bash phase3/hpc/check_final_batch.sh $G $P $A $C $D1 $D2
+```
+Live logs (one per job):
+```bash
+tail -f logs/p3_gate_$G.log          # gate
+tail -f logs/ollama_pull_$P.log      # pull
+tail -f logs/p3_run_$A.log           # A  (baseline_gate)
+tail -f logs/p3_run_$C.log           # C  (32B)
+tail -f logs/p3_compose_$D1.log      # D1
+tail -f logs/p3_compose_$D2.log      # D2
+```
+
+**3. Spot-check after A's first ~5 runs** (and again for C, with `phase3_32b`)
+```bash
+/scratch/soumyaj/oss-cad-suite/py3bin/python3 - /scratch/soumyaj/Phase3_HPC/results/phase3_gate_ctrl <<'PY'
+import glob, json, os, sys
+fs = sorted(glob.glob(sys.argv[1] + "/*/*/*/rep*/metrics.json"), key=os.path.getmtime)
+print(len(fs), "runs done; conditions:", sorted({f.split(os.sep)[-4] for f in fs}))
+ms = [(f, json.load(open(f))) for f in fs]
+f, m = next(((f, m) for f, m in ms if m["per_iter"][0]["func_pass"] and m["llm_calls"]), ms[0])
+print("=" * 30, "iter1 prompt of", m["model"], m["condition"], m["task"], "rep", m["rep"])
+print(open(os.path.join(os.path.dirname(f), "iter1", "prompt.txt")).read())
+print("=" * 30)
+for k in ("llm_calls", "stop_reason", "func_pass", "clean_pass", "tool_feedback_iters", "semantic_fired",
+          "escalated_at", "restarted", "would_fire", "would_class", "would_fire_final", "protocol", "temperature", "max_iters"):
+    print(f"{k:>20}: {m.get(k)}")
+p = m["provenance"]
+for k in ("model_digest", "node", "v3_version", "base_interp_sha256_lf", "runner_sha256_lf", "tb_v_sha256_lf", "toolchain"):
+    print(f"{k:>20}: {p[k]}")
+PY
+```
+For baseline_gate, the feedback section must be the simulation line plus "The design simulates correctly but FAILS
+SYNTHESIS SIGN-OFF. Re-check it for synthesis problems." and nothing else. `tool_feedback_iters` and
+`semantic_fired` must be 0 or False, `escalated_at` None, `would_fire` present, `model_digest` a sha256 (not
+`NOT_LISTED`), and `runner_sha256_lf` equal to FREEZE_FINAL.
+
+**4. Resume if a job dies**
+
+Resubmit the same line without `--dependency`: every run that has a `metrics.json` is skipped, and a run with only an
+`error.json` is retried.
+```bash
+B=/scratch/soumyaj/Phase3_HPC; cd $B; F="--partition=gpu_h200_8 --nodelist=gpunode7 --cpus-per-task=4 --mem=32G"
+P3_OUT=$B/results/phase3_gate_ctrl P3_MODELS="llama3.2:3b gemma3:4b deepseek-coder:6.7b qwen2.5-coder:7b llama3.1:latest qwen2.5-coder:14b" \
+  P3_EXTRA_ARGS="--conditions baseline_gate" sbatch $F --gres=gpu:1 --time=24:00:00 --job-name=phase3_gate_ctrl phase3/hpc/phase3_run.slurm
+P3_OUT=$B/results/phase3_32b P3_MODELS="qwen2.5-coder:32b" P3_EXTRA_ARGS="--conditions baseline raw_adv sem_adv_v2 sem_adv_v3 sem_esc_restart_v3 baseline_gate" \
+  sbatch $F --mem=48G --gres=gpu:1 --time=24:00:00 --job-name=phase3_32b phase3/hpc/phase3_run.slurm
+```
+Then resubmit the matching compose job (`P3_OUT=... sbatch $F --gres=gpu:0 --time=08:00:00 phase3/hpc/phase3_compose.slurm`).
+Progress: `python3 -c "import json;d=json.load(open('results/phase3_gate_ctrl/master_log.json'));print(len(d),'/198')"`.
+
+**5. Download and analyse (LAPTOP)**
+```powershell
+scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_gate_ctrl D:\Projects\STITCH\phase3\results\
+scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_32b D:\Projects\STITCH\phase3\results\
+wsl bash -lc "cd /mnt/d/Projects/STITCH && python3 phase3/runner/analyze_phase3.py --score-signoff --results phase3/results/phase3_run --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b"
+python phase3/runner/analyze_phase3.py --final --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b
+```
+The output goes to `phase3/evidence/phase3_final/PHASE3_FINAL.md` and `phase3_final.json`.
+
+---
+
 ## Failure table
 
 | Symptom | Cause | Fix |

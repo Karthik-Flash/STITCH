@@ -12,7 +12,7 @@
 set -euo pipefail
 source "${PHASE3_BASE:-/scratch/soumyaj/Phase3_HPC}/phase3/hpc/common_env.sh"
 cd $BASE
-R=$BASE/results/phase3_run
+R=${P3_OUT:-$BASE/results/phase3_run}   # same override as phase3_run.slurm, so a new run directory composes too
 python3 phase3/runner/compose.py --from-results $R --designs mesh2x2 mesh3x3 --out $R/compose_mesh.jsonl
 python3 phase3/runner/compose.py --from-results $R --designs mpsoc --out $R/compose_mpsoc.jsonl
 cat $R/compose_mesh.jsonl $R/compose_mpsoc.jsonl > $R/compose_results.jsonl

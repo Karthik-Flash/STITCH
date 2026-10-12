@@ -11,6 +11,9 @@ Pass@8-vs-Pass@6 confound):
   sem_esc_restart_v3   starts as baseline behind a clean-pass gate (generic "fails synthesis sign-off" message,
                        no tool detail); escalates to v3 after 2 consecutive identical signatures; blank-slate
                        restart if still stuck 2 iterations after escalating.
+  baseline_gate        control arm (added for the final batch): sim + the same generic gate message as
+                       sem_esc_restart_v3 before escalation; stops at clean_pass; never escalates or restarts; no tool
+                       detail fed back. The v3 interpretation of every RTL is LOGGED (would_fire / would_class), never fed.
 Every candidate is ALWAYS fully evaluated (sim + lint + synth) for SCORING; conditions differ only in what is FED BACK.
 
 Usage (HPC):  python phase3/runner/stitch_runner_p3.py --model llama3.1:8b --reps 3 --out results/phase3
@@ -20,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -37,7 +41,7 @@ sys.path.insert(0, INTERP_DIR)
 from p3_eval import evaluate                   # noqa: E402
 import stitch_interpreter_v3 as IV3            # noqa: E402  (imports production stitch_interpreter unmodified)
 
-CONDITIONS = ["baseline", "raw_adv", "sem_adv_v2", "sem_adv_v3", "sem_esc_restart_v3"]
+CONDITIONS = ["baseline", "raw_adv", "sem_adv_v2", "sem_adv_v3", "sem_esc_restart_v3", "baseline_gate"]
 TASKS_DIR = os.path.join(PHASE3_ROOT, "tasks")
 
 DEFAULT_SYSTEM_PROMPT = """You are an expert digital hardware engineer writing synthesizable Verilog-2001.
@@ -173,6 +177,34 @@ def build_feedback(ev, cond, escalated, cpath, top, args):
     return "\n\n".join(x for x in fb if x), interp, used
 
 
+def sha256_lf(path):
+    return hashlib.sha256(open(path, "rb").read().replace(b"\r\n", b"\n")).hexdigest()
+
+
+_STATIC = {}      # per-process provenance, filled once in main(): code hashes, v3 version, toolchain, node
+_DIGEST = {}      # model -> Ollama digest
+
+
+def model_digest(llm, model):
+    if model not in _DIGEST:
+        if isinstance(llm, Mock):
+            _DIGEST[model] = "mock"
+        else:
+            try:
+                with urllib.request.urlopen(llm.host + "/api/tags", timeout=30) as r:
+                    tags = json.loads(r.read())["models"]
+                _DIGEST[model] = next((t["digest"] for t in tags if t["name"] == model), "NOT_LISTED")
+            except Exception as e:
+                return f"UNAVAILABLE ({e.__class__.__name__})"    # not cached: retried on the next run
+    return _DIGEST[model]
+
+
+def provenance(tdir, model, llm):
+    return {**_STATIC, "model_digest": model_digest(llm, model),
+            **{f"{f.replace('.', '_')}_sha256_lf": sha256_lf(os.path.join(tdir, f))
+               for f in ("tb.v", "spec.md", "input.v", "meta.json")}}
+
+
 def _m(ev):
     return {k: v for k, v in ev.items() if k != "_logs"}
 
@@ -204,6 +236,10 @@ def run_one(llm, model, cond, task, rep, args, run_dir, gate_cache):
     sem_iters, classes_union, tok_in, tok_out, fb_tool, calls = [], set(), 0, 0, 0, 0
     stop_reason, t0 = "budget", time.time()
     while True:
+        if cond == "baseline_gate":                    # LOG ONLY: what v3 would have said on this RTL; never fed back
+            wi = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, version="v3", top=top,
+                               max_directives=args.max_directives)
+            iters[-1]["would_fire"], iters[-1]["would_class"] = bool(wi["fired"]), sorted(wi["classes_fired"])
         if cond == "baseline" and ev["func_pass"]:
             stop_reason = "func_pass" if calls else "func_pass_at_input"; break
         if cond != "baseline" and ev["clean_pass"]:
@@ -261,7 +297,13 @@ def run_one(llm, model, cond, task, rep, args, run_dir, gate_cache):
         "tool_feedback_iters": fb_tool, "escalated_at": escalated_at, "restarted": restarted,
         "top_level_synthesis_pass": None,
         "per_iter": iters,
+        "provenance": provenance(tdir, model, llm),
     }
+    if cond == "baseline_gate":                        # fed = RTLs the gate verdict was given on (one per LLM call)
+        fed = [p for p in iters if "feedback_semantic_fired" in p]
+        m["would_fire"] = any(p["would_fire"] for p in fed)
+        m["would_class"] = sorted({c for p in fed for c in p["would_class"]})
+        m["would_fire_final"] = iters[-1]["would_fire"]
     json.dump(m, open(os.path.join(run_dir, "metrics.json"), "w"), indent=1)
     return m
 
@@ -305,7 +347,7 @@ def main():
     ap.add_argument("--backend", choices=["ollama", "mock"], default="ollama")
     ap.add_argument("--mock-mode", choices=["golden", "echo", "fix_on_2"], default="fix_on_2")
     ap.add_argument("--host", default=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
-    ap.add_argument("--conditions", nargs="*", default=CONDITIONS)
+    ap.add_argument("--conditions", nargs="*", default=CONDITIONS, choices=CONDITIONS)
     ap.add_argument("--tasks", nargs="*", default=None)
     ap.add_argument("--reps", type=int, default=3)
     ap.add_argument("--temperature", type=float, default=0.1)
@@ -325,6 +367,12 @@ def main():
     a.system_prompt = open(a.system_prompt_file).read() if a.system_prompt_file else DEFAULT_SYSTEM_PROMPT
     tasks = a.tasks or sorted(d for d in os.listdir(TASKS_DIR) if os.path.isdir(os.path.join(TASKS_DIR, d)))
     manifest = run_manifest(a, tasks)
+    _STATIC.update({"node": manifest["host"], "toolchain": manifest["toolchain"], "v3_version": IV3.V3_VERSION,
+                    "base_interp_sha256_lf": IV3.base_fingerprint(),
+                    "v3_interp_sha256_lf": sha256_lf(IV3.__file__),
+                    "v3_parsers_sha256_lf": sha256_lf(os.path.join(os.path.dirname(IV3.__file__), "_v3_parsers.py")),
+                    "runner_sha256_lf": sha256_lf(__file__), "p3_eval_sha256_lf": sha256_lf(os.path.join(HERE, "p3_eval.py")),
+                    "system_prompt_sha256_lf": hashlib.sha256(a.system_prompt.replace("\r\n", "\n").encode()).hexdigest()})
     if a.dry_run:
         n_models = len(a.models) if a.models else 1
         per_model = len(tasks) * len(a.conditions) * a.reps
