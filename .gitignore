@@ -76,3 +76,19 @@ phase3/GITATTRIBUTES_ADDITIONS.txt
 # The real Yosys/Verilator logs are frozen test evidence (44 tests + validate_tasks read them),
 # so re-include them despite the global *.log rule.
 !phase3/**/*.log
+stitch-api-key.txt
+
+# Secrets. API keys live in %USERPROFILE%\.stitch\api_keys.env, outside the repo; never commit any .env.
+*.env
+
+# LaTeX build output: compile into paper/build/ (pdflatex -output-directory=build).
+paper/build/
+*.aux
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.lof
+*.lot
