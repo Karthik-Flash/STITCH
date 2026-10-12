@@ -1,0 +1,15 @@
+Address_select: tb.v sha256 42a2d7c8b6de9b88458c014afcbc18827e61632a9c681be624684857acab1d6a; sign-off tb sha256 51a37558fb657d96ce11ef4fbe71efb7d571d79e3f64e55cae3fdfed61b6c979
+(a) golden: tb.v PASS, sign-off tb PASS
+(d) gap-only mutant: tb.v PASS, sign-off tb FAIL
+(e) DEFECTIVE INPUT: tb.v FAIL, sign-off tb FAIL
+runs 90; (b) not-proven clean runs failing the sign-off tb: 41/41; passing it: []
+(c) other clean runs: 8; flipping to FAIL: []
+tb.v-FAIL runs that pass the sign-off tb (must be none): []
+
+| condition | clean_pass (tb.v) | clean under sign-off tb |
+|---|---|---|
+| baseline | 3/18 | 0/18 |
+| raw_adv | 8/18 | 1/18 |
+| sem_adv_v2 | 9/18 | 1/18 |
+| sem_adv_v3 | 14/18 | 2/18 |
+| sem_esc_restart_v3 | 15/18 | 4/18 |

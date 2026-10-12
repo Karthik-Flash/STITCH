@@ -1,0 +1,59 @@
+tasks with a tb_signoff.v that differs from tb.v: ['mem_wb_mux']
+Address_select: golden vs itself = equivalent; golden constant-driven output bits = 0
+ni_flit_pack: golden vs itself = equivalent; golden constant-driven output bits = 14
+noc_xbar4: golden vs itself = equivalent; golden constant-driven output bits = 0
+register_32bit: golden vs itself = equivalent; golden constant-driven output bits = 0
+register_4bit: golden vs itself = equivalent; golden constant-driven output bits = 0
+mem_wb_mux: golden vs itself = equivalent; golden constant-driven output bits = 0
+
+| task | clean_pass runs | fails tb_signoff | equivalent | equivalent on legal inputs | not proven equivalent | equiv check error | extra constant output bits |
+|---|---|---|---|---|---|---|---|
+| Address_select | 49 | 0 | 8 | 0 | 41 | 0 | 0 |
+| ni_flit_pack | 36 | 0 | 36 | 0 | 0 | 0 | 0 |
+| noc_xbar4 | 47 | 0 | 0 | 47 | 0 | 0 | 0 |
+| register_32bit | 69 | 0 | 69 | 0 | 0 | 0 | 0 |
+| register_4bit | 66 | 0 | 66 | 0 | 0 | 0 | 0 |
+| mem_wb_mux | 58 | 16 | 42 | 0 | 0 | 0 | 0 |
+
+flagged runs (condition, model, task, rep, equivalence, extra constant output bits, candidate):
+  ('baseline', 'llama3.2:3b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.2_3b/baseline/Address_select/rep2/iter1/dut.v')
+  ('baseline', 'llama3.2:3b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.2_3b/baseline/Address_select/rep3/iter1/dut.v')
+  ('baseline', 'qwen2.5-coder:14b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/baseline/Address_select/rep1/iter1/dut.v')
+  ('raw_adv', 'llama3.1:latest', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/raw_adv/Address_select/rep3/iter3/dut.v')
+  ('raw_adv', 'qwen2.5-coder:14b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/raw_adv/Address_select/rep1/iter1/dut.v')
+  ('raw_adv', 'qwen2.5-coder:14b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/raw_adv/Address_select/rep2/iter1/dut.v')
+  ('raw_adv', 'qwen2.5-coder:14b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/raw_adv/Address_select/rep3/iter1/dut.v')
+  ('raw_adv', 'qwen2.5-coder:7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/raw_adv/Address_select/rep1/iter1/dut.v')
+  ('raw_adv', 'qwen2.5-coder:7b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/raw_adv/Address_select/rep2/iter5/dut.v')
+  ('raw_adv', 'qwen2.5-coder:7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/raw_adv/Address_select/rep3/iter2/dut.v')
+  ('sem_adv_v2', 'llama3.1:latest', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_adv_v2/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v2', 'llama3.1:latest', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_adv_v2/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:14b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v2/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:14b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v2/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:14b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v2/Address_select/rep3/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v2/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:7b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v2/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v2', 'qwen2.5-coder:7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v2/Address_select/rep3/iter1/dut.v')
+  ('sem_adv_v3', 'deepseek-coder:6.7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/deepseek-coder_6.7b/sem_adv_v3/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v3', 'deepseek-coder:6.7b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/deepseek-coder_6.7b/sem_adv_v3/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v3', 'deepseek-coder:6.7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/deepseek-coder_6.7b/sem_adv_v3/Address_select/rep3/iter1/dut.v')
+  ('sem_adv_v3', 'llama3.1:latest', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_adv_v3/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v3', 'llama3.1:latest', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_adv_v3/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v3', 'llama3.1:latest', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_adv_v3/Address_select/rep3/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:14b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v3/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:14b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v3/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:14b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_adv_v3/Address_select/rep3/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v3/Address_select/rep1/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:7b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v3/Address_select/rep2/iter1/dut.v')
+  ('sem_adv_v3', 'qwen2.5-coder:7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_adv_v3/Address_select/rep3/iter1/dut.v')
+  ('sem_esc_restart_v3', 'deepseek-coder:6.7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/deepseek-coder_6.7b/sem_esc_restart_v3/Address_select/rep1/iter6/dut.v')
+  ('sem_esc_restart_v3', 'deepseek-coder:6.7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/deepseek-coder_6.7b/sem_esc_restart_v3/Address_select/rep3/iter4/dut.v')
+  ('sem_esc_restart_v3', 'llama3.1:latest', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_esc_restart_v3/Address_select/rep1/iter3/dut.v')
+  ('sem_esc_restart_v3', 'llama3.1:latest', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_esc_restart_v3/Address_select/rep2/iter3/dut.v')
+  ('sem_esc_restart_v3', 'llama3.1:latest', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/llama3.1_latest/sem_esc_restart_v3/Address_select/rep3/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:14b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_esc_restart_v3/Address_select/rep1/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:14b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_esc_restart_v3/Address_select/rep2/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:14b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_14b/sem_esc_restart_v3/Address_select/rep3/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:7b', 'Address_select', 1, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_esc_restart_v3/Address_select/rep1/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:7b', 'Address_select', 2, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_esc_restart_v3/Address_select/rep2/iter3/dut.v')
+  ('sem_esc_restart_v3', 'qwen2.5-coder:7b', 'Address_select', 3, 'not proven equivalent', 0, '/mnt/d/Projects/STITCH/phase3/results/phase3_run/qwen2.5-coder_7b/sem_esc_restart_v3/Address_select/rep3/iter3/dut.v')
