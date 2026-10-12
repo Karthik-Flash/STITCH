@@ -1,0 +1,324 @@
+{
+ "dirs": [
+  "phase2/results/p3_api/full/openai",
+  "phase2/results/p3_api/full/anthropic",
+  "phase2/results/p3_api/full/gemini"
+ ],
+ "recheck": {
+  "candidates": 27,
+  "same_verdict": 27
+ },
+ "signoff_tb": {
+  "Address_select": "51a37558fb657d96ce11ef4fbe71efb7d571d79e3f64e55cae3fdfed61b6c979",
+  "MuxPC": "identical to tb.v",
+  "execute_mux": "identical to tb.v",
+  "mem_wb_mux": "ac308fb12aa5a43ba3f676f6383997357ad8dad55bcb97cb87909ae3fa8c4fdc",
+  "mux3": "identical to tb.v",
+  "ni_flit_pack": "identical to tb.v",
+  "noc_xbar4": "identical to tb.v",
+  "register_1bit": "identical to tb.v",
+  "register_32bit": "identical to tb.v",
+  "register_4bit": "identical to tb.v",
+  "riscv_alu_flags": "identical to tb.v"
+ },
+ "superset_violations": 0,
+ "cache_entries_added": 0,
+ "provenance": {
+  "protocol": [
+   "feedback_first_v2"
+  ],
+  "interp_v3_version": [
+   "3.0.1"
+  ],
+  "base_interp_sha256_lf": [
+   "42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff"
+  ],
+  "temperature": [
+   "0.1"
+  ],
+  "max_iters": [
+   "6"
+  ],
+  "sem_include_raw": [
+   "1"
+  ],
+  "runner": [
+   "119611fe10f2e23a2dc4f7c0c85ce20f7a176fa1311c26ea56b98b1087b76a36"
+  ],
+  "toolchain": [
+   "{\"iverilog\": \"Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)\", \"verilator\": \"Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)\", \"yosys\": \"Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)\"}"
+  ]
+ },
+ "table12": {
+  "gpt-4.1-mini-2025-04-14|baseline": [
+   12,
+   0,
+   12,
+   440
+  ],
+  "gpt-4.1-mini-2025-04-14|baseline_gate": [
+   28,
+   16,
+   12,
+   1529
+  ],
+  "gpt-4.1-mini-2025-04-14|raw_adv": [
+   30,
+   18,
+   12,
+   1164
+  ],
+  "gpt-4.1-mini-2025-04-14|sem_adv_v2": [
+   30,
+   18,
+   12,
+   1255
+  ],
+  "gpt-4.1-mini-2025-04-14|sem_adv_v3": [
+   30,
+   18,
+   12,
+   1257
+  ],
+  "gpt-4.1-mini-2025-04-14|sem_esc_restart_v3": [
+   30,
+   18,
+   12,
+   1404
+  ],
+  "claude-haiku-4-5-20251001|baseline": [
+   12,
+   0,
+   12,
+   517
+  ],
+  "claude-haiku-4-5-20251001|baseline_gate": [
+   30,
+   18,
+   12,
+   1099
+  ],
+  "claude-haiku-4-5-20251001|raw_adv": [
+   30,
+   18,
+   12,
+   1334
+  ],
+  "claude-haiku-4-5-20251001|sem_adv_v2": [
+   30,
+   18,
+   12,
+   1517
+  ],
+  "claude-haiku-4-5-20251001|sem_adv_v3": [
+   30,
+   18,
+   12,
+   1524
+  ],
+  "claude-haiku-4-5-20251001|sem_esc_restart_v3": [
+   30,
+   18,
+   12,
+   1101
+  ],
+  "gemini-2.5-flash|baseline": [
+   15,
+   0,
+   15,
+   516
+  ],
+  "gemini-2.5-flash|baseline_gate": [
+   33,
+   18,
+   15,
+   1160
+  ],
+  "gemini-2.5-flash|raw_adv": [
+   30,
+   18,
+   12,
+   1291
+  ],
+  "gemini-2.5-flash|sem_adv_v2": [
+   33,
+   18,
+   15,
+   1478
+  ],
+  "gemini-2.5-flash|sem_adv_v3": [
+   32,
+   18,
+   14,
+   1479
+  ],
+  "gemini-2.5-flash|sem_esc_restart_v3": [
+   33,
+   18,
+   15,
+   1225
+  ]
+ },
+ "extra": {
+  "gpt-4.1-mini-2025-04-14|baseline": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 15,
+   "signed_off_defective": 21,
+   "signed_off_defective_silent": 18
+  },
+  "gpt-4.1-mini-2025-04-14|baseline_gate": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 31,
+   "signed_off_defective": 4,
+   "signed_off_defective_silent": 1
+  },
+  "gpt-4.1-mini-2025-04-14|raw_adv": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "gpt-4.1-mini-2025-04-14|sem_adv_v2": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "gpt-4.1-mini-2025-04-14|sem_adv_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "gpt-4.1-mini-2025-04-14|sem_esc_restart_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "claude-haiku-4-5-20251001|baseline": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 15,
+   "signed_off_defective": 21,
+   "signed_off_defective_silent": 18
+  },
+  "claude-haiku-4-5-20251001|baseline_gate": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "claude-haiku-4-5-20251001|raw_adv": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "claude-haiku-4-5-20251001|sem_adv_v2": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "claude-haiku-4-5-20251001|sem_adv_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "claude-haiku-4-5-20251001|sem_esc_restart_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "gemini-2.5-flash|baseline": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 15,
+   "signed_off_defective": 18,
+   "signed_off_defective_silent": 18
+  },
+  "gemini-2.5-flash|baseline_gate": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 0,
+   "signed_off_defective_silent": 0
+  },
+  "gemini-2.5-flash|raw_adv": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 3,
+   "signed_off_defective_silent": 0
+  },
+  "gemini-2.5-flash|sem_adv_v2": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 0,
+   "signed_off_defective_silent": 0
+  },
+  "gemini-2.5-flash|sem_adv_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 1,
+   "signed_off_defective_silent": 0
+  },
+  "gemini-2.5-flash|sem_esc_restart_v3": {
+   "n": 33,
+   "n_silent": 18,
+   "n_visible": 15,
+   "clean_as_run": 33,
+   "signed_off_defective": 0,
+   "signed_off_defective_silent": 0
+  }
+ },
+ "published_rows_reproduced": true,
+ "not_signoff_clean_non_baseline": {
+  "claude-haiku-4-5-20251001 | Address_select | baseline_gate": 3,
+  "claude-haiku-4-5-20251001 | Address_select | raw_adv": 3,
+  "claude-haiku-4-5-20251001 | Address_select | sem_adv_v2": 3,
+  "claude-haiku-4-5-20251001 | Address_select | sem_adv_v3": 3,
+  "claude-haiku-4-5-20251001 | Address_select | sem_esc_restart_v3": 3,
+  "gemini-2.5-flash | Address_select | raw_adv": 3,
+  "gemini-2.5-flash | Address_select | sem_adv_v3": 1,
+  "gpt-4.1-mini-2025-04-14 | Address_select | baseline_gate": 3,
+  "gpt-4.1-mini-2025-04-14 | Address_select | raw_adv": 3,
+  "gpt-4.1-mini-2025-04-14 | Address_select | sem_adv_v2": 3,
+  "gpt-4.1-mini-2025-04-14 | Address_select | sem_adv_v3": 3,
+  "gpt-4.1-mini-2025-04-14 | Address_select | sem_esc_restart_v3": 3,
+  "gpt-4.1-mini-2025-04-14 | riscv_alu_flags | baseline_gate": 2
+ }
+}

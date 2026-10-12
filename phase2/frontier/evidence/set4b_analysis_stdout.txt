@@ -1,0 +1,135 @@
+set1_run sem_adv: published -4.6 [-10.5, +0.7] p=0.199 | reproduced -4.6 [-10.5, +0.7] p=0.199 OK
+set1_run sem_escalate: published -4.7 [-10.7, +0.0] p=0.148 | reproduced -4.7 [-10.7, +0.0] p=0.148 OK
+set1_run sem_escalate_restart: published -0.0 [-4.6, +4.6] p=1.000 | reproduced -0.0 [-4.6, +4.6] p=1.000 OK
+set3_run sem_adv: published -0.7 [-7.8, +6.5] p=1.000 | reproduced -0.7 [-7.8, +6.5] p=1.000 OK
+set3_run sem_escalate: published +2.6 [-1.3, +7.2] p=0.404 | reproduced +2.6 [-1.3, +7.2] p=0.404 OK
+set3_run sem_escalate_restart: published +2.0 [-2.6, +7.2] p=0.596 | reproduced +2.0 [-2.6, +7.2] p=0.596 OK
+ALL REPRODUCED
+runs 684, errored 85, reasoning calls 0, spend $11.0617 = INR 1253.1
+
+coverage (of 228 planned runs per model):
+  GPT-4.1 mini       valid 228/228, errored 0, not run 0
+  Gemini 2.5 Flash   valid 228/228, errored 0, not run 0
+  Claude Haiku 4.5   valid 143/228, errored 85, not run 0
+
+Q1 baseline passes /3 (tier at this model):
+  module                      GPT-4.1 mini      Gemini 2.5 Flash      Claude Haiku 4.5
+  accu                         3/3 ceiling           3/3 ceiling           3/3 ceiling
+  adder_16bit                  3/3 ceiling           3/3 ceiling           3/3 ceiling
+  adder_32bit                  3/3 ceiling           3/3 ceiling           3/3 ceiling
+  adder_bcd                    3/3 ceiling           3/3 ceiling           3/3 ceiling
+  adder_pipe_64bit               0/3 floor             0/3 floor             0/3 floor
+  alu                            0/3 floor             0/3 floor             0/3 floor
+  barrel_shifter           1/3 recoverable           3/3 ceiling              0/0 None
+  counter_12                   3/3 ceiling           3/3 ceiling              0/0 None
+  div_16bit                      0/3 floor             0/3 floor       2/3 recoverable
+  float_multi              2/3 recoverable       1/3 recoverable       1/3 recoverable
+  freq_divbyfrac                 0/3 floor             0/3 floor             0/3 floor
+  fsm                          3/3 ceiling           3/3 ceiling              0/0 None
+  LIFObuffer                   3/3 ceiling           3/3 ceiling              0/0 None
+  multi_pipe_4bit              3/3 ceiling             0/3 floor           3/3 ceiling
+  multi_pipe_8bit                0/3 floor       1/3 recoverable           3/3 ceiling
+  parallel2serial                0/3 floor       1/3 recoverable           3/3 ceiling
+  pulse_detect                   0/3 floor           3/3 ceiling              0/0 None
+  serial2parallel              3/3 ceiling           3/3 ceiling              0/0 None
+  traffic_light            2/3 recoverable             0/3 floor              0/0 None
+
+Q2 interpreter on floor:
+  baseline               {'runs': 150, 'fails': 61, 'fails_with_sf': 0, 'passes': 89, 'passes_sf_before_pass': 0, 'passes_sf_before_pass_where_baseline_0of3': []}
+  sem_adv                {'runs': 150, 'fails': 68, 'fails_with_sf': 37, 'passes': 82, 'passes_sf_before_pass': 11, 'passes_sf_before_pass_where_baseline_0of3': [('gemini-2.5-flash', 'multi_pipe_4bit', 3), ('claude-haiku-4-5-20251001', 'adder_pipe_64bit', 2), ('claude-haiku-4-5-20251001', 'adder_pipe_64bit', 3)]}
+  sem_escalate           {'runs': 150, 'fails': 63, 'fails_with_sf': 33, 'passes': 87, 'passes_sf_before_pass': 1, 'passes_sf_before_pass_where_baseline_0of3': [], 'escalated': 84}
+  sem_escalate_restart   {'runs': 149, 'fails': 57, 'fails_with_sf': 33, 'passes': 92, 'passes_sf_before_pass': 0, 'passes_sf_before_pass_where_baseline_0of3': [], 'escalated': 75}
+
+Q3 condition - baseline on cells with baseline < 3/3:
+  pooled|sem_adv                                     -2.8 [-15.3, +11.1] cells=24 p=0.848
+  pooled|sem_escalate                                +1.4 [-11.1, +13.9] cells=24 p=1.000
+  pooled|sem_escalate_restart                        +8.3 [-6.9, +23.6] cells=24 p=0.407
+  gpt-4.1-mini-2025-04-14|sem_adv                    -10.0 [-23.3, +0.0] cells=10 p=0.505
+  gpt-4.1-mini-2025-04-14|sem_escalate               -3.3 [-20.0, +13.3] cells=10 p=1.000
+  gpt-4.1-mini-2025-04-14|sem_escalate_restart       -13.3 [-33.3, +3.3] cells=10 p=0.372
+  gemini-2.5-flash|sem_adv                           +3.7 [-18.5, +33.3] cells=9 p=1.000
+  gemini-2.5-flash|sem_escalate                      +14.8 [-3.7, +37.0] cells=9 p=0.374
+  gemini-2.5-flash|sem_escalate_restart              +33.3 [+11.1, +55.6] cells=9 p=0.062
+  claude-haiku-4-5-20251001|sem_adv                  +0.0 [-26.7, +33.3] cells=5 p=1.000
+  claude-haiku-4-5-20251001|sem_escalate             -13.3 [-26.7, +0.0] cells=5 p=0.496
+  claude-haiku-4-5-20251001|sem_escalate_restart     +6.7 [-20.0, +40.0] cells=5 p=1.000
+
+pass rate per condition per model:
+  GPT-4.1 mini       baseline 32/57  sem_adv 29/57  sem_escalate 31/57  sem_escalate_restart 27/57
+  Gemini 2.5 Flash   baseline 33/57  sem_adv 29/57  sem_escalate 35/57  sem_escalate_restart 40/57
+  Claude Haiku 4.5   baseline 24/36  sem_adv 24/36  sem_escalate 21/36  sem_escalate_restart 25/35
+
+cost INR per run / per pass, truncated:
+  GPT-4.1 mini       baseline               0.684 / 1.219  trunc 0
+  GPT-4.1 mini       sem_adv                0.789 / 1.552  trunc 0
+  GPT-4.1 mini       sem_escalate           1.122 / 2.063  trunc 0
+  GPT-4.1 mini       sem_escalate_restart   1.112 / 2.348  trunc 0
+  Gemini 2.5 Flash   baseline               1.562 / 2.699  trunc 0
+  Gemini 2.5 Flash   sem_adv                1.826 / 3.588  trunc 0
+  Gemini 2.5 Flash   sem_escalate           2.319 / 3.776  trunc 0
+  Gemini 2.5 Flash   sem_escalate_restart   1.974 / 2.812  trunc 0
+  Claude Haiku 4.5   baseline               3.112 / 4.667  trunc 0
+  Claude Haiku 4.5   sem_adv                3.567 / 5.35  trunc 0
+  Claude Haiku 4.5   sem_escalate           5.734 / 9.829  trunc 0
+  Claude Haiku 4.5   sem_escalate_restart   4.331 / 6.063  trunc 0
+
+Q4 passes/valid runs per model (all conditions):
+  accu               GPT-4.1 mini 12/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 12/12
+  adder_16bit        GPT-4.1 mini 12/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 12/12
+  adder_32bit        GPT-4.1 mini 12/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 11/12
+  adder_bcd          GPT-4.1 mini 12/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 12/12
+  adder_pipe_64bit   GPT-4.1 mini 2/12  Gemini 2.5 Flash 0/12  Claude Haiku 4.5 4/12
+  alu                GPT-4.1 mini 0/12  Gemini 2.5 Flash 3/12  Claude Haiku 4.5 0/12
+  barrel_shifter     GPT-4.1 mini 1/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 0/0
+  counter_12         GPT-4.1 mini 12/12  Gemini 2.5 Flash 12/12  Claude Haiku 4.5 0/0
+  div_16bit          GPT-4.1 mini 0/12  Gemini 2.5 Flash 0/12  Claude Haiku 4.5 6/12
+  float_multi        GPT-4.1 mini 4/12  Gemini 2.5 Flash 4/12  Claude Haiku 4.5 1/11
+  freq_divbyfrac     GPT-4.1 mini 0/12  Gemini 2.5 Flash 0/12  Claude Haiku 4.5 0/12
+  fsm                GPT-4.1 mini 11/12  Gemini 2.5 Flash 11/12  Claude Haiku 4.5 0/0
+  LIFObuffer         GPT-4.1 mini 12/12  Gemini 2.5 Flash 9/12  Claude Haiku 4.5 0/0
+  multi_pipe_4bit    GPT-4.1 mini 12/12  Gemini 2.5 Flash 8/12  Claude Haiku 4.5 12/12
+  multi_pipe_8bit    GPT-4.1 mini 0/12  Gemini 2.5 Flash 2/12  Claude Haiku 4.5 12/12
+  parallel2serial    GPT-4.1 mini 1/12  Gemini 2.5 Flash 5/12  Claude Haiku 4.5 12/12
+  pulse_detect       GPT-4.1 mini 0/12  Gemini 2.5 Flash 8/12  Claude Haiku 4.5 0/0
+  serial2parallel    GPT-4.1 mini 12/12  Gemini 2.5 Flash 11/12  Claude Haiku 4.5 0/0
+  traffic_light      GPT-4.1 mini 4/12  Gemini 2.5 Flash 4/12  Claude Haiku 4.5 0/0
+Q4 strict (every model ran it, all failed): ['freq_divbyfrac']
+Q4 zero over GPT + Haiku (both ran it): ['alu', 'freq_divbyfrac']
+Q4 zero over all three (all ran it): ['freq_divbyfrac']
+Q4 zero over whatever ran it: ['freq_divbyfrac']
+  freq_divbyfrac GPT-4.1 mini baseline r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini baseline r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini baseline r3: dominant logic_error | freq_divbyfrac.v:42: error: Variable declaration in unnamed block requires SystemVerilog.
+  freq_divbyfrac GPT-4.1 mini sem_adv r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_adv r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_adv r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate_restart r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate_restart r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac GPT-4.1 mini sem_escalate_restart r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash baseline r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash baseline r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash baseline r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_adv r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_adv r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_adv r3: dominant logic_error | freq_divbyfrac.v:53: error: Variable declaration in unnamed block requires SystemVerilog.
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate r3: dominant logic_error | Failed at          0: clk=1, clk_div=0 (expected           1)
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate_restart r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate_restart r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Gemini 2.5 Flash sem_escalate_restart r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 baseline r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 baseline r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 baseline r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_adv r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_adv r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_adv r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate r1: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate_restart r1: dominant logic_error | Failed at          0: clk=1, clk_div=0 (expected           1)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate_restart r2: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)
+  freq_divbyfrac Claude Haiku 4.5 sem_escalate_restart r3: dominant logic_error | Failed at          3: clk=0, clk_div=1 (expected           0)

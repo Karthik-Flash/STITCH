@@ -1,0 +1,76 @@
+﻿set1_run sem_adv: published -4.6 [-10.5, +0.7] p=0.199 | reproduced -4.6 [-10.5, +0.7] p=0.199 OK
+set1_run sem_escalate: published -4.7 [-10.7, +0.0] p=0.148 | reproduced -4.7 [-10.7, +0.0] p=0.148 OK
+set1_run sem_escalate_restart: published -0.0 [-4.6, +4.6] p=1.000 | reproduced -0.0 [-4.6, +4.6] p=1.000 OK
+set3_run sem_adv: published -0.7 [-7.8, +6.5] p=1.000 | reproduced -0.7 [-7.8, +6.5] p=1.000 OK
+set3_run sem_escalate: published +2.6 [-1.3, +7.2] p=0.404 | reproduced +2.6 [-1.3, +7.2] p=0.404 OK
+set3_run sem_escalate_restart: published +2.0 [-2.6, +7.2] p=0.596 | reproduced +2.0 [-2.6, +7.2] p=0.596 OK
+ALL REPRODUCED
+runs 612, errored 0
+
+== pooled
+  baseline               152/153  99.3% [96.4, 99.9]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 152
+  sem_adv                151/153  98.7% [95.4, 99.6]  sf runs 20, passes w/ sf 20 (fired before pass 5), w/o sf 131
+  sem_escalate           150/153  98.0% [94.4, 99.3]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 150 esc_rate 0.03 escalated 5 (passed 2)
+  sem_escalate_restart   150/153  98.0% [94.4, 99.3]  sf runs 1, passes w/ sf 1 (fired before pass 1), w/o sf 149 esc_rate 0.03 escalated 5 (passed 2)
+  sem_adv - baseline: cell mean -0.7 pts [-2.0, +0.0], cells=51, sign-flip p=1.000
+  sem_escalate - baseline: cell mean -1.3 pts [-3.9, +0.0], cells=51, sign-flip p=1.000
+  sem_escalate_restart - baseline: cell mean -1.3 pts [-3.9, +0.0], cells=51, sign-flip p=1.000
+  tool calls/run sem_adv 2.29 -> sem_escalate 0.26: 88.6% reduction (Set 1 16.6%, Set 3 27.6%)
+
+== GPT-4.1 mini
+  baseline                50/ 51  98.0% [89.7, 99.7]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 50
+  sem_adv                 49/ 51  96.1% [86.8, 98.9]  sf runs 5, passes w/ sf 5 (fired before pass 0), w/o sf 44
+  sem_escalate            48/ 51  94.1% [84.1, 98.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 48 esc_rate 0.06 escalated 3 (passed 0)
+  sem_escalate_restart    48/ 51  94.1% [84.1, 98.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 48 esc_rate 0.06 escalated 3 (passed 0)
+  sem_adv - baseline: cell mean -2.0 pts [-5.9, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate - baseline: cell mean -3.9 pts [-11.8, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate_restart - baseline: cell mean -3.9 pts [-11.8, +0.0], cells=17, sign-flip p=1.000
+  tool calls/run sem_adv 2.39 -> sem_escalate 0.71: 70.5% reduction (Set 1 16.6%, Set 3 27.6%)
+
+== Gemini 2.5 Flash
+  baseline                51/ 51 100.0% [93.0, 100.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 51
+  sem_adv                 51/ 51 100.0% [93.0, 100.0]  sf runs 6, passes w/ sf 6 (fired before pass 1), w/o sf 45
+  sem_escalate            51/ 51 100.0% [93.0, 100.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 51 esc_rate 0.00 escalated 0 (passed 0)
+  sem_escalate_restart    51/ 51 100.0% [93.0, 100.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 51 esc_rate 0.02 escalated 1 (passed 1)
+  sem_adv - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate_restart - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  tool calls/run sem_adv 2.22 -> sem_escalate 0.00: 100.0% reduction (Set 1 16.6%, Set 3 27.6%)
+
+== Claude Haiku 4.5
+  baseline                51/ 51 100.0% [93.0, 100.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 51
+  sem_adv                 51/ 51 100.0% [93.0, 100.0]  sf runs 9, passes w/ sf 9 (fired before pass 4), w/o sf 42
+  sem_escalate            51/ 51 100.0% [93.0, 100.0]  sf runs 0, passes w/ sf 0 (fired before pass 0), w/o sf 51 esc_rate 0.04 escalated 2 (passed 2)
+  sem_escalate_restart    51/ 51 100.0% [93.0, 100.0]  sf runs 1, passes w/ sf 1 (fired before pass 1), w/o sf 50 esc_rate 0.02 escalated 1 (passed 1)
+  sem_adv - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  sem_escalate_restart - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000
+  tool calls/run sem_adv 2.25 -> sem_escalate 0.08: 96.5% reduction (Set 1 16.6%, Set 3 27.6%)
+
+failures:
+  GPT-4.1 mini sequence_detector baseline rep2: 6 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_adv rep2: 6 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_adv rep3: 6 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate rep1: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate rep2: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate rep3: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate_restart rep1: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate_restart rep2: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error'] | =========== Test completed with           2 /3 failures ===========
+  GPT-4.1 mini sequence_detector sem_escalate_restart rep3: 8 iters, dominant logic_error, seq ['logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'logic_error', 'compile_other'] | sequence_detector.v:24: error: Unable to bind wire/reg/memory `next_state' in `tb_sequence_detector.dut'
+
+cost (INR per run / per pass, tokens per run, overhead vs baseline, latency, truncated):
+  GPT-4.1 mini       baseline               INR/run 0.112 INR/pass 0.114 tok/run 1340 ovh  lat 3.2s trunc 0
+  GPT-4.1 mini       sem_adv                INR/run 0.127 INR/pass 0.132 tok/run 1758 ovh +31% lat 3.4s trunc 0
+  GPT-4.1 mini       sem_escalate           INR/run 0.158 INR/pass 0.168 tok/run 2731 ovh +104% lat 3.3s trunc 0
+  GPT-4.1 mini       sem_escalate_restart   INR/run 0.158 INR/pass 0.168 tok/run 2783 ovh +108% lat 3.4s trunc 0
+  Gemini 2.5 Flash   baseline               INR/run 0.245 INR/pass 0.245 tok/run 2017 ovh  lat 3.8s trunc 0
+  Gemini 2.5 Flash   sem_adv                INR/run 0.236 INR/pass 0.236 tok/run 1970 ovh -2% lat 3.7s trunc 0
+  Gemini 2.5 Flash   sem_escalate           INR/run 0.224 INR/pass 0.224 tok/run 1667 ovh -17% lat 3.8s trunc 0
+  Gemini 2.5 Flash   sem_escalate_restart   INR/run 0.233 INR/pass 0.233 tok/run 1846 ovh -8% lat 3.8s trunc 0
+  Claude Haiku 4.5   baseline               INR/run 0.506 INR/pass 0.506 tok/run 2268 ovh  lat 3.8s trunc 0
+  Claude Haiku 4.5   sem_adv                INR/run 0.473 INR/pass 0.473 tok/run 2090 ovh -8% lat 3.8s trunc 0
+  Claude Haiku 4.5   sem_escalate           INR/run 0.478 INR/pass 0.478 tok/run 2134 ovh -6% lat 3.9s trunc 0
+  Claude Haiku 4.5   sem_escalate_restart   INR/run 0.495 INR/pass 0.495 tok/run 2229 ovh -2% lat 3.9s trunc 0
+
+OpenAI system fingerprints: {'fp_6050bec882': 7, 'fp_b43877da5b': 256}
+full-run spend $1.5514 = INR 176

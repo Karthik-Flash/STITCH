@@ -1,0 +1,34 @@
+recheck: 27/27 GPT/Haiku candidates get the cached verdict on this toolchain
+sign-off cache phase2/results/p3_api/signoff_cache.json: 337 -> 337 candidates; tb_signoff differs from tb.v on ['Address_select', 'mem_wb_mux']; passing tb_signoff but failing tb.v: 0
+provenance over 594 runs: {"protocol": ["feedback_first_v2"], "interp_v3_version": ["3.0.1"], "base_interp_sha256_lf": ["42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff"], "temperature": ["0.1"], "max_iters": ["6"], "sem_include_raw": ["1"], "runner": ["119611fe10f2e23a2dc4f7c0c85ce20f7a176fa1311c26ea56b98b1087b76a36"], "toolchain": ["{\"iverilog\": \"Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)\", \"verilator\": \"Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)\", \"yosys\": \"Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)\"}"]}
+published Table 12 rows for GPT-4.1 mini and Claude Haiku 4.5 reproduced: YES
+
+| Condition | gpt-4.1-mini-2025-04-14 clean | tokens | claude-haiku-4-5-20251001 clean | tokens | gemini-2.5-flash clean | tokens |
+|---|---|---|---|---|---|---|
+| baseline | 12 (0/12) | 440 | 12 (0/12) | 517 | 15 (0/15) | 516 |
+| baseline_gate | 28 (16/12) | 1,529 | 30 (18/12) | 1,099 | 33 (18/15) | 1,160 |
+| raw_adv | 30 (18/12) | 1,164 | 30 (18/12) | 1,334 | 30 (18/12) | 1,291 |
+| sem_adv_v2 | 30 (18/12) | 1,255 | 30 (18/12) | 1,517 | 33 (18/15) | 1,478 |
+| sem_adv_v3 | 30 (18/12) | 1,257 | 30 (18/12) | 1,524 | 32 (18/14) | 1,479 |
+| sem_esc_restart_v3 | 30 (18/12) | 1,404 | 30 (18/12) | 1,101 | 33 (18/15) | 1,225 |
+
+clean of 33 (sim-silent of 18 / sim-visible of 15); tokens per run over all 33 runs
+- gpt-4.1-mini-2025-04-14|baseline: n 33 (18/15), as run clean 15, signed off defective 21 (sim-silent 18)
+- gpt-4.1-mini-2025-04-14|baseline_gate: n 33 (18/15), as run clean 31, signed off defective 4 (sim-silent 1)
+- gpt-4.1-mini-2025-04-14|raw_adv: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- gpt-4.1-mini-2025-04-14|sem_adv_v2: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- gpt-4.1-mini-2025-04-14|sem_adv_v3: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- gpt-4.1-mini-2025-04-14|sem_esc_restart_v3: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- claude-haiku-4-5-20251001|baseline: n 33 (18/15), as run clean 15, signed off defective 21 (sim-silent 18)
+- claude-haiku-4-5-20251001|baseline_gate: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- claude-haiku-4-5-20251001|raw_adv: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- claude-haiku-4-5-20251001|sem_adv_v2: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- claude-haiku-4-5-20251001|sem_adv_v3: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- claude-haiku-4-5-20251001|sem_esc_restart_v3: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- gemini-2.5-flash|baseline: n 33 (18/15), as run clean 15, signed off defective 18 (sim-silent 18)
+- gemini-2.5-flash|baseline_gate: n 33 (18/15), as run clean 33, signed off defective 0 (sim-silent 0)
+- gemini-2.5-flash|raw_adv: n 33 (18/15), as run clean 33, signed off defective 3 (sim-silent 0)
+- gemini-2.5-flash|sem_adv_v2: n 33 (18/15), as run clean 33, signed off defective 0 (sim-silent 0)
+- gemini-2.5-flash|sem_adv_v3: n 33 (18/15), as run clean 33, signed off defective 1 (sim-silent 0)
+- gemini-2.5-flash|sem_esc_restart_v3: n 33 (18/15), as run clean 33, signed off defective 0 (sim-silent 0)
+- non-baseline runs not signoff_clean, by (model, task, condition): {'claude-haiku-4-5-20251001 | Address_select | baseline_gate': 3, 'claude-haiku-4-5-20251001 | Address_select | raw_adv': 3, 'claude-haiku-4-5-20251001 | Address_select | sem_adv_v2': 3, 'claude-haiku-4-5-20251001 | Address_select | sem_adv_v3': 3, 'claude-haiku-4-5-20251001 | Address_select | sem_esc_restart_v3': 3, 'gemini-2.5-flash | Address_select | raw_adv': 3, 'gemini-2.5-flash | Address_select | sem_adv_v3': 1, 'gpt-4.1-mini-2025-04-14 | Address_select | baseline_gate': 3, 'gpt-4.1-mini-2025-04-14 | Address_select | raw_adv': 3, 'gpt-4.1-mini-2025-04-14 | Address_select | sem_adv_v2': 3, 'gpt-4.1-mini-2025-04-14 | Address_select | sem_adv_v3': 3, 'gpt-4.1-mini-2025-04-14 | Address_select | sem_esc_restart_v3': 3, 'gpt-4.1-mini-2025-04-14 | riscv_alu_flags | baseline_gate': 2}

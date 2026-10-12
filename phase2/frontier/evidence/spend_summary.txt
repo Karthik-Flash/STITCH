@@ -1,0 +1,20 @@
+Set 4   anthropic  $0.8993 INR   101.9 calls 251 non-ok 0 reasoning>0 0 smoke=$0.0020 pilot=$0.0181 full=$0.8792
+Set 4   gemini     $0.4350 INR    49.3 calls 246 non-ok 0 reasoning>0 0 smoke=$0.0008 pilot=$0.0117 full=$0.4225
+Set 4   moonshot   $0.0004 INR     0.0 calls 1 non-ok 0 reasoning>0 1 smoke=$0.0004
+Set 4   openai     $0.2558 INR    29.0 calls 273 non-ok 0 reasoning>0 0 smoke=$0.0006 pilot=$0.0054 full=$0.2498
+Set 4   TOTAL      $1.5905 INR   180.2
+Set 4b  anthropic  $3.1329 INR   354.9 calls 310 non-ok 2 reasoning>0 0 floor_pilot=$0.0227 floor_full=$3.1103
+Set 4b  gemini     $3.6156 INR   409.6 calls 872 non-ok 1 reasoning>0 0 floor_pilot=$0.0690 floor_full=$3.5466
+Set 4b  openai     $1.3042 INR   147.7 calls 730 non-ok 0 reasoning>0 0 floor_pilot=$0.0169 floor_full=$1.2873
+Set 4b  TOTAL      $8.0527 INR   912.2
+Final   anthropic  $2.6568 INR   301.0 calls 560 non-ok 170 reasoning>0 0 p3_pilot=$0.0401 p3_full=$0.3957 floor_full=$2.2210
+Final   gemini     $0.4961 INR    56.2 calls 234 non-ok 0 reasoning>0 0 smoke_gc=$0.0008 floor_full=$0.3179 p3_full=$0.1775
+Final   openai     $0.7344 INR    83.2 calls 466 non-ok 0 reasoning>0 0 p3_pilot=$0.0146 p3_full=$0.1411 floor_full=$0.5786
+Final   TOTAL      $3.8874 INR   440.4
+Set 4c  gemini     $0.1723 INR    19.5 calls 4 non-ok 0 reasoning>0 4 set4c_smoke=$0.0321 set4c=$0.1401
+Set 4c  TOTAL      $0.1723 INR    19.5
+ALL     anthropic  $6.6891 INR   757.7
+ALL     gemini     $4.7190 INR   534.6
+ALL     moonshot   $0.0004 INR     0.0
+ALL     openai     $2.2944 INR   259.9
+GRAND   TOTAL      $13.7029 INR  1552.3
