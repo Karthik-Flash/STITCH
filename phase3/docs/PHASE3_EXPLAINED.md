@@ -404,7 +404,7 @@ limitation.
 
 | When | Who | What |
 |---|---|---|
-| Today | Claude Code, on the laptop | `HANDOFF_PHASE3_CLAUDE_CODE.md` tasks T0–T10, listed below |
+| Today | Claude Code, on the laptop | `archive/HANDOFF_PHASE3_CLAUDE_CODE.md` tasks T0–T10, listed below |
 | Tomorrow | You, in PowerShell + ssh | `HPC_PHASE3_COMMANDS.md` Parts A–I, listed below |
 
 Claude Code's tasks today:

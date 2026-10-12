@@ -15,5 +15,5 @@ miswire are intentionally still there):
    NI/packetiser/) are byte-identical; one copy kept.
 5. The mesh folders contain only the router tree (top = `top_2x2_router` / `top_3x3_router`).
 
-Verification: `phase3/HANDOFF_PHASE3_CLAUDE_CODE.md` task T3 compares every module body against the repo copy after comment stripping;
+Verification: `phase3/docs/archive/HANDOFF_PHASE3_CLAUDE_CODE.md` task T3 compares every module body against the repo copy after comment stripping;
 expected differences are exactly `main`, `new1` and `nidepack`.
