@@ -1,5 +1,32 @@
 # Review of STITCH_EXT_FINAL.pdf against the raw data
 
+## Resolved in `paper/STITCH_EXT_v7.tex` (checked 2026-09-27)
+
+Every item below was checked by searching the v7 source; no v6 number changed. Edit-by-edit list: `paper/V7_CHANGES.md`.
+
+| Item | Status in v7 |
+|---|---|
+| A. Set 1 harm claim | Resolved. "Measurably lowers", "replicates at scale", "paper's headline" and the novelty sentence are gone. Now: about four points below baseline, consistent in direction, within noise at N=3, with the cell counts (7 worse, 3 better, 41 equal of 51), the cell-bootstrap CI (-10.5 to +0.7), and the note that Set 1 has no raw_adv arm. Escalation's guarantee is stated as not depending on it. |
+| B1. "6 timeouts, all floor-tier" | Resolved. The six cells are named (5 RAM/llama3.1, 1 LIFObuffer/deepseek-coder), the 150/151/170 denominators are explained, and the counted-as-failure rates are given. |
+| B2. Set 3 flip sentence | Resolved. Now "six of the 51 cells gaining seven replicates in total against three cells losing one each" (+4, 90 vs 86). |
+| B3. "plus the extra iteration budget" | Resolved. Now "after escalation, within the first six iterations". |
+| C. Iteration caps | Resolved. New "Iteration budget" paragraph in 8.1 (6 vs 8, equal-cap figures, no conclusion changes); Section 4 points to it; Phase 3 uses one shared budget. |
+| D. "matches baseline exactly" | Resolved (35.8% vs 35.3% given). |
+| D. Twin comparators, 9/9 and 3/3 scope, Control class, abstract vs body | Resolved. All three totals given (32/51, 29/51, 21/51) and each sentence names its comparison; native vs deepseek 5/6/6; class results scoped to the recoverable band; abstract and conclusion both say signal-processing. |
+| D. Figure 1 caption (five vs four losses) | Resolved (four losses; width_8to16 named as a tie). |
+| D. Section 3 "three candidates" | Resolved (alu_with_enable named as retired, too easy). |
+| D. Floor "outside the reachable class" | Resolved ("consistent with", marked as a prediction to test). |
+| D. Table 1 "both controls fail" | Resolved (gemma3:4b only; llama3.1 rows pass under the controls). |
+| D. "three silent pass-detection defects" | Resolved ("three silent harness defects: working directory, code-fence extraction, pass detection"). |
+| D. Set 3 restart clause | Resolved (1 of restart's 88 passes and 7 of sem_adv's 85 had the interpreter fire). |
+| E. Five `[?]` citations | Resolved in source, **needs the authors' check**: `deepseekcoder`, `gemma3`, `llama3`, `qwen25coder` entries were written from memory. |
+| E. Duplicate AutoChip entry | Resolved (one `autochip` entry). |
+| E. Verilator, Yosys, Icarus, Wilson, HPC uncited | Resolved (each cited once). |
+
+**Still open:** RTLFixer, VerilogEval, Self-Refine, HDLBits and RAG are in the bibliography but cited nowhere (cite in a
+related-work paragraph or delete). The figures as images and the "Not checked" list at the end were not re-checked.
+v7 has not been compiled.
+
 Written 2026-09-24 for the authors, as notes to keep while editing. **The paper was not edited.** Only `STITCH_EXT_FINAL.pdf`
 was reviewed (16 pages, read as extracted text, so the figures themselves were not inspected). Every number below was
 recomputed from the raw master logs (`phase2/results/{set1_run,set3_run,twin_run}/master_log.json` and
