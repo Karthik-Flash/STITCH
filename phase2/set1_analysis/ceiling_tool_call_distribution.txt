@@ -1,0 +1,6 @@
+# Set 1, ceiling tier (6 modules x 3 models x N=3 = 54 runs per condition): Verilator + Yosys calls per run.
+# Generated 2026-10-14 from phase2/results/set1_run with _data.load_run_cost (sem_adv: reconstructed from metrics.json;
+# escalation: summed from run_log.json tool_invocations). Format: calls_per_run: number_of_runs.
+sem_adv: runs 54, total calls 217, mean 4.02; 2: 29, 3: 4, 4: 4, 5: 7, 6: 2, 7: 1, 10: 2, 11: 3, 12: 2
+sem_escalate: runs 54, total calls 54, mean 1.00; 0: 44, 3: 3, 5: 3, 6: 2, 8: 1, 10: 1
+sem_escalate_restart: runs 54, total calls 84, mean 1.56; 0: 42, 3: 1, 5: 2, 6: 5, 8: 1, 9: 1, 12: 2

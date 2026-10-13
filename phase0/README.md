@@ -29,3 +29,10 @@ the entry point for anyone picking up Phase 1.
 - `results/` — raw per-run output trees. Mostly gitignored (iteration-level
   `.v`/log files); `metrics.json` and `stitch_summary.json` files survive as
   the on-disk record behind the numbers in `evidence/`.
+
+## See also
+
+- `../docs/PHASES_EXPLAINED.md`: every phase in one document (question, design, runs, results, paper changes,
+  evidence).
+- `../docs/reSTITCH.md`: the whole story, with every decision and correction.
+- `../REPO_INDEX.md`: where everything lives and how to regenerate it.

@@ -405,7 +405,7 @@ limitation.
 | When | Who | What |
 |---|---|---|
 | Today | Claude Code, on the laptop | `archive/HANDOFF_PHASE3_CLAUDE_CODE.md` tasks T0–T10, listed below |
-| Tomorrow | You, in PowerShell + ssh | `HPC_PHASE3_COMMANDS.md` Parts A–I, listed below |
+| Tomorrow | You, in PowerShell + ssh | `docs/archive/HPC_PHASE3_COMMANDS.md` Parts A–I, listed below (merged into `docs/HPC_GUIDE.md`) |
 
 Claude Code's tasks today:
 - place the files and delete yesterday's duplicates;

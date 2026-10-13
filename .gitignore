@@ -62,8 +62,11 @@ scratch/
 paper_112_final.pdf
 AutoChip_HPC_Reference.docx
 
-reSTITCH.md
-reSTITCH_PHASE3_EXPLAINED.md
+# Private notes live in private/ (local only, never committed). Root-anchored, so docs/reSTITCH.md is tracked.
+private/
+/reSTITCH.md
+/reSTITCH_PHASE3_EXPLAINED.md
+/note.txt
 
 # --- Phase 3 (MPSoC composition + interpreter v3) ---
 # Local run output (E0 retro-audit, smoke runs): regenerable, never committed.

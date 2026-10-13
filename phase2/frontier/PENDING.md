@@ -8,8 +8,8 @@ Money: INR = USD × 96 × 1.18.
 | Step | Status |
 |---|---|
 | Enforce LF line endings (`.gitattributes`) | done, commit `d6d10c2` |
-| Archive superseded paper drafts into `paper/archive/` | done (this commit) |
-| Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | in progress |
+| Archive superseded paper drafts into `paper/archive/` | done, commit `b28f92c` |
+| Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | done (this commit) |
 | `docs/reSTITCH_REVISITED_QA.md` | to do |
 | Update `REPO_INDEX.md` and `handoff.md`; tests; push `main`; final leak audit | to do |
 
