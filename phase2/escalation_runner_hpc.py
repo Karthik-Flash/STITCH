@@ -53,7 +53,7 @@ from typing import Optional
 
 # Deploy convention (see docs/FULL_RUN_RUNBOOK.md): this file and
 # stitch_runner_hpc.py are scp'd flat into the SAME directory on HPC
-# (e.g. /scratch/soumyaj/Set1_HPC/ or /scratch/soumyaj/RTLCoderHPC/) --
+# (e.g. /scratch/$USER/Set1_HPC/ or /scratch/$USER/RTLCoderHPC/) --
 # "look in my own directory" is therefore the correct and only assumption
 # needed, unlike the original escalation_runner.py's repo-relative
 # "../src/runner" (which only makes sense inside a full repo checkout).

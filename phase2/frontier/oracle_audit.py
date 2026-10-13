@@ -3,7 +3,7 @@
 (stitch_runner_hpc.run_iverilog_sim, detect_outcome(benchmark="rtllm")) on the Set 4 toolchain,
 and tally the failure types of every Set 4b run of that module. Every result is a CANDIDATE
 that needs manual confirmation. Run in WSL:
-  STITCH_SET4_OSSCAD=... PYTHONPATH=... RTLLM_ROOT=/mnt/d/Projects/RTLLM python3 oracle_audit.py m1 m2 ...
+  STITCH_SET4_OSSCAD=... PYTHONPATH=... RTLLM_ROOT=$RTLLM_ROOT python3 oracle_audit.py m1 m2 ...
 """
 import collections
 import glob

@@ -1,6 +1,6 @@
 #!/bin/bash
 # phase2/set1_run.slurm -- Set 1: STITCH conditions sweep, full RTLLM
-# scale, on gpunode4 (A100, gpu_a100_8). Paper Graph Set 1: does
+# scale, on <GPU_NODE> (A100, gpu_a100_8). Paper Graph Set 1: does
 # sem_escalate beat MLCAD's always-on sem_adv on cost + pass rate.
 # Runner: phase2/set1_runner.py (read that file's docstring first).
 #
@@ -32,8 +32,8 @@
 #
 # TWO-NODE INDEPENDENCE (see docs/FULL_RUN_RUNBOOK.md for the full checklist):
 # this job binds its OWN ollama serve to 127.0.0.1:11434 -- safe despite
-# twin_run.slurm doing the exact same thing, because gpunode4 and
-# gpunode6 are different physical nodes, each with its own loopback.
+# twin_run.slurm doing the exact same thing, because <GPU_NODE> and
+# <GPU_NODE> are different physical nodes, each with its own loopback.
 # Zero port-collision risk. Scratch dirs, log filenames, and results
 # trees are fully disjoint from Set 2's (Set1_HPC/ vs. RTLCoderHPC/).
 # OLLAMA_MODELS is the one thing genuinely shared between the two jobs --
@@ -42,13 +42,13 @@
 # Usage: sbatch set1_run.slurm
 #SBATCH --job-name=set1_stitch_conditions
 #SBATCH --partition=gpu_a100_8
-#SBATCH --nodelist=gpunode4
+#SBATCH --nodelist=<GPU_NODE>
 #SBATCH --gres=gpu:1
 #SBATCH --mem=48G
 #SBATCH --cpus-per-task=8
 #SBATCH --time=120:00:00
-#SBATCH --output=/scratch/soumyaj/Set1_HPC/logs/set1_%j.log
-#SBATCH --error=/scratch/soumyaj/Set1_HPC/logs/set1_%j.err
+#SBATCH --output=/scratch/%u/Set1_HPC/logs/set1_%j.log
+#SBATCH --error=/scratch/%u/Set1_HPC/logs/set1_%j.err
 
 set -e
 
@@ -57,27 +57,27 @@ set -e
 # openai, torch/transformers are NOT needed here, no RTLCoder in Set 1,
 # but reusing one venv is simpler than maintaining two -- see
 # docs/FULL_RUN_RUNBOOK.md step 2). No HF_HOME needed -- Ollama-only run.
-source /scratch/soumyaj/Set1_HPC/venv/bin/activate
-export PATH=/scratch/soumyaj/AutoChipHPC/bin:/scratch/soumyaj/oss-cad-suite/bin:$PATH
-export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM
+source /scratch/$USER/Set1_HPC/venv/bin/activate
+export PATH=/scratch/$USER/AutoChipHPC/bin:/scratch/$USER/oss-cad-suite/bin:$PATH
+export RTLLM_ROOT=/scratch/$USER/RTLCoderHPC/RTLLM
 # Deliberately the SAME checkout Set 2 reads -- RTLLM is read-only I/O
 # for both jobs, on different physical nodes; sharing one checkout avoids
 # a second multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md.
-export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set1_HPC/src/interpreter
-export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set1_HPC/task_a_screen.json
+export STITCH_INTERPRETER_DIR=/scratch/$USER/Set1_HPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/$USER/Set1_HPC/task_a_screen.json
 echo "=== which ollama / iverilog ==="
 which ollama
 which iverilog
 
 # ── (b) Ollama server: OWN server, started inside THIS job ─────────────
 # Same pattern as twin_run.slurm -- safe on a DIFFERENT physical node
-# (gpunode4 vs. gpunode6), see the two-node-independence note above.
+# (<GPU_NODE> vs. <GPU_NODE>), see the two-node-independence note above.
 # OLLAMA_MODELS points at Set 2's already-pulled models (read-only,
 # shared, safe -- see prerequisite note above); this job never pulls.
-export OLLAMA_MODELS=/scratch/soumyaj/RTLCoderHPC/ollama_models
+export OLLAMA_MODELS=/scratch/$USER/RTLCoderHPC/ollama_models
 export OLLAMA_HOST=127.0.0.1:11434
 echo "=== starting ollama serve (OLLAMA_HOST=$OLLAMA_HOST, OLLAMA_MODELS=$OLLAMA_MODELS) ==="
-ollama serve > /scratch/soumyaj/Set1_HPC/logs/ollama_set1_${SLURM_JOB_ID}.log 2>&1 &
+ollama serve > /scratch/$USER/Set1_HPC/logs/ollama_set1_${SLURM_JOB_ID}.log 2>&1 &
 OLLAMA_PID=$!
 # `trap ... EXIT` guarantees the server gets killed on ANY exit path --
 # success, an early `exit 1` above, or `set -e` aborting on the python
@@ -115,7 +115,7 @@ done
 if [ "$MISSING" -ne 0 ]; then
     echo "FATAL: one or more required Ollama models are missing from"
     echo "  OLLAMA_MODELS=$OLLAMA_MODELS. Run"
-    echo "  'sbatch /scratch/soumyaj/RTLCoderHPC/pull_ollama_models.slurm'"
+    echo "  'sbatch /scratch/$USER/RTLCoderHPC/pull_ollama_models.slurm'"
     echo "  once (on Node 2 -- Set 1 does not have its own pull script,"
     echo "  see docs/FULL_RUN_RUNBOOK.md), then resubmit this job."
     exit 1  # trap above still fires and kills OLLAMA_PID
@@ -127,7 +127,7 @@ echo "All 3 Ollama models present."
 # (wrong module count) before burning any real wall-clock. Fails the
 # whole job immediately (set -e) if the assertion in set1_runner.py's
 # own --dry-run path doesn't hold.
-cd /scratch/soumyaj/Set1_HPC
+cd /scratch/$USER/Set1_HPC
 echo "=== dry-run sanity check ==="
 python set1_runner.py --dry-run
 

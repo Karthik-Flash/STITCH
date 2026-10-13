@@ -11,7 +11,7 @@ and compare with what Set 3 recorded.
 Sample (deterministic): for every module x condition, the first PASS
 iteration, the first FAIL iteration, and the first semantic-fired iteration
 found (sorted order), each counted once. Run in WSL:
-  PYTHONPATH=/mnt/c/Users/karth/stitch_set4_pylib python3 phase2/frontier/parity_check.py
+  PYTHONPATH=$WIN_HOME/stitch_set4_pylib python3 phase2/frontier/parity_check.py
 Writes phase2/results/set4_api/parity_check.json.
 """
 import glob

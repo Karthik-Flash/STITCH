@@ -102,7 +102,7 @@ MPSoC/MPSoC Source Codes/   original MPSoC sources (phase3/designs/ holds the sa
 analysis/ benchmarks/ plans/  older utilities, the v20 diagnostic benchmark, research plans (archive)
 ```
 
-RTLLM is never copied into the repo: `D:\Projects\RTLLM` locally, `$RTLLM_ROOT` on the HPC.
+RTLLM is never copied into the repo: `<RTLLM_ROOT>` locally, `$RTLLM_ROOT` on the HPC.
 
 **Regenerate the Phase 3 numbers and figures:** `python phase3/runner/analyze_phase3.py`
 (default `--results phase3/results/phase3_run`; output to `phase3/evidence/phase3_run/`). Deterministic (seeded).
@@ -143,11 +143,11 @@ Paper: `paper/STITCH_EXT_v7.tex` needs one Overleaf compile check and the biblio
 
 ## 7. HPC
 
-BITS Hyderabad, `soumyaj@hpc.bits-hyderabad.ac.in`, scratch `/scratch/soumyaj/`: `RTLCoderHPC/` (Set 2 + shared venv),
+BITS Hyderabad, `<HPC_USER>@<HPC_HOST>`, scratch `/scratch/<HPC_USER>/`: `RTLCoderHPC/` (Set 2 + shared venv),
 `Set1_HPC/`, `Set3_HPC/`, `Phase3_HPC/` (Phase 3, self-contained: `$BASE/phase3`, `$BASE/src`, `$BASE/results`).
-oss-cad-suite at `/scratch/soumyaj/oss-cad-suite/bin`. Ollama runs only inside sbatch jobs; the login node has no
-internet. Nodes: `gpunode4` A100 (`gpu_a100_8`) ran Sets 1 and 3; `gpunode6` H100 (`gpu_h100_4`) ran Set 2; the
-Phase 3 manifests record `gpunode7`. Phase 3 procedure: `phase3/HPC_PHASE3_COMMANDS.md`
+oss-cad-suite at `/scratch/<HPC_USER>/oss-cad-suite/bin`. Ollama runs only inside sbatch jobs; the login node has no
+internet. Nodes: `<GPU_NODE>` A100 (`gpu_a100_8`) ran Sets 1 and 3; `<GPU_NODE>` H100 (`gpu_h100_4`) ran Set 2; the
+Phase 3 manifests record `<GPU_NODE>`. Phase 3 procedure: `phase3/HPC_PHASE3_COMMANDS.md`
 (gate must print `ALL GATES PASSED` before any GPU job). New Phase 3 runs: set `P3_OUT=$BASE/results/<new_run>` for
 both `phase3_run.slurm` and `phase3_compose.slurm`. Phase 2 procedure: `docs/FULL_RUN_RUNBOOK.md`, `docs/HPC_COMMANDS.md`.
 Claude Code never runs ssh/scp/sbatch; the user does.

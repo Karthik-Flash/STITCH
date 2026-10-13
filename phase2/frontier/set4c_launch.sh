@@ -8,8 +8,8 @@ fi
 # Set 4c (SET4_PREREG Amendment 4), run in WSL: bash set4c_launch.sh --reopen
 # Order: (i) baseline rep1 x 3 modules; projection; (ii) baseline reps 2-3; (iii) sem_escalate_restart reps 1-3,
 # freq_divbyfrac first. Any non-zero exit (cap, stop rule) ends the chain; rerunning resumes, never re-runs a done run.
-F=/mnt/d/Projects/STITCH/phase2/frontier
-R=/mnt/d/Projects/STITCH/phase2/results/set4_api
+F="$(cd "$(dirname "$0")" && pwd)"
+R="$F/../results/set4_api"
 COMMON="--backend gemini --model gemini-2.5-pro --tag set4c --max-tokens 10240 --thinking-budget 2048
         --ledger-dir $R/ledgers_4c --provider-cap-usd 7.5 --budget-usd 7.5 --run-worst-usd 0.7204 --planned 18"
 step() { echo "$(date -u +%FT%TZ) STEP $1 start"; bash $F/run_set4.sh $COMMON "${@:2}"; rc=$?

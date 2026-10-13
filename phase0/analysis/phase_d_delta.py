@@ -23,9 +23,10 @@ no_change movement."
 """
 
 import json
+import os
 from pathlib import Path
 
-REPO = Path(r"D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI")
+REPO = Path(os.environ.get("STITCH_DATA_ROOT", "<DATA_ROOT>"))  # the Phase 0 data folder, outside this repository
 OLD_DATA = json.loads((REPO / "AutoChipAdvFB" / "STITCHAdv" / "res" / "phase1_consolidated.json").read_text(encoding="utf-8"))
 NEW_ROOT = REPO / "AutoChipAdvFB" / "STITCHAdv" / "runs" / "v2_fixes_20260816_030703" / "v20"
 

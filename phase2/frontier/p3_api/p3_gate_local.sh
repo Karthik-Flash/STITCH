@@ -3,9 +3,9 @@
 # run on a throwaway COPY of phase3/ + src/interpreter/ in /tmp, so nothing under the real phase3/ is written
 # (validate_tasks.py writes phase3/evidence/). Run in WSL: bash p3_gate_local.sh
 set -euo pipefail
-export STITCH_SET4_OSSCAD=${STITCH_SET4_OSSCAD:-/home/flash/set4_osscad/20260917/oss-cad-suite}
+export STITCH_SET4_OSSCAD=${STITCH_SET4_OSSCAD:-$HOME/set4_osscad/20260917/oss-cad-suite}
 export PATH="$STITCH_SET4_OSSCAD/bin:$PATH" PYTHONDONTWRITEBYTECODE=1
-REPO=/mnt/d/Projects/STITCH
+REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
 BASE=/tmp/p3gate_repo; rm -rf $BASE; mkdir -p $BASE/src
 tar -C $REPO -cf - --exclude='phase3/results' --exclude='__pycache__' phase3 | tar -C $BASE -xf -
 cp -r $REPO/src/interpreter $BASE/src/

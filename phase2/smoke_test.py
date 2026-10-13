@@ -44,7 +44,7 @@ import rtlcoder_adapter as rc  # noqa: E402
 # live from wherever it's checked out on HPC. No default baked in beyond
 # the env var / --rtllm-root override; there is no "correct" scratch
 # username to assume here.
-DEFAULT_RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLLM")
+DEFAULT_RTLLM_ROOT = os.environ.get("RTLLM_ROOT", os.path.expandvars("/scratch/$USER/RTLLM"))
 MODULE_REL = {"accu": "Arithmetic/Accumulator/accu"}
 
 RESULTS_DIR = os.path.join(_HERE, "results", "rtlcoder_smoke")

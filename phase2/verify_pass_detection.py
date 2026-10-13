@@ -54,7 +54,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_HERE, "..", "src", "interpreter"))
 from pass_detection import detect_outcome  # noqa: E402
 
-DEFAULT_RTLLM_ROOT = os.environ.get("RTLLM_ROOT") or r"D:\Projects\RTLLM"
+DEFAULT_RTLLM_ROOT = os.environ.get("RTLLM_ROOT") or os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "RTLLM"))
 TASK_A_SCREEN_JSON = os.path.join(
     _HERE, "..", "phase1", "results", "rtllm_pilot", "task_a_screen.json")
 SCRATCH_ROOT = os.path.join(_HERE, "results", "verify_pass_detection")

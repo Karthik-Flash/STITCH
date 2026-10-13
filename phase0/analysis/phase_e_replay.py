@@ -22,8 +22,9 @@ import re
 import subprocess
 from pathlib import Path
 import importlib.util
+import os
 
-REPO = Path(r"D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI")
+REPO = Path(os.environ.get("STITCH_DATA_ROOT", "<DATA_ROOT>"))  # the Phase 0 data folder, outside this repository
 CONSOLIDATED = REPO / "AutoChipAdvFB" / "STITCHAdv" / "res" / "phase1_consolidated.json"
 
 # ── NEW (fixed) interpreter — the real, current shared module ────────────────

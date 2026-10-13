@@ -36,7 +36,7 @@ low". They cost $0. They are recorded as errored in
 1. Add credit in the Anthropic console.
 2. Write a short pre-registration amendment (Amendment 4 in `SET4_PREREG.md`): scope = these 85 runs,
    protocol unchanged, the cap below.
-3. Confirm the toolchain: `wsl -e bash -lc 'bash /mnt/d/Projects/STITCH/phase2/frontier/osscad_versions.sh 20260917'`
+3. Confirm the toolchain: `wsl -e bash -lc 'bash $REPO_ROOT/phase2/frontier/osscad_versions.sh 20260917'`
    must print Yosys 0.69+71 (150c32b03), Verilator 5.053, Icarus 14.0.
 4. Do a smoke call: `run_set4.sh ... --smoke-call` with the same ledger and cap.
 
@@ -44,9 +44,9 @@ low". They cost $0. They are recorded as errored in
 once more; completed runs are never re-run):
 
 ```
-wsl -e bash -lc 'bash /mnt/d/Projects/STITCH/phase2/frontier/run_set4.sh --backend anthropic \
+wsl -e bash -lc 'bash $REPO_ROOT/phase2/frontier/run_set4.sh --backend anthropic \
   --model claude-haiku-4-5-20251001 --tag floor_full --budget-usd 15 --provider-cap-usd 9.50 \
-  --ledger-dir /mnt/d/Projects/STITCH/phase2/results/p3_api/ledgers --planned 228 \
+  --ledger-dir $REPO_ROOT/phase2/results/p3_api/ledgers --planned 228 \
   --modules traffic_light,barrel_shifter,pulse_detect,LIFObuffer,fsm,serial2parallel,counter_12,float_multi \
   --retry-errored'
 ```

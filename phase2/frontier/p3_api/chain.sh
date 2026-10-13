@@ -3,7 +3,7 @@
 # Usage: chain.sh <provider> <model> <partA_cap_usd> <provider_cap_usd>
 set -u
 P=$1; M=$2; CAPA=$3; CAP=$4
-D=/mnt/d/Projects/STITCH/phase2
+D="$(cd "$(dirname "$0")/../.." && pwd)"
 ENVP=$D/frontier/p3_api/p3_env.sh
 OUT=$D/results/p3_api/full/$P
 LOG=$D/results/p3_api/chain_$P.log

@@ -1,11 +1,11 @@
 # Phase 3 HPC Command Sheet
 
 Same conventions as `HPC_COMMANDS.md`:
-- **Host:** `hpc.bits-hyderabad.ac.in`, user `soumyaj`.
-- **Laptop repo:** `D:\Projects\STITCH`.
+- **Host:** `<HPC_HOST>`, user `<HPC_USER>`.
+- **Laptop repo:** `<REPO_ROOT>`.
 - **Where each command runs:** commands marked `# LAPTOP (PowerShell)` run on the laptop; everything else runs in the
   HPC ssh shell.
-- **Scratch dir:** `/scratch/soumyaj/Phase3_HPC`, fresh. Scratch files are auto-deleted 30 days after their last
+- **Scratch dir:** `/scratch/<HPC_USER>/Phase3_HPC`, fresh. Scratch files are auto-deleted 30 days after their last
   modification, so do not rely on Set1/Set3 directories surviving.
 
 | Part | What | Where | Time |
@@ -29,16 +29,16 @@ Same conventions as `HPC_COMMANDS.md`:
 ## Part A: Preflight (HPC login node)
 
 ```bash
-ssh soumyaj@hpc.bits-hyderabad.ac.in
-ls /scratch/soumyaj/oss-cad-suite/bin/{iverilog,vvp,yosys,verilator} && echo "OSS-CAD OK" || echo "OSS-CAD GONE"
-/scratch/soumyaj/oss-cad-suite/bin/yosys -V ; /scratch/soumyaj/oss-cad-suite/bin/verilator --version
-ls /scratch/soumyaj/Set3_HPC/bin/ollama /scratch/soumyaj/Set3_HPC/lib/ollama 2>/dev/null && echo "OLLAMA OK (Set3)" || echo "OLLAMA GONE"
-sinfo -p gpu_h100_4 ; squeue -u soumyaj
+ssh <HPC_USER>@<HPC_HOST>
+ls /scratch/<HPC_USER>/oss-cad-suite/bin/{iverilog,vvp,yosys,verilator} && echo "OSS-CAD OK" || echo "OSS-CAD GONE"
+/scratch/<HPC_USER>/oss-cad-suite/bin/yosys -V ; /scratch/<HPC_USER>/oss-cad-suite/bin/verilator --version
+ls /scratch/<HPC_USER>/Set3_HPC/bin/ollama /scratch/<HPC_USER>/Set3_HPC/lib/ollama 2>/dev/null && echo "OLLAMA OK (Set3)" || echo "OLLAMA GONE"
+sinfo -p gpu_h100_4 ; squeue -u <HPC_USER>
 ```
 If a check fails:
 - **OSS-CAD GONE:** redo `HPC_COMMANDS.md` Part 5.3 (laptop download + scp; the tgz extracts to
-  `/scratch/soumyaj/oss-cad-suite`).
-- **OLLAMA GONE:** redo Part 5.4, but extract into `/scratch/soumyaj/Phase3_HPC/` instead of `Set3_HPC`. Part B's
+  `/scratch/<HPC_USER>/oss-cad-suite`).
+- **OLLAMA GONE:** redo Part 5.4, but extract into `/scratch/<HPC_USER>/Phase3_HPC/` instead of `Set3_HPC`. Part B's
   ollama step then becomes a no-op.
 
 Write down the Yosys and Verilator versions. They will almost certainly be newer than the Yosys 0.33 / Verilator 5.020
@@ -47,8 +47,8 @@ the interpreter was verified on. That is exactly what the live drift check in Pa
 ## Part B: Deploy
 
 ```powershell
-# LAPTOP (PowerShell), from D:\Projects\STITCH  (branch phase3-setup, after Claude Code finished T0-T10)
-cd D:\Projects\STITCH
+# LAPTOP (PowerShell), from <REPO_ROOT>  (branch phase3-setup, after Claude Code finished T0-T10)
+cd <REPO_ROOT>
 powershell -ExecutionPolicy Bypass -File phase3\hpc\deploy_phase3.ps1
 ```
 The deploy script does the following:
@@ -62,13 +62,13 @@ It must end with `LINE ENDINGS OK`.
 Next, the ollama binary. **Copy `lib/` together with `bin/`:** the GPU (CUDA) libraries live in `lib/ollama`. With
 only the binary, Ollama silently falls back to the CPU and the run crawls.
 ```bash
-cp -r /scratch/soumyaj/Set3_HPC/bin/ollama /scratch/soumyaj/Phase3_HPC/bin/
-cp -r /scratch/soumyaj/Set3_HPC/lib /scratch/soumyaj/Phase3_HPC/
-ls -la /scratch/soumyaj/Phase3_HPC/bin/ollama /scratch/soumyaj/Phase3_HPC/lib/ollama | head
+cp -r /scratch/<HPC_USER>/Set3_HPC/bin/ollama /scratch/<HPC_USER>/Phase3_HPC/bin/
+cp -r /scratch/<HPC_USER>/Set3_HPC/lib /scratch/<HPC_USER>/Phase3_HPC/
+ls -la /scratch/<HPC_USER>/Phase3_HPC/bin/ollama /scratch/<HPC_USER>/Phase3_HPC/lib/ollama | head
 ```
 Then run the verification greps, in the same spirit as Sets 1–3:
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
+cd /scratch/<HPC_USER>/Phase3_HPC
 ls phase3/tasks | wc -l                                                   # 11
 ls src/interpreter/                                                       # stitch_interpreter.py stitch_interpreter_v3.py _v3_parsers.py
 python3 -c "import hashlib;print(hashlib.sha256(open('src/interpreter/stitch_interpreter.py','rb').read().replace(b'\r\n',b'\n')).hexdigest())"
@@ -80,9 +80,9 @@ ls phase3/runner/system_prompt.txt                                        # pres
 ## Part C: Gate (CPU job; nothing GPU-side before this passes)
 
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
+cd /scratch/<HPC_USER>/Phase3_HPC
 sbatch phase3/hpc/phase3_gate.slurm
-squeue -u soumyaj
+squeue -u <HPC_USER>
 tail -f logs/p3_gate_*.log
 ```
 Expected, in order:
@@ -100,7 +100,7 @@ sem conditions into baseline.
 ## Part D: Pull the models (CPU job, compute node has internet)
 
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
+cd /scratch/<HPC_USER>/Phase3_HPC
 sbatch phase3/hpc/pull_ollama_models_phase3.slurm
 tail -f logs/ollama_pull_*.log                 # must end with ALL MODELS PRESENT
 ls ollama_models/manifests/registry.ollama.ai/library/
@@ -114,10 +114,10 @@ at start.
 
 The pilot is the same run script, restricted with three environment variables:
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
+cd /scratch/<HPC_USER>/Phase3_HPC
 export P3_MODELS="llama3.1:latest"
 export P3_EXTRA_ARGS="--tasks mux3 register_4bit register_1bit ni_flit_pack --reps 1"
-export P3_OUT=/scratch/soumyaj/Phase3_HPC/results/phase3_pilot
+export P3_OUT=/scratch/<HPC_USER>/Phase3_HPC/results/phase3_pilot
 sbatch --export=ALL --time=02:00:00 phase3/hpc/phase3_run.slurm
 unset P3_MODELS P3_EXTRA_ARGS P3_OUT
 tail -f logs/p3_run_*.log
@@ -136,19 +136,19 @@ Check the following:
 4. Download the pilot and send it to Claude for a prompt-level review before Part F:
    ```powershell
    # LAPTOP (PowerShell)
-   scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_pilot D:\Projects\STITCH\phase3\results\
+   scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Phase3_HPC/results/phase3_pilot <REPO_ROOT>\phase3\results\
    ```
 
 ## Part F: Full run (H100, 990 runs)
 
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
-sbatch phase3/hpc/phase3_run.slurm            # gpunode5, gpu_h100_4, 72 h; models run in models_phase3.txt order
-squeue -u soumyaj
+cd /scratch/<HPC_USER>/Phase3_HPC
+sbatch phase3/hpc/phase3_run.slurm            # <GPU_NODE>, gpu_h100_4, 72 h; models run in models_phase3.txt order
+squeue -u <HPC_USER>
 ```
-If gpunode5 is busy but gpunode6 is idle (same pattern as `HPC_COMMANDS.md` Part 7.2):
+If <GPU_NODE> is busy but <GPU_NODE> is idle (same pattern as `HPC_COMMANDS.md` Part 7.2):
 ```bash
-sbatch --nodelist=gpunode6 phase3/hpc/phase3_run.slurm
+sbatch --nodelist=<GPU_NODE> phase3/hpc/phase3_run.slurm
 ```
 To chain the run after the model pull so it starts hands-off:
 ```bash
@@ -158,8 +158,8 @@ sbatch --dependency=afterok:<PULL_JOB_ID> phase3/hpc/phase3_run.slurm
 ## Part G: Monitor / resubmit
 
 ```bash
-tail -f /scratch/soumyaj/Phase3_HPC/logs/p3_run_*.log
-python3 -c "import json; d=json.load(open('/scratch/soumyaj/Phase3_HPC/results/phase3_run/master_log.json')); print(len(d),'/990 done,',sum(1 for e in d if e.get('error')),'errored')"
+tail -f /scratch/<HPC_USER>/Phase3_HPC/logs/p3_run_*.log
+python3 -c "import json; d=json.load(open('/scratch/<HPC_USER>/Phase3_HPC/results/phase3_run/master_log.json')); print(len(d),'/990 done,',sum(1 for e in d if e.get('error')),'errored')"
 sacct -j <jobid> --format=JobID,State,ExitCode,Elapsed,End,NodeList
 ```
 - **Hit the 72 h cap:** `sbatch` the same script again. Every run with a `metrics.json` is skipped, so no flag is
@@ -170,7 +170,7 @@ sacct -j <jobid> --format=JobID,State,ExitCode,Elapsed,End,NodeList
 ## Part H: Composition + summary (CPU job, after the run completes)
 
 ```bash
-cd /scratch/soumyaj/Phase3_HPC
+cd /scratch/<HPC_USER>/Phase3_HPC
 sbatch --dependency=afterok:<RUN_JOB_ID> phase3/hpc/phase3_compose.slurm
 tail -f logs/p3_compose_*.log                    # ends with COMPOSE + SUMMARY DONE
 cat results/phase3_run/SUMMARY.md | head -60
@@ -180,7 +180,7 @@ cat results/phase3_run/SUMMARY.md | head -60
 
 ```powershell
 # LAPTOP (PowerShell)
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_run D:\Projects\STITCH\phase3\results\
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Phase3_HPC/results/phase3_run <REPO_ROOT>\phase3\results\
 ```
 `phase3/results/` is gitignored (Claude Code T2). Results stay local and are never committed.
 
@@ -198,25 +198,25 @@ Pre-registered in `evidence/PREREG_FINAL.md` and frozen in `evidence/FREEZE_FINA
 | D2 | compose C's groups into the three designs | 18 groups | ~1.5 h |
 
 The estimates for A and C come from the 990-run wall times and from the Set 3 32B/14B call-time ratio. Each job
-starts its own ollama server on its own port (`common_env.sh`), so A and C can share gpunode7 when two GPUs are free.
+starts its own ollama server on its own port (`common_env.sh`), so A and C can share <GPU_NODE> when two GPUs are free.
 If only one GPU is free, Slurm queues C behind A.
 
 **1. Deploy (LAPTOP, PowerShell)**
 ```powershell
-cd D:\Projects\STITCH
+cd <REPO_ROOT>
 powershell -ExecutionPolicy Bypass -File phase3\hpc\deploy_phase3.ps1
 ```
 It must print `LINE ENDINGS OK`, and its sha256 lines must match `evidence/FREEZE_FINAL.md` section 2.
 
 **2. HPC**
 ```bash
-ssh soumyaj@hpc.bits-hyderabad.ac.in
-B=/scratch/soumyaj/Phase3_HPC; cd $B
-find /scratch/soumyaj/oss-cad-suite $B/bin $B/lib $B/ollama_models -exec touch -h {} +   # reset the 30-day purge clock
+ssh <HPC_USER>@<HPC_HOST>
+B=/scratch/<HPC_USER>/Phase3_HPC; cd $B
+find /scratch/<HPC_USER>/oss-cad-suite $B/bin $B/lib $B/ollama_models -exec touch -h {} +   # reset the 30-day purge clock
 df -h /scratch | tail -1                                   # 32B needs ~20 GB free
 ls results/                                                # phase3_gate_ctrl and phase3_32b must NOT exist yet
-sinfo -p gpu_h200_8 -o "%P %l %G"; scontrol show node gpunode7 | grep -E "Gres|AllocTRES"
-F="--partition=gpu_h200_8 --nodelist=gpunode7 --cpus-per-task=4 --mem=32G"
+sinfo -p gpu_h200_8 -o "%P %l %G"; scontrol show node <GPU_NODE> | grep -E "Gres|AllocTRES"
+F="--partition=gpu_h200_8 --nodelist=<GPU_NODE> --cpus-per-task=4 --mem=32G"
 M6="llama3.2:3b gemma3:4b deepseek-coder:6.7b qwen2.5-coder:7b llama3.1:latest qwen2.5-coder:14b"
 C6="baseline raw_adv sem_adv_v2 sem_adv_v3 sem_esc_restart_v3 baseline_gate"
 G=$(sbatch --parsable $F --gres=gpu:0 --time=01:00:00 phase3/hpc/phase3_gate.slurm)
@@ -227,14 +227,14 @@ C=$(P3_OUT=$B/results/phase3_32b P3_MODELS="qwen2.5-coder:32b" P3_EXTRA_ARGS="--
     sbatch --parsable $F --mem=48G --gres=gpu:1 --time=24:00:00 --job-name=phase3_32b --dependency=afterok:$P phase3/hpc/phase3_run.slurm)
 D1=$(P3_OUT=$B/results/phase3_gate_ctrl sbatch --parsable $F --gres=gpu:0 --time=08:00:00 --dependency=afterok:$A phase3/hpc/phase3_compose.slurm)
 D2=$(P3_OUT=$B/results/phase3_32b sbatch --parsable $F --gres=gpu:0 --time=08:00:00 --dependency=afterok:$C phase3/hpc/phase3_compose.slurm)
-echo "G=$G P=$P A=$A C=$C D1=$D1 D2=$D2" | tee -a $B/logs/final_batch_ids.txt; squeue -u soumyaj
+echo "G=$G P=$P A=$A C=$C D1=$D1 D2=$D2" | tee -a $B/logs/final_batch_ids.txt; squeue -u <HPC_USER>
 ```
 - `sbatch` passes the calling environment (`--export=ALL` is the default), so the `P3_*` prefixes reach the job.
 - `logs/p3_gate_$G.log` must end with `ALL GATES PASSED`. It prints `G5 PASS` and `plan: ... x 7 model(s) = 1386
   runs`.
 - `logs/ollama_pull_$P.log` must end with `ALL MODELS PRESENT`. Its `== before` and `== after` listings must show
   the same IDs for the six original models.
-- If the pull fails for lack of internet on gpunode7, re-submit it on the Part D node instead:
+- If the pull fails for lack of internet on <GPU_NODE>, re-submit it on the Part D node instead:
   `P3_PULL_MODELS="qwen2.5-coder:32b" sbatch --parsable phase3/hpc/pull_ollama_models_phase3.slurm`. Then
   `scontrol update JobId=$C Dependency=afterok:<new pull id>`.
 - Users can usually only lower a time limit: `scontrol update JobId=$A TimeLimit=12:00:00`. To raise one, resubmit
@@ -243,7 +243,7 @@ echo "G=$G P=$P A=$A C=$C D1=$D1 D2=$D2" | tee -a $B/logs/final_batch_ids.txt; s
 **Status of the whole batch** (read-only; one PASS / FAIL / WAITING line per check: deploy hashes, gate, job
 states, pull digests, gate-arm prompt, job C's port and GPU, progress and ETA):
 ```bash
-cd /scratch/soumyaj/Phase3_HPC && bash phase3/hpc/check_final_batch.sh $G $P $A $C $D1 $D2
+cd /scratch/<HPC_USER>/Phase3_HPC && bash phase3/hpc/check_final_batch.sh $G $P $A $C $D1 $D2
 ```
 Live logs (one per job):
 ```bash
@@ -257,7 +257,7 @@ tail -f logs/p3_compose_$D2.log      # D2
 
 **3. Spot-check after A's first ~5 runs** (and again for C, with `phase3_32b`)
 ```bash
-/scratch/soumyaj/oss-cad-suite/py3bin/python3 - /scratch/soumyaj/Phase3_HPC/results/phase3_gate_ctrl <<'PY'
+/scratch/<HPC_USER>/oss-cad-suite/py3bin/python3 - /scratch/<HPC_USER>/Phase3_HPC/results/phase3_gate_ctrl <<'PY'
 import glob, json, os, sys
 fs = sorted(glob.glob(sys.argv[1] + "/*/*/*/rep*/metrics.json"), key=os.path.getmtime)
 print(len(fs), "runs done; conditions:", sorted({f.split(os.sep)[-4] for f in fs}))
@@ -284,7 +284,7 @@ SYNTHESIS SIGN-OFF. Re-check it for synthesis problems." and nothing else. `tool
 Resubmit the same line without `--dependency`: every run that has a `metrics.json` is skipped, and a run with only an
 `error.json` is retried.
 ```bash
-B=/scratch/soumyaj/Phase3_HPC; cd $B; F="--partition=gpu_h200_8 --nodelist=gpunode7 --cpus-per-task=4 --mem=32G"
+B=/scratch/<HPC_USER>/Phase3_HPC; cd $B; F="--partition=gpu_h200_8 --nodelist=<GPU_NODE> --cpus-per-task=4 --mem=32G"
 P3_OUT=$B/results/phase3_gate_ctrl P3_MODELS="llama3.2:3b gemma3:4b deepseek-coder:6.7b qwen2.5-coder:7b llama3.1:latest qwen2.5-coder:14b" \
   P3_EXTRA_ARGS="--conditions baseline_gate" sbatch $F --gres=gpu:1 --time=24:00:00 --job-name=phase3_gate_ctrl phase3/hpc/phase3_run.slurm
 P3_OUT=$B/results/phase3_32b P3_MODELS="qwen2.5-coder:32b" P3_EXTRA_ARGS="--conditions baseline raw_adv sem_adv_v2 sem_adv_v3 sem_esc_restart_v3 baseline_gate" \
@@ -295,9 +295,9 @@ Progress: `python3 -c "import json;d=json.load(open('results/phase3_gate_ctrl/ma
 
 **5. Download and analyse (LAPTOP)**
 ```powershell
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_gate_ctrl D:\Projects\STITCH\phase3\results\
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Phase3_HPC/results/phase3_32b D:\Projects\STITCH\phase3\results\
-wsl bash -lc "cd /mnt/d/Projects/STITCH && python3 phase3/runner/analyze_phase3.py --score-signoff --results phase3/results/phase3_run --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b"
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Phase3_HPC/results/phase3_gate_ctrl <REPO_ROOT>\phase3\results\
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Phase3_HPC/results/phase3_32b <REPO_ROOT>\phase3\results\
+wsl bash -lc "cd $REPO_ROOT && python3 phase3/runner/analyze_phase3.py --score-signoff --results phase3/results/phase3_run --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b"
 python phase3/runner/analyze_phase3.py --final --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b
 ```
 The output goes to `phase3/evidence/phase3_final/PHASE3_FINAL.md` and `phase3_final.json`.
@@ -309,7 +309,7 @@ The output goes to `phase3/evidence/phase3_final/PHASE3_FINAL.md` and `phase3_fi
 | Symptom | Cause | Fix |
 |---|---|---|
 | `sbatch: error: Batch script contains DOS line breaks` | CRLF scripts | re-run the deploy script (it strips `\r`), or `sed -i 's/\r$//' phase3/hpc/*` |
-| Gate log stops right after `== toolchain` | a tool is missing from `PATH` | check `/scratch/soumyaj/oss-cad-suite/bin` (Part A) |
+| Gate log stops right after `== toolchain` | a tool is missing from `PATH` | check `/scratch/<HPC_USER>/oss-cad-suite/bin` (Part A) |
 | `BAD ... drift_v3_classes` | newer tool message format | stop and send the gate log to Claude |
 | `ollama failed to start` | `bin/ollama` missing, or port busy | Part B ollama copy; `squeue`: another of your jobs may hold `:11434` on the same node |
 | Runs extremely slow; serve log says cpu | `lib/ollama` not copied | Part B `lib/` copy |

@@ -9,9 +9,11 @@ coverage from an in-progress or timed-out job is visible, not hidden.
 
 import json
 from collections import defaultdict
+import os
 from pathlib import Path
 
-HPC_PULL = Path(r"D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI\AutoChipAdvFB\STITCHAdv\runs\hpc_pull")
+# The Phase 0 data folder lives outside this repository: set STITCH_DATA_ROOT to it.
+HPC_PULL = Path(os.environ.get("STITCH_DATA_ROOT", "<DATA_ROOT>")) / "AutoChipAdvFB" / "STITCHAdv" / "runs" / "hpc_pull"
 MANIFEST = ["alu_8bit","alu_accumulator_top","bcd_to_7seg","comparator_8bit","counter_4bit",
             "dff_sync_reset","fsm_seq_detector","full_adder","gray_counter_4bit","half_adder",
             "lfsr_8bit","param_register_file","pipeline_mult_4x4","priority_enc_8","pwm_generator",

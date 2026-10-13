@@ -1,7 +1,7 @@
 # freq_divbyfrac: material for a manual oracle check
 
 Written 2026-10-12 for a human reviewer. It covers the RTLLM v2.1 module `freq_divbyfrac`, which every API model
-fails in Set 4b (0/36 runs). Files are in `D:\Projects\RTLLM\Miscellaneous\Frequency divider\freq_divbyfrac\`.
+fails in Set 4b (0/36 runs). Files are in `<RTLLM_ROOT>\Miscellaneous\Frequency divider\freq_divbyfrac\`.
 Line numbers refer to those files. The run evidence is in `SET4_REPORT.md` (the oracle audit of the Gemini
 completion section, "Q7 answer") and in `phase2/results/set4_api/analysis_4c/`.
 

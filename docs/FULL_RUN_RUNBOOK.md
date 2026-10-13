@@ -33,9 +33,9 @@ they can be reproduced, extended, or resumed, not because anything is pending.
 | **N / temperature** | 3 / 0.5 | 3 / 0.1 | 3 / 0.1 |
 | **Runs** | 630 | 1,512 | 612 |
 | **Errors** | 0 | 6 | 2 |
-| **Node / partition** | `gpunode6`, `gpu_h100_4` | `gpunode4`, `gpu_a100_8` | `gpunode4`, `gpu_a100_8` |
+| **Node / partition** | `<GPU_NODE>`, `gpu_h100_4` | `<GPU_NODE>`, `gpu_a100_8` | `<GPU_NODE>`, `gpu_a100_8` |
 | **`--time` / sbatches** | 72h / ~2 | 120h / ~2 | 120h / ~1 |
-| **Scratch dir** | `/scratch/soumyaj/RTLCoderHPC/` | `/scratch/soumyaj/Set1_HPC/` | `/scratch/soumyaj/Set3_HPC/` |
+| **Scratch dir** | `/scratch/<HPC_USER>/RTLCoderHPC/` | `/scratch/<HPC_USER>/Set1_HPC/` | `/scratch/<HPC_USER>/Set3_HPC/` |
 | **Runner / slurm** | `twin_run_runner.py` / `twin_run.slurm` | `set1_runner.py` / `set1_run.slurm` | `set3_runner.py` / `set3_run.slurm` |
 | **Commands** | HPC_COMMANDS Part 2 | Part 3 | Part 6 |
 
@@ -110,7 +110,7 @@ silently misclassifying 31% of the Twin pilot's runs.
 ### Scratch layout on HPC
 
 ```
-/scratch/soumyaj/
+/scratch/<HPC_USER>/
   oss-cad-suite/bin/          iverilog, vvp, verilator, yosys (on PATH via each slurm)
   RTLCoderHPC/                Set 2. Also holds the shared venv, RTLLM checkout, HF cache,
     venv/ RTLLM/ hf_cache/      the Ollama models for Set 1/2, and the ollama binary in bin/
@@ -164,7 +164,7 @@ and the maintainer runs `git commit`.)
 
 **Step 1. Provision the environment** (once, or after a wipe).
 Part 1 of the command reference for a fresh account, Part 5 after a wipe.
-Gate: `ls /scratch/soumyaj/oss-cad-suite/bin/iverilog`, the RTLLM directory,
+Gate: `ls /scratch/<HPC_USER>/oss-cad-suite/bin/iverilog`, the RTLLM directory,
 `bin/ollama --version`, and the venv with `openai` (plus `torch`/`transformers`
 for Twin) all exist.
 

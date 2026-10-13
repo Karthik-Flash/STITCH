@@ -21,28 +21,28 @@
 # Usage: sbatch pull_ollama_models_set3.slurm
 #SBATCH --job-name=set3_ollama_pull
 #SBATCH --partition=gpu_a100_8
-#SBATCH --nodelist=gpunode4
+#SBATCH --nodelist=<GPU_NODE>
 #SBATCH --gres=gpu:1
 #SBATCH --mem=32G
 #SBATCH --cpus-per-task=4
 #SBATCH --time=02:30:00
-#SBATCH --output=/scratch/soumyaj/Set3_HPC/logs/ollama_pull_%j.log
-#SBATCH --error=/scratch/soumyaj/Set3_HPC/logs/ollama_pull_%j.err
+#SBATCH --output=/scratch/%u/Set3_HPC/logs/ollama_pull_%j.log
+#SBATCH --error=/scratch/%u/Set3_HPC/logs/ollama_pull_%j.err
 
 set -e
 
-# `ollama` itself lives at /scratch/soumyaj/Set3_HPC/bin now (the
+# `ollama` itself lives at /scratch/$USER/Set3_HPC/bin now (the
 # AutoChipHPC/bin copy this used to reuse was wiped along with
 # everything else under that tree) -- confirm it's actually there before
 # running this (same re-deploy-first discipline every other script in
 # this project follows for a post-wipe scratch tree).
-export PATH=/scratch/soumyaj/Set3_HPC/bin:$PATH
-export OLLAMA_MODELS=/scratch/soumyaj/Set3_HPC/ollama_models
+export PATH=/scratch/$USER/Set3_HPC/bin:$PATH
+export OLLAMA_MODELS=/scratch/$USER/Set3_HPC/ollama_models
 export OLLAMA_HOST=127.0.0.1:11434
 mkdir -p "$OLLAMA_MODELS"
 
 echo "=== starting throwaway ollama server for the pull ==="
-ollama serve > /scratch/soumyaj/Set3_HPC/logs/ollama_pull_setup_${SLURM_JOB_ID}.log 2>&1 &
+ollama serve > /scratch/$USER/Set3_HPC/logs/ollama_pull_setup_${SLURM_JOB_ID}.log 2>&1 &
 OLLAMA_PID=$!
 # trap, not a manual kill at the bottom -- guarantees cleanup even if a
 # pull fails partway and `set -e` aborts the script early.

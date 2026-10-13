@@ -7,7 +7,7 @@
    receives must be exactly Set 3's: model name, temperature 0.1, the
    engine's SYSTEM_PROMPT, the spec as the user turn.
 Run in WSL:
-  PYTHONPATH=/mnt/c/Users/karth/stitch_set4_pylib RTLLM_ROOT=/mnt/d/Projects/RTLLM \\
+  PYTHONPATH=$WIN_HOME/stitch_set4_pylib RTLLM_ROOT=$RTLLM_ROOT \\
   python3 phase2/frontier/ollama_parity_mock.py
 """
 import http.server

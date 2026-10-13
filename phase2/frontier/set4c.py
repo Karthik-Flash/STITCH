@@ -185,7 +185,7 @@ def trace():
     ORIGINAL testbench with one added line that prints clk_div at each of its 20 checks (same statement position, so the
     same event ordering as the check itself). Compare with the expected sequence at shifts of -2..+2 checks (half
     clock steps) over the overlapping checks, and give the high/low run lengths (shape)."""
-    rtllm = os.environ.get("RTLLM_ROOT", "/mnt/d/Projects/RTLLM")
+    rtllm = os.environ.get("RTLLM_ROOT", os.path.normpath(os.path.join(HERE, "..", "..", "..", "RTLLM")))
     src = os.path.join(rtllm, "Miscellaneous", "Frequency divider", "freq_divbyfrac")
     tb = open(os.path.join(src, "testbench.v"), encoding="utf-8").read()
     anchor = "for (i = 0; i < 20; i = i + 1) begin"
@@ -254,7 +254,7 @@ def refcheck():
     """Reference design under its own testbench, logged at every clk edge ($strobe = end-of-timestep values):
     counter period in half clock steps, clk_div periods per counter wrap, clk_div high/low run lengths. Compares with
     spec line 17 ("The counter cycles through 7 half clock steps")."""
-    rtllm = os.environ.get("RTLLM_ROOT", "/mnt/d/Projects/RTLLM")
+    rtllm = os.environ.get("RTLLM_ROOT", os.path.normpath(os.path.join(HERE, "..", "..", "..", "RTLLM")))
     src = os.path.join(rtllm, "Miscellaneous", "Frequency divider", "freq_divbyfrac")
     tb = open(os.path.join(src, "testbench.v"), encoding="utf-8").read()
     assert tb.rstrip().endswith("endmodule")

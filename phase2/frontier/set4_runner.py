@@ -7,7 +7,7 @@ that set3_runner.py itself uses for Ollama. No existing file is edited, so the
 Ollama path is untouched (see ollama_parity_mock.py).
 
 Runs in WSL (the Set 3 engine calls iverilog/verilator/yosys natively):
-  PYTHONPATH=/mnt/c/Users/karth/stitch_set4_pylib RTLLM_ROOT=/mnt/d/Projects/RTLLM \\
+  PYTHONPATH=$WIN_HOME/stitch_set4_pylib RTLLM_ROOT=$RTLLM_ROOT \\
   python3 phase2/frontier/set4_runner.py --backend gemini --model gemini-2.5-flash --tag pilot ...
 
 Layout: phase2/results/set4_api/<tag>/<backend>/ (master_log.json + per-run dirs,

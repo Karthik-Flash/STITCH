@@ -56,7 +56,7 @@ could not happen, which is the evidence that the runs used an earlier interprete
 - The fix is the cross-check in `interpret_verilator`, `src/interpreter/stitch_interpreter.py` lines 317-335: a signal
   name must appear in the file under repair, otherwise the directive is dropped and the raw Verilator text stands alone.
 - It is in this repo's first commit (`421f8ae`, 2026-08-18). The old workspace's copy,
-  `D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI\STITCH_v3\interpreter\stitch_interpreter.py`, is dated
+  `<DATA_ROOT>\STITCH_v3\interpreter\stitch_interpreter.py`, is dated
   2026-08-18 18:13 and contains it. The run files are dated 2026-05-17 (R1) and 2026-08-14 (R3), so both predate it.
 - `src/interpreter/WARNING_TAXONOMY.md` and `phase3/evidence/PROD_V2_ON_REAL_LOGS.md` (F5) document the behaviour.
 
@@ -71,7 +71,7 @@ could not happen, which is the evidence that the runs used an earlier interprete
 
 ## 2. Run inventory and the attribution question
 
-All under `D:\BITS Files\Year 3\3-2\LLM_Verilog Project\AgenticAI\` (outside this repo; the CSV paths in
+All under `<DATA_ROOT>\` (outside this repo; the CSV paths in
 `phase0/evidence/combined_results.csv` point at `STITCHAdv\runs\`, which does not hold them). Read read-only. Each cell is
 `baseline / raw_adv / sem_adv`; `PASS@k` = first pass at iteration k; `FAIL(6)` = no pass in six iterations.
 

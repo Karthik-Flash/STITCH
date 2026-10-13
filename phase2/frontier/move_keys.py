@@ -1,6 +1,6 @@
 """Move API keys out of the repo tree into %USERPROFILE%\\.stitch\\api_keys.env.
 
-Reads D:\\Projects\\STITCH\\stitch-api-key.txt ("#provider" line, then the key
+Reads <REPO_ROOT>\\stitch-api-key.txt ("#provider" line, then the key
 line), writes the env file, restricts its ACL to the current user, verifies
 the written file round-trips, and only then deletes the in-repo file.
 Prints provider / key length / format verdict only. Never prints a key.
@@ -11,7 +11,7 @@ import os
 import subprocess
 import sys
 
-SRC = r"D:\Projects\STITCH\stitch-api-key.txt"
+SRC = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "stitch-api-key.txt")
 DEST_DIR = os.path.join(os.environ["USERPROFILE"], ".stitch")
 DEST = os.path.join(DEST_DIR, "api_keys.env")
 
