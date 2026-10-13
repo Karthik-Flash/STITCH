@@ -1,6 +1,11 @@
-# Pending work (state as of 2026-10-13)
+# Pending work (state as of 2026-10-14)
 
-**Only one item is pending, and it is optional: Haiku's 85 Set 4b runs (section 1).** Everything else is done.
+**Two items are open:**
+1. Haiku's 85 Set 4b runs. These are optional; section 1 says how to finish them, or how to remove the projections
+   instead.
+2. Making the repository public before submission (section 3).
+
+Everything else is done.
 Money: INR = USD × 96 × 1.18.
 
 ## Wrap-up status (final clean-up brief, 2026-10-14; resume here)
@@ -11,7 +16,8 @@ Money: INR = USD × 96 × 1.18.
 | Archive superseded paper drafts into `paper/archive/` | done, commit `b28f92c` |
 | Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | done, commit `823b6c9` |
 | `docs/reSTITCH_REVISITED_QA.md` (93 questions) | done (this commit) |
-| Update `REPO_INDEX.md` and `handoff.md`; tests; push `main`; final leak audit | to do |
+| Update `REPO_INDEX.md` and `handoff.md`; tests | done (this commit; all tests pass, interpreter hash unchanged) |
+| Push `main`; final all-history leak audit | runs right after this commit. If `git status -sb` shows `main` ahead of `origin/main`, the push did not happen: push, then run `leak_audit.py`. |
 
 To resume: run `git log --oneline -6` and continue with the first row that is not done.
 
@@ -97,7 +103,7 @@ Remaining Gemini prepaid credit: about INR 423, unused.
    v10 (`paper/overleaf/`, Overleaf-ready) is 15 pages. Done.
 2. Repository cleaned up, with `REPO_INDEX.md`. Done.
 3. Staged, human-readable commits on `phase3-setup`. Done.
-4. Merge `phase3-setup` into `main` and push. **Waiting for the user's "PUSH".**
+4. Merge `phase3-setup` into `main` and push. Done 2026-10-13: merge commit `48fe6ec`, tag `v2.0-journal`.
 5. Keep API keys out of every commit. `scan_secrets.py` and `leak_audit.py` run before each commit and push. The
    keys live only in `%USERPROFILE%\.stitch\api_keys.env`, outside the repo; `phase2/results/` is gitignored.
 
@@ -121,3 +127,15 @@ The text needs no edit.
 
 Tested on 2026-10-13: both files compile under `\finaltrue` with 0 errors and 0 warnings (15 and 14 pages).
 Re-running without the flag restores the projected version byte for byte.
+
+## 3. Make the repository public before submission
+
+The paper's Availability section points to `https://github.com/Karthik-Flash/STITCH`, which is private.
+
+Before submission:
+1. Run `python phase2/frontier/scan_secrets.py` and `python phase2/frontier/leak_audit.py` once more.
+2. Switch the repository to public on GitHub.
+3. Check that an anonymous request to the URL succeeds.
+
+Personal paths and cluster identifiers in documents and scripts are already placeholders. Earlier commits still
+contain the original strings, and the history is not rewritten.

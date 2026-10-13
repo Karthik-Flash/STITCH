@@ -1,196 +1,131 @@
-# STITCH: Handoff (Phases 0 to 3 and the API study done; journal paper v10, Overleaf-ready)
+# STITCH: Handoff (final state, 2026-10-14)
 
-Written 2026-09-27. Replaces the 2026-09-23 version (git history has it). For a fresh Claude Code chat and for a
-planner agent. Read the message to the next chat at the end first.
-
----
-
-## 0. State as of 2026-10-13 (final)
-
-- **Paper (v10, current).** `paper/overleaf/main.tex` (15 pages including references) and
-  `paper/overleaf/supplement.tex` (S1 to S9, 14 pages), with `figures/` beside them. The folder is
-  self-contained, and `paper/STITCH_overleaf.zip` is ready to upload to Overleaf.
-  - **Build:** a clean-room `latexmk -pdf` gives 0 errors and 0 warnings for both files.
-  - **Figures:** one shared style (`paper/figstyle.py`) and one colour per condition.
-  - **Haiku projection:** Claude Haiku 4.5's missing floor-tier cells are projected in two marked places only:
-    the floor heat map and one count in Section 8.3. They are typeset with `\proj{}` (italic, dagger), and
-    `\finaltrue` in `main.tex` turns any projection left into a compile error.
-  - **Change log:** `paper/V10_CHANGES.md` (build, figures, tables, projection method, QA rounds).
-  - **Earlier versions:** v9 (`paper/STITCH_EXT_v9.tex`, 16 pages) and v8 are kept unchanged; superseded drafts
-    are in `docs/archive/paper/`.
-- **Public-repo hygiene.** Personal paths, the cluster login and node names are placeholders (commit `f0a2701`).
-  Left unchanged on purpose:
-  - evidence and pre-registrations;
-  - the seven hash-frozen Phase 3 cluster scripts;
-  - frozen test fixtures.
-
-  Earlier commits still contain the old strings.
-- **API study (`phase2/frontier/`), all complete except one optional item.**
-  - Set 4 (recoverable band): complete for 3 models.
-  - Set 4b (floor): GPT-4.1 mini 228/228, Gemini 2.5 Flash 228/228, Claude Haiku 4.5 143/228.
-  - The Phase 3 ladder has three API rows, all in the paper.
-  - Set 4c (reasoning) was closed by its pre-registered stop rule (Amendment 5); it has no results.
-  - freq_divbyfrac: not a testbench defect. In our reading, the specification's description of the counter does
-    not match its reference design, and the models fail on period and duty cycle (`FREQ_DIVBYFRAC_AUDIT.md`).
-  - Spend since Set 4: $13.70 (INR 1,552).
-- **Only pending work:** Haiku's 85 Set 4b runs (optional; `phase2/frontier/PENDING.md`). If they are run,
-  `make_numbers_set4.py` refreshes every paper number and table that depends on them and removes the projections.
-  Then set `\finaltrue` and rebuild.
-- **Push and merge** of `phase3-setup` into `main` wait for the user's "PUSH".
-- **Where things are:** `REPO_INDEX.md` (per phase; evidence per paper section; regeneration commands; what is
-  ignored).
+For a new contributor, a fresh Claude Code chat or a planner agent. All study phases are done. The journal paper is
+final (v10). The documentation is consolidated. Earlier versions of this file are in git history.
 
 ---
+
+## 0. Final state
+
+- **Paper (v10, final).**
+  - **Sources:** `paper/overleaf/main.tex` (15 pages including references) and `paper/overleaf/supplement.tex` (S1 to
+    S9, 14 pages), with `figures/` beside them.
+  - **Build:** a clean-room `latexmk -pdf` gives 0 errors and 0 warnings for both. `paper/STITCH_overleaf.zip` is
+    ready for Overleaf.
+  - **Change log:** `paper/V10_CHANGES.md`.
+  - **Earlier drafts:** v7, v8 and v9, with their by-products, are in `paper/archive/`.
+- **Docs (consolidated).**
+  - `docs/PHASES_EXPLAINED.md`: every phase;
+  - `docs/HPC_GUIDE.md`: the cluster procedure;
+  - `docs/reSTITCH.md`: the whole story;
+  - `docs/reSTITCH_REVISITED_QA.md`: 93 questions in paper order.
+
+  The documents they replaced are in `docs/archive/`. The private notes are in `private/` (gitignored, local only).
+- **Phase 3 (MPSoC).** Complete: 990 runs, plus the pre-registered final batch (the control arm and
+  qwen2.5-coder:32b, 396 runs), plus three API ladder rows.
+- **API study (`phase2/frontier/`).** Complete except one optional item.
+  - Set 4: 612 runs. Set 4b: GPT-4.1 mini and Gemini 2.5 Flash 228/228 each; Claude Haiku 4.5 143/228.
+  - Set 4c closed by its stop rule.
+  - Spend: $13.70 (INR 1,552).
+- **Repository hygiene.**
+  - Personal paths and cluster identifiers are placeholders; evidence, pre-registrations and hash-frozen scripts are
+    unchanged.
+  - `.gitattributes` keeps LF for shell and Slurm scripts.
+  - All-history leak audit: clean.
+- **Open items** (`phase2/frontier/PENDING.md`):
+  1. **Optional:** Haiku's 85 Set 4b runs. The paper marks their projected values and can drop them with
+     `make_numbers_set4.py --no-projection`.
+  2. **Make the repository public before submission.** The paper's Availability section points to it.
 
 ## 1. What STITCH is, in one paragraph
 
-An LLM repairs Verilog in a loop: generate, simulate, feed the result back, retry. STITCH adds a deterministic
-**semantic interpreter** (no AI) that turns Verilator lint and Yosys synthesis output into short, targeted repair
-directives. The project measures when that helps, how much, at what cost, and for which models. Conditions used
-throughout: `baseline` (simulation feedback only, AutoChip style), `raw_adv` (plus raw tool text), `sem_adv`
-(plus interpreter directives on every iteration), `sem_escalate` / `sem_escalate_restart` (start as baseline,
-switch to the interpreter only after two identical failure signatures; restart variant adds one blank-slate retry).
+A language model repairs Verilog in a loop: generate, simulate, feed the result back, retry. STITCH adds Verilator
+lint and Yosys synthesis to the loop, and a deterministic interpreter (no model) that turns their output into short
+repair directives.
 
-## 2. What each phase achieved
+The project measures when that helps, how much, at what cost, and for which models.
 
-| Phase | What was done | What it established | Main write-up |
-|---|---|---|---|
-| 0 | Hunt for clean interpreter illustrations, N=3 | Two replicated illustrations (`decoder_3to8`, `mux4_oe`, gated-input `UNUSEDSIGNAL`, 3/3); the input/output reachability asymmetry; 15 retired candidates with reasons | `phase0/evidence/phase0_illustration_hunt_findings.md` |
-| 1 | Built `sem_escalate` + restart; 255-run in-house benchmark; RTLLM pilot; fixed two harness bugs | Escalation cuts heavyweight tool calls ~35-45% at equal or better pass rate; N=1 benchmark labels collapse at N=3 | `phase1/PHASE1_FINDINGS.md` |
-| 2 | HPC infrastructure; pass-detection registry; three confirmatory runs on RTLLM v2.1 (42 modules): Set 2 Twin 630, Set 1 1,512, Set 3 612 runs | Tier-decomposed results (ceiling 6 / recoverable 17 / floor 19); escalation matches baseline with a structural worst-case guarantee; tool-cost reduction 75% on ceilings, 16.6% -> 27.6% on the recoverable band as models grow; RTLCoder fine-tuning shows no net gain over its base | `phase2/SET1_ANALYSIS.md`, `SET3_ANALYSIS.md`, `TWIN_RUN_ANALYSIS.md`; narrative `reSTITCH.md` |
-| 3 | Real RISC-V MPSoC benchmark (11 repair tasks, 3 real designs); additive interpreter v3; 990 runs; composition back into the designs | Simulation-only repair signs off 62% of runs structurally defective (all 108 sim-silent runs), STITCH v3 1%; interpretation beats raw text +14.6 pts (cell CI +3.5..+26.3) with ~23% fewer calls and tokens; escalation highest clean rate (80%) and +23.3 pts over baseline on sim-visible defects; repaired leaves restore synthesis of the 4- and 9-router meshes and the MPSoC top (baseline 0/18) | `phase3/evidence/phase3_run/PHASE3_RESULTS.md`; paper `paper/PHASE3_MPSOC.tex` |
+Conditions:
+- `baseline`: simulation only, AutoChip style;
+- `raw_adv`: plus raw tool text;
+- `sem_adv`: plus directives on every iteration;
+- `sem_escalate` and `sem_escalate_restart`: baseline until two identical failure signatures, then directives; the
+  restart variant adds one blank-slate retry;
+- `baseline_gate` (Phase 3 control): simulation plus a bare "fails sign-off" alarm.
+
+## 2. What each phase established (final numbers, paper v10)
+
+| Phase | Established | Main write-up |
+|---|---|---|
+| 0 | Two replicated illustrations (`decoder_3to8`, `mux4_oe`, 3/3); the input/output reachability asymmetry; three larger candidates retired | `phase0/evidence/phase0_illustration_hunt_findings.md` |
+| 1 | Escalation cuts Verilator and Yosys calls 35 to 45% at an equal or better pass rate; single-run benchmark labels collapse at N=3 | `phase1/PHASE1_FINDINGS.md` |
+| 2 (RTLLM) | Tiers (ceiling 6, recoverable 17, floor 19). Always-on interpretation trails baseline by about 4 points on small models, not significant. Escalation with restart matches baseline (0.0, CI -4.6 to +4.6), and its guarantee holds only before the trigger. The tool-call cut grows 16.6, 27.6, 88.6% up the ladder. Fine-tuning (RTLCoder) shows no net gain. The floor is mostly beyond small models. | `phase2/SET1_ANALYSIS.md`, `SET3_ANALYSIS.md`, `TWIN_RUN_ANALYSIS.md`, `phase2/frontier/SET4_REPORT.md` |
+| 3 (MPSoC) | Simulation-only repair signs off 63% of runs as defective (all 108 sim-silent runs). Latch-free clean synthesis rises 24% to 88%. Escalation beats the alarm-only control by +19.7 (pre-registered; survives Holm), and v3 beats it by +14.6. Interpretation beats raw text by +14.1 with 23% fewer calls. Escalation is sign-off clean in 72% of runs. Repaired leaves restore synthesis of both meshes. | `phase3/evidence/phase3_final/PHASE3_FINAL.md` |
+
+Every correction made along the way, with its before and after numbers, is in `docs/reSTITCH.md`, Parts 7 to 11.
 
 ## 3. Which runner and interpreter ran where (exact)
 
-Interpreter files: `src/interpreter/stitch_interpreter.py` = production interpreter ("v2"; never edited since
-Phase 2; sha256 of the LF-normalised file `42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff`, recorded in
-every Phase 3 `metrics.json`). `src/interpreter/stitch_interpreter_v3.py` + `_v3_parsers.py` = additive v3 layer,
-version 3.0.1 in every Phase 3 run; it imports production unchanged and `interpret(..., version="v2")` reproduces
-production byte for byte. `src/interpreter/pass_detection.py` = `detect_outcome(..., benchmark=)` registry
-(Phases 1-2).
+The interpreter:
+- `src/interpreter/stitch_interpreter.py`: the production interpreter, "v2". It has never been edited since Phase 2.
+  The SHA-256 of the LF-normalised file is `42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff`,
+  recorded in every Phase 3 run.
+- `stitch_interpreter_v3.py` and `_v3_parsers.py`: the v3 layer, version 3.0.1. It imports v2 unchanged, and
+  `version="v2"` reproduces v2 byte for byte.
+- `pass_detection.py`: the `detect_outcome(..., benchmark=)` registry (Phases 1 and 2).
 
-| Run | Runner (entry point -> engine) | Interpreter | LLM backend, models | Budget | Results on disk |
-|---|---|---|---|---|---|
-| Phase 0 illustrations | `src/runner/stitch_runner.py` (Windows + WSL tools) | production | Ollama local; gemma3:4b, llama3.1 | 6 iters | `phase0/results/` |
-| Phase 1 Task 3 (255 runs) | `phase1/task3_runner.py` -> `phase1/escalation_runner.py` + `escalation_state.py` + `error_signature.py`, on top of `src/runner/stitch_runner.py` | production | Ollama local; gemma3:4b, llama3.1, deepseek-coder:6.7b | baseline/sem_adv 6, escalation 8 | `phase1/results/task3/` |
-| Phase 1 RTLLM pilot | `phase1/rtllm_pilot_runner.py` (same engine) | production | Ollama local; 5 models | as above | `phase1/results/rtllm_pilot*/`, `rtllm_alu_refix2/` |
-| Set 2 Twin (630) | `phase2/twin_run_runner.py` -> `phase2/stitch_runner_hpc.py` + `rtlcoder_adapter.py` (HF transformers for RTLCoder) | none (condition fixed at `baseline`) | RTLCoder-Deepseek-v1.1 native + shared, deepseek-coder:6.7b, gemma3:4b, llama3.1; T=0.5 | 8 | `phase2/results/twin_run/` |
-| Set 1 (1,512) | `phase2/set1_runner.py` -> `stitch_runner_hpc.py` + `escalation_runner_hpc.py` | production | Ollama on HPC; gemma3:4b, llama3.1, deepseek-coder:6.7b; T=0.1 | baseline/sem_adv 6, escalation 8 | `phase2/results/set1_run/` |
-| Set 3 (612) | `phase2/set3_runner.py` (same engine as Set 1) | production | Ollama on HPC; qwen2.5-coder:14b, qwen2.5-coder:32b, gemma3:27b; T=0.1; 17 recoverable modules | baseline/sem_adv 6, escalation 8 | `phase2/results/set3_run/` |
-| Phase 3 (990) | `phase3/runner/stitch_runner_p3.py` (own evaluator `phase3/runner/p3_eval.py`; does not use `stitch_runner*.py` or `pass_detection.py`) | `sem_adv_v2` = production via v3's `version="v2"`; `sem_adv_v3` and `sem_esc_restart_v3` = v3 | Ollama on HPC; llama3.2:3b, gemma3:4b, deepseek-coder:6.7b, qwen2.5-coder:7b, llama3.1:latest (8B), qwen2.5-coder:14b; T=0.1; system prompt `phase3/runner/system_prompt.txt` (= production `SYSTEM_PROMPT`) | 6 model calls, every condition | `phase3/results/phase3_run/` (gitignored) |
-
-Phase 3 protocol `feedback_first_v2`: the defective input is evaluated first and its feedback goes into call 1.
-Every candidate is fully evaluated (Icarus + Verilator + Yosys) whatever the condition. Phase 3 raw feedback is
-filtered by `raw_tool_text()` (Verilator warnings/errors, Yosys latch/error/loop lines, max 40 per tool), so Phase 3
-prompts are not byte-comparable to Set 1/3 `sem_adv` prompts. Phase 3 toolchain on the HPC: Yosys 0.69+71, Verilator
-5.053, Icarus 14.0 (devel); local tests and fixtures: Yosys 0.33, Verilator 5.020, Icarus 12.0 (WSL).
+| Run | Runner | Interpreter | Models | Budget |
+|---|---|---|---|---|
+| Phase 0 | `src/runner/stitch_runner.py` | production | gemma3:4b, llama3.1 | 6 |
+| Phase 1, 255 runs | `phase1/task3_runner.py` with `escalation_runner.py` | production | gemma3:4b, llama3.1, deepseek-coder:6.7b | 6, escalation 8 |
+| Set 2, Twin (630) | `phase2/twin_run_runner.py` with `stitch_runner_hpc.py` and `rtlcoder_adapter.py` | none (`baseline`) | RTLCoder (2 prompts), deepseek-coder:6.7b, gemma3:4b, llama3.1; T=0.5 | 8 |
+| Set 1 (1,512) and Set 3 (612) | `phase2/set1_runner.py`, `set3_runner.py` | production | small: gemma3:4b, llama3.1:8b, deepseek-coder:6.7b; large: qwen2.5-coder 14b and 32b, gemma3:27b; T=0.1 | 6, escalation 8 |
+| Sets 4, 4b, 4c | `phase2/frontier/set4_runner.py` (Set 3 engine, API model call) | production | GPT-4.1 mini, Gemini 2.5 Flash, Claude Haiku 4.5; Gemini 2.5 Pro (4c) | 6, escalation 8 |
+| Phase 3 (1,386 plus 3 x 198 API) | `phase3/runner/stitch_runner_p3.py` with `p3_eval.py` | v2 via `version="v2"`; v3 | 7 local models (3B to 32B); 3 API models | 6 calls, every condition |
 
 ## 4. Where things are
 
-```
-handoff.md                  this file
-reSTITCH.md                 master narrative, Phases 0-2 (gitignored, disk only; leave as is)
-reSTITCH_PHASE3_EXPLAINED.md  user's private Phase 3 explainer (gitignored; leave as is)
-note.txt                    user's scratch notes + git workflow (gitignored)
-STITCH_EXT_FINAL.pdf        last compiled journal draft (v6)
-paper_112_final.pdf         OLD MLCAD '26 conference paper (superseded; do not review)
-paper/                      journal sources (untracked until the user commits)
-  STITCH_EXT_v7.tex         current journal draft: v6 + Section 9 (MPSoC) + wording fixes
-  PHASE3_MPSOC.tex          full Phase 3 write-up with every table (standalone)
-  V7_CHANGES.md             every v6 -> v7 edit, revertible one by one
-  figures/                  all PNGs both .tex files use (\graphicspath{{figures/}}); copies, sources in the .tex headers
-src/interpreter/            stitch_interpreter.py (production), stitch_interpreter_v3.py + _v3_parsers.py (v3),
-                            pass_detection.py, WARNING_TAXONOMY.md, tests/
-src/runner/stitch_runner.py Phase 0/1 local runner
-phase0/  phase1/            closed phases (READMEs + findings docs)
-phase2/                     HPC runners, slurm, *_ANALYSIS.md, set1_analysis/ set3_analysis/ twin_analysis_SET2/
-                            (figure + table scripts), results/ (gitignored run trees)
-phase3/                     see phase3/README.md (layout table, source of truth, how to do a new run)
-  runner/                   stitch_runner_p3.py, p3_eval.py, compose.py, analyze_phase3.py, phase3_figures.py, ...
-  tasks/ designs/ tests/ hpc/
-  results/phase3_run/       the 990 runs (gitignored)
-  evidence/phase3_run/      generated analysis: PHASE3_RESULTS.md, phase3_analysis.json, tables, regressions, figures
-  evidence/                 pre-run evidence (PROD_V2_ON_REAL_LOGS.md, compose_bounds.jsonl, E0 audit, ...)
-  docs/                     PHASE3_EXPLAINED.md, taxonomy addendum, archive/ (superseded)
-docs/                       HPC_COMMANDS.md, FULL_RUN_RUNBOOK.md (Phase 2 HPC), EXT_FINAL_REVIEW.md (paper
-                            wording notes), IMP_* reports
-MPSoC/MPSoC Source Codes/   original MPSoC sources (phase3/designs/ holds the sanitised copies actually used)
-analysis/ benchmarks/ plans/  older utilities, the v20 diagnostic benchmark, research plans (archive)
-```
+See `REPO_INDEX.md`. It covers the top-level map, every phase, the canonical evidence for each paper section, the
+command for every rebuild, and the archive, private and gitignore policy.
 
-RTLLM is never copied into the repo: `<RTLLM_ROOT>` locally, `$RTLLM_ROOT` on the HPC.
+RTLLM is never copied into the repository: it is read from `$RTLLM_ROOT`.
 
-**Regenerate the Phase 3 numbers and figures:** `python phase3/runner/analyze_phase3.py`
-(default `--results phase3/results/phase3_run`; output to `phase3/evidence/phase3_run/`). Deterministic (seeded).
+## 5. Cluster
 
-## 5. Phase 3 in numbers (from `phase3/evidence/phase3_run/PHASE3_RESULTS.md`)
+All cluster commands, pitfalls and the run inventory are in `docs/HPC_GUIDE.md`. Claude Code never runs ssh, scp or
+sbatch; the user does.
 
-| condition (198 runs each) | func_pass | clean_pass | silent structural pass | calls/run | tokens/run |
-|---|---|---|---|---|---|
-| baseline | 85% | 23% | 62% | 1.34 | 1,425 |
-| raw_adv | 65% | 59% | 6% | 3.27 | 4,396 |
-| sem_adv_v2 | 71% | 68% | 3% | 2.83 | 3,831 |
-| sem_adv_v3 | 74% | 74% | 1% | 2.51 | 3,377 |
-| sem_esc_restart_v3 | 85% | 80% | 5% | 2.99 | 3,798 |
+## 6. Standing conventions
 
-Composition (top-level synthesis pass, 18 groups): baseline 0/18 in all three designs; v3 16/18 in each; escalation
-18/18 in both meshes, 15/18 MPSoC. Every group whose composed leaves were all clean reached the golden bound
-(32/32, 32/32, 27/27).
-
-## 6. For the planner: where refinement and new runs would pay off
-
-Strong and stable (keep as is): simulation-only sign-off of sim-silent defects; v3 (and v2) vs raw text, pooled and
-on sim-silent tasks; the cost and first-call speed of v3; escalation vs baseline on sim-visible tasks; composition.
-
-Open, with the run or change that would settle each:
-
-| Item | Evidence now | Candidate action | Rough cost |
-|---|---|---|---|
-| Escalation's gate message vs the interpreter | 110 of escalation's 158 clean passes had no interpreter output (generic "fails synthesis sign-off" message only) | control arm `baseline_gate` (baseline + the same message, no tool detail); small additive runner change | 198 runs, ~5 h H100 |
-| v3 rules are in-sample (written from these tasks' logs) | coverage 0/18 -> 18/18 on two tasks; pass-rate gain over v2 on the 4 focus tasks +11.1 pts, CI includes 0 | held-out defect set (new real leaves or seeded defects the rules were not written from), v2 vs v3 vs raw | depends on task count; ~18 runs per task-condition |
-| Functional regressions under tool feedback | 92 runs lost a simulation pass they had (raw 36, v2 22, v3 23, escalation 11); keep-best-so-far would restore func_pass to 86% (v3) post hoc | return best-so-far candidate in the runner (no new model calls) and/or a sim-regression guard directive; rerun the tool conditions | 792 runs, or re-score only if implemented post hoc |
-| Flat tasks | `noc_xbar4` at baseline level under all conditions (interpreter fires 18/18); `riscv_alu_flags` max 9/18; v3 below raw on `mem_wb_mux`, `ni_flit_pack` | inspect v3 directives and responses on these four; improve rules; more replicates | analysis first, then ~72 runs per task set |
-| Power | replicates correlated (83-94% of (model, task) cells unanimous); per-model/per-task contrasts underpowered | N=5 on the tool conditions, or more tasks rather than more reps | 660 runs for +2 reps |
-| Small-model compile errors | 124 final candidates do not compile (66 gemma3:4b, 42 llama3.2:3b), genuine syntax errors | compile-error directive class, or exclude sub-4B models from claims | runner + interpreter change |
-| Composition-only defects | 1-bit PC port driven by 32 bits; FIFO with a missing positional port: invisible to leaf checks | integration-level feedback (top-level lint/synth fed back) | design work first |
-
-Paper: `paper/STITCH_EXT_v7.tex` needs one Overleaf compile check and the bibliography check listed in
-`paper/V7_CHANGES.md`. Minor wording notes on Sections 1-8 are in `docs/EXT_FINAL_REVIEW.md` (the user folds them in).
-
-## 7. HPC
-
-BITS Hyderabad, `<HPC_USER>@<HPC_HOST>`, scratch `/scratch/<HPC_USER>/`: `RTLCoderHPC/` (Set 2 + shared venv),
-`Set1_HPC/`, `Set3_HPC/`, `Phase3_HPC/` (Phase 3, self-contained: `$BASE/phase3`, `$BASE/src`, `$BASE/results`).
-oss-cad-suite at `/scratch/<HPC_USER>/oss-cad-suite/bin`. Ollama runs only inside sbatch jobs; the login node has no
-internet. Nodes: `<GPU_NODE>` A100 (`gpu_a100_8`) ran Sets 1 and 3; `<GPU_NODE>` H100 (`gpu_h100_4`) ran Set 2; the
-Phase 3 manifests record `<GPU_NODE>`. Phase 3 procedure: `phase3/HPC_PHASE3_COMMANDS.md`
-(gate must print `ALL GATES PASSED` before any GPU job). New Phase 3 runs: set `P3_OUT=$BASE/results/<new_run>` for
-both `phase3_run.slurm` and `phase3_compose.slurm`. Phase 2 procedure: `docs/FULL_RUN_RUNBOOK.md`, `docs/HPC_COMMANDS.md`.
-Claude Code never runs ssh/scp/sbatch; the user does.
-
-## 8. Git state and standing conventions
-
-- Branch `phase3-setup` (from `main` at `61535aa`). On 2026-10-13 the Phase 3, API-study and paper work was
-  committed there in staged, logical commits, at the user's request (closure brief). Pushing and merging into
-  `main` wait for the user's explicit "PUSH". Never force-push.
-- Before every commit: `scan_secrets.py` must report 0 matches, and the staged diff must contain no key prefix.
-- No `Co-Authored-By: Claude` trailer in commit messages.
-- Never edit `src/interpreter/stitch_interpreter.py`. Extend through the v3 layer.
-- N >= 3 before any cell is trusted; `semantic_fired`-gate every interpreter claim; report pass rates against the
-  difficulty tier (Phase 2) or the sim-silent / sim-visible split (Phase 3).
-- Every number in a document comes from a script run on the raw `metrics.json` / `master_log.json`, not from memory.
-- `reSTITCH.md` and `reSTITCH_PHASE3_EXPLAINED.md` are the user's; leave them as they are.
-- Never frame Set 2 (Twin) as a STITCH result: its condition is fixed at `baseline`.
+- **Commits:**
+  - before every commit, `scan_secrets.py` must report 0 matches, and the staged diff must contain no key prefix;
+  - commit with explicit paths;
+  - no `Co-Authored-By: Claude` trailer;
+  - never force-push.
+- **Never edit `src/interpreter/stitch_interpreter.py`.** Extend through the v3 layer.
+- **Never move or edit** evidence, pre-registrations, freeze records, task files, fixtures or `phase3/hpc/`. Archive
+  superseded material with `git mv`.
+- **Claims:**
+  - N of at least 3 before a cell is trusted;
+  - gate every interpreter claim on `semantic_fired`;
+  - report pass rates by difficulty tier (RTLLM) or by sim-silent and sim-visible stratum (Phase 3).
+- **Numbers:** every number in a document comes from a generated evidence file, not from memory.
+- **Twin:** never frame Set 2 as a STITCH result; its condition is fixed at `baseline`.
+- **Private notes:** the notes in `private/` are the user's. Leave them as they are, and never commit them.
 
 ---
 
 ## Message to the next Claude Code chat
 
-You are picking up STITCH after all study phases and the journal paper (v10, `paper/overleaf/`). Read this file, then
-`REPO_INDEX.md`, then `paper/V10_CHANGES.md` and `paper/V9_CHANGES.md`. For Phase 3, read `phase3/evidence/phase3_final/PHASE3_FINAL.md`. For
-the API study, read `phase2/frontier/SET4_REPORT.md`. Read `reSTITCH.md` if you need Phases 0-2 in depth. Take direction
-from the user and from the planner agent: they decide which refinements and runs come next. Contribute fully: check
-their plans against the data, point out problems, propose better options, and do the work well. If a request looks
-like it heads in the wrong direction (for example, it would overstate a result or mix protocols in one results
-directory), say so explicitly and explain why before acting, then follow the decision. Do not commit, push, or run
-anything on the HPC unless asked.
+You are picking up STITCH after every study phase and the final journal paper (v10, `paper/overleaf/`).
+1. Read this file.
+2. Read `REPO_INDEX.md`.
+3. Read `docs/reSTITCH_REVISITED_QA.md` for the paper and `docs/reSTITCH.md` for the story.
+4. For Phase 3 numbers, read `phase3/evidence/phase3_final/PHASE3_FINAL.md`. For the API study, read
+   `phase2/frontier/SET4_REPORT.md`.
+
+The open items are in `phase2/frontier/PENDING.md`.
+
+Take direction from the user. Check plans against the data, point out problems, and propose better options. If a
+request would overstate a result or mix protocols, say so before acting, then follow the decision. Do not commit, push
+or run anything on the cluster unless asked.
