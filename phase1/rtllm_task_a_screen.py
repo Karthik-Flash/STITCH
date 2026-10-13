@@ -36,7 +36,7 @@ sys.path.insert(0, os.path.join(_HERE, "..", "src", "interpreter"))
 # uses. See src/interpreter/pass_detection.py.
 from pass_detection import detect_outcome  # noqa: E402
 
-RTLLM_ROOT = r"D:\Projects\RTLLM"
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT") or os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "RTLLM"))
 CATEGORIES = ["Arithmetic", "Control", "Memory", "Miscellaneous"]
 
 SCRATCH_ROOT = os.path.join(_HERE, "results", "rtllm_pilot", "task_a_screen")

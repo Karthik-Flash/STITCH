@@ -1,0 +1,18 @@
+old tb sha256 eb16d973f2dabaf2fa06c1561acbd1588ee9e12486936ba01f2f80ae486fdbe6
+new tb sha256 ac308fb12aa5a43ba3f676f6383997357ad8dad55bcb97cb87909ae3fa8c4fdc
+golden: old tb PASS, full tb PASS
+DEFECTIVE INPUT: old tb PASS, full tb FAIL
+mutant: write_data2 = 0 in the 'every other case' branch: old tb FAIL, full tb FAIL
+mutant: write_data2 = 0 only when memwrite==0 or FWD==2'b11 (the uncovered cases): old tb PASS, full tb FAIL
+
+runs 90; old-tb re-sim disagrees with logged func_pass: []
+(b) flagged runs failing the full tb: 16/16
+(c) other clean runs: 42; flipping to FAIL: []
+
+| condition | func_pass old tb | func_pass full tb | clean_pass old tb | clean_pass full tb |
+|---|---|---|---|---|
+| baseline | 18/18 | 0/18 | 0/18 | 0/18 |
+| raw_adv | 15/18 | 9/18 | 15/18 | 9/18 |
+| sem_adv_v2 | 14/18 | 11/18 | 14/18 | 11/18 |
+| sem_adv_v3 | 13/18 | 11/18 | 13/18 | 11/18 |
+| sem_esc_restart_v3 | 16/18 | 11/18 | 16/18 | 11/18 |

@@ -1,0 +1,11 @@
+%Warning-UNUSEDSIGNAL: unused.v:1:23: Signal is not used: 'en'
+                                    : ... note: In instance 'unused_t'
+    1 | module unused_t(input en, input [2:0] sel, input [7:0] unused_bus, output reg [7:0] y, output z);
+      |                       ^~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.020
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNDRIVEN: unused.v:1:95: Signal is not driven: 'z'
+                                : ... note: In instance 'unused_t'
+    1 | module unused_t(input en, input [2:0] sel, input [7:0] unused_bus, output reg [7:0] y, output z);
+      |                                                                                               ^
+%Error: Exiting due to 2 warning(s)

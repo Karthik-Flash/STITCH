@@ -10,7 +10,7 @@
 - Built one shared `detect_outcome()` function + `BENCHMARK_PASS_SPECS` registry (`src/interpreter/pass_detection.py`), and made `benchmark` a **required, keyword-only, no-default** argument on every runner entry point that decides pass/fail. Calling any of them without it raises `TypeError` immediately — this is what makes Bug #3's failure mode (a benchmark-specific check silently reused against the wrong benchmark) structurally impossible now, not just patched.
 - The actual live bug (`phase2/twin_run_runner.py` carrying **no** RTLLM-aware pass-detection override at all) is fixed. Confirmed by replaying all 445 real sim logs from the 64-run twin pilot through the new detector: **64/64 cells reproduce `corrected_pass.json`'s ground truth exactly**, and the aggregated grid matches the brief's stated numbers exactly.
 - Golden-reference check: **44/44 compatible RTLLM designs' golden references are correctly detected as PASS.** The broken-reference half of the check is 36/44 clean, with the remaining 8 individually root-caused (see §4) — none of them are `detect_outcome()` defects.
-- **This was run locally only** (Windows/WSL, local `D:\Projects\RTLLM` clone). Per the brief, that does not satisfy the pre-sbatch gate — the HPC-run gate is still outstanding (see §6).
+- **This was run locally only** (Windows/WSL, local `<RTLLM_ROOT>` clone). Per the brief, that does not satisfy the pre-sbatch gate — the HPC-run gate is still outstanding (see §6).
 
 ---
 
@@ -58,7 +58,7 @@ def detect_outcome(sim_log: str, benchmark: str) -> Literal["PASS", "FAIL", "UNK
 
 ### Testbench convention survey (RTLLM)
 
-Direct grep across all 50 `testbench.v` files under `D:\Projects\RTLLM`:
+Direct grep across all 50 `testbench.v` files under `<RTLLM_ROOT>`:
 - **Pass line is uniform**: exactly `"Your Design Passed"` in all 50 (confirmed casing-identical, not assumed).
 - **Fail wording is not uniform** — ~25 distinct literal forms surveyed, e.g. `"=========== Failed ==========="`, `"Test completed with N failures"`, `"===========Error==========="`, `"Test failed: A = ..., B = ..."`. `fail_patterns` covers the common roots of all observed forms.
 - No collision found between any fail form and the pass line.
@@ -85,7 +85,7 @@ For every one of the 44 compatible RTLLM designs (`phase1/results/rtllm_pilot/ta
 1. Compile + simulate the **golden reference** (renamed the same way `rtllm_task_a_screen.py` already does) → confirm `detect_outcome() == "PASS"`.
 2. Compile + simulate a **deliberately broken** version — same port signature (copied verbatim from the golden reference's own header, ANSI or non-ANSI, including any `#(parameters)` block) but every output forced to the constant `0` → confirm `detect_outcome() == "FAIL"`.
 
-**Result (local run, Windows/WSL, `D:\Projects\RTLLM`)**:
+**Result (local run, Windows/WSL, `<RTLLM_ROOT>`)**:
 
 - **Golden side: 44/44 PASS.** Every real RTLLM pass string in the entire compatible pool is correctly recognized — this is the direct, exhaustive regression guard for Bug #3.
 - **Broken side: 36/44 FAIL as expected.** The remaining 8 were individually investigated (not glossed over):
@@ -103,7 +103,7 @@ For every one of the 44 compatible RTLLM designs (`phase1/results/rtllm_pilot/ta
 
 ### ⚠️ This does NOT satisfy the pre-sbatch gate
 
-Per the brief: *"Do not accept a local-only green from `verify_pass_detection.py`. Local proves the code compiles; HPC proves the deployed harness works."* This run was executed locally (Windows/WSL, local `D:\Projects\RTLLM` clone, local Icarus build) for iteration and debugging, which the brief explicitly permits. **It has NOT been run on HPC.** I have no cluster access from this session. `verify_pass_detection.py` is written to run unmodified on either platform (dual-mode: WSL wrapper on Windows, native `subprocess` on Linux, auto-selected via `platform.system()`) — the outstanding step is:
+Per the brief: *"Do not accept a local-only green from `verify_pass_detection.py`. Local proves the code compiles; HPC proves the deployed harness works."* This run was executed locally (Windows/WSL, local `<RTLLM_ROOT>` clone, local Icarus build) for iteration and debugging, which the brief explicitly permits. **It has NOT been run on HPC.** I have no cluster access from this session. `verify_pass_detection.py` is written to run unmodified on either platform (dual-mode: WSL wrapper on Windows, native `subprocess` on Linux, auto-selected via `platform.system()`) — the outstanding step is:
 
 ```
 python phase2/verify_pass_detection.py --rtllm-root $RTLLM_ROOT

@@ -25,7 +25,7 @@
 # PREREQUISITE (2026 scratch wipe): the AutoChip scratch tree that used
 # to hold these 3 models was fully wiped, so Set 3 no longer reuses it --
 # it now pulls and owns its own copy under
-# OLLAMA_MODELS=/scratch/soumyaj/Set3_HPC/ollama_models, via
+# OLLAMA_MODELS=/scratch/$USER/Set3_HPC/ollama_models, via
 # phase2/pull_ollama_models_set3.slurm (mirrors the existing
 # phase2/pull_ollama_models.slurm pattern -- run it ONCE before this
 # script, same as that script is required once before twin_run.slurm/
@@ -35,12 +35,12 @@
 # Python level as belt-and-suspenders, same pattern Set 1/Set 2 already
 # established. The `ollama` binary itself is also no longer at
 # AutoChipHPC/bin (wiped) -- it now lives at
-# /scratch/soumyaj/Set3_HPC/bin, and iverilog/verilator/yosys come from
-# /scratch/soumyaj/oss-cad-suite/bin (being re-extracted there after the
+# /scratch/$USER/Set3_HPC/bin, and iverilog/verilator/yosys come from
+# /scratch/$USER/oss-cad-suite/bin (being re-extracted there after the
 # wipe -- confirm it landed before launching, same as any prior PATH
 # assumption in this project).
 #
-# NODE REUSE, NOT CONCURRENT: this targets gpunode4, the SAME node Set 1
+# NODE REUSE, NOT CONCURRENT: this targets <GPU_NODE>, the SAME node Set 1
 # used -- unlike Set 1/Set 2, which ran concurrently on separate physical
 # nodes, Set 3 is a later, single, sequential job (Set 1 has already
 # completed by the time this runs). No two-node-independence concern
@@ -51,13 +51,13 @@
 # Usage: sbatch set3_run.slurm
 #SBATCH --job-name=set3_scale_ladder
 #SBATCH --partition=gpu_a100_8
-#SBATCH --nodelist=gpunode4
+#SBATCH --nodelist=<GPU_NODE>
 #SBATCH --gres=gpu:1
 #SBATCH --mem=48G
 #SBATCH --cpus-per-task=8
 #SBATCH --time=120:00:00
-#SBATCH --output=/scratch/soumyaj/Set3_HPC/logs/set3_%j.log
-#SBATCH --error=/scratch/soumyaj/Set3_HPC/logs/set3_%j.err
+#SBATCH --output=/scratch/%u/Set3_HPC/logs/set3_%j.log
+#SBATCH --error=/scratch/%u/Set3_HPC/logs/set3_%j.err
 
 set -e
 
@@ -66,15 +66,15 @@ set -e
 # this used to symlink to is gone too; see docs/FULL_RUN_RUNBOOK.md's setup
 # section for the `python -m venv` + `pip install openai` steps). No
 # HF_HOME needed -- Ollama-only run, no torch/transformers.
-source /scratch/soumyaj/Set3_HPC/venv/bin/activate
-export PATH=/scratch/soumyaj/Set3_HPC/bin:/scratch/soumyaj/oss-cad-suite/bin:$PATH
-export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM
+source /scratch/$USER/Set3_HPC/venv/bin/activate
+export PATH=/scratch/$USER/Set3_HPC/bin:/scratch/$USER/oss-cad-suite/bin:$PATH
+export RTLLM_ROOT=/scratch/$USER/RTLCoderHPC/RTLLM
 # Deliberately the SAME checkout Set 1/Set 2 read -- RTLLM is read-only
 # I/O for every job; sharing one checkout avoids yet another
 # multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md / docs/FULL_RUN_RUNBOOK.md.
-export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set3_HPC/src/interpreter
-export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set3_HPC/task_a_screen.json
-export MODULE_CATEGORIES_JSON=/scratch/soumyaj/Set3_HPC/module_categories.json
+export STITCH_INTERPRETER_DIR=/scratch/$USER/Set3_HPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/$USER/Set3_HPC/task_a_screen.json
+export MODULE_CATEGORIES_JSON=/scratch/$USER/Set3_HPC/module_categories.json
 echo "=== which ollama / iverilog ==="
 which ollama
 which iverilog
@@ -88,10 +88,10 @@ which iverilog
 # have already completed (this is a later, sequential job, not
 # concurrent with either), so there is no port-collision risk to reason
 # about here the way set1_run.slurm/twin_run.slurm had to for each other.
-export OLLAMA_MODELS=/scratch/soumyaj/Set3_HPC/ollama_models
+export OLLAMA_MODELS=/scratch/$USER/Set3_HPC/ollama_models
 export OLLAMA_HOST=127.0.0.1:11434
 echo "=== starting ollama serve (OLLAMA_HOST=$OLLAMA_HOST, OLLAMA_MODELS=$OLLAMA_MODELS) ==="
-ollama serve > /scratch/soumyaj/Set3_HPC/logs/ollama_set3_${SLURM_JOB_ID}.log 2>&1 &
+ollama serve > /scratch/$USER/Set3_HPC/logs/ollama_set3_${SLURM_JOB_ID}.log 2>&1 &
 OLLAMA_PID=$!
 # `trap ... EXIT` guarantees the server gets killed on ANY exit path --
 # success, an early `exit 1` above, or `set -e` aborting on the python
@@ -129,7 +129,7 @@ done
 if [ "$MISSING" -ne 0 ]; then
     echo "FATAL: one or more required Ollama models are missing from"
     echo "  OLLAMA_MODELS=$OLLAMA_MODELS. Run"
-    echo "  'sbatch /scratch/soumyaj/Set3_HPC/pull_ollama_models_set3.slurm'"
+    echo "  'sbatch /scratch/$USER/Set3_HPC/pull_ollama_models_set3.slurm'"
     echo "  once, then resubmit this job."
     exit 1  # trap above still fires and kills OLLAMA_PID
 fi
@@ -140,7 +140,7 @@ echo "All 3 Ollama models present."
 # (wrong module count, wrong recoverable-band filter) before burning any
 # real wall-clock. Fails the whole job immediately (set -e) if the
 # assertion in set3_runner.py's own --dry-run path doesn't hold.
-cd /scratch/soumyaj/Set3_HPC
+cd /scratch/$USER/Set3_HPC
 echo "=== dry-run sanity check ==="
 python set3_runner.py --dry-run
 

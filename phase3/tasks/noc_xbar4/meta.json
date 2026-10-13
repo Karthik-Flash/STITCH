@@ -1,0 +1,16 @@
+{
+  "track": "S",
+  "top": "noc_xbar4",
+  "defect_classes": [
+    "MULTIDRIVEN"
+  ],
+  "sim_silent": false,
+  "seeded": "four continuous assigns to one output (Verilator 5 MULTIDRIVEN format A)",
+  "compose": null,
+  "expected_v3_classes": [
+    "MULTIDRIVEN"
+  ],
+  "expected_v2_classes": [
+    "MULTIDRIVEN"
+  ]
+}

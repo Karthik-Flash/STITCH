@@ -12,27 +12,27 @@ number.
 
 **Conventions used throughout**
 
-- HPC host: `hpc.bits-hyderabad.ac.in`, username `soumyaj` (swap yours in).
-- Scratch root: `/scratch/soumyaj/` (Lustre, 253T, survives across jobs but was
+- HPC host: `<HPC_HOST>`, username `<HPC_USER>` (swap yours in).
+- Scratch root: `/scratch/<HPC_USER>/` (Lustre, 253T, survives across jobs but was
   wiped once mid-project, see Part 5).
-- Laptop repo root: `d:\Projects\STITCH` (PowerShell `scp` examples).
+- Laptop repo root: `<REPO_ROOT>` (PowerShell `scp` examples).
 - Commands run **on HPC** are plain bash. Commands run **on the laptop** are
   marked `# LAPTOP (PowerShell)`.
 - GPU partitions and their `--time` caps on this cluster:
 
 | Partition | Node | Cap | Used for |
 |---|---|---|---|
-| `gpu_a100_8` | gpunode4 | 5 days | Set 1, Set 3 (long single-sbatch runs) |
-| `gpu_h100_4` | gpunode5/6 | 3 days | Set 2 / Twin |
-| `gpu_h200_8` | gpunode7 | 1 day | Twin fallback (needs ~4 resubmits) |
+| `gpu_a100_8` | <GPU_NODE> | 5 days | Set 1, Set 3 (long single-sbatch runs) |
+| `gpu_h100_4` | <GPU_NODE>/6 | 3 days | Set 2 / Twin |
+| `gpu_h200_8` | <GPU_NODE> | 1 day | Twin fallback (needs ~4 resubmits) |
 
 Check current caps and availability any time with:
 
 ```bash
 sinfo -o "%P %l"          # partition time limits
 sinfo                     # node states (idle / mix / alloc / drain)
-squeue -u soumyaj         # your jobs
-squeue -u soumyaj --start # estimated start times for pending jobs
+squeue -u <HPC_USER>         # your jobs
+squeue -u <HPC_USER> --start # estimated start times for pending jobs
 ```
 
 ---
@@ -51,7 +51,7 @@ fails, check these first.
   or model pull must run inside an sbatch job on a compute node, or be downloaded
   on the laptop and `scp`'d up.
 - **iverilog / vvp / yosys** come from `oss-cad-suite`, not a module. They live at
-  `/scratch/soumyaj/oss-cad-suite/bin` and are put on `PATH` by each slurm script.
+  `/scratch/<HPC_USER>/oss-cad-suite/bin` and are put on `PATH` by each slurm script.
 - **`tar` on this cluster is too old for `--zstd`.** Use conda's `zstd` (Part 5.4)
   to unpack `.tar.zst` archives.
 - Every runner reads pass/fail through the hardened `detect_outcome(sim_log,
@@ -66,15 +66,15 @@ fails, check these first.
 ### 1.1 Connect and create the base layout
 
 ```bash
-ssh soumyaj@hpc.bits-hyderabad.ac.in
-mkdir -p /scratch/soumyaj/RTLCoderHPC/{logs,venv,hf_cache,RTLLM,results,src/interpreter,ollama_models,bin}
+ssh <HPC_USER>@<HPC_HOST>
+mkdir -p /scratch/<HPC_USER>/RTLCoderHPC/{logs,venv,hf_cache,RTLLM,results,src/interpreter,ollama_models,bin}
 ```
 
 ### 1.2 Python venv (shared by all runs)
 
 ```bash
-python3 -m venv /scratch/soumyaj/RTLCoderHPC/venv
-source /scratch/soumyaj/RTLCoderHPC/venv/bin/activate
+python3 -m venv /scratch/<HPC_USER>/RTLCoderHPC/venv
+source /scratch/<HPC_USER>/RTLCoderHPC/venv/bin/activate
 pip install torch==2.1.0 transformers==4.34.0 accelerate sentencepiece openai
 ```
 
@@ -90,13 +90,13 @@ exact fallback, which is what actually worked after the wipe).
 
 ```bash
 # compute-node attempt
-sbatch --nodelist=gpunode4 --gres=gpu:0 --time=00:30:00 --mem=8G \
+sbatch --nodelist=<GPU_NODE> --gres=gpu:0 --time=00:30:00 --mem=8G \
   --partition=gpu_a100_8 \
-  --output=/scratch/soumyaj/RTLCoderHPC/logs/osscad_%j.log \
-  --wrap="cd /scratch/soumyaj && wget -q <LATEST_OSS_CAD_URL> -O oss-cad.tgz && tar xzf oss-cad.tgz && echo DONE"
+  --output=/scratch/<HPC_USER>/RTLCoderHPC/logs/osscad_%j.log \
+  --wrap="cd /scratch/<HPC_USER> && wget -q <LATEST_OSS_CAD_URL> -O oss-cad.tgz && tar xzf oss-cad.tgz && echo DONE"
 
 # verify
-ls /scratch/soumyaj/oss-cad-suite/bin/iverilog && echo "OSS-CAD OK"
+ls /scratch/<HPC_USER>/oss-cad-suite/bin/iverilog && echo "OSS-CAD OK"
 ```
 
 Get `<LATEST_OSS_CAD_URL>` from
@@ -106,28 +106,28 @@ Get `<LATEST_OSS_CAD_URL>` from
 ### 1.4 RTLLM benchmark checkout
 
 ```bash
-sbatch --nodelist=gpunode4 --gres=gpu:0 --time=00:20:00 --mem=8G \
+sbatch --nodelist=<GPU_NODE> --gres=gpu:0 --time=00:20:00 --mem=8G \
   --partition=gpu_a100_8 \
-  --output=/scratch/soumyaj/RTLCoderHPC/logs/rtllm_clone_%j.log \
-  --wrap="git clone https://github.com/hkust-zhiyao/RTLLM.git /scratch/soumyaj/RTLCoderHPC/RTLLM"
+  --output=/scratch/<HPC_USER>/RTLCoderHPC/logs/rtllm_clone_%j.log \
+  --wrap="git clone https://github.com/hkust-zhiyao/RTLLM.git /scratch/<HPC_USER>/RTLCoderHPC/RTLLM"
 
 # verify
-ls /scratch/soumyaj/RTLCoderHPC/RTLLM/ | head
+ls /scratch/<HPC_USER>/RTLCoderHPC/RTLLM/ | head
 # expect: Arithmetic Control Memory Miscellaneous (plus files)
 ```
 
 RTLLM is never copied into the STITCH repo. It is read live from
-`$RTLLM_ROOT` on HPC (and `D:\Projects\RTLLM` on the laptop).
+`$RTLLM_ROOT` on HPC (and `<RTLLM_ROOT>` on the laptop).
 
 ### 1.5 Ollama binary
 
 ```bash
 # LAPTOP (PowerShell) if compute-node download is blocked (ollama.com not in allowlist)
-cd C:\Users\karth\Downloads
-scp ollama-linux-amd64.tar.zst soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/
+cd %USERPROFILE%\Downloads
+scp ollama-linux-amd64.tar.zst <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/RTLCoderHPC/
 
 # HPC: unpack .tar.zst (see Part 5.4 for the zstd install if needed)
-cd /scratch/soumyaj/RTLCoderHPC
+cd /scratch/<HPC_USER>/RTLCoderHPC
 zstd -d ollama-linux-amd64.tar.zst -o ollama-linux-amd64.tar
 tar xf ollama-linux-amd64.tar
 chmod +x bin/ollama
@@ -139,56 +139,56 @@ chmod +x bin/ollama
 ## Part 2: Set 2 (Twin Comparison) Deployment and Run
 
 **Scope:** 5 model-conditions x 42 modules x N=3 = 630 runs, T=0.5, baseline
-only. RTLCoder (HF transformers) + 3 Ollama models. Node: gpunode6 (H100),
+only. RTLCoder (HF transformers) + 3 Ollama models. Node: <GPU_NODE> (H100),
 `--time=72:00:00`, ~2 sbatches.
 
 ### 2.1 Deploy code
 
 ```bash
-# LAPTOP (PowerShell), from d:\Projects\STITCH
+# LAPTOP (PowerShell), from <REPO_ROOT>
 scp phase2\twin_run.slurm phase2\twin_run_runner.py phase2\stitch_runner_hpc.py `
     phase2\rtlcoder_adapter.py phase2\pull_ollama_models.slurm `
     phase1\results\rtllm_pilot\task_a_screen.json `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/RTLCoderHPC/
 
 scp src\interpreter\pass_detection.py src\interpreter\stitch_interpreter.py `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/src/interpreter/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/RTLCoderHPC/src/interpreter/
 ```
 
 ### 2.2 Download RTLCoder weights (~13GB, HF transformers)
 
 ```bash
-export HF_HOME=/scratch/soumyaj/RTLCoderHPC/hf_cache
-sbatch --nodelist=gpunode4 --gres=gpu:1 --time=01:00:00 --mem=32G \
+export HF_HOME=/scratch/<HPC_USER>/RTLCoderHPC/hf_cache
+sbatch --nodelist=<GPU_NODE> --gres=gpu:1 --time=01:00:00 --mem=32G \
   --partition=gpu_a100_8 \
-  --output=/scratch/soumyaj/RTLCoderHPC/logs/download_%j.log \
-  --wrap="source /scratch/soumyaj/RTLCoderHPC/venv/bin/activate && export HF_HOME=/scratch/soumyaj/RTLCoderHPC/hf_cache && python -c \"from transformers import AutoModelForCausalLM, AutoTokenizer; AutoTokenizer.from_pretrained('ishorn5/RTLCoder-Deepseek-v1.1'); AutoModelForCausalLM.from_pretrained('ishorn5/RTLCoder-Deepseek-v1.1')\""
+  --output=/scratch/<HPC_USER>/RTLCoderHPC/logs/download_%j.log \
+  --wrap="source /scratch/<HPC_USER>/RTLCoderHPC/venv/bin/activate && export HF_HOME=/scratch/<HPC_USER>/RTLCoderHPC/hf_cache && python -c \"from transformers import AutoModelForCausalLM, AutoTokenizer; AutoTokenizer.from_pretrained('ishorn5/RTLCoder-Deepseek-v1.1'); AutoModelForCausalLM.from_pretrained('ishorn5/RTLCoder-Deepseek-v1.1')\""
 
 # verify
-find /scratch/soumyaj/RTLCoderHPC/hf_cache -iname "*.safetensors" -o -iname "*.bin" | head
-du -sh /scratch/soumyaj/RTLCoderHPC/hf_cache   # expect ~13GB
+find /scratch/<HPC_USER>/RTLCoderHPC/hf_cache -iname "*.safetensors" -o -iname "*.bin" | head
+du -sh /scratch/<HPC_USER>/RTLCoderHPC/hf_cache   # expect ~13GB
 ```
 
 ### 2.3 Pull the 3 Ollama models (shared with Set 1)
 
 ```bash
-sbatch /scratch/soumyaj/RTLCoderHPC/pull_ollama_models.slurm
-tail -f /scratch/soumyaj/RTLCoderHPC/logs/ollama_pull_*.log
+sbatch /scratch/<HPC_USER>/RTLCoderHPC/pull_ollama_models.slurm
+tail -f /scratch/<HPC_USER>/RTLCoderHPC/logs/ollama_pull_*.log
 # pulls deepseek-coder:6.7b, gemma3:4b, llama3.1:latest into RTLCoderHPC/ollama_models
 ```
 
 ### 2.4 Verify + dry-run
 
 ```bash
-cd /scratch/soumyaj/RTLCoderHPC
+cd /scratch/<HPC_USER>/RTLCoderHPC
 grep -c "detect_outcome" stitch_runner_hpc.py                     # >= 2
 grep -c 'ALL TESTS PASSED" not in output' stitch_runner_hpc.py    # 0
 grep -c "cwd=iter_dir" stitch_runner_hpc.py                       # >= 2
 grep -c "square_wave" twin_run_runner.py                          # >= 1
 
-export STITCH_INTERPRETER_DIR=/scratch/soumyaj/RTLCoderHPC/src/interpreter
-export TASK_A_SCREEN_JSON=/scratch/soumyaj/RTLCoderHPC/task_a_screen.json
-export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM
+export STITCH_INTERPRETER_DIR=/scratch/<HPC_USER>/RTLCoderHPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/<HPC_USER>/RTLCoderHPC/task_a_screen.json
+export RTLLM_ROOT=/scratch/<HPC_USER>/RTLCoderHPC/RTLLM
 source venv/bin/activate
 python twin_run_runner.py --dry-run    # expect 630
 ```
@@ -196,11 +196,11 @@ python twin_run_runner.py --dry-run    # expect 630
 ### 2.5 Launch + monitor
 
 ```bash
-sbatch /scratch/soumyaj/RTLCoderHPC/twin_run.slurm
-squeue -u soumyaj
-tail -f /scratch/soumyaj/RTLCoderHPC/logs/twin_*.log
+sbatch /scratch/<HPC_USER>/RTLCoderHPC/twin_run.slurm
+squeue -u <HPC_USER>
+tail -f /scratch/<HPC_USER>/RTLCoderHPC/logs/twin_*.log
 
-python3 -c "import json; d=json.load(open('/scratch/soumyaj/RTLCoderHPC/results/twin_run/master_log.json')); print(len(d),'/630 done,',sum(1 for e in d if e.get('error')),'errored')"
+python3 -c "import json; d=json.load(open('/scratch/<HPC_USER>/RTLCoderHPC/results/twin_run/master_log.json')); print(len(d),'/630 done,',sum(1 for e in d if e.get('error')),'errored')"
 ```
 
 Resubmit the same script if it hits the time cap (runner skips completed cells).
@@ -210,15 +210,15 @@ Resubmit the same script if it hits the time cap (runner skips completed cells).
 ## Part 3: Set 1 (STITCH Conditions, Small Models) Deployment and Run
 
 **Scope:** 3 small models (`gemma3:4b`, `llama3.1:latest` (8B), `deepseek-coder:6.7b`)
-x 4 conditions x 42 modules x N=3 = 1,512 runs, T=0.1. Node: gpunode4 (A100),
+x 4 conditions x 42 modules x N=3 = 1,512 runs, T=0.1. Node: <GPU_NODE> (A100),
 `--time=120:00:00`, ~2 sbatches. Ollama-only, reuses Set 2's pulled models.
 
 ### 3.1 Scratch dir (separate from RTLCoderHPC)
 
 ```bash
-mkdir -p /scratch/soumyaj/Set1_HPC/{logs,results,src/interpreter}
-ln -s /scratch/soumyaj/RTLCoderHPC/venv /scratch/soumyaj/Set1_HPC/venv
-ln -s /scratch/soumyaj/RTLCoderHPC/RTLLM /scratch/soumyaj/Set1_HPC/RTLLM
+mkdir -p /scratch/<HPC_USER>/Set1_HPC/{logs,results,src/interpreter}
+ln -s /scratch/<HPC_USER>/RTLCoderHPC/venv /scratch/<HPC_USER>/Set1_HPC/venv
+ln -s /scratch/<HPC_USER>/RTLCoderHPC/RTLLM /scratch/<HPC_USER>/Set1_HPC/RTLLM
 ```
 
 ### 3.2 Deploy code
@@ -229,37 +229,37 @@ and would crash on a compute node). It pulls in `error_signature.py` and
 `escalation_state.py`.
 
 ```bash
-# LAPTOP (PowerShell), from d:\Projects\STITCH
+# LAPTOP (PowerShell), from <REPO_ROOT>
 scp phase2\set1_runner.py phase2\set1_run.slurm phase2\stitch_runner_hpc.py `
     phase2\escalation_runner_hpc.py `
     phase1\error_signature.py phase1\escalation_state.py `
     phase1\results\rtllm_pilot\task_a_screen.json `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set1_HPC/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set1_HPC/
 
 scp src\interpreter\pass_detection.py src\interpreter\stitch_interpreter.py `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set1_HPC/src/interpreter/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set1_HPC/src/interpreter/
 ```
 
 ### 3.3 Confirm Ollama models present (login-node-safe check)
 
 ```bash
-ls /scratch/soumyaj/RTLCoderHPC/ollama_models/manifests/registry.ollama.ai/library/
+ls /scratch/<HPC_USER>/RTLCoderHPC/ollama_models/manifests/registry.ollama.ai/library/
 # expect: deepseek-coder gemma3 llama3.1
 ```
 
 ### 3.4 Verify + dry-run
 
 ```bash
-cd /scratch/soumyaj/Set1_HPC
+cd /scratch/<HPC_USER>/Set1_HPC
 grep -c "detect_outcome" stitch_runner_hpc.py                     # >= 2
 grep -c 'ALL TESTS PASSED" not in output' stitch_runner_hpc.py    # 0
 grep -c "cwd=iter_dir" stitch_runner_hpc.py                       # >= 2
 grep -c "square_wave" set1_runner.py                              # >= 1
 grep -c "detect_outcome" escalation_runner_hpc.py                 # >= 1
 
-export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set1_HPC/src/interpreter
-export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set1_HPC/task_a_screen.json
-export RTLLM_ROOT=/scratch/soumyaj/Set1_HPC/RTLLM
+export STITCH_INTERPRETER_DIR=/scratch/<HPC_USER>/Set1_HPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/<HPC_USER>/Set1_HPC/task_a_screen.json
+export RTLLM_ROOT=/scratch/<HPC_USER>/Set1_HPC/RTLLM
 source venv/bin/activate
 python set1_runner.py --dry-run    # expect 1512
 ```
@@ -267,16 +267,16 @@ python set1_runner.py --dry-run    # expect 1512
 ### 3.5 Launch + monitor
 
 ```bash
-sbatch /scratch/soumyaj/Set1_HPC/set1_run.slurm
-squeue -u soumyaj
-tail -f /scratch/soumyaj/Set1_HPC/logs/set1_*.log
+sbatch /scratch/<HPC_USER>/Set1_HPC/set1_run.slurm
+squeue -u <HPC_USER>
+tail -f /scratch/<HPC_USER>/Set1_HPC/logs/set1_*.log
 
-python3 -c "import json; d=json.load(open('/scratch/soumyaj/Set1_HPC/results/set1_run/master_log.json')); print(len(d),'/1512 done,',sum(1 for e in d if e.get('error')),'errored')"
+python3 -c "import json; d=json.load(open('/scratch/<HPC_USER>/Set1_HPC/results/set1_run/master_log.json')); print(len(d),'/1512 done,',sum(1 for e in d if e.get('error')),'errored')"
 ```
 
 ### 3.6 Two-node parallelism note
 
-Set 1 (gpunode4) and Set 2 (gpunode6) run concurrently on different physical
+Set 1 (<GPU_NODE>) and Set 2 (<GPU_NODE>) run concurrently on different physical
 nodes. Both bind Ollama to `127.0.0.1:11434`, which is safe because each node has
 its own loopback. Scratch dirs, log names, and venvs are disjoint or symlinked to
 one source. Launch Set 2 first, wait ~2 min, then Set 1.
@@ -290,16 +290,16 @@ it on HPC, not just locally.
 
 ```bash
 # LAPTOP (PowerShell)
-scp phase2\verify_pass_detection.py soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/
+scp phase2\verify_pass_detection.py <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/RTLCoderHPC/
 
 # HPC
-cd /scratch/soumyaj/RTLCoderHPC
-sbatch --nodelist=gpunode4 --gres=gpu:0 --time=00:20:00 --mem=8G \
+cd /scratch/<HPC_USER>/RTLCoderHPC
+sbatch --nodelist=<GPU_NODE> --gres=gpu:0 --time=00:20:00 --mem=8G \
   --partition=gpu_a100_8 \
-  --output=/scratch/soumyaj/RTLCoderHPC/logs/verify_%j.log \
-  --wrap="source env.sh 2>/dev/null; source venv/bin/activate && export RTLLM_ROOT=/scratch/soumyaj/RTLCoderHPC/RTLLM && python verify_pass_detection.py --rtllm-root \$RTLLM_ROOT"
+  --output=/scratch/<HPC_USER>/RTLCoderHPC/logs/verify_%j.log \
+  --wrap="source env.sh 2>/dev/null; source venv/bin/activate && export RTLLM_ROOT=/scratch/<HPC_USER>/RTLCoderHPC/RTLLM && python verify_pass_detection.py --rtllm-root \$RTLLM_ROOT"
 
-tail -f /scratch/soumyaj/RTLCoderHPC/logs/verify_*.log
+tail -f /scratch/<HPC_USER>/RTLCoderHPC/logs/verify_*.log
 ```
 
 Expected: golden side 44/44 PASS (the Bug #3 regression guard). The broken side
@@ -320,18 +320,18 @@ dirs survived. This is the full recovery sequence, used to stand up Set 3.
 ### 5.1 Diagnose what survived
 
 ```bash
-ls -la /scratch/soumyaj/
-ls /scratch/soumyaj/Set3_HPC/RTLLM/Arithmetic 2>/dev/null && echo "RTLLM OK" || echo "RTLLM GONE"
-ls /scratch/soumyaj/oss-cad-suite/bin/iverilog 2>/dev/null && echo "OSS-CAD OK" || echo "OSS-CAD GONE"
-ls /scratch/soumyaj/*/bin/ollama 2>/dev/null && echo "OLLAMA BIN OK" || echo "OLLAMA BIN GONE"
+ls -la /scratch/<HPC_USER>/
+ls /scratch/<HPC_USER>/Set3_HPC/RTLLM/Arithmetic 2>/dev/null && echo "RTLLM OK" || echo "RTLLM GONE"
+ls /scratch/<HPC_USER>/oss-cad-suite/bin/iverilog 2>/dev/null && echo "OSS-CAD OK" || echo "OSS-CAD GONE"
+ls /scratch/<HPC_USER>/*/bin/ollama 2>/dev/null && echo "OLLAMA BIN OK" || echo "OLLAMA BIN GONE"
 ```
 
 ### 5.2 Rebuild dirs + venv
 
 ```bash
-mkdir -p /scratch/soumyaj/Set3_HPC/{logs,results,src/interpreter,ollama_models,bin}
-python3 -m venv /scratch/soumyaj/Set3_HPC/venv
-source /scratch/soumyaj/Set3_HPC/venv/bin/activate
+mkdir -p /scratch/<HPC_USER>/Set3_HPC/{logs,results,src/interpreter,ollama_models,bin}
+python3 -m venv /scratch/<HPC_USER>/Set3_HPC/venv
+source /scratch/<HPC_USER>/Set3_HPC/venv/bin/activate
 pip install openai
 ```
 
@@ -339,34 +339,34 @@ pip install openai
 
 ```bash
 # RTLLM (compute node)
-sbatch --nodelist=gpunode4 --gres=gpu:0 --time=00:20:00 --mem=8G \
+sbatch --nodelist=<GPU_NODE> --gres=gpu:0 --time=00:20:00 --mem=8G \
   --partition=gpu_a100_8 \
-  --output=/scratch/soumyaj/Set3_HPC/logs/rtllm_clone_%j.log \
-  --wrap="git clone https://github.com/hkust-zhiyao/RTLLM.git /scratch/soumyaj/Set3_HPC/RTLLM"
+  --output=/scratch/<HPC_USER>/Set3_HPC/logs/rtllm_clone_%j.log \
+  --wrap="git clone https://github.com/hkust-zhiyao/RTLLM.git /scratch/<HPC_USER>/Set3_HPC/RTLLM"
 
 # oss-cad-suite: LAPTOP download + scp is the reliable path (compute-node wget 404'd on stale tag)
 # LAPTOP (PowerShell), after downloading from the GitHub releases/latest page:
-cd C:\Users\karth\Downloads
-scp oss-cad-suite-linux-x64-YYYYMMDD.tgz soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/
+cd %USERPROFILE%\Downloads
+scp oss-cad-suite-linux-x64-YYYYMMDD.tgz <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/
 # HPC
-cd /scratch/soumyaj && tar xzf oss-cad-suite-linux-x64-YYYYMMDD.tgz
-ls /scratch/soumyaj/oss-cad-suite/bin/iverilog && echo "OSS-CAD OK"
+cd /scratch/<HPC_USER> && tar xzf oss-cad-suite-linux-x64-YYYYMMDD.tgz
+ls /scratch/<HPC_USER>/oss-cad-suite/bin/iverilog && echo "OSS-CAD OK"
 ```
 
 ### 5.4 Re-fetch ollama binary (.tar.zst needs conda zstd)
 
 ```bash
 # LAPTOP (PowerShell)
-cd C:\Users\karth\Downloads
-scp ollama-linux-amd64.tar.zst soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/
+cd %USERPROFILE%\Downloads
+scp ollama-linux-amd64.tar.zst <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set3_HPC/
 
 # HPC: the cluster tar has no --zstd, use conda's zstd
 conda install -y -c conda-forge zstd
-cd /scratch/soumyaj/Set3_HPC
+cd /scratch/<HPC_USER>/Set3_HPC
 zstd -d ollama-linux-amd64.tar.zst -o ollama-linux-amd64.tar
 tar xf ollama-linux-amd64.tar
 chmod +x bin/ollama
-find /scratch/soumyaj/Set3_HPC -name ollama -type f    # confirm at Set3_HPC/bin/ollama
+find /scratch/<HPC_USER>/Set3_HPC -name ollama -type f    # confirm at Set3_HPC/bin/ollama
 ./bin/ollama --version
 
 # cleanup
@@ -378,7 +378,7 @@ rm ollama-linux-amd64.tar ollama-linux-amd64.tar.zst
 ## Part 6: Set 3 (STITCH Conditions, Large Models) Deployment and Run
 
 **Scope:** 3 larger models (`qwen2.5-coder:14b`, `qwen2.5-coder:32b`, `gemma3:27b`) x 4
-conditions x 17 recoverable-band modules x N=3 = 612 runs, T=0.1. Node: gpunode4
+conditions x 17 recoverable-band modules x N=3 = 612 runs, T=0.1. Node: <GPU_NODE>
 (A100), `--time=120:00:00`, fits in ~1 sbatch. Recoverable band only, no
 ceilings/floors.
 
@@ -388,12 +388,12 @@ Point `OLLAMA_MODELS` at `Set3_HPC/ollama_models` and the ollama binary at
 `Set3_HPC/bin`. Chain-free; run before the main run (or dependency-chain, Part 7).
 
 ```bash
-sbatch /scratch/soumyaj/Set3_HPC/pull_ollama_models_set3.slurm
-tail -f /scratch/soumyaj/Set3_HPC/logs/ollama_pull_*.log
+sbatch /scratch/<HPC_USER>/Set3_HPC/pull_ollama_models_set3.slurm
+tail -f /scratch/<HPC_USER>/Set3_HPC/logs/ollama_pull_*.log
 # ends with ollama list showing qwen2.5-coder:14b, qwen2.5-coder:32b, gemma3:27b
 
 # login-node-safe confirmation
-ls /scratch/soumyaj/Set3_HPC/ollama_models/manifests/registry.ollama.ai/library/
+ls /scratch/<HPC_USER>/Set3_HPC/ollama_models/manifests/registry.ollama.ai/library/
 # expect: gemma3 qwen2.5-coder
 ```
 
@@ -406,18 +406,18 @@ pass_detection. `module_categories.json` is the SET2 copy (recoverable-tier
 source). RTLLM already on HPC.
 
 ```bash
-# LAPTOP (PowerShell), from d:\Projects\STITCH
-ssh soumyaj@hpc.bits-hyderabad.ac.in "mkdir -p /scratch/soumyaj/Set3_HPC/{logs,results,src/interpreter,ollama_models}"
+# LAPTOP (PowerShell), from <REPO_ROOT>
+ssh <HPC_USER>@<HPC_HOST> "mkdir -p /scratch/<HPC_USER>/Set3_HPC/{logs,results,src/interpreter,ollama_models}"
 
 scp phase2\set3_runner.py phase2\set3_run.slurm phase2\pull_ollama_models_set3.slurm `
     phase2\stitch_runner_hpc.py phase2\escalation_runner_hpc.py `
     phase1\error_signature.py phase1\escalation_state.py `
     phase1\results\rtllm_pilot\task_a_screen.json `
     phase2\twin_analysis_SET2\module_categories.json `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set3_HPC/
 
 scp src\interpreter\pass_detection.py src\interpreter\stitch_interpreter.py `
-    soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/src/interpreter/
+    <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set3_HPC/src/interpreter/
 ```
 
 ### 6.3 Fix the RTLLM path in the slurm (scp overwrites it with the laptop copy)
@@ -427,9 +427,9 @@ which no longer exists after the wipe. Re-point it to `Set3_HPC/RTLLM` after eve
 deploy.
 
 ```bash
-cd /scratch/soumyaj/Set3_HPC
+cd /scratch/<HPC_USER>/Set3_HPC
 grep RTLLM_ROOT set3_run.slurm
-sed -i 's|/scratch/soumyaj/RTLCoderHPC/RTLLM|/scratch/soumyaj/Set3_HPC/RTLLM|g' set3_run.slurm
+sed -i 's|/scratch/<HPC_USER>/RTLCoderHPC/RTLLM|/scratch/<HPC_USER>/Set3_HPC/RTLLM|g' set3_run.slurm
 grep RTLLM_ROOT set3_run.slurm    # confirm now Set3_HPC/RTLLM
 grep -r "RTLCoderHPC/RTLLM" *.slurm set3_runner.py   # expect no output
 ```
@@ -437,15 +437,15 @@ grep -r "RTLCoderHPC/RTLLM" *.slurm set3_runner.py   # expect no output
 ### 6.4 Verify + dry-run
 
 ```bash
-cd /scratch/soumyaj/Set3_HPC
+cd /scratch/<HPC_USER>/Set3_HPC
 grep -c 'ALL TESTS PASSED" not in output' stitch_runner_hpc.py    # 0
 grep -c "detect_outcome" stitch_runner_hpc.py                     # >= 2
 python3 -c "import json; d=json.load(open('module_categories.json')); print(len([m for m,i in d.items() if i['difficulty_tier']=='recoverable']))"   # expect 17
 
-export STITCH_INTERPRETER_DIR=/scratch/soumyaj/Set3_HPC/src/interpreter
-export TASK_A_SCREEN_JSON=/scratch/soumyaj/Set3_HPC/task_a_screen.json
-export MODULE_CATEGORIES_JSON=/scratch/soumyaj/Set3_HPC/module_categories.json
-export RTLLM_ROOT=/scratch/soumyaj/Set3_HPC/RTLLM
+export STITCH_INTERPRETER_DIR=/scratch/<HPC_USER>/Set3_HPC/src/interpreter
+export TASK_A_SCREEN_JSON=/scratch/<HPC_USER>/Set3_HPC/task_a_screen.json
+export MODULE_CATEGORIES_JSON=/scratch/<HPC_USER>/Set3_HPC/module_categories.json
+export RTLLM_ROOT=/scratch/<HPC_USER>/Set3_HPC/RTLLM
 source venv/bin/activate
 python set3_runner.py --dry-run    # expect 612
 ```
@@ -453,11 +453,11 @@ python set3_runner.py --dry-run    # expect 612
 ### 6.5 Launch + monitor
 
 ```bash
-sbatch /scratch/soumyaj/Set3_HPC/set3_run.slurm
-squeue -u soumyaj
-tail -f /scratch/soumyaj/Set3_HPC/logs/set3_*.log
+sbatch /scratch/<HPC_USER>/Set3_HPC/set3_run.slurm
+squeue -u <HPC_USER>
+tail -f /scratch/<HPC_USER>/Set3_HPC/logs/set3_*.log
 
-python3 -c "import json; d=json.load(open('/scratch/soumyaj/Set3_HPC/results/set3_run/master_log.json')); print(len(d),'/612 done,',sum(1 for e in d if e.get('error')),'errored')"
+python3 -c "import json; d=json.load(open('/scratch/<HPC_USER>/Set3_HPC/results/set3_run/master_log.json')); print(len(d),'/612 done,',sum(1 for e in d if e.get('error')),'errored')"
 ```
 
 ---
@@ -467,9 +467,9 @@ python3 -c "import json; d=json.load(open('/scratch/soumyaj/Set3_HPC/results/set
 ### 7.1 Chaining a run to start after a pull (hands-off overnight)
 
 ```bash
-squeue -u soumyaj                              # note the pull job id, e.g. 350622
+squeue -u <HPC_USER>                              # note the pull job id, e.g. 350622
 sbatch --dependency=afterok:350622 set3_run.slurm
-squeue -u soumyaj                              # run shows PD (Dependency) until pull succeeds
+squeue -u <HPC_USER>                              # run shows PD (Dependency) until pull succeeds
 ```
 
 `afterok` means the run only starts if the pull exits 0 (all models verified). A
@@ -480,9 +480,9 @@ failed pull holds the run rather than launching it with missing models.
 ```bash
 # move a queued job to a free node without editing the slurm
 scancel <jobid>
-sbatch --nodelist=gpunode5 --partition=gpu_h100_4 --time=72:00:00 <script>.slurm
+sbatch --nodelist=<GPU_NODE> --partition=gpu_h100_4 --time=72:00:00 <script>.slurm
 # for the ollama pull (no GPU needed), request zero GPUs to slot into spare capacity
-sbatch --nodelist=gpunode5 --partition=gpu_h100_4 --gres=gpu:0 pull_ollama_models_set3.slurm
+sbatch --nodelist=<GPU_NODE> --partition=gpu_h100_4 --gres=gpu:0 pull_ollama_models_set3.slurm
 ```
 
 Note: `gpu_rtx_pro_6000_6_csis_hyd` rejects jobs without a group-specific QOS
@@ -505,9 +505,9 @@ just `sbatch` the same script again. No flag, no "part 2" script.
 
 ```bash
 # LAPTOP (PowerShell)
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/RTLCoderHPC/results/twin_run d:\Projects\STITCH\phase2\results\
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set1_HPC/results/set1_run   d:\Projects\STITCH\phase2\results\
-scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/results/set3_run   d:\Projects\STITCH\phase2\results\
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/RTLCoderHPC/results/twin_run <REPO_ROOT>\phase2\results\
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set1_HPC/results/set1_run   <REPO_ROOT>\phase2\results\
+scp -r <HPC_USER>@<HPC_HOST>:/scratch/<HPC_USER>/Set3_HPC/results/set3_run   <REPO_ROOT>\phase2\results\
 ```
 
 `phase2/results/` is gitignored; these land locally and are never committed.
@@ -518,9 +518,10 @@ scp -r soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/Set3_HPC/results/set3_r
 
 | Run | Scratch dir | Models | Conditions | Modules | N | Temp | Runs | Errors | Node |
 |---|---|---|---|---|---|---|---|---|---|
-| Set 2 (Twin) | RTLCoderHPC | 5 model-conditions | baseline | 42 | 3 | 0.5 | 630 | 0 | gpunode6 H100 |
-| Set 1 | Set1_HPC | 3 small (4B–8B) | 4 | 42 | 3 | 0.1 | 1512 | 6 | gpunode4 A100 |
-| Set 3 | Set3_HPC | 3 large (14B–32B) | 4 | 17 | 3 | 0.1 | 612 | 2 | gpunode4 A100 |
+| Set 2 (Twin) | RTLCoderHPC | 5 model-conditions | baseline | 42 | 3 | 0.5 | 630 | 0 | <GPU_NODE> H100 |
+| Set 1 | Set1_HPC | 3 small (4B–8B) | 4 | 42 | 3 | 0.1 | 1512 | 6 | <GPU_NODE> A100 |
+| Set 3 | Set3_HPC | 3 large (14B–32B) | 4 | 17 | 3 | 0.1 | 612 | 2 | <GPU_NODE> A100 |
+| Phase 3 (planned) | Phase3_HPC | 6 small-to-medium (3B–14B) | 5 | 11 tasks | 3 | 0.1 | 990 | – | <GPU_NODE> H100 |
 
 Total: 2,754 confirmatory runs. All error rates < 0.5%, all transient Ollama
 timeouts, none structural. Every pass/fail routed through the hardened
@@ -536,5 +537,18 @@ cells before launch.
 | `ModuleNotFoundError: stitch_interpreter` | `src/interpreter/` not deployed | scp `pass_detection.py` + `stitch_interpreter.py` to `src/interpreter/` |
 | dry-run asserts 0 != 42/17 | RTLLM path unresolved locally | run dry-run on HPC with `RTLLM_ROOT` set (runners read the env var; only `verify_pass_detection.py` has a `--rtllm-root` flag) |
 | `tar: unrecognized option '--zstd'` | old cluster tar | `conda install -c conda-forge zstd`, then `zstd -d` + `tar xf` |
-| pull job `Invalid qos specification` | restricted partition | use gpunode4/5, not the csis_hyd partition |
+| pull job `Invalid qos specification` | restricted partition | use <GPU_NODE>/5, not the csis_hyd partition |
 | run PD `(Resources)` | GPU node busy | wait (you are first in line) or override to a free node (Part 7.2) |
+
+---
+
+## Part 9: Phase 3 (MPSoC composition + interpreter v3)
+
+Status: **planned**. The integration is finished on branch `phase3-setup` (2026-09-24); nothing has been run on the
+HPC yet, so the Part 8 row for it carries no error count.
+
+- **Scratch dir:** `/scratch/<HPC_USER>/Phase3_HPC` (fresh; do not rely on `Set1_HPC` / `Set3_HPC` still existing).
+- **Node:** `<GPU_NODE>`, partition `gpu_h100_4` (`phase3/hpc/phase3_run.slurm`; `--nodelist=<GPU_NODE>` is the fallback, same
+  pattern as Part 7.2).
+- **Size:** 6 models x 11 tasks x 5 conditions x N=3 = **990 runs**, T=0.1, 6 iterations per run in every condition.
+- **Commands:** `phase3/HPC_PHASE3_COMMANDS.md`, Parts A-I. It replaces the per-Set command blocks above for this run.

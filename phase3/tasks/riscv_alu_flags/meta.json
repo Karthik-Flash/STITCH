@@ -1,0 +1,16 @@
+{
+  "track": "S",
+  "top": "riscv_alu_flags",
+  "defect_classes": [
+    "LATCH"
+  ],
+  "sim_silent": true,
+  "seeded": "incomplete case (no default) + carry/overflow assigned only in ADD/SUB",
+  "compose": null,
+  "expected_v3_classes": [
+    "LATCH"
+  ],
+  "expected_v2_classes": [
+    "LATCH"
+  ]
+}

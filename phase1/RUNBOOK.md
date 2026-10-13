@@ -195,7 +195,7 @@ rather than deleting silently.
   already-bare `module <design>`) and renames as needed.
 - **Command:** `python phase1/rtllm_task_a_screen.py`
 - **Requires:** WSL (Icarus only — no Ollama, no model calls). Reads
-  `D:\Projects\RTLLM` live; RTLLM itself is never copied into this repo.
+  `<RTLLM_ROOT>` live; RTLLM itself is never copied into this repo.
 - **Produced:** the 44/50 compatible pool (6 exclusions, each a distinct
   diagnosed reason — table in `RTLLM_PILOT_PREREG.md` §D) that both the
   pilot and any future HPC study draw their module set from.

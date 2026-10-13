@@ -61,6 +61,36 @@ models/frontier_config.yaml
 scratch/
 paper_112_final.pdf
 AutoChip_HPC_Reference.docx
-STITCH_EXT.pdf
-STITCH_EXT_FINAL.pdf
+
 reSTITCH.md
+reSTITCH_PHASE3_EXPLAINED.md
+
+# --- Phase 3 (MPSoC composition + interpreter v3) ---
+# Local run output (E0 retro-audit, smoke runs): regenerable, never committed.
+phase3/results/
+# Drop leftovers: the source archive, and the one-off snippet already merged into .gitattributes.
+STITCH_phase3_drop.zip
+STITCH_phase3_drop/
+phase3/GITATTRIBUTES_ADDITIONS.txt
+# (phase3/HANDOFF_PHASE3_CLAUDE_CODE.md is already covered by the handoff*.md rule above.)
+# The real Yosys/Verilator logs are frozen test evidence (44 tests + validate_tasks read them),
+# so re-include them despite the global *.log rule.
+!phase3/**/*.log
+stitch-api-key.txt
+
+# Secrets. API keys live in %USERPROFILE%\.stitch\api_keys.env, outside the repo; never commit any .env.
+*.env
+
+# LaTeX build output: compile into paper/build/ (pdflatex -output-directory=build).
+paper/build/
+# v10 builds in place (latexmk -pdf main.tex); its PDFs are outputs, not sources.
+paper/overleaf/*.pdf
+*.aux
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.lof
+*.lot

@@ -3,7 +3,7 @@ phase2/set3_runner.py -- Set 3: the scale ladder. Same STITCH-conditions
 sweep as Set 1 (baseline/sem_adv/sem_escalate/sem_escalate_restart), but
 on 3 larger Ollama models (14B-32B) the conference paper's Table 2 tested
 and the extension has not yet run, restricted to the recoverable-band
-module pool only. Runs on gpunode4 (A100, gpu_a100_8), same partition
+module pool only. Runs on <GPU_NODE> (A100, gpu_a100_8), same partition
 Set 1 used -- see phase2/SET3_ANALYSIS.md for the research
 question this answers: does the harmful regime (`sem_adv` below
 `baseline` on the recoverable band, `phase2/SET1_ANALYSIS.md`'s tier-split
@@ -36,7 +36,7 @@ N=3 = 612 runs.
   Models:     qwen2.5-coder:14b, qwen2.5-coder:32b, gemma3:27b -- the
               three conference-paper (Table 2) models the extension
               hasn't run yet. Already pulled on HPC under
-              /scratch/soumyaj/AutoChipHPC/ollama_models (a DIFFERENT
+              /scratch/$USER/AutoChipHPC/ollama_models (a DIFFERENT
               OLLAMA_MODELS directory from Set 1/2's RTLCoderHPC one --
               these three were pulled for the AutoChip project, not this
               one; see set3_run.slurm).
@@ -74,7 +74,7 @@ route through detect_outcome(sim_log, "rtllm") internally
 (src/interpreter/pass_detection.py) -- nothing here reimplements any part
 of that.
 
-Runs on gpunode4 via stitch_runner_hpc.py (the Linux-native HPC port)
+Runs on <GPU_NODE> via stitch_runner_hpc.py (the Linux-native HPC port)
 and phase2/escalation_runner_hpc.py -- identical dependency set to Set 1.
 
 Output layout (see _relocate() for why a post-run move is needed):
@@ -132,7 +132,7 @@ MODULE_CATEGORIES_JSON = os.environ.get("MODULE_CATEGORIES_JSON") or (
     _FLAT_CATEGORIES_JSON if os.path.exists(_FLAT_CATEGORIES_JSON) else _DEV_CATEGORIES_JSON
 )
 
-RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT", os.path.expandvars("/scratch/$USER/RTLCoderHPC/RTLLM"))
 # Deliberately the SAME checkout Set 1/Set 2 read -- RTLLM is read-only
 # I/O for every job; sharing one checkout avoids yet another
 # multi-hundred-MB clone. See docs/FULL_RUN_RUNBOOK.md's two-node-independence
@@ -292,7 +292,7 @@ def _verify_ollama_models():
         print(f"FATAL: Ollama server at {_OLLAMA_BASE_URL} is missing: {missing}. "
               f"Available: {sorted(available)}. Set 3 does NOT pull inline -- "
               f"these 3 models are expected to already be present under "
-              f"OLLAMA_MODELS=/scratch/soumyaj/AutoChipHPC/ollama_models "
+              f"OLLAMA_MODELS=/scratch/$USER/AutoChipHPC/ollama_models "
               f"(pulled for the AutoChip project). Confirm with `ollama list` "
               f"against that path (see docs/FULL_RUN_RUNBOOK.md); if genuinely "
               f"missing, pull them there first, then resubmit.")

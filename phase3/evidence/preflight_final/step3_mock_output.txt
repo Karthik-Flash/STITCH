@@ -1,0 +1,56 @@
+NOTE: the first two 'byte-identical: False' lines came from a filter bug in the comparison script (it kept the
+baseline_gate prompts in the post-diff set: 32 = 26 + 6). The corrected comparison is the last three lines: True for both modes.
+
+done: 15 new runs
+done: 18 new runs
+done: 15 new runs
+done: 18 new runs
+== misspelt condition
+stitch_runner_p3.py: error: argument --conditions: invalid choice: 'baseline_gat' (choose from 'baseline', 'raw_adv', 'sem_adv_v2', 'sem_adv_v3', 'sem_esc_restart_v3', 'baseline_gate')
+exit=0
+[fix_on_2] 5 conditions: 26 prompts old, 32 new, byte-identical: False
+    mockm/baseline/register_4bit/rep1/iter1/prompt.txt 372c7deed379e818 372c7deed379e818
+    mockm/baseline/register_4bit/rep1/iter2/prompt.txt cea80422fa0fe5b7 cea80422fa0fe5b7
+    mockm/raw_adv/mux3/rep1/iter1/prompt.txt 678ce1d8780a873d 678ce1d8780a873d
+    mockm/raw_adv/mux3/rep1/iter2/prompt.txt 51005362aa714fc2 51005362aa714fc2
+    mockm/sem_esc_restart_v3/register_4bit/rep1/iter1/prompt.txt 372c7deed379e818 372c7deed379e818
+    mockm/sem_esc_restart_v3/register_4bit/rep1/iter2/prompt.txt e4fee9b2cb57f892 e4fee9b2cb57f892
+[fix_on_2] metrics (except timestamp/wall_s/path; provenance added): differing runs []
+[fix_on_2] gate mux3: calls=2 stop=clean_pass clean=True toolfb=0 sf=0 would_fire=True would_class=['LATCH'] would_fire_final=False esc=None restart=False feedbacks=['SIMULATION PASSED.\n\nThe design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.']
+[fix_on_2] gate register_1bit: calls=2 stop=clean_pass clean=True toolfb=0 sf=0 would_fire=True would_class=['ASYNC_RESET'] would_fire_final=False esc=None restart=False feedbacks=['SIMULATION PASSED.\n\nThe design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.']
+[fix_on_2] gate register_4bit: calls=2 stop=clean_pass clean=True toolfb=0 sf=0 would_fire=True would_class=['MISSING_CLOCK'] would_fire_final=False esc=None restart=False feedbacks=['SIMULATION FAIL:\nFAIL transparent between edges i=1\nFAIL edge i=2 dout=d exp=1\nFAIL transparent between edges i=3\nFAIL edge i=4 dout=d exp=9\nFAIL transparent between edges i=5\nFAIL edge i=5 dout=d exp=9\nFAIL transparent between edges i=6\nFAIL edge i=6 dout=7 exp=2\nFAIL transparent between edges i=7\nFAIL edge i=7 dout=7 exp=e\nFAIL transparent between edges i=8\nFAIL edge i=8 dout=7 exp=e\nFAIL transparent between edges i=9\nFAIL edge i=9 dout=d exp=5\nFAIL transparent between edges i=10']
+[echo] 5 conditions: 78 prompts old, 96 new, byte-identical: False
+    mockm/baseline/register_4bit/rep1/iter1/prompt.txt 372c7deed379e818 372c7deed379e818
+    mockm/baseline/register_4bit/rep1/iter2/prompt.txt cea80422fa0fe5b7 cea80422fa0fe5b7
+    mockm/baseline/register_4bit/rep1/iter3/prompt.txt cea80422fa0fe5b7 cea80422fa0fe5b7
+    mockm/baseline/register_4bit/rep1/iter4/prompt.txt cea80422fa0fe5b7 cea80422fa0fe5b7
+    mockm/sem_esc_restart_v3/register_4bit/rep1/iter5/prompt.txt e4fee9b2cb57f892 e4fee9b2cb57f892
+    mockm/sem_esc_restart_v3/register_4bit/rep1/iter6/prompt.txt e4fee9b2cb57f892 e4fee9b2cb57f892
+[echo] metrics (except timestamp/wall_s/path; provenance added): differing runs []
+[echo] gate mux3: calls=6 stop=budget clean=False toolfb=0 sf=0 would_fire=True would_class=['LATCH'] would_fire_final=True esc=None restart=False feedbacks=['SIMULATION PASSED.\n\nThe design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.']
+[echo] gate register_1bit: calls=6 stop=budget clean=False toolfb=0 sf=0 would_fire=True would_class=['ASYNC_RESET'] would_fire_final=True esc=None restart=False feedbacks=['SIMULATION PASSED.\n\nThe design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.']
+[echo] gate register_4bit: calls=6 stop=budget clean=False toolfb=0 sf=0 would_fire=True would_class=['MISSING_CLOCK'] would_fire_final=True esc=None restart=False feedbacks=['SIMULATION FAIL:\nFAIL transparent between edges i=1\nFAIL edge i=2 dout=d exp=1\nFAIL transparent between edges i=3\nFAIL edge i=4 dout=d exp=9\nFAIL transparent between edges i=5\nFAIL edge i=5 dout=d exp=9\nFAIL transparent between edges i=6\nFAIL edge i=6 dout=7 exp=2\nFAIL transparent between edges i=7\nFAIL edge i=7 dout=7 exp=e\nFAIL transparent between edges i=8\nFAIL edge i=8 dout=7 exp=e\nFAIL transparent between edges i=9\nFAIL edge i=9 dout=d exp=5\nFAIL transparent between edges i=10']
+provenance sample: {
+ "node": "Karthik",
+ "toolchain": {
+  "yosys": "Yosys 0.33 (git sha1 2584903a060)",
+  "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+  "iverilog": "Icarus Verilog version 12.0 (stable) ()"
+ },
+ "v3_version": "3.0.1",
+ "base_interp_sha256_lf": "42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff",
+ "v3_interp_sha256_lf": "29321afc43fcef167876eec38a492383539b1e53c508a510d4716dd0136c7dec",
+ "v3_parsers_sha256_lf": "90b1403916c75829b95cc70273545f9b8a75638c227ee21f57a26ca332bfe344",
+ "runner_sha256_lf": "119611fe10f2e23a2dc4f7c0c85ce20f7a176fa1311c26ea56b98b1087b76a36",
+ "p3_eval_sha256_lf": "56d177b2bb076013a0fa29290fcfbf8c0f4c1f256d49e09d94ab3dd1080de2d0",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "model_digest": "mock",
+ "tb_v_sha256_lf": "a4645b87d1f460d7dd5b0bf4294b63eb3263f91367546622afd379f7ae555890",
+ "spec_md_sha256_lf": "068063b5edb5065fd003d0a961f92046b2c82f6518bb16814d39c0c537c7f1fb",
+ "input_v_sha256_lf": "81cf8c18e57e3109e6efa099391ec6153b9d6bec7f1f3f907bf288808c0dba84",
+ "meta_json_sha256_lf": "b655a609348d103dcf10a810db7daaa8690bb8bb948d12fe9eacb8a981e95420"
+}
+bash: /c/Users/karth/AppData/Local/Temp/claude/d--Projects-STITCH/5b8cb46f-c7c9-4e18-a86b-cd445e2bb9aa/scratchpad/s1/cmp.sh: No such file or directory
+misspelt condition: exit=2
+[fix_on_2] 5 conditions: 26 prompts pre-diff, 26 post-diff; byte-identical: True; aggregate hash pre 4bb67cc3bca2d5fd post 4bb67cc3bca2d5fd; baseline_gate prompts 6
+[echo] 5 conditions: 78 prompts pre-diff, 78 post-diff; byte-identical: True; aggregate hash pre f9870666eb6852af post f9870666eb6852af; baseline_gate prompts 18

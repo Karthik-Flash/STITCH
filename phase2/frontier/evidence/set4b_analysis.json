@@ -1,0 +1,1543 @@
+{
+  "runs": 684,
+  "errored": 85,
+  "models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gemini-2.5-flash",
+    "claude-haiku-4-5-20251001"
+  ],
+  "coverage": {
+    "gpt-4.1-mini-2025-04-14": {
+      "valid": 228,
+      "errored": 0
+    },
+    "gemini-2.5-flash": {
+      "valid": 228,
+      "errored": 0
+    },
+    "claude-haiku-4-5-20251001": {
+      "valid": 143,
+      "errored": 85
+    }
+  },
+  "Q1": {
+    "accu": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "adder_16bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "adder_32bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "adder_bcd": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "adder_pipe_64bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      }
+    },
+    "alu": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      }
+    },
+    "barrel_shifter": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 1,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "counter_12": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "div_16bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 2,
+        "n": 3,
+        "tier": "recoverable"
+      }
+    },
+    "float_multi": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 2,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "gemini-2.5-flash": {
+        "k": 1,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 1,
+        "n": 3,
+        "tier": "recoverable"
+      }
+    },
+    "freq_divbyfrac": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      }
+    },
+    "fsm": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "LIFObuffer": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "multi_pipe_4bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "multi_pipe_8bit": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 1,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "parallel2serial": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 1,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      }
+    },
+    "pulse_detect": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "serial2parallel": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "gemini-2.5-flash": {
+        "k": 3,
+        "n": 3,
+        "tier": "ceiling"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    },
+    "traffic_light": {
+      "gpt-4.1-mini-2025-04-14": {
+        "k": 2,
+        "n": 3,
+        "tier": "recoverable"
+      },
+      "gemini-2.5-flash": {
+        "k": 0,
+        "n": 3,
+        "tier": "floor"
+      },
+      "claude-haiku-4-5-20251001": {
+        "k": 0,
+        "n": 0,
+        "tier": null
+      }
+    }
+  },
+  "Q2": {
+    "baseline": {
+      "runs": 150,
+      "fails": 61,
+      "fails_with_sf": 0,
+      "passes": 89,
+      "passes_sf_before_pass": 0,
+      "passes_sf_before_pass_where_baseline_0of3": []
+    },
+    "sem_adv": {
+      "runs": 150,
+      "fails": 68,
+      "fails_with_sf": 37,
+      "passes": 82,
+      "passes_sf_before_pass": 11,
+      "passes_sf_before_pass_where_baseline_0of3": [
+        [
+          "gemini-2.5-flash",
+          "multi_pipe_4bit",
+          3
+        ],
+        [
+          "claude-haiku-4-5-20251001",
+          "adder_pipe_64bit",
+          2
+        ],
+        [
+          "claude-haiku-4-5-20251001",
+          "adder_pipe_64bit",
+          3
+        ]
+      ]
+    },
+    "sem_escalate": {
+      "runs": 150,
+      "fails": 63,
+      "fails_with_sf": 33,
+      "passes": 87,
+      "passes_sf_before_pass": 1,
+      "passes_sf_before_pass_where_baseline_0of3": [],
+      "escalated": 84
+    },
+    "sem_escalate_restart": {
+      "runs": 149,
+      "fails": 57,
+      "fails_with_sf": 33,
+      "passes": 92,
+      "passes_sf_before_pass": 0,
+      "passes_sf_before_pass_where_baseline_0of3": [],
+      "escalated": 75
+    }
+  },
+  "Q3": {
+    "pooled|sem_adv": {
+      "mean_pts": -2.777777777777777,
+      "lo": -15.277777777777777,
+      "hi": 11.111111111111112,
+      "p": 0.848207589620519,
+      "cells": 24
+    },
+    "pooled|sem_escalate": {
+      "mean_pts": 1.3888888888888886,
+      "lo": -11.111111111111109,
+      "hi": 13.888888888888886,
+      "p": 1.0,
+      "cells": 24
+    },
+    "pooled|sem_escalate_restart": {
+      "mean_pts": 8.333333333333334,
+      "lo": -6.944444444444443,
+      "hi": 23.61111111111111,
+      "p": 0.40662966851657417,
+      "cells": 24
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "mean_pts": -9.999999999999998,
+      "lo": -23.333333333333332,
+      "hi": 0.0,
+      "p": 0.5045747712614369,
+      "cells": 10
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "mean_pts": -3.333333333333333,
+      "lo": -20.0,
+      "hi": 13.333333333333332,
+      "p": 1.0,
+      "cells": 10
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "mean_pts": -13.333333333333332,
+      "lo": -33.33333333333333,
+      "hi": 3.333333333333333,
+      "p": 0.37223138843057846,
+      "cells": 10
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "mean_pts": 3.7037037037037046,
+      "lo": -18.518518518518515,
+      "hi": 33.333333333333336,
+      "p": 1.0,
+      "cells": 9
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "mean_pts": 14.814814814814813,
+      "lo": -3.7037037037037033,
+      "hi": 37.03703703703703,
+      "p": 0.3738313084345783,
+      "cells": 9
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "mean_pts": 33.333333333333336,
+      "lo": 11.111111111111109,
+      "hi": 55.55555555555556,
+      "p": 0.061946902654867256,
+      "cells": 9
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "mean_pts": 0.0,
+      "lo": -26.666666666666664,
+      "hi": 33.33333333333333,
+      "p": 1.0,
+      "cells": 5
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "mean_pts": -13.333333333333332,
+      "lo": -26.666666666666664,
+      "hi": 0.0,
+      "p": 0.49617519124043796,
+      "cells": 5
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "mean_pts": 6.666666666666666,
+      "lo": -19.999999999999996,
+      "hi": 39.99999999999999,
+      "p": 1.0,
+      "cells": 5
+    }
+  },
+  "Q4": [
+    "freq_divbyfrac"
+  ],
+  "Q4_table": {
+    "accu": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "adder_16bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "adder_32bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        11,
+        12
+      ]
+    },
+    "adder_bcd": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "adder_pipe_64bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        2,
+        12
+      ],
+      "gemini-2.5-flash": [
+        0,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        4,
+        12
+      ]
+    },
+    "alu": {
+      "gpt-4.1-mini-2025-04-14": [
+        0,
+        12
+      ],
+      "gemini-2.5-flash": [
+        3,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        12
+      ]
+    },
+    "barrel_shifter": {
+      "gpt-4.1-mini-2025-04-14": [
+        1,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "counter_12": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        12,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "div_16bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        0,
+        12
+      ],
+      "gemini-2.5-flash": [
+        0,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        6,
+        12
+      ]
+    },
+    "float_multi": {
+      "gpt-4.1-mini-2025-04-14": [
+        4,
+        12
+      ],
+      "gemini-2.5-flash": [
+        4,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        1,
+        11
+      ]
+    },
+    "freq_divbyfrac": {
+      "gpt-4.1-mini-2025-04-14": [
+        0,
+        12
+      ],
+      "gemini-2.5-flash": [
+        0,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        12
+      ]
+    },
+    "fsm": {
+      "gpt-4.1-mini-2025-04-14": [
+        11,
+        12
+      ],
+      "gemini-2.5-flash": [
+        11,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "LIFObuffer": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        9,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "multi_pipe_4bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        8,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "multi_pipe_8bit": {
+      "gpt-4.1-mini-2025-04-14": [
+        0,
+        12
+      ],
+      "gemini-2.5-flash": [
+        2,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "parallel2serial": {
+      "gpt-4.1-mini-2025-04-14": [
+        1,
+        12
+      ],
+      "gemini-2.5-flash": [
+        5,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        12,
+        12
+      ]
+    },
+    "pulse_detect": {
+      "gpt-4.1-mini-2025-04-14": [
+        0,
+        12
+      ],
+      "gemini-2.5-flash": [
+        8,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "serial2parallel": {
+      "gpt-4.1-mini-2025-04-14": [
+        12,
+        12
+      ],
+      "gemini-2.5-flash": [
+        11,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    },
+    "traffic_light": {
+      "gpt-4.1-mini-2025-04-14": [
+        4,
+        12
+      ],
+      "gemini-2.5-flash": [
+        4,
+        12
+      ],
+      "claude-haiku-4-5-20251001": [
+        0,
+        0
+      ]
+    }
+  },
+  "Q4_zero_gpt_haiku": [
+    "alu",
+    "freq_divbyfrac"
+  ],
+  "Q4_zero_all_three": [
+    "freq_divbyfrac"
+  ],
+  "Q4_zero_all_available": [
+    "freq_divbyfrac"
+  ],
+  "Q4_failures": [
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "systemverilog_syntax"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "freq_divbyfrac.v:42: error: Variable declaration in unnamed block requires SystemVerilog."
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "reg_wire_mismatch",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "reg_wire_mismatch",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "systemverilog_syntax"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "freq_divbyfrac.v:53: error: Variable declaration in unnamed block requires SystemVerilog."
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          0: clk=1, clk_div=0 (expected           1)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "baseline",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 1,
+      "iterations": 6,
+      "err_types": [
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_adv",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "compile_other",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          0: clk=1, clk_div=0 (expected           1)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "module": "freq_divbyfrac",
+      "condition": "sem_escalate_restart",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "compile_other",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "Failed at          3: clk=0, clk_div=1 (expected           0)"
+    }
+  ],
+  "pass_rates": {
+    "gpt-4.1-mini-2025-04-14|baseline": [
+      32,
+      57
+    ],
+    "gpt-4.1-mini-2025-04-14|sem_adv": [
+      29,
+      57
+    ],
+    "gpt-4.1-mini-2025-04-14|sem_escalate": [
+      31,
+      57
+    ],
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": [
+      27,
+      57
+    ],
+    "gemini-2.5-flash|baseline": [
+      33,
+      57
+    ],
+    "gemini-2.5-flash|sem_adv": [
+      29,
+      57
+    ],
+    "gemini-2.5-flash|sem_escalate": [
+      35,
+      57
+    ],
+    "gemini-2.5-flash|sem_escalate_restart": [
+      40,
+      57
+    ],
+    "claude-haiku-4-5-20251001|baseline": [
+      24,
+      36
+    ],
+    "claude-haiku-4-5-20251001|sem_adv": [
+      24,
+      36
+    ],
+    "claude-haiku-4-5-20251001|sem_escalate": [
+      21,
+      36
+    ],
+    "claude-haiku-4-5-20251001|sem_escalate_restart": [
+      25,
+      35
+    ]
+  },
+  "cost": {
+    "gpt-4.1-mini-2025-04-14|baseline": {
+      "usd": 0.3442864,
+      "inr_per_run": 0.6842239191578947,
+      "inr_per_pass": 1.2187738559999999,
+      "truncated": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "usd": 0.3972432,
+      "inr_per_run": 0.7894685911578948,
+      "inr_per_pass": 1.551714127448276,
+      "truncated": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "usd": 0.5646836000000001,
+      "inr_per_run": 1.1222343545263158,
+      "inr_per_pass": 2.063463168,
+      "truncated": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "usd": 0.5597496000000001,
+      "inr_per_run": 1.1124286787368423,
+      "inr_per_pass": 2.3484605440000004,
+      "truncated": 0
+    },
+    "gemini-2.5-flash|baseline": {
+      "usd": 0.7861127099999999,
+      "inr_per_run": 1.5622955752421053,
+      "inr_per_pass": 2.6985105390545456,
+      "truncated": 0
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "usd": 0.91864334,
+      "inr_per_run": 1.8256827641263158,
+      "inr_per_pass": 3.5884109501793104,
+      "truncated": 0
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "usd": 1.166625,
+      "inr_per_run": 2.3185136842105263,
+      "inr_per_pass": 3.775865142857143,
+      "truncated": 0
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "usd": 0.99306575,
+      "inr_per_run": 1.9735875115789474,
+      "inr_per_pass": 2.8123622040000003,
+      "truncated": 0
+    },
+    "claude-haiku-4-5-20251001|baseline": {
+      "usd": 0.988851,
+      "inr_per_run": 3.11158448,
+      "inr_per_pass": 4.66737672,
+      "truncated": 0
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "usd": 1.133537,
+      "inr_per_run": 3.5668630933333336,
+      "inr_per_pass": 5.35029464,
+      "truncated": 0
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "usd": 1.822181,
+      "inr_per_run": 5.733796213333333,
+      "inr_per_pass": 9.829364937142858,
+      "truncated": 0
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "usd": 1.338097,
+      "inr_per_run": 4.330846518857143,
+      "inr_per_pass": 6.0631851264,
+      "truncated": 0
+    }
+  },
+  "spend_usd": 11.0617066,
+  "reasoning_calls": 0
+}

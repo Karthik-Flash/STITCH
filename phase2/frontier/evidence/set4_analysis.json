@@ -1,0 +1,783 @@
+{
+  "runs_total": 612,
+  "runs_errored": 0,
+  "errored": [],
+  "pass_rates": {
+    "pooled|baseline": {
+      "k": 152,
+      "n": 153,
+      "rate": 0.9934640522875817,
+      "lo": 0.963910334453747,
+      "hi": 0.9988453115048115
+    },
+    "pooled|sem_adv": {
+      "k": 151,
+      "n": 153,
+      "rate": 0.9869281045751634,
+      "lo": 0.9535960513763885,
+      "hi": 0.9964078641721229
+    },
+    "pooled|sem_escalate": {
+      "k": 150,
+      "n": 153,
+      "rate": 0.9803921568627451,
+      "lo": 0.9439426735787184,
+      "hi": 0.9933095115597457
+    },
+    "pooled|sem_escalate_restart": {
+      "k": 150,
+      "n": 153,
+      "rate": 0.9803921568627451,
+      "lo": 0.9439426735787184,
+      "hi": 0.9933095115597457
+    },
+    "gpt-4.1-mini-2025-04-14|baseline": {
+      "k": 50,
+      "n": 51,
+      "rate": 0.9803921568627451,
+      "lo": 0.8969543127385502,
+      "hi": 0.9965303073589391
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "k": 49,
+      "n": 51,
+      "rate": 0.9607843137254902,
+      "lo": 0.8678369434463774,
+      "hi": 0.9891789166471329
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "k": 48,
+      "n": 51,
+      "rate": 0.9411764705882353,
+      "lo": 0.8407537395119957,
+      "hi": 0.9797933605775353
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "k": 48,
+      "n": 51,
+      "rate": 0.9411764705882353,
+      "lo": 0.8407537395119957,
+      "hi": 0.9797933605775353
+    },
+    "gemini-2.5-flash|baseline": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "claude-haiku-4-5-20251001|baseline": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "k": 51,
+      "n": 51,
+      "rate": 1.0,
+      "lo": 0.9299533801014687,
+      "hi": 1.0
+    }
+  },
+  "contrasts": {
+    "pooled|sem_adv": {
+      "mean_pts": -0.65359477124183,
+      "lo": -1.96078431372549,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 51,
+      "line": "sem_adv - baseline: cell mean -0.7 pts [-2.0, +0.0], cells=51, sign-flip p=1.000"
+    },
+    "pooled|sem_escalate": {
+      "mean_pts": -1.30718954248366,
+      "lo": -3.92156862745098,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 51,
+      "line": "sem_escalate - baseline: cell mean -1.3 pts [-3.9, +0.0], cells=51, sign-flip p=1.000"
+    },
+    "pooled|sem_escalate_restart": {
+      "mean_pts": -1.30718954248366,
+      "lo": -3.92156862745098,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 51,
+      "line": "sem_escalate_restart - baseline: cell mean -1.3 pts [-3.9, +0.0], cells=51, sign-flip p=1.000"
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "mean_pts": -1.96078431372549,
+      "lo": -5.88235294117647,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_adv - baseline: cell mean -2.0 pts [-5.9, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "mean_pts": -3.92156862745098,
+      "lo": -11.76470588235294,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate - baseline: cell mean -3.9 pts [-11.8, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "mean_pts": -3.92156862745098,
+      "lo": -11.76470588235294,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate_restart - baseline: cell mean -3.9 pts [-11.8, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_adv - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate_restart - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_adv - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "mean_pts": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "p": 1.0,
+      "cells": 17,
+      "line": "sem_escalate_restart - baseline: cell mean +0.0 pts [+0.0, +0.0], cells=17, sign-flip p=1.000"
+    }
+  },
+  "trace": {
+    "pooled|baseline": {
+      "runs": 153,
+      "passes": 152,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 152,
+      "passes_sf_before_pass": 0
+    },
+    "pooled|sem_adv": {
+      "runs": 153,
+      "passes": 151,
+      "sf_runs": 20,
+      "passes_with_sf": 20,
+      "passes_without_sf": 131,
+      "passes_sf_before_pass": 5
+    },
+    "pooled|sem_escalate": {
+      "runs": 153,
+      "passes": 150,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 150,
+      "passes_sf_before_pass": 0,
+      "escalated": 5,
+      "escalation_rate": 0.032679738562091505,
+      "escalated_passes": 2
+    },
+    "pooled|sem_escalate_restart": {
+      "runs": 153,
+      "passes": 150,
+      "sf_runs": 1,
+      "passes_with_sf": 1,
+      "passes_without_sf": 149,
+      "passes_sf_before_pass": 1,
+      "escalated": 5,
+      "escalation_rate": 0.032679738562091505,
+      "escalated_passes": 2
+    },
+    "gpt-4.1-mini-2025-04-14|baseline": {
+      "runs": 51,
+      "passes": 50,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 50,
+      "passes_sf_before_pass": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "runs": 51,
+      "passes": 49,
+      "sf_runs": 5,
+      "passes_with_sf": 5,
+      "passes_without_sf": 44,
+      "passes_sf_before_pass": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "runs": 51,
+      "passes": 48,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 48,
+      "passes_sf_before_pass": 0,
+      "escalated": 3,
+      "escalation_rate": 0.058823529411764705,
+      "escalated_passes": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "runs": 51,
+      "passes": 48,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 48,
+      "passes_sf_before_pass": 0,
+      "escalated": 3,
+      "escalation_rate": 0.058823529411764705,
+      "escalated_passes": 0
+    },
+    "gemini-2.5-flash|baseline": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 51,
+      "passes_sf_before_pass": 0
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 6,
+      "passes_with_sf": 6,
+      "passes_without_sf": 45,
+      "passes_sf_before_pass": 1
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 51,
+      "passes_sf_before_pass": 0,
+      "escalated": 0,
+      "escalation_rate": 0.0,
+      "escalated_passes": 0
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 51,
+      "passes_sf_before_pass": 0,
+      "escalated": 1,
+      "escalation_rate": 0.0196078431372549,
+      "escalated_passes": 1
+    },
+    "claude-haiku-4-5-20251001|baseline": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 51,
+      "passes_sf_before_pass": 0
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 9,
+      "passes_with_sf": 9,
+      "passes_without_sf": 42,
+      "passes_sf_before_pass": 4
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 0,
+      "passes_with_sf": 0,
+      "passes_without_sf": 51,
+      "passes_sf_before_pass": 0,
+      "escalated": 2,
+      "escalation_rate": 0.0392156862745098,
+      "escalated_passes": 2
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "runs": 51,
+      "passes": 51,
+      "sf_runs": 1,
+      "passes_with_sf": 1,
+      "passes_without_sf": 50,
+      "passes_sf_before_pass": 1,
+      "escalated": 1,
+      "escalation_rate": 0.0196078431372549,
+      "escalated_passes": 1
+    }
+  },
+  "tools": {
+    "pooled": {
+      "baseline": 0.0,
+      "sem_adv": 2.287581699346405,
+      "sem_escalate": 0.26143790849673204,
+      "sem_escalate_restart": 0.2679738562091503,
+      "reduction_pct": 88.57142857142857
+    },
+    "gpt-4.1-mini-2025-04-14": {
+      "baseline": 0.0,
+      "sem_adv": 2.392156862745098,
+      "sem_escalate": 0.7058823529411765,
+      "sem_escalate_restart": 0.6862745098039216,
+      "reduction_pct": 70.49180327868851
+    },
+    "gemini-2.5-flash": {
+      "baseline": 0.0,
+      "sem_adv": 2.215686274509804,
+      "sem_escalate": 0.0,
+      "sem_escalate_restart": 0.0392156862745098,
+      "reduction_pct": 100.0
+    },
+    "claude-haiku-4-5-20251001": {
+      "baseline": 0.0,
+      "sem_adv": 2.2549019607843137,
+      "sem_escalate": 0.0784313725490196,
+      "sem_escalate_restart": 0.0784313725490196,
+      "reduction_pct": 96.52173913043478
+    }
+  },
+  "cost": {
+    "gpt-4.1-mini-2025-04-14|baseline": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "condition": "baseline",
+      "runs": 51,
+      "passes": 50,
+      "tokens_per_run": 1340.1764705882354,
+      "input_tokens_per_run": 944.4117647058823,
+      "output_tokens_per_run": 395.7647058823529,
+      "tokens_per_pass": 1366.98,
+      "usd_total": 0.0502548,
+      "inr_per_run": 0.11162477929411765,
+      "inr_per_pass": 0.11385727488000001,
+      "calls": 57,
+      "latency_s_mean": 3.164859884663632,
+      "truncated": 0
+    },
+    "gpt-4.1-mini-2025-04-14|sem_adv": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "condition": "sem_adv",
+      "runs": 51,
+      "passes": 49,
+      "tokens_per_run": 1758.3529411764705,
+      "input_tokens_per_run": 1288.5294117647059,
+      "output_tokens_per_run": 469.8235294117647,
+      "tokens_per_pass": 1830.1224489795918,
+      "usd_total": 0.057250800000000004,
+      "inr_per_run": 0.12716412988235296,
+      "inr_per_pass": 0.13235450253061226,
+      "calls": 61,
+      "latency_s_mean": 3.3524535366746244,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": 31.203090023262938
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "condition": "sem_escalate",
+      "runs": 51,
+      "passes": 48,
+      "tokens_per_run": 2731.1960784313724,
+      "input_tokens_per_run": 2192.1176470588234,
+      "output_tokens_per_run": 539.0784313725491,
+      "tokens_per_pass": 2901.8958333333335,
+      "usd_total": 0.07123600000000001,
+      "inr_per_run": 0.15822772705882354,
+      "inr_per_pass": 0.16811696,
+      "calls": 72,
+      "latency_s_mean": 3.3294931285911136,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": 103.79376435646459
+    },
+    "gpt-4.1-mini-2025-04-14|sem_escalate_restart": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "condition": "sem_escalate_restart",
+      "runs": 51,
+      "passes": 48,
+      "tokens_per_run": 2783.1960784313724,
+      "input_tokens_per_run": 2236.2549019607845,
+      "output_tokens_per_run": 546.9411764705883,
+      "tokens_per_pass": 2957.1458333333335,
+      "usd_total": 0.07101160000000001,
+      "inr_per_run": 0.15772929505882355,
+      "inr_per_pass": 0.16758737600000004,
+      "calls": 73,
+      "latency_s_mean": 3.4244928164024877,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": 107.67385038552133
+    },
+    "gemini-2.5-flash|baseline": {
+      "model": "gemini-2.5-flash",
+      "condition": "baseline",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 2016.686274509804,
+      "input_tokens_per_run": 1304.2941176470588,
+      "output_tokens_per_run": 712.3921568627451,
+      "tokens_per_pass": 2016.686274509804,
+      "usd_total": 0.11051273,
+      "inr_per_run": 0.2454682755764706,
+      "inr_per_pass": 0.2454682755764706,
+      "calls": 59,
+      "latency_s_mean": 3.823469335749998,
+      "truncated": 0
+    },
+    "gemini-2.5-flash|sem_adv": {
+      "model": "gemini-2.5-flash",
+      "condition": "sem_adv",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 1970.4901960784314,
+      "input_tokens_per_run": 1290.3529411764705,
+      "output_tokens_per_run": 680.1372549019608,
+      "tokens_per_pass": 1970.4901960784314,
+      "usd_total": 0.10618666,
+      "inr_per_run": 0.23585931068235297,
+      "inr_per_pass": 0.23585931068235297,
+      "calls": 60,
+      "latency_s_mean": 3.692857793966929,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -2.290692360793767
+    },
+    "gemini-2.5-flash|sem_escalate": {
+      "model": "gemini-2.5-flash",
+      "condition": "sem_escalate",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 1667.4117647058824,
+      "input_tokens_per_run": 992.6274509803922,
+      "output_tokens_per_run": 674.7843137254902,
+      "tokens_per_pass": 1667.4117647058824,
+      "usd_total": 0.10095085,
+      "inr_per_run": 0.22422965270588235,
+      "inr_per_pass": 0.22422965270588235,
+      "calls": 58,
+      "latency_s_mean": 3.821560004661823,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -17.3192287872748
+    },
+    "gemini-2.5-flash|sem_escalate_restart": {
+      "model": "gemini-2.5-flash",
+      "condition": "sem_escalate_restart",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 1846.1764705882354,
+      "input_tokens_per_run": 1161.3921568627452,
+      "output_tokens_per_run": 684.7843137254902,
+      "tokens_per_pass": 1846.1764705882354,
+      "usd_total": 0.10480633,
+      "inr_per_run": 0.2327933541647059,
+      "inr_per_pass": 0.2327933541647059,
+      "calls": 59,
+      "latency_s_mean": 3.8410512390783276,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -8.454949392810962
+    },
+    "claude-haiku-4-5-20251001|baseline": {
+      "model": "claude-haiku-4-5-20251001",
+      "condition": "baseline",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 2268.2549019607845,
+      "input_tokens_per_run": 1718.137254901961,
+      "output_tokens_per_run": 550.1176470588235,
+      "tokens_per_pass": 2268.2549019607845,
+      "usd_total": 0.227905,
+      "inr_per_run": 0.5062172235294118,
+      "inr_per_pass": 0.5062172235294118,
+      "calls": 62,
+      "latency_s_mean": 3.8393960768176663,
+      "truncated": 0
+    },
+    "claude-haiku-4-5-20251001|sem_adv": {
+      "model": "claude-haiku-4-5-20251001",
+      "condition": "sem_adv",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 2089.627450980392,
+      "input_tokens_per_run": 1567.2156862745098,
+      "output_tokens_per_run": 522.4117647058823,
+      "tokens_per_pass": 2089.627450980392,
+      "usd_total": 0.213143,
+      "inr_per_run": 0.47342821647058825,
+      "inr_per_pass": 0.47342821647058825,
+      "calls": 59,
+      "latency_s_mean": 3.8184259907673983,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -7.8751048141008635
+    },
+    "claude-haiku-4-5-20251001|sem_escalate": {
+      "model": "claude-haiku-4-5-20251001",
+      "condition": "sem_escalate",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 2133.8627450980393,
+      "input_tokens_per_run": 1611.7058823529412,
+      "output_tokens_per_run": 522.156862745098,
+      "tokens_per_pass": 2133.8627450980393,
+      "usd_total": 0.215347,
+      "inr_per_run": 0.47832368941176473,
+      "inr_per_pass": 0.47832368941176473,
+      "calls": 60,
+      "latency_s_mean": 3.867474623521169,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -5.924914203715392
+    },
+    "claude-haiku-4-5-20251001|sem_escalate_restart": {
+      "model": "claude-haiku-4-5-20251001",
+      "condition": "sem_escalate_restart",
+      "runs": 51,
+      "passes": 51,
+      "tokens_per_run": 2228.5882352941176,
+      "input_tokens_per_run": 1693.450980392157,
+      "output_tokens_per_run": 535.1372549019608,
+      "tokens_per_pass": 2228.5882352941176,
+      "usd_total": 0.222826,
+      "inr_per_run": 0.4949358682352941,
+      "inr_per_pass": 0.4949358682352941,
+      "calls": 60,
+      "latency_s_mean": 3.8845813433329264,
+      "truncated": 0,
+      "token_overhead_vs_baseline_pct": -1.7487746475220778
+    }
+  },
+  "truncation": {},
+  "latency": {},
+  "failures": [
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "baseline",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_adv",
+      "replicate": 2,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_adv",
+      "replicate": 3,
+      "iterations": 6,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "replicate": 1,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "replicate": 2,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "=========== Test completed with           2 /3 failures ==========="
+    },
+    {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "replicate": 3,
+      "iterations": 8,
+      "err_types": [
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "logic_error",
+        "compile_other"
+      ],
+      "dominant": "logic_error",
+      "last_sim_line": "sequence_detector.v:24: error: Unable to bind wire/reg/memory `next_state' in `tb_sequence_detector.dut'"
+    }
+  ],
+  "system_fingerprints": [
+    "fp_6050bec882",
+    "fp_b43877da5b"
+  ],
+  "fingerprint_counts": {
+    "fp_6050bec882": 7,
+    "fp_b43877da5b": 256
+  },
+  "spend_usd_full": 1.55143077,
+  "spend_inr_full": 175.7460776256
+}

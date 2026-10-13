@@ -1,0 +1,2 @@
+alu: reference PASS | failures {'compile': 32, 'sim': 209} | top [('===========Error===========', 206), ("error: 'r' has already been declared in this scope.", 12), ('error: Variable declaration in unnamed block requires SystemVerilog.', 8)]
+freq_divbyfrac: reference PASS | failures {'sim': 240, 'compile': 12} | top [('Failed at          N: clk=N, clk_div=N (expected           N)', 240), ("error: 'clk_div' has already been declared in this scope.", 8), ('error: Variable declaration in unnamed block requires SystemVerilog.', 2)]

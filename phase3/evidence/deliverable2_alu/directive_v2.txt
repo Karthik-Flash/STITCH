@@ -1,0 +1,17 @@
+*** YOSYS: LATCH INFERRED for signal(s) 'result', 'carry', 'overflow' ***
+
+ROOT CAUSE: Yosys inferred a latch on 'result' because it is not
+assigned on every code path through the always block. This means
+'result' will hold its previous value on paths where no assignment
+occurs, which is almost certainly not what you intended for a
+combinational output.
+
+Apply the same repair to 'carry', 'overflow'.
+
+EXACT FIX:
+  Close BOTH gaps in the case -- a default alone will not fix it:
+    1. assign 'result' in the 4 branch(es) that currently omit it, and
+    2. add a default branch that also assigns 'result'.
+  Simplest alternative that covers every path at once: assign
+  'result' unconditionally ONCE immediately BEFORE the case, then
+  let individual branches override it.

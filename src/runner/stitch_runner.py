@@ -230,8 +230,8 @@ def run_yosys_check(v_file, module_name):
     """Returns (report_str, has_latch, latch_lines, cell_count, has_loop, loop_modules)."""
     wsl_path = win_to_wsl(v_file)
     # FIX 2026-08-18: wsl_path must be quoted inside the -p script string.
-    # Every path in this project has spaces (D:\BITS Files\Year 3\...\LLM_Verilog
-    # Project\AgenticAI\...) and Yosys's own -p parser tokenizes read_verilog's
+    # Every path in this project has spaces (<DATA_ROOT>, a folder whose name
+    # contains spaces) and Yosys's own -p parser tokenizes read_verilog's
     # argument on whitespace — unquoted, it only ever read "/mnt/d/BITS" and
     # failed with "Can't open input file". Confirmed this was silently failing
     # on every raw_adv/sem_adv iteration in this project's history (has_latches

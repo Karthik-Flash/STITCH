@@ -1,0 +1,2179 @@
+{
+  "summary": {
+    "candidates": 140,
+    "modules": 17,
+    "conditions": 4,
+    "passes": 64,
+    "fails": 76,
+    "a_agree": 140,
+    "b_checked": 51,
+    "b_agree": 51,
+    "b_fired_in_sample": 24
+  },
+  "rows": [
+    {
+      "module": "JC_counter",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "JC_counter/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "JC_counter/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_adv",
+      "iter": 2,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "JC_counter/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "JC_counter/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "JC_counter/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "JC_counter/qwen25-coder_14b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "JC_counter/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "JC_counter/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "JC_counter",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "JC_counter/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/baseline/rep2",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_adv",
+      "iter": 4,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/sem_adv/rep2",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "LFSR/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "LFSR/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate_restart",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "LFSR/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "LFSR/qwen25-coder_32b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "LFSR",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "LFSR/qwen25-coder_32b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "RAM/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "RAM/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "RAM/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "RAM/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_adv",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "RAM/qwen25-coder_14b/sem_adv/rep3",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "RAM/qwen25-coder_14b/sem_escalate_restart/rep2",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "RAM/qwen25-coder_32b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "RAM/qwen25-coder_32b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "RAM",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "RAM/qwen25-coder_32b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "adder_8bit",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "adder_8bit/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "adder_8bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "adder_8bit/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "adder_8bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "adder_8bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "adder_8bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "adder_8bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "calendar/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "calendar/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_adv",
+      "iter": 2,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "calendar/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "calendar/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "calendar/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "calendar/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate_restart",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "calendar/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "calendar/qwen25-coder_14b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "calendar/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "calendar/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "calendar",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "calendar/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "baseline",
+      "iter": 4,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_adv",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "comparator_4bit/gemma3_27b/sem_adv/rep2",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate/rep2",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate_restart",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_escalate_restart",
+      "iter": 4,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "comparator_4bit/gemma3_27b/sem_escalate_restart/rep3",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "comparator_4bit",
+      "condition": "sem_adv",
+      "iter": 5,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "comparator_4bit/qwen25-coder_32b/sem_adv/rep2",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_adder/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": true,
+      "run": "fixed_point_adder/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_adder/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_adder/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_adder/qwen25-coder_14b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_adder/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_adder/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_adder",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_adder/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_substractor/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_substractor/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_substractor/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "fixed_point_substractor/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_escalate",
+      "iter": 2,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_substractor/qwen25-coder_14b/sem_escalate/rep2",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_escalate_restart",
+      "iter": 2,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_substractor/qwen25-coder_14b/sem_escalate_restart/rep3",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_substractor/qwen25-coder_32b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "fixed_point_substractor",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "fixed_point_substractor/qwen25-coder_32b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_div/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_div/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_adv",
+      "iter": 4,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "freq_div/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_div/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_div/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_adv",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "freq_div/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_escalate",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "freq_div/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_div",
+      "condition": "sem_escalate_restart",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "freq_div/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/baseline/rep3",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/sem_escalate/rep2",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "freq_divbyeven",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "freq_divbyeven/gemma3_27b/sem_escalate_restart/rep2",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "instr_reg/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "instr_reg/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "instr_reg/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "instr_reg/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "instr_reg/qwen25-coder_14b/baseline/rep3",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "instr_reg/qwen25-coder_32b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "instr_reg/qwen25-coder_32b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "instr_reg",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "instr_reg/qwen25-coder_32b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_16bit/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "multi_16bit/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "MULTIDRIVEN",
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "MULTIDRIVEN",
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_16bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate",
+      "iter": 4,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "multi_16bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN",
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_16bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate_restart",
+      "iter": 4,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "multi_16bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN",
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "baseline",
+      "iter": 2,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_16bit/qwen25-coder_14b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": true,
+      "run": "multi_16bit/qwen25-coder_32b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "local_cls": [
+        [
+          "WIDTHEXPAND"
+        ],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_16bit/qwen25-coder_32b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "multi_16bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_16bit/qwen25-coder_32b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_booth_8bit/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_booth_8bit/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_booth_8bit/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "multi_booth_8bit/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_booth_8bit/qwen25-coder_14b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_booth_8bit/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_booth_8bit/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "multi_booth_8bit",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "multi_booth_8bit/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "sequence_detector/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "sequence_detector/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_adv",
+      "iter": 2,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "sequence_detector/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "sequence_detector/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "iter": 4,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "sequence_detector/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "sequence_detector/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "iter": 4,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "sequence_detector/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "MULTIDRIVEN"
+        ],
+        false,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "sequence_detector/qwen25-coder_14b/baseline/rep2",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "sequence_detector/qwen25-coder_14b/sem_escalate/rep2",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "sequence_detector",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "sequence_detector/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "signal_generator/gemma3_27b/baseline/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "signal_generator/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "signal_generator/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate",
+      "iter": 4,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "signal_generator/gemma3_27b/sem_escalate/rep3",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": null,
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "FAIL",
+      "sim_outcome": "FAIL",
+      "fired": false,
+      "run": "signal_generator/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_adv",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "signal_generator/qwen25-coder_14b/sem_adv/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "signal_generator/qwen25-coder_14b/sem_adv/rep2",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "signal_generator/qwen25-coder_14b/sem_escalate/rep1",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "signal_generator/qwen25-coder_14b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "sem_escalate_restart",
+      "iter": 3,
+      "role": "FIRED",
+      "sim_outcome": "FAIL",
+      "fired": true,
+      "run": "signal_generator/qwen25-coder_14b/sem_escalate_restart/rep2",
+      "local_outcome": "FAIL",
+      "a_match": true,
+      "local_fired": true,
+      "saved_cls": null,
+      "local_cls": [
+        [
+          "UNUSEDSIGNAL"
+        ],
+        true,
+        true
+      ],
+      "b_match": true
+    },
+    {
+      "module": "signal_generator",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "signal_generator/qwen25-coder_32b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "synchronizer",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "synchronizer/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "synchronizer",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "synchronizer/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "synchronizer",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "synchronizer/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "synchronizer",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "synchronizer/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "width_8to16",
+      "condition": "baseline",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "width_8to16/gemma3_27b/baseline/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "width_8to16",
+      "condition": "sem_adv",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "width_8to16/gemma3_27b/sem_adv/rep1",
+      "local_outcome": "PASS",
+      "a_match": true,
+      "local_fired": false,
+      "saved_cls": [
+        [],
+        false,
+        false
+      ],
+      "local_cls": [
+        [],
+        false,
+        false
+      ],
+      "b_match": true
+    },
+    {
+      "module": "width_8to16",
+      "condition": "sem_escalate",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "width_8to16/gemma3_27b/sem_escalate/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    },
+    {
+      "module": "width_8to16",
+      "condition": "sem_escalate_restart",
+      "iter": 1,
+      "role": "PASS",
+      "sim_outcome": "PASS",
+      "fired": false,
+      "run": "width_8to16/gemma3_27b/sem_escalate_restart/rep1",
+      "local_outcome": "PASS",
+      "a_match": true
+    }
+  ]
+}

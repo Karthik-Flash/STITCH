@@ -1,0 +1,412 @@
+#!/usr/bin/env python3
+"""
+stitch_runner_p3.py -- Phase 3 runner: repair of real MPSoC leaves (Track R) + seeded RISC-V/NoC tasks (Track S).
+
+Conditions (all share ONE iteration budget, --max-iters, restarts included -> removes the Set 3
+Pass@8-vs-Pass@6 confound):
+  baseline             AutoChip: simulation feedback only; stops at func_pass (clean_pass scored post hoc)
+  raw_adv              sim + raw Verilator/Yosys text; stops at clean_pass
+  sem_adv_v2           sim + PRODUCTION interpreter (stitch_interpreter.py, unmodified) + raw; stops at clean_pass
+  sem_adv_v3           sim + v3 layer (stitch_interpreter_v3.py) + raw; stops at clean_pass
+  sem_esc_restart_v3   starts as baseline behind a clean-pass gate (generic "fails synthesis sign-off" message,
+                       no tool detail); escalates to v3 after 2 consecutive identical signatures; blank-slate
+                       restart if still stuck 2 iterations after escalating.
+  baseline_gate        control arm (added for the final batch): sim + the same generic gate message as
+                       sem_esc_restart_v3 before escalation; stops at clean_pass; never escalates or restarts; no tool
+                       detail fed back. The v3 interpretation of every RTL is LOGGED (would_fire / would_class), never fed.
+Every candidate is ALWAYS fully evaluated (sim + lint + synth) for SCORING; conditions differ only in what is FED BACK.
+
+Usage (HPC):  python phase3/runner/stitch_runner_p3.py --model llama3.1:8b --reps 3 --out results/phase3
+Smoke test:   python phase3/runner/stitch_runner_p3.py --backend mock --mock-mode fix_on_2 --reps 1 --out /tmp/p3smoke
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+import re
+import sys
+import time
+import urllib.request
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PHASE3_ROOT = os.path.dirname(HERE)                      # <repo>/phase3  (or /scratch/.../Phase3_HPC/phase3)
+REPO_ROOT = os.path.dirname(PHASE3_ROOT)
+INTERP_DIR = (os.environ.get("STITCH_INTERPRETER_DIR") or os.environ.get("STITCH_INTERP_DIR")
+              or os.path.join(REPO_ROOT, "src", "interpreter"))
+sys.path.insert(0, HERE)
+sys.path.insert(0, INTERP_DIR)
+from p3_eval import evaluate                   # noqa: E402
+import stitch_interpreter_v3 as IV3            # noqa: E402  (imports production stitch_interpreter unmodified)
+
+CONDITIONS = ["baseline", "raw_adv", "sem_adv_v2", "sem_adv_v3", "sem_esc_restart_v3", "baseline_gate"]
+TASKS_DIR = os.path.join(PHASE3_ROOT, "tasks")
+
+DEFAULT_SYSTEM_PROMPT = """You are an expert digital hardware engineer writing synthesizable Verilog-2001.
+Rules:
+1. Signals assigned inside an always block are declared reg; signals driven by assign are wire.
+2. Combinational always blocks use always @(*) and blocking '='. Clocked blocks use always @(posedge clk) and '<='.
+3. Every output of a combinational block is assigned on every path (defaults at the top, a default: case item).
+4. Each signal has exactly one driver.
+5. Widths on both sides of every assignment and port connection match exactly.
+6. Output only the complete module inside a single ```verilog code block."""
+
+
+# --------------------------------------------------------------------------- LLM backends
+class Ollama:
+    def __init__(self, model, host, temperature, num_ctx, timeout):
+        self.model, self.host, self.t, self.ctx, self.timeout = model, host.rstrip("/"), temperature, num_ctx, timeout
+
+    def chat(self, system, user):
+        body = json.dumps({"model": self.model, "stream": False,
+                           "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                           "options": {"temperature": self.t, "num_ctx": self.ctx}}).encode()
+        last = None
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(self.host + "/api/chat", data=body,
+                                             headers={"Content-Type": "application/json"})
+                with urllib.request.urlopen(req, timeout=self.timeout) as r:
+                    j = json.loads(r.read())
+                return j["message"]["content"], j.get("prompt_eval_count", 0), j.get("eval_count", 0)
+            except Exception as e:                     # transient Ollama timeouts: retry, then surface
+                last = e
+                time.sleep(5 * (attempt + 1))
+        raise RuntimeError(f"ollama failed after retries: {last}")
+
+
+class Mock:
+    """golden: always returns golden.v | echo: returns the input unchanged | fix_on_2: input first, golden after."""
+    def __init__(self, mode):
+        self.mode, self.calls = mode, {}
+
+    def bind(self, task_dir):
+        self.task_dir, self.n = task_dir, 0
+
+    def chat(self, system, user):
+        self.n += 1
+        f = "golden.v" if (self.mode == "golden" or (self.mode == "fix_on_2" and self.n >= 2)) else "input.v"
+        return "```verilog\n" + open(os.path.join(self.task_dir, f)).read() + "\n```", len(user) // 4, 200
+
+
+# --------------------------------------------------------------------------- helpers
+def extract_code(text: str) -> str:
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.S)
+    text = text.encode("ascii", "ignore").decode()
+    m = re.search(r"```(?:verilog|systemverilog|v|sv)?\s*\n(.*?)```", text, re.S)
+    if m:
+        code = m.group(1)
+    else:
+        m = re.search(r"```(?:verilog|systemverilog|v|sv)?\s*\n(.*)", text, re.S)   # unclosed fence (Defect B)
+        code = m.group(1) if m else text
+    s, e = code.find("module"), code.rfind("endmodule")
+    if s >= 0 and e > s:
+        code = code[s:e + len("endmodule")]
+    return code.strip() + "\n"
+
+
+def strip_paths(t: str, *dirs) -> str:
+    for d in dirs:
+        if d:
+            t = t.replace(os.path.abspath(d) + os.sep, "").replace(os.path.abspath(d), ".")
+    return t
+
+
+def sim_feedback(ev) -> str:
+    log = ev["_logs"]["sim"]
+    if not ev["compile_ok"]:
+        return "COMPILATION FAILED:\n" + "\n".join(log.splitlines()[:25])
+    if ev["sim_outcome"] == "PASS":
+        return "SIMULATION PASSED."
+    fails = [l for l in log.splitlines() if "FAIL" in l][:15]
+    return f"SIMULATION {ev['sim_outcome']}:\n" + "\n".join(fails)
+
+
+def raw_tool_text(ev, max_lines=40) -> str:
+    v = [l for l in ev["_logs"]["verilator"].splitlines() if l.startswith("%") and "Exiting due to" not in l]
+    y = []
+    lines = ev["_logs"]["yosys"].splitlines()
+    for i, l in enumerate(lines):
+        if ("Latch inferred for signal" in l and not l.strip().startswith("No")) or l.startswith("ERROR") or \
+                (l.startswith("Warning:") and "Replacing memory" not in l):
+            y.append(l)
+            if "logic loop" in l:
+                y += [x for x in lines[i + 1:i + 12] if x.startswith("    ")]
+    out = []
+    if v:
+        out.append("VERILATOR LINT OUTPUT:\n" + "\n".join(v[:max_lines]))
+    if y:
+        out.append("YOSYS SYNTHESIS OUTPUT:\n" + "\n".join(dict.fromkeys(y[:max_lines])))
+    return "\n\n".join(out)
+
+
+def signature(ev, interp=None) -> str:
+    s = "COMPILE" if not ev["compile_ok"] else ("SIMFAIL" if not ev["func_pass"] else "SIMOK")
+    return s + "|" + (interp["signature"] if interp else "")
+
+
+def user_prompt(spec, code, feedback=None) -> str:
+    """Neutral wording (no hint that a defect exists); identical for every condition. Conditions differ ONLY in FEEDBACK."""
+    p = f"Here is a Verilog-2001 module and its specification.\n\nSPECIFICATION:\n{spec}\n\nCURRENT RTL:\n```verilog\n{code}```\n"
+    if feedback:
+        p += f"\nVERIFICATION FEEDBACK ON THE CURRENT RTL:\n{feedback}\n"
+    p += ("\nReturn the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. "
+          "Keep the module name and port names as specified.")
+    return p
+
+
+def build_feedback(ev, cond, escalated, cpath, top, args):
+    """Feedback on one evaluated RTL for one condition. Returns (text, interp_or_None, used_tools)."""
+    fb, interp, used = [sim_feedback(ev)], None, False
+    if cond in ("raw_adv", "sem_adv_v2", "sem_adv_v3") or (cond == "sem_esc_restart_v3" and escalated):
+        used = True
+        if cond == "raw_adv":
+            fb.append(raw_tool_text(ev))
+        else:
+            ver = "v2" if cond == "sem_adv_v2" else "v3"
+            interp = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, version=ver, top=top,
+                                   **({"max_directives": args.max_directives} if ver == "v3" else {}))
+            if interp["fired"]:
+                fb.append("SEMANTIC ANALYSIS (fix these):\n" + interp["text"])
+            if args.sem_include_raw or not interp["fired"]:
+                fb.append(raw_tool_text(ev))
+    elif ev["func_pass"] and not ev["struct_clean"]:
+        fb.append("The design simulates correctly but FAILS SYNTHESIS SIGN-OFF. Re-check it for synthesis problems.")
+    return "\n\n".join(x for x in fb if x), interp, used
+
+
+def sha256_lf(path):
+    return hashlib.sha256(open(path, "rb").read().replace(b"\r\n", b"\n")).hexdigest()
+
+
+_STATIC = {}      # per-process provenance, filled once in main(): code hashes, v3 version, toolchain, node
+_DIGEST = {}      # model -> Ollama digest
+
+
+def model_digest(llm, model):
+    if model not in _DIGEST:
+        if isinstance(llm, Mock):
+            _DIGEST[model] = "mock"
+        else:
+            try:
+                with urllib.request.urlopen(llm.host + "/api/tags", timeout=30) as r:
+                    tags = json.loads(r.read())["models"]
+                _DIGEST[model] = next((t["digest"] for t in tags if t["name"] == model), "NOT_LISTED")
+            except Exception as e:
+                return f"UNAVAILABLE ({e.__class__.__name__})"    # not cached: retried on the next run
+    return _DIGEST[model]
+
+
+def provenance(tdir, model, llm):
+    return {**_STATIC, "model_digest": model_digest(llm, model),
+            **{f"{f.replace('.', '_')}_sha256_lf": sha256_lf(os.path.join(tdir, f))
+               for f in ("tb.v", "spec.md", "input.v", "meta.json")}}
+
+
+def _m(ev):
+    return {k: v for k, v in ev.items() if k != "_logs"}
+
+
+def _eval_into(cpath, code, tdir, top, idir):
+    os.makedirs(idir, exist_ok=True)
+    open(cpath, "w").write(code)
+    ev = evaluate(cpath, tdir, top, workdir=idir, keep=True)
+    for k, v in ev["_logs"].items():
+        open(os.path.join(idir, f"{k}.log"), "w").write(v)
+    return ev
+
+
+def run_one(llm, model, cond, task, rep, args, run_dir, gate_cache):
+    """Feedback-first protocol: the defective input is evaluated first (iteration 0) and the condition's feedback on
+    it goes into the FIRST LLM call. Budget = args.max_iters LLM calls for every condition (restarts included).
+    baseline = AutoChip: stops as soon as simulation passes -- including on the unmodified input (0 LLM calls)."""
+    tdir = os.path.join(TASKS_DIR, task)
+    meta = json.load(open(os.path.join(tdir, "meta.json")))
+    top, spec = meta["top"], open(os.path.join(tdir, "spec.md")).read()
+    code0 = open(os.path.join(tdir, "input.v")).read()
+    if isinstance(llm, Mock):
+        llm.bind(tdir)
+    cpath0 = os.path.join(run_dir, "iter0", "dut.v")
+    ev0 = _eval_into(cpath0, code0, tdir, top, os.path.join(run_dir, "iter0"))
+    ev, cpath, code = ev0, cpath0, code0
+    iters = [{"iter": 0, "input": True, **_m(ev0)}]
+    escalated_at, restarted, stuck, last_sig = None, False, 0, None
+    sem_iters, classes_union, tok_in, tok_out, fb_tool, calls = [], set(), 0, 0, 0, 0
+    stop_reason, t0 = "budget", time.time()
+    while True:
+        if cond == "baseline_gate":                    # LOG ONLY: what v3 would have said on this RTL; never fed back
+            wi = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, version="v3", top=top,
+                               max_directives=args.max_directives)
+            iters[-1]["would_fire"], iters[-1]["would_class"] = bool(wi["fired"]), sorted(wi["classes_fired"])
+        if cond == "baseline" and ev["func_pass"]:
+            stop_reason = "func_pass" if calls else "func_pass_at_input"; break
+        if cond != "baseline" and ev["clean_pass"]:
+            stop_reason = "clean_pass"; break
+        if calls >= args.max_iters:
+            break
+        if cond == "sem_esc_restart_v3":
+            si = IV3.interpret(ev["_logs"]["verilator"], ev["_logs"]["yosys"], cpath, top=top)
+            sig = signature(ev, si)
+            stuck = stuck + 1 if sig == last_sig else 1
+            last_sig = sig
+            iters[-1]["signature"] = sig
+            if escalated_at is None and stuck >= 2:
+                escalated_at, stuck = calls, 0
+            elif escalated_at is not None and not restarted and stuck >= 2:
+                restarted, stuck, last_sig = True, 0, None
+                iters[-1]["restart"] = True
+                ev, cpath, code = ev0, cpath0, code0          # blank slate: original RTL, fresh feedback on it
+        fb, interp, used = build_feedback(ev, cond, escalated_at is not None, cpath, top, args)
+        fb_tool += int(used)
+        fired = bool(interp and interp["fired"])
+        if fired:
+            sem_iters.append(calls); classes_union |= set(interp["classes_fired"])
+        iters[-1]["feedback_semantic_fired"] = fired
+        iters[-1]["feedback_classes"] = sorted(interp["classes_fired"]) if interp else []
+        feedback = strip_paths(fb, os.path.dirname(cpath), tdir)
+        calls += 1
+        idir = os.path.join(run_dir, f"iter{calls}")
+        os.makedirs(idir, exist_ok=True)
+        prompt = user_prompt(spec, code, feedback)
+        open(os.path.join(idir, "prompt.txt"), "w").write(prompt)
+        resp, ti, to = llm.chat(args.system_prompt, prompt)
+        tok_in += ti or 0; tok_out += to or 0
+        open(os.path.join(idir, "response.txt"), "w").write(resp)
+        code = extract_code(resp)
+        cpath = os.path.join(idir, "dut.v")
+        ev = _eval_into(cpath, code, tdir, top, idir)
+        iters.append({"iter": calls, **_m(ev)})
+    final = _m(ev)
+    m = {
+        "model": model, "condition": cond, "task": task, "track": meta["track"], "rep": rep,
+        "timestamp": dt.datetime.now().isoformat(timespec="seconds"), "protocol": "feedback_first_v2",
+        "interp_v3_version": IV3.V3_VERSION, "base_interp_sha256_lf": IV3.base_fingerprint(),
+        "temperature": args.temperature, "max_iters": args.max_iters, "sem_include_raw": args.sem_include_raw,
+        "iterations": calls, "llm_calls": calls, "stop_reason": stop_reason,
+        "latch_count_before": ev0["latch_events"], "latch_cells_before": ev0["latch_cells"],
+        "input_func_pass": ev0["func_pass"], "input_yosys_ok": ev0["yosys_ok"],
+        "latch_count_after": final["latch_events"], "latch_cells_after": final["latch_cells"],
+        "semantic_fired": bool(sem_iters), "semantic_fired_iters": sem_iters, "classes_fired": sorted(classes_union),
+        "verilator_warnings_count": final["verilator_warnings_count"], "verilator_codes_final": final["verilator_codes"],
+        "func_pass": final["func_pass"], "clean_pass": final["clean_pass"],
+        "silent_structural_pass": final["silent_structural_pass"], "final_yosys_ok": final["yosys_ok"],
+        "final_compile_ok": final["compile_ok"], "final_candidate": cpath,
+        "tokens_in": tok_in, "tokens_out": tok_out, "wall_s": round(time.time() - t0, 1),
+        "tool_feedback_iters": fb_tool, "escalated_at": escalated_at, "restarted": restarted,
+        "top_level_synthesis_pass": None,
+        "per_iter": iters,
+        "provenance": provenance(tdir, model, llm),
+    }
+    if cond == "baseline_gate":                        # fed = RTLs the gate verdict was given on (one per LLM call)
+        fed = [p for p in iters if "feedback_semantic_fired" in p]
+        m["would_fire"] = any(p["would_fire"] for p in fed)
+        m["would_class"] = sorted({c for p in fed for c in p["would_class"]})
+        m["would_fire_final"] = iters[-1]["would_fire"]
+    json.dump(m, open(os.path.join(run_dir, "metrics.json"), "w"), indent=1)
+    return m
+
+
+def _version(cmd):
+    import subprocess
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        return ((p.stdout or "") + (p.stderr or "")).strip().splitlines()[0]
+    except Exception as e:
+        return f"MISSING ({e.__class__.__name__})"
+
+
+def run_manifest(a, tasks):
+    import p3_eval as E
+    return {"host": os.uname().nodename if hasattr(os, "uname") else "?", "model": a.model, "backend": a.backend,
+            "started": dt.datetime.now().isoformat(timespec="seconds"), "tasks": tasks, "conditions": a.conditions,
+            "reps": a.reps, "temperature": a.temperature, "max_iters": a.max_iters, "max_directives": a.max_directives,
+            "sem_include_raw": a.sem_include_raw, "system_prompt_file": a.system_prompt_file,
+            "interpreter_dir": INTERP_DIR, "base_interp_sha256_lf": IV3.base_fingerprint(), "v3_version": IV3.V3_VERSION,
+            "toolchain": {"yosys": _version([E.YOSYS, "-V"]), "verilator": _version([E.VERILATOR, "--version"]),
+                          "iverilog": _version([E.IVERILOG, "-V"])}}
+
+
+def append_master(out_dir, rec):
+    """master_log.json (list) -- same monitoring one-liner as Sets 1-3. Atomic replace."""
+    p = os.path.join(out_dir, "master_log.json")
+    try:
+        data = json.load(open(p)) if os.path.exists(p) else []
+    except Exception:
+        data = []
+    data.append(rec)
+    tmp = p + ".tmp"
+    json.dump(data, open(tmp, "w"))
+    os.replace(tmp, p)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--model", default="mock")
+    ap.add_argument("--backend", choices=["ollama", "mock"], default="ollama")
+    ap.add_argument("--mock-mode", choices=["golden", "echo", "fix_on_2"], default="fix_on_2")
+    ap.add_argument("--host", default=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
+    ap.add_argument("--conditions", nargs="*", default=CONDITIONS, choices=CONDITIONS)
+    ap.add_argument("--tasks", nargs="*", default=None)
+    ap.add_argument("--reps", type=int, default=3)
+    ap.add_argument("--temperature", type=float, default=0.1)
+    ap.add_argument("--max-iters", type=int, default=6)
+    ap.add_argument("--max-directives", type=int, default=3)
+    ap.add_argument("--sem-include-raw", type=int, default=1,
+                    help="1 = directives + raw tool text (matches production comment in interpret_verilator)")
+    ap.add_argument("--num-ctx", type=int, default=8192)
+    ap.add_argument("--timeout", type=int, default=900)
+    ap.add_argument("--system-prompt-file", default=None, help="use the production SYSTEM_PROMPT for comparability")
+    ap.add_argument("--out", default="results/phase3_run")
+    ap.add_argument("--models", nargs="*", default=None,
+                    help="--dry-run only: model list used to report the full-plan run count")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="check tools/tasks/interpreter, print the plan and run count, run nothing")
+    a = ap.parse_args()
+    a.system_prompt = open(a.system_prompt_file).read() if a.system_prompt_file else DEFAULT_SYSTEM_PROMPT
+    tasks = a.tasks or sorted(d for d in os.listdir(TASKS_DIR) if os.path.isdir(os.path.join(TASKS_DIR, d)))
+    manifest = run_manifest(a, tasks)
+    _STATIC.update({"node": manifest["host"], "toolchain": manifest["toolchain"], "v3_version": IV3.V3_VERSION,
+                    "base_interp_sha256_lf": IV3.base_fingerprint(),
+                    "v3_interp_sha256_lf": sha256_lf(IV3.__file__),
+                    "v3_parsers_sha256_lf": sha256_lf(os.path.join(os.path.dirname(IV3.__file__), "_v3_parsers.py")),
+                    "runner_sha256_lf": sha256_lf(__file__), "p3_eval_sha256_lf": sha256_lf(os.path.join(HERE, "p3_eval.py")),
+                    "system_prompt_sha256_lf": hashlib.sha256(a.system_prompt.replace("\r\n", "\n").encode()).hexdigest()})
+    if a.dry_run:
+        n_models = len(a.models) if a.models else 1
+        per_model = len(tasks) * len(a.conditions) * a.reps
+        print(json.dumps(manifest, indent=1))
+        print(f"plan: {len(tasks)} tasks x {len(a.conditions)} conditions x {a.reps} reps = {per_model} runs/model; "
+              f"x {n_models} model(s) = {per_model * n_models} runs")
+        missing = [k for k, v in manifest["toolchain"].items() if v.startswith("MISSING")]
+        sys.exit(2 if missing else 0)
+    os.makedirs(a.out, exist_ok=True)
+    json.dump(manifest, open(os.path.join(a.out, f"run_manifest_{re.sub(r'[^A-Za-z0-9_.-]', '_', a.model)}.json"), "w"), indent=1)
+    llm = Mock(a.mock_mode) if a.backend == "mock" else Ollama(a.model, a.host, a.temperature, a.num_ctx, a.timeout)
+    safe = re.sub(r"[^A-Za-z0-9_.-]", "_", a.model)
+    gate_cache, n_done = {}, 0
+    for rep in range(1, a.reps + 1):                   # rep-major order: partial jobs still give balanced N
+        for task in tasks:
+            for cond in a.conditions:
+                rd = os.path.join(a.out, safe, cond, task, f"rep{rep}")
+                if os.path.exists(os.path.join(rd, "metrics.json")):
+                    continue                           # resume
+                os.makedirs(rd, exist_ok=True)
+                try:
+                    m = run_one(llm, a.model, cond, task, rep, a, rd, gate_cache)
+                    n_done += 1
+                    append_master(a.out, {k: m[k] for k in ("model", "condition", "task", "rep", "iterations",
+                                                            "func_pass", "clean_pass", "semantic_fired", "wall_s")})
+                    print(f"[{safe}] rep{rep} {task:<16} {cond:<19} it={m['iterations']} func={m['func_pass']!s:<5} "
+                          f"clean={m['clean_pass']!s:<5} sf={int(m['semantic_fired'])} {m['classes_fired']}", flush=True)
+                except Exception as e:                 # record, never silently drop
+                    json.dump({"model": a.model, "condition": cond, "task": task, "rep": rep, "error": repr(e)},
+                              open(os.path.join(rd, "error.json"), "w"))
+                    append_master(a.out, {"model": a.model, "condition": cond, "task": task, "rep": rep, "error": repr(e)})
+                    print(f"[{safe}] ERROR {task} {cond} rep{rep}: {e}", flush=True)
+    print(f"done: {n_done} new runs")
+
+
+if __name__ == "__main__":
+    main()

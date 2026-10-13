@@ -1,0 +1,6 @@
+%Warning-CASEINCOMPLETE: /home/claude/stitch_ext/compose/mpsoc_ref/MuxPC.v:32:5: Case values incompletely covered (example pattern 0x3)
+   32 |     case (PCsrc)
+      |     ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.020
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

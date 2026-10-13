@@ -1,0 +1,18 @@
+{
+  "track": "R",
+  "source": "MPSoC Source Codes/router/register_1bit.v",
+  "top": "register_1bit",
+  "defect_classes": [
+    "ASYNC_RESET (Yosys hard ERROR)"
+  ],
+  "sim_silent": true,
+  "compose": {
+    "design": "mesh",
+    "file": "register_1bit.v"
+  },
+  "note": "simulates correctly; only synthesis fails -- blocks top-level synthesis of both meshes",
+  "expected_v3_classes": [
+    "ASYNC_RESET"
+  ],
+  "expected_v2_classes": []
+}

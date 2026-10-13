@@ -1,0 +1,14 @@
+%Warning-UNUSEDSIGNAL: /home/claude/stitch_ext/compose/mpsoc_ref/multiply.v:74:20: Bits of signal are not used: 'prod'[31:0]
+                                                                                 : ... note: In instance 'multiply.m1'
+   74 | wire signed [63:0] prod;
+      |                    ^~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.020
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/claude/stitch_ext/compose/mpsoc_ref/multiply.v:95:20: Bits of signal are not used: 'prod'[31:0]
+                                                                                 : ... note: In instance 'multiply.m3'
+   95 | wire signed [63:0] prod;
+      |                    ^~~~
+%Warning-CASEINCOMPLETE: /home/claude/stitch_ext/compose/mpsoc_ref/multiply.v:49:9: Case values incompletely covered (example pattern 0x8)
+   49 |         case(id_ex_alu_control)
+      |         ^~~~
+%Error: Exiting due to 3 warning(s)

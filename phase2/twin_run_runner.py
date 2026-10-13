@@ -90,8 +90,8 @@ sys.path.insert(0, _HERE)
 import stitch_runner_hpc as sr  # noqa: E402
 import rtlcoder_adapter as rc   # noqa: E402
 
-RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
-# FIX 2026-08-25: this default used to be "/scratch/soumyaj/RTLLM" --
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT", os.path.expandvars("/scratch/$USER/RTLCoderHPC/RTLLM"))
+# FIX 2026-08-25: this default used to be "/scratch/$USER/RTLLM" --
 # inconsistent with docs/HPC_COMMANDS.md's actual documented layout
 # (RTLLM lives at RTLCoderHPC/RTLLM, section 0). Harmless in practice
 # since twin_run.slurm always sources env.sh first, which sets

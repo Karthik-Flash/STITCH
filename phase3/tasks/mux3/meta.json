@@ -1,0 +1,20 @@
+{
+  "track": "R",
+  "source": "MPSoC Source Codes/processor/mux3.v",
+  "top": "mux3",
+  "defect_classes": [
+    "LATCH"
+  ],
+  "sim_silent": true,
+  "compose": {
+    "design": "mpsoc",
+    "file": "mux3.v"
+  },
+  "instances_in_mpsoc": 2,
+  "expected_v3_classes": [
+    "LATCH"
+  ],
+  "expected_v2_classes": [
+    "LATCH"
+  ]
+}

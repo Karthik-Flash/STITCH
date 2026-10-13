@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: /home/claude/stitch_ext/compose/mpsoc_ref/register_32bit.v:7:11: Signal is not used: 'clk'
+                                                                                      : ... note: In instance 'register_32bit'
+    7 |     input clk ;
+      |           ^~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.020
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

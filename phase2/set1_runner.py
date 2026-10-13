@@ -1,6 +1,6 @@
 """
 phase2/set1_runner.py -- Set 1: STITCH conditions sweep at full RTLLM
-scale, on gpunode4 (A100, gpu_a100_8). Paper Graph Set 1: does
+scale, on <GPU_NODE> (A100, gpu_a100_8). Paper Graph Set 1: does
 sem_escalate beat MLCAD's always-on sem_adv on cost + pass rate.
 
 Setup brief: see git history / handoff for the "STITCH Full HPC Run"
@@ -52,7 +52,7 @@ route through detect_outcome(sim_log, "rtllm") internally
 (src/interpreter/pass_detection.py) -- nothing here reimplements any part
 of that. See docs/IMP_PHASE2_RUNNER_HARDENING_REPORT.md.
 
-Runs on gpunode4 via stitch_runner_hpc.py (the Linux-native HPC port,
+Runs on <GPU_NODE> via stitch_runner_hpc.py (the Linux-native HPC port,
 NOT src/runner/stitch_runner.py -- there is no wsl.exe on a compute
 node) and phase2/escalation_runner_hpc.py (the equivalent HPC port of
 phase1/escalation_runner.py, built alongside this file -- see that
@@ -103,7 +103,7 @@ TASK_A_SCREEN_JSON = os.environ.get("TASK_A_SCREEN_JSON") or (
     _FLAT_SCREEN_JSON if os.path.exists(_FLAT_SCREEN_JSON) else _DEV_SCREEN_JSON
 )
 
-RTLLM_ROOT = os.environ.get("RTLLM_ROOT", "/scratch/soumyaj/RTLCoderHPC/RTLLM")
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT", os.path.expandvars("/scratch/$USER/RTLCoderHPC/RTLLM"))
 # Deliberately the SAME checkout the twin run (Set 2) reads -- RTLLM is
 # read-only I/O for both jobs, on different physical nodes, so sharing
 # one checkout is safe and avoids a second multi-hundred-MB clone. See

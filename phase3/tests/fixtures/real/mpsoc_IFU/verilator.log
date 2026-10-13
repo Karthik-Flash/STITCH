@@ -1,0 +1,29 @@
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/address_fetch.v:33:17: Blocking assignment '=' in sequential logic process
+                                                                                : ... Suggest using delayed assignment '<='
+   33 |    inst_address = -4;
+      |                 ^
+                 ... For warning description see https://verilator.org/warn/BLKSEQ?v=5.020
+                 ... Use "/* verilator lint_off BLKSEQ */" and lint_on around source to disable this message.
+%Warning-LATCH: /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:35:1: Latch inferred for signal 'IFU.inst_mem_unit.inst_mem_mod.Memory' (not all control paths of combinational always assign a value)
+                                                                         : ... Suggest use of always_latch for intentional latches
+   35 | always @(reset)
+      | ^~~~~~
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:173:19: Blocking assignment '=' in sequential logic process
+                                                                            : ... Suggest using delayed assignment '<='
+  173 |      0: inst_code = {Memory[inst_add+3], Memory[inst_add+2], Memory[inst_add+1], Memory[inst_add]};
+      |                   ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:182:17: Blocking assignment '=' in sequential logic process
+                                                                            : ... Suggest using delayed assignment '<='
+  182 |   32: inst_code = {Memory[inst_add+3], Memory[inst_add+2], Memory[inst_add+1], Memory[inst_add]};
+      |                 ^
+%Warning-BLKSEQ: /home/claude/stitch_ext/compose/mpsoc_ref/inst_mem.v:183:18: Blocking assignment '=' in sequential logic process
+                                                                            : ... Suggest using delayed assignment '<='
+  183 |    36: inst_code = {Memory[inst_add+3], Memory[inst_add+2], Memory[inst_add+1], Memory[inst_add]}; 
+      |                  ^
+%Warning-UNOPTFLAT: /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:31:19: Signal unoptimizable: Circular combinational logic: 'PC'
+   31 |  output reg [31:0]PC
+      |                   ^~
+                    /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:31:19:      Example path: PC
+                    /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:44:4:      Example path: ASSIGNW
+                    /home/claude/stitch_ext/compose/mpsoc_ref/IFU.v:31:19:      Example path: PC
+%Error: Exiting due to 6 warning(s)

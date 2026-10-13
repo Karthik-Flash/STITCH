@@ -1,0 +1,15 @@
+%Warning-VARHIDDEN: /home/claude/stitch_ext/compose/mpsoc_ref/control.v:10:20: Declaration of signal hides declaration in upper scope: 'control'
+   10 |   output reg [10:0]control,
+      |                    ^~~~~~~
+                    /home/claude/stitch_ext/compose/mpsoc_ref/control.v:3:8: ... Location of original declaration
+    3 | module control(
+      |        ^~~~~~~
+                    ... For warning description see https://verilator.org/warn/VARHIDDEN?v=5.020
+                    ... Use "/* verilator lint_off VARHIDDEN */" and lint_on around source to disable this message.
+%Error: /home/claude/stitch_ext/compose/mpsoc_ref/control.v:10:20: Unsupported in C: Variable has same name as instance: 'control'
+   10 |   output reg [10:0]control,
+      |                    ^~~~~~~
+%Error: /home/claude/stitch_ext/compose/mpsoc_ref/control.v:10:20: Unsupported in C: Variable has same name as CELLINLINE 'control': 'control'
+   10 |   output reg [10:0]control,
+      |                    ^~~~~~~
+%Error: Exiting due to 2 error(s), 1 warning(s)

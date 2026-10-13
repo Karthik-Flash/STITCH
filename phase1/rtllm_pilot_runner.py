@@ -13,7 +13,7 @@ condition, replicate) is written to master_log.json immediately, so an
 interrupted run resumes from completed keys rather than restarting --
 see run_all()'s `done` set.
 
-RTLLM ITSELF IS NEVER COPIED INTO THIS REPO. D:\\Projects\\RTLLM is read
+RTLLM ITSELF IS NEVER COPIED INTO THIS REPO. <RTLLM_ROOT> is read
 live at run time (design_description.txt for the spec, testbench.v +
 any companion data file for the harness); this script's only writes go
 under the gitignored phase1/results/rtllm_pilot/ tree (staged, renamed
@@ -59,7 +59,7 @@ from escalation_state import EscalationConfig  # noqa: E402
 # (src/interpreter/pass_detection.py), which has a real "rtllm" registry
 # entry. This file now just passes benchmark="rtllm" explicitly at each
 # call site below (_run_classic/_run_escalation) -- no monkeypatch needed.
-RTLLM_ROOT = r"D:\Projects\RTLLM"
+RTLLM_ROOT = os.environ.get("RTLLM_ROOT") or os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "RTLLM"))
 REAL_STUCK_THRESHOLD = 2
 N_REPLICATES = 3
 

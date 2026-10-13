@@ -1,0 +1,8 @@
+expected at checks 0..19: 11100001110000111000 (shape H3 L4 H3 L4 H3 L3)
+reference: passes=True trace 11100001110000111000 by shift {-2: (8, 18), -1: (14, 19), 0: (20, 20), 1: (14, 19), 2: (8, 18)}
+  openai: {'other shape: H6 L7 H7': 1, 'other shape: H11 L3 H6': 3, 'compile error': 1, 'other shape: H9 L5 H6': 2, 'other shape: H5 L3 H4 L3 H4 L1': 1, 'other shape: H13 L1 H6': 1, 'other shape: H4 L1 H6 L1 H6 L1 H1': 1, 'other shape: H4 L1 H13 L1 H1': 1, 'other shape: H6 L6 H8': 1}
+     first mismatching check: {'check 3: clk_div=1, expected 0': 11}
+  gemini: {'other shape: H4 L9 H5 L2': 3, 'other shape: H6 L8 H6': 2, 'other shape: H7 L7 H6': 2, 'other shape: H6 L7 H7': 1, 'other shape: H7 L5 H8': 1, 'compile error': 1, 'other shape: H7 L6 H7': 1, 'other shape: L2 H2 L4 H2 L2 H4 L2 H2': 1}
+     first mismatching check: {'check 3: clk_div=1, expected 0': 10, 'check 0: clk_div=0, expected 1': 1}
+  anthropic: {'other shape: H7 L6 H7': 1, 'other shape: H5 L7 H7 L1': 2, 'other shape: H13 L1 H6': 3, 'other shape: H20': 1, 'other shape: H6 L7 H7': 1, 'other shape: H7 L7 H6': 2, 'other shape: L1 H7 L5 H7': 1, 'other shape: H9 L5 H6': 1}
+     first mismatching check: {'check 3: clk_div=1, expected 0': 11, 'check 0: clk_div=0, expected 1': 1}

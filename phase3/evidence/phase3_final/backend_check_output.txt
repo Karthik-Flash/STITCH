@@ -1,0 +1,3 @@
+sim-visible (model, task, rep) with >=1 call in both: 90; iter1 prompt byte-identical 90, different 0
+iter1 response byte-identical: baseline vs baseline (other rep) 37/90 (41%); baseline_gate vs baseline (any rep) 112/270 (41%)
+iter1 func_pass on those identical prompts: baseline 44/90, baseline_gate 42/90

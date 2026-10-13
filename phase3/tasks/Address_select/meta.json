@@ -1,0 +1,37 @@
+{
+  "track": "R",
+  "source": "MPSoC Source Codes/processor/Address_select.v",
+  "top": "Address_select",
+  "defect_classes": [
+    "LATCH",
+    "WIDTHEXPAND(port width: PC declared 1-bit, driven 32-bit)"
+  ],
+  "sim_silent": false,
+  "compose": {
+    "design": "mpsoc",
+    "file": "Address_select.v"
+  },
+  "instances_in_mpsoc": 1,
+  "composition_note": "Processor.v drives a 32-bit PC into the 1-bit port; the defect is only a width warning at leaf level",
+  "expected_v3_classes": [
+    "LATCH",
+    "WIDTHEXPAND"
+  ],
+  "expected_v2_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL",
+    "WIDTHEXPAND"
+  ],
+  "expected_v3_classes_alt": [
+    [
+      "LATCH"
+    ]
+  ],
+  "expected_v2_classes_alt": [
+    [
+      "LATCH",
+      "UNUSEDSIGNAL"
+    ]
+  ],
+  "toolchain_note": "Verilator 5.020 warns WIDTHEXPAND on the 1-bit PC in 'X + PC'; Verilator 5.053 does not. The width defect stays sim-visible (testbench FAIL) under both."
+}

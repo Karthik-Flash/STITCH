@@ -1,0 +1,597 @@
+{
+ "toolchain": {
+  "yosys": "Yosys 0.33 (git sha1 2584903a060)",
+  "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+  "iverilog": "Icarus Verilog version 12.0 (stable) ()"
+ },
+ "rows": [
+  {
+   "task": "Address_select",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH",
+    "WIDTHEXPAND"
+   ],
+   "v2_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL",
+    "WIDTHEXPAND"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "FAIL",
+    "func_pass": false,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 19,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "WIDTHEXPAND": 1,
+     "UNUSEDSIGNAL": 1,
+     "LATCH": 1
+    },
+    "verilator_warnings_count": 3,
+    "verilator_hard": 1,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": false
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "UNUSEDSIGNAL": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "MuxPC",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH"
+   ],
+   "v2_classes": [
+    "LATCH"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 32,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "CASEINCOMPLETE": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "execute_mux",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH"
+   ],
+   "v2_classes": [
+    "LATCH"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "LATCH": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 1,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "mem_wb_mux",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH"
+   ],
+   "v2_classes": [
+    "LATCH"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 32,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "LATCH": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 1,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "mux3",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH"
+   ],
+   "v2_classes": [
+    "LATCH"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 32,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "LATCH": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 1,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "ni_flit_pack",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "WIDTHTRUNC"
+   ],
+   "v2_classes": [],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "FAIL",
+    "func_pass": false,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "WIDTHTRUNC": 2
+    },
+    "verilator_warnings_count": 2,
+    "verilator_hard": 2,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": false
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "UNUSEDSIGNAL": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "noc_xbar4",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "MULTIDRIVEN"
+   ],
+   "v2_classes": [
+    "MULTIDRIVEN"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "FAIL",
+    "func_pass": false,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "MULTIDRIVEN": 3
+    },
+    "verilator_warnings_count": 3,
+    "verilator_hard": 3,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": false
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "register_1bit",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "ASYNC_RESET"
+   ],
+   "v2_classes": [],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": false,
+    "yosys_error": "ERROR: Multiple edge sensitive events found for this signal!",
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "register_32bit",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "MISSING_CLOCK"
+   ],
+   "v2_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "FAIL",
+    "func_pass": false,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 32,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "UNUSEDSIGNAL": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": false
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "register_4bit",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "MISSING_CLOCK"
+   ],
+   "v2_classes": [
+    "LATCH",
+    "UNUSEDSIGNAL"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "FAIL",
+    "func_pass": false,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 1,
+    "latch_cells": 4,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "UNUSEDSIGNAL": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": false
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  },
+  {
+   "task": "riscv_alu_flags",
+   "ok": true,
+   "checks": {
+    "golden_func": true,
+    "golden_clean": true,
+    "input_not_clean": true,
+    "input_sim_matches_meta": true,
+    "input_defect_visible": true,
+    "drift_v3_classes": true,
+    "drift_v2_classes": true
+   },
+   "v3_classes": [
+    "LATCH"
+   ],
+   "v2_classes": [
+    "LATCH"
+   ],
+   "input": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 3,
+    "latch_cells": 34,
+    "yosys_loops": 0,
+    "verilator_codes": {
+     "CASEINCOMPLETE": 1
+    },
+    "verilator_warnings_count": 1,
+    "verilator_hard": 0,
+    "struct_clean": false,
+    "clean_pass": false,
+    "silent_structural_pass": true
+   },
+   "golden": {
+    "compile_ok": true,
+    "sim_outcome": "PASS",
+    "func_pass": true,
+    "yosys_ok": true,
+    "yosys_error": null,
+    "latch_events": 0,
+    "latch_cells": 0,
+    "yosys_loops": 0,
+    "verilator_codes": {},
+    "verilator_warnings_count": 0,
+    "verilator_hard": 0,
+    "struct_clean": true,
+    "clean_pass": true,
+    "silent_structural_pass": false
+   }
+  }
+ ]
+}

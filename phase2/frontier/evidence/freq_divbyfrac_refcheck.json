@@ -1,0 +1,16 @@
+{
+ "counter_period_half_steps": [
+  14
+ ],
+ "clk_div_period_half_steps": [
+  7,
+  7
+ ],
+ "clk_div_periods_per_counter_wrap": [
+  2.0
+ ],
+ "clk_div_runs_half_steps": "H3 L4 H3 L4 H3 L4 H3",
+ "passes": true,
+ "cnt_increments_per_posedge": true,
+ "cnt_changes_on_negedge": false
+}
