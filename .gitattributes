@@ -18,3 +18,6 @@ phase3/** text eol=lf
 src/interpreter/stitch_interpreter_v3.py text eol=lf
 src/interpreter/_v3_parsers.py text eol=lf
 phase3/**/*.ps1 text eol=crlf
+# --- Shell and Slurm scripts run under bash (WSL, the cluster): keep LF in every working tree ---
+*.sh text eol=lf
+*.slurm text eol=lf
