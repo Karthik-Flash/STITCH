@@ -9,8 +9,8 @@ Money: INR = USD × 96 × 1.18.
 |---|---|
 | Enforce LF line endings (`.gitattributes`) | done, commit `d6d10c2` |
 | Archive superseded paper drafts into `paper/archive/` | done, commit `b28f92c` |
-| Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | done (this commit) |
-| `docs/reSTITCH_REVISITED_QA.md` | to do |
+| Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | done, commit `823b6c9` |
+| `docs/reSTITCH_REVISITED_QA.md` (93 questions) | done (this commit) |
 | Update `REPO_INDEX.md` and `handoff.md`; tests; push `main`; final leak audit | to do |
 
 To resume: run `git log --oneline -6` and continue with the first row that is not done.
