@@ -3,6 +3,18 @@
 **Only one item is pending, and it is optional: Haiku's 85 Set 4b runs (section 1).** Everything else is done.
 Money: INR = USD × 96 × 1.18.
 
+## Wrap-up status (final clean-up brief, 2026-10-14; resume here)
+
+| Step | Status |
+|---|---|
+| Enforce LF line endings (`.gitattributes`) | done, commit `d6d10c2` |
+| Archive superseded paper drafts into `paper/archive/` | done (this commit) |
+| Consolidate docs: `docs/PHASES_EXPLAINED.md`, `docs/HPC_GUIDE.md`, `docs/reSTITCH.md`; old docs to `docs/archive/`; private originals to `private/` (gitignored) | in progress |
+| `docs/reSTITCH_REVISITED_QA.md` | to do |
+| Update `REPO_INDEX.md` and `handoff.md`; tests; push `main`; final leak audit | to do |
+
+To resume: run `git log --oneline -6` and continue with the first row that is not done.
+
 Done:
 - **2026-10-12:**
   - Gemini 2.5 Flash Set 4b (228/228) and the Gemini Phase 3 ladder row (198/198).

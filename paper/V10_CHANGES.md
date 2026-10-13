@@ -1,7 +1,7 @@
 # Paper v10: changes from v9
 
 v10 is the Overleaf-ready build of the journal paper. It lives in `paper/overleaf/` (`main.tex`, `supplement.tex`,
-`figures/`, `README.txt`) and is packed as `paper/STITCH_overleaf.zip`. v9 (`paper/STITCH_EXT_v9.tex`, its
+`figures/`, `README.txt`) and is packed as `paper/STITCH_overleaf.zip`. v9 (`paper/archive/STITCH_EXT_v9.tex`, its
 supplement and generated inputs) is kept unchanged.
 
 The content is the same as v9: no new claim, and every number is unchanged and sourced. The one addition is the
@@ -232,7 +232,8 @@ A token-level comparison of every number in the v10 bodies against v9 and its ge
   `phase2/frontier/evidence/set4b_haiku_projection.json`.
 - Changed: `phase2/frontier/make_numbers_set4.py`.
   - Now: the projection, the in-file blocks, the heat map, and thousands separators.
-  - No longer: `paper/numbers_set4.tex` and `paper/tables_set4.tex`. Those stay as v9's frozen inputs.
+  - No longer: `paper/numbers_set4.tex` and `paper/tables_set4.tex`. Those stay as v9's frozen inputs, now in
+    `paper/archive/`.
 - Placeholder replacement (its own commit), as approved at the checkpoint:
   - **Docs:** `<HPC_USER>@<HPC_HOST>`, `/scratch/<HPC_USER>`, `<GPU_NODE>`, `%USERPROFILE%`, `<REPO_ROOT>`,
     `<RTLLM_ROOT>`, `<DATA_ROOT>`.

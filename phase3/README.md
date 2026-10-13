@@ -5,8 +5,13 @@ MPSoC, 3 seeded RISC-V/NoC modules) under 5 feedback conditions, then splices th
 designs and re-synthesises them, to see whether leaf-level repair restores top-level synthesis.
 
 **Status (2026-09-27).** First full run done: `results/phase3_run/`, 990 runs (6 models x 11 tasks x 5 conditions x
-N=3, protocol `feedback_first_v2`), analysed in `evidence/phase3_run/PHASE3_RESULTS.md`. The paper write-up is
-`../paper/PHASE3_MPSOC.tex` (full) and Section 9 of `../paper/STITCH_EXT_v7.tex` (short). Revised runs are planned.
+N=3, protocol `feedback_first_v2`), analysed in `evidence/phase3_run/PHASE3_RESULTS.md`.
+
+**Final state (2026-10-14).** The final batch (control arm and qwen2.5-coder:32b) and the sign-off re-scoring are in
+`evidence/phase3_final/PHASE3_FINAL.md`. The paper write-up is Section 9 of `../paper/overleaf/main.tex` (v10) and
+Supplementary Material S8 in `../paper/overleaf/supplement.tex`. The earlier write-ups (`PHASE3_MPSOC.tex`, v7) are in
+`../paper/archive/`. The full story of every phase is in `../docs/PHASES_EXPLAINED.md`; the cluster commands are in
+`../docs/HPC_GUIDE.md`.
 
 **New to this?** Read `docs/PHASE3_EXPLAINED.md` first; it assumes no hardware background.
 
