@@ -11,6 +11,9 @@ Done:
   - Paper v9 (`paper/STITCH_EXT_v9.tex`, 16 pages, with the Gemini column) and its supplement.
   - The repository clean-up and `REPO_INDEX.md`.
   - Staged commits on `phase3-setup`. Push and merge wait for the user's "PUSH".
+  - Paper v10, the Overleaf-ready build: `paper/overleaf/`, `paper/STITCH_overleaf.zip`, `paper/V10_CHANGES.md`.
+    Haiku's missing floor-tier cells are projected in two marked places only.
+  - Personal paths and cluster identifiers replaced by placeholders.
 
 ## 1. Claude Haiku 4.5, Set 4b: 85 runs to finish (optional, later; when Anthropic credit is added)
 
@@ -79,11 +82,16 @@ Remaining Gemini prepaid credit: about INR 423, unused.
 ## 2. Closure steps (done 2026-10-13, except the push)
 
 1. Paper condensed: v9 is 16 pages including references; detail is in `paper/STITCH_EXT_supplement.tex`. Done.
+   v10 (`paper/overleaf/`, Overleaf-ready) is 15 pages. Done.
 2. Repository cleaned up, with `REPO_INDEX.md`. Done.
 3. Staged, human-readable commits on `phase3-setup`. Done.
 4. Merge `phase3-setup` into `main` and push. **Waiting for the user's "PUSH".**
 5. Keep API keys out of every commit. `scan_secrets.py` and `leak_audit.py` run before each commit and push. The
    keys live only in `%USERPROFILE%\.stitch\api_keys.env`, outside the repo; `phase2/results/` is gitignored.
 
-If Haiku's 85 runs are ever completed, also run `python -B phase2/frontier/make_numbers_set4.py` and recompile
-the paper; the text needs no edit.
+If Haiku's 85 runs are ever completed, finish the paper:
+1. Run `python -B phase2/frontier/make_numbers_set4.py`. It replaces every projected Haiku value in
+   `paper/overleaf/` with the measured one and removes the daggers, the notes and the heat-map hatching.
+2. Set `\finaltrue` in `paper/overleaf/main.tex`, rebuild both files and re-zip the folder.
+
+The text needs no edit.

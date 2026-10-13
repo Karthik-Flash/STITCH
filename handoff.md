@@ -1,4 +1,4 @@
-# STITCH: Handoff (Phases 0 to 3 and the API study done; journal paper v9 drafted)
+# STITCH: Handoff (Phases 0 to 3 and the API study done; journal paper v10, Overleaf-ready)
 
 Written 2026-09-27. Replaces the 2026-09-23 version (git history has it). For a fresh Claude Code chat and for a
 planner agent. Read the message to the next chat at the end first.
@@ -7,20 +7,36 @@ planner agent. Read the message to the next chat at the end first.
 
 ## 0. State as of 2026-10-13 (final)
 
-- **Paper.** `paper/STITCH_EXT_v9.tex` (16 pages including references) and
-  `paper/STITCH_EXT_supplement.tex` (S1 to S9, 16 pages) compile with pdflatex, with 0 undefined references
-  and 0 overfull boxes. Every change and every new number source is in `paper/V9_CHANGES.md`. v8 is kept;
-  superseded drafts are in `docs/archive/paper/`. The compiled PDFs are in `paper/build/` (ignored).
+- **Paper (v10, current).** `paper/overleaf/main.tex` (15 pages including references) and
+  `paper/overleaf/supplement.tex` (S1 to S9, 14 pages), with `figures/` beside them. The folder is
+  self-contained, and `paper/STITCH_overleaf.zip` is ready to upload to Overleaf.
+  - **Build:** a clean-room `latexmk -pdf` gives 0 errors and 0 warnings for both files.
+  - **Figures:** one shared style (`paper/figstyle.py`) and one colour per condition.
+  - **Haiku projection:** Claude Haiku 4.5's missing floor-tier cells are projected in two marked places only:
+    the floor heat map and one count in Section 8.3. They are typeset with `\proj{}` (italic, dagger), and
+    `\finaltrue` in `main.tex` turns any projection left into a compile error.
+  - **Change log:** `paper/V10_CHANGES.md` (build, figures, tables, projection method, QA rounds).
+  - **Earlier versions:** v9 (`paper/STITCH_EXT_v9.tex`, 16 pages) and v8 are kept unchanged; superseded drafts
+    are in `docs/archive/paper/`.
+- **Public-repo hygiene.** Personal paths, the cluster login and node names are placeholders (commit `f0a2701`).
+  Left unchanged on purpose:
+  - evidence and pre-registrations;
+  - the seven hash-frozen Phase 3 cluster scripts;
+  - frozen test fixtures.
+
+  Earlier commits still contain the old strings.
 - **API study (`phase2/frontier/`), all complete except one optional item.**
   - Set 4 (recoverable band): complete for 3 models.
   - Set 4b (floor): GPT-4.1 mini 228/228, Gemini 2.5 Flash 228/228, Claude Haiku 4.5 143/228.
   - The Phase 3 ladder has three API rows, all in the paper.
   - Set 4c (reasoning) was closed by its pre-registered stop rule (Amendment 5); it has no results.
-  - freq_divbyfrac: genuine model failures and a spec-wording defect in the counter description, not a testbench
-    defect (`FREQ_DIVBYFRAC_AUDIT.md`).
+  - freq_divbyfrac: not a testbench defect. In our reading, the specification's description of the counter does
+    not match its reference design, and the models fail on period and duty cycle (`FREQ_DIVBYFRAC_AUDIT.md`).
   - Spend since Set 4: $13.70 (INR 1,552).
 - **Only pending work:** Haiku's 85 Set 4b runs (optional; `phase2/frontier/PENDING.md`). If they are run,
-  `make_numbers_set4.py` refreshes every paper number and table that depends on them.
+  `make_numbers_set4.py` refreshes every paper number and table that depends on them and removes the projections.
+  Then set `\finaltrue` and rebuild.
+- **Push and merge** of `phase3-setup` into `main` wait for the user's "PUSH".
 - **Where things are:** `REPO_INDEX.md` (per phase; evidence per paper section; regeneration commands; what is
   ignored).
 
@@ -170,8 +186,8 @@ Claude Code never runs ssh/scp/sbatch; the user does.
 
 ## Message to the next Claude Code chat
 
-You are picking up STITCH after all study phases and the journal draft (v9). Read this file, then
-`REPO_INDEX.md`, then `paper/V9_CHANGES.md`. For Phase 3, read `phase3/evidence/phase3_final/PHASE3_FINAL.md`. For
+You are picking up STITCH after all study phases and the journal paper (v10, `paper/overleaf/`). Read this file, then
+`REPO_INDEX.md`, then `paper/V10_CHANGES.md` and `paper/V9_CHANGES.md`. For Phase 3, read `phase3/evidence/phase3_final/PHASE3_FINAL.md`. For
 the API study, read `phase2/frontier/SET4_REPORT.md`. Read `reSTITCH.md` if you need Phases 0-2 in depth. Take direction
 from the user and from the planner agent: they decide which refinements and runs come next. Contribute fully: check
 their plans against the data, point out problems, propose better options, and do the work well. If a request looks

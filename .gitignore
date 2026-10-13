@@ -83,6 +83,8 @@ stitch-api-key.txt
 
 # LaTeX build output: compile into paper/build/ (pdflatex -output-directory=build).
 paper/build/
+# v10 builds in place (latexmk -pdf main.tex); its PDFs are outputs, not sources.
+paper/overleaf/*.pdf
 *.aux
 *.toc
 *.synctex.gz

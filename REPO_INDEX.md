@@ -1,7 +1,7 @@
 # Repository index
 
 What lives where, which file is the evidence for each part of the paper, and how to regenerate every table and
-figure. Paths are relative to the repository root. Last updated 2026-10-13.
+figure. Paths are relative to the repository root. Last updated 2026-10-13 (paper v10).
 
 ## Top level
 
@@ -19,7 +19,7 @@ figure. Paths are relative to the repository root. Last updated 2026-10-13.
 | `MPSoC/` | the RISC-V MPSoC source (core, network interface, mesh router) as received |
 | `benchmarks/` | in-house benchmark scaffolding |
 | `analysis/` | early cross-run aggregation helpers |
-| `paper/` | journal paper sources (v8, v9, supplement), generators, figures, change logs |
+| `paper/` | journal paper: `overleaf/` (v10, current, Overleaf-ready), v9 and v8 sources, generators, figures, change logs |
 | `docs/` | runbooks, HPC commands, review notes; `docs/archive/` holds superseded documents |
 | `plans/archive/` | superseded research plans |
 
@@ -64,14 +64,21 @@ unit-tested), `escalation_runner.py`, `error_signature.py`, `task3_runner.py` (2
   `preflight_final/`, `signoff_cache.json`.
 
 **Paper** (`paper/`).
-- Sources: `STITCH_EXT_v9.tex` (current), `STITCH_EXT_supplement.tex` (Supplementary Material S1 to S9),
-  `STITCH_EXT_v8.tex` and its companion `PHASE3_MPSOC_v2.tex` (previous version, kept).
-- Generated inputs: `numbers_set4.tex` and `tables_set4.tex`.
-- Change logs: `V8_CHANGES.md` and `V9_CHANGES.md` (every change and number source).
-- `figures/`.
+- **Current: `overleaf/` (v10).** `main.tex` (15 pages including references), `supplement.tex` (Supplementary
+  Material S1 to S9), `figures/` (vector PDF, every figure both files use), `README.txt` (how to compile),
+  `qa_contact_sheet.png` (page thumbnails from the last visual QA). Self-contained: no `\input` from outside the
+  folder; the Set 4 macros and the S6 tables sit in marked `% BEGIN GENERATED` blocks inside the two files.
+  `STITCH_overleaf.zip` is the same folder (without the contact sheet), ready to upload to Overleaf.
+- Figure code: `figstyle.py` (the shared style: one colour per condition, final-size fonts, embedded fonts),
+  `make_v10_figures.py` (every v10 figure except the floor heat map).
+- Change logs: `V10_CHANGES.md` (v10: build, figures, tables, Haiku projection, QA rounds), `V9_CHANGES.md` and
+  `V8_CHANGES.md` (every earlier change and number source).
+- Previous versions, kept unchanged: `STITCH_EXT_v9.tex` with `STITCH_EXT_supplement.tex` and their generated
+  inputs `numbers_set4.tex` and `tables_set4.tex` (now frozen); `STITCH_EXT_v8.tex` and `PHASE3_MPSOC_v2.tex`;
+  `make_v9_figures.py` and `figures/`.
 - Superseded drafts (v7, `PHASE3_MPSOC.tex` v1, the earlier compiled PDF) are in `docs/archive/paper/`.
 
-## Canonical evidence for each part of the paper (v9)
+## Canonical evidence for each part of the paper (v10; section numbers as in v9)
 
 | Paper part | Canonical evidence file |
 |---|---|
@@ -82,10 +89,10 @@ unit-tested), `escalation_runner.py`, `error_signature.py`, `task3_runner.py` (2
 | 7 Study design, Twin | `phase2/TWIN_RUN_ANALYSIS.md`, `phase2/twin_analysis_SET2/module_categories.json` |
 | 8.1 Set 1 | `phase2/SET1_ANALYSIS.md`, `phase2/set1_analysis/tier_pass_rates.csv`, `cost_by_tier.csv` |
 | 8.2 Set 3 | `phase2/SET3_ANALYSIS.md`, `phase2/set3_analysis/*.csv` |
-| 8.3 Sets 4 and 4b | `phase2/frontier/SET4_REPORT.md`; `phase2/frontier/evidence/set4_analysis_stdout.txt`, `set4b_analysis_stdout.txt` and the JSON beside them; `paper/numbers_set4.tex` |
+| 8.3 Sets 4 and 4b | `phase2/frontier/SET4_REPORT.md`; `phase2/frontier/evidence/set4_analysis_stdout.txt`, `set4b_analysis_stdout.txt` and the JSON beside them; the NUMBERS block of `paper/overleaf/main.tex`; Haiku projection: `phase2/frontier/evidence/set4b_haiku_projection.json` |
 | 8.4 freq_divbyfrac | `phase2/frontier/FREQ_DIVBYFRAC_AUDIT.md`; `phase2/frontier/evidence/freq_divbyfrac_*` |
 | 9 MPSoC case study | `phase3/evidence/phase3_final/PHASE3_FINAL.md` (reference for every CI), `PAPER_NUMBERS.md`; API rows: `phase2/frontier/evidence/p3_ladder_signoff_stdout.txt` |
-| Supplement S1 to S9 | as above; per-number sources in `paper/V9_CHANGES.md` |
+| Supplement S1 to S9 | as above; per-number sources in `paper/V9_CHANGES.md`, additions in `paper/V10_CHANGES.md` |
 
 ## Regenerating tables and figures (repo root)
 
@@ -98,13 +105,14 @@ unit-tested), `escalation_runner.py`, `error_signature.py`, `task3_runner.py` (2
 | Set 4b analysis | `python phase2/frontier/analysis_set4b.py` | same |
 | Set 4b oracle audit | WSL: `python3 phase2/frontier/oracle_audit.py alu freq_divbyfrac` (with `STITCH_SET4_OSSCAD`, `RTLLM_ROOT`) | oss-cad-suite 20260917, RTLLM checkout |
 | freq_divbyfrac trace / reference check | WSL: `python3 phase2/frontier/set4c.py trace` / `refcheck` | same |
-| Paper macros and S6 tables | `python -B phase2/frontier/make_numbers_set4.py` | the two Set 4 analysis JSON files |
+| Paper macros, S6 tables, Haiku projection, floor heat map | `python -B phase2/frontier/make_numbers_set4.py` (rewrites only the `% BEGIN/END GENERATED` blocks of `paper/overleaf/main.tex` and `supplement.tex`) | the two Set 4 analysis JSON files, the Set 4b master logs |
 | Phase 3 analysis | `python phase3/runner/analyze_phase3.py --final --results phase3/results/phase3_run --more-results phase3/results/phase3_gate_ctrl phase3/results/phase3_32b` (fill the sign-off cache first with `--score-signoff`, under WSL) | `phase3/results/` |
 | Phase 3 paper numbers | `python phase3/evidence/phase3_final/paper_numbers.py > phase3/evidence/phase3_final/PAPER_NUMBERS.md` | same |
 | API ladder rows, sign-off | WSL: `bash phase2/frontier/p3_api/p3_env.sh phase2/frontier/p3_api/p3_signoff_ladder.py [--score] [--recheck]` | `phase2/results/p3_api/full/` |
-| v9 figures | `python -B paper/make_v9_figures.py` | Set 1 CSVs, Set 1/3/Twin results, Set 4 JSON, `PHASE3_FINAL.md` |
+| v10 figures | `python -B paper/make_v10_figures.py` (writes `paper/overleaf/figures/`) | Set 1 CSVs, Set 1/3/Twin results, Set 4 JSON, `PHASE3_FINAL.md`, `PAPER_NUMBERS.md`, `PHASE3_RESULTS.md`, `phase2/frontier/evidence/p3_ladder_signoff.json` |
+| v9 figures (frozen) | `python -B paper/make_v9_figures.py` | as above |
 | v9 number sources | `python -B paper/v9_number_sources.py > paper/v9_number_sources.md` | the evidence files |
-| Compile the paper | `cd paper && pdflatex -output-directory=build STITCH_EXT_v9.tex` (twice), same for `STITCH_EXT_supplement.tex` | a LaTeX install; Overleaf works |
+| Compile the paper | `cd paper/overleaf && latexmk -pdf main.tex` and `latexmk -pdf supplement.tex`, or upload `paper/STITCH_overleaf.zip` to Overleaf | pdfLaTeX (TeX Live 2023+ or MiKTeX); no BibTeX step |
 
 ## What is gitignored, and where it lives
 
@@ -115,8 +123,23 @@ unit-tested), `escalation_runner.py`, `error_signature.py`, `task3_runner.py` (2
 | API keys | `%USERPROFILE%\.stitch\api_keys.env` | outside the repository; also `*.env` and `stitch-api-key.txt` are ignored |
 | Private notes | `reSTITCH.md`, `reSTITCH_PHASE3_EXPLAINED.md`, `note.txt`, `phase3/docs/archive/HANDOFF_PHASE3_CLAUDE_CODE.md` | kept locally, ignored on purpose |
 | Conference PDF | `paper/paper_112_final.pdf` | ignored by name |
-| LaTeX build output | `paper/build/` and `*.aux`, `*.toc`, etc. | the compiled v9 and supplement PDFs are written here |
+| LaTeX build output | `paper/build/` and `*.aux`, `*.toc`, etc. | v9 compiles here; v10 builds in place in `paper/overleaf/`, whose PDFs are ignored |
 | Caches and environments | `__pycache__/`, `.pytest_cache/`, `.venv/` | regenerable |
 
 Before any commit: `python phase2/frontier/scan_secrets.py` (must report 0 matches) and
 `python phase2/frontier/leak_audit.py` (must report "clean").
+
+## Finishing Claude Haiku 4.5 on the floor tier, and removing the projections
+
+Haiku is at 143/228 Set 4b runs; the paper projects its missing cells in two marked places (`paper/V10_CHANGES.md`
+section 6). To replace the projections with measured values:
+1. Run the 85 pending runs as described in `phase2/frontier/PENDING.md` section 1 (needs Anthropic credit and a
+   pre-registration amendment).
+2. `python phase2/frontier/analysis_set4b.py`, then `python -B phase2/frontier/make_numbers_set4.py`. The projected
+   cells disappear, the counts become measured, the daggers and notes vanish, and the heat map is redrawn.
+3. In `paper/overleaf/main.tex`, set `\finaltrue` (near the top). Any projection still left then stops the build with
+   "Projected Haiku values remain". Rebuild both files and re-zip `paper/overleaf/` into `paper/STITCH_overleaf.zip`.
+
+If Haiku is not completed, either keep the marked projections or delete the clause and the notes they feed
+(`\SetFourBCeilingAllClause`, `\SetFourBProjNote`) and the hatched heat-map cells; `\finaltrue` will confirm that
+none remains.
