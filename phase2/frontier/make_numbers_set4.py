@@ -1,6 +1,7 @@
 """Every Set 4 / Set 4b number the paper quotes, as LaTeX macros, from the analysis JSON files, plus the Haiku
 projection (paper v10, Part E) and the Set 4b floor heat map.
-  python -B phase2/frontier/make_numbers_set4.py
+  python -B phase2/frontier/make_numbers_set4.py                  (projects Haiku's missing cells, marked)
+  python -B phase2/frontier/make_numbers_set4.py --no-projection  (measured runs only; missing cells "not run")
 Writes (rewriting only the marked blocks of the two .tex files):
   paper/overleaf/main.tex        between "% BEGIN GENERATED NUMBERS" and "% END GENERATED NUMBERS"
   paper/overleaf/supplement.tex  the same NUMBERS block, and the S6 tables between "% BEGIN GENERATED TABLES" and
@@ -171,8 +172,9 @@ def macros(a, b, par, pj):
     cells = pj["projected_cells"]
     base_proj = {x["module"]: x["projected_rate"] for x in cells if x["condition"] == "baseline"}
     measured = sum(1 for mod in q1 if q1[mod][HAI]["n"])
-    haiku_tier = {mod: q1[mod][HAI]["tier"] if q1[mod][HAI]["n"] else tier(base_proj[mod]) for mod in q1}
-    ceil_full = sum(1 for mod in q1 if q1[mod][GPT]["tier"] == q1[mod][GEM]["tier"] == haiku_tier[mod] == "ceiling")
+    haiku_tier = {mod: q1[mod][HAI]["tier"] if q1[mod][HAI]["n"] else tier(base_proj[mod]) for mod in q1} \
+        if base_proj else {}
+    ceil_full = sum(1 for mod in q1 if q1[mod][GPT]["tier"] == q1[mod][GEM]["tier"] == haiku_tier.get(mod) == "ceiling")
     m["SetFourBHaikuModules"] = (measured, "Q1: modules with Haiku baseline runs")
     m["SetFourBProjCells"] = (len(cells), "set4b_haiku_projection.json projected_cells")
     m["SetFourBProjOffset"] = (f"{pj['offset_logit']:+.2f}".replace("-", "$-$"), "set4b_haiku_projection.json offset_logit")
@@ -181,7 +183,9 @@ def macros(a, b, par, pj):
                                       r"are projected") if base_proj else "",
                                      "Q1 ceiling for all three over all modules, Haiku projected where not run")
     note = (rf"Haiku: {measured} of {len(q1)} modules measured; values marked~\textsuperscript{{\dag}} (hatched in "
-            r"the heat map) are projections, to be replaced.\projcheck{}") if cells else ""
+            r"the heat map) are projections, to be replaced.\projcheck{}") if cells else (
+        rf"Haiku: {measured} of {len(q1)} modules measured; heat-map cells marked -- were not run."
+        if measured < len(q1) else "")
     m["SetFourBProjNote"] = (note, "empty once no projected cell remains")
     return m
 
@@ -302,10 +306,14 @@ def tables(a, b, pj):
 
     # Haiku projection (Part E): method and the projected cells
     cells = pj["projected_cells"]
-    out.append(r"\subsection*{Haiku projection (to be replaced by measured runs)}")
+    measured = sum(1 for x in q1 if q1[x][HAI]["n"])
     if not cells:
-        out += [r"Claude Haiku~4.5 is complete on the floor tier; no value in the paper is projected.", ""]
+        out.append(r"\subsection*{Haiku coverage}")
+        out += [r"Claude Haiku~4.5 is complete on the floor tier; no value in the paper is projected." if measured == len(q1)
+                else rf"Claude Haiku~4.5 is measured on {measured} of {len(q1)} floor modules; its missing cells are "
+                     r"reported as not run, and no value in the paper is projected.", ""]
         return "\n".join(out) + "\n"
+    out.append(r"\subsection*{Haiku projection (to be replaced by measured runs)}")
     out += [rf"Claude Haiku~4.5 is measured on {sum(1 for x in q1 if q1[x][HAI]['n'])} of {len(q1)} floor modules. "
             r"Only two places in the paper need a complete Haiku column, the floor heat map and the count of modules "
             r"at ceiling for all three models; there, each missing (module, condition) cell is projected and marked "
@@ -346,8 +354,8 @@ def heatmap(b, pj):
     q1 = b["Q1"]
     proj = {x["module"]: x for x in pj["projected_cells"] if x["condition"] == "baseline"}
     order = sorted(q1, key=lambda mod: (-(q1[mod][GPT]["k"] + q1[mod][GEM]["k"]), mod.lower()))
-    val = np.array([[q1[mod][mo]["k"] if q1[mod][mo]["n"] else proj[mod]["projected_passes_of_3"] for mod in order]
-                    for mo in MODELS], dtype=float)
+    val = np.array([[q1[mod][mo]["k"] if q1[mod][mo]["n"] else proj.get(mod, {}).get("projected_passes_of_3", np.nan)
+                     for mod in order] for mo in MODELS], dtype=float)
     cmap = LinearSegmentedColormap.from_list("grey", ["#f4f3f0", "#3f3e3b"])
     fig, ax = fs.figure(fs.FULL, 1.7)
     ax.imshow(val, cmap=cmap, vmin=0, vmax=3, aspect="auto")
@@ -355,7 +363,9 @@ def heatmap(b, pj):
         for j, mod in enumerate(order):
             v, projected = val[i, j], not q1[mod][mo]["n"]
             ink = "#ffffff" if v >= 1.9 else fs.INK
-            if projected:                      # hatch the cell, keep the value legible on a solid patch
+            if np.isnan(v):                    # projections disabled: a cell Haiku did not run stays empty
+                ax.text(j, i, "–", ha="center", va="center", fontsize=7.5, color=fs.MUTED)
+            elif projected:                    # hatch the cell, keep the value legible on a solid patch
                 ax.add_patch(Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, hatch="////",
                                        edgecolor=(1, 1, 1, 0.55), linewidth=0))
                 ax.text(j, i, f"{v:.1f}†", ha="center", va="center", fontsize=7, style="italic", color=ink,
@@ -393,6 +403,8 @@ def main():
     b = json.load(open(os.path.join(SET4, "analysis_4b", "set4b_analysis.json"), encoding="utf-8"))
     par = json.load(open(os.path.join(SET4, "parity_check_osscad.json"), encoding="utf-8"))["summary"]
     pj = project(sorted(b["Q1"], key=str.lower))
+    if "--no-projection" in sys.argv:          # keep measured runs only; missing Haiku cells read "not run"
+        pj = dict(pj, projected_cells=[])
     m = macros(a, b, par, pj)
     block = ["% GENERATED by phase2/frontier/make_numbers_set4.py -- do not edit by hand."]
     fmt = lambda v: f"{v:,}".replace(",", "{,}") if isinstance(v, int) else v   # noqa: E731  1{,}211 in math mode

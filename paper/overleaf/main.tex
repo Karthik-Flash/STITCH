@@ -163,8 +163,9 @@ interpreter on every iteration trails baseline by about four points on small
 models (not significant); and conditional escalation with a restart matches
 baseline on small models ($0.0$ points, cell-level $95\%$ CI $-4.6$ to $+4.6$)
 while its cut in heavyweight tool calls grows from $16.6\%$ to $27.6\%$ to
-$88.6\%$ up the capability ladder. On an independently developed RISC-V MPSoC
-with a mesh network-on-chip ($1{,}386$ runs, seven models), scored by a
+$88.6\%$ up the capability ladder. On a RISC-V MPSoC developed within our
+group, independently of this study, with a mesh network-on-chip ($1{,}386$
+runs, seven models), scored by a
 specification-complete sign-off testbench, simulation-only repair signs off
 $63\%$ of its runs defective, including every simulation-silent defect at every
 model size. On the latch-bearing tasks, latch-free clean synthesis rises from
@@ -784,7 +785,8 @@ across a real design.
 \subsection{Substrate: real RTL that already contains the target defects}
 \label{sec:mpsoc-substrate}
 
-The design is an in-group MPSoC: a five-stage RV32 core, a network interface,
+The design is a RISC-V MPSoC developed within our group, independently of this
+study: a five-stage RV32 core, a network interface,
 and a virtual-channel wormhole mesh router, built as a $2{\times}2$ and a
 $3{\times}3$ mesh. Only compile-level changes were made for the open-source
 flow. Synthesis of the MPSoC top reports $63$ latch inferences across $12$
@@ -957,7 +959,9 @@ sign-off clean, level with raw text ($53\%$); interpretation reaches $63\%$ (v2)
 and $67\%$ (v3), and escalation $72\%$. In the pre-registered contrasts
 (\cref{tab:primary}), contrasts~1 and~2 exclude zero with the alarm lower:
 reading R1, \emph{the detail in the feedback adds value beyond the verdict}.
-The pre-declared processor-level sensitivity (Result~8) gives the same reading
+As pre-registered, the four primary contrasts are not corrected for
+multiplicity; contrast~1 ($p{<}0.001$) survives a Holm correction across the
+four, contrast~2 ($p{=}0.021$) does not. The pre-declared processor-level sensitivity (Result~8) gives the same reading
 ($+24.2$, CI $+14.6$ to $+34.3$; $+19.7$, CI $+7.6$ to $+32.3$), as does
 loop-clean ($+23.7$, $+17.7$). Escalation's advantage holds in both strata;
 always-on v3's is carried by the sim-silent tasks (\cref{fig:p3-a}). The alarm
@@ -1136,7 +1140,9 @@ definitions restores synthesis of networks with $4$ and $9$ routers.
 
 \textbf{Statistical.} Replicates of a cell are correlated, so general claims
 rest on cell-level bootstraps; $N{=}3$ leaves the small-model deficit and
-several per-model effects undecided. \textbf{Sampling.} One temperature
+several per-model effects undecided; the four pre-registered primary contrasts
+are not corrected for multiplicity, and under a Holm correction only
+contrast~1 survives. \textbf{Sampling.} One temperature
 ($T{=}0.1$; Twin $0.5$) and quantised local models served by Ollama; the
 control arm ran on a different inference backend (Vulkan rather than CUDA),
 with no detectable effect on byte-identical prompts. \textbf{Toolchains.}

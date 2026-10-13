@@ -249,3 +249,26 @@ A token-level comparison of every number in the v10 bodies against v9 and its ge
       them would break the freeze record;
     - frozen test fixtures and test strings;
     - `phase1/demo_error_signature.py`, whose real log excerpts are demo input.
+
+## 11. Edits after the checkpoint (2026-10-13)
+
+1. **Design provenance, one wording.** The abstract ("an independently developed RISC-V MPSoC") and Section 9.1
+   ("an in-group MPSoC") now both read "a RISC-V MPSoC developed within our group, independently of this study".
+   The supplement used neither phrase.
+   - The abstract grows from 249 to 256 words.
+2. **Multiplicity of the primary contrasts.** Result (2) now states: "As pre-registered, the four primary contrasts
+   are not corrected for multiplicity; contrast 1 (p<0.001) survives a Holm correction across the four, contrast 2
+   (p=0.021) does not."
+   - Holm across the four p-values (<0.001, 0.021, 1.000, 1.000) multiplies the second smallest by 3: 0.063, above
+     0.05.
+   - Threats to Validity (Statistical) adds the matching clause.
+   - No number changes.
+3. **Projections can be switched off.** `make_numbers_set4.py --no-projection` keeps the measured runs only. Haiku's
+   missing cells read "not run" (a "–" in the heat map), and the Q1 clause and the projection table disappear.
+   - Tested: both files compile under `\finaltrue` with 0 errors and 0 warnings.
+   - Re-running without the flag restores the projected version byte for byte.
+   - `phase2/frontier/PENDING.md` records the procedure.
+4. **Rebuild.** Clean room, then the zip extracted and built again:
+   - `main.tex` 15 pages, `supplement.tex` 14 pages;
+   - 0 errors, 0 warnings, 0 undefined references, 0 overfull or underfull boxes;
+   - the zip and `qa_contact_sheet.png` refreshed.

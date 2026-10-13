@@ -95,3 +95,17 @@ If Haiku's 85 runs are ever completed, finish the paper:
 2. Set `\finaltrue` in `paper/overleaf/main.tex`, rebuild both files and re-zip the folder.
 
 The text needs no edit.
+
+**If Haiku's Set 4b cannot be completed**, keep its 143 measured runs and remove only the projections:
+1. Run `python -B phase2/frontier/make_numbers_set4.py --no-projection`. This keeps every measured value, and
+   Haiku's missing cells then read "not run":
+   - in the heat map, as a "–";
+   - in the Q1 count, which is limited to the 12 modules all three models ran;
+   - in the supplement's coverage note.
+
+   The daggers, the projected count and the projection table disappear.
+2. Set `\finaltrue` in both `paper/overleaf/main.tex` and `supplement.tex`. Rebuild both with `latexmk -pdf` and
+   confirm they compile with no "Projected Haiku values remain" error. Then re-zip the folder.
+
+Tested on 2026-10-13: both files compile under `\finaltrue` with 0 errors and 0 warnings (15 and 14 pages).
+Re-running without the flag restores the projected version byte for byte.

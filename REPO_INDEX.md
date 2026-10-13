@@ -140,6 +140,8 @@ section 6). To replace the projections with measured values:
 3. In `paper/overleaf/main.tex`, set `\finaltrue` (near the top). Any projection still left then stops the build with
    "Projected Haiku values remain". Rebuild both files and re-zip `paper/overleaf/` into `paper/STITCH_overleaf.zip`.
 
-If Haiku is not completed, either keep the marked projections or delete the clause and the notes they feed
-(`\SetFourBCeilingAllClause`, `\SetFourBProjNote`) and the hatched heat-map cells; `\finaltrue` will confirm that
-none remains.
+If Haiku cannot be completed, keep its measured runs and drop only the projections:
+1. Run `python -B phase2/frontier/make_numbers_set4.py --no-projection`. Haiku's missing cells then read "not run".
+2. Set `\finaltrue` in both `.tex` files and confirm that both compile.
+
+The full procedure is in `phase2/frontier/PENDING.md`.
