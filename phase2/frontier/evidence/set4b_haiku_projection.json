@@ -1,0 +1,1559 @@
+{
+ "method": "Start: the mean pass rate of GPT-4.1 mini and Gemini 2.5 Flash on that cell. Shift: Haiku's mean empirical-logit\ndifference from those two models over the cells all three measured in full (3 runs each), applied on the logit\nscale (a mean rate of exactly 0 or 1 stays there). Range: the lower to the higher of the two models' rates.",
+ "offset_logit": 0.7212,
+ "offset_cells": 47,
+ "projected_cells": [
+  {
+   "module": "barrel_shifter",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    1,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 0.8044,
+   "projected_passes_of_3": 2.41,
+   "range_passes_of_3": [
+    1.0,
+    3.0
+   ]
+  },
+  {
+   "module": "barrel_shifter",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 0.6729,
+   "projected_passes_of_3": 2.02,
+   "range_passes_of_3": [
+    0.0,
+    3.0
+   ]
+  },
+  {
+   "module": "barrel_shifter",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 0.6729,
+   "projected_passes_of_3": 2.02,
+   "range_passes_of_3": [
+    0.0,
+    3.0
+   ]
+  },
+  {
+   "module": "barrel_shifter",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 0.6729,
+   "projected_passes_of_3": 2.02,
+   "range_passes_of_3": [
+    0.0,
+    3.0
+   ]
+  },
+  {
+   "module": "counter_12",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "counter_12",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "counter_12",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "counter_12",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "float_multi",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    2
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.507,
+   "projected_passes_of_3": 1.52,
+   "range_passes_of_3": [
+    0.0,
+    2.0
+   ]
+  },
+  {
+   "module": "fsm",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "fsm",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "fsm",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "fsm",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    2,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.8044,
+   "projected_passes_of_3": 2.41,
+   "range_passes_of_3": [
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "module": "LIFObuffer",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "LIFObuffer",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    1,
+    3
+   ],
+   "projected_rate": 0.8044,
+   "projected_passes_of_3": 2.41,
+   "range_passes_of_3": [
+    1.0,
+    3.0
+   ]
+  },
+  {
+   "module": "LIFObuffer",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.9114,
+   "projected_passes_of_3": 2.73,
+   "range_passes_of_3": [
+    2.0,
+    3.0
+   ]
+  },
+  {
+   "module": "LIFObuffer",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "pulse_detect",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 0.6729,
+   "projected_passes_of_3": 2.02,
+   "range_passes_of_3": [
+    0.0,
+    3.0
+   ]
+  },
+  {
+   "module": "pulse_detect",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    1,
+    3
+   ],
+   "projected_rate": 0.2915,
+   "projected_passes_of_3": 0.87,
+   "range_passes_of_3": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "module": "pulse_detect",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.507,
+   "projected_passes_of_3": 1.52,
+   "range_passes_of_3": [
+    0.0,
+    2.0
+   ]
+  },
+  {
+   "module": "pulse_detect",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.507,
+   "projected_passes_of_3": 1.52,
+   "range_passes_of_3": [
+    0.0,
+    2.0
+   ]
+  },
+  {
+   "module": "serial2parallel",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "serial2parallel",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.9114,
+   "projected_passes_of_3": 2.73,
+   "range_passes_of_3": [
+    2.0,
+    3.0
+   ]
+  },
+  {
+   "module": "serial2parallel",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "serial2parallel",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    3,
+    3
+   ],
+   "gemini": [
+    3,
+    3
+   ],
+   "projected_rate": 1.0,
+   "projected_passes_of_3": 3.0,
+   "range_passes_of_3": [
+    3.0,
+    3.0
+   ]
+  },
+  {
+   "module": "traffic_light",
+   "condition": "baseline",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    2,
+    3
+   ],
+   "gemini": [
+    0,
+    3
+   ],
+   "projected_rate": 0.507,
+   "projected_passes_of_3": 1.52,
+   "range_passes_of_3": [
+    0.0,
+    2.0
+   ]
+  },
+  {
+   "module": "traffic_light",
+   "condition": "sem_adv",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    0,
+    3
+   ],
+   "projected_rate": 0.0,
+   "projected_passes_of_3": 0.0,
+   "range_passes_of_3": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "module": "traffic_light",
+   "condition": "sem_escalate",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    2,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.8044,
+   "projected_passes_of_3": 2.41,
+   "range_passes_of_3": [
+    2.0,
+    2.0
+   ]
+  },
+  {
+   "module": "traffic_light",
+   "condition": "sem_escalate_restart",
+   "haiku_observed": [
+    0,
+    0
+   ],
+   "gpt": [
+    0,
+    3
+   ],
+   "gemini": [
+    2,
+    3
+   ],
+   "projected_rate": 0.507,
+   "projected_passes_of_3": 1.52,
+   "range_passes_of_3": [
+    0.0,
+    2.0
+   ]
+  }
+ ],
+ "counts": {
+  "gpt-4.1-mini-2025-04-14|accu|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|accu|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|accu|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|accu|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_16bit|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_16bit|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_16bit|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_16bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_32bit|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_32bit|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_32bit|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_32bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_bcd|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_bcd|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_bcd|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_bcd|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_pipe_64bit|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_pipe_64bit|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_pipe_64bit|sem_escalate": [
+   1,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|adder_pipe_64bit|sem_escalate_restart": [
+   1,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|alu|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|alu|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|alu|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|alu|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|barrel_shifter|baseline": [
+   1,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|barrel_shifter|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|barrel_shifter|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|barrel_shifter|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|counter_12|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|counter_12|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|counter_12|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|counter_12|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|div_16bit|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|div_16bit|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|div_16bit|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|div_16bit|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|float_multi|baseline": [
+   2,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|float_multi|sem_adv": [
+   2,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|float_multi|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|float_multi|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|freq_divbyfrac|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|freq_divbyfrac|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|freq_divbyfrac|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|freq_divbyfrac|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|fsm|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|fsm|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|fsm|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|fsm|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|LIFObuffer|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|LIFObuffer|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|LIFObuffer|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|LIFObuffer|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_4bit|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_4bit|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_4bit|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_4bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_8bit|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_8bit|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_8bit|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|multi_pipe_8bit|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|parallel2serial|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|parallel2serial|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|parallel2serial|sem_escalate": [
+   1,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|parallel2serial|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|pulse_detect|baseline": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|pulse_detect|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|pulse_detect|sem_escalate": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|pulse_detect|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|serial2parallel|baseline": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|serial2parallel|sem_adv": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|serial2parallel|sem_escalate": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|serial2parallel|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|traffic_light|baseline": [
+   2,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|traffic_light|sem_adv": [
+   0,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|traffic_light|sem_escalate": [
+   2,
+   3
+  ],
+  "gpt-4.1-mini-2025-04-14|traffic_light|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|accu|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|accu|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|accu|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|accu|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_16bit|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_16bit|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_16bit|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_16bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_32bit|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_32bit|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_32bit|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_32bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_bcd|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_bcd|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_bcd|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_bcd|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|adder_pipe_64bit|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|adder_pipe_64bit|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|adder_pipe_64bit|sem_escalate": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|adder_pipe_64bit|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|alu|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|alu|sem_adv": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|alu|sem_escalate": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|alu|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|barrel_shifter|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|barrel_shifter|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|barrel_shifter|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|barrel_shifter|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|counter_12|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|counter_12|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|counter_12|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|counter_12|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|div_16bit|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|div_16bit|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|div_16bit|sem_escalate": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|div_16bit|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|float_multi|baseline": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|float_multi|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|float_multi|sem_escalate": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|float_multi|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|freq_divbyfrac|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|freq_divbyfrac|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|freq_divbyfrac|sem_escalate": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|freq_divbyfrac|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|fsm|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|fsm|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|fsm|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|fsm|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|LIFObuffer|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|LIFObuffer|sem_adv": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|LIFObuffer|sem_escalate": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|LIFObuffer|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_4bit|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_4bit|sem_adv": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_4bit|sem_escalate": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_4bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_8bit|baseline": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_8bit|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_8bit|sem_escalate": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|multi_pipe_8bit|sem_escalate_restart": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|parallel2serial|baseline": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|parallel2serial|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|parallel2serial|sem_escalate": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|parallel2serial|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|pulse_detect|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|pulse_detect|sem_adv": [
+   1,
+   3
+  ],
+  "gemini-2.5-flash|pulse_detect|sem_escalate": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|pulse_detect|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|serial2parallel|baseline": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|serial2parallel|sem_adv": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|serial2parallel|sem_escalate": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|serial2parallel|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "gemini-2.5-flash|traffic_light|baseline": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|traffic_light|sem_adv": [
+   0,
+   3
+  ],
+  "gemini-2.5-flash|traffic_light|sem_escalate": [
+   2,
+   3
+  ],
+  "gemini-2.5-flash|traffic_light|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|accu|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|accu|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|accu|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|accu|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_16bit|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_16bit|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_16bit|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_16bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_32bit|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_32bit|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_32bit|sem_escalate": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_32bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_bcd|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_bcd|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_bcd|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_bcd|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_pipe_64bit|baseline": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_pipe_64bit|sem_adv": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_pipe_64bit|sem_escalate": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|adder_pipe_64bit|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|alu|baseline": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|alu|sem_adv": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|alu|sem_escalate": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|alu|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|barrel_shifter|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|barrel_shifter|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|barrel_shifter|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|barrel_shifter|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|counter_12|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|counter_12|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|counter_12|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|counter_12|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|div_16bit|baseline": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|div_16bit|sem_adv": [
+   1,
+   3
+  ],
+  "claude-haiku-4-5-20251001|div_16bit|sem_escalate": [
+   1,
+   3
+  ],
+  "claude-haiku-4-5-20251001|div_16bit|sem_escalate_restart": [
+   2,
+   3
+  ],
+  "claude-haiku-4-5-20251001|float_multi|baseline": [
+   1,
+   3
+  ],
+  "claude-haiku-4-5-20251001|float_multi|sem_adv": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|float_multi|sem_escalate": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|float_multi|sem_escalate_restart": [
+   0,
+   2
+  ],
+  "claude-haiku-4-5-20251001|freq_divbyfrac|baseline": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|freq_divbyfrac|sem_adv": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|freq_divbyfrac|sem_escalate": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|freq_divbyfrac|sem_escalate_restart": [
+   0,
+   3
+  ],
+  "claude-haiku-4-5-20251001|fsm|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|fsm|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|fsm|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|fsm|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|LIFObuffer|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|LIFObuffer|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|LIFObuffer|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|LIFObuffer|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_4bit|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_4bit|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_4bit|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_4bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_8bit|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_8bit|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_8bit|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|multi_pipe_8bit|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|parallel2serial|baseline": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|parallel2serial|sem_adv": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|parallel2serial|sem_escalate": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|parallel2serial|sem_escalate_restart": [
+   3,
+   3
+  ],
+  "claude-haiku-4-5-20251001|pulse_detect|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|pulse_detect|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|pulse_detect|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|pulse_detect|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|serial2parallel|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|serial2parallel|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|serial2parallel|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|serial2parallel|sem_escalate_restart": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|traffic_light|baseline": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|traffic_light|sem_adv": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|traffic_light|sem_escalate": [
+   0,
+   0
+  ],
+  "claude-haiku-4-5-20251001|traffic_light|sem_escalate_restart": [
+   0,
+   0
+  ]
+ }
+}
