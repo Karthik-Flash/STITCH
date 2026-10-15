@@ -10,6 +10,7 @@ to the final build, `paper/overleaf/main.pdf` (v10, 15 pages), and its supplemen
 ("S1" to "S9").
 
 **Format.** Every answer has three parts:
+
 - **Short answer:** for a beginner;
 - **In depth:** the full explanation, with every term defined on first use;
 - **If a reviewer asks:** a defensible reply that includes the honest limitation.
@@ -20,6 +21,7 @@ something is computed, the answer cites the code (file and function).
 **Start here.** If you are new, read the glossary and "The paper in 10 sentences" first.
 
 **Related documents:**
+
 - `docs/reSTITCH.md`: the full story;
 - `docs/PHASES_EXPLAINED.md`: every phase;
 - `docs/HPC_GUIDE.md`: the cluster runs;
@@ -29,48 +31,48 @@ something is computed, the answer cites the code (file and function).
 
 ## Glossary
 
-| Term | Meaning |
-|---|---|
-| **RTL** | Register-transfer level: a description of a digital circuit in terms of registers (memory updated on a clock tick) and the logic between them. Synthesis turns it into gates. |
-| **Verilog** | The hardware description language the RTL is written in. Its unit is a *module* with input and output *ports*. |
-| **Testbench** | A Verilog program that drives a module's inputs and checks its outputs, printing pass or fail. |
-| **Simulation** | Running the design against a testbench in a simulator (here Icarus Verilog). It only checks what the testbench drives. |
-| **Lint** | Static checking of code for suspicious patterns without running it (here Verilator). Each warning has a code such as `UNUSEDSIGNAL`. |
-| **Synthesis** | Translating RTL into a netlist of gates and memory cells (here Yosys). It reports latches, loops, and constructs it cannot map. |
-| **Latch** | A level-sensitive memory element. In combinational code it appears by accident when a signal is not assigned on every path, so the hardware must "remember" the old value. |
-| **Multi-driven net** | A wire driven by two pieces of logic at once. In silicon the drivers fight; in simulation the value can be `x`. |
-| **Sign-off** | The engineering check that a design is ready to build: it is functionally correct by a complete testbench and structurally clean (synthesisable, no latches or loops). |
-| **LLM repair loop** | A loop in which a language model writes RTL, tools check it, and the result is fed back for another attempt, up to a budget. |
-| **Interpreter** | STITCH's deterministic rule set (no model) that turns a tool message into a short repair instruction. |
-| **Directive** | The interpreter's output: a short instruction that names the signal and the fix. |
-| `baseline` | Feedback is the simulation log only (the AutoChip-style loop). |
-| `raw_adv` | Simulation log plus the raw Verilator and Yosys text. |
-| `sem_adv` | Simulation log, raw tool text and the interpreter's directives, on every iteration. In RTLLM this is the production interpreter (v2). |
-| `sem_adv (v2)`, `sem_adv (v3)` | Phase 3 versions: v2 is the production interpreter, v3 the additive layer with four new rules. |
-| `sem_escalate` | Behaves as `baseline` until two consecutive failures share an error signature, then gives `sem_adv` feedback for the rest of the run. |
-| `sem_escalate_restart` | As `sem_escalate`, plus one blank-slate restart if it stays stuck. |
-| `sem_esc_restart (v3)` | Phase 3 escalation: starts behind a generic "fails synthesis sign-off" message, escalates to v3 after two identical signatures, and restarts once. |
-| `baseline_gate` | Phase 3 control arm: simulation plus exactly that generic message; never escalates. |
-| **N** | The number of replicates per configuration. Here N=3. |
-| **Temperature (T)** | The model's randomness setting. 0.1 is nearly deterministic; 0.5 is more varied. |
-| **Replicate** | One independent run of the same (model, module, condition). |
-| **Cell** | All replicates of one (model, module) pair, or (model, task) in Phase 3, under one condition. Contrasts compare cells. |
-| **Tier** | RTLLM difficulty band (ceiling, recoverable, floor), set by the maximum baseline pass rate in the twin run. |
-| **Wilson CI** | A 95% confidence interval for a proportion, well behaved for small counts and for rates near 0% or 100%. |
-| **Bootstrap** | Estimating the uncertainty of a statistic by resampling the data with replacement many times. Here cells are resampled. |
-| **Sign-flip test** | A permutation test: under "no effect", each cell's difference is equally likely to be positive or negative, so signs are flipped at random to see how often a mean as large arises by chance. |
-| **p-value** | The probability, if there were no true effect, of a result at least as extreme as the one observed. |
-| **Holm** | A correction for testing several hypotheses: sort the p-values, then multiply the smallest by the number of tests, the next by one fewer, and so on. |
-| **Newcombe interval** | A confidence interval for the difference of two independent proportions, built from their two Wilson intervals. |
-| **Discordant pairs** | In matched runs of A and B, the runs where only A succeeded or only B succeeded ("A/B only"). Ties carry no information about the difference. |
-| **Pre-registration** | Writing the hypotheses, metrics, contrasts and readings down, and hashing the file, before running. |
-| **Oracle** | The judge of correctness. Here a testbench: the loop testbench guides repair, and the sign-off testbench scores the result. |
-| **Formal equivalence** | A proof by a tool (here Yosys `equiv_*`) that two circuits produce the same outputs for every input. |
-| **MPSoC** | Multi-processor system-on-chip: several processors, memories and a communication network on one chip. |
-| **NoC** | Network-on-chip: a small packet network on the chip that connects the processors. |
-| **Router** | A crossroads of the NoC that forwards packets between neighbours. |
-| **Leaf module** | A module that instantiates no other module: the bottom of the design hierarchy. |
-| **Composition** | Splicing repaired leaf modules back into the full design and synthesising the top. |
+| Term                               | Meaning                                                                                                                                                                                       |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RTL**                      | Register-transfer level: a description of a digital circuit in terms of registers (memory updated on a clock tick) and the logic between them. Synthesis turns it into gates.                 |
+| **Verilog**                  | The hardware description language the RTL is written in. Its unit is a*module* with input and output *ports*.                                                                             |
+| **Testbench**                | A Verilog program that drives a module's inputs and checks its outputs, printing pass or fail.                                                                                                |
+| **Simulation**               | Running the design against a testbench in a simulator (here Icarus Verilog). It only checks what the testbench drives.                                                                        |
+| **Lint**                     | Static checking of code for suspicious patterns without running it (here Verilator). Each warning has a code such as`UNUSEDSIGNAL`.                                                         |
+| **Synthesis**                | Translating RTL into a netlist of gates and memory cells (here Yosys). It reports latches, loops, and constructs it cannot map.                                                               |
+| **Latch**                    | A level-sensitive memory element. In combinational code it appears by accident when a signal is not assigned on every path, so the hardware must "remember" the old value.                    |
+| **Multi-driven net**         | A wire driven by two pieces of logic at once. In silicon the drivers fight; in simulation the value can be`x`.                                                                              |
+| **Sign-off**                 | The engineering check that a design is ready to build: it is functionally correct by a complete testbench and structurally clean (synthesisable, no latches or loops).                        |
+| **LLM repair loop**          | A loop in which a language model writes RTL, tools check it, and the result is fed back for another attempt, up to a budget.                                                                  |
+| **Interpreter**              | STITCH's deterministic rule set (no model) that turns a tool message into a short repair instruction.                                                                                         |
+| **Directive**                | The interpreter's output: a short instruction that names the signal and the fix.                                                                                                              |
+| `baseline`                       | Feedback is the simulation log only (the AutoChip-style loop).                                                                                                                                |
+| `raw_adv`                        | Simulation log plus the raw Verilator and Yosys text.                                                                                                                                         |
+| `sem_adv`                        | Simulation log, raw tool text and the interpreter's directives, on every iteration. In RTLLM this is the production interpreter (v2).                                                         |
+| `sem_adv (v2)`, `sem_adv (v3)` | Phase 3 versions: v2 is the production interpreter, v3 the additive layer with four new rules.                                                                                                |
+| `sem_escalate`                   | Behaves as`baseline` until two consecutive failures share an error signature, then gives `sem_adv` feedback for the rest of the run.                                                      |
+| `sem_escalate_restart`           | As`sem_escalate`, plus one blank-slate restart if it stays stuck.                                                                                                                           |
+| `sem_esc_restart (v3)`           | Phase 3 escalation: starts behind a generic "fails synthesis sign-off" message, escalates to v3 after two identical signatures, and restarts once.                                            |
+| `baseline_gate`                  | Phase 3 control arm: simulation plus exactly that generic message; never escalates.                                                                                                           |
+| **N**                        | The number of replicates per configuration. Here N=3.                                                                                                                                         |
+| **Temperature (T)**          | The model's randomness setting. 0.1 is nearly deterministic; 0.5 is more varied.                                                                                                              |
+| **Replicate**                | One independent run of the same (model, module, condition).                                                                                                                                   |
+| **Cell**                     | All replicates of one (model, module) pair, or (model, task) in Phase 3, under one condition. Contrasts compare cells.                                                                        |
+| **Tier**                     | RTLLM difficulty band (ceiling, recoverable, floor), set by the maximum baseline pass rate in the twin run.                                                                                   |
+| **Wilson CI**                | A 95% confidence interval for a proportion, well behaved for small counts and for rates near 0% or 100%.                                                                                      |
+| **Bootstrap**                | Estimating the uncertainty of a statistic by resampling the data with replacement many times. Here cells are resampled.                                                                       |
+| **Sign-flip test**           | A permutation test: under "no effect", each cell's difference is equally likely to be positive or negative, so signs are flipped at random to see how often a mean as large arises by chance. |
+| **p-value**                  | The probability, if there were no true effect, of a result at least as extreme as the one observed.                                                                                           |
+| **Holm**                     | A correction for testing several hypotheses: sort the p-values, then multiply the smallest by the number of tests, the next by one fewer, and so on.                                          |
+| **Newcombe interval**        | A confidence interval for the difference of two independent proportions, built from their two Wilson intervals.                                                                               |
+| **Discordant pairs**         | In matched runs of A and B, the runs where only A succeeded or only B succeeded ("A/B only"). Ties carry no information about the difference.                                                 |
+| **Pre-registration**         | Writing the hypotheses, metrics, contrasts and readings down, and hashing the file, before running.                                                                                           |
+| **Oracle**                   | The judge of correctness. Here a testbench: the loop testbench guides repair, and the sign-off testbench scores the result.                                                                   |
+| **Formal equivalence**       | A proof by a tool (here Yosys`equiv_*`) that two circuits produce the same outputs for every input.                                                                                         |
+| **MPSoC**                    | Multi-processor system-on-chip: several processors, memories and a communication network on one chip.                                                                                         |
+| **NoC**                      | Network-on-chip: a small packet network on the chip that connects the processors.                                                                                                             |
+| **Router**                   | A crossroads of the NoC that forwards packets between neighbours.                                                                                                                             |
+| **Leaf module**              | A module that instantiates no other module: the bottom of the design hierarchy.                                                                                                               |
+| **Composition**              | Splicing repaired leaf modules back into the full design and synthesising the top.                                                                                                            |
 
 ---
 
@@ -108,6 +110,7 @@ something is computed, the answer cites the code (file and function).
 things the extension adds: replication, control of tool cost, and awareness of sign-off.
 
 **In depth:**
+
 - **"reSTITCHing"** is a play on the original name. We re-examine STITCH (MLCAD '26) rather than propose a new system.
 - **"Replicated":** every claim is re-run at N=3 replicates per configuration. No interpreter claim is made without a
   check that the interpreter fired (`semantic_fired`) in the runs it is credited with.
@@ -132,6 +135,7 @@ It does not claim a new architecture, and the paper says so in 'Relation to the 
 text language it is written in. A synthesis tool turns Verilog RTL into real gates.
 
 **In depth:**
+
 - Hardware is not drawn gate by gate; it is described in a hardware description language. In Verilog, the unit is a
   **module**, like a function, with **ports** (inputs and outputs).
 - **Two kinds of logic:**
@@ -153,6 +157,7 @@ AutoChip used compiler errors and simulation mismatches. STITCH added lint and s
 rewrites their messages as instructions.
 
 **In depth:**
+
 - **AutoChip** (reference [2]): generate, compile, simulate, feed back, retry. It stops at the first simulation pass.
 - **What a simulation-only loop cannot see:** latches, multi-driven nets and resets a synthesis tool cannot map, all
   of which simulate correctly on the inputs a testbench drives (Introduction, page 1).
@@ -174,6 +179,7 @@ the data. The Wilson interval is a good CI for a pass rate. With N=3 it is compu
 54/153 runs), where it is meaningful. On a single cell of 3 runs it is very wide, which is honest.
 
 **In depth:**
+
 - **What a CI is.** If we repeated the whole experiment many times, about 95% of the intervals computed this way
   would contain the true value. It answers "how sure are we?", not "how big is the effect?".
 - **The Wilson interval for a proportion k/n.** Write p = k/n and z = 1.96. The centre is
@@ -202,6 +208,7 @@ interval (Section 9.2, page 10; `phase3/evidence/phase3_run/PHASE3_RESULTS.md`, 
 temperature: low randomness, so runs are mostly, but not always, the same.
 
 **In depth:**
+
 - **Why replicate.** Language models sample their output. At T=0.1 the same prompt usually gives the same answer, but
   not always, and a single run cannot separate a real mechanism from a lucky draw.
   - The conference paper's evidence was N=1. Replication retired a would-be win, `datapath_mux_alu`, which passed in
@@ -222,6 +229,7 @@ where they are."
 them as independent overstates the evidence. Resampling whole cells accounts for that, so its interval is wider.
 
 **In depth:**
+
 - **Most cells are unanimous.** At T=0.1 a model that solves a task tends to solve it three times, and one that fails
   tends to fail three times. In Phase 3, 990 runs form 330 (model, task, condition) cells of 3 correlated replicates,
   and most are unanimous (`PHASE3_RESULTS.md`, limitation 1).
@@ -247,6 +255,7 @@ It is either structurally dirty (a latch, loop or hard lint warning) or fails th
 testbench.
 
 **In depth:**
+
 - The definition is in Section 9.2 (page 10): a run is **signed off defective** when the loop testbench passed it but
   it is not sign-off clean. In other words, the loop would have shipped it, and sign-off would have rejected it.
 - **Simulation-only repair (`baseline`)** signs off 63% of its runs as defective (125/198). That includes all 108
@@ -264,6 +273,7 @@ for it. It counts exactly the runs a simulation-only loop would wrongly accept."
 problems: timing and glitch risk, extra area, wires in contention, and designs that cannot be synthesised at all.
 
 **In depth:**
+
 - **The tools only report.** When the paper says simulation-only repair "signs off defective RTL", the defect was
   already in the RTL. Lint and synthesis make it visible.
 - **An inferred latch** is memory where combinational logic was intended:
@@ -290,21 +300,23 @@ timing closure, area budgets or synthesis itself. Simulation alone cannot see th
 latch-bearing tasks; (c) whether repaired leaves let the full designs synthesise.
 
 **In depth (Figure 1, page 2; six models, 198 runs per condition, Wilson 95% CI):**
+
 - **(a) Signed off defective, by condition.** Simulation-only repair 63%; with tools 8% (v2, v3), 12% (raw text), 13%
   (escalation) and 15% (the alarm).
 - **(b) Latch-bearing tasks.** Runs that end latch-free with a clean synthesis:
 
-| Condition | Rate | Runs |
-|---|---|---|
-| baseline | 24% | 35/144 |
-| alarm | 65% | 94/144 |
-| raw text | 72% | 104/144 |
-| v2 | 85% | 122/144 |
-| v3 | 88% | 127/144 |
-| escalation | 88% | 127/144 |
+| Condition  | Rate | Runs    |
+| ---------- | ---- | ------- |
+| baseline   | 24%  | 35/144  |
+| alarm      | 65%  | 94/144  |
+| raw text   | 72%  | 104/144 |
+| v2         | 85%  | 122/144 |
+| v3         | 88%  | 127/144 |
+| escalation | 88%  | 127/144 |
 
   Source: `phase3/evidence/phase3_final/PAPER_NUMBERS.md`, latch line. The count comes from Yosys alone, so it does
   not depend on either testbench.
+
 - **(c) Top-level synthesis restored.** Each condition's repaired leaves are spliced back into the 2x2 mesh, the 3x3
   mesh and the MPSoC top.
   - Simulation-only repair never yields a design that synthesises (marked "aborts").
@@ -320,6 +332,7 @@ Section 9."
 exactly, except where real MPSoC logs showed v2 giving wrong advice or none, and there it adds four rules.
 
 **In depth:**
+
 - **Why it was needed.** Running v2 on the real MPSoC logs exposed gaps (Section 9.1, page 9):
   - **wrong advice:** an unused clock got the generic "gate the output on this input" template, which builds a
     clock-gated latch, the opposite of the fix;
@@ -340,11 +353,13 @@ exactly, except where real MPSoC logs showed v2 giving wrong advice or none, and
 ### Q11. Why does sem_esc_restart look "worse" than v3 in places in Figure 1?
 
 **Short answer:**
+
 - **Signed off defective, 13% against 8%:** escalation keeps more runs passing simulation, so more of them can end as
   "passes the loop but is not clean". It still has the highest sign-off clean rate, 72%.
 - **MPSoC top, 15/18 against 16/18:** one group out of 18, well within noise.
 
 **In depth:**
+
 - **Signed off defective = loop pass minus sign-off clean.** From `phase3/evidence/phase3_final/PHASE3_FINAL.md`
   (pooled):
   - escalation: loop pass 168/198, sign-off clean 142/198, so 26 signed off defective (13%);
@@ -370,6 +385,7 @@ regression. The one-group difference at the MPSoC top is within noise."
 without it is the model succeeding on its own, so it is never counted as an interpreter win.
 
 **In depth:**
+
 - Every runner records `semantic_fired`. In Phase 3 it is set from the directives actually fed back
   (`phase3/runner/stitch_runner_p3.py`, `semantic_fired: bool(sem_iters)`).
 - **Why it matters, three times:**
@@ -388,16 +404,16 @@ pooled pass-rate gaps from sampling variance would be misread as mechanism."
 
 **In depth:**
 
-| Condition | Where | Feedback | Stops at |
-|---|---|---|---|
-| `baseline` | all phases | simulation log only | the first simulation pass |
-| `raw_adv` | Phase 0, Phase 1, Phase 3 | plus raw Verilator and Yosys text | Phase 3: the first clean pass |
-| `sem_adv` | Phases 0 to 2 (v2) | plus directives on every iteration | the first simulation pass (RTLLM) |
-| `sem_adv (v2)`, `sem_adv (v3)` | Phase 3 | plus v2 or v3 directives on every call | the first clean pass |
-| `sem_escalate` | Phase 1, RTLLM | baseline until 2 same-signature failures, then `sem_adv` | the first simulation pass |
-| `sem_escalate_restart` | Phase 1, RTLLM | as above, plus one blank-slate restart after 3 more | the first simulation pass |
-| `sem_esc_restart (v3)` | Phase 3 | the generic "fails sign-off" message, then v3 after 2 identical signatures, one restart | the first clean pass |
-| `baseline_gate` | Phase 3 control | simulation plus exactly that message; never escalates | the first clean pass |
+| Condition                          | Where                     | Feedback                                                                                | Stops at                          |
+| ---------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- | --------------------------------- |
+| `baseline`                       | all phases                | simulation log only                                                                     | the first simulation pass         |
+| `raw_adv`                        | Phase 0, Phase 1, Phase 3 | plus raw Verilator and Yosys text                                                       | Phase 3: the first clean pass     |
+| `sem_adv`                        | Phases 0 to 2 (v2)        | plus directives on every iteration                                                      | the first simulation pass (RTLLM) |
+| `sem_adv (v2)`, `sem_adv (v3)` | Phase 3                   | plus v2 or v3 directives on every call                                                  | the first clean pass              |
+| `sem_escalate`                   | Phase 1, RTLLM            | baseline until 2 same-signature failures, then`sem_adv`                               | the first simulation pass         |
+| `sem_escalate_restart`           | Phase 1, RTLLM            | as above, plus one blank-slate restart after 3 more                                     | the first simulation pass         |
+| `sem_esc_restart (v3)`           | Phase 3                   | the generic "fails sign-off" message, then v3 after 2 identical signatures, one restart | the first clean pass              |
+| `baseline_gate`                  | Phase 3 control           | simulation plus exactly that message; never escalates                                   | the first clean pass              |
 
 - **Budgets:**
   - RTLLM: 6 iterations for `baseline` and `sem_adv`, 8 for escalation (Q36);
@@ -410,6 +426,7 @@ and every candidate is fully evaluated. They differ only in what is fed back (Se
 ### Q14. The four conference regimes (enabling, protective, harmful, irrelevant): what survived replication?
 
 **Short answer:**
+
 - **Enabling** survives, in two replicated illustrations.
 - **Harmful** survives only as a non-significant deficit on small models.
 - **Irrelevant** gains a measured counterpart, the RTLLM floor tier, which is mostly beyond small models rather than
@@ -417,6 +434,7 @@ and every candidate is fully evaluated. They differ only in what is fed back (Se
 - **Protective** is not claimed as a separate result.
 
 **In depth:**
+
 - **Enabling:** `decoder_3to8` and `mux4_oe` replicate 3/3 on gemma3:4b. The model passes in 2 iterations where both
   controls fail all 6 (Table 2, page 4).
 - **Harmful:**
@@ -434,6 +452,7 @@ page 2): harmful survives only as a non-significant deficit, and irrelevant gain
 ### Q15. What does the twin run (RTLCoder against its base model) contribute? Does it come out of the blue? What can we infer, and what does it predict?
 
 **Short answer:** It does three jobs:
+
 1. it defines the difficulty tiers every later set uses;
 2. it is a negative result on fine-tuning;
 3. it anchors the bottom of the capability ladder.
@@ -441,6 +460,7 @@ page 2): harmful survives only as a non-significant deficit, and irrelevant gain
 It is not out of the blue: the tiers could not exist without it.
 
 **In depth (Section 7, page 5; S4, Figure S1):**
+
 - **The natural experiment.** RTLCoder-Deepseek-v1.1 is deepseek-coder:6.7b fine-tuned on Verilog: same weights,
   differing only by the fine-tuning. Five model-conditions, 42 modules, N=3, T=0.5, baseline only: 630 runs.
 - **Job 1, the tiers.** A module's tier is its maximum baseline pass rate across these five model-conditions:
@@ -469,6 +489,7 @@ is reported because a published positive claim exists, and with its per-class ex
 changes what the loop feeds back. The two can be combined.
 
 **In depth (Related Work, page 2):**
+
 - **VerilogCoder** plans with several agents and traces waveforms with an AST-based tool.
 - **MAGE** samples high-temperature candidates and debugs them with Verilog-state checkpoints.
 - **MEIC** iterates language-model debugging over syntax and functional errors.
@@ -487,6 +508,7 @@ cost, and how to evaluate it honestly."
 call, behaves the same every time, and cannot hallucinate.
 
 **In depth:**
+
 - **v2** parses Verilator and Yosys messages with regular expressions and fills directive templates
   (`src/interpreter/stitch_interpreter.py`).
 - **v3** adds source-aware logic. It reads the RTL to:
@@ -517,6 +539,7 @@ simulation log, and, depending on the condition, the raw tool text and the inter
 to the model. A sign-off testbench scores the returned RTL offline.
 
 **In depth (Figure 2, page 3):**
+
 - **The top row:** specification, LLM, RTL candidate, Icarus simulation (loop testbench), then Verilator lint and
   Yosys synthesis.
 - **The feedback prompt** stacks three layers:
@@ -536,7 +559,9 @@ regardless. The conditions differ only in what reaches the prompt."
 a Yosys latch report with a Verilator "clock is unused" warning.
 
 **In depth:**
+
 - **Read separately, the messages mislead.** On `register_4bit` the real messages are:
+
   - Yosys: "Latch inferred for signal `dout`";
   - Verilator: "Signal is not used: `clk`".
 
@@ -556,15 +581,15 @@ real log that showed v2's advice was wrong (`phase3/evidence/PROD_V2_ON_REAL_LOG
 **In depth** (templates in `src/interpreter/stitch_interpreter.py`, `_VERILATOR_INTERP` and the latch and loop
 functions):
 
-| Class | The tool says | The directive says |
-|---|---|---|
-| `UNUSEDSIGNAL` (Verilator) | a declared signal is never read | "Port 'X' is declared but NEVER USED ... You MUST condition on 'X'", with an `if (X) ... else out = 0` template. Right for an enable input. |
-| `MULTIDRIVEN` (Verilator) | a signal has several drivers | "Only ONE always block may drive a given signal. Merge all assignments." |
-| `UNDRIVEN` (Verilator) | an output is never assigned, or a name is used but never declared (v2 tells these apart from the source) | assign the output, or declare the identifier |
-| `WIDTHTRUNC/EXPAND` (Verilator) | an assignment's widths differ | slice explicitly (`signal[N-1:0] = value[N-1:0]`), or check the declared widths |
-| `BLKSEQ`, `COMBDLY` (Verilator) | a blocking `=` in a clocked block; a delay or non-blocking assignment in a combinational block | use `<=` in clocked blocks; remove `#` delays from `always @(*)` |
-| Latch inferred (Yosys) | a signal is not assigned on every path of a combinational block | "assign every output on every path", for example one unconditional default at the top of the block |
-| Combinational loop (Yosys) | a signal depends on itself with no register | break the feedback path |
+| Class                               | The tool says                                                                                            | The directive says                                                                                                                           |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UNUSEDSIGNAL` (Verilator)        | a declared signal is never read                                                                          | "Port 'X' is declared but NEVER USED ... You MUST condition on 'X'", with an`if (X) ... else out = 0` template. Right for an enable input. |
+| `MULTIDRIVEN` (Verilator)         | a signal has several drivers                                                                             | "Only ONE always block may drive a given signal. Merge all assignments."                                                                     |
+| `UNDRIVEN` (Verilator)            | an output is never assigned, or a name is used but never declared (v2 tells these apart from the source) | assign the output, or declare the identifier                                                                                                 |
+| `WIDTHTRUNC/EXPAND` (Verilator)   | an assignment's widths differ                                                                            | slice explicitly (`signal[N-1:0] = value[N-1:0]`), or check the declared widths                                                            |
+| `BLKSEQ`, `COMBDLY` (Verilator) | a blocking`=` in a clocked block; a delay or non-blocking assignment in a combinational block          | use`<=` in clocked blocks; remove `#` delays from `always @(*)`                                                                        |
+| Latch inferred (Yosys)              | a signal is not assigned on every path of a combinational block                                          | "assign every output on every path", for example one unconditional default at the top of the block                                           |
+| Combinational loop (Yosys)          | a signal depends on itself with no register                                                              | break the feedback path                                                                                                                      |
 
 **If a reviewer asks:** "S1 (Table S1) lists each class's verification status on real tool output, including where v2
 was wrong. Two examples: `COMBDLY` assumes a `#` delay, while Verilator 5 uses the code for `<=` in a combinational
@@ -577,12 +602,12 @@ edge, an unmappable asynchronous reset, a truncation of a whole expression, and 
 
 **In depth** (`src/interpreter/stitch_interpreter_v3.py`):
 
-| Rule | When it fires | What it says |
-|---|---|---|
-| `MISSING_CLOCK` | fusion (Q19), on `register_4bit` and `register_32bit` | "MISSING CLOCK ... EXACT FIX: change that block's header to `always @(posedge clk)`" |
-| `ASYNC_RESET` | Yosys aborts with "Multiple edge sensitive events found for this signal!", which names no signal; v3 reads the source to find the block | "In an edge-triggered block with an asynchronous reset the FIRST if must test ONLY the reset signal", with a corrected template that moves the clear into an `else if` |
-| `WIDTH_EXPR` | Verilator's width warning on an expression, such as a too-wide concatenation, which v2 dropped | the right-hand expression is G bits but the destination is E, so the top bits are silently dropped; make it exactly E bits, slicing wider operands and sizing the padding |
-| `COMB_LOOP` | Verilator `UNOPTFLAT` when Yosys reports no loop | "Combinational loop ... depends on itself with no register in between"; move the held value into a clocked block, or compute it only from inputs |
+| Rule              | When it fires                                                                                                                           | What it says                                                                                                                                                              |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `MISSING_CLOCK` | fusion (Q19), on`register_4bit` and `register_32bit`                                                                                | "MISSING CLOCK ... EXACT FIX: change that block's header to`always @(posedge clk)`"                                                                                     |
+| `ASYNC_RESET`   | Yosys aborts with "Multiple edge sensitive events found for this signal!", which names no signal; v3 reads the source to find the block | "In an edge-triggered block with an asynchronous reset the FIRST if must test ONLY the reset signal", with a corrected template that moves the clear into an`else if`   |
+| `WIDTH_EXPR`    | Verilator's width warning on an expression, such as a too-wide concatenation, which v2 dropped                                          | the right-hand expression is G bits but the destination is E, so the top bits are silently dropped; make it exactly E bits, slicing wider operands and sizing the padding |
+| `COMB_LOOP`     | Verilator`UNOPTFLAT` when Yosys reports no loop                                                                                       | "Combinational loop ... depends on itself with no register in between"; move the held value into a clocked block, or compute it only from inputs                          |
 
 On `ASYNC_RESET`: the MPSoC's `register_1bit` tests `clr | reset` first.
 
@@ -596,6 +621,7 @@ held-out defects."
 condition can learn from it.
 
 **In depth:**
+
 - The loop's own testbench drives feedback and decides when to stop. Anything a loop can see, it can also overfit.
 - **The two testbenches differ on two tasks only:**
   - on `mem_wb_mux` and `Address_select` the sign-off testbench is specification-complete, while the loop testbench
@@ -615,6 +641,7 @@ condition can learn from it.
 "FAIL, 6" means it failed all six iterations; "PASS, 2" means it passed on iteration 2.
 
 **In depth (Table 2, page 4):**
+
 - **On gemma3:4b, in both modules,** `baseline` and `raw_adv` fail all 6 iterations, and `sem_adv` passes in 2.
 - **On llama3.1 every condition passes.** On `mux4_oe`, `sem_adv` is faster (2 iterations against 4).
 - **The `raw_adv` column is the key control:** it tracks `baseline` exactly. Adding the raw tool text did nothing for
@@ -630,6 +657,7 @@ sometimes forget to use an input, because ignoring an input still looks finished
 and can be fixed; "forgotten output" defects rarely happen at all.
 
 **In depth:**
+
 - **An analogy.** You are filling in a form. Every answer box (an output) that is still empty stares at you, and you
   fill it before you hand the form in. A sentence in the instructions you never read (an input) leaves no visible gap.
   The form looks complete, and only someone checking it against the instructions notices.
@@ -651,6 +679,7 @@ predicts where a repair layer can act. We do not claim it as a law."
 which single-run results would have been false.
 
 **In depth (page 4; S2):**
+
 - **`datapath_mux_alu`:** llama3.1 passed in 2 of 3 replicates with the interpreter never firing. That is sampling
   variance.
 - **`instr_decode_unit`:** gemma3:4b received the correct directive and still failed, falling into a syntax loop the
@@ -668,6 +697,7 @@ boundary as sharply as the successes define its reach."
 benchmark. When re-measured at N=3, many cells did not behave the way their single-run labels said.
 
 **In depth:**
+
 - **The benchmark.** It was built from the conference's 20-module suite and historical single-run labels
   (`phase1/PHASE1_TASK3_ANALYSIS.md`; S2).
 - **Table 3 (page 5) gives its cost result:** escalation calls the tools 35 to 45% less often.
@@ -688,6 +718,7 @@ replicated runs."
 feedback for the rest of the run. The restart variant also starts over once if it stays stuck.
 
 **In depth** (Section 5, page 4; `phase1/escalation_state.py`, a pure, unit-tested class):
+
 1. Each iteration generates RTL and simulates it. A pass stops the run in any state.
 2. A failure yields a normalised error signature: the first 5 lines of the log.
 3. In the **baseline** state, only the simulation log is fed back.
@@ -707,6 +738,7 @@ ran under baseline tooling (S1).
 trigger. After it, escalation is a different policy, and only the data can say whether it helps.
 
 **In depth (Section 5, page 5):**
+
 - **What is guaranteed.** Until the trigger, an escalation run receives exactly the prompts and feedback a baseline
   run receives. So on runs that converge before the trigger, it is the baseline policy.
 - **What is not.** Beyond the trigger it diverges, and it may help or hurt.
@@ -725,6 +757,7 @@ refute with the plain-escalation numbers."
 variant throws it away once and starts fresh, which recovers runs that the always-on feedback had trapped.
 
 **In depth:**
+
 - **Set 1 recoverable band:**
   - plain escalation: 47/150, about as low as `sem_adv` (47/153);
   - restart: 54/151, equal to baseline's 54/153.
@@ -743,6 +776,7 @@ conditions, in percentage points. The CI comes from resampling cells. The p-valu
 signs of the cell differences.
 
 **In depth** (S9; `phase3/runner/posthoc_checks.py`, reproduced by `phase2/frontier/stats_set4.py`):
+
 1. **Per cell.** For each (model, module) cell, compute the difference in pass rate, for example `sem_escalate`
    minus `baseline`. With 3 replicates each, a cell's difference is a multiple of 1/3 (33.3 points).
 2. **The point estimate.** The mean of those differences over cells: -4.7 points.
@@ -767,6 +801,7 @@ For the escalation policies the counts are logged per iteration. For `sem_adv` t
 the runner's gating logic.
 
 **In depth** (`phase2/set1_analysis/_data.py`, function `load_run_cost`):
+
 - **Escalation policies** (`sem_escalate`, `sem_escalate_restart`):
   - the runner `phase2/escalation_runner_hpc.py` writes `run_log.json` with a per-iteration `tool_invocations`
     record;
@@ -797,11 +832,11 @@ that got stuck made 3 to 10 calls each, for 54 calls in all, so the mean comes t
 
 **In depth** (`phase2/set1_analysis/ceiling_tool_call_distribution.txt`, generated with `load_run_cost`):
 
-| Condition | Runs | Calls | Mean | Runs by calls |
-|---|---|---|---|---|
-| `sem_adv` | 54 | 217 | 4.02 | 29 runs at 2 (a pass on iteration 1 still costs one Verilator and one Yosys call); the rest up to 12 |
-| `sem_escalate` | 54 | 54 | 1.00 | 44 at 0; 3 at 3, 3 at 5, 2 at 6, 1 at 8, 1 at 10 |
-| `sem_escalate_restart` | 54 | 84 | 1.56 | 42 at 0 |
+| Condition                | Runs | Calls | Mean | Runs by calls                                                                                        |
+| ------------------------ | ---- | ----- | ---- | ---------------------------------------------------------------------------------------------------- |
+| `sem_adv`              | 54   | 217   | 4.02 | 29 runs at 2 (a pass on iteration 1 still costs one Verilator and one Yosys call); the rest up to 12 |
+| `sem_escalate`         | 54   | 54    | 1.00 | 44 at 0; 3 at 3, 3 at 5, 2 at 6, 1 at 8, 1 at 10                                                     |
+| `sem_escalate_restart` | 54   | 84    | 1.56 | 42 at 0                                                                                              |
 
 The cut against always-on interpretation is 75.1% (Figure 4b, page 6).
 
@@ -814,6 +849,7 @@ is most runs on easy modules."
 then uses extra iterations (budget 8 rather than 6), and each iteration costs tokens.
 
 **In depth (page 5; Table 3):**
+
 - On the in-house benchmark, `sem_escalate` uses 5,151 tokens per run against `sem_adv`'s 4,883, while its tool calls
   fall from 2.37 to 1.53.
 - The two costs are separate axes: tokens are model input and output; tool calls are external processes.
@@ -829,11 +865,11 @@ of their runs never trigger, and the saving against always-on interpretation gro
 
 **In depth (Sections 8.1 to 8.3, pages 6 to 7):**
 
-| Models | Tier | Saving | Calls per run |
-|---|---|---|---|
-| small (Set 1) | recoverable | 16.6% | 6.74 to 5.62 |
-| large (Set 3) | recoverable | 27.6% | 5.31 to 3.85 |
-| API (Set 4) | recoverable | 88.6% | 2.29 to 0.26 |
+| Models        | Tier        | Saving | Calls per run |
+| ------------- | ----------- | ------ | ------------- |
+| small (Set 1) | recoverable | 16.6%  | 6.74 to 5.62  |
+| large (Set 3) | recoverable | 27.6%  | 5.31 to 3.85  |
+| API (Set 4)   | recoverable | 88.6%  | 2.29 to 0.26  |
 
 - **Set 4:** escalation rarely triggers, because the API models are near ceiling.
 - **The same logic** explains the tier gradient within Set 1: 75.1% on ceilings, 16.6% on the recoverable band, 10.1%
@@ -849,13 +885,13 @@ heavyweight tool calls.
 
 **In depth (Table 3, page 5):**
 
-| Condition | Tokens per run | Tool calls per run |
-|---|---|---|
-| `baseline` | 4,891 | 0.00 |
-| `raw_adv` | 5,354 | 2.61 |
-| `sem_adv` | 4,883 | 2.37 |
-| `sem_escalate` | 5,151 | **1.53** |
-| `sem_esc_restart` | 4,719 | **1.37** |
+| Condition           | Tokens per run | Tool calls per run |
+| ------------------- | -------------- | ------------------ |
+| `baseline`        | 4,891          | 0.00               |
+| `raw_adv`         | 5,354          | 2.61               |
+| `sem_adv`         | 4,883          | 2.37               |
+| `sem_escalate`    | 5,151          | **1.53**     |
+| `sem_esc_restart` | 4,719          | **1.37**     |
 
 The pass rate matched or exceeded always-on interpretation and raw text (page 5; `phase1/PHASE1_FINDINGS.md`).
 
@@ -865,12 +901,14 @@ so the trade-off stays visible."
 ### Q36. Why 8 iterations for escalation on RTLLM and 6 for baseline? Is that justified?
 
 **Short answer:**
+
 - **The reason:** the 8-iteration cap came from the original escalation specification (Phase 1). It gives an escalated
   run room to use its directives after its baseline probes.
 - **The disclosure:** the paper states it, and an equal-cap check at 6 changes no conclusion.
 - **Phase 3:** every condition had one budget of 6 calls.
 
 **In depth:**
+
 - **The two caps.** `baseline` and `sem_adv` were capped at 6 iterations, the cap of the locked conference
   configuration. The escalation policies ran at Pass@8, per the original Task 1 specification. Phase 1 flags this as
   "not cap-equivalent" (`phase1/PHASE1_TASK3_ANALYSIS.md`).
@@ -892,6 +930,7 @@ claims, uses one equal budget for all conditions."
 ### Q37. What exactly was hardened (defects A, B and C)? How were they found and verified, and why do they matter for the whole field?
 
 **Short answer:** Three silent bugs in the shared runner:
+
 - **A:** the simulator had no working directory;
 - **B:** broken code-fence extraction;
 - **C:** the wrong pass string.
@@ -900,6 +939,7 @@ Each produced plausible but wrong numbers. All three were fixed and verified, an
 registry with no defaults.
 
 **In depth (Section 6, page 5; S3; `docs/archive/IMP_PHASE2_RUNNER_HARDENING_REPORT.md`):**
+
 - **A. Simulator working directory.**
   - The simulator ran without its working directory set, so a testbench loading data with `$readmemh` could never
     find its file. Every file-I/O design failed, whatever its logic.
@@ -928,6 +968,7 @@ function, a required benchmark argument, no default) makes the class fail loudly
 must be named explicitly, so a new benchmark cannot silently inherit the wrong pass string.
 
 **In depth:**
+
 - `detect_outcome(log, benchmark)` (`src/interpreter/pass_detection.py`) looks up the benchmark's pass and fail
   patterns in a registry and returns PASS, FAIL or UNKNOWN.
 - The `benchmark` argument is required. An unregistered benchmark fails at import.
@@ -943,6 +984,7 @@ mode for evaluation code."
 ### Q39. Which sets did we run, and what is each for?
 
 **Short answer:**
+
 - **Set 2 (Twin):** model comparison and the tiers.
 - **Set 1:** STITCH on small models.
 - **Set 3:** STITCH on large models.
@@ -952,14 +994,14 @@ mode for evaluation code."
 
 **In depth (Section 7, page 5):**
 
-| Set | Question | Models | Conditions | Modules | N / T | Runs |
-|---|---|---|---|---|---|---|
-| 2 (Twin) | does RTL fine-tuning help; where are the tiers | RTLCoder (2 prompts), deepseek-coder:6.7b, gemma3:4b, llama3.1 | baseline | 42 | 3 / 0.5 | 630 |
-| 1 | where does always-on interpretation stand on small models | gemma3:4b, llama3.1:8b, deepseek-coder:6.7b | 4 | 42 | 3 / 0.1 | 1,512 |
-| 3 | does the picture change on larger models | qwen2.5-coder:14b and 32b, gemma3:27b | 4 | 17 recoverable | 3 / 0.1 | 612 |
-| 4 | API models, recoverable band | GPT-4.1 mini, Gemini 2.5 Flash, Claude Haiku 4.5 | 4 | 17 | 3 / 0.1 | 612 |
-| 4b | API models, floor | the same three | 4 | 19 floor | 3 / 0.1 | 599 valid |
-| 4c | a reasoning model on the residual floor | Gemini 2.5 Pro | 2 | 3 | closed at run 1 | 0 results |
+| Set      | Question                                                  | Models                                                         | Conditions | Modules        | N / T           | Runs      |
+| -------- | --------------------------------------------------------- | -------------------------------------------------------------- | ---------- | -------------- | --------------- | --------- |
+| 2 (Twin) | does RTL fine-tuning help; where are the tiers            | RTLCoder (2 prompts), deepseek-coder:6.7b, gemma3:4b, llama3.1 | baseline   | 42             | 3 / 0.5         | 630       |
+| 1        | where does always-on interpretation stand on small models | gemma3:4b, llama3.1:8b, deepseek-coder:6.7b                    | 4          | 42             | 3 / 0.1         | 1,512     |
+| 3        | does the picture change on larger models                  | qwen2.5-coder:14b and 32b, gemma3:27b                          | 4          | 17 recoverable | 3 / 0.1         | 612       |
+| 4        | API models, recoverable band                              | GPT-4.1 mini, Gemini 2.5 Flash, Claude Haiku 4.5               | 4          | 17             | 3 / 0.1         | 612       |
+| 4b       | API models, floor                                         | the same three                                                 | 4          | 19 floor       | 3 / 0.1         | 599 valid |
+| 4c       | a reasoning model on the residual floor                   | Gemini 2.5 Pro                                                 | 2          | 3              | closed at run 1 | 0 results |
 
 The "4 conditions" are `baseline`, `sem_adv`, `sem_escalate` and `sem_escalate_restart`. Set 4c's two conditions are
 `baseline` and `sem_escalate_restart`.
@@ -976,6 +1018,7 @@ own reference. Two more were dropped because their testbenches pass a design who
 that accepts a do-nothing design is a weak oracle.
 
 **In depth (page 5; S4):**
+
 - A compatibility screen kept 44 of 50 designs. Each exclusion has a documented cause
   (`phase1/rtllm_task_a_screen.py`).
 - **`edge_detect` and `square_wave`** pass with every output stuck at a constant. Their check logic never fails such
@@ -995,7 +1038,9 @@ own precedent."
 set, fixed before the STITCH runs.
 
 **In depth:**
+
 - **Definition** (page 5): a module's maximum baseline pass rate across the five twin model-conditions:
+
   - ceiling, 80% or more: 6 modules;
   - recoverable, 20 to 80%: 17 modules;
   - floor, under 20%: 19 modules.
@@ -1004,6 +1049,7 @@ set, fixed before the STITCH runs.
 - **Why tiers.** An effect can only show where baseline sometimes fails and could recover. Pooled over 42 modules,
   the four Set 1 conditions differ by at most 1.6 points (page 6).
 - **Why it is not circular:**
+
   1. no STITCH condition enters the definition;
   2. it comes from a different run (T=0.5) and different model-conditions than the sets it organises;
   3. it was fixed before Sets 1, 3 and 4 ran;
@@ -1019,6 +1065,7 @@ other sets compare conditions, at the conference's T=0.1. Rates from the two tem
 compared directly.
 
 **In depth:**
+
 - **A higher temperature** makes outputs more varied, which can raise or lower pass rates.
 - **Within each set** the temperature is fixed, so every comparison inside a set is fair.
 - **Across sets,** Figure 5a (page 7) mixes twin bars (T=0.5) with Set 3 and API bars (T=0.1). The caption says the
@@ -1033,6 +1080,7 @@ models on a rough capability axis."
 (shared), so prompt format is measured rather than confounded. The effect is modest and inconsistent.
 
 **In depth (page 5; Figure S1b):**
+
 - **Native against shared, on the 17 recoverable modules:** native wins 3, shared wins 2, and 12 tie.
 - **In total:** native passes 29/51 against shared's 21/51.
 - **Native is better aligned** with how RTLCoder was trained, which helps on some modules.
@@ -1047,17 +1095,17 @@ models on a rough capability axis."
 
 **In depth** (`paper/overleaf/supplement.pdf`):
 
-| Section | Contents | Read it when |
-|---|---|---|
-| S1 | interpreter classes and verification status (Table S1), the v3 layer, the exact conditions and escalation rules | you need the precise rules or a class's limits |
-| S2 | replication details: the reachability table and the retirements | a reviewer questions the illustrations |
-| S3 | the three harness defects in full | you implement or audit a harness |
-| S4 | the RTLLM pool, the pilot, the twin design and its verdict (Figure S1) | you question the tiers or the fine-tuning result |
-| S5 | Sets 1 and 3: timeouts, the iteration budget, the per-tier tables, the replicate trace, contrasts | you check the RTLLM numbers |
-| S6 | the API study: design, deviations, every Set 4 and 4b table, and the Haiku projection | you check API numbers or the projection |
-| S7 | `freq_divbyfrac`: the specification text, the testbench lines, the reference trace, every candidate | you question the floor case |
-| S8 | the MPSoC case study in full: substrate, v3, every Phase 3 table, the equivalence audit, the ladder | you check any Section 9 number |
-| S9 | statistics and reproducibility | you rerun or audit a contrast |
+| Section | Contents                                                                                                        | Read it when                                     |
+| ------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| S1      | interpreter classes and verification status (Table S1), the v3 layer, the exact conditions and escalation rules | you need the precise rules or a class's limits   |
+| S2      | replication details: the reachability table and the retirements                                                 | a reviewer questions the illustrations           |
+| S3      | the three harness defects in full                                                                               | you implement or audit a harness                 |
+| S4      | the RTLLM pool, the pilot, the twin design and its verdict (Figure S1)                                          | you question the tiers or the fine-tuning result |
+| S5      | Sets 1 and 3: timeouts, the iteration budget, the per-tier tables, the replicate trace, contrasts               | you check the RTLLM numbers                      |
+| S6      | the API study: design, deviations, every Set 4 and 4b table, and the Haiku projection                           | you check API numbers or the projection          |
+| S7      | `freq_divbyfrac`: the specification text, the testbench lines, the reference trace, every candidate           | you question the floor case                      |
+| S8      | the MPSoC case study in full: substrate, v3, every Phase 3 table, the equivalence audit, the ladder             | you check any Section 9 number                   |
+| S9      | statistics and reproducibility                                                                                  | you rerun or audit a contrast                    |
 
 **If a reviewer asks:** "Every number in the supplement comes from a generated evidence file listed in `REPO_INDEX.md`."
 
@@ -1072,6 +1120,7 @@ modules are ceilings or floors where nothing can change. Split by tier, a small,
 interpretation appears on the recoverable band, and escalation with restart matches baseline.
 
 **In depth (Section 8.1, page 6; Figure 4a; Table S3):**
+
 - **Pooled pass rates:** 28.8% (baseline), 27.2% (`sem_adv`), 27.7% (`sem_escalate`), 28.8%
   (`sem_escalate_restart`).
 - **Recoverable band:**
@@ -1092,12 +1141,12 @@ hard ones (10.1%), because it only spends when a run is stuck.
 
 **In depth (page 6; Table S4):**
 
-| Tier | `sem_adv` calls per run | `sem_escalate` calls per run | Cut |
-|---|---|---|---|
-| ceiling | 4.02 | 1.00 | 75.1% |
-| recoverable | 6.74 | 5.62 | 16.6% |
-| floor | 7.28 | 6.54 | 10.1% |
-| pooled | | | 18.5% |
+| Tier        | `sem_adv` calls per run | `sem_escalate` calls per run | Cut   |
+| ----------- | ------------------------- | ------------------------------ | ----- |
+| ceiling     | 4.02                      | 1.00                           | 75.1% |
+| recoverable | 6.74                      | 5.62                           | 16.6% |
+| floor       | 7.28                      | 6.54                           | 10.1% |
+| pooled      |                           |                                | 18.5% |
 
 For how the counts are computed, see Q31 and Q32.
 
@@ -1110,6 +1159,7 @@ trigger it on most runs."
 escalated. The two escalated runs that passed had the interpreter silent. The lead is resampling noise.
 
 **In depth (Section 8.2, pages 6 to 7; S5):**
+
 - **The replicate trace.** Of 153 `sem_escalate` runs:
   - 88 passed without escalating;
   - 65 escalated, and only 2 of those passed, both with `semantic_fired`=0, rescued by raw tool feedback.
@@ -1131,6 +1181,7 @@ credited to the interpreter."
 the three API models at the top. It places each model on a rough capability axis.
 
 **In depth (page 7):**
+
 - **Hatched light-grey bars** are twin runs (T=0.5). **Grey bars** are Set 3 (T=0.1). **Dark bars** are the API models
   (T=0.1).
 - Because the temperatures differ, the ladder is ordinal across shades: the order means something, the exact gaps do
@@ -1149,21 +1200,23 @@ gemma3:27b's +7.8 included, shows a detectable effect either way. And RTLLM meas
 structural defects STITCH targets.
 
 **In depth (page 7):**
+
 - **The values:**
 
-| Model | `sem_adv` minus baseline (points) |
-|---|---|
-| gemma3:4b | -7.8 |
-| llama3.1:8b | -5.9 |
-| deepseek-coder:6.7b | 0.0 |
-| gemma3:27b | +7.8 |
-| qwen2.5-coder:14b | -3.9 |
-| qwen2.5-coder:32b | -5.9 |
-| GPT-4.1 mini | -2.0 |
-| Gemini 2.5 Flash | 0.0 |
-| Claude Haiku 4.5 | 0.0 |
+| Model               | `sem_adv` minus baseline (points) |
+| ------------------- | ----------------------------------- |
+| gemma3:4b           | -7.8                                |
+| llama3.1:8b         | -5.9                                |
+| deepseek-coder:6.7b | 0.0                                 |
+| gemma3:27b          | +7.8                                |
+| qwen2.5-coder:14b   | -3.9                                |
+| qwen2.5-coder:32b   | -5.9                                |
+| GPT-4.1 mini        | -2.0                                |
+| Gemini 2.5 Flash    | 0.0                                 |
+| Claude Haiku 4.5    | 0.0                                 |
 
   Error bars are Newcombe 95% intervals for a difference of two proportions.
+
 - **Why most bars are negative.** Always-on interpretation intervenes even when nothing is wrong yet, which can derail
   a converging run. That is the conference's harmful regime, here small and not significant.
 - **Why gemma3:27b is positive.** Its gain sits in `freq_div` and `freq_divbyeven`, where it repeats a
@@ -1183,6 +1236,7 @@ significant. It is not where STITCH's value is claimed."
 calls, more so for stronger models. RTLLM checks function, not structure, so it cannot show STITCH's main value.
 
 **In depth (the detailed version: Section 8.5's six claims, pages 8 to 9):**
+
 1. **The mechanism generalises to a per-tier prediction:** the interpreter acts where it can reach a real defect and
    stays silent elsewhere.
 2. **Always-on interpretation trails baseline by about four points** on small models: consistent in direction, not
@@ -1202,12 +1256,14 @@ positive claims are made on the MPSoC, where the defects are structural."
 ### Q51. Why are the API models at ceiling? What is training contamination? Why was Kimi dropped? What happened to the reasoning run (Set 4c)?
 
 **Short answer:**
+
 - **Ceiling:** the recoverable band is easy for current commercial models.
 - **Contamination:** RTLLM is public, so these models may have seen it in training.
 - **Kimi:** it emitted a reasoning token in its smoke test, which the protocol forbids.
 - **Set 4c:** the reasoning model overflowed its thinking budget on run 1, and the stop rule closed it.
 
 **In depth (Section 8.3, pages 7 to 8; S6):**
+
 - **Ceiling.** Pooled pass rates are 99.3, 98.7, 98.0 and 98.0%. Gemini and Haiku pass every run. The comparison of
   conditions rests on GPT-4.1 mini alone (differences -2.0, -3.9 and -3.9 points, all on one module, every p=1.000).
 - **Training contamination.** A model trained on public text after 2024 may have seen RTLLM's designs and testbenches.
@@ -1229,18 +1285,20 @@ are listed as a direction (iv), because our budgeted protocol could not run them
 to 0.51, depending on model and condition.
 
 **In depth:**
+
 - **Exchange rate:** INR = USD x 96 x 1.18 (18% GST).
 - **Totals** (`phase2/frontier/evidence/spend_summary.txt`):
 
-| Batch | USD | INR |
-|---|---|---|
-| Set 4 | 1.59 | 180.2 |
-| Set 4b | 8.05 | 912.2 |
-| Completion runs and the Phase 3 API ladder rows | 3.89 | 440.4 |
-| Set 4c | 0.17 | 19.5 |
-| **Total** | **13.70** | **1,552.3** |
+| Batch                                           | USD             | INR               |
+| ----------------------------------------------- | --------------- | ----------------- |
+| Set 4                                           | 1.59            | 180.2             |
+| Set 4b                                          | 8.05            | 912.2             |
+| Completion runs and the Phase 3 API ladder rows | 3.89            | 440.4             |
+| Set 4c                                          | 0.17            | 19.5              |
+| **Total**                                 | **13.70** | **1,552.3** |
 
   By provider: Anthropic $6.69, Google $4.72, OpenAI $2.29, Moonshot $0.0004.
+
 - **"INR per passing module"** (`inr_per_pass` in `phase2/frontier/analysis_set4.py`): a model-condition's total spend
   in INR divided by its number of passing runs. For example, GPT-4.1 mini at baseline: $0.0503 x 113.28 / 50 passes =
   INR 0.114 (Table S10).
@@ -1251,12 +1309,14 @@ cost claim about STITCH depends on API prices."
 ### Q53. What is the heat map (Figure 6)? What are modules like freq_divbyfrac? What do the numbers, daggers and hatching mean? Why are some values decimals?
 
 **Short answer:**
+
 - **What it shows:** each cell is how many of 3 baseline runs passed, for one floor module (column) and one API model
   (row).
 - **Daggers and hatching** mark Claude Haiku 4.5's projected values: the modules it did not run.
 - **Decimals:** those projections are expected counts, not observed ones.
 
 **In depth (page 8):**
+
 - **The floor modules** are the 19 RTLLM designs that the twin run's models almost never passed (under 20%). They
   include adders, an ALU, FIFOs (`LIFObuffer`), a traffic light, serial converters, and clock dividers such as
   `freq_divbyfrac` (Q55).
@@ -1264,6 +1324,7 @@ cost claim about STITCH depends on API prices."
 - **The reading:** most modules the open models could not pass are passed by at least one API model (16 of 19), and
   three stay at the floor for every model.
 - **Daggers and hatching.** Haiku is measured on 12 of 19 modules. Its 7 missing modules are projected:
+
   1. take the mean rate of the other two models on that cell;
   2. shift it by Haiku's average logit difference from them on the cells all three ran (+0.72);
   3. multiply by 3 to get an expected pass count, for example 2.4.
@@ -1282,6 +1343,7 @@ not compile if one remains."
 we trace every pass that followed a directive, none can be credited to it.
 
 **In depth (page 8; S6, Table S13):**
+
 - **The interpreter fires** in 55% (103/188) of failing tool-condition runs.
 - **Only 3 passes** followed a directive in a cell whose baseline was 0/3. They fall in two cells:
   - in one, the same gain appears in runs that received no directive;
@@ -1294,6 +1356,7 @@ floor none qualifies."
 ### Q55. freq_divbyfrac in depth: what is a fractional clock divider, what is double-edge clocking, and what did we find?
 
 **Short answer:**
+
 - **The module:** a divider that produces a clock 3.5 times slower than its input. A half-cycle period needs both
   clock edges.
 - **The failure:** every API model failed it, with roughly twice the specified period.
@@ -1301,6 +1364,7 @@ floor none qualifies."
   specification-wording mismatch (our reading), not a testbench defect.
 
 **In depth (Section 8.4, page 8; S7; `phase2/frontier/FREQ_DIVBYFRAC_AUDIT.md`):**
+
 - **A clock divider** turns a fast clock into a slower one. Dividing by 3.5 means one output period lasts 3.5 input
   periods, which is 7 half periods. The specification asks for the output to be high for 3 half steps and low for 4.
 - **Double-edge clocking.** A design that only acts on rising edges can only make whole-period steps. To get a
@@ -1329,6 +1393,7 @@ specification-level robustness as direction (v): an interpreter cannot see a spe
 "fails everywhere" test uses only the modules all three models ran.
 
 **In depth (page 8):**
+
 - **Haiku:** 143/228 runs. 85 failed on an exhausted account credit, cost nothing, and are excluded.
 - **The fails-everywhere test** uses the 12 modules every model ran. Only `freq_divbyfrac` fails in all 36 runs.
 - **The Q1 count** "8† of 19 at ceiling for all three" uses the projection and is marked. The observed count is 4 of
@@ -1348,6 +1413,7 @@ targets. We asked models to repair its defective parts, then put the repaired pa
 chip could be built.
 
 **In depth (Section 9.1, page 9; `phase3/docs/PHASE3_EXPLAINED.md`):**
+
 - **A RISC-V core** is a processor that follows the open RISC-V instruction set. This one is a 32-bit (RV32) core with
   a five-stage pipeline (fetch, decode, execute, memory, write-back), like an assembly line. Forwarding multiplexers
   such as `mux3` pick the freshest copy of a value still in the pipeline.
@@ -1374,13 +1440,16 @@ the same router pieces. Only compile-level problems that the open-source tools r
 touched.
 
 **In depth (`phase3/designs/SANITISATION.md`; S8.1):**
+
 - **Contents:**
+
   - `processor/`: the core;
   - `router/`: a 2x2 mesh;
   - `NI/`: the network interface;
   - a top `main.v` connecting one core, one network interface, the mesh and a depacketiser;
   - an `Automation Code` folder with a 3x3 mesh that shares 28 of its 33 router leaf files.
 - **What was sanitised.** Vivado, where the design was written, accepts constructs the open-source flow rejects:
+
   - nested comments;
   - wires declared twice;
   - module instances with an implicit trailing port, reproduced with identical binding.
@@ -1401,6 +1470,7 @@ defect classes the design lacked. Six of the eleven are "sim-silent": the defect
 testbench.
 
 **In depth (Section 9.2, page 10; Table 4):**
+
 - **Real leaves (R):**
   - `MuxPC`, `execute_mux`, `mux3`, `mem_wb_mux`: latches;
   - `register_1bit`: an unmappable async reset;
@@ -1427,6 +1497,7 @@ Then a pre-registered final batch: the control arm and a 32B model, 396 runs. Th
 ladder rows.
 
 **In depth (pages 10 and 13; `docs/HPC_GUIDE.md`):**
+
 - **Models:** llama3.2:3b, gemma3:4b, deepseek-coder:6.7b, qwen2.5-coder:7b, llama3.1:8b and qwen2.5-coder:14b. N=3,
   T=0.1, served by Ollama on an H200 NVL node.
 - **The runner** (`phase3/runner/stitch_runner_p3.py`):
@@ -1451,6 +1522,7 @@ node and toolchain. Protocol fields are identical across all 1,386 cluster runs.
 and the top level is synthesised. It shows whether fixing small parts fixes the whole chip.
 
 **In depth (Result 5, page 12; `phase3/runner/compose.py`):**
+
 - A **group** is one (model, replicate). There are 18 per condition: 6 models x 3 replicates.
 - **Each group's** final repaired leaves replace the defective ones in the 2x2 mesh, the 3x3 mesh and the MPSoC top.
   Yosys then synthesises each top and counts latch cells.
@@ -1469,12 +1541,14 @@ leaves, so their identical results are one observation, not two (`PHASE3_RESULTS
 ### Q62. Why 2,880 and 6,480 latch cells? Why does Yosys print the same 2 messages at 4 and 9 routers? Why do 122 cells remain at the MPSoC top?
 
 **Short answer:**
+
 - **The counts:** each router contains 20 copies of each of two latching registers, 36 latched bits per pair, so
   36 x 20 x 4 = 2,880 and 36 x 20 x 9 = 6,480.
 - **The messages:** Yosys reports once per module definition, not per copy, hence 2 at both sizes.
 - **The 122:** latch cells in five modules outside the repair set.
 
 **In depth (Section 9.1, page 9; Figure 7a; Table S17; `PHASE3_EXPLAINED.md`, section 4.4):**
+
 - `register_32bit` latches 32 bits and `register_4bit` latches 4: 36 bits per pair. Each router instantiates 20 of
   each.
 - **Messages against cells:**
@@ -1497,6 +1571,7 @@ without changing anything else, and a gate checks, before each batch, that the c
 messages the interpreter understands.
 
 **In depth (page 9; S1, S8.2):**
+
 - **Ten findings** about v2 on real logs (`phase3/evidence/PROD_V2_ON_REAL_LOGS.md`), for example:
   - clocks treated as enables;
   - partly used buses turned into "gate on this bus";
@@ -1517,6 +1592,7 @@ catch is reported."
 the loop stops and ships the defect. The like-for-like comparison is the sim-visible stratum.
 
 **In depth (pages 10 to 12):**
+
 - **Baseline follows AutoChip.** It stops at the first simulation pass. On a sim-silent task that is the unmodified
   input, so it makes 0 calls and ends signed off defective in 108/108 runs.
 - **What this measures:** not model quality, but whether a structural check exists at all. The paper states this
@@ -1535,6 +1611,7 @@ Every quality claim uses the sim-visible stratum or the control arm."
 would mean, then hashed the file. The result could then only be read the way we had committed to in advance.
 
 **In depth (`phase3/evidence/PREREG_FINAL.md`, sections 4 and 5; SHA-256 `1b6eb915...cc63`):**
+
 - **The four primary contrasts** (sign-off clean, six models):
   1. escalation minus the alarm;
   2. v3 minus the alarm;
@@ -1565,6 +1642,7 @@ come from that alarm, not from the interpreter. The control arm gives the alarm 
 points, so the interpreter's detail is what helps.
 
 **In depth (Results 2, page 11; `PLANNER_BRIEF.md`, section 2):**
+
 - **Where the worry came from.** The analysis of the 990 runs flagged it: escalation's gate message is more
   information than baseline receives, and 110 of its 158 clean passes (as run) came with no interpreter output. The
   990 runs could not separate the message from the interpreter (`PHASE3_RESULTS.md`, limitation 3).
@@ -1591,16 +1669,16 @@ cell-bootstrap CI, its sign-flip p, and how many matched runs only A or only B g
 
 **In depth (Table 6, page 11):**
 
-| Contrast | Difference | CI | p | A/B only |
-|---|---|---|---|---|
-| 1. escalation minus the alarm | +19.7 | +11.1 to +29.3 | <0.001 | 42/3 |
-| sim-silent | +23.1 | | | |
-| sim-visible | +15.6 | | | |
-| 2. v3 minus the alarm | +14.6 | +3.0 to +26.3 | 0.021 | 43/14 |
-| sim-silent | +23.1 | | | |
-| sim-visible | +4.4 | crosses 0 | | |
-| 3. the alarm minus raw text | -0.5 | | 1.000 | |
-| 4. the alarm minus baseline, sim-visible | -1.1 | | 1.000 | |
+| Contrast                                 | Difference | CI             | p      | A/B only |
+| ---------------------------------------- | ---------- | -------------- | ------ | -------- |
+| 1. escalation minus the alarm            | +19.7      | +11.1 to +29.3 | <0.001 | 42/3     |
+| sim-silent                               | +23.1      |                |        |          |
+| sim-visible                              | +15.6      |                |        |          |
+| 2. v3 minus the alarm                    | +14.6      | +3.0 to +26.3  | 0.021  | 43/14    |
+| sim-silent                               | +23.1      |                |        |          |
+| sim-visible                              | +4.4       | crosses 0      |        |          |
+| 3. the alarm minus raw text              | -0.5       |                | 1.000  |          |
+| 4. the alarm minus baseline, sim-visible | -1.1       |                | 1.000  |          |
 
 - **"A/B only"** are the discordant pairs. Runs are matched on (model, task, replicate). 42/3 means 42 runs where only
   escalation was clean and 3 where only the alarm was. Matched runs where both or neither succeeded do not inform the
@@ -1615,6 +1693,7 @@ survives (p<0.001 x 4 is still below 0.004). The headline rests on contrast 1. T
 contrast's own CI, as planned.
 
 **In depth (Result 2 and Threats, pages 11 and 13):**
+
 - **Holm's procedure:** sort the p-values (<0.001, 0.021, 1.000, 1.000), multiply the smallest by 4, the next by 3, and
   stop at the first that is not significant.
 - **What the paper states:** "As pre-registered, the four primary contrasts are not corrected for multiplicity;
@@ -1629,12 +1708,14 @@ conclusion that survives correction is the escalation one, and the abstract quot
 ### Q69. Why does the alarm alone break working logic? Why does v3 front-load its repairs while escalation keeps climbing (Figure 8b)?
 
 **Short answer:**
+
 - **The alarm:** told only "something is wrong", models rewrite logic that was fine.
 - **v3** names the defect from the first call, so most of its wins come early.
 - **Escalation** starts behind the same bare alarm and only gets v3's detail after two identical failures, so its wins
   come later and keep coming.
 
 **In depth (Result 2, page 11; Figure 8b, page 12):**
+
 - **Breaking working logic.** Every sim-silent input already simulates correctly. Of 108 alarm-only runs on those
   tasks, only 80 still pass simulation at the end, against 97 under escalation. Without knowing what to fix, models
   change the wrong thing.
@@ -1654,6 +1735,7 @@ Simulation-only repair scores 0 on sim-silent tasks. Interpretation and escalati
 leads on sim-visible tasks.
 
 **In depth (page 12):**
+
 - **Sim-silent** (n=108): baseline 0, the alarm 56%, raw text 59%, v2 77%, v3 80%, escalation 80%.
 - **Sim-visible** (n=90): baseline 48%, the alarm 47%, raw text 44%, v2 46%, v3 51%, escalation 62%.
 
@@ -1669,6 +1751,7 @@ sign-off testbench, each run's final RTL can simply be scored again under it, wi
 the oracle was written after those runs.
 
 **In depth (Section 9.2, page 10):**
+
 - **Why a second oracle.** The equivalence audit (Q72) found two tasks whose loop testbench does not check what the
   specification states. The sign-off testbench closes those gaps. On the other nine tasks it is identical.
 - **Why re-scoring is exact.** The loop's behaviour depended only on the loop testbench and the tools. Scoring the
@@ -1685,6 +1768,7 @@ direction is the same under both (Q73)."
 inputs" means identical for every input the specification allows, differing only on inputs it declares illegal.
 
 **In depth (S8.5, Tables S27 and S28):**
+
 - **How.** Every clean repair of the 990 runs was compared with its golden fix in Yosys (`equiv_make`,
   `equiv_simple -seq 5`, `equiv_induct`). Each golden fix is equivalent to itself.
 - **Legal inputs.** Where a repair was not proven equivalent, the check was repeated with inputs the specification
@@ -1710,15 +1794,16 @@ to our own results, the absolute rates fell by 5 to 8 points for the tool condit
 
 **In depth (`PLANNER_BRIEF.md`, section 3; `paper/archive/V8_CHANGES.md`):**
 
-| Claim | As run | Sign-off |
-|---|---|---|
-| escalation clean | 80% | 72% |
-| v3 clean | 74% | 67% |
-| raw text clean | 59% | 53% |
-| escalation minus baseline, sim-visible | +23.3 | +14.4 (CI still excludes 0) |
-| v3 minus raw text | +14.6 | +14.1 |
+| Claim                                  | As run | Sign-off                    |
+| -------------------------------------- | ------ | --------------------------- |
+| escalation clean                       | 80%    | 72%                         |
+| v3 clean                               | 74%    | 67%                         |
+| raw text clean                         | 59%    | 53%                         |
+| escalation minus baseline, sim-visible | +23.3  | +14.4 (CI still excludes 0) |
+| v3 minus raw text                      | +14.6  | +14.1                       |
 
 **Why this is a strength.**
+
 - The correction came from our own audit, not from a reviewer.
 - We changed the primary metric to the stricter one.
 - We kept the as-run numbers beside it (in brackets in Table 5).
@@ -1735,14 +1820,14 @@ defective), loop (pass, loop-clean) and cost (calls and tokens per run).
 
 **In depth (Table 5, page 11):**
 
-| Condition | Sign-off clean | CI | Signed off defective | Loop pass | Loop clean | Calls per run | Tokens per run |
-|---|---|---|---|---|---|---|---|
-| baseline | 22 | 17 to 28 | 63 | 85 | 23 | 1.34 | 1,425 |
-| alarm | 52 | | 15 | 67 | 56 | 3.39 | 3,835 |
-| raw text | 53 | | 12 | 65 | 59 | 3.27 | 4,396 |
-| v2 | 63 | | 8 | 71 | 68 | 2.83 | 3,831 |
-| v3 | 67 | | 8 | 74 | 74 | 2.51 | 3,377 |
-| escalation | **72** | 65 to 78 | 13 | 85 | 80 | 2.99 | 3,798 |
+| Condition  | Sign-off clean | CI       | Signed off defective | Loop pass | Loop clean | Calls per run | Tokens per run |
+| ---------- | -------------- | -------- | -------------------- | --------- | ---------- | ------------- | -------------- |
+| baseline   | 22             | 17 to 28 | 63                   | 85        | 23         | 1.34          | 1,425          |
+| alarm      | 52             |          | 15                   | 67        | 56         | 3.39          | 3,835          |
+| raw text   | 53             |          | 12                   | 65        | 59         | 3.27          | 4,396          |
+| v2         | 63             |          | 8                    | 71        | 68         | 2.83          | 3,831          |
+| v3         | 67             |          | 8                    | 74        | 74         | 2.51          | 3,377          |
+| escalation | **72**   | 65 to 78 | 13                   | 85        | 80         | 2.99          | 3,798          |
 
 Rates are percentages. Bold marks the best value only where it helps the comparison.
 
@@ -1752,12 +1837,14 @@ efficiency."
 ### Q75. Why does interpretation beat raw text, and what is "in-sample" (v2 against v3)? Why is v2's +10.1 the honest estimate?
 
 **Short answer:**
+
 - **Why:** a short directive that names the signal and the fix is easier for a small model to act on than raw tool
   text.
 - **In-sample:** v3 was written from these designs' logs, so its gain could partly reflect tuning to them.
 - **The honest estimate:** v2 was written before the case study, so its +10.1 over raw text is out of sample.
 
 **In depth (Result 3, page 11):**
+
 - **v3 against raw text:** 132/198 against 104/198, +14.1 points (CI +3.5 to +24.7, p=0.014; 40 discordant against 12).
 - **v2 against raw text:** +10.1 (CI +2.0 to +18.7, p=0.030).
 - **Cost:** v3 needs about 23% fewer calls and tokens per run, and 5,066 against 8,370 tokens per sign-off clean run.
@@ -1773,6 +1860,7 @@ as direction (i)."
 right. With simulation feedback alone it does better (7/15), and with escalation best (8/15).
 
 **In depth (Result 4, page 12; `PHASE3_RESULTS.md`, finding 4 and limitation 6):**
+
 - **The counts.** On sim-visible tasks, llama3.2:3b is sign-off clean in 7/15 runs with simulation only, 1/15 with raw
   text every round, and 8/15 with escalation.
 - **The as-run version** of the same harm is 9/15 against 1/15 (McNemar p=0.008, uncorrected).
@@ -1793,6 +1881,7 @@ raw text, not a general law. It is exactly the case escalation is designed for."
 against v3's 2.51, which is 47.5% fewer.
 
 **In depth:**
+
 - `tool_feedback_iters` in `phase3/runner/stitch_runner_p3.py` counts the calls whose feedback included tool text or
   directives.
 - Means over 198 runs: escalation 1.32, v3 2.51, raw text 3.27; the alarm and baseline 0.00 (Table S23).
@@ -1808,9 +1897,11 @@ model, not tool invocations. Escalation simply withholds tool text until it is n
 defect that only exists in how modules are connected would not be caught by repairing leaves.
 
 **In depth (Result 5, page 12; Directions iii, page 14):**
+
 - **The data.** In the 990 runs, whenever all composed leaves were loop-clean, the design reached its bound: 32/32,
   32/32 and 27/27.
 - **Composition-only defects exist in this design:**
+
   - a one-bit program-counter port driven with 32 bits;
   - a network-interface FIFO instantiated by position with a missing port, so two status signals land on the wrong
     pins.
@@ -1828,6 +1919,7 @@ But a simulation-only loop still ships every sim-silent defect at every size, be
 cannot see, not the model.
 
 **In depth (Result 6, page 12; Table 7, page 13):**
+
 - **At 32B and for all three API models,** every tool condition repairs all 18 sim-silent runs. The alarm alone
   manages 16 or 18.
 - **The remaining misses** are on `Address_select`, plus two alarm-only runs on the ALU task.
@@ -1843,6 +1935,7 @@ guard, is needed at every size. The paper separates the two claims."
 interpreter-credited wins rise from 3/18 to 15/18.
 
 **In depth (page 12; Table S25):**
+
 - **Where v2 was silent:** on `register_1bit` and `ni_flit_pack` v2 produced no directive. v3 fires the intended class
   in 18/18 runs.
 - **Where v2 was wrong:** on the two latching registers, v3 replaces the clock-gating advice with the missing-clock
@@ -1860,6 +1953,7 @@ established, and we say so."
 the latch and breaks the specification.
 
 **In depth (Result 8, page 13; Table S28):**
+
 - **`mem_wb_mux`:** a latch holds a stale store operand in exactly the cases the loop testbench never drives. 16
   loop-clean repairs drive an unspecified value there. This is the conference paper's motivating case, appearing in
   real RTL.
@@ -1868,14 +1962,14 @@ the latch and breaks the specification.
   specification.
 - **The count.** Among the six models' `Address_select` runs that are loop-clean but fail sign-off:
 
-| Condition | Gap runs | Of which received the advice |
-|---|---|---|
-| v2 | 8 | 8 |
-| v3 | 12 | 12 |
-| escalation | 11 | 11 |
-| simulation only | 3 | 0 |
-| raw text | 7 | 0 |
-| the alarm | 2 | 0 |
+| Condition       | Gap runs | Of which received the advice |
+| --------------- | -------- | ---------------------------- |
+| v2              | 8        | 8                            |
+| v3              | 12       | 12                           |
+| escalation      | 11       | 11                           |
+| simulation only | 3        | 0                            |
+| raw text        | 7        | 0                            |
+| the alarm       | 2        | 0                            |
 
 - **Why not causal.** Conditions without the advice also produce the violation, so the advice is neither necessary
   nor shown to be sufficient.
@@ -1893,6 +1987,7 @@ direction (ii)."
 as two baseline replicates match each other.
 
 **In depth (S8.3; `PLANNER_BRIEF.md`, section 1):**
+
 - In the control-arm job, Ollama's CUDA discovery timed out and it ran on its Vulkan backend: same H200 GPU, all layers
   on the GPU.
 - On sim-visible tasks the first prompts of the alarm arm and baseline are byte-identical (90/90).
@@ -1906,12 +2001,14 @@ as two baseline replicates match each other.
 ### Q83. What does "What the case study establishes" (page 13) claim, in one paragraph?
 
 **Short answer:**
+
 - On real multiprocessor RTL, a simulation-only loop cannot see sign-off defects at any model size tested.
 - Telling the model *that* sign-off failed is worth about as much as raw tool text.
 - Telling it *what* failed adds 14.6 points through interpretation and 19.7 through escalation.
 - Leaf repairs compose into designs that synthesise.
 
 **In depth:** each clause maps to a result:
+
 - "blind at every model size": Result 1 and Table 7;
 - "the alarm is worth about raw text": contrast 3;
 - "detail adds 14.6 and 19.7": contrasts 2 and 1;
@@ -1932,6 +2029,7 @@ primary contrasts (Q68), and the summary's emphasis follows that."
 paper has several specific threats a reader must be able to find in one place.
 
 **In depth:**
+
 - A dedicated section lets a reviewer check, in one paragraph, that each known weakness is named with its mitigation.
   That is part of how an empirical paper earns trust.
 - **Moving it into one sentence of the conclusion would:**
@@ -1948,17 +2046,17 @@ claims, an oracle lowering numbers) shows they matter."
 
 **In depth (Section 10, page 13):**
 
-| Threat | Mitigation or limit |
-|---|---|
-| **Statistical:** correlated replicates; N=3 | cell-level bootstraps for every general claim; undecided per-model effects stated; the four primary contrasts uncorrected, and under Holm only contrast 1 survives |
-| **Sampling:** one temperature, quantised local models; the control arm on Vulkan | the backend check shows no detectable effect (Q82) |
-| **Toolchains:** message formats change between versions | a live drift gate; the API runs use a toolchain matched to the cluster build (140/140 and 51/51 parity) |
-| **In-sample interpreter** | v3 written from these logs; v2's out-of-sample +10.1 is the conservative estimate |
-| **Oracle:** the sign-off testbench is post hoc for the 990 runs | pre-registered for the rest; loop-clean reported beside it |
-| **Benchmark:** RTLLM is public, so contamination is possible | affects absolute rates, not within-model contrasts |
-| **API coverage:** Haiku incomplete | observed conclusions use completed runs; projections marked |
-| **API drift:** hosted models change behind stable names | snapshots pinned where possible; model versions, fingerprints and request identifiers logged |
-| **Composition:** checked by synthesis only | composed systems were not simulated |
+| Threat                                                                                 | Mitigation or limit                                                                                                                                                |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Statistical:** correlated replicates; N=3                                      | cell-level bootstraps for every general claim; undecided per-model effects stated; the four primary contrasts uncorrected, and under Holm only contrast 1 survives |
+| **Sampling:** one temperature, quantised local models; the control arm on Vulkan | the backend check shows no detectable effect (Q82)                                                                                                                 |
+| **Toolchains:** message formats change between versions                          | a live drift gate; the API runs use a toolchain matched to the cluster build (140/140 and 51/51 parity)                                                            |
+| **In-sample interpreter**                                                        | v3 written from these logs; v2's out-of-sample +10.1 is the conservative estimate                                                                                  |
+| **Oracle:** the sign-off testbench is post hoc for the 990 runs                  | pre-registered for the rest; loop-clean reported beside it                                                                                                         |
+| **Benchmark:** RTLLM is public, so contamination is possible                     | affects absolute rates, not within-model contrasts                                                                                                                 |
+| **API coverage:** Haiku incomplete                                               | observed conclusions use completed runs; projections marked                                                                                                        |
+| **API drift:** hosted models change behind stable names                          | snapshots pinned where possible; model versions, fingerprints and request identifiers logged                                                                       |
+| **Composition:** checked by synthesis only                                       | composed systems were not simulated                                                                                                                                |
 
 **If a reviewer asks:** "The list is specific on purpose: each threat names what we did about it, or that we could not."
 
@@ -1969,11 +2067,13 @@ claims, an oracle lowering numbers) shows they matter."
 ### Q86. What does "STITCH is best read as a deterministic sign-off guard and translator" mean?
 
 **Short answer:** STITCH has two separable roles:
+
 - **The guard:** running lint and synthesis at all catches what simulation misses, at every model size.
 - **The translator:** turning their messages into directives helps small models repair, more than raw text or a bare
   alarm does.
 
 **In depth:**
+
 - **The guard's value** does not shrink with scale: simulation-only repair signs off every sim-silent defect even at
   32B and for API models (Table 7).
 - **The translator's value** is largest on small models and on sim-silent defects, and vanishes at 32B (Q79).
@@ -1985,6 +2085,7 @@ scoped to small models and structural defects."
 ### Q87. What are the Directions after the conclusion? Explain each one, and what it would take.
 
 **Short answer:** Five next steps:
+
 1. test the v3 rules on new defects;
 2. make the latch advice specification-aware;
 3. give feedback on how modules connect;
@@ -1992,6 +2093,7 @@ scoped to small models and structural defects."
 5. make repair robust to specification defects.
 
 **In depth (page 14):**
+
 1. **Held-out real defects.** Collect defective RTL from designs not used to write v3, such as another group's SoC or
    open cores, and run the same protocol. *Needs:* a second design with real structural defects, task extraction and
    about 1,000 runs.
@@ -2017,6 +2119,7 @@ most for small local models and for structural defects simulation cannot see. Fo
 raw tool text is as good, and cheaper.
 
 **In depth:**
+
 - **Always run lint and synthesis** before accepting a repair. A simulation pass is not sign-off (Result 1).
 - **Prefer escalation:**
   - the highest sign-off clean rate (72%);
@@ -2043,6 +2146,7 @@ and API ledgers are gitignored because of their size and, for ledgers, request i
 output the paper cites are committed.
 
 **In depth:**
+
 - **The paper.** `paper/overleaf/` builds with `latexmk -pdf main.tex` (and `supplement.tex`).
   - Figures: `python -B paper/make_v10_figures.py`.
   - Set 4 numbers, tables and the heat map: `python -B phase2/frontier/make_numbers_set4.py`.
@@ -2068,6 +2172,7 @@ regenerated from them with the listed commands."
 before submission. That is the one open release step (`phase2/frontier/PENDING.md`).
 
 **In depth:**
+
 - Personal paths and cluster identifiers in documents and scripts were replaced with placeholders. Evidence,
   pre-registrations and hash-frozen scripts were left unchanged so their hashes still verify.
 - Secret scans run before every commit, and an all-history audit found no key in any commit.
@@ -2080,7 +2185,9 @@ before submission. That is the one open release step (`phase2/frontier/PENDING.m
 calls in total.
 
 **In depth (`docs/reSTITCH.md`, Part 12):**
+
 - **Cluster runs:**
+
   - Twin: 630 (H100);
   - Set 1: 1,512 (A100);
   - Set 3: 612 (A100);
@@ -2100,6 +2207,7 @@ costing a few dollars per model."
 versions is logged with its source line.
 
 **In depth:**
+
 - `paper/V10_CHANGES.md` lists every newly quoted number with its file and line. The v9 log
   (`paper/archive/V9_CHANGES.md`) has a 33-row number-source table, built by a script that checks each value against
   its file.
@@ -2116,6 +2224,7 @@ the deliverable."
 questions, and reasoning models.
 
 **In depth:**
+
 1. **Out-of-sample interpreter rules:** v3 evaluated on defects it was not written from (direction i).
 2. **A second real design** from another group, to show that the case-study results are not specific to one code base.
 3. **More replicates** (N=5 to 10) on the small models, to settle the always-on deficit (currently CI -10.5 to +0.7)
