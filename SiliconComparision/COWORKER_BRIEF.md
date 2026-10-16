@@ -1,40 +1,108 @@
 ---
 # Brief: latch vs no-latch silicon comparison
-Goal: measure the area, power, timing and parasitic cost or benefit of removing the inferred latches STITCH
-repaired. This is NOT a claim that STITCH improves PPA; STITCH targets sign-off correctness.
+Goal: measure what repairing unintended latches costs and buys. The claim is sign-off correctness, not improved
+PPA. A latch is level-sensitive storage; a flip-flop samples at a clock edge.
 
-Variants: A = original as written (register_1bit aborts Yosys). A1 = control: A with only register_1bit
-fixed, all latches kept. B = repaired (golden leaves). C = an actual STITCH repair (optional). PRIMARY PAIR:
-A1 vs B. B vs C should be nearly identical (the repairs were formally checked against golden).
+An inferred latch is storage the designer never asked for. It appears when combinational code leaves an output
+unassigned on some path (for example, a missing `else`), or when a register is coded level-sensitive instead of
+edge-triggered. Both occur here. This is hazardous because:
+- the enable is not a clean clock, so timing tools may skip or mis-time the path;
+- a glitch on the enable can corrupt stored data;
+- scan and test insertion can break;
+- behavior can differ between tools.
 
-Primer: a latch is level-sensitive (transparent while enabled); a flip-flop samples at a clock edge (two
-latches back to back). Inferred latches come from incomplete if/case assignments or level-sensitive
-registers; they have no clock, so timing sign-off cannot check them properly.
+STITCH detects these defects from lint and synthesis output and repairs the RTL. The study measures what repair
+costs and buys; PPA may change only slightly or even get slightly worse.
 
-Scaling check: 36 latched bits x 20 instances per router = 720 latch cells per router, so 2,880 (4 routers)
-and 6,480 (9 routers). MPSoC top: 269 -> 122 after repair; the 122 are in 5 modules outside the repair set.
+Variants: A = original as written (register_1bit aborts Yosys); A1 = A with only register_1bit fixed, all
+latches retained; B = golden repairs; C = actual STITCH repair. Primary comparison: 2x2 mesh A1 vs B vs C.
+B and C should be nearly identical. A is the expected-failure baseline, not a PPA result.
 
-Metrics (state tools, versions, library, seeds):
-1. Yosys: cells by type, latch/flop/mux counts, area via a liberty file (sky130_fd_sc_hd or Nangate45; pick
-   one and keep it).
-2. OpenSTA/OpenROAD: WNS/TNS, unconstrained endpoints, latch time-borrowing paths, power with identical
-   activity (same VCD from the same stimulus, or the same vectorless defaults).
-3. OpenROAD place and route: identical floorplan, utilisation and seeds (at least 3); core area, wirelength,
-   SPEF total capacitance, clock-net capacitance.
-4. Optional: ngspice on sky130 cells (dlxtp vs dfxtp vs a mux) for switching energy and glitch
-   propagation. Optional: Vivado (LUT/FF/LATCH counts, power with SAIF, WNS); A as written may be
-   accepted by Vivado.
+The mesh's 2,880 (2x2) and 6,480 (3x3) latches come only from `register_32bit` and `register_4bit`.
+Repair changes these to flip-flops. SKY130HD flip-flops are larger than latches and add clock load; expect a
+small area and clock-power increase, not a reduction. Latches are about 3% of mesh cells, so the delta may be
+only a few percent and within placement noise. The benefit under study is timing analysability and sign-off
+correctness. The MPSoC top drops from 269 to 122 latches; the remaining 122 are outside the repair set.
 
-Rules: same top, constraints, library, tool versions and seeds for every variant. The MPSoC top-level
-testbench is weak (2 instructions, no network traffic), so do not use it for power; use leaf testbenches
-or seeded random vectors. The repaired leaves differ from the latch versions only where the latch held an
-old value (equivalent on legal inputs), so say so in the results. Report per leaf and per level.
+Run priorities:
+1. Primary: 2x2 mesh, A1 vs B vs C, with at least 3 placement seeds.
+2. Optional scaling check: 3x3 mesh, A1 vs B; latch count should scale by about 9/4.
+3. Skip the MPSoC top unless time allows; its 2-instruction, no-network-traffic testbench is weak.
+4. Cheap leaf check: Yosys plus the same liberty file on each task's `defective.v` and `golden.v` (all 11 leaves).
 
-Hypotheses to confirm or refute: (a) mux-type leaves lose their storage cell, so area drops slightly;
-(b) register_32bit/4bit change from latches to flip-flops, so area and power per bit probably rise while
-timing becomes analysable; (c) OpenSTA reports unconstrained or clockless endpoints for the inferred
-latch enables in A1 but not in B. The net PPA sign is an open question.
+Use the existing ORFS open flow, SKY130HD library and 10 ns clock. Keep top, constraints, tool versions, activity,
+die dimensions and other settings identical. Use a fixed die size, not a utilization target, and report the spread
+across seeds. For A1 and B, run OpenSTA `check_setup` and `report_checks -unconstrained`; count endpoints that are
+not timed.
 
-Report back: a table, variant x design x (cells, latches, flops, area, WNS, power, wirelength, total
-capacitance), plus a short note on anything surprising.
+Report one compact table per variant (A1, B, C) and one delta table, not a separate report per design. Summarize
+the primary 2x2 across seeds and include the optional 3x3 result in the same tables if run. Use these metrics:
+- latch cells / flop cells;
+- final standard-cell instance area (not synthesis area or fill-cell area);
+- WNS / TNS (ns) and unconstrained endpoint count;
+- total power split into sequential / clock / combinational (mW), with identical activity;
+- one consistently defined total wire-capacitance measure (not raw SPEF ground/coupling sums);
+- max-slew and max-cap violations.
+
+**A1**
+
+| Metric | 2x2 primary (median [range]) | 3x3 optional |
+|---|---|---|---|
+| Latch cells / flop cells | TBD | TBD |
+| Std-cell instance area, final (um^2) | TBD | TBD |
+| WNS / TNS (ns) | TBD | TBD |
+| Unconstrained endpoints | TBD | TBD |
+| Total power: sequential / clock / combinational (mW) | TBD | TBD |
+| Total wire capacitance (pF; same method) | TBD | TBD |
+| Max-slew / max-cap violations | TBD | TBD |
+
+**B**
+
+| Metric | 2x2 primary (median [range]) | 3x3 optional |
+|---|---|---|
+| Latch cells / flop cells | TBD | TBD |
+| Std-cell instance area, final (um^2) | TBD | TBD |
+| WNS / TNS (ns) | TBD | TBD |
+| Unconstrained endpoints | TBD | TBD |
+| Total power: sequential / clock / combinational (mW) | TBD | TBD |
+| Total wire capacitance (pF; same method) | TBD | TBD |
+| Max-slew / max-cap violations | TBD | TBD |
+
+**C**
+
+| Metric | 2x2 primary (median [range]) | 3x3 optional |
+|---|---|---|
+| Latch cells / flop cells | TBD | TBD |
+| Std-cell instance area, final (um^2) | TBD | TBD |
+| WNS / TNS (ns) | TBD | TBD |
+| Unconstrained endpoints | TBD | TBD |
+| Total power: sequential / clock / combinational (mW) | TBD | TBD |
+| Total wire capacitance (pF; same method) | TBD | TBD |
+| Max-slew / max-cap violations | TBD | TBD |
+
+**Delta and leaf area**
+
+| Metric / leaf | B-A1 (%) | C-B (%) | Defective-to-golden leaf area (%) | STITCH-to-golden leaf area (%) |
+|---|---|---|---|---|
+| Latch cells / flop cells | TBD | TBD | n/a | n/a |
+| Final standard-cell instance area | TBD | TBD | n/a | n/a |
+| WNS / TNS | TBD | TBD | n/a | n/a |
+| Unconstrained endpoints (absolute count delta) | TBD | TBD | n/a | n/a |
+| Total power by component | TBD | TBD | n/a | n/a |
+| Total wire capacitance | TBD | TBD | n/a | n/a |
+| Max-slew / max-cap violations (absolute count delta) | TBD | TBD | n/a | n/a |
+| Address_select | n/a | n/a | TBD | TBD |
+| execute_mux | n/a | n/a | TBD | TBD |
+| mem_wb_mux | n/a | n/a | TBD | TBD |
+| mux3 | n/a | n/a | TBD | TBD |
+| MuxPC | n/a | n/a | TBD | TBD |
+| ni_flit_pack | n/a | n/a | TBD | TBD |
+| noc_xbar4 | n/a | n/a | TBD | TBD |
+| register_1bit | n/a | n/a | TBD | TBD |
+| register_32bit | n/a | n/a | TBD | TBD |
+| register_4bit | n/a | n/a | TBD | TBD |
+| riscv_alu_flags | n/a | n/a | TBD | TBD |
+
+Keep detailed file listings, GDS/congestion notes and recommended actions in private notes, not the report.
+End with exactly three short lines: tool versions; placement seeds; anything surprising.
 ---

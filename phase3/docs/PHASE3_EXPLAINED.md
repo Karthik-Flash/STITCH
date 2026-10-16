@@ -5,7 +5,7 @@ This document assumes no hardware background. It explains:
 - what an MPSoC is;
 - what the tools do, and exactly how Yosys finds each defect;
 - what was built and measured;
-- whether STITCH is likely to help.
+- why unintended latches threaten sign-off, and what repairing them may cost and buy (without assuming a PPA gain).
 
 Every code snippet and tool message below is real output from this project, not an illustration.
 
@@ -69,11 +69,17 @@ A **latch** is a different memory element. Instead of a camera it behaves like a
 - while its "enable" is open, the output follows the input continuously;
 - when the enable closes, it freezes whatever was there.
 
-Designers sometimes want latches, but in almost all modern design flows they are treated as a bug:
-- **Timing analysis gets harder.** The tools that check the chip is fast enough reason about the clock ticks, and a
-  latch is transparent for a whole window of time.
-- **Glitches get through.** Brief wrong values (glitches) pass straight through an open latch.
-- **They are usually unintended.** The designer wanted a calculator and accidentally got memory.
+An inferred latch is storage the designer never asked for. It can appear when combinational code leaves an output
+unassigned on some path (for example, a missing `else`), or when a register is coded level-sensitive instead of
+edge-triggered. Both cases occur in this design. This is hazardous because:
+- **Timing can be skipped or mis-timed.** A latch enable is not a clean clock, and static timing tools may not be
+  able to trace it to a clock.
+- **Glitches can corrupt stored data.** A brief glitch on the enable can change the value held by an open latch.
+- **Scan and test insertion can break.** Unexpected storage complicates test structures.
+- **Tools can disagree.** Incomplete assignments and level-sensitive behavior may be interpreted differently.
+
+STITCH detects these defects from lint and synthesis output and repairs the RTL. The claim is sign-off correctness,
+not improved PPA; the study measures what the repair costs and buys, and the PPA delta may be small or slightly worse.
 
 **How do you accidentally create one?** Take this real code from the MPSoC (`mux3`, the operand-forwarding selector
 of the processor):
