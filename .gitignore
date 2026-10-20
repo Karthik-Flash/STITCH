@@ -71,6 +71,8 @@ private/
 # --- Phase 3 (MPSoC composition + interpreter v3) ---
 # Local run output (E0 retro-audit, smoke runs): regenerable, never committed.
 phase3/results/
+# Local silicon PPA analysis inputs and generated plots; summary is tracked separately.
+/SiliconComparision/stitch_noc_analysis_bundle/
 # Drop leftovers: the source archive, and the one-off snippet already merged into .gitattributes.
 STITCH_phase3_drop.zip
 STITCH_phase3_drop/

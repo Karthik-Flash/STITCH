@@ -24,6 +24,11 @@ small area and clock-power increase, not a reduction. Latches are about 3% of me
 only a few percent and within placement noise. The benefit under study is timing analysability and sign-off
 correctness. The MPSoC top drops from 269 to 122 latches; the remaining 122 are outside the repair set.
 
+Work completed: `PPA_SUMMARY.md` records the supplied one-run A1/B results for both mesh sizes, their derived
+area/power deltas, and the limits of the unmatched activity and single-seed comparison. The analysis bundle is
+local-only. The key check still left out is whether A1 has untimed or clockless endpoints that B does not; endpoint
+and clock-sink counts have not been measured.
+
 Run priorities:
 1. Primary: 2x2 mesh, A1 vs B vs C, with at least 3 placement seeds.
 2. Optional scaling check: 3x3 mesh, A1 vs B; latch count should scale by about 9/4.
@@ -34,6 +39,26 @@ Use the existing ORFS open flow, SKY130HD library and 10 ns clock. Keep top, con
 die dimensions and other settings identical. Use a fixed die size, not a utilization target, and report the spread
 across seeds. For A1 and B, run OpenSTA `check_setup` and `report_checks -unconstrained`; count endpoints that are
 not timed.
+
+### The extra metric: unconstrained or clockless endpoints
+
+Static timing analysis checks paths from launching registers to capturing registers. If a path starts or ends at a
+latch whose enable cannot be traced to a clock, the tool may skip it silently. No reported violation does not mean
+the path was checked.
+
+For A1 and B, run `check_setup -verbose` and `report_checks -unconstrained` in OpenSTA. Count endpoints that were
+not timed, and count the clock sinks reached by the clock. These values are not measured in the supplied run.
+
+**HYPOTHESIS: to confirm.** Expected outcomes to test, not results:
+
+| Metric | A1 (latches) | B (repaired) |
+|---|---|---|
+| Clock sinks | Fewer | About 2,880 more on 2x2 |
+| Unconstrained endpoints | Some or many, possibly around latch enables | Few or none |
+| Reported slack | May be flattering; prior 2x2 report noted +0.64 ns | Timed result may be lower |
+
+If A1 has untimed endpoints and B does not, that supports timing analysability as a benefit. If A1 has none, report
+that result plainly; do not claim that its slack was optimistic.
 
 Report one compact table per variant (A1, B, C) and one delta table, not a separate report per design. Summarize
 the primary 2x2 across seeds and include the optional 3x3 result in the same tables if run. Use these metrics:
