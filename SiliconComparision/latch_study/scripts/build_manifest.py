@@ -6,6 +6,9 @@ import hashlib
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parent.parent
+REPO = ROOT.parent.parent
+# Local-only analysis inputs (gitignored); not part of the tracked handoff.
+UNTRACKED_DIRS = {"stitch_noc_analysis_bundle"}
 DESIGN_SOURCES = {
     "mesh2x2": "mesh2x2_ref",
     "mesh3x3": "mesh3x3_ref",
@@ -78,6 +81,8 @@ def source_for(relative: str) -> str:
         return C_SOURCES[task]
     if relative == "COWORKER_BRIEF.md":
         return "user-provided exact brief"
+    if relative == "PPA_SUMMARY.md":
+        return "authored from the local OpenSTA/ORFS analysis bundle"
     if relative == "scripts/run_yosys_stat.sh":
         return "authored for this handoff"
     if relative == "scripts/build_manifest.py":
@@ -87,11 +92,12 @@ def source_for(relative: str) -> str:
 
 def main() -> None:
     inventory = []
-    for path in sorted(p for p in ROOT.rglob("*") if p.is_file() and p.name != "MANIFEST.md"):
+    files = (p for p in ROOT.rglob("*") if p.is_file() and p.name != "MANIFEST.md")
+    for path in sorted(p for p in files if p.relative_to(ROOT).parts[0] not in UNTRACKED_DIRS):
         relative = path.relative_to(ROOT).as_posix()
         inventory.append((relative, source_for(relative), sha256(path)))
 
-    compose_path = ROOT.parent / "phase3" / "results" / "phase3_run" / "compose_results.jsonl"
+    compose_path = REPO / "phase3" / "results" / "phase3_run" / "compose_results.jsonl"
     compose_hash = sha256(compose_path)
     lines = [
         "# Handoff manifest",

@@ -591,7 +591,7 @@ Every delivered file is listed with its repository-relative source and SHA-256. 
 | `C_repaired_stitch/mpsoc/rr_comb_new.v` | `phase3/designs/mpsoc_ref/rr_comb_new.v` | `45bf1b0933d51f9d6314a9bd209d6c8efe7b670ccc3f09855c2f837bd5c8adb5` |
 | `C_repaired_stitch/mpsoc/stall_unit.v` | `phase3/designs/mpsoc_ref/stall_unit.v` | `b6b40729c82962de3d3d2f3cd61d78ceb0c55ed8d789c47feeb8b5893e78ae95` |
 | `C_repaired_stitch/mpsoc/top_module.v` | `phase3/designs/mpsoc_ref/top_module.v` | `50676eb017b9890d32d1bfef47a89d836f8c74df11bb0fd589425aad5d25649e` |
-| `COWORKER_BRIEF.md` | `user-provided exact brief` | `a245c14ee85242b57078d8987994fb6c2d79b8547f776ec4cc43db35833710fb` |
+| `COWORKER_BRIEF.md` | `user-provided exact brief` | `fe7be947759903b5ecef27ed903d6df5ac2ba32f7839e5f9d186de48fcbaa2e4` |
 | `leaves/Address_select/defective.v` | `phase3/tasks/Address_select/input.v` | `6bb92a03038ccfb1307704f247ac327e170609a1ff4c3f1046b8879143dec138` |
 | `leaves/Address_select/golden.v` | `phase3/tasks/Address_select/golden.v` | `68fdf6e342f885d21263aaa18ddea5bb16781f953a47fbca2fcd3fcdc920ecb6` |
 | `leaves/Address_select/stitch_repaired.v` | `phase3/results/phase3_run/deepseek-coder_6.7b/sem_esc_restart_v3/Address_select/rep2/iter3/dut.v` | `dc58d5a211236397b7949867cf6c11f9863d25a8a5b251fe56536d9ea20948be` |
@@ -625,5 +625,6 @@ Every delivered file is listed with its repository-relative source and SHA-256. 
 | `leaves/riscv_alu_flags/defective.v` | `phase3/tasks/riscv_alu_flags/input.v` | `45f479c9d117e2aa0344e0e8c1d0ab3e111069131061f34c2df79fa55add9226` |
 | `leaves/riscv_alu_flags/golden.v` | `phase3/tasks/riscv_alu_flags/golden.v` | `82842090af1e34e5f8eff0575dcdd95e6c0ee693dc201a04908a75f107016df8` |
 | `leaves/riscv_alu_flags/stitch_repaired.v` | `phase3/results/phase3_run/deepseek-coder_6.7b/sem_esc_restart_v3/riscv_alu_flags/rep2/iter6/dut.v` | `e2bfd2331505dece38aea0fe1d7b8a9228f017156f6d27f887910d63a0afaf3e` |
-| `scripts/build_manifest.py` | `authored for this handoff` | `ba5b1358645aca6065204b7fa0a769dc4316a044639b4469bc7dc42d9443b32c` |
+| `PPA_SUMMARY.md` | `authored from the local OpenSTA/ORFS analysis bundle` | `26e634ca66597a74e136646661fe2ae13cf52881989555b7052d48dd9771f8ad` |
+| `scripts/build_manifest.py` | `authored for this handoff` | `df492affdc11599e92aea4ed314261f40caf67ab0ad240cd00f453211cacd013` |
 | `scripts/run_yosys_stat.sh` | `authored for this handoff` | `f1a2aaec107e128b5b77c86da21c82129f47bfad084d677a0432af901a448da1` |
