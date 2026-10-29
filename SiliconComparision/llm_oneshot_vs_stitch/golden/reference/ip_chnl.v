@@ -16,6 +16,7 @@ module ip_chnl (reset, rd_clk, wr_clk, rd_en, wr_en,  data_in, current_address, 
     
      reg [31:0] mux_data_out,header_out,data_out;
      reg clr1,header,tailer_org;
+     wire rd_en_out; // added for Icarus: was implicit
 
 
 always@(fifo_out,reset,rd_en_out,rd_en,rd_clk,wr_clk)

@@ -1,0 +1,26 @@
+{
+ "track": "N",
+ "top": "rr_arbiter",
+ "source": "golden/handwritten/rr_arbiter.v",
+ "children": [
+  "dff_asynch_clr",
+  "falling_edge_pulse_generator",
+  "priority_encoder"
+ ],
+ "descendants": [
+  "dff_asynch_clr",
+  "falling_edge_pulse_generator",
+  "priority_encoder"
+ ],
+ "checked_outputs": [
+  "gnt1",
+  "gnt2",
+  "gnt3",
+  "gnt4"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "gnt1",
+ "phase3_task": null
+}

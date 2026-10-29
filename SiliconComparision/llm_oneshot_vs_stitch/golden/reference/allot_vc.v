@@ -38,6 +38,7 @@ module allot_vc(reset, rd_clk, encoded_addr, g1, g2, g3, g4, g5, g6, g7, g8, g9,
 	
 	
 	wire mux_out1,mux_out2,mux_out13,mux_out4;  
+	wire mux_out3; // added for Icarus: was implicit
    
    
    assign gnt_or=g1|g2|g3|g4|g5|g6|g7|g8|g9|g10|g11|g12|g13|g14|g15|g16;

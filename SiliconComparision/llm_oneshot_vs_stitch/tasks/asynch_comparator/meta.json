@@ -1,0 +1,17 @@
+{
+ "track": "N",
+ "top": "asynch_comparator",
+ "source": "golden/handwritten/asynch_comparator.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "full_ext",
+  "full_int",
+  "empty"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

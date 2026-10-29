@@ -1,0 +1,28 @@
+{
+ "track": "R",
+ "source": "golden/handwritten/register_1bit.v",
+ "top": "register_1bit",
+ "defect_classes": [
+  "ASYNC_RESET (Yosys hard ERROR)"
+ ],
+ "sim_silent": true,
+ "compose": {
+  "design": "mesh",
+  "file": "register_1bit.v"
+ },
+ "note": "simulates correctly; only synthesis fails -- blocks top-level synthesis of both meshes",
+ "expected_v3_classes": [
+  "ASYNC_RESET"
+ ],
+ "expected_v2_classes": [],
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "dout"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "phase3 tb_signoff.v",
+ "mutant_output": null,
+ "phase3_task": "phase3/tasks/register_1bit"
+}

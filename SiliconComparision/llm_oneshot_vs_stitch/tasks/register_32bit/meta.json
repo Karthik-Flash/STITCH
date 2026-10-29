@@ -1,0 +1,35 @@
+{
+ "track": "R",
+ "source": "golden/handwritten/register_32bit.v",
+ "top": "register_32bit",
+ "defect_classes": [
+  "LATCH",
+  "UNUSEDSIGNAL(clk)",
+  "MISSING_CLOCK"
+ ],
+ "sim_silent": false,
+ "compose": {
+  "design": "mesh",
+  "file": "register_32bit.v"
+ },
+ "instances_in_mesh2x2": 80,
+ "instances_in_mesh3x3": 180,
+ "intent_note": "commented-out code in the original shows the designer intended @(posedge clk)",
+ "expected_v3_classes": [
+  "MISSING_CLOCK"
+ ],
+ "expected_v2_classes": [
+  "LATCH",
+  "UNUSEDSIGNAL"
+ ],
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "dout"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "phase3 tb_signoff.v",
+ "mutant_output": null,
+ "phase3_task": "phase3/tasks/register_32bit"
+}

@@ -17,6 +17,15 @@ HANDWRITTEN = STUDY / "golden" / "handwritten"
 REFERENCE = STUDY / "golden" / "reference"
 B = STUDY.parent / "latch_study" / "B_repaired_golden" / "mesh2x2"
 REPLACED = ("register_1bit", "register_4bit", "register_32bit")
+# Declaration-only fixes so Icarus (p3_eval: iverilog -g2012) can compile the reference. The hand-written files read
+# a net in a sensitivity list before the instance port that implicitly declares it; Yosys accepts that, Icarus does
+# not. An implicit net is a 1-bit wire, so declaring it changes nothing else.
+SIM_FIXES = {
+    "ip_chnl.v": ("     reg clr1,header,tailer_org;\n",
+                  "     reg clr1,header,tailer_org;\n     wire rd_en_out; // added for Icarus: was implicit\n"),
+    "allot_vc.v": ("\twire mux_out1,mux_out2,mux_out13,mux_out4;  \n",
+                   "\twire mux_out1,mux_out2,mux_out13,mux_out4;  \n\twire mux_out3; // added for Icarus: was implicit\n"),
+}
 
 
 def modules(directory: Path) -> dict[str, str]:
@@ -37,6 +46,10 @@ def main() -> None:
     shutil.copytree(HANDWRITTEN, REFERENCE)
     for name in REPLACED:
         shutil.copyfile(REPO / "phase3" / "tasks" / name / "golden.v", REFERENCE / f"{name}.v")
+    for filename, (old, new) in SIM_FIXES.items():
+        text = (REFERENCE / filename).read_text(encoding="utf-8")
+        assert text.count(old) == 1, filename
+        (REFERENCE / filename).write_text(text.replace(old, new), encoding="utf-8", newline="")
 
     ref_files = {p.name: p.read_bytes() for p in REFERENCE.glob("*.v")}
     b_files = {p.name: p.read_bytes() for p in B.glob("*.v")}
@@ -53,6 +66,10 @@ def main() -> None:
           f"only in B {sorted(b_mods.keys() - ref_mods.keys())}")
     identical = not diff_mods and ref_mods.keys() == b_mods.keys()
     print("module-level identical to B:", identical)
+    for m in diff_mods:
+        extra = set(ref_mods[m].split(";")) - set(b_mods[m].split(";"))
+        missing = set(b_mods[m].split(";")) - set(ref_mods[m].split(";"))
+        print(f"  {m}: statements only in reference {sorted(extra)}; only in B {sorted(missing)}")
 
 
 if __name__ == "__main__":

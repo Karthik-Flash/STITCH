@@ -1,0 +1,28 @@
+{
+ "track": "N",
+ "top": "op_data_path",
+ "source": "golden/handwritten/op_data_path.v",
+ "children": [
+  "final_op_data"
+ ],
+ "descendants": [
+  "final_op_data"
+ ],
+ "checked_outputs": [
+  "data_out_link1",
+  "data_out_link2",
+  "data_out_link3",
+  "data_out_link4",
+  "data_out_core",
+  "data_out_l1",
+  "data_out_l2",
+  "data_out_l3",
+  "data_out_l4",
+  "data_out_c"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

@@ -1,0 +1,49 @@
+# allot_vc
+
+## Behaviour
+
+Output-VC allocator for one router output port with four output VCs.
+
+- `gnt_or` = OR of `g1` to `g16` (some input VC was just granted this output port).
+- `b1` to `b4` are the busy flags of output VCs 1 to 4. A new grant takes the lowest-numbered free VC:
+  `ce_b1` = NOT `b1` AND `gnt_or`; `ce_b2` = `b1` AND NOT `b2` AND `gnt_or`; `ce_b3` = `b1` AND `b2` AND
+  NOT `b3` AND `gnt_or`; `ce_b4` = `b1` AND `b2` AND `b3` AND NOT `b4` AND `gnt_or`.
+- On a rising `rd_clk` edge, `bk` becomes 0 if `clr_bk` is 1; else it becomes 1 if `ce_bk` is 1;
+  otherwise it holds.
+- `ek` (register_4bit, clk = `rd_clk`) holds the 4-bit index of the granted input VC: on each rising
+  `rd_clk` edge it becomes 0000 if `reset` is 1, else takes `encoded_addr` if `ce_bk` is 1, else holds.
+  `link_k` = `ek[3:2]` and `vc_id_k` = `ek[1:0]`. `e1` to `e4` are also outputs.
+- Release: on each rising `rd_clk` edge, a registered selector samples tailer(`ek`+1) (`ek` = 0 gives
+  `tailer1`, up to `ek` = 15 for `tailer16`). `clr_bk` is that sampled value, or 0 while `reset` is 1.
+  An output VC therefore frees one `rd_clk` edge after the tailer of its source input VC is seen.
+
+## Reset
+
+Active-high `reset`. `b1` to `b4` clear asynchronously (register_1bit). `e1` to `e4` become 0000 at the next
+rising `rd_clk` edge (register_4bit `clr` = `reset`). `clr_b1` to `clr_b4` are forced to 0.
+
+## Ports
+
+60 ports, in this exact order:
+
+```verilog
+input reset, rd_clk;
+input [3:0] encoded_addr;
+input g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+output [1:0] link_1, vc_id_1, link_2, vc_id_2, link_3, vc_id_3, link_4, vc_id_4;
+output b1, b2, b3, b4;
+input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      tailer12, tailer13, tailer14, tailer15, tailer16;
+output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4;
+output [3:0] e1, e2, e3, e4;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `mux` x 4: (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, sel, m_out, clk)
+- `register_1bit` x 4: (din, reset, clk, clr, ce, dout)
+- `register_4bit` x 4: (din, clk, clr, ce, dout)

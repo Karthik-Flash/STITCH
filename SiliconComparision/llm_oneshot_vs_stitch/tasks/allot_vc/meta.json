@@ -1,0 +1,47 @@
+{
+ "track": "N",
+ "top": "allot_vc",
+ "source": "golden/handwritten/allot_vc.v",
+ "children": [
+  "mux",
+  "register_1bit",
+  "register_4bit"
+ ],
+ "descendants": [
+  "mux",
+  "register_1bit",
+  "register_4bit"
+ ],
+ "checked_outputs": [
+  "link_1",
+  "vc_id_1",
+  "link_2",
+  "vc_id_2",
+  "link_3",
+  "vc_id_3",
+  "link_4",
+  "vc_id_4",
+  "b1",
+  "b2",
+  "b3",
+  "b4",
+  "gnt_or",
+  "ce_b1",
+  "ce_b2",
+  "ce_b3",
+  "ce_b4",
+  "clr_b1",
+  "clr_b2",
+  "clr_b3",
+  "clr_b4",
+  "e1",
+  "e2",
+  "e3",
+  "e4"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

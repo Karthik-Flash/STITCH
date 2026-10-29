@@ -1,0 +1,19 @@
+{
+ "track": "N",
+ "top": "routing_algo_mesh",
+ "source": "golden/handwritten/routing_algo_mesh.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "req_link1",
+  "req_link2",
+  "req_core",
+  "req_link3",
+  "req_link4"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

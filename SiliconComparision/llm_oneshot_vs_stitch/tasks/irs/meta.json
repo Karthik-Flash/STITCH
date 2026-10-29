@@ -1,0 +1,25 @@
+{
+ "track": "N",
+ "top": "irs",
+ "source": "golden/handwritten/IRS.v",
+ "children": [
+  "dff_asynch_clr"
+ ],
+ "descendants": [
+  "dff_asynch_clr"
+ ],
+ "checked_outputs": [
+  "rd_en_out",
+  "data_sel",
+  "en1",
+  "en2",
+  "en4",
+  "en5",
+  "en6"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "rd_en_out",
+ "phase3_task": null
+}
