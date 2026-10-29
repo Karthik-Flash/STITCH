@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Build golden/reference: golden/handwritten with ONLY register_1bit, register_4bit and register_32bit replaced
+by phase3/tasks/<m>/golden.v. Then compare it with latch_study/B_repaired_golden/mesh2x2, file by file and
+module by module (B keeps compose.py's layout: stripped originals plus __repaired_<m>.v files).
+
+Usage: python pipeline/build_reference.py
+"""
+from __future__ import annotations
+
+import re
+import shutil
+from pathlib import Path
+
+STUDY = Path(__file__).resolve().parent.parent
+REPO = STUDY.parent.parent
+HANDWRITTEN = STUDY / "golden" / "handwritten"
+REFERENCE = STUDY / "golden" / "reference"
+B = STUDY.parent / "latch_study" / "B_repaired_golden" / "mesh2x2"
+REPLACED = ("register_1bit", "register_4bit", "register_32bit")
+
+
+def modules(directory: Path) -> dict[str, str]:
+    """module name -> whitespace-normalised text, comments removed."""
+    found = {}
+    for path in sorted(directory.glob("*.v")):
+        text = path.read_bytes().decode("utf-8").replace("\r\n", "\n")
+        text = re.sub(r"/\*.*?\*/", "", re.sub(r"//[^\n]*", "", text), flags=re.S)
+        for m in re.finditer(r"\bmodule\s+(\w+).*?\bendmodule\b", text, re.S):
+            assert m.group(1) not in found, f"{m.group(1)} defined twice in {directory}"
+            found[m.group(1)] = " ".join(m.group(0).split())
+    return found
+
+
+def main() -> None:
+    if REFERENCE.exists():
+        shutil.rmtree(REFERENCE)
+    shutil.copytree(HANDWRITTEN, REFERENCE)
+    for name in REPLACED:
+        shutil.copyfile(REPO / "phase3" / "tasks" / name / "golden.v", REFERENCE / f"{name}.v")
+
+    ref_files = {p.name: p.read_bytes() for p in REFERENCE.glob("*.v")}
+    b_files = {p.name: p.read_bytes() for p in B.glob("*.v")}
+    same = sorted(n for n in ref_files.keys() & b_files.keys() if ref_files[n] == b_files[n])
+    differ = sorted(n for n in ref_files.keys() & b_files.keys() if ref_files[n] != b_files[n])
+    print(f"files: reference {len(ref_files)}, B {len(b_files)}; byte-identical {len(same)}; "
+          f"differ {differ}; only in reference {sorted(ref_files.keys() - b_files.keys())}; "
+          f"only in B {sorted(b_files.keys() - ref_files.keys())}")
+
+    ref_mods, b_mods = modules(REFERENCE), modules(B)
+    diff_mods = sorted(m for m in ref_mods.keys() & b_mods.keys() if ref_mods[m] != b_mods[m])
+    print(f"modules: reference {len(ref_mods)}, B {len(b_mods)}; text differs (comments/whitespace ignored): "
+          f"{diff_mods}; only in reference {sorted(ref_mods.keys() - b_mods.keys())}; "
+          f"only in B {sorted(b_mods.keys() - ref_mods.keys())}")
+    identical = not diff_mods and ref_mods.keys() == b_mods.keys()
+    print("module-level identical to B:", identical)
+
+
+if __name__ == "__main__":
+    main()
