@@ -73,6 +73,8 @@ private/
 phase3/results/
 # Local silicon PPA analysis inputs and generated plots; summary is tracked separately.
 /SiliconComparision/latch_study/stitch_noc_analysis_bundle/
+# LLM one-shot vs STITCH study: local run output (Yosys intermediates, sims, LLM runs).
+/SiliconComparision/llm_oneshot_vs_stitch/runs/
 # Drop leftovers: the source archive, and the one-off snippet already merged into .gitattributes.
 STITCH_phase3_drop.zip
 STITCH_phase3_drop/
