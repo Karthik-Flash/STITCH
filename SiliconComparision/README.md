@@ -39,6 +39,8 @@ LLM one-shot generation versus STITCH on the 2x2 mesh (OpenROAD path). The golde
   (`reports/TASK_VALIDATION.md`).
 - `pipeline/`: `oneshot_gen.py` (one-shot generation), `run_arms.py` (Phase 3 runner via `p3_bridge.py`:
   baseline = simloop, sem_esc_restart_v3 = stitch), `summarize.py`, `gate.py`, `prove_prompt_format.py`,
-  `e2e_mock.py`, and the cluster files `hpc_env.sh`, `gen_job.slurm`, `deploy_gen.ps1`, `HPC_RUN.md`.
+  `e2e_mock.py`, `preflight.py` (job-start checks and `runs/RUN_MANIFEST.json`), `budget.py` (Ollama options, prompt
+  token estimates and wall time: `reports/PREDEPLOY_BUDGET.md`), and the cluster files `hpc_env.sh`, `gen_job.slurm`,
+  `deploy_gen.ps1`, `HPC_RUN.md`.
 - `prompts/`, `outputs/{oneshot,simloop,stitch}/`, `assembled/`, `reports/`: study outputs.
 - `runs/` is local-only (gitignored).

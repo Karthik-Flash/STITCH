@@ -19,6 +19,11 @@ foreach ($f in "stitch_interpreter.py", "stitch_interpreter_v3.py", "_v3_parsers
     Copy-Item "src\interpreter\$f" "$Stage\src\interpreter\$f"
 }
 Copy-Item -Recurse $Study "$Stage\$Study"
+# The cluster copy has no .git: record the deployed commit for runs/RUN_MANIFEST.json (preflight.py).
+$commit = (git rev-parse HEAD).Trim()
+if (git status --porcelain -- $Study phase3/runner src/interpreter) { $commit += " (dirty)" }
+Set-Content -NoNewline -Encoding ascii "$Stage\$Study\DEPLOYED_COMMIT.txt" $commit
+Write-Host "== deployed commit: $commit"
 Get-ChildItem $Stage -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
 if (Test-Path "$Stage\$Study\runs") { Remove-Item -Recurse -Force "$Stage\$Study\runs" }
 
@@ -34,7 +39,8 @@ if ($crlf) { throw "CRLF left in: $($crlf.FullName -join ', ')" }
 Write-Host "== local hashes (LF, staged)"
 $key = "phase3\runner\stitch_runner_p3.py", "phase3\runner\p3_eval.py", "phase3\runner\system_prompt.txt",
        "src\interpreter\stitch_interpreter.py", "src\interpreter\stitch_interpreter_v3.py", "src\interpreter\_v3_parsers.py",
-       "$Study\pipeline\p3_bridge.py", "$Study\pipeline\run_arms.py", "$Study\pipeline\oneshot_gen.py", "$Study\modules.csv"
+       "$Study\pipeline\p3_bridge.py", "$Study\pipeline\run_arms.py", "$Study\pipeline\oneshot_gen.py", "$Study\pipeline\preflight.py", "$Study\pipeline\gen_job.slurm",
+       "$Study\modules.csv"
 foreach ($k in $key) { "{0}  {1}" -f (Get-FileHash -Algorithm SHA256 "$Stage\$k").Hash.ToLower(), ($k -replace '\\', '/') }
 
 if (Test-Path $T) { Remove-Item $T }

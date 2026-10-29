@@ -1,9 +1,18 @@
 # HPC run: LLM one-shot vs STITCH on the 2x2 mesh
 
-One Slurm job (`pipeline/gen_job.slurm`) runs: drift gate, then one-shot generation with qwen2.5-coder:32b
-(T = 0.1, all 34 modules plus the whole-router bonus prompt), then the two feedback arms through the Phase 3 runner
-(`baseline` = simulation loop, `sem_esc_restart_v3` = STITCH; budget 6, N = 1), then the summary.
-Login: `soumyaj@hpc.bits-hyderabad.ac.in`. Base on the cluster: `/scratch/soumyaj/STITCH_GEN`.
+One Slurm job (`pipeline/gen_job.slurm`, gpu_h200_8 on gpunode7, 1 GPU, 11 h) runs:
+1. drift gate (`pipeline/gate.py`; the job exits non-zero if it fails),
+2. preflight: `nvidia-smi -L`, `ollama serve` (models `/scratch/soumyaj/Phase3_HPC/ollama_models`, port
+   11434 + job id mod 1000, up within 120 s or the job fails), then `pipeline/preflight.py` (runner imports, tool
+   versions, qwen2.5-coder:32b digest equal to the Phase 3 digest, identical Ollama options for one-shot and arms;
+   writes `runs/RUN_MANIFEST.json`),
+3. one-shot generation with qwen2.5-coder:32b (T = 0.1, num_ctx 32768, all 34 modules plus the whole-router bonus),
+4. the two feedback arms through the Phase 3 runner (`baseline` = simulation loop, `sem_esc_restart_v3` = STITCH;
+   budget 6, N = 1),
+5. the summary.
+
+`ollama serve` is stopped on exit. Login: `soumyaj@hpc.bits-hyderabad.ac.in`. Base on the cluster:
+`/scratch/soumyaj/STITCH_GEN`. Budget figures (options, token estimates, wall time): `reports/PREDEPLOY_BUDGET.md`.
 
 ## 1. Dependency checklist (login node; one check command each)
 
@@ -32,34 +41,32 @@ powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitc
 powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1
 ```
 
-The script prints local and remote SHA-256 of the runner, interpreter and pipeline files; the two lists must be
-equal. The runner and interpreter hashes equal `phase3/evidence/FREEZE_FINAL.md`.
+Deploy from a clean, pushed commit: the script writes that commit to `DEPLOYED_COMMIT.txt` for the run manifest. It
+prints local and remote SHA-256 of the runner, interpreter and pipeline files; the two lists must be equal. The runner
+and interpreter hashes equal `phase3/evidence/FREEZE_FINAL.md`.
 
-## 3. Gate, then the job (ssh)
+## 3. Submit (ssh)
 
 ```bash
 ssh soumyaj@hpc.bits-hyderabad.ac.in
 cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
-# optional CPU-only gate first (about 2 minutes); must end with "GATE: ALL PASSED"
-sbatch --partition=gpu_h200_8 --nodelist=<GPU_NODE> --gres=gpu:0 --cpus-per-task=4 --mem=8G --time=00:30:00 \
-  --output=/scratch/soumyaj/STITCH_GEN/logs/gen_gate_%j.log \
-  --wrap "source /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/pipeline/hpc_env.sh && cd \$STUDY && python3 pipeline/gate.py"
-tail -3 /scratch/soumyaj/STITCH_GEN/logs/gen_gate_<JOBID>.log
-# the run: put the node name in the script once, then submit
-sed -i 's/<GPU_NODE>/<GPU_NODE_NAME>/' pipeline/gen_job.slurm
 sbatch pipeline/gen_job.slurm
 ```
+
+The log must show `GATE: ALL PASSED` and `PREFLIGHT: ALL PASSED` before the first generation line.
 
 ## 4. Monitor and resume (ssh)
 
 ```bash
 squeue -u soumyaj
 tail -f /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
+grep -E "GATE:|PREFLIGHT:|\[digest\]|\[options\] (ok|BAD)" /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
+cat /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/RUN_MANIFEST.json
 ls /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/oneshot | wc -l      # 35 when one-shot is done
 python3 -c "import json;d=json.load(open('/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/results/master_log.json'));print(len(d),'of 68 arm runs')"
 ```
 
-If the job hits the 8-hour limit or fails, submit `sbatch pipeline/gen_job.slurm` again: finished one-shot modules and
+If the job hits the 11-hour limit or fails, submit `sbatch pipeline/gen_job.slurm` again: finished one-shot modules and
 arm runs are skipped. `GEN_MODULES="encoder mux" sbatch pipeline/gen_job.slurm` runs a subset (no bonus prompt).
 
 ## 5. Copy the results back

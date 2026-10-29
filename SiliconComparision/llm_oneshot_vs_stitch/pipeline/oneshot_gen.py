@@ -95,7 +95,7 @@ def main() -> int:
     ap.add_argument("--host", default=os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
     ap.add_argument("--temperature", type=float, default=0.1)
     ap.add_argument("--num-ctx", type=int, default=32768, help="large enough for top_module's ports and children")
-    ap.add_argument("--timeout", type=int, default=3600)
+    ap.add_argument("--timeout", type=int, default=900, help="HTTP timeout per call; same as the Phase 3 runner")
     ap.add_argument("--modules", nargs="*", default=None)
     ap.add_argument("--full-router", action="store_true")
     ap.add_argument("--force", action="store_true")
