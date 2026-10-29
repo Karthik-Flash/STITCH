@@ -75,8 +75,11 @@ def main() -> int:
     if not a.host.startswith("http"):
         a.host = "http://" + a.host
 
-    modules = a.modules or sorted(os.listdir(os.path.join(STUDY, "tasks")))
-    modules = [m for m in modules if os.path.isdir(os.path.join(STUDY, "tasks", m))]
+    modules = a.modules or sorted(m for m in os.listdir(os.path.join(STUDY, "tasks"))
+                                  if os.path.isdir(os.path.join(STUDY, "tasks", m)))
+    unknown = [m for m in modules if not os.path.isdir(os.path.join(STUDY, "tasks", m))]
+    if unknown:
+        raise SystemExit(f"unknown task name(s): {' '.join(unknown)}")
     out = os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
     R = B.runner()

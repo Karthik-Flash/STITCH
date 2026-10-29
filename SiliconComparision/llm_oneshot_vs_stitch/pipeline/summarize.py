@@ -14,6 +14,7 @@ Usage: python pipeline/summarize.py --model qwen2.5-coder:32b [--arms runs/arms]
 from __future__ import annotations
 
 import argparse
+import glob
 import json
 import os
 import re
@@ -41,6 +42,18 @@ def score(cand: str, m: str) -> dict:
     return {"compile": ev["compile_ok"], "func": ev["func_pass"], "struct_clean": ev["struct_clean"],
             "clean": ev["clean_pass"], "latch_events": ev["latch_events"], "signoff": so["outcome"] == "PASS",
             "so_clean": so["outcome"] == "PASS" and ev["struct_clean"]}
+
+
+def call_meta(paths: list[str]) -> dict:
+    """done_reason and output tokens of each LLM call (oneshot record.json / arms iter*/llm_meta.json), in order."""
+    metas = [json.load(open(p)) for p in paths]
+    metas = [m.get("llm_meta", m) for m in metas]
+    return {"done_reasons": [m.get("done_reason") for m in metas], "tokens_out": [m.get("eval_count") for m in metas]}
+
+
+def iter_metas(run_dir: str) -> list[str]:
+    ps = glob.glob(os.path.join(run_dir, "iter*", "llm_meta.json"))
+    return sorted(ps, key=lambda p: int(re.search(r"iter(\d+)", p).group(1)))
 
 
 def score_full_router(cand: str) -> dict:
@@ -82,6 +95,9 @@ def main() -> int:
         row = {"module": m}
         one = os.path.join(B.WORK, "outputs", "oneshot", f"{m}.v")
         row["oneshot"] = score(one, m) if os.path.exists(one) else None
+        rec = os.path.join(B.WORK, "runs", "oneshot", m, "record.json")
+        if row["oneshot"] and os.path.exists(rec):
+            row["oneshot"].update(call_meta([rec]))
         for arm, cond in ARMS.items():
             mp = os.path.join(a.arms, "results", safe(a.model), cond, m, "rep1", "metrics.json")
             if not os.path.exists(mp):
@@ -91,7 +107,8 @@ def main() -> int:
             s = score(met["final_candidate"], m)
             s.update({"iterations": met["iterations"], "stop": met["stop_reason"],
                       "semantic_fired": met["semantic_fired"], "classes": met["classes_fired"],
-                      "runner_func": met["func_pass"], "runner_clean": met["clean_pass"]})
+                      "runner_func": met["func_pass"], "runner_clean": met["clean_pass"],
+                      **call_meta(iter_metas(os.path.dirname(mp)))})
             row[arm] = s
         rows.append(row)
         print(m, {k: (v["so_clean"] if v else None) for k, v in row.items() if k != "module"}, flush=True)
@@ -115,8 +132,18 @@ def main() -> int:
     tot = {arm: sum(1 for r in rows if r.get(arm) and r[arm]["so_clean"]) for arm in ("oneshot", "simloop", "stitch")}
     n = {arm: sum(1 for r in rows if r.get(arm)) for arm in ("oneshot", "simloop", "stitch")}
     md += ["", "so_clean totals: " + ", ".join(f"{arm} {tot[arm]}/{n[arm]}" for arm in tot)]
+    length = {arm: [f"{r['module']}#{i}" for r in rows if r.get(arm)
+                    for i, d in enumerate(r[arm].get("done_reasons", []), 1) if d == "length"] for arm in tot}
+    md += ["", "LLM calls that ended with done_reason=length (module#call): "
+           + "; ".join(f"{arm} {len(v)} ({', '.join(v) or '-'})" for arm, v in length.items())]
     if bonus:
         md += ["", "Bonus, whole router in one prompt (`top_module_full`): " + json.dumps(bonus)]
+    else:
+        bud = os.path.join(STUDY, "reports", "PREDEPLOY_BUDGET.md")
+        hit = re.search(r"\| top_module_full \| (\d+) \|", open(bud).read()) if os.path.exists(bud) else None
+        ctx = re.search(r"\| options\.num_ctx \| \d+ \| \d+ \| (\d+) \|", open(bud).read()) if hit else None
+        md += ["", "Bonus, whole router in one prompt (`top_module_full`): not attempted"
+               + (f": prompt alone {int(hit.group(1)):,} of {int(ctx.group(1)):,} tokens (budget.py)" if ctx else "")]
     os.makedirs(os.path.join(B.WORK, "reports"), exist_ok=True)
     open(os.path.join(B.WORK, "reports", "SUMMARY.md"), "w").write("\n".join(md) + "\n")
     json.dump({"model": a.model, "rows": rows, "totals": tot, "n": n, "full_router": bonus},

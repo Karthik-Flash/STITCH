@@ -11,6 +11,7 @@ export STITCH_INTERPRETER_DIR=$BASE/src/interpreter
 export STUDY=$BASE/SiliconComparision/llm_oneshot_vs_stitch
 # One port per job (11434 + job id mod 1000), so two jobs on one node never share an ollama server.
 export OLLAMA_HOST=127.0.0.1:$((11434 + ${SLURM_JOB_ID:-0} % 1000))
+export OLLAMA_SERVE_LOG=$BASE/logs/ollama_serve_${SLURM_JOB_ID:-local}.log   # grepped for the GPU offload line
 export OLLAMA_KEEP_ALIVE=30m
 export PYTHONUNBUFFERED=1
 export PYTHONDONTWRITEBYTECODE=1
@@ -21,7 +22,7 @@ touch_deps() {
 }
 start_ollama() {
   echo "ollama serve: OLLAMA_MODELS=$OLLAMA_MODELS OLLAMA_HOST=$OLLAMA_HOST ($(command -v ollama))"
-  ollama serve > $BASE/logs/ollama_serve_${SLURM_JOB_ID:-local}.log 2>&1 &
+  ollama serve > $OLLAMA_SERVE_LOG 2>&1 &
   OLLAMA_PID=$!
   local t0=$SECONDS
   while (( SECONDS - t0 < 120 )); do

@@ -105,6 +105,9 @@ def main() -> int:
 
     rows = MT.load_rows()
     modules = a.modules or sorted(rows, key=lambda m: int(rows[m]["bottom_up_order"]))
+    unknown = sorted(set(modules) - set(rows))
+    if unknown:
+        raise SystemExit(f"unknown task name(s): {' '.join(unknown)}")
     system = open(SYSTEM_PROMPT_FILE, encoding="utf-8").read()
     if a.backend == "mock":
         llm = MockGen(dict(p.split("=", 1) for p in a.mock_plan), rows)
@@ -129,18 +132,20 @@ def main() -> int:
             resp, tin, tout = llm.chat(system, prompt, m)
         else:
             resp, tin, tout = llm.chat(system, prompt)
+        meta = B.pop_chat_meta()                 # done_reason etc. from the same /api/chat response ({} for mock)
         code = R.extract_code(resp)
         open(os.path.join(rd, "response.txt"), "w", encoding="utf-8", newline="\n").write(resp)
         open(os.path.join(B.WORK, "outputs", "oneshot", f"{m}.v"), "w", encoding="utf-8", newline="\n").write(code)
         rec = {"module": m, "model": a.model, "backend": a.backend, "model_digest": digest, "ollama_version": version,
                "temperature": a.temperature, "num_ctx": a.num_ctx, "tokens_in": tin, "tokens_out": tout,
+               "done_reason": meta.get("done_reason"), "llm_meta": meta,
                "wall_s": round(time.time() - t0, 1), "timestamp": dt.datetime.now().isoformat(timespec="seconds"),
                "system_prompt_sha256_lf": sha(system), "prompt_sha256_lf": sha(prompt),
                "response_sha256": hashlib.sha256(resp.encode()).hexdigest(),
                "output_sha256": hashlib.sha256(code.encode()).hexdigest(),
                "mock_mode": llm.plan.get(m, "golden") if a.backend == "mock" else None}
         json.dump(rec, open(os.path.join(rd, "record.json"), "w"), indent=1)
-        print(f"{m:<30} tokens in/out {tin}/{tout} {rec['wall_s']}s", flush=True)
+        print(f"{m:<30} tokens in/out {tin}/{tout} done_reason {rec['done_reason']} {rec['wall_s']}s", flush=True)
     return 0
 
 

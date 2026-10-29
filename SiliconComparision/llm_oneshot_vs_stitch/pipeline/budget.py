@@ -7,7 +7,7 @@
             stitch_runner_p3.Ollama, whose chat() body is captured instead of sent. Fails if (b) != (c).
   [tokens]  ESTIMATED prompt tokens per task: prompt_eval_count of a local Ollama qwen2.5-coder model (same Qwen2.5
             BPE tokenizer as qwen2.5-coder:32b), chat template and system prompt included, num_predict 1.
-  [time]    Phase 3 qwen2.5-coder:32b per-call wall time from its logs x 443 calls (35 one-shot + 68 x 6) x 1.5.
+  [time]    Phase 3 qwen2.5-coder:32b per-call wall time from its logs x 442 calls (34 one-shot + 68 x 6) x 1.5.
 
 Usage: python pipeline/budget.py [--tokenizer-model qwen2.5-coder:latest] [--host http://127.0.0.1:11434]
 """
@@ -35,7 +35,8 @@ R = OG.R
 P3 = os.path.join(B.REPO, "phase3")
 P3_32B_RESULTS = os.path.join(P3, "results", "phase3_32b", "qwen2.5-coder_32b")
 P3_32B_SERVE_LOG = os.path.join(P3, "results", "final_batch_logs", "ollama_serve_369810.log")   # job C = 32b only
-N_CALLS = 35 + 68 * 6
+N_CALLS = 34 + 68 * 6                                   # whole-router bonus off (GEN_FULL_ROUTER=0)
+P3_NUM_CTX = 8192                                       # Phase 3 production (runner default; serve log n_ctx = 8192)
 MARGIN = 1.5
 
 
@@ -151,8 +152,8 @@ def tokens(host: str, model: str, num_ctx: int) -> tuple[list[str], list[str]]:
              f"num_ctx = {num_ctx} with the prompt; `golden out` (tokens of the golden module in a ```verilog block) "
              f"stands in for the answer size. `arms prompt` = Phase 3 user_prompt(spec, golden as current RTL, no "
              f"feedback), a lower bound for every feedback iteration.", "",
-             "| module | one-shot prompt | golden out | one-shot total | arms prompt | arms total | over num_ctx |",
-             "|---|---|---|---|---|---|---|"]
+             "| module | one-shot prompt | golden out | one-shot total | arms prompt | arms total | over num_ctx | over Phase 3 num_ctx 8192 |",
+             "|---|---|---|---|---|---|---|---|"]
     over = []
     for m in order + ["top_module_full"]:
         if m == "top_module_full":                         # answer counted file by file (each piece fits the probe)
@@ -167,12 +168,13 @@ def tokens(host: str, model: str, num_ctx: int) -> tuple[list[str], list[str]]:
             arms = count(host, model, system, R.user_prompt(spec, gold), probe_ctx)
             to = count(host, model, system, "```verilog\n" + gold + "```", probe_ctx) - base
         tp = count(host, model, system, p, probe_ctx)
-        flags = [n for n, v in (("one-shot prompt", tp), ("one-shot total", tp + to),
-                                ("arms total", arms + to if arms else 0)) if v > num_ctx]
+        need = (("one-shot prompt", tp), ("one-shot total", tp + to), ("arms total", arms + to if arms else 0))
+        flags = [n for n, v in need if v > num_ctx]
+        p3 = [n for n, v in need if v > P3_NUM_CTX]
         if flags and m != "top_module_full":
             over.append(f"{m}: {', '.join(flags)}")
         lines.append(f"| {m} | {tp} | {to} | {tp + to} | {arms if arms else '-'} | "
-                     f"{arms + to if arms else '-'} | {', '.join(flags) or '-'} |")
+                     f"{arms + to if arms else '-'} | {', '.join(flags) or '-'} | {', '.join(p3) or '-'} |")
         print(lines[-1], flush=True)
     lines += ["", "Single-module prompts above num_ctx - expected output (prompt + golden-size answer > num_ctx): "
               + ("; ".join(over) if over else "none")]
@@ -206,7 +208,7 @@ def walltime() -> tuple[list[str], int]:
              f"- metrics.json: {len(ms)} runs, {calls} LLM calls, {wall:.0f} s wall (LLM + tool evaluation): "
              f"{per_run:.1f} s per call",
              f"- per-call wall time used = max of the two means = {per_call:.1f} s",
-             f"- {per_call:.1f} s x {N_CALLS} calls (35 one-shot + 68 x 6) x {MARGIN} = {secs:.0f} s = "
+             f"- {per_call:.1f} s x {N_CALLS} calls (34 one-shot + 68 x 6) x {MARGIN} = {secs:.0f} s = "
              f"{secs / 3600:.2f} h -> --time={hours:02d}:00:00"]
     return lines, hours
 

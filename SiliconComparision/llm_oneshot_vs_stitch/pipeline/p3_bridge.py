@@ -9,12 +9,20 @@ three tool calls are wrapped:
 A task without lib/ (every leaf, and the three Phase 3 registers) runs through p3_eval unchanged.
 The lib/ and stubs/ files live inside the task folder, so the runner's strip_paths() removes their paths from
 any feedback text.
+The runner's urllib is wrapped too, without changing the request: each /api/chat response's done_reason and token
+counts are kept and written to <iter dir>/llm_meta.json by the next evaluate() (one-shot reads them with
+pop_chat_meta()). After the first call of a process, the GPU layer-offload line of $OLLAMA_SERVE_LOG is printed.
 """
 from __future__ import annotations
 
 import glob
+import io
+import json
 import os
+import re
 import sys
+import types
+import urllib.request
 
 STUDY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(os.path.dirname(STUDY))
@@ -55,8 +63,48 @@ def _synth(design_files, top, cwd, timeout=600, lib_files=()):
 E.simulate, E.lint, E.synth = _simulate, _lint, _synth
 
 
+CHAT_META = ("done_reason", "prompt_eval_count", "eval_count", "total_duration", "load_duration", "eval_duration")
+_CHAT = {"last": None, "calls": 0}
+
+
+def gpu_offload_line() -> str:
+    log = os.environ.get("OLLAMA_SERVE_LOG", "")
+    if not os.path.exists(log):
+        return f"no server log ({log or 'OLLAMA_SERVE_LOG unset'})"
+    hits = re.findall(r"offloaded \d+/\d+ layers to GPU", open(log, errors="replace").read())
+    return hits[-1] if hits else "no layer-offload line in the server log"
+
+
+def _urlopen(req, timeout=None):
+    """urllib.request.urlopen (looked up at call time) that keeps /api/chat response metadata; request unchanged."""
+    r = urllib.request.urlopen(req, timeout=timeout)
+    if not getattr(req, "full_url", "").endswith("/api/chat"):
+        return r
+    with r:
+        data = r.read()
+    j = json.loads(data)
+    _CHAT["last"] = {k: j.get(k) for k in CHAT_META}
+    _CHAT["calls"] += 1
+    if _CHAT["calls"] == 1:
+        line = gpu_offload_line()
+        m = re.match(r"offloaded (\d+)/(\d+)", line)
+        partial = " WARNING: partial offload" if m and m.group(1) != m.group(2) else ""
+        print(f"[gpu offload] {line}{partial}", flush=True)
+        _CHAT["last"]["gpu_offload"] = line
+    return io.BytesIO(data)
+
+
+def pop_chat_meta() -> dict:
+    meta, _CHAT["last"] = _CHAT["last"], None
+    return meta or {}
+
+
 def evaluate(candidate_file, task_dir, top, workdir=None, keep=False):
-    """p3_eval.evaluate with the task's children added (no-op for tasks without lib/)."""
+    """p3_eval.evaluate with the task's children added (no-op for tasks without lib/). Writes the metadata of the LLM
+    call that produced this candidate to <workdir>/llm_meta.json."""
+    meta = pop_chat_meta()
+    if meta and workdir:
+        json.dump(meta, open(os.path.join(workdir, "llm_meta.json"), "w"), indent=1)
     _CTX["lib"], _CTX["stubs"] = task_files(task_dir)
     try:
         return _ORIG["evaluate"](candidate_file, task_dir, top, workdir=workdir, keep=keep)
@@ -78,4 +126,5 @@ def runner():
     """The Phase 3 runner module with its evaluate() routed through this bridge."""
     import stitch_runner_p3 as R
     R.evaluate = evaluate
+    R.urllib = types.SimpleNamespace(request=types.SimpleNamespace(urlopen=_urlopen, Request=urllib.request.Request))
     return R
