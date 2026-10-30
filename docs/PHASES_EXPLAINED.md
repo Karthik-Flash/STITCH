@@ -11,8 +11,11 @@ This document walks through every phase of the reSTITCHing work, from Phase 0 to
 
 Phases 2 and 3 carry most of the paper and are covered in full depth.
 
-The final paper is `paper/overleaf/main.tex` (v10, 15 pages) with `supplement.tex`. Page, figure and table numbers
-below refer to that build. For the full narrative, with every decision and its reason, read `docs/reSTITCH.md`. For
+**Note (2026-10-30).** This document was written against paper v10 (`paper/overleaf/main.tex`, 15 pages, with a
+supplement), and its page, figure, table and Supplementary Material numbers refer to that build, now archived (local,
+`paper/archive/v10/`; in git history at `e77bf73`). The current paper is `paper/main.tex` (v11, 14 pages, no
+supplement); its names for the conditions and studies are mapped at the top of `docs/reSTITCH.md`, and the former
+supplement's tables are in `docs/reSTITCH.md`, Part 15. The results themselves are unchanged. For the full narrative, with every decision and its reason, read `docs/reSTITCH.md`. For
 questions and answers, read `docs/reSTITCH_REVISITED_QA.md`. For cluster commands, read `docs/HPC_GUIDE.md`.
 
 **Vocabulary used throughout.**

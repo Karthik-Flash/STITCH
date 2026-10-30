@@ -5,9 +5,13 @@
 This is the authors' reference for the journal paper. Use it to onboard a newcomer, to answer a fellow author, or to
 prepare for a reviewer.
 
-**Order.** The questions follow the paper section by section, in the order a reader meets them. Every location refers
-to the final build, `paper/overleaf/main.pdf` (v10, 15 pages), and its supplement, `paper/overleaf/supplement.pdf`
-("S1" to "S9").
+**Note (2026-10-30).** The answers were written against paper v10 (`paper/overleaf/main.pdf`, 15 pages, and its
+supplement, "S1" to "S9"), now archived (local, `paper/archive/v10/`; in git history at `e77bf73`). The current paper
+is `paper/main.tex` (v11, 14 pages, no supplement), with readable condition and study names (mapping at the top of
+`docs/reSTITCH.md`), and the supplement's tables are in `docs/reSTITCH.md`, Part 15. Every number is unchanged;
+section, page and "S" references below are v10's.
+
+**Order.** The questions follow the v10 paper section by section, in the order a reader meets them.
 
 **Format.** Every answer has three parts:
 
