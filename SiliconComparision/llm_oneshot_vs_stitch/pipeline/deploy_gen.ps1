@@ -6,6 +6,8 @@
 # Results on the cluster are never deleted or overwritten: the tar holds no file under runs/, outputs/ or prompts/
 # (checked below), tar -xf only adds or replaces the files it holds, and the remote result counts are compared before
 # and after the untar (the script stops if one drops).
+# It also ships DEPLOY_HASHES.sha256 (runner, interpreter, pipeline, modules.csv, DEPLOYED_COMMIT.txt) to
+# /scratch/soumyaj/STITCH_GEN and runs "sha256sum -c DEPLOY_HASHES.sha256" there; anyone can repeat that check.
 # -DryRun builds and lists the tar and prints the hashes, without ssh/scp.
 param([switch]$DryRun)
 $ErrorActionPreference = "Stop"
@@ -41,15 +43,18 @@ Get-ChildItem $Stage -Recurse -File -Include *.py, *.sh, *.slurm, *.v, *.md, *.t
 $crlf = Get-ChildItem $Stage -Recurse -File -Include *.py, *.sh, *.slurm, *.v | Where-Object { [System.IO.File]::ReadAllText($_.FullName).Contains("`r") }
 if ($crlf) { throw "CRLF left in: $($crlf.FullName -join ', ')" }
 
-Write-Host "== local hashes (LF, staged)"
-$key = "phase3\runner\stitch_runner_p3.py", "phase3\runner\p3_eval.py", "phase3\runner\system_prompt.txt",
-       "src\interpreter\stitch_interpreter.py", "src\interpreter\stitch_interpreter_v3.py", "src\interpreter\_v3_parsers.py",
-       "$Study\pipeline\p3_bridge.py", "$Study\pipeline\run_arms.py", "$Study\pipeline\oneshot_gen.py", "$Study\pipeline\preflight.py", "$Study\pipeline\gen_job.slurm",
-       "$Study\modules.csv"
-foreach ($k in $key) { "{0}  {1}" -f (Get-FileHash -Algorithm SHA256 "$Stage\$k").Hash.ToLower(), ($k -replace '\\', '/') }
+# DEPLOY_HASHES.sha256 lands at /scratch/soumyaj/STITCH_GEN; on the cluster: sha256sum -c DEPLOY_HASHES.sha256
+$key = @("phase3\runner\stitch_runner_p3.py", "phase3\runner\p3_eval.py", "phase3\runner\system_prompt.txt",
+         "src\interpreter\stitch_interpreter.py", "src\interpreter\stitch_interpreter_v3.py", "src\interpreter\_v3_parsers.py",
+         "$Study\modules.csv", "$Study\DEPLOYED_COMMIT.txt")
+$key += Get-ChildItem "$Stage\$Study\pipeline" -File | Sort-Object Name | ForEach-Object { "$Study\pipeline\$($_.Name)" }
+$lines = foreach ($k in $key) { "{0}  {1}" -f (Get-FileHash -Algorithm SHA256 "$Stage\$k").Hash.ToLower(), ($k -replace '\\', '/') }
+[System.IO.File]::WriteAllText("$Stage\DEPLOY_HASHES.sha256", (($lines -join "`n") + "`n"), $utf8)
+Write-Host "== local hashes (LF, staged) -> DEPLOY_HASHES.sha256 ($($key.Count) files)"
+$lines
 
 if (Test-Path $T) { Remove-Item $T }
-tar -cf $T -C $Stage phase3 src SiliconComparision
+tar -cf $T -C $Stage phase3 src SiliconComparision DEPLOY_HASHES.sha256
 if ($LASTEXITCODE -ne 0) { throw "tar failed" }
 $results = tar -tf $T | Select-String -Pattern "llm_oneshot_vs_stitch/(runs|outputs|prompts|hpc_logs)/."
 if ($results) { throw "the tar holds result files, refusing to deploy: $($results -join ', ')" }
@@ -74,7 +79,7 @@ $nBefore = $before -split ' '; $nAfter = $after -split ' '
 for ($i = 0; $i -lt 3; $i++) { if ([int]$nAfter[$i] -lt [int]$nBefore[$i]) { throw "remote result count dropped ($before -> $after)" } }
 Remove-Item $T
 Remove-Item -Recurse -Force $Stage
-Write-Host "== remote hashes (must equal the local ones above)"
-$remote = ($key | ForEach-Object { $_ -replace '\\', '/' }) -join " "
-ssh $H "cd $B && sha256sum $remote && grep -lr `$'\r' phase3/runner src $($Study -replace '\\', '/')/pipeline | head -3 || true"
-Write-Host "Deployed to ${H}:${B}. Next: HPC_RUN.md step 3."
+Write-Host "== remote check: sha256sum -c DEPLOY_HASHES.sha256 (every line must say OK)"
+ssh $H "cd $B && sha256sum -c DEPLOY_HASHES.sha256"
+if ($LASTEXITCODE -ne 0) { throw "remote hash check failed" }
+Write-Host "Deployed to ${H}:${B}. Next: HPC_RUN.md step 2."

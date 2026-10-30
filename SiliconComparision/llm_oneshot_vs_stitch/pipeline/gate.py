@@ -7,7 +7,7 @@
   G3 prove_prompt_format.py: the wrapped runner's prompts are byte-identical to the plain Phase 3 runner's
   G4 e2e_mock.py: the whole pipeline end to end with mock LLMs on 3 modules
   G5 test_failures.py: resume, infra-error handling, num_thread injection, timeout fast-fail, first-call checks
-Exit 0 only if every gate passes. Usage: python pipeline/gate.py
+Output of G2-G5 is prefixed "[selftest] ". Exit 0 only if every gate passes. Usage: python pipeline/gate.py
 """
 from __future__ import annotations
 
@@ -37,7 +37,13 @@ def main() -> int:
     for tag, script in (("G2", "check_tasks.py"), ("G3", "prove_prompt_format.py"), ("G4", "e2e_mock.py"),
                         ("G5", "test_failures.py")):
         print(f"[{tag}] {script}", flush=True)
-        rc = subprocess.run([sys.executable, os.path.join(HERE, script)]).returncode
+        # Every self-test line gets "[selftest] ": the mock runs print fake [threads]/[speed]/[gpu offload] results
+        # that must never be read as the job's real first-call checks.
+        p = subprocess.Popen([sys.executable, os.path.join(HERE, script)], stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT, text=True, errors="replace")
+        for line in p.stdout:
+            print("[selftest] " + line, end="", flush=True)
+        rc = p.wait()
         print(f"[{tag}] {'ok' if rc == 0 else 'FAIL'}", flush=True)
         if rc != 0:
             print("GATE: FAIL")

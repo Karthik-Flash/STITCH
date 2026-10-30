@@ -1,109 +1,374 @@
-# HPC run: LLM one-shot vs STITCH on the 2x2 mesh
+# HPC run: LLM one-shot vs STITCH (2x2 mesh)
 
-One Slurm job (`pipeline/gen_job.slurm`: 1 GPU, 4 CPUs, 48 GB, 24 h; partition and node chosen on the sbatch line) runs:
-1. drift gate (`pipeline/gate.py`, including the failure-handling tests; the job exits 1 if it fails),
-2. preflight: `nvidia-smi -L`, `ollama serve` (models `/scratch/soumyaj/Phase3_HPC/ollama_models`, port
-   11434 + job id mod 1000, `LLAMA_ARG_THREADS` = `LLAMA_ARG_THREADS_BATCH` = CPUs; up within 120 s or the job fails),
-   then `pipeline/preflight.py` (runner imports, tool versions, thread settings, GPU name and memory (fails below
-   40 GiB), GEN_TASKS names, qwen2.5-coder:32b digest equal to the Phase 3 digest, identical Ollama options for
-   one-shot and arms including `num_thread`; writes `runs/RUN_MANIFEST.json`),
-3. one-shot generation with qwen2.5-coder:32b (T = 0.1, num_ctx 32768, num_thread = CPUs, 34 modules). After the first
-   call: GPU layer-offload line, llama-server `n_threads` and generation speed. The job exits 3 if n_threads differs
-   from the CPU count or the speed is below 8 tokens/s, and warns below 15,
-4. the two feedback arms through the Phase 3 runner (`baseline` = simulation loop, `sem_esc_restart_v3` = STITCH;
-   budget 6, N = 1),
-5. the summary.
+This page is for running the generation job on the BITS Hyderabad HPC. Copy each command exactly as shown.
 
-A timeout or connection error on one module does not stop the job: the module is recorded as `infra_error`, the rest
-continue, and the job ends with exit 2 and the list. Resubmitting retries those modules and any incomplete folder;
-finished modules and arm runs are skipped. The client timeout is 3600 s per call, and a request that timed out once
-fails at once on the runner's retries.
+- Cluster login: `soumyaj@hpc.bits-hyderabad.ac.in`
+- Base folder on the cluster: `/scratch/soumyaj/STITCH_GEN`
+- Study folder on the cluster: `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch`
+- Job logs: `/scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log`
+- Laptop repository: `D:\Projects\STITCH`
 
-Each LLM call's `done_reason` and output tokens are recorded (`runs/oneshot/<m>/record.json`,
-`runs/arms/results/.../iter<k>/llm_meta.json`) and counted in `reports/SUMMARY.md`. The whole-router bonus is off
-(`GEN_FULL_ROUTER=0`): not attempted, its prompt alone is 32,290 of 32,768 tokens (`pipeline/budget.py`). num_ctx,
-num_thread and timeout versus Phase 3: `reports/METHODS_NOTES.md`. Speed and the --time arithmetic:
-`reports/SPEED.md`. `ollama serve` is stopped on exit. Login: `soumyaj@hpc.bits-hyderabad.ac.in`. Base on the
-cluster: `/scratch/soumyaj/STITCH_GEN`.
+The job (`pipeline/gen_job.slurm`) uses 1 GPU, 4 CPUs, 48 GB of memory and up to 24 hours. It runs in this order:
+the self-test gate, the preflight checks, one-shot generation for 34 modules, the two feedback arms (68 runs), then the
+summary. Background on the settings: `reports/METHODS_NOTES.md` and `reports/SPEED.md`.
 
-## 1. Dependency checklist (login node; one check command each)
+Three placeholders appear on this page. Replace each one before you press Enter:
 
-| Dependency | Expected | Check |
+| Placeholder | What to put there | Where it comes from |
 |---|---|---|
-| oss-cad-suite: Yosys | `Yosys 0.69...` | `/scratch/soumyaj/oss-cad-suite/bin/yosys -V` |
-| oss-cad-suite: Verilator | `Verilator 5.053...` | `/scratch/soumyaj/oss-cad-suite/bin/verilator --version` |
-| oss-cad-suite: Icarus | `Icarus Verilog version 14...` | `/scratch/soumyaj/oss-cad-suite/bin/iverilog -V 2>&1 \| head -1` |
-| Python 3.11 (oss-cad-suite) | `Python 3.11.x` | `/scratch/soumyaj/oss-cad-suite/py3bin/python3 --version` |
-| Ollama binary (reused from Phase 3) | prints a client version | `/scratch/soumyaj/Phase3_HPC/bin/ollama --version` |
-| qwen2.5-coder:32b in the models directory | lists `32b` | `ls /scratch/soumyaj/Phase3_HPC/ollama_models/manifests/registry.ollama.ai/library/qwen2.5-coder/` |
+| `<PART>` | a partition name, for example `gpu_h100_4` | step 3 output |
+| `<NODE>` | a node name, for example `gpunode5` | step 3 output |
+| `<JOBID>` | a job number, for example `424063` | step 4 output, or `/scratch/soumyaj/STITCH_GEN/logs/JOBIDS.txt` |
 
-The job reuses the Phase 3 Ollama binary and models directory, so the model keeps the digest it had in Phase 3 (the
-digest is recorded in every run). Other locations: set `OSS_CAD` or `GEN_OLLAMA_DIR` (see `pipeline/hpc_env.sh`;
-the models directory is fixed to `/scratch/soumyaj/Phase3_HPC/ollama_models`). If the model is missing, pull it with
-the Phase 3 script (`P3_PULL_MODELS="qwen2.5-coder:32b" sbatch
-/scratch/soumyaj/Phase3_HPC/phase3/hpc/pull_ollama_models_phase3.slurm`); a fresh pull may bring a newer digest.
+Most commands below use `$JOB` instead of `<JOBID>`. Step 4 sets `$JOB`.
 
-If a check fails because the scratch purge removed something, restore it as in `docs/HPC_GUIDE.md` section 2.6.
+## 0. Rules
 
-## 2. Deploy (LAPTOP, PowerShell)
+1. **Run one generation job at a time.** Two jobs write to the same `runs/` folder and corrupt it. Before you submit,
+   check that this shows no `stitch_gen` job:
+
+   ```bash
+   squeue -u soumyaj -n stitch_gen
+   ```
+
+2. **Paste one line at a time.** Pasting several lines at once can garble them in the terminal.
+3. **The site allows 4 CPUs per GPU.** The job script already asks for 4. Do not add `--cpus-per-task` to `sbatch`.
+4. **Never edit files on the HPC.** Change the repository on the laptop, commit, push, and redeploy (step 1).
+5. **Do not deploy while a generation job is queued or running.** Wait until `squeue -u soumyaj -n stitch_gen` is
+   empty.
+
+## 1. Deploy from the laptop (PowerShell)
+
+Go to the repository:
 
 ```powershell
 cd D:\Projects\STITCH
+```
+
+Check for local changes. This must print nothing. If it prints anything, commit or discard it first:
+
+```powershell
+git status --short
+```
+
+Note the commit you are about to deploy. You will compare it in step 2:
+
+```powershell
+git log -1 --oneline
+```
+
+Dry run. This builds the package, sends nothing, and must end with `DryRun: ... nothing sent.`:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1 -DryRun
+```
+
+Real deploy. It asks for the cluster password up to six times:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1
 ```
 
-Deploy from a clean, pushed commit: the script writes that commit to `DEPLOYED_COMMIT.txt` for the run manifest. The
-tar never holds `runs/`, `outputs/`, `prompts/` or `hpc_logs/` (the script checks and refuses otherwise), and `tar -xf`
-deletes nothing, so results on the cluster survive. The script prints the remote counts of one-shot records, arm
-`metrics.json` files and one-shot outputs before and after the untar, and stops if one drops. It also prints local and
-remote SHA-256 of the runner, interpreter and pipeline files; the two lists must be equal. The runner and interpreter
-hashes equal `phase3/evidence/FREEZE_FINAL.md`.
+The deploy prints two lines of counts, for example `remote results before (...): 25 6 25` and
+`remote results after: 25 6 25`. The three numbers are:
 
-## 3. Submit (ssh)
+1. one-shot record files,
+2. finished arm runs (`metrics.json`),
+3. one-shot Verilog outputs.
+
+Each number must stay the same or go up. Results on the cluster are never shipped, overwritten or deleted. If any
+number drops, the script stops with `remote result count dropped`. The deploy then runs the hash check from step 2 and
+must end with `Deployed to ...`.
+
+## 2. Verify the deploy on the HPC
+
+Log in:
 
 ```bash
 ssh soumyaj@hpc.bits-hyderabad.ac.in
-cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
-sbatch --partition=<PART> --nodelist=<NODE> pipeline/gen_job.slurm
 ```
 
-The log must show `GATE: ALL PASSED`, `[gpu] ok`, `[threads] ok`, `PREFLIGHT: ALL PASSED`, then after the first call
-`[gpu offload] offloaded 65/65 layers to GPU`, `[threads] ok  llama-server n_threads = 4 (n_threads_batch = 4)` and
-`[speed] ok` (or `WARNING` between 8 and 15 tokens/s). `GEN_TASKS=a,b` before `sbatch` limits the run to those tasks;
-an unknown name fails the preflight before any generation.
-
-## 4. Monitor and resume (ssh)
+Show the deployed commit. It must equal the hash from `git log -1` in step 1 and must not say `(dirty)`:
 
 ```bash
-squeue -u soumyaj
-tail -f /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
-grep -E "GATE:|PREFLIGHT:|\[gpu|\[threads\]|\[speed\]|\[tasks\]|\[digest\]|\[options\] (ok|BAD)|INFRA|NOT FINISHED|FIRST-CALL" /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
-cat /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/RUN_MANIFEST.json
-cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
-python3 -c "import json,glob;r=[json.load(open(p)) for p in glob.glob('runs/oneshot/*/record.json')];print(sum(x.get('status','ok')=='ok' for x in r),'of 34 one-shot finished;',sum(x.get('status')=='infra_error' for x in r),'infra_error')"
-find runs/arms/results -path '*/rep1/metrics.json' | wc -l      # 68 when the arms are done
+cat /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/DEPLOYED_COMMIT.txt
 ```
 
-Exit 2 (infra errors) or a time-out: submit the same command again; only unfinished work runs. Exit 3: llama-server did
-not take the thread setting or generation was slower than 8 tokens/s; look at the `[threads]` and `[speed]` lines
-before resubmitting.
-
-## 5. Copy the results back
+Check the file hashes. Every line must end in `OK`:
 
 ```bash
-# ssh
+cd /scratch/soumyaj/STITCH_GEN && sha256sum -c DEPLOY_HASHES.sha256
+```
+
+## 3. Pick a node
+
+Go to the study folder. Every command from here on runs in this folder:
+
+```bash
 cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
+```
+
+Ask Slurm when the job would start on each usable node. This submits nothing:
+
+```bash
+for P in gpu_h200_8:gpunode7 gpu_a100_8:gpunode4 gpu_h100_4:gpunode5 gpu_h100_4:gpunode6; do sbatch --test-only --partition=${P%:*} --nodelist=${P#*:} pipeline/gen_job.slurm 2>&1; done
+```
+
+Each answer looks like:
+
+```
+sbatch: Job 424100 to start at 2026-10-31T09:12:00 using 4 processors on nodes gpunode5 in partition gpu_h100_4
+```
+
+Pick the line with the earliest `to start at`. Its `partition` is your `<PART>` and its `nodes` value is your `<NODE>`.
+
+To see the node states:
+
+```bash
+sinfo -N -l -p gpu_h200_8,gpu_a100_8,gpu_h100_4
+```
+
+How to read the STATE column:
+
+- `idle` or `mixed`: usable now.
+- `allocated`: full; the job waits.
+- `mixed-` (trailing `-`): reserved for another job that will start soon.
+- `drained` or `draining`: taken out of service. An admin must resume the node; do not pick it.
+
+Nodes not in the list above:
+
+- V100 nodes: excluded. They have 32 GB, and the preflight needs at least 40 GiB of GPU memory.
+- The RTX partition: not usable for this job.
+
+To see who is using a node:
+
+```bash
+squeue -w <NODE> -o "%.10i %.10u %.12P %.8T %.10L"
+```
+
+## 4. Submit
+
+Check that no generation job is queued or running. This must show only the header line:
+
+```bash
+squeue -u soumyaj -n stitch_gen
+```
+
+Submit, replacing `<PART>` and `<NODE>` with the values from step 3. The job number goes into `$JOB`:
+
+```bash
+JOB=$(sbatch --parsable --partition=<PART> --nodelist=<NODE> pipeline/gen_job.slurm); echo $JOB
+```
+
+Save the job number, date, partition and node:
+
+```bash
+echo "$JOB $(date '+%F %T') $(squeue -h -j $JOB -o '%P %n')" >> /scratch/soumyaj/STITCH_GEN/logs/JOBIDS.txt
+```
+
+Show the expected start time:
+
+```bash
+squeue --start -j $JOB
+```
+
+New terminal, or logged in again later? Set `$JOB` again from the saved list:
+
+```bash
+JOB=$(tail -1 /scratch/soumyaj/STITCH_GEN/logs/JOBIDS.txt | cut -d' ' -f1); echo $JOB
+```
+
+## 5. First check, about 15 minutes after the job shows RUNNING
+
+The gate and preflight must have passed:
+
+```bash
+grep -E "GATE:|PREFLIGHT:|^\[gpu\]|^\[digest\]|^\[options\]" /scratch/soumyaj/STITCH_GEN/logs/gen_$JOB.log
+```
+
+Expect `GATE: ALL PASSED`, `[gpu] ok`, `[digest] ok`, `[options] ok` and `PREFLIGHT: ALL PASSED`.
+
+Then show the first-call checks. They come after `PREFLIGHT: ALL PASSED`:
+
+```bash
+sed -n '/PREFLIGHT: ALL PASSED/,$p' /scratch/soumyaj/STITCH_GEN/logs/gen_$JOB.log | grep -E "^\[(gpu offload|threads|speed)\]|FIRST-CALL"
+```
+
+These three lines must appear:
+
+- `[gpu offload] offloaded 65/65 layers to GPU`
+- `[threads] ok  llama-server n_threads = 4 (n_threads_batch = 4) ...`
+- `[speed] ok  ... tok/s`, at 15 tok/s or more. Job 424063 ran at 61.4 tok/s on an H100. Between 8 and 15 the line
+  says `WARNING`: the job continues, but tell the team.
+
+If nothing shows yet, the model is still loading. Check again in 5 minutes.
+
+Lines starting with `[selftest]` come from the gate's own tests with fake models. They are expected; ignore them.
+
+## 6. Monitor
+
+Your jobs, with time used (`TIME`) and time left (`TIME_LEFT`):
+
+```bash
+squeue -u soumyaj -o "%.10i %.12P %.10j %.8T %.10M %.10L %.10N %R"
+```
+
+Finished one-shot modules (34 when done):
+
+```bash
+grep -L '"infra_error"' runs/oneshot/*/record.json | wc -l
+```
+
+One-shot modules with an infrastructure error (should be 0; a resubmit retries them):
+
+```bash
+grep -l '"infra_error"' runs/oneshot/*/record.json | wc -l
+```
+
+Finished arm runs (68 when done):
+
+```bash
+find runs/arms/results -path '*/rep1/metrics.json' | wc -l
+```
+
+Follow the log live. Ctrl+C stops the viewing only; the job keeps running:
+
+```bash
+tail -f /scratch/soumyaj/STITCH_GEN/logs/gen_$JOB.log
+```
+
+## 7. When the job ends: exit codes
+
+Show how the job ended:
+
+```bash
+sacct -j $JOB -X -o JobID,State,ExitCode,Elapsed
+```
+
+Show the end of the log:
+
+```bash
+tail -20 /scratch/soumyaj/STITCH_GEN/logs/gen_$JOB.log
+```
+
+| State / ExitCode | Meaning | What to do |
+|---|---|---|
+| `COMPLETED` `0:0` | All 34 one-shot modules and 68 arm runs finished; the summary is written. | Step 9. |
+| `FAILED` `2:0` | Some modules hit a timeout or connection error. The log lists them under `INFRA ERRORS` or `ARMS NOT FINISHED`. | Resubmit (step 4); only the failed work runs again. |
+| `FAILED` `3:0` | The first-call check failed: wrong thread count or slower than 8 tok/s. | Do not resubmit. Send the team the output of `tail -40` of the log. |
+| `TIMEOUT` | The 24-hour limit was reached. | Resubmit (step 4); finished work is skipped. |
+| `FAILED` `1:0` | Gate or preflight failed; nothing was generated. | Send the team the log tail. |
+
+## 8. Move a queued job to another node
+
+Use this when the job is still `PENDING` and another node would start sooner (step 3).
+
+Remember the old job:
+
+```bash
+OLD=$JOB; echo $OLD
+```
+
+Hold it so it cannot start:
+
+```bash
+scontrol hold $OLD
+```
+
+Submit the new job with the new `<PART>` and `<NODE>`, using the three step-4 commands (`JOB=$(sbatch ...)`, `echo ... >> JOBIDS.txt`,
+`squeue --start -j $JOB`).
+
+Once the new job shows `RUNNING`, cancel the old one:
+
+```bash
+scancel $OLD
+```
+
+Changed your mind before the new job starts? Cancel the new job:
+
+```bash
+scancel $JOB
+```
+
+Then release the old job again:
+
+```bash
+scontrol release $OLD
+```
+
+Then point `$JOB` back at the old job:
+
+```bash
+JOB=$OLD; echo $JOB
+```
+
+Never release the old job while the new one is running (rule 1).
+
+## 9. Copy the results back
+
+Only after the job has ended (`squeue -u soumyaj -n stitch_gen` is empty).
+
+On the HPC, go to the study folder:
+
+```bash
+cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
+```
+
+Pack the results:
+
+```bash
 tar -czf /scratch/soumyaj/STITCH_GEN/gen_results.tgz outputs prompts reports runs
+```
+
+Print the hash of the package:
+
+```bash
 sha256sum /scratch/soumyaj/STITCH_GEN/gen_results.tgz
 ```
 
+On the laptop (PowerShell), go to the repository:
+
 ```powershell
-# LAPTOP
 cd D:\Projects\STITCH
+```
+
+Download the package:
+
+```powershell
 scp soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/STITCH_GEN/gen_results.tgz $env:TEMP\gen_results.tgz
+```
+
+Print its hash. It must equal the HPC hash; PowerShell prints it in capitals:
+
+```powershell
 Get-FileHash -Algorithm SHA256 $env:TEMP\gen_results.tgz
+```
+
+Unpack it into the study folder:
+
+```powershell
 tar -xzf $env:TEMP\gen_results.tgz -C SiliconComparision\llm_oneshot_vs_stitch
 ```
 
-`runs/` and `hpc_logs/` stay local (gitignored). `outputs/`, `prompts/` and `reports/` are the files to commit.
+`runs/` stays local (gitignored). `outputs/`, `prompts/` and `reports/` are the files to commit.
+
+## 10. Troubleshooting
+
+| You see | Cause | Fix |
+|---|---|---|
+| `sbatch: error: Unable to open file pipeline/gen_job.slurm` | You are not in the study folder. | `cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch`, then submit again. |
+| `-bash: PART: No such file or directory` | `<PART>` or `<NODE>` was pasted literally. | Replace both placeholders with the values from step 3. |
+| `only 4 CPUs per H200 GPU` (or similar) | Site rule: at most 4 CPUs per GPU. | Use the job script as is; do not add `--cpus-per-task`. |
+| A command that looks cut or merged with the next line | Several lines were pasted at once. | Press Ctrl+C, then paste one line at a time. |
+| `[selftest] ... BAD 5.0 tok/s` before `GATE: ALL PASSED` | Gate self-test with a fake model, not the real job. | Ignore it; only lines after `PREFLIGHT: ALL PASSED` count (step 5). |
+| `[threads] BAD` or `[speed] BAD` after `PREFLIGHT: ALL PASSED`, job ends with exit 3 | llama-server did not use 4 threads, or generation was below 8 tok/s. | Do not resubmit; send the team the log tail. |
+| `ReqNodeNotAvail`, `Priority` or `Resources` in the squeue `REASON` column | The job is waiting for the node. | Nothing to fix. To move it, see step 8. |
+| `JobHeldUser` in the squeue `REASON` column | The job was held (step 8). | `scontrol release <JOBID>` if it should run. |
+
+History of the A100 failure: before commit `62b4131`, llama-server started 64 CPU threads on a 4-CPU job. Generation
+ran at about 4-5 tok/s on both A100 and H200. In job 423542, op_core then hit the 900-second client timeout, and the
+error stopped the job. Since `62b4131`:
+
+- the job uses 4 threads and the first call checks this;
+- the timeout is 3600 seconds;
+- one failed module no longer stops the job.
