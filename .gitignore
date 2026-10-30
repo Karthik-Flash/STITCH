@@ -90,8 +90,10 @@ stitch-api-key.txt
 
 # LaTeX build output: compile into paper/build/ (pdflatex -output-directory=build).
 paper/build/
-# v10 builds in place (latexmk -pdf main.tex); its PDFs are outputs, not sources.
-paper/overleaf/*.pdf
+# The paper (v11) builds in place (latexmk -pdf main.tex); its PDF is an output, not a source.
+paper/*.pdf
+# Superseded paper drafts (v7 to v10, the supplement, old zips): local only. v10 is in git history at e77bf73.
+paper/archive/
 *.aux
 *.toc
 *.synctex.gz
