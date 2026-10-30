@@ -69,8 +69,9 @@ scp $T "${H}:${B}/stitch_gen_deploy.tar"
 ssh $H "cd $B && tar -xf stitch_gen_deploy.tar && rm stitch_gen_deploy.tar"
 $after = (ssh $H $count).Trim()
 Write-Host "== remote results after: $after"
-$b = $before -split ' '; $a = $after -split ' '
-for ($i = 0; $i -lt 3; $i++) { if ([int]$a[$i] -lt [int]$b[$i]) { throw "remote result count dropped ($before -> $after)" } }
+# PowerShell names are case-insensitive: never reuse $B/$H/$S/$T for locals.
+$nBefore = $before -split ' '; $nAfter = $after -split ' '
+for ($i = 0; $i -lt 3; $i++) { if ([int]$nAfter[$i] -lt [int]$nBefore[$i]) { throw "remote result count dropped ($before -> $after)" } }
 Remove-Item $T
 Remove-Item -Recurse -Force $Stage
 Write-Host "== remote hashes (must equal the local ones above)"
