@@ -11,6 +11,10 @@ evaluate() is routed through p3_bridge (children from lib/); stitch_runner_p3.py
 Final candidates are copied to outputs/simloop/<m>.v and outputs/stitch/<m>.v. Provenance (model digest, tool
 versions, interpreter/runner hashes, every task file hash) goes to <out>/provenance.json; each run's metrics.json
 also carries the runner's own provenance block. Resumable: runs with a metrics.json are skipped.
+Failures never stop the other modules: a module without a finished one-shot output is skipped, a run folder left
+without metrics.json by an earlier job is moved to rep1.failed_<time> (so no stale iterations remain) and run again,
+and the runner records a failing run as error.json and goes on. At the end the script lists skipped modules and
+failed runs (infra_error: timeout/connection; runner_error: anything else) and exits 2 if there are any.
 
 Usage: python pipeline/run_arms.py --model qwen2.5-coder:32b [--host ...] [--modules a b] [--out runs/arms]
        python pipeline/run_arms.py --backend mock --mock-mode fix_on_2 --model mock ...
@@ -19,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import time
 import glob
 import hashlib
 import json
@@ -29,6 +34,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p3_bridge as B  # noqa: E402
+import oneshot_gen as OG  # noqa: E402
 
 STUDY = B.STUDY
 ARMS = {"baseline": "simloop", "sem_esc_restart_v3": "stitch"}
@@ -43,13 +49,14 @@ def safe(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]", "_", model)
 
 
+INFRA_PAT = re.compile(r"timed? ?out|Timeout|URLError|Connection|ollama failed after retries", re.I)
+
+
 def prepare_tasks(modules: list[str], out: str) -> str:
     tdir = os.path.join(out, "tasks")
     for m in modules:
         src, dst = os.path.join(STUDY, "tasks", m), os.path.join(tdir, m)
         oneshot = os.path.join(B.WORK, "outputs", "oneshot", f"{m}.v")
-        if not os.path.exists(oneshot):
-            raise SystemExit(f"missing one-shot output {oneshot}: run oneshot_gen.py first")
         if os.path.isdir(dst):
             if sha256_lf(os.path.join(dst, "input.v")) != sha256_lf(oneshot):
                 raise SystemExit(f"{dst}/input.v differs from {oneshot}: use a new --out for a new generation")
@@ -82,15 +89,29 @@ def main() -> int:
         raise SystemExit(f"unknown task name(s): {' '.join(unknown)}")
     out = os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
+    skipped = [m for m in modules if not OG.done(m)]
+    if skipped:
+        print(f"skip (no finished one-shot output): {' '.join(skipped)}", flush=True)
+    modules = [m for m in modules if m not in skipped]
     R = B.runner()
     R.TASKS_DIR = prepare_tasks(modules, out)
+    stamp = time.strftime("%Y%m%d_%H%M%S")
+    for cond in ARMS:
+        for m in modules:
+            for r in range(1, a.reps + 1):
+                rd = os.path.join(out, "results", safe(a.model), cond, m, f"rep{r}")
+                if os.path.isdir(rd) and not os.path.exists(os.path.join(rd, "metrics.json")):
+                    os.replace(rd, f"{rd}.failed_{stamp}")
+                    print(f"retry {cond} {m} rep{r} (earlier attempt kept as rep{r}.failed_{stamp})", flush=True)
     argv = ["stitch_runner_p3.py", "--model", a.model, "--backend", a.backend, "--mock-mode", a.mock_mode,
             "--host", a.host, "--conditions", *ARMS, "--tasks", *modules, "--reps", str(a.reps),
             "--temperature", str(a.temperature), "--max-iters", str(a.max_iters), "--num-ctx", str(a.num_ctx),
-            "--system-prompt-file", SYSTEM_PROMPT_FILE, "--out", os.path.join(out, "results")]
-    print("runner argv:", " ".join(argv[1:]), flush=True)
-    sys.argv = argv
-    R.main()
+            "--timeout", str(B.CLIENT_TIMEOUT_S), "--system-prompt-file", SYSTEM_PROMPT_FILE,
+            "--out", os.path.join(out, "results")]
+    if modules:                                       # the runner treats an empty --tasks as "all tasks"
+        print("runner argv:", " ".join(argv[1:]), flush=True)
+        sys.argv = argv
+        R.main()
 
     # Final candidates -> outputs/simloop, outputs/stitch
     for cond, arm in ARMS.items():
@@ -103,9 +124,21 @@ def main() -> int:
             else:
                 print(f"no metrics for {cond} {m} (see error.json)")
 
+    failed = []
+    for cond in ARMS:
+        for m in modules:
+            for r in range(1, a.reps + 1):
+                rd = os.path.join(out, "results", safe(a.model), cond, m, f"rep{r}")
+                if os.path.exists(os.path.join(rd, "metrics.json")):
+                    continue
+                err = os.path.join(rd, "error.json")
+                msg = json.load(open(err)).get("error", "") if os.path.exists(err) else "no metrics.json, no error.json"
+                failed.append(f"{m}/{cond}/rep{r}: {'infra_error' if INFRA_PAT.search(msg) else 'runner_error'} {msg}")
+
     prov = {"timestamp": dt.datetime.now().isoformat(timespec="seconds"), "model": a.model, "backend": a.backend,
             "mock_mode": a.mock_mode if a.backend == "mock" else None, "conditions": ARMS,
             "max_iters": a.max_iters, "reps": a.reps, "temperature": a.temperature, "num_ctx": a.num_ctx,
+            "num_thread": B.THREADS, "client_timeout_s": B.CLIENT_TIMEOUT_S, "skipped_no_oneshot": skipped,
             "runner_static": R._STATIC, "model_digest": R._DIGEST.get(a.model),
             "pipeline_sha256_lf": {os.path.basename(p): sha256_lf(p)
                                    for p in sorted(glob.glob(os.path.join(STUDY, "pipeline", "*.py")))},
@@ -114,6 +147,12 @@ def main() -> int:
                                                                recursive=True)) if os.path.isfile(p)}}
     json.dump(prov, open(os.path.join(out, "provenance.json"), "w"), indent=1)
     print(f"provenance: {os.path.join(out, 'provenance.json')}")
+    if skipped or failed:
+        print(f"ARMS NOT FINISHED: skipped {len(skipped)} module(s) {' '.join(skipped) or '-'}; failed {len(failed)} "
+              f"run(s) -- resubmit to retry", flush=True)
+        for f in failed:
+            print("  " + f, flush=True)
+        return 2
     return 0
 
 

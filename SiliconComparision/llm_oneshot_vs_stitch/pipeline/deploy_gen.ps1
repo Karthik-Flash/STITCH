@@ -1,8 +1,11 @@
 # LAPTOP (PowerShell), run from the repository root D:\Projects\STITCH :
 #   powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1
 # Ships ONLY what the generation job needs to /scratch/<user>/STITCH_GEN, with LF line endings:
-#   phase3/runner (no __pycache__), the three src/interpreter modules, and this study folder without runs/.
-# Results already on the cluster (outputs/, prompts/, reports/, runs/) are not deleted: tar only adds or replaces.
+#   phase3/runner (no __pycache__), the three src/interpreter modules, and this study folder without runs/, outputs/,
+#   prompts/ and hpc_logs/ (the scripts create those folders on the cluster).
+# Results on the cluster are never deleted or overwritten: the tar holds no file under runs/, outputs/ or prompts/
+# (checked below), tar -xf only adds or replaces the files it holds, and the remote result counts are compared before
+# and after the untar (the script stops if one drops).
 # -DryRun builds and lists the tar and prints the hashes, without ssh/scp.
 param([switch]$DryRun)
 $ErrorActionPreference = "Stop"
@@ -25,7 +28,9 @@ if (git status --porcelain -- $Study phase3/runner src/interpreter) { $commit +=
 Set-Content -NoNewline -Encoding ascii "$Stage\$Study\DEPLOYED_COMMIT.txt" $commit
 Write-Host "== deployed commit: $commit"
 Get-ChildItem $Stage -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
-if (Test-Path "$Stage\$Study\runs") { Remove-Item -Recurse -Force "$Stage\$Study\runs" }
+foreach ($d in "runs", "outputs", "prompts", "hpc_logs") {
+    if (Test-Path "$Stage\$Study\$d") { Remove-Item -Recurse -Force "$Stage\$Study\$d" }
+}
 
 # CRLF -> LF in every text file (Windows checkouts may carry CRLF; bash and sbatch reject it).
 $utf8 = New-Object System.Text.UTF8Encoding $false
@@ -46,15 +51,26 @@ foreach ($k in $key) { "{0}  {1}" -f (Get-FileHash -Algorithm SHA256 "$Stage\$k"
 if (Test-Path $T) { Remove-Item $T }
 tar -cf $T -C $Stage phase3 src SiliconComparision
 if ($LASTEXITCODE -ne 0) { throw "tar failed" }
+$results = tar -tf $T | Select-String -Pattern "llm_oneshot_vs_stitch/(runs|outputs|prompts|hpc_logs)/."
+if ($results) { throw "the tar holds result files, refusing to deploy: $($results -join ', ')" }
+Write-Host "== tar holds no file under runs/, outputs/, prompts/, hpc_logs/"
 if ($DryRun) {
     $n = (tar -tf $T | Measure-Object -Line).Lines
     Write-Host "DryRun: $T holds $n entries ($([math]::Round((Get-Item $T).Length / 1MB, 2)) MB); nothing sent."
     Remove-Item -Recurse -Force $Stage
     exit 0
 }
+$S = $Study -replace '\\', '/'
+$count = "cd $B && echo `$(ls $S/runs/oneshot/*/record.json 2>/dev/null | wc -l) `$(find $S/runs/arms/results -name metrics.json 2>/dev/null | wc -l) `$(ls $S/outputs/oneshot/*.v 2>/dev/null | wc -l)"
 ssh $H "mkdir -p $B/logs"
+$before = (ssh $H $count).Trim()
+Write-Host "== remote results before (one-shot records, arm metrics.json, one-shot outputs): $before"
 scp $T "${H}:${B}/stitch_gen_deploy.tar"
 ssh $H "cd $B && tar -xf stitch_gen_deploy.tar && rm stitch_gen_deploy.tar"
+$after = (ssh $H $count).Trim()
+Write-Host "== remote results after: $after"
+$b = $before -split ' '; $a = $after -split ' '
+for ($i = 0; $i -lt 3; $i++) { if ([int]$a[$i] -lt [int]$b[$i]) { throw "remote result count dropped ($before -> $after)" } }
 Remove-Item $T
 Remove-Item -Recurse -Force $Stage
 Write-Host "== remote hashes (must equal the local ones above)"

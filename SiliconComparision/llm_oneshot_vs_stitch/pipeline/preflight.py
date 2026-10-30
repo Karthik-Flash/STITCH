@@ -83,6 +83,13 @@ def main() -> int:
 
     tools = {"yosys": R._version([B.E.YOSYS, "-V"]), "verilator": R._version([B.E.VERILATOR, "--version"]),
              "iverilog": R._version([B.E.IVERILOG, "-V"])}
+    lat = os.environ.get("LLAMA_ARG_THREADS")
+    good = lat is not None and int(lat) == B.THREADS == int(os.environ.get("LLAMA_ARG_THREADS_BATCH") or -1)
+    if os.environ.get("SLURM_JOB_ID"):                  # on the cluster both mechanisms must agree
+        ok &= good
+    print(f"[threads] {'ok ' if good else 'BAD'} LLAMA_ARG_THREADS={lat} LLAMA_ARG_THREADS_BATCH="
+          f"{os.environ.get('LLAMA_ARG_THREADS_BATCH')} options.num_thread={B.THREADS} "
+          f"(SLURM_CPUS_PER_TASK={os.environ.get('SLURM_CPUS_PER_TASK')})")
     tools["python"] = f"{platform.python_version()} ({sys.executable})"
     ollama_version = get(a.host + "/api/version").get("version", "?")
     tools["ollama"] = ollama_version
@@ -98,15 +105,25 @@ def main() -> int:
     import budget
     bodies = budget.study_bodies(a.model)
     argv = bodies.pop("_argv")
-    same = bodies["runner via run_arms"] == bodies["oneshot_gen"]
+    same = bodies["runner via run_arms"] == bodies["oneshot_gen"] and \
+        bodies["oneshot_gen"]["options"].get("num_thread") == B.THREADS and \
+        bodies["oneshot_gen"]["client_http_timeout_s"] == B.CLIENT_TIMEOUT_S
     ok &= same
     for k, v in bodies.items():
         print(f"[options] {k}: {json.dumps(v, sort_keys=True)}")
-    print(f"[options] {'ok ' if same else 'BAD'} run_arms and oneshot_gen send the same request options")
+    print(f"[options] {'ok ' if same else 'BAD'} run_arms and oneshot_gen send the same request options "
+          f"(num_thread {B.THREADS}, client timeout {B.CLIENT_TIMEOUT_S} s)")
 
     manifest = {"timestamp": dt.datetime.now().isoformat(timespec="seconds"), "git_commit": git_commit(B.STUDY),
                 "hostname": socket.gethostname(), "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
                 "gpu": gpu, "gpu_query": raw, "gen_tasks": tasks or "all",
+                "cpu_threads": {"SLURM_CPUS_PER_TASK": os.environ.get("SLURM_CPUS_PER_TASK"),
+                                "LLAMA_ARG_THREADS": os.environ.get("LLAMA_ARG_THREADS"),
+                                "LLAMA_ARG_THREADS_BATCH": os.environ.get("LLAMA_ARG_THREADS_BATCH"),
+                                "options.num_thread (p3_bridge)": B.THREADS},
+                "client_timeout_s": B.CLIENT_TIMEOUT_S,
+                "first_call_checks": {"exit_below_tok_s": B.MIN_TOK_S, "warn_below_tok_s": B.WARN_TOK_S,
+                                      "n_threads_must_equal": B.THREADS},
                 "tool_versions": tools, "ollama_version": ollama_version, "model": a.model, "model_digest": digest,
                 "phase3_digest": want, "generation_options": bodies["oneshot_gen"],
                 "generation_options_run_arms": bodies["runner via run_arms"], "job_argv": argv,

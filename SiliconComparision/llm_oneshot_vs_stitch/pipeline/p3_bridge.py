@@ -9,13 +9,20 @@ three tool calls are wrapped:
 A task without lib/ (every leaf, and the three Phase 3 registers) runs through p3_eval unchanged.
 The lib/ and stubs/ files live inside the task folder, so the runner's strip_paths() removes their paths from
 any feedback text.
-The runner's urllib is wrapped too, without changing the request: each /api/chat response's done_reason and token
-counts are kept and written to <iter dir>/llm_meta.json by the next evaluate() (one-shot reads them with
-pop_chat_meta()). After the first call of a process, the GPU layer-offload line of $OLLAMA_SERVE_LOG is printed.
+The runner's urllib is wrapped too (one-shot uses the same runner client, so both paths go through it):
+  - every /api/chat body gets options.num_thread = THREADS (CPU threads, not a sampling option; Phase 3 sent none and
+    llama-server ran 64 threads on 8 CPUs, about 5 tokens/s); the timeout is CLIENT_TIMEOUT_S for both paths
+  - a request body that already timed out once in this process fails at once, so the runner's 3 retries do not
+    repeat an hour-long call
+  - each response's done_reason and token counts are kept and written to <iter dir>/llm_meta.json by the next
+    evaluate() (one-shot reads them with pop_chat_meta())
+  - after the first call: print the GPU layer-offload line and llama-server's n_threads from $OLLAMA_SERVE_LOG and
+    the generation speed; exit 3 if n_threads != THREADS or speed < MIN_TOK_S, warn below WARN_TOK_S
 """
 from __future__ import annotations
 
 import glob
+import hashlib
 import io
 import json
 import os
@@ -64,33 +71,85 @@ E.simulate, E.lint, E.synth = _simulate, _lint, _synth
 
 
 CHAT_META = ("done_reason", "prompt_eval_count", "eval_count", "total_duration", "load_duration", "eval_duration")
-_CHAT = {"last": None, "calls": 0}
+THREADS = int(os.environ.get("SLURM_CPUS_PER_TASK") or 4)     # = LLAMA_ARG_THREADS in hpc_env.sh
+CLIENT_TIMEOUT_S = 3600                                         # both paths; Phase 3 used 900
+MIN_TOK_S, WARN_TOK_S = 8.0, 15.0
+_CHAT = {"last": None, "calls": 0, "timed_out": set()}
+
+
+def _serve_log() -> str | None:
+    log = os.environ.get("OLLAMA_SERVE_LOG", "")
+    return open(log, errors="replace").read() if log and os.path.exists(log) else None
 
 
 def gpu_offload_line() -> str:
-    log = os.environ.get("OLLAMA_SERVE_LOG", "")
-    if not os.path.exists(log):
-        return f"no server log ({log or 'OLLAMA_SERVE_LOG unset'})"
-    hits = re.findall(r"offloaded \d+/\d+ layers to GPU", open(log, errors="replace").read())
+    text = _serve_log()
+    if text is None:
+        return f"no server log ({os.environ.get('OLLAMA_SERVE_LOG') or 'OLLAMA_SERVE_LOG unset'})"
+    hits = re.findall(r"offloaded \d+/\d+ layers to GPU", text)
     return hits[-1] if hits else "no layer-offload line in the server log"
 
 
+def first_call_checks(meta: dict) -> None:
+    """Print offload, n_threads and speed of the first call; SystemExit(3) on wrong threads or speed < MIN_TOK_S."""
+    line = gpu_offload_line()
+    m = re.match(r"offloaded (\d+)/(\d+)", line)
+    print(f"[gpu offload] {line}{' WARNING: partial offload' if m and m.group(1) != m.group(2) else ''}", flush=True)
+    meta["gpu_offload"] = line
+    fail = []
+    text = _serve_log()
+    if text is not None:
+        nt = re.findall(r"n_threads = (\d+) \(n_threads_batch = (\d+)\) / (\d+)", text)
+        meta["llama_n_threads"] = "n_threads = %s (n_threads_batch = %s) / %s" % nt[-1] if nt else None
+        ok = bool(nt) and int(nt[-1][0]) == THREADS and int(nt[-1][1]) == THREADS
+        print(f"[threads] {'ok ' if ok else 'BAD'} llama-server {meta['llama_n_threads']} (configured {THREADS})",
+              flush=True)
+        if not ok:
+            fail.append("n_threads")
+    else:
+        print("[threads] no server log: n_threads not checked", flush=True)
+    rate = meta["eval_count"] / (meta["eval_duration"] / 1e9) if meta.get("eval_count") and meta.get("eval_duration") \
+        else None
+    meta["tok_s"] = round(rate, 2) if rate else None
+    tag = "BAD" if rate is not None and rate < MIN_TOK_S else ("WARNING" if rate is not None and rate < WARN_TOK_S
+                                                               else "ok ")
+    print(f"[speed] {tag} {meta['tok_s']} tok/s generation (eval_count/eval_duration, model load excluded; "
+          f"exit below {MIN_TOK_S}, warn below {WARN_TOK_S})", flush=True)
+    if tag == "BAD":
+        fail.append("speed")
+    if fail:
+        print(f"FIRST-CALL CHECK FAILED: {', '.join(fail)}", flush=True)
+        raise SystemExit(3)
+
+
+def _is_timeout(e: BaseException) -> bool:
+    return isinstance(e, TimeoutError) or isinstance(getattr(e, "reason", None), TimeoutError)
+
+
 def _urlopen(req, timeout=None):
-    """urllib.request.urlopen (looked up at call time) that keeps /api/chat response metadata; request unchanged."""
-    r = urllib.request.urlopen(req, timeout=timeout)
+    """urllib.request.urlopen (looked up at call time) for the runner client: adds options.num_thread to /api/chat,
+    fails fast on a body that already timed out, keeps the response metadata."""
     if not getattr(req, "full_url", "").endswith("/api/chat"):
-        return r
-    with r:
-        data = r.read()
+        return urllib.request.urlopen(req, timeout=timeout)
+    key = hashlib.sha256(req.data).hexdigest()
+    if key in _CHAT["timed_out"]:
+        raise TimeoutError("identical /api/chat request already timed out in this process (fast fail)")
+    body = json.loads(req.data)
+    body.setdefault("options", {})["num_thread"] = THREADS
+    req = urllib.request.Request(req.full_url, data=json.dumps(body).encode(), headers=dict(req.header_items()))
+    try:
+        r = urllib.request.urlopen(req, timeout=timeout)
+        with r:
+            data = r.read()
+    except Exception as e:
+        if _is_timeout(e):
+            _CHAT["timed_out"].add(key)
+        raise
     j = json.loads(data)
     _CHAT["last"] = {k: j.get(k) for k in CHAT_META}
     _CHAT["calls"] += 1
     if _CHAT["calls"] == 1:
-        line = gpu_offload_line()
-        m = re.match(r"offloaded (\d+)/(\d+)", line)
-        partial = " WARNING: partial offload" if m and m.group(1) != m.group(2) else ""
-        print(f"[gpu offload] {line}{partial}", flush=True)
-        _CHAT["last"]["gpu_offload"] = line
+        first_call_checks(_CHAT["last"])
     return io.BytesIO(data)
 
 

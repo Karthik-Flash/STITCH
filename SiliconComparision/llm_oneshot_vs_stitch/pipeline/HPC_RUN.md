@@ -1,22 +1,30 @@
 # HPC run: LLM one-shot vs STITCH on the 2x2 mesh
 
-One Slurm job (`pipeline/gen_job.slurm`, gpu_h200_8 on gpunode7, 1 GPU, 11 h) runs:
-1. drift gate (`pipeline/gate.py`; the job exits non-zero if it fails),
+One Slurm job (`pipeline/gen_job.slurm`: 1 GPU, 4 CPUs, 48 GB, 24 h; partition and node chosen on the sbatch line) runs:
+1. drift gate (`pipeline/gate.py`, including the failure-handling tests; the job exits 1 if it fails),
 2. preflight: `nvidia-smi -L`, `ollama serve` (models `/scratch/soumyaj/Phase3_HPC/ollama_models`, port
-   11434 + job id mod 1000, up within 120 s or the job fails), then `pipeline/preflight.py` (runner imports, tool
-   versions, GPU name and memory (fails below 40 GiB), GEN_TASKS names, qwen2.5-coder:32b digest equal to the
-   Phase 3 digest, identical Ollama options for one-shot and arms; writes `runs/RUN_MANIFEST.json`),
-3. one-shot generation with qwen2.5-coder:32b (T = 0.1, num_ctx 32768, 34 modules); after the first call the GPU
-   layer-offload line of the Ollama server log is printed,
+   11434 + job id mod 1000, `LLAMA_ARG_THREADS` = `LLAMA_ARG_THREADS_BATCH` = CPUs; up within 120 s or the job fails),
+   then `pipeline/preflight.py` (runner imports, tool versions, thread settings, GPU name and memory (fails below
+   40 GiB), GEN_TASKS names, qwen2.5-coder:32b digest equal to the Phase 3 digest, identical Ollama options for
+   one-shot and arms including `num_thread`; writes `runs/RUN_MANIFEST.json`),
+3. one-shot generation with qwen2.5-coder:32b (T = 0.1, num_ctx 32768, num_thread = CPUs, 34 modules). After the first
+   call: GPU layer-offload line, llama-server `n_threads` and generation speed. The job exits 3 if n_threads differs
+   from the CPU count or the speed is below 8 tokens/s, and warns below 15,
 4. the two feedback arms through the Phase 3 runner (`baseline` = simulation loop, `sem_esc_restart_v3` = STITCH;
    budget 6, N = 1),
 5. the summary.
 
+A timeout or connection error on one module does not stop the job: the module is recorded as `infra_error`, the rest
+continue, and the job ends with exit 2 and the list. Resubmitting retries those modules and any incomplete folder;
+finished modules and arm runs are skipped. The client timeout is 3600 s per call, and a request that timed out once
+fails at once on the runner's retries.
+
 Each LLM call's `done_reason` and output tokens are recorded (`runs/oneshot/<m>/record.json`,
 `runs/arms/results/.../iter<k>/llm_meta.json`) and counted in `reports/SUMMARY.md`. The whole-router bonus is off
-(`GEN_FULL_ROUTER=0`): not attempted, its prompt alone is 32,290 of 32,768 tokens (`pipeline/budget.py`).
-num_ctx 32768 instead of the Phase 3 8192: `reports/METHODS_NOTES.md`. `ollama serve` is stopped on exit. Login: `soumyaj@hpc.bits-hyderabad.ac.in`. Base on the cluster:
-`/scratch/soumyaj/STITCH_GEN`. Budget figures (options, token estimates, wall time): `reports/PREDEPLOY_BUDGET.md`.
+(`GEN_FULL_ROUTER=0`): not attempted, its prompt alone is 32,290 of 32,768 tokens (`pipeline/budget.py`). num_ctx,
+num_thread and timeout versus Phase 3: `reports/METHODS_NOTES.md`. Speed and the --time arithmetic:
+`reports/SPEED.md`. `ollama serve` is stopped on exit. Login: `soumyaj@hpc.bits-hyderabad.ac.in`. Base on the
+cluster: `/scratch/soumyaj/STITCH_GEN`.
 
 ## 1. Dependency checklist (login node; one check command each)
 
@@ -31,9 +39,9 @@ num_ctx 32768 instead of the Phase 3 8192: `reports/METHODS_NOTES.md`. `ollama s
 
 The job reuses the Phase 3 Ollama binary and models directory, so the model keeps the digest it had in Phase 3 (the
 digest is recorded in every run). Other locations: set `OSS_CAD` or `GEN_OLLAMA_DIR` (see `pipeline/hpc_env.sh`;
-the models directory is fixed to `/scratch/soumyaj/Phase3_HPC/ollama_models`). If the model is missing, pull it with the Phase 3 script
-(`P3_PULL_MODELS="qwen2.5-coder:32b" sbatch /scratch/soumyaj/Phase3_HPC/phase3/hpc/pull_ollama_models_phase3.slurm`);
-a fresh pull may bring a newer digest.
+the models directory is fixed to `/scratch/soumyaj/Phase3_HPC/ollama_models`). If the model is missing, pull it with
+the Phase 3 script (`P3_PULL_MODELS="qwen2.5-coder:32b" sbatch
+/scratch/soumyaj/Phase3_HPC/phase3/hpc/pull_ollama_models_phase3.slurm`); a fresh pull may bring a newer digest.
 
 If a check fails because the scratch purge removed something, restore it as in `docs/HPC_GUIDE.md` section 2.6.
 
@@ -45,38 +53,41 @@ powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitc
 powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1
 ```
 
-Deploy from a clean, pushed commit: the script writes that commit to `DEPLOYED_COMMIT.txt` for the run manifest. It
-prints local and remote SHA-256 of the runner, interpreter and pipeline files; the two lists must be equal. The runner
-and interpreter hashes equal `phase3/evidence/FREEZE_FINAL.md`.
+Deploy from a clean, pushed commit: the script writes that commit to `DEPLOYED_COMMIT.txt` for the run manifest. The
+tar never holds `runs/`, `outputs/`, `prompts/` or `hpc_logs/` (the script checks and refuses otherwise), and `tar -xf`
+deletes nothing, so results on the cluster survive. The script prints the remote counts of one-shot records, arm
+`metrics.json` files and one-shot outputs before and after the untar, and stops if one drops. It also prints local and
+remote SHA-256 of the runner, interpreter and pipeline files; the two lists must be equal. The runner and interpreter
+hashes equal `phase3/evidence/FREEZE_FINAL.md`.
 
-## 3. Submit (ssh): smoke, then full
+## 3. Submit (ssh)
 
 ```bash
 ssh soumyaj@hpc.bits-hyderabad.ac.in
 cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
-# smoke: 3 tasks (leaf, Phase 3 register, parent), at most 3 + 36 LLM calls
-GEN_TASKS=encoder,register_4bit,allot_vc sbatch --time=02:00:00 pipeline/gen_job.slurm
-# full: all 34 tasks; the smoke tasks are skipped by resume
-sbatch pipeline/gen_job.slurm
+sbatch --partition=<PART> --nodelist=<NODE> pipeline/gen_job.slurm
 ```
 
-The log must show `GATE: ALL PASSED`, `[gpu] ok`, `PREFLIGHT: ALL PASSED` and a `[gpu offload] offloaded N/N layers to
-GPU` line (both numbers equal) before or at the first generation line. `GEN_TASKS` is comma-separated; an unknown
-name fails the preflight before any generation.
+The log must show `GATE: ALL PASSED`, `[gpu] ok`, `[threads] ok`, `PREFLIGHT: ALL PASSED`, then after the first call
+`[gpu offload] offloaded 65/65 layers to GPU`, `[threads] ok  llama-server n_threads = 4 (n_threads_batch = 4)` and
+`[speed] ok` (or `WARNING` between 8 and 15 tokens/s). `GEN_TASKS=a,b` before `sbatch` limits the run to those tasks;
+an unknown name fails the preflight before any generation.
 
 ## 4. Monitor and resume (ssh)
 
 ```bash
 squeue -u soumyaj
 tail -f /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
-grep -E "GATE:|PREFLIGHT:|\[gpu|\[tasks\]|\[digest\]|\[options\] (ok|BAD)|done_reason length" /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
+grep -E "GATE:|PREFLIGHT:|\[gpu|\[threads\]|\[speed\]|\[tasks\]|\[digest\]|\[options\] (ok|BAD)|INFRA|NOT FINISHED|FIRST-CALL" /scratch/soumyaj/STITCH_GEN/logs/gen_<JOBID>.log
 cat /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/RUN_MANIFEST.json
-ls /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/oneshot | wc -l      # 34 when one-shot is done (smoke: 3)
-python3 -c "import json;d=json.load(open('/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/results/master_log.json'));print(len(d),'of 68 arm runs')"
+cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch
+python3 -c "import json,glob;r=[json.load(open(p)) for p in glob.glob('runs/oneshot/*/record.json')];print(sum(x.get('status','ok')=='ok' for x in r),'of 34 one-shot finished;',sum(x.get('status')=='infra_error' for x in r),'infra_error')"
+find runs/arms/results -path '*/rep1/metrics.json' | wc -l      # 68 when the arms are done
 ```
 
-If the job hits the 11-hour limit or fails, submit `sbatch pipeline/gen_job.slurm` again: finished one-shot modules and
-arm runs are skipped.
+Exit 2 (infra errors) or a time-out: submit the same command again; only unfinished work runs. Exit 3: llama-server did
+not take the thread setting or generation was slower than 8 tokens/s; look at the `[threads]` and `[speed]` lines
+before resubmitting.
 
 ## 5. Copy the results back
 
@@ -95,4 +106,4 @@ Get-FileHash -Algorithm SHA256 $env:TEMP\gen_results.tgz
 tar -xzf $env:TEMP\gen_results.tgz -C SiliconComparision\llm_oneshot_vs_stitch
 ```
 
-`runs/` stays local (gitignored). `outputs/`, `prompts/` and `reports/` are the files to commit.
+`runs/` and `hpc_logs/` stay local (gitignored). `outputs/`, `prompts/` and `reports/` are the files to commit.

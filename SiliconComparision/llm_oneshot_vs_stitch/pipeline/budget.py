@@ -83,7 +83,7 @@ def capture(entry, argv) -> dict:
 def job_args(path: str, script: str, model: str = "qwen2.5-coder:32b") -> list[str]:
     """Flags a Slurm script passes to `script` (shell variables replaced by placeholders)."""
     text = open(path, encoding="utf-8").read().replace("\\\n", " ")
-    line = next(l for l in text.splitlines() if script in l and l.strip().startswith("python3"))
+    line = next(l for l in text.splitlines() if script in l and "python3" in l and not l.lstrip().startswith("#"))
     toks = shlex.split(line.split(script, 1)[1].split("||")[0])
     out = []
     for t in toks:
@@ -97,13 +97,15 @@ def study_bodies(model: str = "qwen2.5-coder:32b") -> dict:
     """Request bodies (without messages) that gen_job.slurm's run_arms.py and oneshot_gen.py lines would send."""
     tmp, gen = tempfile.mkdtemp(), os.path.join(HERE, "gen_job.slurm")
     arms, one = job_args(gen, "run_arms.py", model), job_args(gen, "oneshot_gen.py", model)
-    real_prep = RA.prepare_tasks
+    real_prep, real_done = RA.prepare_tasks, OG.done
     RA.prepare_tasks = lambda modules, out: os.path.join(B.STUDY, "tasks")
+    OG.done = lambda m: True        # run_arms needs a finished one-shot; oneshot_gen builds its client before the loop
     try:
         return {"runner via run_arms": capture(RA.main, ["r", *arms, "--modules", "encoder", "--out", tmp]),
-                "oneshot_gen": capture(OG.main, ["o", *one]), "_argv": {"run_arms": arms, "oneshot_gen": one}}
+                "oneshot_gen": capture(OG.main, ["o", *one, "--modules", "encoder"]),
+                "_argv": {"run_arms": arms, "oneshot_gen": one}}
     finally:
-        RA.prepare_tasks = real_prep
+        RA.prepare_tasks, OG.done = real_prep, real_done
 
 
 def options() -> tuple[list[str], bool, int]:
@@ -111,8 +113,12 @@ def options() -> tuple[list[str], bool, int]:
     study = study_bodies()
     argv = study.pop("_argv")
     arms, one = argv["run_arms"], argv["oneshot_gen"]
-    cols = {"phase3 production": capture(R.main, ["r", *p3, "--tasks", "register_4bit", "--out", tempfile.mkdtemp()]),
-            **study}
+    shim, R.urllib = R.urllib, urllib            # Phase 3 production: the plain runner client, without p3_bridge
+    try:
+        p3_body = capture(R.main, ["r", *p3, "--tasks", "register_4bit", "--out", tempfile.mkdtemp()])
+    finally:
+        R.urllib = shim
+    cols = {"phase3 production": p3_body, **study}
     flat = {c: {**{k: v for k, v in b.items() if k != "options"}, **{f"options.{k}": v for k, v in b["options"].items()}}
             for c, b in cols.items()}
     keys = sorted(set().union(*flat.values()))
@@ -209,7 +215,8 @@ def walltime() -> tuple[list[str], int]:
              f"{per_run:.1f} s per call",
              f"- per-call wall time used = max of the two means = {per_call:.1f} s",
              f"- {per_call:.1f} s x {N_CALLS} calls (34 one-shot + 68 x 6) x {MARGIN} = {secs:.0f} s = "
-             f"{secs / 3600:.2f} h -> --time={hours:02d}:00:00"]
+             f"{secs / 3600:.2f} h -> --time={hours:02d}:00:00 at the Phase 3 per-call time; superseded by reports/SPEED.md "
+             f"(measured tokens/s, remaining work)"]
     return lines, hours
 
 

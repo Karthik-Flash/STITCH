@@ -4,9 +4,10 @@
 
 | field | phase3 production | runner via run_arms | oneshot_gen |
 |---|---|---|---|
-| client_http_timeout_s | 900 | 900 | 900 |
+| client_http_timeout_s | 900 | 3600 | 3600 |
 | model | qwen2.5-coder:32b | qwen2.5-coder:32b | qwen2.5-coder:32b |
 | options.num_ctx | 8192 | 32768 | 32768 |
+| options.num_thread | not sent (Ollama/model default) | 4 | 4 |
 | options.temperature | 0.1 | 0.1 | 0.1 |
 | stream | False | False | False |
 | options.num_predict | not sent (Ollama/model default) | not sent (Ollama/model default) | not sent (Ollama/model default) |
@@ -69,4 +70,4 @@ Phase 3 qwen2.5-coder:32b (job 369810, H200 NVL):
 - serve log (ollama_serve_369810.log): 244 /api/chat calls (HTTP 200), LLM time only: mean 53.5 s, median 38.3 s, p95 159.0 s, max 183.0 s
 - metrics.json: 198 runs, 244 LLM calls, 14456 s wall (LLM + tool evaluation): 59.2 s per call
 - per-call wall time used = max of the two means = 59.2 s
-- 59.2 s x 442 calls (34 one-shot + 68 x 6) x 1.5 = 39279 s = 10.91 h -> --time=11:00:00
+- 59.2 s x 442 calls (34 one-shot + 68 x 6) x 1.5 = 39279 s = 10.91 h -> --time=11:00:00 at the Phase 3 per-call time; superseded by reports/SPEED.md (measured tokens/s, remaining work)

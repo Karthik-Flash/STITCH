@@ -12,6 +12,10 @@ export STUDY=$BASE/SiliconComparision/llm_oneshot_vs_stitch
 # One port per job (11434 + job id mod 1000), so two jobs on one node never share an ollama server.
 export OLLAMA_HOST=127.0.0.1:$((11434 + ${SLURM_JOB_ID:-0} % 1000))
 export OLLAMA_SERVE_LOG=$BASE/logs/ollama_serve_${SLURM_JOB_ID:-local}.log   # grepped for the GPU offload line
+# CPU threads = the job's CPUs. Without this llama-server starts one thread per node core (64 on 4-8 CPUs, ~5 tok/s).
+# llama-server reads LLAMA_ARG_THREADS*; p3_bridge.py also sends options.num_thread with the same value.
+export LLAMA_ARG_THREADS=${SLURM_CPUS_PER_TASK:-4}
+export LLAMA_ARG_THREADS_BATCH=${SLURM_CPUS_PER_TASK:-4}
 export OLLAMA_KEEP_ALIVE=30m
 export PYTHONUNBUFFERED=1
 export PYTHONDONTWRITEBYTECODE=1

@@ -6,6 +6,7 @@
      Phase 3 classes on the three hand-written registers (ASYNC_RESET, MISSING_CLOCK, MISSING_CLOCK)
   G3 prove_prompt_format.py: the wrapped runner's prompts are byte-identical to the plain Phase 3 runner's
   G4 e2e_mock.py: the whole pipeline end to end with mock LLMs on 3 modules
+  G5 test_failures.py: resume, infra-error handling, num_thread injection, timeout fast-fail, first-call checks
 Exit 0 only if every gate passes. Usage: python pipeline/gate.py
 """
 from __future__ import annotations
@@ -33,7 +34,8 @@ def main() -> int:
     if not ok:
         print("GATE: FAIL (toolchain drift)")
         return 1
-    for tag, script in (("G2", "check_tasks.py"), ("G3", "prove_prompt_format.py"), ("G4", "e2e_mock.py")):
+    for tag, script in (("G2", "check_tasks.py"), ("G3", "prove_prompt_format.py"), ("G4", "e2e_mock.py"),
+                        ("G5", "test_failures.py")):
         print(f"[{tag}] {script}", flush=True)
         rc = subprocess.run([sys.executable, os.path.join(HERE, script)]).returncode
         print(f"[{tag}] {'ok' if rc == 0 else 'FAIL'}", flush=True)

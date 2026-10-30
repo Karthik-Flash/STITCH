@@ -34,6 +34,30 @@ an answer of about 22,364. It is run as is, without special handling. Each call'
 are recorded (`runs/arms/results/.../iter<k>/llm_meta.json`, `runs/oneshot/<m>/record.json`). `reports/SUMMARY.md`
 lists every call that ended with `done_reason=length`.
 
+## CPU threads: num_thread = the job's CPUs
+
+Every /api/chat request in this study, one-shot and both arms, also carries `options.num_thread` = the job's CPU count
+(`$SLURM_CPUS_PER_TASK`, 4). `pipeline/p3_bridge.py` adds it to the runner's request for both paths. The same value is
+given to llama-server through `LLAMA_ARG_THREADS` and `LLAMA_ARG_THREADS_BATCH` (`pipeline/hpc_env.sh`).
+
+num_thread is a CPU-thread setting, not a sampling option. Phase 3 sent no thread setting. Its llama-server ran 64
+threads on 8 CPUs (`n_threads = 64 (n_threads_batch = 64) / 64` in the Phase 3 32b server log) and generated about
+4.9 tokens/s. This study's first two jobs did the same: 5.3 tokens/s on an H200 and 4.4 tokens/s on an A100
+(`reports/SPEED.md`, `pipeline/speed.py`). In every one of these jobs all 65 layers ran on the GPU
+(`offloaded 65/65 layers to GPU`), so the thread count sets how many CPU threads drive the GPU, not the model.
+
+The job checks the setting on the first call. It stops (exit 3) if llama-server's n_threads differs from the
+configured value or generation is slower than 8 tokens/s, and warns below 15 tokens/s. The values are recorded in
+`runs/RUN_MANIFEST.json`.
+
+## Client timeout: 3600 s (Phase 3: 900 s)
+
+Both paths use a client HTTP timeout of 3600 s per call (`p3_bridge.CLIENT_TIMEOUT_S`). Phase 3 used 900 s, which its
+leaf answers never reached. Here, answers of 6,000-22,000 tokens at 4-5 tokens/s took longer than 900 s: op_core timed
+out in job 423542. The timeout is a client setting, not sent to Ollama. A request body that has already timed out
+fails at once on the runner's retries, so one slow call costs one timeout, not three. A module that still fails is
+recorded as an infrastructure error and retried on the next submission.
+
 ## Whole-router bonus prompt: not attempted
 
 The whole router (top_module with all its descendants) as one one-shot prompt was not attempted. The prompt alone is
