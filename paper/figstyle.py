@@ -1,4 +1,4 @@
-"""Shared figure style for the paper (v10). Every figure script imports this module.
+"""Shared figure style for the paper (v11). Every figure script imports this module.
 
 - One colour per condition across the paper (validated with the dataviz palette checker, all pairs, light mode):
   baseline grey, the alarm-only arm light amber, raw tool text vermillion, interpretation a blue family (v2 light,
@@ -27,16 +27,22 @@ COND = {
     "sem_escalate_restart": "#006e4b",
     "sem_esc_restart_v3": "#006e4b",
 }
-LABEL = {
-    "baseline": "baseline",
-    "baseline_gate": "baseline_gate",
-    "raw_adv": "raw_adv",
-    "sem_adv": "sem_adv",
-    "sem_adv_v2": "sem_adv (v2)",
-    "sem_adv_v3": "sem_adv (v3)",
-    "sem_escalate": "sem_escalate",
-    "sem_escalate_restart": "sem_esc_restart",
-    "sem_esc_restart_v3": "sem_esc_restart",
+LABEL = {                                     # the paper's condition names (code name -> name in print)
+    "baseline": "Baseline",
+    "baseline_gate": "Alarm",
+    "raw_adv": "Raw",
+    "sem_adv": "Interpret",
+    "sem_adv_v2": "Interpret v2",
+    "sem_adv_v3": "Interpret v3",
+    "sem_escalate": "Escalate",
+    "sem_escalate_restart": "Escalate-R",
+    "sem_esc_restart_v3": "Escalate-R",
+}
+MODEL = {                                     # Ollama tags and run labels -> model names in print
+    "llama3.2:3b": "Llama 3.2 3B", "gemma3:4b": "Gemma 3 4B", "deepseek-coder:6.7b": "DeepSeek-Coder 6.7B",
+    "deepseek-coder": "DeepSeek-Coder 6.7B", "qwen2.5-coder:7b": "Qwen2.5-Coder 7B", "llama3.1:8b": "Llama 3.1 8B",
+    "llama3.1": "Llama 3.1 8B", "llama3.1:latest": "Llama 3.1 8B", "qwen2.5-coder:14b": "Qwen2.5-Coder 14B",
+    "gemma3:27b": "Gemma 3 27B", "qwen2.5-coder:32b": "Qwen2.5-Coder 32B", "RTLCoder": "RTLCoder 6.7B",
 }
 P3_ORDER = ["baseline", "baseline_gate", "raw_adv", "sem_adv_v2", "sem_adv_v3", "sem_esc_restart_v3"]
 
@@ -68,10 +74,12 @@ def figure(width, height, **kw):
     return plt.subplots(figsize=(width, height), layout="constrained", **kw)
 
 
-def save(fig, path):
-    """Write <path>.pdf at the figure's exact size (no tight bounding box, which would change the size)."""
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+def save(fig, path, png=None):
+    """Write <path>.pdf (if path) and <png>.png (if png) at the figure's exact size (no tight bounding box)."""
     fig.get_layout_engine().set(w_pad=0.02, h_pad=0.02, wspace=0.04, hspace=0.04)
-    fig.savefig(path + ".pdf")
+    for base, ext in ((path, ".pdf"), (png, ".png")):
+        if base:
+            os.makedirs(os.path.dirname(base), exist_ok=True)
+            fig.savefig(base + ext)
+            print("wrote", os.path.relpath(base + ext))
     plt.close(fig)
-    print("wrote", os.path.relpath(path + ".pdf"))

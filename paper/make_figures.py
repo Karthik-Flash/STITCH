@@ -1,13 +1,15 @@
-"""Figures for paper v10 (paper/overleaf/main.tex and supplement.tex), all in the shared style of figstyle.py.
-  python -B paper/make_v10_figures.py          (the Set 4b heat map comes from phase2/frontier/make_numbers_set4.py)
-Each panel is drawn at its final printed width and written to paper/overleaf/figures/<name>.pdf. Every value is read
-from a generated evidence file, never typed by hand:
+"""Figures for the paper (v11, paper/main.tex) and for docs/reSTITCH.md, all in the shared style of figstyle.py.
+  python -B paper/make_figures.py
+Each panel is drawn at its final printed width. A paper figure is written to paper/figures/<name>.pdf, and every
+figure, including those only the documentation uses, to docs/figures/<name>.png. Every value is read from a
+generated evidence file, never typed by hand:
   PHASE3 = phase3/evidence/phase3_final/PHASE3_FINAL.md (pooled and stratum tables, cumulative-by-call, composition)
   PAPERN = phase3/evidence/phase3_final/PAPER_NUMBERS.md (latch-bearing tasks; per-model rows)
-  Set 1  = phase2/set1_analysis/tier_pass_rates.csv, cost_by_tier.csv, cost_summary.csv
+  Small-model study = phase2/set1_analysis/tier_pass_rates.csv, cost_by_tier.csv, cost_summary.csv
   Ladder = phase2/set3_analysis builders (Twin, Set 1, Set 3 master logs) and set4_analysis.json (API pass rates)
   Twin   = phase2/twin_analysis_SET2/_data.py (Twin master log, module tiers)
   API P3 = phase2/frontier/evidence/p3_ladder_signoff.json (table12)
+Condition and model names in print come from figstyle.LABEL and figstyle.MODEL.
 """
 import csv
 import importlib.util
@@ -25,11 +27,17 @@ import numpy as np  # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 from statsmodels.stats.proportion import confint_proportions_2indep, proportion_confint  # noqa: E402
 
-OUT = os.path.join(HERE, "overleaf", "figures")
+OUT = os.path.join(HERE, "figures")
+DOCS = os.path.join(REPO, "docs", "figures")
 P2 = os.path.join(REPO, "phase2")
 P3 = os.path.join(REPO, "phase3", "evidence", "phase3_final")
 API = [("gpt-4.1-mini-2025-04-14", "GPT-4.1 mini"), ("gemini-2.5-flash", "Gemini 2.5 Flash"),
        ("claude-haiku-4-5-20251001", "Claude Haiku 4.5")]
+
+
+def save(fig, name, paper=True):
+    """paper/figures/<name>.pdf (paper figures only) and docs/figures/<name>.png (every figure)."""
+    fs.save(fig, os.path.join(OUT, name) if paper else None, os.path.join(DOCS, name))
 
 
 def _load(path, name):
@@ -99,14 +107,14 @@ def teaser():
     fig, ax = fs.figure(fs.THIRD, 1.95)
     labelled_hbars(ax, fs.P3_ORDER, [_count(pooled[c]["signed_off_defective"])[0] for c in fs.P3_ORDER], 198)
     ax.set_xlabel("signed off defective (% of 198 runs)")
-    fs.save(fig, os.path.join(OUT, "fig_teaser_a"))
+    save(fig, "fig_teaser_a")
 
     line = next(l for l in PAPERN.splitlines() if "latch-bearing tasks, runs ending latch-free" in l)
     latch = {c: _count(v) for c, v in re.findall(r"(\w+) (\d+/\d+)", line.split(":", 1)[1])}
     fig, ax = fs.figure(fs.THIRD, 1.95)
     labelled_hbars(ax, fs.P3_ORDER, [latch[c][0] for c in fs.P3_ORDER], latch["baseline"][1])
     ax.set_xlabel(f"latch-free, synthesises (% of {latch['baseline'][1]} runs)")
-    fs.save(fig, os.path.join(OUT, "fig_teaser_b"))
+    save(fig, "fig_teaser_b")
 
     comp = {r[next(iter(r))]: r for r in _md_table(PHASE3, "### Composition (top-level synthesis pass)")}
     designs = [("mesh2x2", "2×2 mesh"), ("mesh3x3", "3×3 mesh"), ("mpsoc", "MPSoC")]
@@ -130,7 +138,7 @@ def teaser():
     ax.legend(loc="upper left", ncol=1, fontsize=7, bbox_to_anchor=(0.0, 1.04), borderaxespad=0, handleheight=0.8,
               labelspacing=0.25)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_teaser_c"))
+    save(fig, "fig_teaser_c")
 
 
 # ---------------------------------------------------------------- F5 + F9: the latch defect at scale, composition
@@ -154,7 +162,7 @@ def compose():
     ax.set_ylabel("latch cells after synthesis")
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=1, borderaxespad=0.2, labelspacing=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_latch_scale"))
+    save(fig, "fig_latch_scale")
 
     comp = {r[next(iter(r))]: r for r in _md_table(PHASE3, "### Composition (top-level synthesis pass)")}
     fig, ax = fs.figure(fs.HALF, 2.15)
@@ -174,14 +182,14 @@ def compose():
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, fontsize=7, borderaxespad=0.2, labelspacing=0.2,
               columnspacing=0.7)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_compose"))
+    save(fig, "fig_compose")
 
 
 # ---------------------------------------------------------------- F4 Phase 3
 def p3():
     sil = {r["condition"]: _count(r["**signoff_clean**"]) for r in _md_table(PHASE3, "### sim-silent tasks")}
     vis = {r["condition"]: _count(r["**signoff_clean**"]) for r in _md_table(PHASE3, "### sim-visible tasks")}
-    fig, ax = fs.figure(fs.HALF, 2.35)
+    fig, ax = fs.figure(fs.HALF, 2.2)
     order = fs.P3_ORDER
     y = np.arange(len(order))[::-1].astype(float)
     for j, (d, hatch) in enumerate(((sil, None), (vis, "/////"))):
@@ -200,11 +208,11 @@ def p3():
                        Patch(facecolor=fs.MUTED, hatch="/////", edgecolor="#ffffff", label=f"sim-visible (n={vis['baseline'][1]})")],
               loc="lower center", bbox_to_anchor=(0.4, 1.0), ncol=2, borderaxespad=0.2)
     fs.style(ax, "x")
-    fs.save(fig, os.path.join(OUT, "fig_p3_stratum"))
+    save(fig, "fig_p3_stratum")
 
     cum = {r["condition"]: [100 * _count(r[f"by call {i}"])[0] / _count(r[f"by call {i}"])[1] for i in range(7)]
            for r in _md_table(PHASE3, "### Cumulative signoff_clean by LLM call (six models)")}
-    fig, ax = fs.figure(fs.HALF, 2.35)
+    fig, ax = fs.figure(fs.HALF, 2.2)
     for c in order:
         ax.plot(range(7), cum[c], color=fs.COND[c], linewidth=1.5, marker="o", markersize=2.5, label=fs.LABEL[c],
                 zorder=3 if c == "sem_esc_restart_v3" else 2)
@@ -220,7 +228,7 @@ def p3():
     ax.set_ylabel("sign-off clean so far (%)")
     ax.legend(loc="lower center", bbox_to_anchor=(0.45, 1.0), ncol=2, fontsize=7, borderaxespad=0.2, labelspacing=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_p3_bycall"))
+    save(fig, "fig_p3_bycall")
 
 
 # ---------------------------------------------------------------- F6 Set 1
@@ -242,7 +250,7 @@ def set1():
     ax.set_ylim(0, 100)
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2, borderaxespad=0.2, labelspacing=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_set1_tiers"))
+    save(fig, "fig_set1_tiers")
 
     fig, ax = fs.figure(fs.HALF, 2.15)
     w = 0.26
@@ -259,7 +267,7 @@ def set1():
     ax.set_ylim(0, 9)
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, borderaxespad=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_set1_calls"))
+    save(fig, "fig_set1_calls")
 
 
 # ---------------------------------------------------------------- F7 ladder and deficit
@@ -274,22 +282,25 @@ def ladder():
         rows.append({"label": name, "run": "api", "rate": p["rate"], "ci_lo": p["lo"], "ci_hi": p["hi"]})
     rows.sort(key=lambda r: r["rate"])
     shade = {"twin": "#c9c8c3", "set3": fs.COND["baseline"], "api": "#4d4c48"}
-    fig, ax = fs.figure(fs.HALF, 2.75)
+    fig, ax = fs.figure(fs.HALF, 2.45)
     y = np.arange(len(rows))
     ax.barh(y, [100 * r["rate"] for r in rows], 0.68, color=[shade[r["run"]] for r in rows], zorder=2,
             hatch=["////" if r["run"] == "twin" else None for r in rows], edgecolor="#ffffff", linewidth=0,
             xerr=[[100 * (r["rate"] - r["ci_lo"]) for r in rows], [100 * (r["ci_hi"] - r["rate"]) for r in rows]],
             error_kw=fs.ERR)
     ax.set_yticks(y)
-    ax.set_yticklabels([r["label"] for r in rows])
+    def lname(r):                           # "gemma3:4b shared" -> "Gemma 3 4B"; RTLCoder keeps its prompt
+        base, _, prompt = r["label"].partition(" ")
+        return r["label"] if r["run"] == "api" else fs.MODEL[base] + (f" ({prompt})" if base == "RTLCoder" else "")
+    ax.set_yticklabels([lname(r) for r in rows])
     ax.set_xlim(0, 100)
-    ax.set_xlabel("baseline pass rate (%), Wilson 95% CI")
-    ax.legend(handles=[Patch(facecolor=shade["twin"], hatch="////", edgecolor="#ffffff", label="Twin, T=0.5"),
-                       Patch(facecolor=shade["set3"], label="Set 3, T=0.1"),
+    ax.set_xlabel("Baseline pass rate (%), Wilson 95% CI")
+    ax.legend(handles=[Patch(facecolor=shade["twin"], hatch="////", edgecolor="#ffffff", label="tiering, T=0.5"),
+                       Patch(facecolor=shade["set3"], label="open, T=0.1"),
                        Patch(facecolor=shade["api"], label="API, T=0.1")],
               loc="lower center", bbox_to_anchor=(0.3, 1.0), ncol=3, borderaxespad=0.2, fontsize=7)
     fs.style(ax, "x")
-    fs.save(fig, os.path.join(OUT, "fig_ladder"))
+    save(fig, "fig_ladder")
 
     drows = [dict(r) for r in har]
     for mid, name in API:
@@ -298,8 +309,7 @@ def ladder():
         drows.append({"model": name, "run": "api", "baseline_rate": bp["rate"],
                       "delta_pp": 100 * (ap["rate"] - bp["rate"]), "delta_ci_lo_pp": 100 * lo, "delta_ci_hi_pp": 100 * hi})
     drows.sort(key=lambda r: r["baseline_rate"])
-    tag = {"set1": "Set 1", "set3": "Set 3", "api": "API"}
-    fig, ax = fs.figure(fs.HALF, 2.75)
+    fig, ax = fs.figure(fs.HALF, 2.45)
     y = np.arange(len(drows))
     ax.axvline(0, color=fs.INK, linewidth=0.7, zorder=3)
     ax.barh(y, [r["delta_pp"] for r in drows], 0.62, color=fs.COND["sem_adv"], zorder=2,
@@ -309,12 +319,12 @@ def ladder():
         ax.text(1.0, i, f"{r['delta_pp']:+.1f}".replace("-", "−"), va="center", ha="left", fontsize=7,
                 transform=ax.get_yaxis_transform())
     ax.set_yticks(y)
-    ax.set_yticklabels([f"{r['model']} ({tag[r['run']]})" for r in drows])
+    ax.set_yticklabels([fs.MODEL.get(r["model"], r["model"]) for r in drows])
     ax.set_xlim(-30, 30)
     ax.set_xticks([-30, -15, 0, 15, 30])
-    ax.set_xlabel("sem_adv − baseline (points), 95% CI")
+    ax.set_xlabel("Interpret − Baseline (points), 95% CI")
     fs.style(ax, "x")
-    fs.save(fig, os.path.join(OUT, "fig_deficit"))
+    save(fig, "fig_deficit")
 
 
 # ---------------------------------------------------------------- supplement figures
@@ -324,9 +334,9 @@ def supp_twin():
     mods = sorted((m for m, i in cats.items() if i["difficulty_tier"] == "recoverable"),
                   key=lambda m: (cats[m]["functional_class"], m))
     pairs = [("twin_a", ("rtlcoder-deepseek-v1.1", "shared"), ("deepseek-coder:6.7b", "shared"),
-              "RTLCoder, shared prompt", "deepseek-coder, shared prompt"),
+              "RTLCoder 6.7B, shared prompt", "DeepSeek-Coder 6.7B, shared prompt"),
              ("twin_b", ("rtlcoder-deepseek-v1.1", "native"), ("rtlcoder-deepseek-v1.1", "shared"),
-              "RTLCoder, native prompt", "RTLCoder, shared prompt")]
+              "RTLCoder 6.7B, native prompt", "RTLCoder 6.7B, shared prompt")]
     for name, ca, cb, la, lb in pairs:
         fig, ax = fs.figure(fs.HALF, 3.3)
         y = np.arange(len(mods))[::-1]
@@ -340,7 +350,7 @@ def supp_twin():
         ax.set_xlabel("passes (of 3)")
         ax.legend(loc="lower center", bbox_to_anchor=(0.3, 1.0), ncol=1, borderaxespad=0.2)
         fs.style(ax, "x")
-        fs.save(fig, os.path.join(OUT, f"fig_s_{name}"))
+        save(fig, f"fig_s_{name}", paper=False)
 
 
 def supp_set1_cost():
@@ -358,7 +368,7 @@ def supp_set1_cost():
         ax.set_ylabel(lab)
         ax.set_ylim(0, max(v) * 1.18)
         fs.style(ax)
-        fs.save(fig, os.path.join(OUT, name))
+        save(fig, name, paper=False)
 
 
 def supp_p3_models():
@@ -378,12 +388,12 @@ def supp_p3_models():
         ax.bar(xs, [v for v, _, _ in r], w * 0.92, color=fs.COND[c], label=fs.LABEL[c], zorder=2,
                yerr=_err(r), error_kw=fs.ERR)
     ax.set_xticks(range(len(names)))
-    ax.set_xticklabels([n for _, n in names])
+    ax.set_xticklabels([fs.MODEL[n] for _, n in names])
     ax.set_ylim(0, 105)
     ax.set_ylabel("sign-off clean (%), of 33")
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=4, borderaxespad=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_s_p3_models"))
+    save(fig, "fig_s_p3_models", paper=False)
 
 
 def supp_p3_api():
@@ -403,7 +413,7 @@ def supp_p3_api():
     ax.set_ylabel("sign-off clean (of 33)")
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=6, borderaxespad=0.2)
     fs.style(ax)
-    fs.save(fig, os.path.join(OUT, "fig_s_p3_api"))
+    save(fig, "fig_s_p3_api", paper=False)
 
 
 if __name__ == "__main__":
