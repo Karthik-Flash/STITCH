@@ -1,12 +1,15 @@
 """Every Set 4 / Set 4b number the paper quotes, as LaTeX macros, from the analysis JSON files, plus the Haiku
 projection (paper v10, Part E) and the Set 4b floor heat map.
+The v10 paper files now live in paper/archive/v10/overleaf/ (local only). Paper v11 (paper/main.tex) quotes these
+values as plain numbers and has no heat map; run this script to read the values (it prints every macro) or to
+rebuild v10.
   python -B phase2/frontier/make_numbers_set4.py                  (projects Haiku's missing cells, marked)
   python -B phase2/frontier/make_numbers_set4.py --no-projection  (measured runs only; missing cells "not run")
 Writes (rewriting only the marked blocks of the two .tex files):
-  paper/overleaf/main.tex        between "% BEGIN GENERATED NUMBERS" and "% END GENERATED NUMBERS"
-  paper/overleaf/supplement.tex  the same NUMBERS block, and the S6 tables between "% BEGIN GENERATED TABLES" and
+  paper/archive/v10/overleaf/main.tex        between "% BEGIN GENERATED NUMBERS" and "% END GENERATED NUMBERS"
+  paper/archive/v10/overleaf/supplement.tex  the same NUMBERS block, and the S6 tables between "% BEGIN GENERATED TABLES" and
                                  "% END GENERATED TABLES"
-  paper/overleaf/figures/fig_floor_heatmap.pdf
+  paper/archive/v10/overleaf/figures/fig_floor_heatmap.pdf
   phase2/frontier/evidence/set4b_haiku_projection.json (projection inputs, method and outputs)
 If Haiku's pending Set 4b runs are completed, re-run analysis_set4b.py and then this script: the projected cells
 disappear, every \\proj{} value becomes the measured one and the projection notes become empty.
@@ -24,7 +27,7 @@ from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 SET4 = os.path.join(REPO, "phase2", "results", "set4_api")
-OVERLEAF = os.path.join(REPO, "paper", "overleaf")
+OVERLEAF = os.path.join(REPO, "paper", "archive", "v10", "overleaf")
 EVIDENCE = os.path.join(HERE, "evidence", "set4b_haiku_projection.json")
 GPT, GEM, HAI = "gpt-4.1-mini-2025-04-14", "gemini-2.5-flash", "claude-haiku-4-5-20251001"
 MODELS = [GPT, GEM, HAI]

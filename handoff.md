@@ -1,24 +1,24 @@
-# STITCH: Handoff (final state, 2026-10-14)
+# STITCH: Handoff (final state, updated 2026-10-30)
 
 For a new contributor, a fresh Claude Code chat or a planner agent. All study phases are done. The journal paper is
-final (v10). The documentation is consolidated. Earlier versions of this file are in git history.
+v11, the working copy the co-authors tweak from here on. Earlier versions of this file are in git history.
 
 ---
 
 ## 0. Final state
 
-- **Paper (v10, final).**
-  - **Sources:** `paper/overleaf/main.tex` (15 pages including references) and `paper/overleaf/supplement.tex` (S1 to
-    S9, 14 pages), with `figures/` beside them.
-  - **Build:** a clean-room `latexmk -pdf` gives 0 errors and 0 warnings for both. `paper/STITCH_overleaf.zip` is
-    ready for Overleaf.
-  - **Change log:** `paper/V10_CHANGES.md`.
-  - **Earlier drafts:** v7, v8 and v9, with their by-products, are in `paper/archive/`.
+- **Paper (v11, working copy).**
+  - **Source:** `paper/main.tex` (14 pages including references, no supplement), with `paper/figures/`.
+  - **Build:** a clean-room `latexmk -pdf` gives 0 errors and 0 warnings. `paper/STITCH_v11_overleaf.zip` is ready
+    for Overleaf; `paper/README.md` says how to build, regenerate figures and re-zip.
+  - **Change log:** `paper/V11_CHANGES.md` (how the narrative was drafted, and every change from v10).
+  - **Earlier drafts:** v7 to v10 (v10's supplement and zip included) are in `paper/archive/`, which is gitignored and
+    local only; v10 is in git history at `e77bf73`.
 - **Docs (consolidated).**
+  - `docs/reSTITCH.md`: the whole story, with every paper figure and every former supplement table and figure;
   - `docs/PHASES_EXPLAINED.md`: every phase;
   - `docs/HPC_GUIDE.md`: the cluster procedure;
-  - `docs/reSTITCH.md`: the whole story;
-  - `docs/reSTITCH_REVISITED_QA.md`: 93 questions in paper order.
+  - `docs/reSTITCH_REVISITED_QA.md`: 93 questions (written against v10; see its header note).
 
   The documents they replaced are in `docs/archive/`. The private notes are in `private/` (gitignored, local only).
 - **Phase 3 (MPSoC).** Complete: 990 runs, plus the pre-registered final batch (the control arm and
@@ -33,8 +33,8 @@ final (v10). The documentation is consolidated. Earlier versions of this file ar
   - `.gitattributes` keeps LF for shell and Slurm scripts.
   - All-history leak audit: clean.
 - **Open items** (`phase2/frontier/PENDING.md`):
-  1. **Optional:** Haiku's 85 Set 4b runs. The paper marks their projected values and can drop them with
-     `make_numbers_set4.py --no-projection`.
+  1. **Optional:** Haiku's 85 Set 4b runs. v11 uses measured runs only and has no floor heat map; completing the
+     runs would let the heat map return with measured values.
   2. **Make the repository public before submission.** The paper's Availability section points to it.
 
 ## 1. What STITCH is, in one paragraph
@@ -53,7 +53,11 @@ Conditions:
   restart variant adds one blank-slate retry;
 - `baseline_gate` (Phase 3 control): simulation plus a bare "fails sign-off" alarm.
 
-## 2. What each phase established (final numbers, paper v10)
+In the paper (v11) these are Baseline, Raw, Interpret, Escalate, Escalate-R and Alarm, and the run sets are named by
+study (Set 1 = small open models, Set 2 = tiering and fine-tuning, Set 3 = larger open models, Sets 4 and 4b =
+commercial models, Phase 3 = MPSoC case study); the full mapping is at the top of `docs/reSTITCH.md`.
+
+## 2. What each phase established (final numbers; unchanged in paper v11)
 
 | Phase | Established | Main write-up |
 |---|---|---|
@@ -117,10 +121,11 @@ sbatch; the user does.
 
 ## Message to the next Claude Code chat
 
-You are picking up STITCH after every study phase and the final journal paper (v10, `paper/overleaf/`).
+You are picking up STITCH after every study phase, with the journal paper at v11 (`paper/main.tex`).
 1. Read this file.
 2. Read `REPO_INDEX.md`.
-3. Read `docs/reSTITCH_REVISITED_QA.md` for the paper and `docs/reSTITCH.md` for the story.
+3. Read `docs/reSTITCH.md` for the story and every table and figure, and `paper/V11_CHANGES.md` for the paper's
+   current shape. `docs/reSTITCH_REVISITED_QA.md` answers 93 questions (against v10).
 4. For Phase 3 numbers, read `phase3/evidence/phase3_final/PHASE3_FINAL.md`. For the API study, read
    `phase2/frontier/SET4_REPORT.md`.
 

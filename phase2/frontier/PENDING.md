@@ -107,7 +107,12 @@ Remaining Gemini prepaid credit: about INR 423, unused.
 5. Keep API keys out of every commit. `scan_secrets.py` and `leak_audit.py` run before each commit and push. The
    keys live only in `%USERPROFILE%\.stitch\api_keys.env`, outside the repo; `phase2/results/` is gitignored.
 
-If Haiku's 85 runs are ever completed, finish the paper:
+**Paper v11 (2026-10-30)** has no floor heat map and no projected value: its floor paragraph uses measured runs
+only. The steps below concern the archived v10 build (`paper/archive/v10/overleaf/`, local). For v11, after
+completing Haiku, update the floor paragraph of `paper/main.tex` (Section 6.4) from the values
+`make_numbers_set4.py` prints, and optionally add the redrawn heat map back as a figure.
+
+If Haiku's 85 runs are ever completed, finish the v10 build:
 1. Run `python -B phase2/frontier/make_numbers_set4.py`. It replaces every projected Haiku value in
    `paper/overleaf/` with the measured one and removes the daggers, the notes and the heat-map hatching.
 2. Set `\finaltrue` in `paper/overleaf/main.tex`, rebuild both files and re-zip the folder.

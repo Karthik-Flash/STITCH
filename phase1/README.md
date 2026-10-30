@@ -14,7 +14,8 @@ Results:
 - `PHASE1_FINDINGS.md` and `PHASE1_TASK3_ANALYSIS.md`;
 - the pilot's pre-registration: `RTLLM_PILOT_PREREG.md`.
 
-The paper reports Phase 1 in Section 5 and Table 3 of `../paper/overleaf/main.tex`.
+The paper (v11, `../paper/main.tex`) reports Phase 1 in Section 5 (replication) and Section 3.1 with Table 3
+(escalation and its cost).
 
 See also:
 - `../docs/PHASES_EXPLAINED.md` (every phase);

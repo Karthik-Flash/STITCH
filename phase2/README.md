@@ -26,7 +26,9 @@ The Twin pre-registration is `TWIN_RUN_PREREG.md`.
 - the Phase 3 API ladder rows in `frontier/p3_api/`;
 - `frontier/PENDING.md`, the only open item.
 
-**In the paper**, Sections 6 to 8 of `../paper/overleaf/main.tex`.
+**In the paper** (v11, `../paper/main.tex`): Sections 4.1, 4.3 and 6. The paper names the run sets by study: Set 2
+(the Twin) is the tiering and fine-tuning study, Set 1 the small open models, Set 3 the larger open models, Sets 4
+and 4b the commercial models.
 
 **See also:**
 - `../docs/PHASES_EXPLAINED.md`, section "Phase 2";

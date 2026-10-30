@@ -8,9 +8,9 @@ designs and re-synthesises them, to see whether leaf-level repair restores top-l
 N=3, protocol `feedback_first_v2`), analysed in `evidence/phase3_run/PHASE3_RESULTS.md`.
 
 **Final state (2026-10-14).** The final batch (control arm and qwen2.5-coder:32b) and the sign-off re-scoring are in
-`evidence/phase3_final/PHASE3_FINAL.md`. The paper write-up is Section 9 of `../paper/overleaf/main.tex` (v10) and
-Supplementary Material S8 in `../paper/overleaf/supplement.tex`. The earlier write-ups (`PHASE3_MPSOC.tex`, v7) are in
-`../paper/archive/`. The full story of every phase is in `../docs/PHASES_EXPLAINED.md`; the cluster commands are in
+`evidence/phase3_final/PHASE3_FINAL.md`. The paper write-up is Section 7 of `../paper/main.tex` (v11; no supplement), and
+the detailed tables that were Supplementary Material S8 are in `../docs/reSTITCH.md`, Part 15, H. The earlier
+write-ups are in `../paper/archive/` (local only). The full story of every phase is in `../docs/PHASES_EXPLAINED.md`; the cluster commands are in
 `../docs/HPC_GUIDE.md`.
 
 **New to this?** Read `docs/PHASE3_EXPLAINED.md` first; it assumes no hardware background.
