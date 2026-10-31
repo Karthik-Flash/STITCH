@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate every task on the live toolchain (run where Yosys/Verilator/Icarus are on PATH).
 
-Per task:
+Per task (and per wrapper folder wrapper/<w>/, the whole-design testbench of a study with a wrapper):
   ref_loop     golden.v passes tb.v                         (through p3_eval, children from lib/)
   ref_clean    golden.v is struct_clean (p3_eval definition; informational: the STITCH arm stops on clean_pass)
   ref_signoff  golden.v passes tb_signoff.v
@@ -28,12 +28,17 @@ TASKS = os.path.join(B.STUDY, "tasks")
 REPORTS = os.path.join(B.STUDY, "reports")
 
 
+def task_dir(name: str) -> str:
+    w = os.path.join(B.STUDY, "wrapper", name)
+    return w if name in MT.studies.WRAPPERS.get(MT.studies.NAME, []) else os.path.join(TASKS, name)
+
+
 def check(name: str) -> dict:
     import stitch_interpreter_v3 as IV3
-    td = os.path.join(TASKS, name)
+    td = task_dir(name)
     meta = json.load(open(os.path.join(td, "meta.json")))
     top = meta["top"]
-    rows = MT.load_rows()
+    rows = {**MT.load_rows(), **MT.wrapper_rows()}
     with tempfile.TemporaryDirectory(prefix=f"chk_{name}_") as wd:
         g = B.evaluate(os.path.join(td, "golden.v"), td, top)
         so = B.simulate_with(os.path.join(td, "golden.v"), os.path.join(td, "tb_signoff.v"), td,
@@ -77,6 +82,8 @@ def main() -> int:
     a = ap.parse_args()
     names = a.tasks or sorted(os.listdir(TASKS))
     names = [n for n in names if os.path.isdir(os.path.join(TASKS, n))]
+    if not a.tasks:
+        names += MT.studies.WRAPPERS.get(MT.studies.NAME, [])
     with cf.ProcessPoolExecutor(a.jobs) as ex:
         rows = sorted(ex.map(check, names), key=lambda r: r["task"])
     os.makedirs(REPORTS, exist_ok=True)

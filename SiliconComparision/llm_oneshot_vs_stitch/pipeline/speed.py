@@ -67,8 +67,8 @@ def main() -> int:
           "| source | GPU | llama-server threads | calls | generation tok/s (pooled) | median per call | prompt tok/s |",
           "|---|---|---|---|---|---|---|"]
     serves = {"Phase 3 32b (job 369810)": budget.P3_32B_SERVE_LOG}
-    serves.update({f"job {re.search(r'(\d+)', os.path.basename(p)).group(1)}": p
-                   for p in sorted(glob.glob(os.path.join(a.logs, "ollama_serve_*.log")))})
+    serves.update({"job " + re.search(r"(\d+)", os.path.basename(p)).group(1): p      # no backslash in an f-string
+                   for p in sorted(glob.glob(os.path.join(a.logs, "ollama_serve_*.log")))})  # (Python 3.11 on WSL)
     gens = {re.search(r"(\d+)", os.path.basename(p)).group(1): gen_log(p)
             for p in sorted(glob.glob(os.path.join(a.logs, "gen_*.log")))}
     p3_run = os.path.join(os.path.dirname(budget.P3_32B_SERVE_LOG), "p3_run_369810.log")

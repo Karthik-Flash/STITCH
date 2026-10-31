@@ -1,0 +1,32 @@
+# encoder
+
+## Behaviour
+
+Combinational one-hot-to-binary encoder. When exactly one of `g1` to `g16` is 1, `encoded_addr` = its
+index minus 1 (`g1` gives 0, `g16` gives 15). Each bit of `encoded_addr` is the OR of the inputs whose
+index-minus-1 has that bit set, so several active inputs give the OR of their codes. All inputs 0 gives 0.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+<!-- BEGIN generated: ports -->
+17 ports, in this exact order:
+
+```verilog
+input g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+output [3:0] encoded_addr;
+```
+
+Parameters: none.
+<!-- END generated: ports -->
+
+## Children
+
+<!-- BEGIN generated: children -->
+None. This module instantiates no other module.
+<!-- END generated: children -->
+
+Unclear in golden: `g1` has no effect on the output, because its code is 0. Nothing latch-dependent.

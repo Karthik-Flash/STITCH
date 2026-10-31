@@ -1,4 +1,4 @@
-# HPC run: LLM one-shot vs STITCH (2x2 mesh)
+# HPC run: LLM one-shot vs STITCH (2x2 mesh; 3x3 mesh and network interface in section 11)
 
 This page is for running the generation job on the BITS Hyderabad HPC. Copy each command exactly as shown.
 
@@ -69,8 +69,8 @@ Real deploy. It asks for the cluster password up to six times:
 powershell -ExecutionPolicy Bypass -File SiliconComparision\llm_oneshot_vs_stitch\pipeline\deploy_gen.ps1
 ```
 
-The deploy prints two lines of counts, for example `remote results before (...): 25 6 25` and
-`remote results after: 25 6 25`. The three numbers are:
+The deploy prints two lines of counts, for example `remote results before (...): 34 68 34 0 0 0 0 0 0` and
+`remote results after: 34 68 34 0 0 0 0 0 0`. There are three numbers per study, in the order 2x2, mesh3x3, ni:
 
 1. one-shot record files,
 2. finished arm runs (`metrics.json`),
@@ -372,3 +372,87 @@ error stopped the job. Since `62b4131`:
 - the job uses 4 threads and the first call checks this;
 - the timeout is 3600 seconds;
 - one failed module no longer stops the job.
+
+## 11. Second job: 3x3 mesh and network interface (`STUDIES="mesh3x3 ni"`)
+
+Same job script, same model and settings. It generates only the NEW modules of the two studies: `top_3x3_router`
+(`mesh3x3/`) and `rp1`, `new1`, `depack`, `nidepack` (`ni/`); every other module reuses its 2x2 run
+(`mesh3x3/reports/REUSE.md`, `ni/reports/REUSE.md`). Work: 5 one-shot calls and 10 arm runs.
+
+Steps 0 to 3 are unchanged: deploy (step 1), verify (step 2), and pick a node (step 3). In step 3, use this test
+command instead:
+
+```bash
+for P in gpu_h200_8:gpunode7 gpu_a100_8:gpunode4 gpu_h100_4:gpunode5 gpu_h100_4:gpunode6; do sbatch --test-only --partition=${P%:*} --nodelist=${P#*:} --time=2:00:00 --export=ALL,STUDIES="mesh3x3 ni" pipeline/gen_job.slurm 2>&1; done
+```
+
+Check that no generation job is queued or running. This must show only the header line:
+
+```bash
+squeue -u soumyaj -n stitch_gen
+```
+
+Submit, replacing `<PART>` and `<NODE>` with the values from step 3. `--time` comes from `pipeline/walltime.py`
+(`mesh3x3/reports/WALLTIME.md`):
+
+```bash
+JOB=$(sbatch --parsable --partition=<PART> --nodelist=<NODE> --time=2:00:00 --export=ALL,STUDIES="mesh3x3 ni" pipeline/gen_job.slurm); echo $JOB
+```
+
+Then save the job number and show the start time, as in step 4:
+
+```bash
+echo "$JOB $(date '+%F %T') $(squeue -h -j $JOB -o '%P %n') mesh3x3+ni" >> /scratch/soumyaj/STITCH_GEN/logs/JOBIDS.txt
+```
+
+```bash
+squeue --start -j $JOB
+```
+
+First check (step 5). There is one gate per study, then one preflight per study. Expect
+`GATE: ALL PASSED (mesh3x3)`, `GATE: ALL PASSED (ni)` and two `PREFLIGHT: ALL PASSED` lines:
+
+```bash
+grep -E "GATE:|PREFLIGHT:|^\[gpu\]|^\[digest\]|^\[options\]|STUDY .* DONE" /scratch/soumyaj/STITCH_GEN/logs/gen_$JOB.log
+```
+
+The first-call check lines of step 5 appear once per study.
+
+Monitor (step 6). Finished one-shot modules (mesh3x3: 1, ni: 4 when done):
+
+```bash
+for d in mesh3x3 ni; do echo "$d $(grep -L '"infra_error"' $d/runs/oneshot/*/record.json 2>/dev/null | wc -l)"; done
+```
+
+Finished arm runs (mesh3x3: 2, ni: 8 when done):
+
+```bash
+for d in mesh3x3 ni; do echo "$d $(find $d/runs/arms/results -path '*/rep1/metrics.json' 2>/dev/null | wc -l)"; done
+```
+
+Exit codes: as in step 7. Exit 2 means that at least one study ended with infrastructure errors; the log line
+`JOB DONE WITH ERRORS in: ...` names the studies. Resubmit with the same command; finished work is skipped.
+
+Copy the results back (step 9), with this pack command instead:
+
+```bash
+tar -czf /scratch/soumyaj/STITCH_GEN/gen_results_mesh3x3_ni.tgz mesh3x3/outputs mesh3x3/prompts mesh3x3/reports mesh3x3/runs ni/outputs ni/prompts ni/reports ni/runs
+```
+
+```bash
+sha256sum /scratch/soumyaj/STITCH_GEN/gen_results_mesh3x3_ni.tgz
+```
+
+On the laptop (PowerShell), from `D:\Projects\STITCH`:
+
+```powershell
+scp soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/STITCH_GEN/gen_results_mesh3x3_ni.tgz $env:TEMP\gen_results_mesh3x3_ni.tgz
+```
+
+```powershell
+Get-FileHash -Algorithm SHA256 $env:TEMP\gen_results_mesh3x3_ni.tgz
+```
+
+```powershell
+tar -xzf $env:TEMP\gen_results_mesh3x3_ni.tgz -C SiliconComparision\llm_oneshot_vs_stitch
+```

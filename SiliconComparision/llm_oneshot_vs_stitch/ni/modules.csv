@@ -1,0 +1,10 @@
+module,file,bottom_up_order,ports,parameters,children,kind,own_storage,clock_ports,reset_ports,latch_enable_ports,phase3_latch_leaf,phase3_task
+asynch_comparator,asynch_comparator.v,1,input rd_ptr[3];input wr_ptr[3];input rd_dir[1];input wr_dir[1];output full_ext[1];output full_int[1];output empty[1],,,combinational,,,,,no,
+jk_ff,jk_ff.v,2,input j[1];input k[1];input reset[1];input en[1];input clk[1];output q[1];output qbar[1],,,sequential,$sdffx4,clk,reset,,no,
+gray_mod6,gray_mod6.v,3,input clk[1];input reset[1];input en[1];output gray_out[3];output dir[1],,jk_ffx4,sequential,,clk,reset,,no,
+memory,memory.v,4,input reset[1];input rd_clk[1];input rd_add[3];input wr_clk[1];input wr_add[3];input data_in[32];input wr_en[1];input rd_en[1];output data_out[32],,,sequential,$memrdx1;$memwr_v2x1;$sdffx1,rd_clk;wr_clk,reset,,no,
+router_fifo,router_fifo.v,5,input reset[1];input rd_clk[1];input rd_en[1];input data_in[32];input wr_clk[1];input wr_en[1];output rd_add[3];output wr_add[3];output wr_dir[1];output rd_dir[1];output data_out[32];output full_ext[1];output full_int[1];output empty[1],,asynch_comparatorx1;gray_mod6x2;memoryx1,sequential,,rd_clk;wr_clk,reset,,no,
+rp1,rp1.v,6,input data_in[32];input dest[8];input source[8];input rd_clk[1];input wr_clk[1];input wr_en[1];input reset[1];output niout[32];output rd_en[1];output wr_o[1],N=1;header=1;idle=0;last=5;payload1=2;payload2=3;tailer=4,,sequential,$dffx1;$sdffx5,rd_clk,reset,,no,
+new1,new.v,7,input rd_clk[1];input wr_clk[1];input data_in[32];input reset[1];input wr_en[1];input dest[8];input source[8];output empty[1];output full_int[1];output niout[32];output wr_o[1],,router_fifox1;rp1x1,sequential,,rd_clk;wr_clk,reset,,no,
+depack,depack.v,8,input flit[32];input wr_clk[1];input reset[1];output data_out[32];output wr_en[1];output c_rd[1],firsthalf=2;header=1;nextstate=4;secondhalf=3;state0=0,,sequential,$dffx3;$sdffx2,wr_clk,reset,,no,
+nidepack,nidepack.v,9,input flit[32];input rd_clk[1];input wr_clk[1];input rd_en[1];input reset[1];output data_out[32],,depackx1;router_fifox1,sequential,,rd_clk;wr_clk,reset,,no,

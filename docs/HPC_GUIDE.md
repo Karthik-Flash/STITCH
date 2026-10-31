@@ -465,3 +465,22 @@ python phase3/runner/analyze_phase3.py --final --more-results phase3/results/pha
 | Set 3                                     | 612   | 2 (timeouts, excluded)                  | A100     |
 | Phase 3, 990 runs                         | 990   | 0 excluded (198 per condition analysed) | H200 NVL |
 | Phase 3 final batch (control arm and 32B) | 396   | 0 excluded                              | H200 NVL |
+
+## 12. LLM one-shot vs STITCH (`SiliconComparision/llm_oneshot_vs_stitch/`)
+
+Step-by-step page for this study: `SiliconComparision/llm_oneshot_vs_stitch/pipeline/HPC_RUN.md`. Base folder on the
+cluster: `/scratch/<HPC_USER>/STITCH_GEN`. Deploy from the laptop with `pipeline/deploy_gen.ps1` (`-DryRun` first).
+
+- One job script, `pipeline/gen_job.slurm`, for every study. `STUDIES` (space-separated, default `2x2`) picks the
+  studies: `2x2` (the 34 modules of the 2x2 mesh, done in jobs 422841, 423542 and 424063,
+  `reports/RUN_HISTORY.md`), `mesh3x3` (`top_3x3_router` only) and `ni` (`rp1`, `new1`, `depack`, `nidepack`).
+  The other modules of mesh3x3 and ni reuse their 2x2 runs (`<study>/reports/REUSE.md`).
+- The second job runs mesh3x3 and ni together; `--time` comes from `pipeline/walltime.py`
+  (`mesh3x3/reports/WALLTIME.md`):
+
+```bash
+JOB=$(sbatch --parsable --partition=<PART> --nodelist=<GPU_NODE> --time=2:00:00 --export=ALL,STUDIES="mesh3x3 ni" pipeline/gen_job.slurm); echo $JOB
+```
+
+- The job gates every study first (`GATE: ALL PASSED (<study>)`), then runs preflight, one-shot, both arms and the
+  summary per study. Exit codes, monitoring and copying the results back: `HPC_RUN.md`, sections 5 to 11.

@@ -31,8 +31,11 @@ import sys
 import types
 import urllib.request
 
-STUDY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-REPO = os.path.dirname(os.path.dirname(STUDY))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import studies  # noqa: E402
+
+STUDY = studies.STUDY
+REPO = studies.REPO
 # Where outputs/, prompts/, runs/ and reports/SUMMARY.md go. Default: the study folder. The local mock test sets
 # GEN_WORK to a scratch folder so it never writes into the real outputs.
 WORK = os.path.abspath(os.environ.get("GEN_WORK") or STUDY)

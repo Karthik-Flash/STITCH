@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build modules.csv: the module inventory of the hand-written 2x2 mesh rooted at top_2x2_router.
+"""Build modules.csv: the module inventory of the study's hand-written hierarchy (2x2: top_2x2_router; mesh3x3:
+top_3x3_router; ni: the two roots new1 and nidepack).
 
 Structure (ports, parameters, children) comes from golden/handwritten after `hierarchy` only. Yosys cannot
 run `proc` on the hand-written register_1bit ("Multiple edge sensitive events"), so storage, clock and reset
@@ -8,7 +9,7 @@ clock_ports / reset_ports / latch_enable_ports list the ports whose bits reach a
 latch-enable pin, directly or through a child's such port. Data signals used as clocks show up here too.
 
 Needs Yosys: STITCH_YOSYS, else $STITCH_SET4_OSSCAD/bin/yosys, else PATH (same lookup as run_yosys_stat.sh).
-Usage: python3 pipeline/inventory.py   (from llm_oneshot_vs_stitch/ or anywhere)
+Usage: python3 pipeline/inventory.py [--study 2x2|mesh3x3|ni]
 """
 from __future__ import annotations
 
@@ -17,12 +18,16 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 from collections import Counter
 from pathlib import Path
 
-STUDY = Path(__file__).resolve().parent.parent
-REPO = STUDY.parent.parent
-TOP = "top_2x2_router"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import studies  # noqa: E402
+
+STUDY = Path(studies.STUDY)
+REPO = Path(studies.REPO)
+ROOTS = studies.ROOTS[studies.NAME]
 HANDWRITTEN = STUDY / "golden" / "handwritten"
 A1 = STUDY / "golden" / "A1"
 WORK = STUDY / "runs" / "inventory"
@@ -49,7 +54,8 @@ def find_yosys() -> str:
 
 def yosys_json(yosys: str, design: Path, passes: str, out: Path) -> dict:
     sources = " ".join(sorted(p.name for p in design.glob("*.v")))
-    script = f"read_verilog {sources}; hierarchy -check -top {TOP}; {passes}; write_json {out.as_posix()}"
+    top = f"-top {ROOTS[0]}" if len(ROOTS) == 1 else ""
+    script = f"read_verilog {sources}; hierarchy -check {top}; {passes}; write_json {out.as_posix()}"
     subprocess.run([yosys, "-q", "-p", script], cwd=design, check=True)
     return json.loads(out.read_text(encoding="utf-8"))["modules"]
 
@@ -66,7 +72,8 @@ def bottom_up(modules: dict) -> list[str]:
         for child in sorted(children(modules[name])):
             visit(child)
         order.append(name)
-    visit(TOP)
+    for root in ROOTS:
+        visit(root)
     return order
 
 
@@ -127,7 +134,8 @@ def main() -> None:
             "ports": ";".join(
                 f"{port['direction']} {pname}[{len(port['bits'])}]" for pname, port in module["ports"].items()
             ),
-            "parameters": ";".join(f"{k}={v}" for k, v in module.get("parameter_default_values", {}).items()),
+            "parameters": ";".join(f"{k}={int(v, 2) if set(str(v)) <= set('01') else v}"
+                                   for k, v in module.get("parameter_default_values", {}).items()),
             "children": ";".join(f"{child}x{count}" for child, count in sorted(kids.items())),
             "kind": "sequential" if stateful[name] else "combinational",
             "own_storage": ";".join(f"{k}x{v}" for k, v in sorted(storage.items())),
@@ -140,7 +148,7 @@ def main() -> None:
 
     # Self-check: every child is listed before its parent, and the top comes last.
     position = {row["module"]: row["bottom_up_order"] for row in rows}
-    assert all(position[c] < position[n] for n in order for c in children(hw[n])) and order[-1] == TOP
+    assert all(position[c] < position[n] for n in order for c in children(hw[n])) and order[-1] == ROOTS[-1]
 
     with (STUDY / "modules.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")

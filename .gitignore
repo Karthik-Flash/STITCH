@@ -78,6 +78,12 @@ phase3/results/
 /SiliconComparision/llm_oneshot_vs_stitch/runs/arms/results/**/iter*/tb*.v
 /SiliconComparision/llm_oneshot_vs_stitch/runs/inventory/a1_proc.json
 /SiliconComparision/llm_oneshot_vs_stitch/runs/inventory/handwritten_hierarchy.json
+# the same for the 3x3 and network-interface studies (mesh3x3/, ni/)
+/SiliconComparision/llm_oneshot_vs_stitch/*/assembled/
+/SiliconComparision/llm_oneshot_vs_stitch/*/runs/arms/results/**/iter*/tb*.v
+/SiliconComparision/llm_oneshot_vs_stitch/*/runs/inventory/a1_proc.json
+/SiliconComparision/llm_oneshot_vs_stitch/*/runs/inventory/handwritten_hierarchy.json
+!/SiliconComparision/llm_oneshot_vs_stitch/*/runs/**/*.log
 /SiliconComparision/llm_oneshot_vs_stitch/**/*.vvp
 /SiliconComparision/llm_oneshot_vs_stitch/**/*.vcd
 /SiliconComparision/llm_oneshot_vs_stitch/**/obj_dir/

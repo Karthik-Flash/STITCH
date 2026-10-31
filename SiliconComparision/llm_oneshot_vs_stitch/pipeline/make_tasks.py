@@ -20,11 +20,16 @@ from __future__ import annotations
 import csv
 import json
 import re
+import os
 import shutil
+import sys
 from pathlib import Path
 
-STUDY = Path(__file__).resolve().parent.parent
-REPO = STUDY.parent.parent
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import studies  # noqa: E402
+
+STUDY = Path(studies.STUDY)
+REPO = Path(studies.REPO)
 REFERENCE = STUDY / "golden" / "reference"
 HANDWRITTEN = STUDY / "golden" / "handwritten"
 TASKS = STUDY / "tasks"
@@ -32,8 +37,11 @@ P3_TASKS = REPO / "phase3" / "tasks"
 
 PHASE3_REGISTERS = ("register_1bit", "register_4bit", "register_32bit")
 TIMING = ("rr_arbiter", "irs", "round_robin_req", "falling_edge_pulse_generator", "gray_mod6", "memory",
-          "router_fifo")
-NOT_CHECKED = {"ip_chnl": ["nxt_reset", "reg_out"], "rr_comb_new": ["b1_logic", "b0_logic"]}
+          "router_fifo", "new1", "nidepack", "ni_pair")
+# Inputs driven 1 ns after the falling edge (sampling 1 ns earlier), so they never change on an edge the module
+# itself uses: rp1 updates rd_en on the falling rd_clk edge.
+SKEW = ("rp1", "new1", "ni_pair")
+NOT_CHECKED = {"ip_chnl": ["nxt_reset", "reg_out"], "rr_comb_new": ["b1_logic", "b0_logic"], "depack": ["c_rd"]}
 SYSCLK = {"clk", "rd_clk", "wr_clk", "rd_clk1", "rd_clk2", "rd_clk3", "rd_clk4", "rd_clk_core"}
 PARENT_RESET_P = 400        # mid-run reset probability 1/P after the initial reset (parents: rare, so packets flow)
 LEAF_RESET_P = 40
@@ -42,7 +50,7 @@ LOOP_SEED, SIGNOFF_SEED = 11, 29
 # Output flipped by the validation mutant (default: first checked output). Timing modules: a property-checked one.
 MUTANT_OUTPUT = {"rr_arbiter": "gnt1", "irs": "rd_en_out", "round_robin_req": "g1",
                  "falling_edge_pulse_generator": "q0", "gray_mod6": "gray_out", "memory": "data_out",
-                 "router_fifo": "data_out"}
+                 "router_fifo": "data_out", "new1": "niout", "nidepack": "data_out", "ni_pair": "data_out"}
 
 
 # --------------------------------------------------------------------------- inventory
@@ -126,6 +134,11 @@ def stimulus(name, row):
         "router_fifo": {"wr_en": ("sticky", 3), "rd_en": ("sticky", 3), "reset": ("reset", 0)},
         "gray_mod6": {"en": ("sticky", 3)},
         "jk_ff": {"en": ("sticky", 3)},
+        "new1": {"wr_en": ("sticky", 3)},
+        "nidepack": {"rd_en": ("sticky", 3)},
+        # source/dest change rarely: a header flit read as a second body flit stays traceable (ni_pair props)
+        "ni_pair": {"wr_en": ("sticky", 3), "rd_en": ("sticky", 3), "source": ("sticky", 50),
+                    "dest": ("sticky", 50)},
     }.get(name, {})
     rules.update(over)
     return rules
@@ -287,6 +300,68 @@ def props(name, row):
              "  if (full_ext !== (fq_n >= 4)) tb_prop(\"full_ext flag wrong\");",
              "end"]
         return d, s, "", "if (tb_cyc == 0) fq_ok = 1'b0;"
+    if name in ("new1", "nidepack", "ni_pair"):
+        # Same-edge hand-offs (rp1 <- FIFO, depack -> FIFO, and in ni_pair rp1 -> depack) make which word moves on an
+        # edge simulator-dependent, so data is checked by origin: each 16-bit half seen downstream must be a half of a
+        # word the testbench wrote (or of the FIFO's reset word 32'h6000_0000, or a header/idle/last half that
+        # depack can take as the second body flit). pk_*: packetiser side, dq_*: depacketiser side.
+        d, s, pd = [], [], []
+        if name != "nidepack":
+            d.append("reg pk_half [0:65535]; reg [31:0] pk_old; reg [15:0] pk_sd; reg pk_rst, pk_we, pk_fi, pk_em, "
+                     "pk_wo; integer pk_i;")
+            s += ["if (tb_ph == 0) begin pk_old = niout; pk_rst = reset; pk_we = wr_en; pk_fi = full_int; pk_em = empty;",
+                  "  pk_wo = wr_o; pk_sd = {source, dest};",
+                  "  if (wr_en) begin pk_half[data_in[15:0]] = 1'b1; pk_half[data_in[31:16]] = 1'b1; end",
+                  "end else if (tb_started) begin",
+                  "  if (pk_rst) begin",
+                  "    if (niout !== 32'h60000000) tb_prop(\"niout not idle after reset\");",
+                  "    if (wr_o !== 1'b0) tb_prop(\"wr_o not cleared by reset\");",
+                  "  end else begin",
+                  "    if (niout !== pk_old) begin",
+                  "      if (niout[31:16] === 16'h2000) begin if (niout[15:0] !== pk_sd) tb_prop(\"header flit without {source, dest}\"); end",
+                  "      else if (niout[31:16] === 16'h0000) begin",
+                  "        if (^niout[15:0] !== 1'bx && !pk_half[niout[15:0]]) tb_prop(\"body flit not a half of a written word\"); end",
+                  "      else if (niout !== 32'h40000000 && niout !== 32'h7fffffff) tb_prop(\"niout not a legal flit\");",
+                  "    end",
+                  "    if (wr_o === 1'b1 && pk_wo === 1'b0 && niout[31:16] !== 16'h0000) tb_prop(\"wr_o rose without a body flit\");",
+                  "    if (empty === 1'b1 && full_int !== 1'b1) tb_prop(\"FIFO-full output without the 4-entry output\");",
+                  "    if (!pk_we && ((full_int === 1'b1 && pk_fi === 1'b0) || (empty === 1'b1 && pk_em === 1'b0)))",
+                  "      tb_prop(\"FIFO flag output rose without a write\");",
+                  "  end",
+                  "end"]
+            pd.append("if (tb_cyc == 0) begin for (pk_i = 0; pk_i < 65536; pk_i = pk_i + 1) pk_half[pk_i] = 1'b0;"
+                      " pk_half[16'h6000] = 1'b1; pk_half[16'h0000] = 1'b1; end")
+        if name != "new1":
+            d.append("reg dq_hi [0:65535]; reg dq_lo [0:65535]; reg [31:0] dq_old; reg [15:0] dq_low; reg [1:0] dq_s; "
+                     "reg dq_re, dq_rst; integer dq_i;")
+            if name == "nidepack":   # flits come from the tb (race-free): model depack's word assembly exactly
+                s += ["if (tb_ph == 0) begin",
+                      "  if (reset) dq_s = 0;",
+                      "  else case (dq_s)",
+                      "    0: if (flit[30:29] == 2'b01) dq_s = 1;",
+                      "    1: if (flit[30:29] == 2'b00) begin dq_low = flit[15:0]; dq_s = 2; end",
+                      "    2: if (flit[30:29] == 2'b10) dq_s = 0; else begin dq_hi[flit[15:0]] = 1'b1; dq_lo[dq_low] = 1'b1; dq_s = 1; end",
+                      "  endcase",
+                      "end"]
+                ok = "(dq_hi[data_out[31:16]] && dq_lo[data_out[15:0]])"
+                what = "a word depack assembled from the flits"
+            else:                    # flits come from rp1 on the same edge depack samples them: halves by origin
+                s += ["if (tb_ph == 0) begin pk_half[{source, dest}] = 1'b1; end"]
+                ok = "(pk_half[data_out[31:16]] && pk_half[data_out[15:0]])"
+                what = "made of halves of written words"
+            s += ["if (tb_ph == 0) begin dq_old = data_out; dq_re = rd_en; dq_rst = reset; end",
+                  "else if (tb_started) begin",
+                  "  if (dq_rst) begin if (data_out !== 32'h60000000) tb_prop(\"data_out not reset\"); end",
+                  "  else if (data_out !== dq_old) begin",
+                  "    if (!dq_re) tb_prop(\"data_out changed without rd_en\");",
+                  f"    if (^data_out !== 1'bx && data_out !== 32'h60000000 && !{ok}) tb_prop(\"data_out not {what}\");",
+                  "  end",
+                  "end"]
+            pd.append("if (tb_cyc == 0) begin for (dq_i = 0; dq_i < 65536; dq_i = dq_i + 1) begin dq_hi[dq_i] = 1'b0;"
+                      " dq_lo[dq_i] = 1'b0; end dq_s = 0; end")
+            if name == "ni_pair":
+                pd.append("if (tb_cyc == 0) pk_half[16'hffff] = 1'b1;   // flit[15:0] of 32'h7fff_ffff (last)")
+        return "\n".join(d), s, "", "\n      ".join(pd)
     # Cheap spec properties for some non-timing modules; their verdict is the comparison plus these.
     simple = {
         "rr_comb_new": [onehot(["g1", "g2", "g3", "g4"], "grant")]
@@ -313,8 +388,12 @@ def testbench(name, row, golden_text, cycles, seed, signoff) -> str:
     timing = name in TIMING and signoff
     pdecl, pstmts, pmod, pdrive = props(name, row) if signoff else ("", [], "", "")
     ref = re.sub(rf"\bmodule\s+{name}\b", f"module {name}__ref", golden_text, count=1)
-    # The 2x2 mesh only has rows/columns 0..1; single routers see destinations 0..3 around address 1..2.
-    dmax, dest = (1, "3'b000, r[4], 3'b000, r[0]") if name == "top_2x2_router" else (3, "2'b00, r[5:4], 2'b00, r[1:0]")
+    # The 2x2 mesh only has rows/columns 0..1, the 3x3 mesh 0..2; single routers see destinations 0..3 around
+    # address 1..2.
+    dmax, dest = {"top_2x2_router": (1, "3'b000, r[4], 3'b000, r[0]"),
+                  "top_3x3_router": (2, "2'b00, r[5:4] % 2'd3, 2'b00, r[1:0] % 2'd3")}.get(
+        name, (3, "2'b00, r[5:4], 2'b00, r[1:0]"))
+    skew = name in SKEW
 
     L = ["`timescale 1ns / 1ps", f"// Generated by pipeline/make_tasks.py ({'sign-off' if signoff else 'loop'}). "
          f"Reference: golden/reference ({name}__ref below).", "module tb;",
@@ -367,12 +446,12 @@ def testbench(name, row, golden_text, cycles, seed, signoff) -> str:
           "    " + " ".join(init),
           "    " + " ".join(f"tbc_t_{n} = 0; tbc_p_{n} = 0;" for n, _ in checked),
           f"    for (tb_cyc = 0; tb_cyc < {cycles}; tb_cyc = tb_cyc + 1) begin",
-          "      @(negedge tb_clk);",
+          "      @(negedge tb_clk);" + (" #1;" if skew else ""),
           drive_code(name, row, rules)]
     if pdrive:
         L.append("      " + pdrive)
     L += ["      tb_started = (tb_cyc >= 6);",
-          "      #4 tb_ph = 0; tb_compare; tb_props; if (tb_started) tb_cov;",
+          f"      #{3 if skew else 4} tb_ph = 0; tb_compare; tb_props; if (tb_started) tb_cov;",
           "      @(posedge tb_clk); #4 tb_ph = 1; tb_compare; tb_props; if (tb_started) tb_cov;",
           "    end", "    tb_cov_report;"]
     if timing:
@@ -400,47 +479,111 @@ def mutant(name, row, golden_text) -> str:
     return core.rstrip() + f"\n\nmodule {name}({names});\n" + "\n".join(body) + "\nendmodule\n"
 
 
-def main() -> None:
+def generated(rows) -> list[str]:
+    """Modules that get a task: all of 2x2; in the other studies only the NEW ones (reports/reuse.json), the REUSED
+    ones keep their 2x2 runs."""
+    if studies.NAME == "2x2":
+        return list(rows)
+    reuse = json.loads((STUDY / "reports" / "reuse.json").read_text(encoding="utf-8"))
+    return [m for m in rows if reuse[m]["status"] == "NEW"]
+
+
+def wrapper_rows() -> dict[str, dict]:
+    """Rows for the study's wrappers (wrapper/<w>.v, hand-written, not golden; one ANSI port per line)."""
+    out = {}
+    for w in studies.WRAPPERS.get(studies.NAME, []):
+        text = (STUDY / "wrapper" / f"{w}.v").read_text(encoding="utf-8")
+        ports = [(d, n, int(r) + 1 if r else 1)
+                 for d, r, n in re.findall(r"(?m)^\s*(input|output)\s*(?:\[(\d+):0\])?\s*(\w+)\s*,?\s*$", text)]
+        children = re.findall(r"(?m)^\s*(\w+)\s+\w+\s*\(\s*\.", text)
+        out[w] = {"module": w, "file": f"{w}.v", "port_list": ports, "child_list": children}
+    return out
+
+
+def write_task(td: Path, name: str, row: dict, rows: dict, golden_text: str, source: str) -> None:
+    td.mkdir(parents=True)
+    (td / "golden.v").write_text(golden_text, encoding="utf-8", newline="\n")
+    meta = {"track": "N", "top": name, "source": source,
+            "children": row["child_list"], "descendants": descendants(rows, name),
+            "checked_outputs": [n for d, n, w in row["port_list"] if d == "output"
+                                and n not in NOT_CHECKED.get(name, [])],
+            "not_checked": NOT_CHECKED.get(name, []), "timing_dependent": name in TIMING,
+            "signoff_verdict": "properties" if name in TIMING else "comparison+properties",
+            "mutant_output": MUTANT_OUTPUT.get(name), "phase3_task": row.get("phase3_task") or None}
+    if name in PHASE3_REGISTERS:
+        for f in ("tb.v", "tb_signoff.v"):
+            shutil.copyfile(P3_TASKS / name / f, td / f)
+        p3meta = json.loads((P3_TASKS / name / "meta.json").read_text(encoding="utf-8"))
+        meta = {**p3meta, **{k: v for k, v in meta.items() if k not in ("track", "top")},
+                "signoff_verdict": "phase3 tb_signoff.v"}
+    else:
+        (td / "tb.v").write_text(testbench(name, row, golden_text, LOOP_CYCLES, LOOP_SEED, False),
+                                 encoding="utf-8", newline="\n")
+        (td / "tb_signoff.v").write_text(testbench(name, row, golden_text, SIGNOFF_CYCLES, SIGNOFF_SEED, True),
+                                         encoding="utf-8", newline="\n")
+    if row["child_list"]:
+        (td / "lib").mkdir()
+        (td / "stubs").mkdir()
+        for dname in meta["descendants"]:
+            shutil.copyfile(REFERENCE / rows[dname]["file"], td / "lib" / f"{dname}.v")
+        for child in row["child_list"]:
+            (td / "stubs" / f"{child}.v").write_text(stub(rows[child]), encoding="utf-8", newline="\n")
+    (td / "meta.json").write_text(json.dumps(meta, indent=1) + "\n", encoding="utf-8", newline="\n")
+
+
+def build(tasks: Path) -> list[str]:
+    """tasks/<m>/ for every generated module (input.v = golden/handwritten) and, for wrappers, wrapper/<w>/ (the
+    whole-design testbench folder, same layout without input.v). Returns the folder names written."""
     rows = load_rows()
+    names = generated(rows)
+    for name in names:
+        row = rows[name]
+        write_task(tasks / name, name, row, rows, (REFERENCE / row["file"]).read_text(encoding="utf-8"),
+                   f"golden/handwritten/{row['file']}")
+        shutil.copyfile(HANDWRITTEN / row["file"], tasks / name / "input.v")
+        (tasks / name / "spec.md").write_text(spec_for_task(name), encoding="utf-8", newline="\n")
+    for w, row in wrapper_rows().items():
+        all_rows = {**rows, w: row}
+        write_task(tasks.parent / "wrapper" / w if tasks == TASKS else tasks / f"wrapper_{w}", w, row, all_rows,
+                   (STUDY / "wrapper" / f"{w}.v").read_text(encoding="utf-8"), f"wrapper/{w}.v (not golden)")
+        names.append(w)
+    return names
+
+
+def check_identical() -> int:
+    """Regenerate into a scratch folder and compare byte for byte with the committed tasks/ (2x2 regression)."""
+    import filecmp
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        names = build(Path(tmp))
+        bad = []
+        for n in names:
+            new = Path(tmp) / n if (Path(tmp) / n).exists() else Path(tmp) / f"wrapper_{n}"
+            old = TASKS / n if (TASKS / n).exists() else STUDY / "wrapper" / n
+            files = sorted(str(p.relative_to(new)) for p in new.rglob("*") if p.is_file())
+            have = sorted(str(p.relative_to(old)) for p in old.rglob("*") if p.is_file()) if old.exists() else []
+            if files != have:
+                bad.append(f"{n}: file lists differ")
+            bad += [f"{n}/{f}" for f in files if f in have and not filecmp.cmp(new / f, old / f, shallow=False)]
+    print(f"make_tasks --check ({studies.NAME}): {len(names)} task folders, "
+          + ("byte-identical" if not bad else f"DIFFER: {bad}"))
+    return 1 if bad else 0
+
+
+def main() -> int:
+    if "--check" in sys.argv[1:]:
+        return check_identical()
     if TASKS.exists():
         for child in TASKS.iterdir():
             if child.is_dir():
                 shutil.rmtree(child)
-    for name, row in rows.items():
-        td = TASKS / name
-        td.mkdir(parents=True)
-        golden_text = (REFERENCE / row["file"]).read_text(encoding="utf-8")
-        (td / "golden.v").write_text(golden_text, encoding="utf-8", newline="\n")
-        shutil.copyfile(HANDWRITTEN / row["file"], td / "input.v")
-        (td / "spec.md").write_text(spec_for_task(name), encoding="utf-8", newline="\n")
-        meta = {"track": "N", "top": name, "source": f"golden/handwritten/{row['file']}",
-                "children": row["child_list"], "descendants": descendants(rows, name),
-                "checked_outputs": [n for d, n, w in row["port_list"] if d == "output"
-                                    and n not in NOT_CHECKED.get(name, [])],
-                "not_checked": NOT_CHECKED.get(name, []), "timing_dependent": name in TIMING,
-                "signoff_verdict": "properties" if name in TIMING else "comparison+properties",
-                "mutant_output": MUTANT_OUTPUT.get(name), "phase3_task": row["phase3_task"] or None}
-        if name in PHASE3_REGISTERS:
-            for f in ("tb.v", "tb_signoff.v"):
-                shutil.copyfile(P3_TASKS / name / f, td / f)
-            p3meta = json.loads((P3_TASKS / name / "meta.json").read_text(encoding="utf-8"))
-            meta = {**p3meta, **{k: v for k, v in meta.items() if k not in ("track", "top")},
-                    "signoff_verdict": "phase3 tb_signoff.v"}
-        else:
-            (td / "tb.v").write_text(testbench(name, row, golden_text, LOOP_CYCLES, LOOP_SEED, False),
-                                     encoding="utf-8", newline="\n")
-            (td / "tb_signoff.v").write_text(testbench(name, row, golden_text, SIGNOFF_CYCLES, SIGNOFF_SEED, True),
-                                             encoding="utf-8", newline="\n")
-        if row["child_list"]:
-            (td / "lib").mkdir()
-            (td / "stubs").mkdir()
-            for dname in meta["descendants"]:
-                shutil.copyfile(REFERENCE / rows[dname]["file"], td / "lib" / f"{dname}.v")
-            for child in row["child_list"]:
-                (td / "stubs" / f"{child}.v").write_text(stub(rows[child]), encoding="utf-8", newline="\n")
-        (td / "meta.json").write_text(json.dumps(meta, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print(f"tasks: {len(rows)}")
+    for w in studies.WRAPPERS.get(studies.NAME, []):
+        if (STUDY / "wrapper" / w).exists():
+            shutil.rmtree(STUDY / "wrapper" / w)
+    names = build(TASKS)
+    print(f"tasks: {len(names)} ({', '.join(names)})")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

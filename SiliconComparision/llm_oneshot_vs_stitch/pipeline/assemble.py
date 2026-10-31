@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import analysis_common as A  # noqa: E402
 import reeval  # noqa: E402
 
-TOP = "top_2x2_router"
+TOP = A.studies.TOP
 A1_DIR = os.path.join(os.path.dirname(A.STUDY), "latch_study", "A1_original_synthesisable", "mesh2x2")
 OUT = os.path.join(A.STUDY, "assembled")
 MOD_RE = re.compile(r"\bmodule\s+(\w+)\b.*?\bendmodule\b", re.S)
@@ -102,8 +102,8 @@ def run(cmd, cwd, timeout=3600):
     return p.returncode, p.stdout + p.stderr
 
 
-def yosys_stat(rtl_dir: str, files: list[str]) -> dict:
-    script = f"read_verilog {' '.join(files)}; hierarchy -check -top {TOP}; synth -top {TOP}; check; stat -top {TOP}"
+def yosys_stat(rtl_dir: str, files: list[str], top: str = TOP) -> dict:
+    script = f"read_verilog {' '.join(files)}; hierarchy -check -top {top}; synth -top {top}; check; stat -top {top}"
     rc, log = run(["yosys", "-p", script], rtl_dir)
     sec = log[log.rfind("=== design hierarchy ==="):] if "=== design hierarchy ===" in log else ""
     total = latches = 0
@@ -172,19 +172,28 @@ def write_design(did: str, src: dict, dropped: list) -> str:
     return d
 
 
-def equivalent(arm: str, m: str) -> bool:
-    """Yosys formal equivalence of the arm's module m against golden (synthesis semantics: blocking vs nonblocking
-    assignment and sensitivity lists do not matter). proc; memory_map; async2sync; equiv_make/simple/induct -seq 5."""
+def equiv_texts(gold: str, gate: str, m: str, lib: str = "", clocks: bool = False) -> bool:
+    """Yosys formal equivalence of two definitions of module m (synthesis semantics: blocking vs nonblocking
+    assignment and sensitivity lists do not matter). proc; memory_map; async2sync; equiv_make/simple/induct -seq 5.
+    lib = definitions of m's children (golden), read once and flattened into both sides.
+    clocks=True: clk2fflogic instead of async2sync, so clock nets are modelled as logic (equiv_simple ignores the
+    clock pin of a flop; a flop clocked by a derived net, e.g. gray_mod6's dir, would otherwise go unchecked)."""
     with tempfile.TemporaryDirectory() as d:
-        open(os.path.join(d, "g.v"), "w").write(re.sub(rf"\bmodule\s+{m}\b", "module gold", golden(m)))
-        own = module_defs(open(A.final_file(arm, m)).read()).get(m)
-        if own is None:
-            return False
-        open(os.path.join(d, "l.v"), "w").write(re.sub(rf"\bmodule\s+{m}\b", "module gate", own))
-        rc, _ = run(["yosys", "-q", "-p", "read_verilog g.v; read_verilog l.v; proc; memory -nomap; memory_map; "
-                     "opt_clean; async2sync; equiv_make gold gate eq; hierarchy -top eq; equiv_simple -seq 5; "
+        open(os.path.join(d, "g.v"), "w").write(re.sub(rf"\bmodule\s+{m}\b", "module gold", gold))
+        open(os.path.join(d, "l.v"), "w").write(re.sub(rf"\bmodule\s+{m}\b", "module gate", gate))
+        pre = "read_verilog c.v; hierarchy; proc; flatten; " if lib else ""
+        if lib:
+            open(os.path.join(d, "c.v"), "w").write(lib)
+        rc, _ = run(["yosys", "-q", "-p", f"read_verilog g.v; read_verilog l.v; {pre}proc; memory -nomap; memory_map; "
+                     "opt_clean; " + ("clk2fflogic" if clocks else "async2sync") + "; equiv_make gold gate eq; hierarchy -top eq; equiv_simple -seq 5; "
                      "equiv_induct -seq 5; equiv_status -assert"], d, 600)
         return rc == 0
+
+
+def equivalent(arm: str, m: str) -> bool:
+    """The arm's final module m against golden (equiv_texts)."""
+    own = module_defs(open(A.final_file(arm, m)).read()).get(m)
+    return own is not None and equiv_texts(golden(m), own, m)
 
 
 def drop_in(arm: str, m: str) -> bool:

@@ -1,0 +1,104 @@
+{
+ "asynch_comparator": {
+  "raw_study": "b4557b38aed8ef3881524b9b7d09d9d432bcef363bb05ad2942eb8bcc25caaf1",
+  "norm_study": "6300b710b3ded692f1eaf6e90a1a58eb168ff95db3d7d5578f7842744c327ea4",
+  "prompt_study": "83013239423e8e49f4c1fa646bd42837b98c4efb3dfaaaffc39fd489df00c2d2",
+  "raw_2x2": "b4557b38aed8ef3881524b9b7d09d9d432bcef363bb05ad2942eb8bcc25caaf1",
+  "norm_2x2": "6300b710b3ded692f1eaf6e90a1a58eb168ff95db3d7d5578f7842744c327ea4",
+  "prompt_2x2": "83013239423e8e49f4c1fa646bd42837b98c4efb3dfaaaffc39fd489df00c2d2",
+  "same_norm": true,
+  "equivalent": null,
+  "same_prompt": true,
+  "status": "REUSED",
+  "why": "whitespace-identical golden, identical prompt",
+  "points_to": "2x2 results of asynch_comparator (outputs/<arm>/asynch_comparator.v, runs/)"
+ },
+ "jk_ff": {
+  "raw_study": "48b73e3c5446f34479ec4df707ea847b7a16cb993ef8a4d1e31fe93a4db3b3d2",
+  "norm_study": "fd82422b2839a7491d94cd5125ad4ff03fd62fdb1437efee067cacf7be674baf",
+  "prompt_study": "c46252d5627f54f1e2777ccaa07e1497b10f95a808172aa858669939dcd4cf0e",
+  "raw_2x2": "48b73e3c5446f34479ec4df707ea847b7a16cb993ef8a4d1e31fe93a4db3b3d2",
+  "norm_2x2": "fd82422b2839a7491d94cd5125ad4ff03fd62fdb1437efee067cacf7be674baf",
+  "prompt_2x2": "c46252d5627f54f1e2777ccaa07e1497b10f95a808172aa858669939dcd4cf0e",
+  "same_norm": true,
+  "equivalent": null,
+  "same_prompt": true,
+  "status": "REUSED",
+  "why": "whitespace-identical golden, identical prompt",
+  "points_to": "2x2 results of jk_ff (outputs/<arm>/jk_ff.v, runs/)"
+ },
+ "gray_mod6": {
+  "raw_study": "573d5d4a73db10d594b32a6a179121868c330ec2b35de020081b6b8ca6c87002",
+  "norm_study": "b2947dfa6bc4c54233dae06a41f1a344fe755e288fa08b2b994b30ab56707386",
+  "prompt_study": "ed9570d5a7f04820df81e56b9d8a8ec4ad2c55cc7dd180d1ae512f265acf9d62",
+  "raw_2x2": "573d5d4a73db10d594b32a6a179121868c330ec2b35de020081b6b8ca6c87002",
+  "norm_2x2": "b2947dfa6bc4c54233dae06a41f1a344fe755e288fa08b2b994b30ab56707386",
+  "prompt_2x2": "ed9570d5a7f04820df81e56b9d8a8ec4ad2c55cc7dd180d1ae512f265acf9d62",
+  "same_norm": true,
+  "equivalent": null,
+  "same_prompt": true,
+  "status": "REUSED",
+  "why": "whitespace-identical golden, identical prompt",
+  "points_to": "2x2 results of gray_mod6 (outputs/<arm>/gray_mod6.v, runs/)"
+ },
+ "memory": {
+  "raw_study": "7e2cedb766e1e73831dca04b00ffb88886b022d344ce44201dcee52fa020d6cc",
+  "norm_study": "271512d24e7b058295a8ab0de5fd6fbf0a1ac7e7db35985affc2c3298ec09931",
+  "prompt_study": "90f8383214343f281d2663a6902e167f3a29a3eac7ea3a2c37d7f7475426e08a",
+  "raw_2x2": "7e2cedb766e1e73831dca04b00ffb88886b022d344ce44201dcee52fa020d6cc",
+  "norm_2x2": "271512d24e7b058295a8ab0de5fd6fbf0a1ac7e7db35985affc2c3298ec09931",
+  "prompt_2x2": "90f8383214343f281d2663a6902e167f3a29a3eac7ea3a2c37d7f7475426e08a",
+  "same_norm": true,
+  "equivalent": null,
+  "same_prompt": true,
+  "status": "REUSED",
+  "why": "whitespace-identical golden, identical prompt",
+  "points_to": "2x2 results of memory (outputs/<arm>/memory.v, runs/)"
+ },
+ "router_fifo": {
+  "raw_study": "0161b571a2eecf0fe0749887008d4ebfc4bd624cfd1af6e025acdb96a4fc1224",
+  "norm_study": "5e6e81142a5ad20e428cd0d7bb94cfb462f60b4cd5ddfb40ab0b067195821af9",
+  "prompt_study": "045150e5c0e58e4c66048849d0448bc2709d40eaddb46b355fa4b734a2759dad",
+  "raw_2x2": "0161b571a2eecf0fe0749887008d4ebfc4bd624cfd1af6e025acdb96a4fc1224",
+  "norm_2x2": "5e6e81142a5ad20e428cd0d7bb94cfb462f60b4cd5ddfb40ab0b067195821af9",
+  "prompt_2x2": "045150e5c0e58e4c66048849d0448bc2709d40eaddb46b355fa4b734a2759dad",
+  "same_norm": true,
+  "equivalent": null,
+  "same_prompt": true,
+  "status": "REUSED",
+  "why": "whitespace-identical golden, identical prompt",
+  "points_to": "2x2 results of router_fifo (outputs/<arm>/router_fifo.v, runs/)"
+ },
+ "rp1": {
+  "raw_study": "4f89d6f88ad218b57f9b9540a8cfa86b744bbb9a26080447157b4c6323445871",
+  "norm_study": "00c35345d099c6fd8d7af6057ae633d3ccd55a75bf7e68d8e03645c3aed62698",
+  "prompt_study": "e733a50918e28d0d5e04d6478c9d920039c8fc780225a96c9a6df75859c5133f",
+  "status": "NEW",
+  "why": "no 2x2 module of this name",
+  "points_to": null
+ },
+ "new1": {
+  "raw_study": "46951ab4b04254af6cf4ff23b4b28aa618c96f4e2719ccf32d66bb3a2c6b4ddd",
+  "norm_study": "622f7b5503aa3b5a3e53c440ba76bfe49b59cb83b432cfd8c65ffb17e4ce18ea",
+  "prompt_study": "571d0bc3243c2b20ef314fcb9563f38028c6348ac460cf7e434f861cc5e00bfc",
+  "status": "NEW",
+  "why": "no 2x2 module of this name",
+  "points_to": null
+ },
+ "depack": {
+  "raw_study": "06a8a1732cb9f57969f7226139d6b9437366c7095af917375a79edf8a57898ca",
+  "norm_study": "8ecb8f8fe21eb074cec8b42f0e858859120b5dbac9cf02c692e5321b83809642",
+  "prompt_study": "aa978f6f43d31346e275911e2e868cefa8c817bc9be5b41ffc178646a219eb5e",
+  "status": "NEW",
+  "why": "no 2x2 module of this name",
+  "points_to": null
+ },
+ "nidepack": {
+  "raw_study": "63efea876e75da22b067b545bbefacfb9120e5d1957b53d4e7414b37805a3688",
+  "norm_study": "783a13621225683e79ea16867069212407829b1ae66f31d0b7c5e9f60a8280f1",
+  "prompt_study": "e0af6ceb87e10a0e38075efced12ceacf5fdfcb1acc251e5fd6f3f53d38f1a7e",
+  "status": "NEW",
+  "why": "no 2x2 module of this name",
+  "points_to": null
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "track": "N",
+ "top": "new1",
+ "source": "golden/handwritten/new.v",
+ "children": [
+  "router_fifo",
+  "rp1"
+ ],
+ "descendants": [
+  "asynch_comparator",
+  "jk_ff",
+  "gray_mod6",
+  "memory",
+  "router_fifo",
+  "rp1"
+ ],
+ "checked_outputs": [
+  "empty",
+  "full_int",
+  "niout",
+  "wr_o"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "niout",
+ "phase3_task": null
+}

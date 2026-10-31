@@ -1,5 +1,13 @@
 # LLM one-shot vs STITCH on the 2x2 NoC mesh
 
+## Studies
+
+| study | folder | status |
+|---|---|---|
+| 2x2 mesh (top_2x2_router) | this folder | done: results below, ORFS hand-off in `handoff_orfs/` |
+| 3x3 mesh (top_3x3_router) | [mesh3x3/](mesh3x3/README.md) | tasks ready; HPC generation pending |
+| network interface (new1, nidepack; ORFS top ni_pair) | [ni/](ni/README.md) | tasks ready; HPC generation pending |
+
 qwen2.5-coder:32b writes each of the 34 modules of the hand-written 2x2 mesh (top `top_2x2_router`) from a
 behavioural spec. Three arms: one-shot (one call), simloop (the Phase 3 simulation-only retry loop, `baseline`) and
 stitch (`sem_esc_restart_v3`, STITCH semantic feedback). Each final file is checked against its task (compile, loop

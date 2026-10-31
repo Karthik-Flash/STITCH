@@ -1,0 +1,81 @@
+# op_link4
+
+## Behaviour
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body. Bits [28:27] carry the virtual-channel (VC) number, 00 = VC1 to 11 = VC4. In a header flit,
+bits [7:4] are the destination row and bits [3:0] the destination column. The idle word is 32'h6000_0000.
+
+Output-port controller. It allocates this port's four output VCs to input VCs and decides each cycle
+which output VC sends. The 16 candidate input VCs are four source ports times four VCs, numbered
+slot = 4 x (source position) + (VC - 1), with source positions in this order: link1, link2, link3, core.
+
+- Switch allocation: round_robin_req arbitrates among the 16 `req_<src>_vc<k>` inputs with
+  `all_vc_not_busy` = NOT (all four output VCs busy). The one-shot grant `g1` to `g16` is encoded to a
+  4-bit slot index (encoder).
+- VC allocation (allot_vc): the grant takes the lowest free output VC K, records the source slot as
+  {link_K, vc_id_K}, and marks K busy (bK). K frees one `rd_clk` edge after the tailer of that source
+  slot (`tailer_<src>_vc<k>` inputs, same slot order).
+- `ready_vcK` = output VC K busy AND the source slot's `rok` is 1 AND `full_vcK` is 0 (the downstream VC
+  K is not full). `rok` uses the same slot order as `req`.
+- rr_comb_new picks among `ready_vc1` to `ready_vc4`, giving `gnt_vc1` to `gnt_vc4` (at most one is 1).
+- `rd_en_vcK_<src>_vc<j>` = `gnt_vcK` AND (output VC K's recorded source slot is <src> VC j); each
+  `gnt_vcK` is demultiplexed onto 16 read enables.
+- `ip_link_vc` = the recorded source slot of the currently granted output VC, or 0000 when no `gnt_vcK`
+  is 1.
+
+## Reset
+
+Active-high `reset`, passed to round_robin_req, allot_vc and rr_comb_new (see their specs). After
+reset all output VCs are free and no grant is active.
+
+## Ports
+
+<!-- BEGIN generated: ports -->
+123 ports, in this exact order:
+
+```verilog
+input rd_clk, reset, req_link1_vc1, req_link1_vc2, req_link1_vc3, req_link1_vc4, req_link2_vc1, req_link2_vc2,
+      req_link2_vc3, req_link2_vc4, req_link3_vc1, req_link3_vc2, req_link3_vc3, req_link3_vc4, req_core_vc1,
+      req_core_vc2, req_core_vc3, req_core_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+      rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      rok_link3_vc4, rok_core_vc1, rok_core_vc2, rok_core_vc3, rok_core_vc4, tailer_link1_vc1,
+      tailer_link1_vc2, tailer_link1_vc3, tailer_link1_vc4, tailer_link2_vc1, tailer_link2_vc2,
+      tailer_link2_vc3, tailer_link2_vc4, tailer_link3_vc1, tailer_link3_vc2, tailer_link3_vc3,
+      tailer_link3_vc4, tailer_core_vc1, tailer_core_vc2, tailer_core_vc3, tailer_core_vc4, full_vc1,
+      full_vc2, full_vc3, full_vc4;
+output rd_en_vc1_link1_vc1, rd_en_vc1_link1_vc2, rd_en_vc1_link1_vc3, rd_en_vc1_link1_vc4,
+       rd_en_vc1_link2_vc1, rd_en_vc1_link2_vc2, rd_en_vc1_link2_vc3, rd_en_vc1_link2_vc4,
+       rd_en_vc1_link3_vc1, rd_en_vc1_link3_vc2, rd_en_vc1_link3_vc3, rd_en_vc1_link3_vc4, rd_en_vc1_core_vc1,
+       rd_en_vc1_core_vc2, rd_en_vc1_core_vc3, rd_en_vc1_core_vc4, rd_en_vc2_link1_vc1, rd_en_vc2_link1_vc2,
+       rd_en_vc2_link1_vc3, rd_en_vc2_link1_vc4, rd_en_vc2_link2_vc1, rd_en_vc2_link2_vc2,
+       rd_en_vc2_link2_vc3, rd_en_vc2_link2_vc4, rd_en_vc2_link3_vc1, rd_en_vc2_link3_vc2,
+       rd_en_vc2_link3_vc3, rd_en_vc2_link3_vc4, rd_en_vc2_core_vc1, rd_en_vc2_core_vc2, rd_en_vc2_core_vc3,
+       rd_en_vc2_core_vc4, rd_en_vc3_link1_vc1, rd_en_vc3_link1_vc2, rd_en_vc3_link1_vc3, rd_en_vc3_link1_vc4,
+       rd_en_vc3_link2_vc1, rd_en_vc3_link2_vc2, rd_en_vc3_link2_vc3, rd_en_vc3_link2_vc4,
+       rd_en_vc3_link3_vc1, rd_en_vc3_link3_vc2, rd_en_vc3_link3_vc3, rd_en_vc3_link3_vc4, rd_en_vc3_core_vc1,
+       rd_en_vc3_core_vc2, rd_en_vc3_core_vc3, rd_en_vc3_core_vc4, rd_en_vc4_link1_vc1, rd_en_vc4_link1_vc2,
+       rd_en_vc4_link1_vc3, rd_en_vc4_link1_vc4, rd_en_vc4_link2_vc1, rd_en_vc4_link2_vc2,
+       rd_en_vc4_link2_vc3, rd_en_vc4_link2_vc4, rd_en_vc4_link3_vc1, rd_en_vc4_link3_vc2,
+       rd_en_vc4_link3_vc3, rd_en_vc4_link3_vc4, rd_en_vc4_core_vc1, rd_en_vc4_core_vc2, rd_en_vc4_core_vc3,
+       rd_en_vc4_core_vc4, gnt_vc1, gnt_vc2, gnt_vc3, gnt_vc4;
+output [3:0] ip_link_vc;
+```
+
+Parameters: none.
+<!-- END generated: ports -->
+
+## Children
+
+<!-- BEGIN generated: children -->
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `allot_vc` x 1: (reset, rd_clk, encoded_addr, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, link_1, vc_id_1, link_2, vc_id_2, link_3, vc_id_3, link_4, vc_id_4, b1, b2, b3, b4, tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16, gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4)
+- `demux_16` x 4: (ip, sel, op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16)
+- `encoder` x 1: (g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, encoded_addr)
+- `round_robin_req` x 1: (reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10, req_11, req_12, req_13, req_14, req_15, req_16, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16, g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16, g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched, g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int, t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16)
+- `rr_comb_new` x 1: (reset, clk, r1, r2, r3, r4, g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1, b0, b1_logic, b0_logic)
+<!-- END generated: children -->
+
+Unclear in golden: inherits allot_vc's latch-dependent source-address capture (register_4bit). VC release and
+rotation depend on rr_arbiter's and round_robin_req's gated-clock flip-flops.

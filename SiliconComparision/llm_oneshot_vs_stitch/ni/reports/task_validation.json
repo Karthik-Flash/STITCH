@@ -1,0 +1,111 @@
+{
+ "toolchain": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)"
+ },
+ "rows": [
+  {
+   "task": "depack",
+   "timing": false,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {
+    "BLKSEQ": 19,
+    "UNUSEDSIGNAL": 2,
+    "UNUSEDPARAM": 2
+   },
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 2 of 2 checked outputs toggled, 31 of 33 bits"
+   ],
+   "mutant_output": "data_out",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL t=109000 cycle 9: data_out = d8fd413a, expected d8fd413b",
+   "ok": true
+  },
+  {
+   "task": "new1",
+   "timing": true,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {
+    "PINNOCONNECT": 1,
+    "UNUSEDSIGNAL": 4
+   },
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 4 of 4 checked outputs toggled, 34 of 35 bits",
+    "INFO cycle-exact mismatches against golden/reference: 0 (secondary)"
+   ],
+   "mutant_output": "niout",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL property: header flit without {source, dest} (t=109000)",
+   "ok": true
+  },
+  {
+   "task": "ni_pair",
+   "timing": true,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {},
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 5 of 5 checked outputs toggled, 64 of 67 bits",
+    "INFO cycle-exact mismatches against golden/reference: 0 (secondary)"
+   ],
+   "mutant_output": "data_out",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL property: data_out not reset (t=2239000)",
+   "ok": true
+  },
+  {
+   "task": "nidepack",
+   "timing": true,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {
+    "PINNOCONNECT": 2,
+    "UNUSEDSIGNAL": 7
+   },
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 1 of 1 checked outputs toggled, 30 of 32 bits",
+    "INFO cycle-exact mismatches against golden/reference: 0 (secondary)"
+   ],
+   "mutant_output": "data_out",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL property: data_out not a word depack assembled from the flits (t=709000)",
+   "ok": true
+  },
+  {
+   "task": "rp1",
+   "timing": false,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {
+    "BLKSEQ": 24,
+    "UNUSEDSIGNAL": 4,
+    "PROCASSINIT": 1
+   },
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 3 of 3 checked outputs toggled, 33 of 34 bits"
+   ],
+   "mutant_output": "niout",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL t=14000 cycle 0: niout = 60000001, expected 60000000",
+   "ok": true
+  }
+ ]
+}

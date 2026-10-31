@@ -9,10 +9,14 @@ from __future__ import annotations
 
 import csv
 import re
+import os
 import sys
 from pathlib import Path
 
-STUDY = Path(__file__).resolve().parent.parent
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import studies  # noqa: E402
+
+STUDY = Path(studies.STUDY)
 SPECS = STUDY / "specs"
 BLOCK = re.compile(r"(<!-- BEGIN generated: (\w+) -->\n).*?(<!-- END generated: \2 -->)", re.S)
 

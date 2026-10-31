@@ -126,7 +126,9 @@ def main() -> int:
         a.host = "http://" + a.host
 
     rows = MT.load_rows()
-    modules = a.modules or sorted(rows, key=lambda m: int(rows[m]["bottom_up_order"]))
+    # Default: every module with a task (2x2: all 34; other studies: only the NEW ones, see make_tasks.generated)
+    modules = a.modules or sorted((m for m in rows if os.path.isdir(os.path.join(STUDY, "tasks", m))),
+                                  key=lambda m: int(rows[m]["bottom_up_order"]))
     unknown = sorted(set(modules) - set(rows))
     if unknown:
         raise SystemExit(f"unknown task name(s): {' '.join(unknown)}")

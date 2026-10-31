@@ -1,0 +1,31 @@
+{
+ "toolchain": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)"
+ },
+ "rows": [
+  {
+   "task": "top_3x3_router",
+   "timing": false,
+   "ref_loop": true,
+   "ref_clean": true,
+   "ref_latch_events": 0,
+   "ref_verilator_hard": 0,
+   "ref_verilator_codes": {
+    "PINMISSING": 270,
+    "IMPLICIT": 9,
+    "WIDTHEXPAND": 9,
+    "UNUSEDSIGNAL": 161
+   },
+   "ref_signoff": true,
+   "ref_signoff_info": [
+    "INFO coverage: 9 of 9 checked outputs toggled, 240 of 288 bits"
+   ],
+   "mutant_output": "data_out_core_r1",
+   "mutant_signoff": "FAIL",
+   "mutant_first_fail": "FAIL t=14000 cycle 0: data_out_core_r1 = 60000001, expected 60000000",
+   "ok": true
+  }
+ ]
+}

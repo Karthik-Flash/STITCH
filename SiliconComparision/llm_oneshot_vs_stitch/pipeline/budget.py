@@ -10,6 +10,8 @@
   [time]    Phase 3 qwen2.5-coder:32b per-call wall time from its logs x 442 calls (34 one-shot + 68 x 6) x 1.5.
 
 Usage: python pipeline/budget.py [--tokenizer-model qwen2.5-coder:latest] [--host http://127.0.0.1:11434]
+       python pipeline/budget.py --study mesh3x3|ni --tokens-only   ([tokens] for the study's NEW modules
+       (reports/reuse.json), spec and golden from specs/ and golden/reference; whole-router bonus off)
 """
 from __future__ import annotations
 
@@ -100,9 +102,11 @@ def study_bodies(model: str = "qwen2.5-coder:32b") -> dict:
     real_prep, real_done = RA.prepare_tasks, OG.done
     RA.prepare_tasks = lambda modules, out: os.path.join(B.STUDY, "tasks")
     OG.done = lambda m: True        # run_arms needs a finished one-shot; oneshot_gen builds its client before the loop
+    tasks = os.path.join(B.STUDY, "tasks")
+    probe = "encoder" if os.path.isdir(os.path.join(tasks, "encoder")) else sorted(os.listdir(tasks))[0]  # any task
     try:
-        return {"runner via run_arms": capture(RA.main, ["r", *arms, "--modules", "encoder", "--out", tmp]),
-                "oneshot_gen": capture(OG.main, ["o", *one, "--modules", "encoder"]),
+        return {"runner via run_arms": capture(RA.main, ["r", *arms, "--modules", probe, "--out", tmp]),
+                "oneshot_gen": capture(OG.main, ["o", *one, "--modules", probe]),
                 "_argv": {"run_arms": arms, "oneshot_gen": one}}
     finally:
         RA.prepare_tasks, OG.done = real_prep, real_done
@@ -146,12 +150,12 @@ def count(host: str, model: str, system: str, user: str, num_ctx: int) -> int:
         return json.loads(r.read())["prompt_eval_count"]
 
 
-def tokens(host: str, model: str, num_ctx: int) -> tuple[list[str], list[str]]:
+def tokens(host: str, model: str, num_ctx: int, mods: list[str] | None = None) -> tuple[list[str], list[str]]:
     rows = MT.load_rows()
     system = open(OG.SYSTEM_PROMPT_FILE, encoding="utf-8").read()
     probe_ctx = 65536
     base = count(host, model, system, "", probe_ctx)
-    order = sorted(rows, key=lambda m: int(rows[m]["bottom_up_order"]))
+    order = sorted(mods or rows, key=lambda m: int(rows[m]["bottom_up_order"]))
     lines = [f"Estimate. Tokenizer: Qwen2.5 BPE (pre-tokenizer qwen2, n_vocab 152064), counted as Ollama "
              f"prompt_eval_count with local model `{model}` (same tokenizer family as qwen2.5-coder:32b); chat template "
              f"and the Phase 3 system prompt included. Generation budget: num_predict is not sent, so output shares "
@@ -161,7 +165,7 @@ def tokens(host: str, model: str, num_ctx: int) -> tuple[list[str], list[str]]:
              "| module | one-shot prompt | golden out | one-shot total | arms prompt | arms total | over num_ctx | over Phase 3 num_ctx 8192 |",
              "|---|---|---|---|---|---|---|---|"]
     over = []
-    for m in order + ["top_module_full"]:
+    for m in order + ([] if mods else ["top_module_full"]):
         if m == "top_module_full":                         # answer counted file by file (each piece fits the probe)
             p = OG.full_router_prompt(rows)
             to = sum(count(host, model, system, open(os.path.join(B.STUDY, "golden", "reference", rows[c]["file"]))
@@ -169,8 +173,12 @@ def tokens(host: str, model: str, num_ctx: int) -> tuple[list[str], list[str]]:
             arms = None
         else:
             p = OG.prompt_for(m, rows)
-            gold = open(os.path.join(B.STUDY, "tasks", m, "golden.v")).read()
-            spec = open(os.path.join(B.STUDY, "tasks", m, "spec.md"), encoding="utf-8").read()
+            if mods:     # no tasks yet: the files make_tasks.py will copy into tasks/<m>/
+                gold = open(os.path.join(B.STUDY, "golden", "reference", rows[m]["file"])).read()
+                spec = MT.spec_for_task(m)
+            else:
+                gold = open(os.path.join(B.STUDY, "tasks", m, "golden.v")).read()
+                spec = open(os.path.join(B.STUDY, "tasks", m, "spec.md"), encoding="utf-8").read()
             arms = count(host, model, system, R.user_prompt(spec, gold), probe_ctx)
             to = count(host, model, system, "```verilog\n" + gold + "```", probe_ctx) - base
         tp = count(host, model, system, p, probe_ctx)
@@ -224,7 +232,19 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--tokenizer-model", default="qwen2.5-coder:latest")
     ap.add_argument("--host", default="http://127.0.0.1:11434")
+    ap.add_argument("--tokens-only", action="store_true")
     a = ap.parse_args()
+    if a.tokens_only:
+        reuse = json.load(open(os.path.join(B.STUDY, "reports", "reuse.json")))
+        new = [m for m, r in reuse.items() if r["status"] == "NEW"]
+        tok, over = tokens(a.host, a.tokenizer_model, 32768, new)
+        out = os.path.join(B.STUDY, "reports", "PREDEPLOY_BUDGET.md")
+        open(out, "w", encoding="utf-8", newline="\n").write(
+            f"# Pre-deploy budget ({B.studies.NAME}; pipeline/budget.py --tokens-only)\n\n"
+            f"NEW modules only (reports/reuse.json); REUSED modules keep their 2x2 runs. num_ctx 32768 as in 2x2. "
+            f"Whole-router bonus off.\n\n## Prompt tokens (estimate)\n\n" + "\n".join(tok) + "\n")
+        print(f"wrote {out}")
+        return 0
     opt, same, num_ctx = options()
     print("\n".join(opt), flush=True)
     tim, _ = walltime()

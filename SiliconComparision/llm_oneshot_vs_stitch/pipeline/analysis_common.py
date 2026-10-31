@@ -11,9 +11,13 @@ import hashlib
 import json
 import os
 import re
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-STUDY = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+import studies  # noqa: E402
+
+STUDY = studies.STUDY
 MODEL_DIR = "qwen2.5-coder_32b"
 RES = os.path.join(STUDY, "runs", "arms", "results", MODEL_DIR)
 CONDITION = {"simloop": "baseline", "stitch": "sem_esc_restart_v3"}

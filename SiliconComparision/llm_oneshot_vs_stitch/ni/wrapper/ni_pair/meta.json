@@ -1,0 +1,32 @@
+{
+ "track": "N",
+ "top": "ni_pair",
+ "source": "wrapper/ni_pair.v (not golden)",
+ "children": [
+  "new1",
+  "nidepack"
+ ],
+ "descendants": [
+  "asynch_comparator",
+  "jk_ff",
+  "gray_mod6",
+  "memory",
+  "router_fifo",
+  "rp1",
+  "new1",
+  "depack",
+  "nidepack"
+ ],
+ "checked_outputs": [
+  "empty",
+  "full_int",
+  "niout",
+  "wr_o",
+  "data_out"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "data_out",
+ "phase3_task": null
+}
