@@ -1,0 +1,21 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "e122c9903164f0618e7942ff9c6828a3ba54a2ef8af49f9cf0bf467127c85455",
+ "file": "outputs/stitch/irs.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

@@ -1,0 +1,5 @@
+tb.v:88: error: Unknown module type: top_module
+2 error(s) during elaboration.
+*** These modules were missing:
+        top_module referenced 1 times.
+***

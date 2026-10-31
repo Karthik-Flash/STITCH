@@ -1,0 +1,112 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# falling_edge_pulse_generator
+
+## Behaviour
+
+Turns a falling edge of `gnt` into a pulse on `q0` that lasts until the next rising `clk` edge.
+
+- `q0` becomes 1 on each falling edge of `gnt`.
+- An internal flag F takes the value of `q0` on each rising `clk` edge. While F is 1, `q0` is held at 0.
+  So `q0` ends shortly after the first rising `clk` edge that follows its rise, and F returns to 0 at
+  the next `clk` edge.
+
+## Reset
+
+Asynchronous, active-high `reset`: `q0` and F go to 0 and stay 0 while `reset` is 1.
+
+## Ports
+
+4 ports, in this exact order:
+
+```verilog
+input reset, gnt, clk;
+output q0;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `dff_asynch_clr` x 2: (d, clr, clk, q)
+
+
+CURRENT RTL:
+```verilog
+module falling_edge_pulse_generator (
+    input reset,
+    input gnt,
+    input clk,
+    output q0
+);
+
+    wire gnt_d;
+    wire q0_int;
+    wire q0_dff;
+    wire gnt_dff;
+    wire falling_edge;
+    reg F;
+
+    // Instantiate dff_asynch_clr for gnt
+    dff_asynch_clr gnt_dff_inst (
+        .d(gnt),
+        .clr(reset),
+        .clk(clk),
+        .q(gnt_dff)
+    );
+
+    // Instantiate dff_asynch_clr for q0
+    dff_asynch_clr q0_dff_inst (
+        .d(q0_int),
+        .clr(reset),
+        .clk(clk),
+        .q(q0_dff)
+    );
+
+    // Detect falling edge of gnt
+    assign falling_edge = gnt_dff & ~gnt;
+
+    // Combinational logic to determine q0_int
+    always @(*) begin
+        if (reset) begin
+            q0_int = 1'b0;
+        end else if (falling_edge) begin
+            q0_int = 1'b1;
+        end else if (F) begin
+            q0_int = 1'b0;
+        end else begin
+            q0_int = 1'b0;
+        end
+    end
+
+    // Sequential logic to update F
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            F <= 1'b0;
+        end else begin
+            F <= q0_dff;
+        end
+    end
+
+    // Assign output q0
+    assign q0 = q0_dff;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:37: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:39: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:41: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:43: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+4 error(s) during elaboration.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

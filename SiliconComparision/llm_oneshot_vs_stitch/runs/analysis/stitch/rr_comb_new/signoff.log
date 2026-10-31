@@ -1,0 +1,18 @@
+FAIL t=59000 cycle 4: g2 = 0, expected 1
+FAIL t=59000 cycle 4: l2 = 1, expected 0
+FAIL t=59000 cycle 4: and_out2 = 0, expected 1
+FAIL t=59000 cycle 4: or_out = 0, expected 1
+FAIL t=59000 cycle 4: b0 = 0, expected 1
+FAIL t=64000 cycle 5: g2 = 0, expected 1
+FAIL t=64000 cycle 5: l2 = 1, expected 0
+FAIL t=64000 cycle 5: and_out2 = 0, expected 1
+FAIL t=64000 cycle 5: or_out = 0, expected 1
+FAIL t=64000 cycle 5: b0 = 0, expected 1
+FAIL t=69000 cycle 5: g2 = 0, expected 1
+FAIL t=69000 cycle 5: l2 = 1, expected 0
+FAIL t=69000 cycle 5: and_out2 = 0, expected 1
+FAIL t=69000 cycle 5: or_out = 0, expected 1
+FAIL t=69000 cycle 5: b0 = 0, expected 1
+INFO coverage: 19 of 19 checked outputs toggled, 19 of 19 bits
+FAIL: 46872 mismatches, 0 property errors
+tb.v:247: $finish called at 50009000 (1ps)

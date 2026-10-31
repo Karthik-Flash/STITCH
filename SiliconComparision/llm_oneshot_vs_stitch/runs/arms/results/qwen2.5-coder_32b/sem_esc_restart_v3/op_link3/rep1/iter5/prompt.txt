@@ -1,0 +1,579 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# op_link3
+
+## Behaviour
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body. Bits [28:27] carry the virtual-channel (VC) number, 00 = VC1 to 11 = VC4. In a header flit,
+bits [7:4] are the destination row and bits [3:0] the destination column. The idle word is 32'h6000_0000.
+
+Output-port controller. It allocates this port's four output VCs to input VCs and decides each cycle
+which output VC sends. The 16 candidate input VCs are four source ports times four VCs, numbered
+slot = 4 x (source position) + (VC - 1), with source positions in this order: link1, link2, link4, core.
+
+- Switch allocation: round_robin_req arbitrates among the 16 `req_<src>_vc<k>` inputs with
+  `all_vc_not_busy` = NOT (all four output VCs busy). The one-shot grant `g1` to `g16` is encoded to a
+  4-bit slot index (encoder).
+- VC allocation (allot_vc): the grant takes the lowest free output VC K, records the source slot as
+  {link_K, vc_id_K}, and marks K busy (bK). K frees one `rd_clk` edge after the tailer of that source
+  slot (`tailer_<src>_vc<k>` inputs, same slot order).
+- `ready_vcK` = output VC K busy AND the source slot's `rok` is 1 AND `full_vcK` is 0 (the downstream VC
+  K is not full). `rok` uses the same slot order as `req`.
+- rr_comb_new picks among `ready_vc1` to `ready_vc4`, giving `gnt_vc1` to `gnt_vc4` (at most one is 1).
+- `rd_en_vcK_<src>_vc<j>` = `gnt_vcK` AND (output VC K's recorded source slot is <src> VC j); each
+  `gnt_vcK` is demultiplexed onto 16 read enables.
+- `ip_link_vc` = the recorded source slot of the currently granted output VC, or 0000 when no `gnt_vcK`
+  is 1.
+
+## Reset
+
+Active-high `reset`, passed to round_robin_req, allot_vc and rr_comb_new (see their specs). After
+reset all output VCs are free and no grant is active.
+
+## Ports
+
+123 ports, in this exact order:
+
+```verilog
+input rd_clk, reset, req_link1_vc1, req_link1_vc2, req_link1_vc3, req_link1_vc4, req_link2_vc1, req_link2_vc2,
+      req_link2_vc3, req_link2_vc4, req_link4_vc1, req_link4_vc2, req_link4_vc3, req_link4_vc4, req_core_vc1,
+      req_core_vc2, req_core_vc3, req_core_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+      rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3,
+      rok_link4_vc4, rok_core_vc1, rok_core_vc2, rok_core_vc3, rok_core_vc4, tailer_link1_vc1,
+      tailer_link1_vc2, tailer_link1_vc3, tailer_link1_vc4, tailer_link2_vc1, tailer_link2_vc2,
+      tailer_link2_vc3, tailer_link2_vc4, tailer_link4_vc1, tailer_link4_vc2, tailer_link4_vc3,
+      tailer_link4_vc4, tailer_core_vc1, tailer_core_vc2, tailer_core_vc3, tailer_core_vc4, full_vc1,
+      full_vc2, full_vc3, full_vc4;
+output rd_en_vc1_link1_vc1, rd_en_vc1_link1_vc2, rd_en_vc1_link1_vc3, rd_en_vc1_link1_vc4,
+       rd_en_vc1_link2_vc1, rd_en_vc1_link2_vc2, rd_en_vc1_link2_vc3, rd_en_vc1_link2_vc4,
+       rd_en_vc1_link4_vc1, rd_en_vc1_link4_vc2, rd_en_vc1_link4_vc3, rd_en_vc1_link4_vc4, rd_en_vc1_core_vc1,
+       rd_en_vc1_core_vc2, rd_en_vc1_core_vc3, rd_en_vc1_core_vc4, rd_en_vc2_link1_vc1, rd_en_vc2_link1_vc2,
+       rd_en_vc2_link1_vc3, rd_en_vc2_link1_vc4, rd_en_vc2_link2_vc1, rd_en_vc2_link2_vc2,
+       rd_en_vc2_link2_vc3, rd_en_vc2_link2_vc4, rd_en_vc2_link4_vc1, rd_en_vc2_link4_vc2,
+       rd_en_vc2_link4_vc3, rd_en_vc2_link4_vc4, rd_en_vc2_core_vc1, rd_en_vc2_core_vc2, rd_en_vc2_core_vc3,
+       rd_en_vc2_core_vc4, rd_en_vc3_link1_vc1, rd_en_vc3_link1_vc2, rd_en_vc3_link1_vc3, rd_en_vc3_link1_vc4,
+       rd_en_vc3_link2_vc1, rd_en_vc3_link2_vc2, rd_en_vc3_link2_vc3, rd_en_vc3_link2_vc4,
+       rd_en_vc3_link4_vc1, rd_en_vc3_link4_vc2, rd_en_vc3_link4_vc3, rd_en_vc3_link4_vc4, rd_en_vc3_core_vc1,
+       rd_en_vc3_core_vc2, rd_en_vc3_core_vc3, rd_en_vc3_core_vc4, rd_en_vc4_link1_vc1, rd_en_vc4_link1_vc2,
+       rd_en_vc4_link1_vc3, rd_en_vc4_link1_vc4, rd_en_vc4_link2_vc1, rd_en_vc4_link2_vc2,
+       rd_en_vc4_link2_vc3, rd_en_vc4_link2_vc4, rd_en_vc4_link4_vc1, rd_en_vc4_link4_vc2,
+       rd_en_vc4_link4_vc3, rd_en_vc4_link4_vc4, rd_en_vc4_core_vc1, rd_en_vc4_core_vc2, rd_en_vc4_core_vc3,
+       rd_en_vc4_core_vc4, gnt_vc1, gnt_vc2, gnt_vc3, gnt_vc4;
+output [3:0] ip_link_vc;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `allot_vc` x 1: (reset, rd_clk, encoded_addr, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, link_1, vc_id_1, link_2, vc_id_2, link_3, vc_id_3, link_4, vc_id_4, b1, b2, b3, b4, tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16, gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4)
+- `demux_16` x 4: (ip, sel, op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16)
+- `encoder` x 1: (g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, encoded_addr)
+- `round_robin_req` x 1: (reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10, req_11, req_12, req_13, req_14, req_15, req_16, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16, g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16, g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched, g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int, t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16)
+- `rr_comb_new` x 1: (reset, clk, r1, r2, r3, r4, g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1, b0, b1_logic, b0_logic)
+
+
+CURRENT RTL:
+```verilog
+module op_link3 (
+    input rd_clk, reset, req_link1_vc1, req_link1_vc2, req_link1_vc3, req_link1_vc4, req_link2_vc1, req_link2_vc2,
+          req_link2_vc3, req_link2_vc4, req_link4_vc1, req_link4_vc2, req_link4_vc3, req_link4_vc4, req_core_vc1,
+          req_core_vc2, req_core_vc3, req_core_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+          rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3,
+          rok_link4_vc4, rok_core_vc1, rok_core_vc2, rok_core_vc3, rok_core_vc4, tailer_link1_vc1,
+          tailer_link1_vc2, tailer_link1_vc3, tailer_link1_vc4, tailer_link2_vc1, tailer_link2_vc2,
+          tailer_link2_vc3, tailer_link2_vc4, tailer_link4_vc1, tailer_link4_vc2, tailer_link4_vc3,
+          tailer_link4_vc4, tailer_core_vc1, tailer_core_vc2, tailer_core_vc3, tailer_core_vc4, full_vc1,
+          full_vc2, full_vc3, full_vc4,
+    output rd_en_vc1_link1_vc1, rd_en_vc1_link1_vc2, rd_en_vc1_link1_vc3, rd_en_vc1_link1_vc4,
+           rd_en_vc1_link2_vc1, rd_en_vc1_link2_vc2, rd_en_vc1_link2_vc3, rd_en_vc1_link2_vc4,
+           rd_en_vc1_link4_vc1, rd_en_vc1_link4_vc2, rd_en_vc1_link4_vc3, rd_en_vc1_link4_vc4, rd_en_vc1_core_vc1,
+           rd_en_vc1_core_vc2, rd_en_vc1_core_vc3, rd_en_vc1_core_vc4, rd_en_vc2_link1_vc1, rd_en_vc2_link1_vc2,
+           rd_en_vc2_link1_vc3, rd_en_vc2_link1_vc4, rd_en_vc2_link2_vc1, rd_en_vc2_link2_vc2,
+           rd_en_vc2_link2_vc3, rd_en_vc2_link2_vc4, rd_en_vc2_link4_vc1, rd_en_vc2_link4_vc2,
+           rd_en_vc2_link4_vc3, rd_en_vc2_link4_vc4, rd_en_vc2_core_vc1, rd_en_vc2_core_vc2, rd_en_vc2_core_vc3,
+           rd_en_vc2_core_vc4, rd_en_vc3_link1_vc1, rd_en_vc3_link1_vc2, rd_en_vc3_link1_vc3, rd_en_vc3_link1_vc4,
+           rd_en_vc3_link2_vc1, rd_en_vc3_link2_vc2, rd_en_vc3_link2_vc3, rd_en_vc3_link2_vc4,
+           rd_en_vc3_link4_vc1, rd_en_vc3_link4_vc2, rd_en_vc3_link4_vc3, rd_en_vc3_link4_vc4, rd_en_vc3_core_vc1,
+           rd_en_vc3_core_vc2, rd_en_vc3_core_vc3, rd_en_vc3_core_vc4, rd_en_vc4_link1_vc1, rd_en_vc4_link1_vc2,
+           rd_en_vc4_link1_vc3, rd_en_vc4_link1_vc4, rd_en_vc4_link2_vc1, rd_en_vc4_link2_vc2,
+           rd_en_vc4_link2_vc3, rd_en_vc4_link2_vc4, rd_en_vc4_link4_vc1, rd_en_vc4_link4_vc2,
+           rd_en_vc4_link4_vc3, rd_en_vc4_link4_vc4, rd_en_vc4_core_vc1, rd_en_vc4_core_vc2, rd_en_vc4_core_vc3,
+           rd_en_vc4_core_vc4, gnt_vc1, gnt_vc2, gnt_vc3, gnt_vc4,
+    output [3:0] ip_link_vc
+);
+
+    wire [3:0] encoded_addr;
+    wire g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+    wire [1:0] link_1, vc_id_1, link_2, vc_id_2, link_3, vc_id_3, link_4, vc_id_4;
+    wire b1, b2, b3, b4;
+    wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+    wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+    wire [3:0] ip_link_vc_int;
+    wire ready_vc1, ready_vc2, ready_vc3, ready_vc4;
+    wire gnt_vc1_int, gnt_vc2_int, gnt_vc3_int, gnt_vc4_int;
+    wire all_vc_not_busy;
+    wire and_out1, and_out2, and_out3, and_out4, b0, b0_logic;
+
+    // Instantiate round_robin_req
+    round_robin_req u_round_robin_req (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .all_vc_not_busy(all_vc_not_busy),
+        .req_1(req_link1_vc1),
+        .req_2(req_link1_vc2),
+        .req_3(req_link1_vc3),
+        .req_4(req_link1_vc4),
+        .req_5(req_link2_vc1),
+        .req_6(req_link2_vc2),
+        .req_7(req_link2_vc3),
+        .req_8(req_link2_vc4),
+        .req_9(req_link4_vc1),
+        .req_10(req_link4_vc2),
+        .req_11(req_link4_vc3),
+        .req_12(req_link4_vc4),
+        .req_13(req_core_vc1),
+        .req_14(req_core_vc2),
+        .req_15(req_core_vc3),
+        .req_16(req_core_vc4),
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .tailer1(tailer_link1_vc1),
+        .tailer2(tailer_link1_vc2),
+        .tailer3(tailer_link1_vc3),
+        .tailer4(tailer_link1_vc4),
+        .tailer5(tailer_link2_vc1),
+        .tailer6(tailer_link2_vc2),
+        .tailer7(tailer_link2_vc3),
+        .tailer8(tailer_link2_vc4),
+        .tailer9(tailer_link4_vc1),
+        .tailer10(tailer_link4_vc2),
+        .tailer11(tailer_link4_vc3),
+        .tailer12(tailer_link4_vc4),
+        .tailer13(tailer_core_vc1),
+        .tailer14(tailer_core_vc2),
+        .tailer15(tailer_core_vc3),
+        .tailer16(tailer_core_vc4),
+        .g_b1(),
+        .g_b2(),
+        .g_b3(),
+        .g_b4(),
+        .gnt1(),
+        .gnt2(),
+        .gnt3(),
+        .gnt4(),
+        .gnt5(),
+        .gnt6(),
+        .gnt7(),
+        .gnt8(),
+        .gnt9(),
+        .gnt10(),
+        .gnt11(),
+        .gnt12(),
+        .gnt13(),
+        .gnt14(),
+        .gnt15(),
+        .gnt16(),
+        .req1(),
+        .req2(),
+        .req3(),
+        .req4(),
+        .req5(),
+        .req6(),
+        .req7(),
+        .req8(),
+        .req9(),
+        .req10(),
+        .req11(),
+        .req12(),
+        .req13(),
+        .req14(),
+        .req15(),
+        .req16(),
+        .g1_latched(),
+        .g2_latched(),
+        .g3_latched(),
+        .g4_latched(),
+        .g1_int(),
+        .g2_int(),
+        .g3_int(),
+        .g4_int(),
+        .t1(),
+        .t2(),
+        .t3(),
+        .t4(),
+        .req_b1(),
+        .req_b2(),
+        .req_b3(),
+        .req_b4(),
+        .nreq_1(),
+        .nreq_2(),
+        .nreq_3(),
+        .nreq_4(),
+        .nreq_5(),
+        .nreq_6(),
+        .nreq_7(),
+        .nreq_8(),
+        .nreq_9(),
+        .nreq_10(),
+        .nreq_11(),
+        .nreq_12(),
+        .nreq_13(),
+        .nreq_14(),
+        .nreq_15(),
+        .nreq_16()
+    );
+
+    // Instantiate encoder
+    encoder u_encoder (
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .encoded_addr(encoded_addr)
+    );
+
+    // Instantiate allot_vc
+    allot_vc u_allot_vc (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .encoded_addr(encoded_addr),
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .link_1(link_1),
+        .vc_id_1(vc_id_1),
+        .link_2(link_2),
+        .vc_id_2(vc_id_2),
+        .link_3(link_3),
+        .vc_id_3(vc_id_3),
+        .link_4(link_4),
+        .vc_id_4(vc_id_4),
+        .b1(b1),
+        .b2(b2),
+        .b3(b3),
+        .b4(b4),
+        .tailer1(tailer_link1_vc1),
+        .tailer2(tailer_link1_vc2),
+        .tailer3(tailer_link1_vc3),
+        .tailer4(tailer_link1_vc4),
+        .tailer5(tailer_link2_vc1),
+        .tailer6(tailer_link2_vc2),
+        .tailer7(tailer_link2_vc3),
+        .tailer8(tailer_link2_vc4),
+        .tailer9(tailer_link4_vc1),
+        .tailer10(tailer_link4_vc2),
+        .tailer11(tailer_link4_vc3),
+        .tailer12(tailer_link4_vc4),
+        .tailer13(tailer_core_vc1),
+        .tailer14(tailer_core_vc2),
+        .tailer15(tailer_core_vc3),
+        .tailer16(tailer_core_vc4),
+        .gnt_or(gnt_or),
+        .ce_b1(ce_b1),
+        .ce_b2(ce_b2),
+        .ce_b3(ce_b3),
+        .ce_b4(ce_b4),
+        .clr_b1(clr_b1),
+        .clr_b2(clr_b2),
+        .clr_b3(clr_b3),
+        .clr_b4(clr_b4),
+        .e1({3'b000, e1}),
+        .e2({3'b000, e2}),
+        .e3({3'b000, e3}),
+        .e4({3'b000, e4})
+    );
+
+    // Instantiate rr_comb_new
+    rr_comb_new u_rr_comb_new (
+        .reset(reset),
+        .clk(rd_clk),
+        .r1(ready_vc1),
+        .r2(ready_vc2),
+        .r3(ready_vc3),
+        .r4(ready_vc4),
+        .g1(gnt_or),
+        .g2(1'b0),
+        .g3(1'b0),
+        .g4(1'b0),
+        .l1(1'b0),
+        .l2(1'b0),
+        .l3(1'b0),
+        .l4(1'b0),
+        .mux_out1(),
+        .mux_out2(),
+        .mux_out3(),
+        .mux_out4(),
+        .and_out1(and_out1),
+        .and_out2(and_out2),
+        .and_out3(and_out3),
+        .and_out4(and_out4),
+        .or_out(),
+        .b1(),
+        .b0(b0),
+        .b1_logic(),
+        .b0_logic(b0_logic),
+        .g1(gnt_vc1_int),
+        .g2(gnt_vc2_int),
+        .g3(gnt_vc3_int),
+        .g4(gnt_vc4_int)
+    );
+
+    // Combinational block to determine ready_vc1 to ready_vc4
+    always @(*) begin
+        ready_vc1 = b1 & rok_link1_vc1 & ~full_vc1;
+        ready_vc2 = b2 & rok_link2_vc1 & ~full_vc2;
+        ready_vc3 = b3 & rok_link4_vc1 & ~full_vc3;
+        ready_vc4 = b4 & rok_core_vc1 & ~full_vc4;
+    end
+
+    // Combinational block to determine ip_link_vc
+    always @(*) begin
+        case ({gnt_vc1_int, gnt_vc2_int, gnt_vc3_int, gnt_vc4_int})
+            4'b0001: ip_link_vc_int = {link_1, vc_id_1};
+            4'b0010: ip_link_vc_int = {link_2, vc_id_2};
+            4'b0100: ip_link_vc_int = {link_3, vc_id_3};
+            4'b1000: ip_link_vc_int = {link_4, vc_id_4};
+            default: ip_link_vc_int = 4'b0000;
+        endcase
+    end
+
+    // Combinational block to determine all_vc_not_busy
+    always @(*) begin
+        all_vc_not_busy = ~b1 & ~b2 & ~b3 & ~b4;
+    end
+
+    // Instantiate demux_16 for rd_en_vc1
+    demux_16 u_demux_16_vc1 (
+        .ip(gnt_vc1_int),
+        .sel(encoded_addr),
+        .op1(rd_en_vc1_link1_vc1),
+        .op2(rd_en_vc1_link1_vc2),
+        .op3(rd_en_vc1_link1_vc3),
+        .op4(rd_en_vc1_link1_vc4),
+        .op5(rd_en_vc1_link2_vc1),
+        .op6(rd_en_vc1_link2_vc2),
+        .op7(rd_en_vc1_link2_vc3),
+        .op8(rd_en_vc1_link2_vc4),
+        .op9(rd_en_vc1_link4_vc1),
+        .op10(rd_en_vc1_link4_vc2),
+        .op11(rd_en_vc1_link4_vc3),
+        .op12(rd_en_vc1_link4_vc4),
+        .op13(rd_en_vc1_core_vc1),
+        .op14(rd_en_vc1_core_vc2),
+        .op15(rd_en_vc1_core_vc3),
+        .op16(rd_en_vc1_core_vc4)
+    );
+
+    // Instantiate demux_16 for rd_en_vc2
+    demux_16 u_demux_16_vc2 (
+        .ip(gnt_vc2_int),
+        .sel(encoded_addr),
+        .op1(rd_en_vc2_link1_vc1),
+        .op2(rd_en_vc2_link1_vc2),
+        .op3(rd_en_vc2_link1_vc3),
+        .op4(rd_en_vc2_link1_vc4),
+        .op5(rd_en_vc2_link2_vc1),
+        .op6(rd_en_vc2_link2_vc2),
+        .op7(rd_en_vc2_link2_vc3),
+        .op8(rd_en_vc2_link2_vc4),
+        .op9(rd_en_vc2_link4_vc1),
+        .op10(rd_en_vc2_link4_vc2),
+        .op11(rd_en_vc2_link4_vc3),
+        .op12(rd_en_vc2_link4_vc4),
+        .op13(rd_en_vc2_core_vc1),
+        .op14(rd_en_vc2_core_vc2),
+        .op15(rd_en_vc2_core_vc3),
+        .op16(rd_en_vc2_core_vc4)
+    );
+
+    // Instantiate demux_16 for rd_en_vc3
+    demux_16 u_demux_16_vc3 (
+        .ip(gnt_vc3_int),
+        .sel(encoded_addr),
+        .op1(rd_en_vc3_link1_vc1),
+        .op2(rd_en_vc3_link1_vc2),
+        .op3(rd_en_vc3_link1_vc3),
+        .op4(rd_en_vc3_link1_vc4),
+        .op5(rd_en_vc3_link2_vc1),
+        .op6(rd_en_vc3_link2_vc2),
+        .op7(rd_en_vc3_link2_vc3),
+        .op8(rd_en_vc3_link2_vc4),
+        .op9(rd_en_vc3_link4_vc1),
+        .op10(rd_en_vc3_link4_vc2),
+        .op11(rd_en_vc3_link4_vc3),
+        .op12(rd_en_vc3_link4_vc4),
+        .op13(rd_en_vc3_core_vc1),
+        .op14(rd_en_vc3_core_vc2),
+        .op15(rd_en_vc3_core_vc3),
+        .op16(rd_en_vc3_core_vc4)
+    );
+
+    // Instantiate demux_16 for rd_en_vc4
+    demux_16 u_demux_16_vc4 (
+        .ip(gnt_vc4_int),
+        .sel(encoded_addr),
+        .op1(rd_en_vc4_link1_vc1),
+        .op2(rd_en_vc4_link1_vc2),
+        .op3(rd_en_vc4_link1_vc3),
+        .op4(rd_en_vc4_link1_vc4),
+        .op5(rd_en_vc4_link2_vc1),
+        .op6(rd_en_vc4_link2_vc2),
+        .op7(rd_en_vc4_link2_vc3),
+        .op8(rd_en_vc4_link2_vc4),
+        .op9(rd_en_vc4_link4_vc1),
+        .op10(rd_en_vc4_link4_vc2),
+        .op11(rd_en_vc4_link4_vc3),
+        .op12(rd_en_vc4_link4_vc4),
+        .op13(rd_en_vc4_core_vc1),
+        .op14(rd_en_vc4_core_vc2),
+        .op15(rd_en_vc4_core_vc3),
+        .op16(rd_en_vc4_core_vc4)
+    );
+
+    // Register outputs
+    reg [3:0] ip_link_vc_reg;
+    reg gnt_vc1_reg, gnt_vc2_reg, gnt_vc3_reg, gnt_vc4_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            ip_link_vc_reg <= 4'b0000;
+            gnt_vc1_reg <= 1'b0;
+            gnt_vc2_reg <= 1'b0;
+            gnt_vc3_reg <= 1'b0;
+            gnt_vc4_reg <= 1'b0;
+        end else begin
+            ip_link_vc_reg <= ip_link_vc_int;
+            gnt_vc1_reg <= gnt_vc1_int;
+            gnt_vc2_reg <= gnt_vc2_int;
+            gnt_vc3_reg <= gnt_vc3_int;
+            gnt_vc4_reg <= gnt_vc4_int;
+        end
+    end
+
+    assign ip_link_vc = ip_link_vc_reg;
+    assign gnt_vc1 = gnt_vc1_reg;
+    assign gnt_vc2 = gnt_vc2_reg;
+    assign gnt_vc3 = gnt_vc3_reg;
+    assign gnt_vc4 = gnt_vc4_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:250: error: port ``g1'' already bound.
+dut.v:250: error: port ``g2'' already bound.
+dut.v:250: error: port ``g3'' already bound.
+dut.v:250: error: port ``g4'' already bound.
+dut.v:243: error: expression not valid in assign l-value: 3'd0
+dut.v:243: error: Output port expression must support a continuous assignment.
+dut.v:243:      : Port 57 (e1) of allot_vc is connected to tb.dut.{3'd0, e1}
+dut.v:244: error: expression not valid in assign l-value: 3'd0
+dut.v:244: error: Output port expression must support a continuous assignment.
+dut.v:244:      : Port 58 (e2) of allot_vc is connected to tb.dut.{3'd0, e2}
+dut.v:245: error: expression not valid in assign l-value: 3'd0
+dut.v:245: error: Output port expression must support a continuous assignment.
+dut.v:245:      : Port 59 (e3) of allot_vc is connected to tb.dut.{3'd0, e3}
+dut.v:246: error: expression not valid in assign l-value: 3'd0
+dut.v:246: error: Output port expression must support a continuous assignment.
+dut.v:246:      : Port 60 (e4) of allot_vc is connected to tb.dut.{3'd0, e4}
+dut.v:250: error: port ``g1'' already bound.
+dut.v:250: error: port ``g2'' already bound.
+dut.v:250: error: port ``g3'' already bound.
+dut.v:250: error: port ``g4'' already bound.
+dut.v:258: error: expression not valid in assign l-value: 1'd0
+dut.v:258: error: Output port expression must support a continuous assignment.
+dut.v:258:      : Port 8 (g2) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:259: error: expression not valid in assign l-value: 1'd0
+dut.v:259: error: Output port expression must support a continuous assignment.
+
+SEMANTIC ANALYSIS (fix these):
+*** Instance port(s) left unconnected: b1, b1_logic, g10_int, g10_latched, g11_int, g11_latched. Connect every port BY NAME (.port(net)); positional connections silently shift when a port is missing. ***
+
+VERILATOR LINT OUTPUT:
+%Warning-PINCONNECTEMPTY: dut.v:94:10: Instance pin connected by name with empty reference: 'g_b1'
+%Warning-PINCONNECTEMPTY: dut.v:95:10: Instance pin connected by name with empty reference: 'g_b2'
+%Warning-PINCONNECTEMPTY: dut.v:96:10: Instance pin connected by name with empty reference: 'g_b3'
+%Warning-PINCONNECTEMPTY: dut.v:97:10: Instance pin connected by name with empty reference: 'g_b4'
+%Warning-PINCONNECTEMPTY: dut.v:98:10: Instance pin connected by name with empty reference: 'gnt1'
+%Warning-PINCONNECTEMPTY: dut.v:99:10: Instance pin connected by name with empty reference: 'gnt2'
+%Warning-PINCONNECTEMPTY: dut.v:100:10: Instance pin connected by name with empty reference: 'gnt3'
+%Warning-PINCONNECTEMPTY: dut.v:101:10: Instance pin connected by name with empty reference: 'gnt4'
+%Warning-PINCONNECTEMPTY: dut.v:102:10: Instance pin connected by name with empty reference: 'gnt5'
+%Warning-PINCONNECTEMPTY: dut.v:103:10: Instance pin connected by name with empty reference: 'gnt6'
+%Warning-PINCONNECTEMPTY: dut.v:104:10: Instance pin connected by name with empty reference: 'gnt7'
+%Warning-PINCONNECTEMPTY: dut.v:105:10: Instance pin connected by name with empty reference: 'gnt8'
+%Warning-PINCONNECTEMPTY: dut.v:106:10: Instance pin connected by name with empty reference: 'gnt9'
+%Warning-PINCONNECTEMPTY: dut.v:107:10: Instance pin connected by name with empty reference: 'gnt10'
+%Warning-PINCONNECTEMPTY: dut.v:108:10: Instance pin connected by name with empty reference: 'gnt11'
+%Warning-PINCONNECTEMPTY: dut.v:109:10: Instance pin connected by name with empty reference: 'gnt12'
+%Warning-PINCONNECTEMPTY: dut.v:110:10: Instance pin connected by name with empty reference: 'gnt13'
+%Warning-PINCONNECTEMPTY: dut.v:111:10: Instance pin connected by name with empty reference: 'gnt14'
+%Warning-PINCONNECTEMPTY: dut.v:112:10: Instance pin connected by name with empty reference: 'gnt15'
+%Warning-PINCONNECTEMPTY: dut.v:113:10: Instance pin connected by name with empty reference: 'gnt16'
+%Warning-PINCONNECTEMPTY: dut.v:114:10: Instance pin connected by name with empty reference: 'req1'
+%Warning-PINCONNECTEMPTY: dut.v:115:10: Instance pin connected by name with empty reference: 'req2'
+%Warning-PINCONNECTEMPTY: dut.v:116:10: Instance pin connected by name with empty reference: 'req3'
+%Warning-PINCONNECTEMPTY: dut.v:117:10: Instance pin connected by name with empty reference: 'req4'
+%Warning-PINCONNECTEMPTY: dut.v:118:10: Instance pin connected by name with empty reference: 'req5'
+%Warning-PINCONNECTEMPTY: dut.v:119:10: Instance pin connected by name with empty reference: 'req6'
+%Warning-PINCONNECTEMPTY: dut.v:120:10: Instance pin connected by name with empty reference: 'req7'
+%Warning-PINCONNECTEMPTY: dut.v:121:10: Instance pin connected by name with empty reference: 'req8'
+%Warning-PINCONNECTEMPTY: dut.v:122:10: Instance pin connected by name with empty reference: 'req9'
+%Warning-PINCONNECTEMPTY: dut.v:123:10: Instance pin connected by name with empty reference: 'req10'
+%Warning-PINCONNECTEMPTY: dut.v:124:10: Instance pin connected by name with empty reference: 'req11'
+%Warning-PINCONNECTEMPTY: dut.v:125:10: Instance pin connected by name with empty reference: 'req12'
+%Warning-PINCONNECTEMPTY: dut.v:126:10: Instance pin connected by name with empty reference: 'req13'
+%Warning-PINCONNECTEMPTY: dut.v:127:10: Instance pin connected by name with empty reference: 'req14'
+%Warning-PINCONNECTEMPTY: dut.v:128:10: Instance pin connected by name with empty reference: 'req15'
+%Warning-PINCONNECTEMPTY: dut.v:129:10: Instance pin connected by name with empty reference: 'req16'
+%Warning-PINCONNECTEMPTY: dut.v:130:10: Instance pin connected by name with empty reference: 'g1_latched'
+%Warning-PINCONNECTEMPTY: dut.v:131:10: Instance pin connected by name with empty reference: 'g2_latched'
+%Warning-PINCONNECTEMPTY: dut.v:132:10: Instance pin connected by name with empty reference: 'g3_latched'
+%Warning-PINCONNECTEMPTY: dut.v:133:10: Instance pin connected by name with empty reference: 'g4_latched'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

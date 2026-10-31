@@ -1,0 +1,108 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# demux_16
+
+## Behaviour
+
+Combinational 1-to-16 demultiplexer. Output op(`sel`+1) equals `ip`: `sel` = 0 drives `op1`, up to
+`sel` = 15 for `op16`. All other outputs are 0.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+18 ports, in this exact order:
+
+```verilog
+input ip;
+input [3:0] sel;
+output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module demux_16 (
+    input ip,
+    input [3:0] sel,
+    output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+);
+
+    wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+
+    assign op1 = (sel == 4'b0000) ? ip : 1'b0;
+    assign op2 = (sel == 4'b0001) ? ip : 1'b0;
+    assign op3 = (sel == 4'b0010) ? ip : 1'b0;
+    assign op4 = (sel == 4'b0011) ? ip : 1'b0;
+    assign op5 = (sel == 4'b0100) ? ip : 1'b0;
+    assign op6 = (sel == 4'b0101) ? ip : 1'b0;
+    assign op7 = (sel == 4'b0110) ? ip : 1'b0;
+    assign op8 = (sel == 4'b0111) ? ip : 1'b0;
+    assign op9 = (sel == 4'b1000) ? ip : 1'b0;
+    assign op10 = (sel == 4'b1001) ? ip : 1'b0;
+    assign op11 = (sel == 4'b1010) ? ip : 1'b0;
+    assign op12 = (sel == 4'b1011) ? ip : 1'b0;
+    assign op13 = (sel == 4'b1100) ? ip : 1'b0;
+    assign op14 = (sel == 4'b1101) ? ip : 1'b0;
+    assign op15 = (sel == 4'b1110) ? ip : 1'b0;
+    assign op16 = (sel == 4'b1111) ? ip : 1'b0;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:7: error: 'op1' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op2' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op3' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op4' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op5' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op6' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op7' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op8' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op9' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op10' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op11' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op12' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op13' has already been declared in this scope.
+
+VERILATOR LINT OUTPUT:
+%Error: dut.v:7:10: Duplicate declaration of signal: 'op1'
+%Error: dut.v:7:15: Duplicate declaration of signal: 'op2'
+%Error: dut.v:7:20: Duplicate declaration of signal: 'op3'
+%Error: dut.v:7:25: Duplicate declaration of signal: 'op4'
+%Error: dut.v:7:30: Duplicate declaration of signal: 'op5'
+%Error: dut.v:7:35: Duplicate declaration of signal: 'op6'
+%Error: dut.v:7:40: Duplicate declaration of signal: 'op7'
+%Error: dut.v:7:45: Duplicate declaration of signal: 'op8'
+%Error: dut.v:7:50: Duplicate declaration of signal: 'op9'
+%Error: dut.v:7:55: Duplicate declaration of signal: 'op10'
+%Error: dut.v:7:61: Duplicate declaration of signal: 'op11'
+%Error: dut.v:7:67: Duplicate declaration of signal: 'op12'
+%Error: dut.v:7:73: Duplicate declaration of signal: 'op13'
+%Error: dut.v:7:79: Duplicate declaration of signal: 'op14'
+%Error: dut.v:7:85: Duplicate declaration of signal: 'op15'
+%Error: dut.v:7:91: Duplicate declaration of signal: 'op16'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

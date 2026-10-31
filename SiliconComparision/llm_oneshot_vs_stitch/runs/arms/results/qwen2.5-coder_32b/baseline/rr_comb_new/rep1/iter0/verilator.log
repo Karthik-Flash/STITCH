@@ -1,0 +1,18 @@
+%Error: dut.v:36:80: Can't find definition of variable: 'r2_w'
+                   : ... Suggested alternative: 'g2_w'
+   36 |     assign l1_w = r1 & ~g2_w & ~g3_w & ~g4_w & ((~r3 & ~r4 & (b0_w | (~b1_w & ~r2_w))) | (b1_w & (b0_w | ~r4_w)));
+      |                                                                                ^~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:36:107: Can't find definition of variable: 'r4_w'
+                    : ... Suggested alternative: 'g4_w'
+   36 |     assign l1_w = r1 & ~g2_w & ~g3_w & ~g4_w & ((~r3 & ~r4 & (b0_w | (~b1_w & ~r2_w))) | (b1_w & (b0_w | ~r4_w)));
+      |                                                                                                           ^~~~
+%Error: dut.v:37:59: Can't find definition of variable: 'r1_w'
+                   : ... Suggested alternative: 'b1_w'
+   37 |     assign l2_w = r2 & ~g1_w & ~g3_w & ~g4_w & ((~b0_w & ~r1_w & ~r4_w) | (~r1_w & ~r3_w & ~r4_w) | (b1_w & b0_w & ~r1_w) | (~b1_w & ~b0_w));
+      |                                                           ^~~~
+%Error: dut.v:37:85: Can't find definition of variable: 'r3_w'
+                   : ... Suggested alternative: 'g3_w'
+   37 |     assign l2_w = r2 & ~g1_w & ~g3_w & ~g4_w & ((~b0_w & ~r1_w & ~r4_w) | (~r1_w & ~r3_w & ~r4_w) | (b1_w & b0_w & ~r1_w) | (~b1_w & ~b0_w));
+      |                                                                                     ^~~~
+%Error: Exiting due to 4 error(s)

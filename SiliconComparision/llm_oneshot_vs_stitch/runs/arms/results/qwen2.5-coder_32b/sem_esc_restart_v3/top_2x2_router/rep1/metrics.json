@@ -1,0 +1,258 @@
+{
+ "model": "qwen2.5-coder:32b",
+ "condition": "sem_esc_restart_v3",
+ "task": "top_2x2_router",
+ "track": "N",
+ "rep": 1,
+ "timestamp": "2026-10-30T12:26:37",
+ "protocol": "feedback_first_v2",
+ "interp_v3_version": "3.0.1",
+ "base_interp_sha256_lf": "42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff",
+ "temperature": 0.1,
+ "max_iters": 6,
+ "sem_include_raw": 1,
+ "iterations": 6,
+ "llm_calls": 6,
+ "stop_reason": "budget",
+ "latch_count_before": 0,
+ "latch_cells_before": 0,
+ "input_func_pass": false,
+ "input_yosys_ok": true,
+ "latch_count_after": 0,
+ "latch_cells_after": 0,
+ "semantic_fired": true,
+ "semantic_fired_iters": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "classes_fired": [
+  "PINMISSING",
+  "UNUSEDSIGNAL",
+  "WIDTHEXPAND",
+  "WIDTHTRUNC"
+ ],
+ "verilator_warnings_count": 176,
+ "verilator_codes_final": {
+  "PINCONNECTEMPTY": 80,
+  "UNUSEDSIGNAL": 96
+ },
+ "func_pass": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "final_yosys_ok": true,
+ "final_compile_ok": true,
+ "final_candidate": "/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/results/qwen2.5-coder_32b/sem_esc_restart_v3/top_2x2_router/rep1/iter6/dut.v",
+ "tokens_in": 69339,
+ "tokens_out": 48253,
+ "wall_s": 790.3,
+ "tool_feedback_iters": 5,
+ "escalated_at": 1,
+ "restarted": true,
+ "top_level_synthesis_pass": null,
+ "per_iter": [
+  {
+   "iter": 0,
+   "input": true,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINMISSING": 80,
+    "WIDTHTRUNC": 160,
+    "WIDTHEXPAND": 20,
+    "UNUSEDSIGNAL": 176
+   },
+   "verilator_warnings_count": 436,
+   "verilator_hard": 160,
+   "struct_clean": false,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_in_core_vc1_r1|UNUSEDSIGNAL:full_in_core_vc1_r2|UNUSEDSIGNAL:full_in_core_vc1_r3|UNUSEDSIGNAL:full_in_core_vc1_r4|UNUSEDSIGNAL:full_in_core_vc2_r1|UNUSEDSIGNAL:full_in_core_vc2_r2|UNUSEDSIGNAL:full_in_core_vc2_r3|UNUSEDSIGNAL:full_in_core_vc2_r4|UNUSEDSIGNAL:full_in_core_vc3_r1|UNUSEDSIGNAL:full_in_core_vc3_r2|UNUSEDSIGNAL:full_in_core_vc3_r3|UNUSEDSIGNAL:full_in_core_vc3_r4|UNUSEDSIGNAL:full_in_core_vc4_r1|UNUSEDSIGNAL:full_in_core_vc4_r2|UNUSEDSIGNAL:full_in_core_vc4_r3|UNUSEDSIGNAL:full_in_core_vc4_r4|UNUSEDSIGNAL:full_in_link1_vc1_r1|UNUSEDSIGNAL:full_in_link1_vc1_r2|UNUSEDSIGNAL:full_in_link1_vc1_r3|UNUSEDSIGNAL:full_in_link1_vc1_r4|UNUSEDSIGNAL:full_in_link1_vc2_r1|UNUSEDSIGNAL:full_in_link1_vc2_r2|UNUSEDSIGNAL:full_in_link1_vc2_r3|UNUSEDSIGNAL:full_in_link1_vc2_r4|UNUSEDSIGNAL:full_in_link1_vc3_r1|UNUSEDSIGNAL:full_in_link1_vc3_r2|UNUSEDSIGNAL:full_in_link1_vc3_r3|UNUSEDSIGNAL:full_in_link1_vc3_r4|UNUSEDSIGNAL:full_in_link1_vc4_r1|UNUSEDSIGNAL:full_in_link1_vc4_r2|UNUSEDSIGNAL:full_in_link1_vc4_r3|UNUSEDSIGNAL:full_in_link1_vc4_r4|UNUSEDSIGNAL:full_in_link2_vc1_r1|UNUSEDSIGNAL:full_in_link2_vc1_r2|UNUSEDSIGNAL:full_in_link2_vc1_r3|UNUSEDSIGNAL:full_in_link2_vc1_r4|UNUSEDSIGNAL:full_in_link2_vc2_r1|UNUSEDSIGNAL:full_in_link2_vc2_r2|UNUSEDSIGNAL:full_in_link2_vc2_r3|UNUSEDSIGNAL:full_in_link2_vc2_r4|UNUSEDSIGNAL:full_in_link2_vc3_r1|UNUSEDSIGNAL:full_in_link2_vc3_r2|UNUSEDSIGNAL:full_in_link2_vc3_r3|UNUSEDSIGNAL:full_in_link2_vc3_r4|UNUSEDSIGNAL:full_in_link2_vc4_r1|UNUSEDSIGNAL:full_in_link2_vc4_r2|UNUSEDSIGNAL:full_in_link2_vc4_r3|UNUSEDSIGNAL:full_in_link2_vc4_r4|UNUSEDSIGNAL:full_in_link3_vc1_r1|UNUSEDSIGNAL:full_in_link3_vc1_r2|UNUSEDSIGNAL:full_in_link3_vc1_r3|UNUSEDSIGNAL:full_in_link3_vc1_r4|UNUSEDSIGNAL:full_in_link3_vc2_r1|UNUSEDSIGNAL:full_in_link3_vc2_r2|UNUSEDSIGNAL:full_in_link3_vc2_r3|UNUSEDSIGNAL:full_in_link3_vc2_r4|UNUSEDSIGNAL:full_in_link3_vc3_r1|UNUSEDSIGNAL:full_in_link3_vc3_r2|UNUSEDSIGNAL:full_in_link3_vc3_r3|UNUSEDSIGNAL:full_in_link3_vc3_r4|UNUSEDSIGNAL:full_in_link3_vc4_r1|UNUSEDSIGNAL:full_in_link3_vc4_r2|UNUSEDSIGNAL:full_in_link3_vc4_r3|UNUSEDSIGNAL:full_in_link3_vc4_r4|UNUSEDSIGNAL:full_in_link4_vc1_r1|UNUSEDSIGNAL:full_in_link4_vc1_r2|UNUSEDSIGNAL:full_in_link4_vc1_r3|UNUSEDSIGNAL:full_in_link4_vc1_r4|UNUSEDSIGNAL:full_in_link4_vc2_r1|UNUSEDSIGNAL:full_in_link4_vc2_r2|UNUSEDSIGNAL:full_in_link4_vc2_r3|UNUSEDSIGNAL:full_in_link4_vc2_r4|UNUSEDSIGNAL:full_in_link4_vc3_r1|UNUSEDSIGNAL:full_in_link4_vc3_r2|UNUSEDSIGNAL:full_in_link4_vc3_r3|UNUSEDSIGNAL:full_in_link4_vc3_r4|UNUSEDSIGNAL:full_in_link4_vc4_r1|UNUSEDSIGNAL:full_in_link4_vc4_r2|UNUSEDSIGNAL:full_in_link4_vc4_r3|UNUSEDSIGNAL:full_in_link4_vc4_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4|WIDTHEXPAND:data_out_c_r1|WIDTHEXPAND:data_out_c_r2|WIDTHEXPAND:data_out_c_r3|WIDTHEXPAND:data_out_c_r4|WIDTHEXPAND:data_out_l1_r1|WIDTHEXPAND:data_out_l1_r2|WIDTHEXPAND:data_out_l1_r3|WIDTHEXPAND:data_out_l1_r4|WIDTHEXPAND:data_out_l2_r1|WIDTHEXPAND:data_out_l2_r2|WIDTHEXPAND:data_out_l2_r3|WIDTHEXPAND:data_out_l2_r4|WIDTHEXPAND:data_out_l3_r1|WIDTHEXPAND:data_out_l3_r2|WIDTHEXPAND:data_out_l3_r3|WIDTHEXPAND:data_out_l3_r4|WIDTHEXPAND:data_out_l4_r1|WIDTHEXPAND:data_out_l4_r2|WIDTHEXPAND:data_out_l4_r3|WIDTHEXPAND:data_out_l4_r4|WIDTHTRUNC:full_in_core_vc1_r1|WIDTHTRUNC:full_in_core_vc1_r2|WIDTHTRUNC:full_in_core_vc1_r3|WIDTHTRUNC:full_in_core_vc1_r4|WIDTHTRUNC:full_in_core_vc2_r1|WIDTHTRUNC:full_in_core_vc2_r2|WIDTHTRUNC:full_in_core_vc2_r3|WIDTHTRUNC:full_in_core_vc2_r4|WIDTHTRUNC:full_in_core_vc3_r1|WIDTHTRUNC:full_in_core_vc3_r2|WIDTHTRUNC:full_in_core_vc3_r3|WIDTHTRUNC:full_in_core_vc3_r4|WIDTHTRUNC:full_in_core_vc4_r1|WIDTHTRUNC:full_in_core_vc4_r2|WIDTHTRUNC:full_in_core_vc4_r3|WIDTHTRUNC:full_in_core_vc4_r4|WIDTHTRUNC:full_in_link1_vc1_r1|WIDTHTRUNC:full_in_link1_vc1_r2|WIDTHTRUNC:full_in_link1_vc1_r3|WIDTHTRUNC:full_in_link1_vc1_r4|WIDTHTRUNC:full_in_link1_vc2_r1|WIDTHTRUNC:full_in_link1_vc2_r2|WIDTHTRUNC:full_in_link1_vc2_r3|WIDTHTRUNC:full_in_link1_vc2_r4|WIDTHTRUNC:full_in_link1_vc3_r1|WIDTHTRUNC:full_in_link1_vc3_r2|WIDTHTRUNC:full_in_link1_vc3_r3|WIDTHTRUNC:full_in_link1_vc3_r4|WIDTHTRUNC:full_in_link1_vc4_r1|WIDTHTRUNC:full_in_link1_vc4_r2|WIDTHTRUNC:full_in_link1_vc4_r3|WIDTHTRUNC:full_in_link1_vc4_r4|WIDTHTRUNC:full_in_link2_vc1_r1|WIDTHTRUNC:full_in_link2_vc1_r2|WIDTHTRUNC:full_in_link2_vc1_r3|WIDTHTRUNC:full_in_link2_vc1_r4|WIDTHTRUNC:full_in_link2_vc2_r1|WIDTHTRUNC:full_in_link2_vc2_r2|WIDTHTRUNC:full_in_link2_vc2_r3|WIDTHTRUNC:full_in_link2_vc2_r4|WIDTHTRUNC:full_in_link2_vc3_r1|WIDTHTRUNC:full_in_link2_vc3_r2|WIDTHTRUNC:full_in_link2_vc3_r3|WIDTHTRUNC:full_in_link2_vc3_r4|WIDTHTRUNC:full_in_link2_vc4_r1|WIDTHTRUNC:full_in_link2_vc4_r2|WIDTHTRUNC:full_in_link2_vc4_r3|WIDTHTRUNC:full_in_link2_vc4_r4|WIDTHTRUNC:full_in_link3_vc1_r1|WIDTHTRUNC:full_in_link3_vc1_r2|WIDTHTRUNC:full_in_link3_vc1_r3|WIDTHTRUNC:full_in_link3_vc1_r4|WIDTHTRUNC:full_in_link3_vc2_r1|WIDTHTRUNC:full_in_link3_vc2_r2|WIDTHTRUNC:full_in_link3_vc2_r3|WIDTHTRUNC:full_in_link3_vc2_r4|WIDTHTRUNC:full_in_link3_vc3_r1|WIDTHTRUNC:full_in_link3_vc3_r2|WIDTHTRUNC:full_in_link3_vc3_r3|WIDTHTRUNC:full_in_link3_vc3_r4|WIDTHTRUNC:full_in_link3_vc4_r1|WIDTHTRUNC:full_in_link3_vc4_r2|WIDTHTRUNC:full_in_link3_vc4_r3|WIDTHTRUNC:full_in_link3_vc4_r4|WIDTHTRUNC:full_in_link4_vc1_r1|WIDTHTRUNC:full_in_link4_vc1_r2|WIDTHTRUNC:full_in_link4_vc1_r3|WIDTHTRUNC:full_in_link4_vc1_r4|WIDTHTRUNC:full_in_link4_vc2_r1|WIDTHTRUNC:full_in_link4_vc2_r2|WIDTHTRUNC:full_in_link4_vc2_r3|WIDTHTRUNC:full_in_link4_vc2_r4|WIDTHTRUNC:full_in_link4_vc3_r1|WIDTHTRUNC:full_in_link4_vc3_r2|WIDTHTRUNC:full_in_link4_vc3_r3|WIDTHTRUNC:full_in_link4_vc3_r4|WIDTHTRUNC:full_in_link4_vc4_r1|WIDTHTRUNC:full_in_link4_vc4_r2|WIDTHTRUNC:full_in_link4_vc4_r3|WIDTHTRUNC:full_in_link4_vc4_r4|WIDTHTRUNC:full_out_core_vc1_r1|WIDTHTRUNC:full_out_core_vc1_r2|WIDTHTRUNC:full_out_core_vc1_r3|WIDTHTRUNC:full_out_core_vc1_r4|WIDTHTRUNC:full_out_core_vc2_r1|WIDTHTRUNC:full_out_core_vc2_r2|WIDTHTRUNC:full_out_core_vc2_r3|WIDTHTRUNC:full_out_core_vc2_r4|WIDTHTRUNC:full_out_core_vc3_r1|WIDTHTRUNC:full_out_core_vc3_r2|WIDTHTRUNC:full_out_core_vc3_r3|WIDTHTRUNC:full_out_core_vc3_r4|WIDTHTRUNC:full_out_core_vc4_r1|WIDTHTRUNC:full_out_core_vc4_r2|WIDTHTRUNC:full_out_core_vc4_r3|WIDTHTRUNC:full_out_core_vc4_r4|WIDTHTRUNC:full_out_link1_vc1_r1|WIDTHTRUNC:full_out_link1_vc1_r2|WIDTHTRUNC:full_out_link1_vc1_r3|WIDTHTRUNC:full_out_link1_vc1_r4|WIDTHTRUNC:full_out_link1_vc2_r1|WIDTHTRUNC:full_out_link1_vc2_r2|WIDTHTRUNC:full_out_link1_vc2_r3|WIDTHTRUNC:full_out_link1_vc2_r4|WIDTHTRUNC:full_out_link1_vc3_r1|WIDTHTRUNC:full_out_link1_vc3_r2|WIDTHTRUNC:full_out_link1_vc3_r3|WIDTHTRUNC:full_out_link1_vc3_r4|WIDTHTRUNC:full_out_link1_vc4_r1|WIDTHTRUNC:full_out_link1_vc4_r2|WIDTHTRUNC:full_out_link1_vc4_r3|WIDTHTRUNC:full_out_link1_vc4_r4|WIDTHTRUNC:full_out_link2_vc1_r1|WIDTHTRUNC:full_out_link2_vc1_r2|WIDTHTRUNC:full_out_link2_vc1_r3|WIDTHTRUNC:full_out_link2_vc1_r4|WIDTHTRUNC:full_out_link2_vc2_r1|WIDTHTRUNC:full_out_link2_vc2_r2|WIDTHTRUNC:full_out_link2_vc2_r3|WIDTHTRUNC:full_out_link2_vc2_r4|WIDTHTRUNC:full_out_link2_vc3_r1|WIDTHTRUNC:full_out_link2_vc3_r2|WIDTHTRUNC:full_out_link2_vc3_r3|WIDTHTRUNC:full_out_link2_vc3_r4|WIDTHTRUNC:full_out_link2_vc4_r1|WIDTHTRUNC:full_out_link2_vc4_r2|WIDTHTRUNC:full_out_link2_vc4_r3|WIDTHTRUNC:full_out_link2_vc4_r4|WIDTHTRUNC:full_out_link3_vc1_r1|WIDTHTRUNC:full_out_link3_vc1_r2|WIDTHTRUNC:full_out_link3_vc1_r3|WIDTHTRUNC:full_out_link3_vc1_r4|WIDTHTRUNC:full_out_link3_vc2_r1|WIDTHTRUNC:full_out_link3_vc2_r2|WIDTHTRUNC:full_out_link3_vc2_r3|WIDTHTRUNC:full_out_link3_vc2_r4|WIDTHTRUNC:full_out_link3_vc3_r1|WIDTHTRUNC:full_out_link3_vc3_r2|WIDTHTRUNC:full_out_link3_vc3_r3|WIDTHTRUNC:full_out_link3_vc3_r4|WIDTHTRUNC:full_out_link3_vc4_r1|WIDTHTRUNC:full_out_link3_vc4_r2|WIDTHTRUNC:full_out_link3_vc4_r3|WIDTHTRUNC:full_out_link3_vc4_r4|WIDTHTRUNC:full_out_link4_vc1_r1|WIDTHTRUNC:full_out_link4_vc1_r2|WIDTHTRUNC:full_out_link4_vc1_r3|WIDTHTRUNC:full_out_link4_vc1_r4|WIDTHTRUNC:full_out_link4_vc2_r1|WIDTHTRUNC:full_out_link4_vc2_r2|WIDTHTRUNC:full_out_link4_vc2_r3|WIDTHTRUNC:full_out_link4_vc2_r4|WIDTHTRUNC:full_out_link4_vc3_r1|WIDTHTRUNC:full_out_link4_vc3_r2|WIDTHTRUNC:full_out_link4_vc3_r3|WIDTHTRUNC:full_out_link4_vc3_r4|WIDTHTRUNC:full_out_link4_vc4_r1|WIDTHTRUNC:full_out_link4_vc4_r2|WIDTHTRUNC:full_out_link4_vc4_r3|WIDTHTRUNC:full_out_link4_vc4_r4",
+   "feedback_semantic_fired": false,
+   "feedback_classes": []
+  },
+  {
+   "iter": 1,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINMISSING": 80,
+    "WIDTHTRUNC": 160,
+    "WIDTHEXPAND": 20,
+    "UNUSEDSIGNAL": 176
+   },
+   "verilator_warnings_count": 436,
+   "verilator_hard": 160,
+   "struct_clean": false,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_in_core_vc1_r1|UNUSEDSIGNAL:full_in_core_vc1_r2|UNUSEDSIGNAL:full_in_core_vc1_r3|UNUSEDSIGNAL:full_in_core_vc1_r4|UNUSEDSIGNAL:full_in_core_vc2_r1|UNUSEDSIGNAL:full_in_core_vc2_r2|UNUSEDSIGNAL:full_in_core_vc2_r3|UNUSEDSIGNAL:full_in_core_vc2_r4|UNUSEDSIGNAL:full_in_core_vc3_r1|UNUSEDSIGNAL:full_in_core_vc3_r2|UNUSEDSIGNAL:full_in_core_vc3_r3|UNUSEDSIGNAL:full_in_core_vc3_r4|UNUSEDSIGNAL:full_in_core_vc4_r1|UNUSEDSIGNAL:full_in_core_vc4_r2|UNUSEDSIGNAL:full_in_core_vc4_r3|UNUSEDSIGNAL:full_in_core_vc4_r4|UNUSEDSIGNAL:full_in_link1_vc1_r1|UNUSEDSIGNAL:full_in_link1_vc1_r2|UNUSEDSIGNAL:full_in_link1_vc1_r3|UNUSEDSIGNAL:full_in_link1_vc1_r4|UNUSEDSIGNAL:full_in_link1_vc2_r1|UNUSEDSIGNAL:full_in_link1_vc2_r2|UNUSEDSIGNAL:full_in_link1_vc2_r3|UNUSEDSIGNAL:full_in_link1_vc2_r4|UNUSEDSIGNAL:full_in_link1_vc3_r1|UNUSEDSIGNAL:full_in_link1_vc3_r2|UNUSEDSIGNAL:full_in_link1_vc3_r3|UNUSEDSIGNAL:full_in_link1_vc3_r4|UNUSEDSIGNAL:full_in_link1_vc4_r1|UNUSEDSIGNAL:full_in_link1_vc4_r2|UNUSEDSIGNAL:full_in_link1_vc4_r3|UNUSEDSIGNAL:full_in_link1_vc4_r4|UNUSEDSIGNAL:full_in_link2_vc1_r1|UNUSEDSIGNAL:full_in_link2_vc1_r2|UNUSEDSIGNAL:full_in_link2_vc1_r3|UNUSEDSIGNAL:full_in_link2_vc1_r4|UNUSEDSIGNAL:full_in_link2_vc2_r1|UNUSEDSIGNAL:full_in_link2_vc2_r2|UNUSEDSIGNAL:full_in_link2_vc2_r3|UNUSEDSIGNAL:full_in_link2_vc2_r4|UNUSEDSIGNAL:full_in_link2_vc3_r1|UNUSEDSIGNAL:full_in_link2_vc3_r2|UNUSEDSIGNAL:full_in_link2_vc3_r3|UNUSEDSIGNAL:full_in_link2_vc3_r4|UNUSEDSIGNAL:full_in_link2_vc4_r1|UNUSEDSIGNAL:full_in_link2_vc4_r2|UNUSEDSIGNAL:full_in_link2_vc4_r3|UNUSEDSIGNAL:full_in_link2_vc4_r4|UNUSEDSIGNAL:full_in_link3_vc1_r1|UNUSEDSIGNAL:full_in_link3_vc1_r2|UNUSEDSIGNAL:full_in_link3_vc1_r3|UNUSEDSIGNAL:full_in_link3_vc1_r4|UNUSEDSIGNAL:full_in_link3_vc2_r1|UNUSEDSIGNAL:full_in_link3_vc2_r2|UNUSEDSIGNAL:full_in_link3_vc2_r3|UNUSEDSIGNAL:full_in_link3_vc2_r4|UNUSEDSIGNAL:full_in_link3_vc3_r1|UNUSEDSIGNAL:full_in_link3_vc3_r2|UNUSEDSIGNAL:full_in_link3_vc3_r3|UNUSEDSIGNAL:full_in_link3_vc3_r4|UNUSEDSIGNAL:full_in_link3_vc4_r1|UNUSEDSIGNAL:full_in_link3_vc4_r2|UNUSEDSIGNAL:full_in_link3_vc4_r3|UNUSEDSIGNAL:full_in_link3_vc4_r4|UNUSEDSIGNAL:full_in_link4_vc1_r1|UNUSEDSIGNAL:full_in_link4_vc1_r2|UNUSEDSIGNAL:full_in_link4_vc1_r3|UNUSEDSIGNAL:full_in_link4_vc1_r4|UNUSEDSIGNAL:full_in_link4_vc2_r1|UNUSEDSIGNAL:full_in_link4_vc2_r2|UNUSEDSIGNAL:full_in_link4_vc2_r3|UNUSEDSIGNAL:full_in_link4_vc2_r4|UNUSEDSIGNAL:full_in_link4_vc3_r1|UNUSEDSIGNAL:full_in_link4_vc3_r2|UNUSEDSIGNAL:full_in_link4_vc3_r3|UNUSEDSIGNAL:full_in_link4_vc3_r4|UNUSEDSIGNAL:full_in_link4_vc4_r1|UNUSEDSIGNAL:full_in_link4_vc4_r2|UNUSEDSIGNAL:full_in_link4_vc4_r3|UNUSEDSIGNAL:full_in_link4_vc4_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4|WIDTHEXPAND:data_out_c_r1|WIDTHEXPAND:data_out_c_r2|WIDTHEXPAND:data_out_c_r3|WIDTHEXPAND:data_out_c_r4|WIDTHEXPAND:data_out_l1_r1|WIDTHEXPAND:data_out_l1_r2|WIDTHEXPAND:data_out_l1_r3|WIDTHEXPAND:data_out_l1_r4|WIDTHEXPAND:data_out_l2_r1|WIDTHEXPAND:data_out_l2_r2|WIDTHEXPAND:data_out_l2_r3|WIDTHEXPAND:data_out_l2_r4|WIDTHEXPAND:data_out_l3_r1|WIDTHEXPAND:data_out_l3_r2|WIDTHEXPAND:data_out_l3_r3|WIDTHEXPAND:data_out_l3_r4|WIDTHEXPAND:data_out_l4_r1|WIDTHEXPAND:data_out_l4_r2|WIDTHEXPAND:data_out_l4_r3|WIDTHEXPAND:data_out_l4_r4|WIDTHTRUNC:full_in_core_vc1_r1|WIDTHTRUNC:full_in_core_vc1_r2|WIDTHTRUNC:full_in_core_vc1_r3|WIDTHTRUNC:full_in_core_vc1_r4|WIDTHTRUNC:full_in_core_vc2_r1|WIDTHTRUNC:full_in_core_vc2_r2|WIDTHTRUNC:full_in_core_vc2_r3|WIDTHTRUNC:full_in_core_vc2_r4|WIDTHTRUNC:full_in_core_vc3_r1|WIDTHTRUNC:full_in_core_vc3_r2|WIDTHTRUNC:full_in_core_vc3_r3|WIDTHTRUNC:full_in_core_vc3_r4|WIDTHTRUNC:full_in_core_vc4_r1|WIDTHTRUNC:full_in_core_vc4_r2|WIDTHTRUNC:full_in_core_vc4_r3|WIDTHTRUNC:full_in_core_vc4_r4|WIDTHTRUNC:full_in_link1_vc1_r1|WIDTHTRUNC:full_in_link1_vc1_r2|WIDTHTRUNC:full_in_link1_vc1_r3|WIDTHTRUNC:full_in_link1_vc1_r4|WIDTHTRUNC:full_in_link1_vc2_r1|WIDTHTRUNC:full_in_link1_vc2_r2|WIDTHTRUNC:full_in_link1_vc2_r3|WIDTHTRUNC:full_in_link1_vc2_r4|WIDTHTRUNC:full_in_link1_vc3_r1|WIDTHTRUNC:full_in_link1_vc3_r2|WIDTHTRUNC:full_in_link1_vc3_r3|WIDTHTRUNC:full_in_link1_vc3_r4|WIDTHTRUNC:full_in_link1_vc4_r1|WIDTHTRUNC:full_in_link1_vc4_r2|WIDTHTRUNC:full_in_link1_vc4_r3|WIDTHTRUNC:full_in_link1_vc4_r4|WIDTHTRUNC:full_in_link2_vc1_r1|WIDTHTRUNC:full_in_link2_vc1_r2|WIDTHTRUNC:full_in_link2_vc1_r3|WIDTHTRUNC:full_in_link2_vc1_r4|WIDTHTRUNC:full_in_link2_vc2_r1|WIDTHTRUNC:full_in_link2_vc2_r2|WIDTHTRUNC:full_in_link2_vc2_r3|WIDTHTRUNC:full_in_link2_vc2_r4|WIDTHTRUNC:full_in_link2_vc3_r1|WIDTHTRUNC:full_in_link2_vc3_r2|WIDTHTRUNC:full_in_link2_vc3_r3|WIDTHTRUNC:full_in_link2_vc3_r4|WIDTHTRUNC:full_in_link2_vc4_r1|WIDTHTRUNC:full_in_link2_vc4_r2|WIDTHTRUNC:full_in_link2_vc4_r3|WIDTHTRUNC:full_in_link2_vc4_r4|WIDTHTRUNC:full_in_link3_vc1_r1|WIDTHTRUNC:full_in_link3_vc1_r2|WIDTHTRUNC:full_in_link3_vc1_r3|WIDTHTRUNC:full_in_link3_vc1_r4|WIDTHTRUNC:full_in_link3_vc2_r1|WIDTHTRUNC:full_in_link3_vc2_r2|WIDTHTRUNC:full_in_link3_vc2_r3|WIDTHTRUNC:full_in_link3_vc2_r4|WIDTHTRUNC:full_in_link3_vc3_r1|WIDTHTRUNC:full_in_link3_vc3_r2|WIDTHTRUNC:full_in_link3_vc3_r3|WIDTHTRUNC:full_in_link3_vc3_r4|WIDTHTRUNC:full_in_link3_vc4_r1|WIDTHTRUNC:full_in_link3_vc4_r2|WIDTHTRUNC:full_in_link3_vc4_r3|WIDTHTRUNC:full_in_link3_vc4_r4|WIDTHTRUNC:full_in_link4_vc1_r1|WIDTHTRUNC:full_in_link4_vc1_r2|WIDTHTRUNC:full_in_link4_vc1_r3|WIDTHTRUNC:full_in_link4_vc1_r4|WIDTHTRUNC:full_in_link4_vc2_r1|WIDTHTRUNC:full_in_link4_vc2_r2|WIDTHTRUNC:full_in_link4_vc2_r3|WIDTHTRUNC:full_in_link4_vc2_r4|WIDTHTRUNC:full_in_link4_vc3_r1|WIDTHTRUNC:full_in_link4_vc3_r2|WIDTHTRUNC:full_in_link4_vc3_r3|WIDTHTRUNC:full_in_link4_vc3_r4|WIDTHTRUNC:full_in_link4_vc4_r1|WIDTHTRUNC:full_in_link4_vc4_r2|WIDTHTRUNC:full_in_link4_vc4_r3|WIDTHTRUNC:full_in_link4_vc4_r4|WIDTHTRUNC:full_out_core_vc1_r1|WIDTHTRUNC:full_out_core_vc1_r2|WIDTHTRUNC:full_out_core_vc1_r3|WIDTHTRUNC:full_out_core_vc1_r4|WIDTHTRUNC:full_out_core_vc2_r1|WIDTHTRUNC:full_out_core_vc2_r2|WIDTHTRUNC:full_out_core_vc2_r3|WIDTHTRUNC:full_out_core_vc2_r4|WIDTHTRUNC:full_out_core_vc3_r1|WIDTHTRUNC:full_out_core_vc3_r2|WIDTHTRUNC:full_out_core_vc3_r3|WIDTHTRUNC:full_out_core_vc3_r4|WIDTHTRUNC:full_out_core_vc4_r1|WIDTHTRUNC:full_out_core_vc4_r2|WIDTHTRUNC:full_out_core_vc4_r3|WIDTHTRUNC:full_out_core_vc4_r4|WIDTHTRUNC:full_out_link1_vc1_r1|WIDTHTRUNC:full_out_link1_vc1_r2|WIDTHTRUNC:full_out_link1_vc1_r3|WIDTHTRUNC:full_out_link1_vc1_r4|WIDTHTRUNC:full_out_link1_vc2_r1|WIDTHTRUNC:full_out_link1_vc2_r2|WIDTHTRUNC:full_out_link1_vc2_r3|WIDTHTRUNC:full_out_link1_vc2_r4|WIDTHTRUNC:full_out_link1_vc3_r1|WIDTHTRUNC:full_out_link1_vc3_r2|WIDTHTRUNC:full_out_link1_vc3_r3|WIDTHTRUNC:full_out_link1_vc3_r4|WIDTHTRUNC:full_out_link1_vc4_r1|WIDTHTRUNC:full_out_link1_vc4_r2|WIDTHTRUNC:full_out_link1_vc4_r3|WIDTHTRUNC:full_out_link1_vc4_r4|WIDTHTRUNC:full_out_link2_vc1_r1|WIDTHTRUNC:full_out_link2_vc1_r2|WIDTHTRUNC:full_out_link2_vc1_r3|WIDTHTRUNC:full_out_link2_vc1_r4|WIDTHTRUNC:full_out_link2_vc2_r1|WIDTHTRUNC:full_out_link2_vc2_r2|WIDTHTRUNC:full_out_link2_vc2_r3|WIDTHTRUNC:full_out_link2_vc2_r4|WIDTHTRUNC:full_out_link2_vc3_r1|WIDTHTRUNC:full_out_link2_vc3_r2|WIDTHTRUNC:full_out_link2_vc3_r3|WIDTHTRUNC:full_out_link2_vc3_r4|WIDTHTRUNC:full_out_link2_vc4_r1|WIDTHTRUNC:full_out_link2_vc4_r2|WIDTHTRUNC:full_out_link2_vc4_r3|WIDTHTRUNC:full_out_link2_vc4_r4|WIDTHTRUNC:full_out_link3_vc1_r1|WIDTHTRUNC:full_out_link3_vc1_r2|WIDTHTRUNC:full_out_link3_vc1_r3|WIDTHTRUNC:full_out_link3_vc1_r4|WIDTHTRUNC:full_out_link3_vc2_r1|WIDTHTRUNC:full_out_link3_vc2_r2|WIDTHTRUNC:full_out_link3_vc2_r3|WIDTHTRUNC:full_out_link3_vc2_r4|WIDTHTRUNC:full_out_link3_vc3_r1|WIDTHTRUNC:full_out_link3_vc3_r2|WIDTHTRUNC:full_out_link3_vc3_r3|WIDTHTRUNC:full_out_link3_vc3_r4|WIDTHTRUNC:full_out_link3_vc4_r1|WIDTHTRUNC:full_out_link3_vc4_r2|WIDTHTRUNC:full_out_link3_vc4_r3|WIDTHTRUNC:full_out_link3_vc4_r4|WIDTHTRUNC:full_out_link4_vc1_r1|WIDTHTRUNC:full_out_link4_vc1_r2|WIDTHTRUNC:full_out_link4_vc1_r3|WIDTHTRUNC:full_out_link4_vc1_r4|WIDTHTRUNC:full_out_link4_vc2_r1|WIDTHTRUNC:full_out_link4_vc2_r2|WIDTHTRUNC:full_out_link4_vc2_r3|WIDTHTRUNC:full_out_link4_vc2_r4|WIDTHTRUNC:full_out_link4_vc3_r1|WIDTHTRUNC:full_out_link4_vc3_r2|WIDTHTRUNC:full_out_link4_vc3_r3|WIDTHTRUNC:full_out_link4_vc3_r4|WIDTHTRUNC:full_out_link4_vc4_r1|WIDTHTRUNC:full_out_link4_vc4_r2|WIDTHTRUNC:full_out_link4_vc4_r3|WIDTHTRUNC:full_out_link4_vc4_r4",
+   "feedback_semantic_fired": true,
+   "feedback_classes": [
+    "PINMISSING",
+    "WIDTHEXPAND",
+    "WIDTHTRUNC"
+   ]
+  },
+  {
+   "iter": 2,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINCONNECTEMPTY": 80,
+    "UNUSEDSIGNAL": 96
+   },
+   "verilator_warnings_count": 176,
+   "verilator_hard": 0,
+   "struct_clean": true,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4",
+   "feedback_semantic_fired": true,
+   "feedback_classes": [
+    "PINMISSING",
+    "UNUSEDSIGNAL"
+   ]
+  },
+  {
+   "iter": 3,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINCONNECTEMPTY": 80,
+    "UNUSEDSIGNAL": 96
+   },
+   "verilator_warnings_count": 176,
+   "verilator_hard": 0,
+   "struct_clean": true,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4",
+   "restart": true,
+   "feedback_semantic_fired": true,
+   "feedback_classes": [
+    "PINMISSING",
+    "WIDTHEXPAND",
+    "WIDTHTRUNC"
+   ]
+  },
+  {
+   "iter": 4,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINCONNECTEMPTY": 80,
+    "UNUSEDSIGNAL": 96
+   },
+   "verilator_warnings_count": 176,
+   "verilator_hard": 0,
+   "struct_clean": true,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4",
+   "feedback_semantic_fired": true,
+   "feedback_classes": [
+    "PINMISSING",
+    "UNUSEDSIGNAL"
+   ]
+  },
+  {
+   "iter": 5,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINCONNECTEMPTY": 80,
+    "UNUSEDSIGNAL": 96
+   },
+   "verilator_warnings_count": 176,
+   "verilator_hard": 0,
+   "struct_clean": true,
+   "clean_pass": false,
+   "silent_structural_pass": false,
+   "signature": "SIMFAIL|PINMISSING:data_out_core_vc1|PINMISSING:data_out_core_vc2|PINMISSING:data_out_core_vc3|PINMISSING:data_out_core_vc4|PINMISSING:data_out_link1_vc1|PINMISSING:data_out_link1_vc2|PINMISSING:data_out_link1_vc3|PINMISSING:data_out_link1_vc4|PINMISSING:data_out_link2_vc1|PINMISSING:data_out_link2_vc2|PINMISSING:data_out_link2_vc3|PINMISSING:data_out_link2_vc4|PINMISSING:data_out_link3_vc1|PINMISSING:data_out_link3_vc2|PINMISSING:data_out_link3_vc3|PINMISSING:data_out_link3_vc4|PINMISSING:data_out_link4_vc1|PINMISSING:data_out_link4_vc2|PINMISSING:data_out_link4_vc3|PINMISSING:data_out_link4_vc4|UNUSEDSIGNAL:data_out_c_r1|UNUSEDSIGNAL:data_out_c_r2|UNUSEDSIGNAL:data_out_c_r3|UNUSEDSIGNAL:data_out_c_r4|UNUSEDSIGNAL:data_out_l1_r1|UNUSEDSIGNAL:data_out_l1_r2|UNUSEDSIGNAL:data_out_l1_r3|UNUSEDSIGNAL:data_out_l1_r4|UNUSEDSIGNAL:data_out_l2_r1|UNUSEDSIGNAL:data_out_l2_r2|UNUSEDSIGNAL:data_out_l2_r3|UNUSEDSIGNAL:data_out_l2_r4|UNUSEDSIGNAL:data_out_l3_r1|UNUSEDSIGNAL:data_out_l3_r2|UNUSEDSIGNAL:data_out_l3_r3|UNUSEDSIGNAL:data_out_l3_r4|UNUSEDSIGNAL:data_out_l4_r1|UNUSEDSIGNAL:data_out_l4_r2|UNUSEDSIGNAL:data_out_l4_r3|UNUSEDSIGNAL:data_out_l4_r4|UNUSEDSIGNAL:data_out_link1_r1|UNUSEDSIGNAL:data_out_link1_r3|UNUSEDSIGNAL:data_out_link2_r2|UNUSEDSIGNAL:data_out_link2_r4|UNUSEDSIGNAL:data_out_link3_r1|UNUSEDSIGNAL:data_out_link3_r2|UNUSEDSIGNAL:data_out_link3_r3|UNUSEDSIGNAL:data_out_link3_r4|UNUSEDSIGNAL:full_out_core_vc1_r1|UNUSEDSIGNAL:full_out_core_vc1_r2|UNUSEDSIGNAL:full_out_core_vc1_r3|UNUSEDSIGNAL:full_out_core_vc1_r4|UNUSEDSIGNAL:full_out_core_vc2_r1|UNUSEDSIGNAL:full_out_core_vc2_r2|UNUSEDSIGNAL:full_out_core_vc2_r3|UNUSEDSIGNAL:full_out_core_vc2_r4|UNUSEDSIGNAL:full_out_core_vc3_r1|UNUSEDSIGNAL:full_out_core_vc3_r2|UNUSEDSIGNAL:full_out_core_vc3_r3|UNUSEDSIGNAL:full_out_core_vc3_r4|UNUSEDSIGNAL:full_out_core_vc4_r1|UNUSEDSIGNAL:full_out_core_vc4_r2|UNUSEDSIGNAL:full_out_core_vc4_r3|UNUSEDSIGNAL:full_out_core_vc4_r4|UNUSEDSIGNAL:full_out_link1_vc1_r1|UNUSEDSIGNAL:full_out_link1_vc1_r4|UNUSEDSIGNAL:full_out_link1_vc2_r1|UNUSEDSIGNAL:full_out_link1_vc2_r4|UNUSEDSIGNAL:full_out_link1_vc3_r1|UNUSEDSIGNAL:full_out_link1_vc3_r4|UNUSEDSIGNAL:full_out_link1_vc4_r1|UNUSEDSIGNAL:full_out_link1_vc4_r4|UNUSEDSIGNAL:full_out_link2_vc1_r2|UNUSEDSIGNAL:full_out_link2_vc1_r3|UNUSEDSIGNAL:full_out_link2_vc2_r2|UNUSEDSIGNAL:full_out_link2_vc2_r3|UNUSEDSIGNAL:full_out_link2_vc3_r2|UNUSEDSIGNAL:full_out_link2_vc3_r3|UNUSEDSIGNAL:full_out_link2_vc4_r2|UNUSEDSIGNAL:full_out_link2_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc1_r2|UNUSEDSIGNAL:full_out_link3_vc1_r3|UNUSEDSIGNAL:full_out_link3_vc1_r4|UNUSEDSIGNAL:full_out_link3_vc2_r2|UNUSEDSIGNAL:full_out_link3_vc2_r3|UNUSEDSIGNAL:full_out_link3_vc2_r4|UNUSEDSIGNAL:full_out_link3_vc3_r2|UNUSEDSIGNAL:full_out_link3_vc3_r3|UNUSEDSIGNAL:full_out_link3_vc3_r4|UNUSEDSIGNAL:full_out_link3_vc4_r2|UNUSEDSIGNAL:full_out_link3_vc4_r3|UNUSEDSIGNAL:full_out_link3_vc4_r4|UNUSEDSIGNAL:full_out_link4_vc1_r1|UNUSEDSIGNAL:full_out_link4_vc2_r1|UNUSEDSIGNAL:full_out_link4_vc3_r1|UNUSEDSIGNAL:full_out_link4_vc4_r1|UNUSEDSIGNAL:sel_vc_core_r1|UNUSEDSIGNAL:sel_vc_core_r2|UNUSEDSIGNAL:sel_vc_core_r3|UNUSEDSIGNAL:sel_vc_core_r4|UNUSEDSIGNAL:sel_vc_link1_r1|UNUSEDSIGNAL:sel_vc_link1_r2|UNUSEDSIGNAL:sel_vc_link1_r3|UNUSEDSIGNAL:sel_vc_link1_r4|UNUSEDSIGNAL:sel_vc_link2_r1|UNUSEDSIGNAL:sel_vc_link2_r2|UNUSEDSIGNAL:sel_vc_link2_r3|UNUSEDSIGNAL:sel_vc_link2_r4|UNUSEDSIGNAL:sel_vc_link3_r1|UNUSEDSIGNAL:sel_vc_link3_r2|UNUSEDSIGNAL:sel_vc_link3_r3|UNUSEDSIGNAL:sel_vc_link3_r4|UNUSEDSIGNAL:sel_vc_link4_r1|UNUSEDSIGNAL:sel_vc_link4_r2|UNUSEDSIGNAL:sel_vc_link4_r3|UNUSEDSIGNAL:sel_vc_link4_r4",
+   "feedback_semantic_fired": true,
+   "feedback_classes": [
+    "PINMISSING",
+    "UNUSEDSIGNAL"
+   ]
+  },
+  {
+   "iter": 6,
+   "compile_ok": true,
+   "sim_outcome": "FAIL",
+   "func_pass": false,
+   "yosys_ok": true,
+   "yosys_error": null,
+   "latch_events": 0,
+   "latch_cells": 0,
+   "yosys_loops": 0,
+   "verilator_codes": {
+    "PINCONNECTEMPTY": 80,
+    "UNUSEDSIGNAL": 96
+   },
+   "verilator_warnings_count": 176,
+   "verilator_hard": 0,
+   "struct_clean": true,
+   "clean_pass": false,
+   "silent_structural_pass": false
+  }
+ ],
+ "provenance": {
+  "node": "gpunode5.hpc.bits-hyderabad.ac.in",
+  "toolchain": {
+   "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+   "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+   "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)"
+  },
+  "v3_version": "3.0.1",
+  "base_interp_sha256_lf": "42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff",
+  "v3_interp_sha256_lf": "29321afc43fcef167876eec38a492383539b1e53c508a510d4716dd0136c7dec",
+  "v3_parsers_sha256_lf": "90b1403916c75829b95cc70273545f9b8a75638c227ee21f57a26ca332bfe344",
+  "runner_sha256_lf": "119611fe10f2e23a2dc4f7c0c85ce20f7a176fa1311c26ea56b98b1087b76a36",
+  "p3_eval_sha256_lf": "56d177b2bb076013a0fa29290fcfbf8c0f4c1f256d49e09d94ab3dd1080de2d0",
+  "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+  "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+  "tb_v_sha256_lf": "7b2ccb003d07a4599330256d90ceef194ff09ce1a38243ecc1cb229e6f05385c",
+  "spec_md_sha256_lf": "e279ae26e8116cacfcf96db570a4d6d8eaaba08bf33fe98bc6d7361781654e86",
+  "input_v_sha256_lf": "6ff8c768d4879cd9c12cd4ea25cb945a9c716d1698f5e30b86721bcec45c678e",
+  "meta_json_sha256_lf": "27a82bc9ce7131d8e0645f5b60731fa9d8c700080df96f864b1497a268c08bb6"
+ }
+}

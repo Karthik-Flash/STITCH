@@ -1,0 +1,21 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "2c8500f86be0f4b6f532a5868950087ed12f25c6ac77498100f9d235ae8ee761",
+ "file": "outputs/stitch/mux.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

@@ -1,0 +1,632 @@
+%Warning-IMPLICIT: dut.v:305:13: Signal definition not found, creating implicitly: 'b0'
+                               : ... Suggested alternative: 'b1'
+  305 |         .b0(b0),
+      |             ^~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.053
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:403:15: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's REPLICATE generates 16 bits.
+                                 : ... note: In instance 'op_core'
+  403 |     assign ip = {link_4, vc_id_4, link_3, vc_id_3, link_2, vc_id_2, link_1, vc_id_1};
+      |               ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:404:16: Operator ASSIGNW expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'encoded_addr' generates 4 bits.
+                                 : ... note: In instance 'op_core'
+  404 |     assign sel = encoded_addr;
+      |                ^
+%Warning-UNUSEDSIGNAL: dut.v:4:71: Signal is not used: 'rok_link1_vc2'
+                                 : ... note: In instance 'op_core'
+    4 |           req_link4_vc2, req_link4_vc3, req_link4_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+      |                                                                       ^~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:4:86: Signal is not used: 'rok_link1_vc3'
+                                 : ... note: In instance 'op_core'
+    4 |           req_link4_vc2, req_link4_vc3, req_link4_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+      |                                                                                      ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:4:101: Signal is not used: 'rok_link1_vc4'
+                                  : ... note: In instance 'op_core'
+    4 |           req_link4_vc2, req_link4_vc3, req_link4_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+      |                                                                                                     ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:26: Signal is not used: 'rok_link2_vc2'
+                                 : ... note: In instance 'op_core'
+    5 |           rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      |                          ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:41: Signal is not used: 'rok_link2_vc3'
+                                 : ... note: In instance 'op_core'
+    5 |           rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      |                                         ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:56: Signal is not used: 'rok_link2_vc4'
+                                 : ... note: In instance 'op_core'
+    5 |           rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      |                                                        ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:86: Signal is not used: 'rok_link3_vc2'
+                                 : ... note: In instance 'op_core'
+    5 |           rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      |                                                                                      ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:101: Signal is not used: 'rok_link3_vc3'
+                                  : ... note: In instance 'op_core'
+    5 |           rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+      |                                                                                                     ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:11: Signal is not used: 'rok_link3_vc4'
+                                 : ... note: In instance 'op_core'
+    6 |           rok_link3_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3, rok_link4_vc4, tailer_link1_vc1,
+      |           ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:41: Signal is not used: 'rok_link4_vc2'
+                                 : ... note: In instance 'op_core'
+    6 |           rok_link3_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3, rok_link4_vc4, tailer_link1_vc1,
+      |                                         ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:56: Signal is not used: 'rok_link4_vc3'
+                                 : ... note: In instance 'op_core'
+    6 |           rok_link3_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3, rok_link4_vc4, tailer_link1_vc1,
+      |                                                        ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:71: Signal is not used: 'rok_link4_vc4'
+                                 : ... note: In instance 'op_core'
+    6 |           rok_link3_vc4, rok_link4_vc1, rok_link4_vc2, rok_link4_vc3, rok_link4_vc4, tailer_link1_vc1,
+      |                                                                       ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:10: Signal is not driven, nor used: 'tailer1'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:19: Signal is not driven, nor used: 'tailer2'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:28: Signal is not driven, nor used: 'tailer3'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:37: Signal is not driven, nor used: 'tailer4'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:46: Signal is not driven, nor used: 'tailer5'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                              ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:55: Signal is not driven, nor used: 'tailer6'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                       ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:64: Signal is not driven, nor used: 'tailer7'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:73: Signal is not driven, nor used: 'tailer8'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                         ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:82: Signal is not driven, nor used: 'tailer9'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                  ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:91: Signal is not driven, nor used: 'tailer10'
+                                  : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                           ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:101: Signal is not driven, nor used: 'tailer11'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                     ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:111: Signal is not driven, nor used: 'tailer12'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                               ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:121: Signal is not driven, nor used: 'tailer13'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                                         ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:131: Signal is not driven, nor used: 'tailer14'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                                                   ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:141: Signal is not driven, nor used: 'tailer15'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                                                             ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:151: Signal is not driven, nor used: 'tailer16'
+                                   : ... note: In instance 'op_core'
+   35 |     wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+      |                                                                                                                                                       ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:10: Signal is not used: 'gnt_or'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:18: Signal is not used: 'ce_b1'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                  ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:25: Signal is not used: 'ce_b2'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:32: Signal is not used: 'ce_b3'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:39: Signal is not used: 'ce_b4'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                       ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:46: Signal is not used: 'clr_b1'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                              ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:54: Signal is not used: 'clr_b2'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                      ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:62: Signal is not used: 'clr_b3'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                              ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:70: Signal is not used: 'clr_b4'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                                      ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:78: Signal is not driven, nor used: 'e1'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                                              ^~
+%Warning-UNUSEDSIGNAL: dut.v:36:82: Signal is not driven, nor used: 'e2'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                                                  ^~
+%Warning-UNUSEDSIGNAL: dut.v:36:86: Signal is not driven, nor used: 'e3'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                                                      ^~
+%Warning-UNUSEDSIGNAL: dut.v:36:90: Signal is not driven, nor used: 'e4'
+                                  : ... note: In instance 'op_core'
+   36 |     wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+      |                                                                                          ^~
+%Warning-UNUSEDSIGNAL: dut.v:38:10: Signal is not used: 'sel'
+                                  : ... note: In instance 'op_core'
+   38 |     wire sel;
+      |          ^~~
+%Warning-UNUSEDSIGNAL: dut.v:39:10: Signal is not driven, nor used: 'r1'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |          ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:14: Signal is not driven, nor used: 'r2'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |              ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:18: Signal is not driven, nor used: 'r3'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                  ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:22: Signal is not driven, nor used: 'r4'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                      ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:26: Signal is not driven, nor used: 'l1'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                          ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:30: Signal is not driven, nor used: 'l2'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                              ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:34: Signal is not driven, nor used: 'l3'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                  ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:38: Signal is not driven, nor used: 'l4'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                      ^~
+%Warning-UNUSEDSIGNAL: dut.v:39:42: Signal is not used: 'mux_out1'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                          ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:52: Signal is not used: 'mux_out2'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                                    ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:62: Signal is not used: 'mux_out3'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                                              ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:72: Signal is not used: 'mux_out4'
+                                  : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                                                        ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:130: Signal is not used: 'b1_logic'
+                                   : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                                                                                                                  ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:140: Signal is not used: 'b0_logic'
+                                   : ... note: In instance 'op_core'
+   39 |     wire r1, r2, r3, r4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3, and_out4, or_out, b1_logic, b0_logic;
+      |                                                                                                                                            ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:10: Signal is not used: 'req1'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |          ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:16: Signal is not used: 'req2'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:22: Signal is not used: 'req3'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                      ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:28: Signal is not used: 'req4'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                            ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:34: Signal is not used: 'req5'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                  ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:40: Signal is not used: 'req6'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                        ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:46: Signal is not used: 'req7'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                              ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:52: Signal is not used: 'req8'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                    ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:58: Signal is not used: 'req9'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                          ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:64: Signal is not used: 'req10'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:71: Signal is not used: 'req11'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                       ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:78: Signal is not used: 'req12'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                              ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:85: Signal is not used: 'req13'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                                     ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:92: Signal is not used: 'req14'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                                            ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:99: Signal is not used: 'req15'
+                                  : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                                                   ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:106: Signal is not used: 'req16'
+                                   : ... note: In instance 'op_core'
+   41 |     wire req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12, req13, req14, req15, req16;
+      |                                                                                                          ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:10: Signal is not used: 'g_b1'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |          ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:16: Signal is not used: 'g_b2'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:22: Signal is not used: 'g_b3'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                      ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:28: Signal is not used: 'g_b4'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                            ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:34: Signal is not used: 'gnt1'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                  ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:40: Signal is not used: 'gnt2'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                        ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:46: Signal is not used: 'gnt3'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                              ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:52: Signal is not used: 'gnt4'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                    ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:58: Signal is not used: 'gnt5'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                          ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:64: Signal is not used: 'gnt6'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:70: Signal is not used: 'gnt7'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                      ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:76: Signal is not used: 'gnt8'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                            ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:82: Signal is not used: 'gnt9'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                  ^~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:88: Signal is not used: 'gnt10'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                        ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:95: Signal is not used: 'gnt11'
+                                  : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                               ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:102: Signal is not used: 'gnt12'
+                                   : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                                      ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:109: Signal is not used: 'gnt13'
+                                   : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                                             ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:116: Signal is not used: 'gnt14'
+                                   : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                                                    ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:123: Signal is not used: 'gnt15'
+                                   : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                                                           ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:130: Signal is not used: 'gnt16'
+                                   : ... note: In instance 'op_core'
+   42 |     wire g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12, gnt13, gnt14, gnt15, gnt16;
+      |                                                                                                                                  ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:10: Signal is not used: 'g1_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |          ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:22: Signal is not used: 'g2_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                      ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:34: Signal is not used: 'g3_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                  ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:46: Signal is not used: 'g4_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                              ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:58: Signal is not used: 'g5_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                          ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:70: Signal is not used: 'g6_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                      ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:82: Signal is not used: 'g7_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                  ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:94: Signal is not used: 'g8_latched'
+                                  : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                              ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:106: Signal is not used: 'g9_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                          ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:118: Signal is not used: 'g10_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                      ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:131: Signal is not used: 'g11_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                   ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:144: Signal is not used: 'g12_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                                ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:157: Signal is not used: 'g13_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                                             ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:170: Signal is not used: 'g14_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                                                          ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:183: Signal is not used: 'g15_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                                                                       ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:196: Signal is not used: 'g16_latched'
+                                   : ... note: In instance 'op_core'
+   43 |     wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+      |                                                                                                                                                                                                    ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:10: Signal is not used: 'g1_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:18: Signal is not used: 'g2_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:26: Signal is not used: 'g3_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:34: Signal is not used: 'g4_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:42: Signal is not used: 'g5_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:50: Signal is not used: 'g6_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:58: Signal is not used: 'g7_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:66: Signal is not used: 'g8_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:74: Signal is not used: 'g9_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:82: Signal is not used: 'g10_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                  ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:91: Signal is not used: 'g11_int'
+                                  : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:100: Signal is not used: 'g12_int'
+                                   : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:109: Signal is not used: 'g13_int'
+                                   : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:118: Signal is not used: 'g14_int'
+                                   : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:127: Signal is not used: 'g15_int'
+                                   : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:136: Signal is not used: 'g16_int'
+                                   : ... note: In instance 'op_core'
+   44 |     wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+      |                                                                                                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:10: Signal is not used: 't1'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |          ^~
+%Warning-UNUSEDSIGNAL: dut.v:45:14: Signal is not used: 't2'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |              ^~
+%Warning-UNUSEDSIGNAL: dut.v:45:18: Signal is not used: 't3'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                  ^~
+%Warning-UNUSEDSIGNAL: dut.v:45:22: Signal is not used: 't4'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                      ^~
+%Warning-UNUSEDSIGNAL: dut.v:45:26: Signal is not used: 'req_b1'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:34: Signal is not used: 'req_b2'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:42: Signal is not used: 'req_b3'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:50: Signal is not used: 'req_b4'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:58: Signal is not used: 'nreq_1'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:66: Signal is not used: 'nreq_2'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:74: Signal is not used: 'nreq_3'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:82: Signal is not used: 'nreq_4'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:90: Signal is not used: 'nreq_5'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:98: Signal is not used: 'nreq_6'
+                                  : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:106: Signal is not used: 'nreq_7'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:114: Signal is not used: 'nreq_8'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                  ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:122: Signal is not used: 'nreq_9'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:130: Signal is not used: 'nreq_10'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                  ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:139: Signal is not used: 'nreq_11'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:148: Signal is not used: 'nreq_12'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:157: Signal is not used: 'nreq_13'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:166: Signal is not used: 'nreq_14'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:175: Signal is not used: 'nreq_15'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:184: Signal is not used: 'nreq_16'
+                                   : ... note: In instance 'op_core'
+   45 |     wire t1, t2, t3, t4, req_b1, req_b2, req_b3, req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+      |                                                                                                                                                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:305:13: Signal is not used: 'b0'
+                                   : ... note: In instance 'op_core'
+  305 |         .b0(b0),
+      |             ^~
+%Error-PORTSHORT: dut.v:273:10: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'op_core'
+  273 |         .e1(4'b0001),
+      |          ^~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:274:10: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'op_core'
+  274 |         .e2(4'b0010),
+      |          ^~
+%Error-PORTSHORT: dut.v:275:10: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'op_core'
+  275 |         .e3(4'b0100),
+      |          ^~
+%Error-PORTSHORT: dut.v:276:10: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'op_core'
+  276 |         .e4(4'b1000)
+      |          ^~
+%Error: Exiting due to 4 error(s), 152 warning(s)

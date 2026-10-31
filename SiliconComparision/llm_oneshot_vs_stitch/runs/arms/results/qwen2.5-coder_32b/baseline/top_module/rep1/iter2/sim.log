@@ -1,0 +1,42 @@
+dut.v:101: error: 'full_out_link1_vc1' has already been declared in this scope.
+dut.v:35:      : It was declared here as a net.
+dut.v:101: error: 'full_out_link1_vc2' has already been declared in this scope.
+dut.v:36:      : It was declared here as a net.
+dut.v:101: error: 'full_out_link1_vc3' has already been declared in this scope.
+dut.v:37:      : It was declared here as a net.
+dut.v:101: error: 'full_out_link1_vc4' has already been declared in this scope.
+dut.v:38:      : It was declared here as a net.
+dut.v:102: error: 'full_out_link2_vc1' has already been declared in this scope.
+dut.v:39:      : It was declared here as a net.
+dut.v:102: error: 'full_out_link2_vc2' has already been declared in this scope.
+dut.v:40:      : It was declared here as a net.
+dut.v:102: error: 'full_out_link2_vc3' has already been declared in this scope.
+dut.v:41:      : It was declared here as a net.
+dut.v:102: error: 'full_out_link2_vc4' has already been declared in this scope.
+dut.v:42:      : It was declared here as a net.
+dut.v:103: error: 'full_out_link3_vc1' has already been declared in this scope.
+dut.v:43:      : It was declared here as a net.
+dut.v:103: error: 'full_out_link3_vc2' has already been declared in this scope.
+dut.v:44:      : It was declared here as a net.
+dut.v:103: error: 'full_out_link3_vc3' has already been declared in this scope.
+dut.v:45:      : It was declared here as a net.
+dut.v:103: error: 'full_out_link3_vc4' has already been declared in this scope.
+dut.v:46:      : It was declared here as a net.
+dut.v:104: error: 'full_out_link4_vc1' has already been declared in this scope.
+dut.v:47:      : It was declared here as a net.
+dut.v:104: error: 'full_out_link4_vc2' has already been declared in this scope.
+dut.v:48:      : It was declared here as a net.
+dut.v:104: error: 'full_out_link4_vc3' has already been declared in this scope.
+dut.v:49:      : It was declared here as a net.
+dut.v:104: error: 'full_out_link4_vc4' has already been declared in this scope.
+dut.v:50:      : It was declared here as a net.
+dut.v:107: error: 'sel_vc_link1' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:107: error: 'sel_vc_link2' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:107: error: 'sel_vc_link3' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:107: error: 'sel_vc_link4' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:107: error: 'sel_vc_core' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.

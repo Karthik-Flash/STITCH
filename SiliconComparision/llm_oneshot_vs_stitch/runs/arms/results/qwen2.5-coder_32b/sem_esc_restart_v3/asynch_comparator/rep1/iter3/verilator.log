@@ -1,0 +1,86 @@
+%Error-PROCASSWIRE: dut.v:15:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   15 |             3'b000: rd_pos = 3'b000;
+      |                     ^~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:16:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   16 |             3'b001: rd_pos = 3'b001;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:17:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   17 |             3'b011: rd_pos = 3'b010;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:18:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   18 |             3'b010: rd_pos = 3'b011;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:19:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   19 |             3'b110: rd_pos = 3'b100;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:20:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   20 |             3'b100: rd_pos = 3'b101;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:21:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   21 |             3'b101: rd_pos = 3'b101;  
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:22:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   22 |             3'b111: rd_pos = 3'b101;  
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:23:22: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_pos'
+                               : ... note: In instance 'asynch_comparator'
+   23 |             default: rd_pos = 3'b000;  
+      |                      ^~~~~~
+%Error-PROCASSWIRE: dut.v:29:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   29 |             3'b000: wr_pos = 3'b000;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:30:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   30 |             3'b001: wr_pos = 3'b001;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:31:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   31 |             3'b011: wr_pos = 3'b010;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:32:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   32 |             3'b010: wr_pos = 3'b011;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:33:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   33 |             3'b110: wr_pos = 3'b100;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:34:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   34 |             3'b100: wr_pos = 3'b101;
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:35:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   35 |             3'b101: wr_pos = 3'b101;  
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:36:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   36 |             3'b111: wr_pos = 3'b101;  
+      |                     ^~~~~~
+%Error-PROCASSWIRE: dut.v:37:22: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_pos'
+                               : ... note: In instance 'asynch_comparator'
+   37 |             default: wr_pos = 3'b000;  
+      |                      ^~~~~~
+%Error-PROCASSWIRE: dut.v:43:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'diff'
+                              : ... note: In instance 'asynch_comparator'
+   43 |         diff = wr_pos - rd_pos;
+      |         ^~~~
+%Error-PROCASSWIRE: dut.v:49:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'occupancy'
+                               : ... note: In instance 'asynch_comparator'
+   49 |             occupancy = diff;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:51:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'occupancy'
+                               : ... note: In instance 'asynch_comparator'
+   51 |             occupancy = diff + 3'b110;  
+      |             ^~~~~~~~~
+%Error: Exiting due to 21 error(s)

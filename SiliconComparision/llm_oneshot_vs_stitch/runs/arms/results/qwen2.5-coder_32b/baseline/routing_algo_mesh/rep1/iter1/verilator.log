@@ -1,0 +1,128 @@
+%Error-PROCASSWIRE: dut.v:18:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   18 |             req_link1_w = 1'b0;
+      |             ^~~~~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:19:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   19 |             req_link2_w = 1'b0;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:20:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   20 |             req_core_w = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:21:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   21 |             req_link3_w = 1'b0;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:22:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   22 |             req_link4_w = 1'b0;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:26:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   26 |                     req_link1_w = 1'b1;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:27:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   27 |                     req_link2_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:28:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   28 |                     req_core_w = 1'b0;
+      |                     ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:29:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   29 |                     req_link3_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:30:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   30 |                     req_link4_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:33:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   33 |                     req_link1_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:34:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   34 |                     req_link2_w = 1'b1;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:35:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   35 |                     req_core_w = 1'b0;
+      |                     ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:36:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   36 |                     req_link3_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:37:21: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   37 |                     req_link4_w = 1'b0;
+      |                     ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:42:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   42 |                             req_link1_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:43:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   43 |                             req_link2_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:44:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   44 |                             req_core_w = 1'b0;
+      |                             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:45:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   45 |                             req_link3_w = 1'b1;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:46:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   46 |                             req_link4_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:49:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   49 |                             req_link1_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:50:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   50 |                             req_link2_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:51:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   51 |                             req_core_w = 1'b0;
+      |                             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:52:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   52 |                             req_link3_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:53:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   53 |                             req_link4_w = 1'b1;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:56:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link1_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   56 |                             req_link1_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:57:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link2_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   57 |                             req_link2_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:58:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_core_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   58 |                             req_core_w = 1'b1;
+      |                             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:59:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link3_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   59 |                             req_link3_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:60:29: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_link4_w'
+                               : ... note: In instance 'routing_algo_mesh'
+   60 |                             req_link4_w = 1'b0;
+      |                             ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:2:18: Bits of signal are not used: 'header_in'[31,28:8]
+                                 : ... note: In instance 'routing_algo_mesh'
+    2 |     input [31:0] header_in,
+      |                  ^~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 30 error(s), 1 warning(s)

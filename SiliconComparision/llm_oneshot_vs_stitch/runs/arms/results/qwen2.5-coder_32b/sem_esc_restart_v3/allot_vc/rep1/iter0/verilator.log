@@ -1,0 +1,63 @@
+%Error: dut.v:13:10: Duplicate declaration of signal: 'gnt_or'
+                   : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+   13 |     wire gnt_or;
+      |          ^~~~~~
+        dut.v:9:12: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |            ^~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:14:10: Duplicate declaration of signal: 'ce_b1'
+   14 |     wire ce_b1, ce_b2, ce_b3, ce_b4;
+      |          ^~~~~
+        dut.v:9:20: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                    ^~~~~
+%Error: dut.v:14:17: Duplicate declaration of signal: 'ce_b2'
+   14 |     wire ce_b1, ce_b2, ce_b3, ce_b4;
+      |                 ^~~~~
+        dut.v:9:27: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                           ^~~~~
+%Error: dut.v:14:24: Duplicate declaration of signal: 'ce_b3'
+   14 |     wire ce_b1, ce_b2, ce_b3, ce_b4;
+      |                        ^~~~~
+        dut.v:9:34: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                  ^~~~~
+%Error: dut.v:14:31: Duplicate declaration of signal: 'ce_b4'
+   14 |     wire ce_b1, ce_b2, ce_b3, ce_b4;
+      |                               ^~~~~
+        dut.v:9:41: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                         ^~~~~
+%Error: dut.v:15:10: Duplicate declaration of signal: 'clr_b1'
+   15 |     wire clr_b1, clr_b2, clr_b3, clr_b4;
+      |          ^~~~~~
+        dut.v:9:48: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                                ^~~~~~
+%Error: dut.v:15:18: Duplicate declaration of signal: 'clr_b2'
+   15 |     wire clr_b1, clr_b2, clr_b3, clr_b4;
+      |                  ^~~~~~
+        dut.v:9:56: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                                        ^~~~~~
+%Error: dut.v:15:26: Duplicate declaration of signal: 'clr_b3'
+   15 |     wire clr_b1, clr_b2, clr_b3, clr_b4;
+      |                          ^~~~~~
+        dut.v:9:64: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                                                ^~~~~~
+%Error: dut.v:15:34: Duplicate declaration of signal: 'clr_b4'
+   15 |     wire clr_b1, clr_b2, clr_b3, clr_b4;
+      |                                  ^~~~~~
+        dut.v:9:72: ... Location of original declaration
+    9 |     output gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4,
+      |                                                                        ^~~~~~
+%Warning-IMPLICIT: dut.v:30:38: Signal definition not found, creating implicitly: 'ce_bk'
+                              : ... Suggested alternative: 'ce_b1'
+   30 |         encoded_addr, rd_clk, reset, ce_bk, ek
+      |                                      ^~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.053
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Error: Exiting due to 9 error(s), 1 warning(s)

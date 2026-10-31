@@ -1,0 +1,62 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# final_op_data
+
+## Behaviour
+
+Combinational output-flit formatter.
+- `data_out[31]` = `data_in[31]`.
+- `data_out[30]` = `data_in[30]` OR NOT `gnt_or`; `data_out[29]` = `data_in[29]` OR NOT `gnt_or`.
+- `data_out[28:27]` = `vc_id`.
+- `data_out[26:0]` = `data_in[26:0]` when `gnt_or` is 1, else 0.
+So with no grant the output is an idle flit (type 11) carrying `vc_id`, with bit 31 passed through.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+4 ports, in this exact order:
+
+```verilog
+input [31:0] data_in;
+input [1:0] vc_id;
+input gnt_or;
+output [31:0] data_out;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module final_op_data (
+    input [31:0] data_in,
+    input [1:0] vc_id,
+    input gnt_or,
+    output [31:0] data_out
+);
+
+wire [31:0] data_out;
+
+assign data_out[31] = data_in[31];
+assign data_out[30] = data_in[30] | (~gnt_or);
+assign data_out[29] = data_in[29] | (~gnt_or);
+assign data_out[28:27] = vc_id;
+assign data_out[26:0] = gnt_or ? data_in[26:0] : 27'b0;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:8: error: 'data_out' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

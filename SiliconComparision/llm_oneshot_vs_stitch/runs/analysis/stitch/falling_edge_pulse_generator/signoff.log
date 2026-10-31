@@ -1,0 +1,34 @@
+MISMATCH (secondary, not part of the verdict) t=54000 cycle 4: q0 = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=104000 cycle 9: q0 = 0, expected 1
+FAIL property: no pulse after gnt fell (t=104000)
+FAIL property: q0 rose without a falling edge of gnt (t=105000)
+MISMATCH (secondary, not part of the verdict) t=109000 cycle 9: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=184000 cycle 17: q0 = 0, expected 1
+FAIL property: no pulse after gnt fell (t=184000)
+FAIL property: q0 rose without a falling edge of gnt (t=185000)
+MISMATCH (secondary, not part of the verdict) t=189000 cycle 17: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=194000 cycle 18: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=254000 cycle 24: q0 = 0, expected 1
+FAIL property: no pulse after gnt fell (t=254000)
+FAIL property: q0 rose without a falling edge of gnt (t=255000)
+MISMATCH (secondary, not part of the verdict) t=259000 cycle 24: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=264000 cycle 25: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=354000 cycle 34: q0 = 0, expected 1
+FAIL property: no pulse after gnt fell (t=354000)
+FAIL property: q0 rose without a falling edge of gnt (t=355000)
+MISMATCH (secondary, not part of the verdict) t=359000 cycle 34: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=364000 cycle 35: q0 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=414000 cycle 40: q0 = 0, expected 1
+FAIL property: no pulse after gnt fell (t=414000)
+FAIL property: q0 rose without a falling edge of gnt (t=415000)
+MISMATCH (secondary, not part of the verdict) t=419000 cycle 40: q0 = 1, expected 0
+FAIL property: no pulse after gnt fell (t=524000)
+FAIL property: q0 rose without a falling edge of gnt (t=525000)
+FAIL property: no pulse after gnt fell (t=554000)
+FAIL property: q0 rose without a falling edge of gnt (t=555000)
+FAIL property: no pulse after gnt fell (t=664000)
+INFO coverage: 1 of 1 checked outputs toggled, 1 of 1 bits
+INFO cycle-exact mismatches against golden/reference: 2580 (secondary)
+FAIL: 1618 property errors
+tb.v:63: $finish called at 50009000 (1ps)

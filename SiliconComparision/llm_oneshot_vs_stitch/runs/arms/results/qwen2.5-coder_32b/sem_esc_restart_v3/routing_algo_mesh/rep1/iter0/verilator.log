@@ -1,0 +1,33 @@
+%Error: dut.v:8:10: Duplicate declaration of signal: 'req_link1'
+                  : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+    8 |     wire req_link1, req_link2, req_core, req_link3, req_link4;
+      |          ^~~~~~~~~
+        dut.v:5:12: ... Location of original declaration
+    5 |     output req_link1, req_link2, req_core, req_link3, req_link4
+      |            ^~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:8:21: Duplicate declaration of signal: 'req_link2'
+    8 |     wire req_link1, req_link2, req_core, req_link3, req_link4;
+      |                     ^~~~~~~~~
+        dut.v:5:23: ... Location of original declaration
+    5 |     output req_link1, req_link2, req_core, req_link3, req_link4
+      |                       ^~~~~~~~~
+%Error: dut.v:8:32: Duplicate declaration of signal: 'req_core'
+    8 |     wire req_link1, req_link2, req_core, req_link3, req_link4;
+      |                                ^~~~~~~~
+        dut.v:5:34: ... Location of original declaration
+    5 |     output req_link1, req_link2, req_core, req_link3, req_link4
+      |                                  ^~~~~~~~
+%Error: dut.v:8:42: Duplicate declaration of signal: 'req_link3'
+    8 |     wire req_link1, req_link2, req_core, req_link3, req_link4;
+      |                                          ^~~~~~~~~
+        dut.v:5:44: ... Location of original declaration
+    5 |     output req_link1, req_link2, req_core, req_link3, req_link4
+      |                                            ^~~~~~~~~
+%Error: dut.v:8:53: Duplicate declaration of signal: 'req_link4'
+    8 |     wire req_link1, req_link2, req_core, req_link3, req_link4;
+      |                                                     ^~~~~~~~~
+        dut.v:5:55: ... Location of original declaration
+    5 |     output req_link1, req_link2, req_core, req_link3, req_link4
+      |                                                       ^~~~~~~~~
+%Error: Exiting due to 5 error(s)

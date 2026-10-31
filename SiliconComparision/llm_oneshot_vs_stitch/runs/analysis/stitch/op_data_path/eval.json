@@ -1,0 +1,21 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "adf685ae69ec34a032f36ebd29e51799a662f8c2923c85792262a33ec3ee0821",
+ "file": "outputs/stitch/op_data_path.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

@@ -1,0 +1,8 @@
+%Error: dut.v:2:22: syntax error, unexpected ';', expecting ','
+    2 |     input d, clr, clk;
+      |                      ^
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:8:1: syntax error, unexpected always
+    8 | always @(posedge clk or posedge clr) begin
+      | ^~~~~~
+%Error: Exiting due to 2 error(s)

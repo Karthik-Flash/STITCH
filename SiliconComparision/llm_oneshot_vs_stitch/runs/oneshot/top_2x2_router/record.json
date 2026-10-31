@@ -1,0 +1,29 @@
+{
+ "module": "top_2x2_router",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "status": "ok",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "timeout_s": 3600,
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 1379,
+ "tokens_out": 7738,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 1379,
+  "eval_count": 7738,
+  "total_duration": 118170757043,
+  "load_duration": 4769061,
+  "eval_duration": 116455177000
+ },
+ "wall_s": 118.2,
+ "timestamp": "2026-10-30T09:31:25",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "ae9ac7bbc1f0f27cddab02f7a0c349444b783105d26c17f8aa64067124517529",
+ "response_sha256": "450e8161e168351ad9b479746d239d1678d48b418abe7bbc5bbab06e5b77eaae",
+ "output_sha256": "6ff8c768d4879cd9c12cd4ea25cb945a9c716d1698f5e30b86721bcec45c678e",
+ "mock_mode": null
+}

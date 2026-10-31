@@ -1,0 +1,86 @@
+%Error: dut.v:13:92: Duplicate declaration of signal: 'req_10'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, req_10, req_11,
+      |                                                                                            ^~~~~~
+        dut.v:2:106: ... Location of original declaration
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                                          ^~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:13:100: Duplicate declaration of signal: 'req_11'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, req_10, req_11,
+      |                                                                                                    ^~~~~~
+        dut.v:3:11: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |           ^~~~~~
+%Error: dut.v:14:12: Duplicate declaration of signal: 'req_12'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |            ^~~~~~
+        dut.v:3:19: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                   ^~~~~~
+%Error: dut.v:14:20: Duplicate declaration of signal: 'req_13'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                    ^~~~~~
+        dut.v:3:27: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                           ^~~~~~
+%Error: dut.v:14:28: Duplicate declaration of signal: 'req_14'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                            ^~~~~~
+        dut.v:3:35: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                   ^~~~~~
+%Error: dut.v:14:36: Duplicate declaration of signal: 'req_15'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                                    ^~~~~~
+        dut.v:3:43: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                           ^~~~~~
+%Error: dut.v:14:44: Duplicate declaration of signal: 'req_16'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                                            ^~~~~~
+        dut.v:3:51: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                                   ^~~~~~
+%Error: dut.v:13:92: Duplicate declaration of port: 'req_10'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, req_10, req_11,
+      |                                                                                            ^~~~~~
+        dut.v:2:106: ... Location of original declaration
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                                          ^~~~~~
+%Error: dut.v:13:100: Duplicate declaration of port: 'req_11'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, req_10, req_11,
+      |                                                                                                    ^~~~~~
+        dut.v:3:11: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |           ^~~~~~
+%Error: dut.v:14:12: Duplicate declaration of port: 'req_12'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |            ^~~~~~
+        dut.v:3:19: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                   ^~~~~~
+%Error: dut.v:14:20: Duplicate declaration of port: 'req_13'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                    ^~~~~~
+        dut.v:3:27: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                           ^~~~~~
+%Error: dut.v:14:28: Duplicate declaration of port: 'req_14'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                            ^~~~~~
+        dut.v:3:35: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                   ^~~~~~
+%Error: dut.v:14:36: Duplicate declaration of port: 'req_15'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                                    ^~~~~~
+        dut.v:3:43: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                           ^~~~~~
+%Error: dut.v:14:44: Duplicate declaration of port: 'req_16'
+   14 |            req_12, req_13, req_14, req_15, req_16
+      |                                            ^~~~~~
+        dut.v:3:51: ... Location of original declaration
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                                   ^~~~~~
+%Error: Exiting due to 14 error(s)

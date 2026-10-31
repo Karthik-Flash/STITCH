@@ -1,0 +1,34 @@
+MISMATCH (secondary, not part of the verdict) t=59000 cycle 4: empty = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=64000 cycle 5: empty = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=69000 cycle 5: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=69000 cycle 5: empty = 1, expected 0
+FAIL property: FIFO order: wrong word read (t=69000)
+MISMATCH (secondary, not part of the verdict) t=74000 cycle 6: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=74000 cycle 6: empty = 1, expected 0
+FAIL property: empty flag wrong (t=74000)
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: empty = 1, expected 0
+FAIL property: empty flag wrong (t=79000)
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: empty = 1, expected 0
+FAIL property: empty flag wrong (t=84000)
+MISMATCH (secondary, not part of the verdict) t=89000 cycle 7: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=89000 cycle 7: empty = 1, expected 0
+FAIL property: empty flag wrong (t=89000)
+MISMATCH (secondary, not part of the verdict) t=94000 cycle 8: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=94000 cycle 8: empty = 1, expected 0
+FAIL property: empty flag wrong (t=94000)
+MISMATCH (secondary, not part of the verdict) t=99000 cycle 8: data_out = 60000000, expected 503d3120
+FAIL property: FIFO order: wrong word read (t=99000)
+FAIL property: empty flag wrong (t=139000)
+FAIL property: empty flag wrong (t=144000)
+FAIL property: empty flag wrong (t=149000)
+FAIL property: empty flag wrong (t=154000)
+FAIL property: FIFO order: wrong word read (t=159000)
+FAIL property: full_int flag wrong (overflow) (t=159000)
+FAIL property: full_ext flag wrong (t=159000)
+FAIL property: full_int flag wrong (overflow) (t=164000)
+INFO coverage: 8 of 8 checked outputs toggled, 38 of 43 bits
+INFO cycle-exact mismatches against golden/reference: 51261 (secondary)
+FAIL: 17151 property errors
+tb.v:149: $finish called at 50009000 (1ps)

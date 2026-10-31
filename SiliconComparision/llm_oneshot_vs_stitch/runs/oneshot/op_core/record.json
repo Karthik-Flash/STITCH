@@ -1,0 +1,32 @@
+{
+ "module": "op_core",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "status": "ok",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "timeout_s": 3600,
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 3051,
+ "tokens_out": 5432,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 3051,
+  "eval_count": 5432,
+  "total_duration": 198994844362,
+  "load_duration": 107577202449,
+  "eval_duration": 88464034000,
+  "gpu_offload": "offloaded 65/65 layers to GPU",
+  "llama_n_threads": "n_threads = 4 (n_threads_batch = 4) / 64",
+  "tok_s": 61.4
+ },
+ "wall_s": 199.0,
+ "timestamp": "2026-10-30T09:15:26",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "7d8dabc2dfa55aeea44606dbfce7b9fb1ad5e80004276ba841607a0f6f24cb62",
+ "response_sha256": "02ed651b25845218d6cdc1ec73041f864031973ac9a3876682add7f9665041a8",
+ "output_sha256": "4181fa97f5c122e8c0033dd360ed0dbe68b4816874a9048da459dbac35e84779",
+ "mock_mode": null
+}

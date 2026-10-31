@@ -1,0 +1,75 @@
+dut.v:273: error: port ``g1'' already bound.
+dut.v:273: error: port ``g2'' already bound.
+dut.v:273: error: port ``g3'' already bound.
+dut.v:273: error: port ``g4'' already bound.
+dut.v:209: warning: Port 20 (link_1) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 21 (vc_id_1) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 22 (link_2) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 23 (vc_id_2) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 24 (link_3) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 25 (vc_id_3) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 26 (link_4) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 27 (vc_id_4) of module allot_vc expects 2 bit(s), given 1.
+dut.v:209:        : Padding 1 high bits of the port.
+dut.v:209: warning: Port 57 (e1) of module allot_vc expects 4 bit(s), given 1.
+dut.v:209:        : Padding 3 high bits of the port.
+dut.v:209: warning: Port 58 (e2) of module allot_vc expects 4 bit(s), given 1.
+dut.v:209:        : Padding 3 high bits of the port.
+dut.v:209: warning: Port 59 (e3) of module allot_vc expects 4 bit(s), given 1.
+dut.v:209:        : Padding 3 high bits of the port.
+dut.v:209: warning: Port 60 (e4) of module allot_vc expects 4 bit(s), given 1.
+dut.v:209:        : Padding 3 high bits of the port.
+dut.v:273: error: port ``g1'' already bound.
+dut.v:273: error: port ``g2'' already bound.
+dut.v:273: error: port ``g3'' already bound.
+dut.v:273: error: port ``g4'' already bound.
+dut.v:281: error: expression not valid in assign l-value: 1'd0
+dut.v:281: error: Output port expression must support a continuous assignment.
+dut.v:281:      : Port 8 (g2) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:282: error: expression not valid in assign l-value: 1'd0
+dut.v:282: error: Output port expression must support a continuous assignment.
+dut.v:282:      : Port 9 (g3) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:283: error: expression not valid in assign l-value: 1'd0
+dut.v:283: error: Output port expression must support a continuous assignment.
+dut.v:283:      : Port 10 (g4) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:284: error: expression not valid in assign l-value: 1'd0
+dut.v:284: error: Output port expression must support a continuous assignment.
+dut.v:284:      : Port 11 (l1) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:285: error: expression not valid in assign l-value: 1'd0
+dut.v:285: error: Output port expression must support a continuous assignment.
+dut.v:285:      : Port 12 (l2) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:286: error: expression not valid in assign l-value: 1'd0
+dut.v:286: error: Output port expression must support a continuous assignment.
+dut.v:286:      : Port 13 (l3) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:287: error: expression not valid in assign l-value: 1'd0
+dut.v:287: error: Output port expression must support a continuous assignment.
+dut.v:287:      : Port 14 (l4) of rr_comb_new is connected to tb.dut.1'd0
+dut.v:309: error: 'ready_vc1' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'ready_vc1' is declared here as a wire.
+dut.v:310: error: 'ready_vc2' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'ready_vc2' is declared here as a wire.
+dut.v:311: error: 'ready_vc3' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'ready_vc3' is declared here as a wire.
+dut.v:312: error: 'ready_vc4' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'ready_vc4' is declared here as a wire.
+dut.v:308: warning: @* found no sensitivities so it will never trigger.
+dut.v:318: error: 'ip_link_vc_int' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip_link_vc_int' is declared here as a wire.
+dut.v:319: error: 'ip_link_vc_int' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip_link_vc_int' is declared here as a wire.
+dut.v:320: error: 'ip_link_vc_int' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip_link_vc_int' is declared here as a wire.
+dut.v:321: error: 'ip_link_vc_int' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip_link_vc_int' is declared here as a wire.
+dut.v:322: error: 'ip_link_vc_int' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip_link_vc_int' is declared here as a wire.
+dut.v:328: error: 'all_vc_not_busy' is not a valid l-value for a procedural assignment.
+dut.v:38:      : 'all_vc_not_busy' is declared here as a wire.
+25 error(s) during elaboration.

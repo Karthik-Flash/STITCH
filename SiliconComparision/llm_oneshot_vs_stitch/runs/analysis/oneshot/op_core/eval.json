@@ -1,0 +1,26 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "IMPLICIT": 1,
+  "WIDTHEXPAND": 17,
+  "WIDTHTRUNC": 5,
+  "UNUSEDSIGNAL": 154
+ },
+ "verilator_warnings_count": 177,
+ "verilator_hard": 5,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "4181fa97f5c122e8c0033dd360ed0dbe68b4816874a9048da459dbac35e84779",
+ "file": "outputs/oneshot/op_core.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

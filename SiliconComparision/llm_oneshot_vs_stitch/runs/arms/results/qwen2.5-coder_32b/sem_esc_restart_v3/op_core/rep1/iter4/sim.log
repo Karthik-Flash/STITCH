@@ -1,0 +1,25 @@
+dut.v:273: error: expression not valid in assign l-value: 4'd1
+dut.v:273: error: Output port expression must support a continuous assignment.
+dut.v:273:      : Port 57 (e1) of allot_vc is connected to tb.dut.4'd1
+dut.v:274: error: expression not valid in assign l-value: 4'd2
+dut.v:274: error: Output port expression must support a continuous assignment.
+dut.v:274:      : Port 58 (e2) of allot_vc is connected to tb.dut.4'd2
+dut.v:275: error: expression not valid in assign l-value: 4'd4
+dut.v:275: error: Output port expression must support a continuous assignment.
+dut.v:275:      : Port 59 (e3) of allot_vc is connected to tb.dut.4'd4
+dut.v:276: error: expression not valid in assign l-value: 4'd8
+dut.v:276: error: Output port expression must support a continuous assignment.
+dut.v:276:      : Port 60 (e4) of allot_vc is connected to tb.dut.4'd8
+dut.v:283: error: Unable to bind wire/reg/memory `ready_vc1' in `tb.dut'
+dut.v:396:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:283: error: Failed to elaborate input port 'r1' expression (ready_vc1) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:284: error: Unable to bind wire/reg/memory `ready_vc2' in `tb.dut'
+dut.v:396:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:284: error: Failed to elaborate input port 'r2' expression (ready_vc2) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:285: error: Unable to bind wire/reg/memory `ready_vc3' in `tb.dut'
+dut.v:396:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:285: error: Failed to elaborate input port 'r3' expression (ready_vc3) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:286: error: Unable to bind wire/reg/memory `ready_vc4' in `tb.dut'
+dut.v:396:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:286: error: Failed to elaborate input port 'r4' expression (ready_vc4) in instance dut.u_rr_comb_new of module: rr_comb_new.
+12 error(s) during elaboration.

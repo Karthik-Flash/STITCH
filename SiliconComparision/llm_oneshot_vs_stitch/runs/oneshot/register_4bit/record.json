@@ -1,0 +1,27 @@
+{
+ "module": "register_4bit",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 517,
+ "tokens_out": 114,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 517,
+  "eval_count": 114,
+  "total_duration": 19675453734,
+  "load_duration": 1151358,
+  "eval_duration": 19121760000
+ },
+ "wall_s": 19.8,
+ "timestamp": "2026-10-30T08:37:17",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "1af39806e45f95db9b256ddbf9ec57b88c921db04fa0da7b17a8ddef961374e0",
+ "response_sha256": "78c4bb53d9fa6c07ac50821125df8831b11fac49dce8112bce4b428c7ebfeab8",
+ "output_sha256": "c58fed89802434315278f6b3d76f8abf1da9d64d27c595009c3351f7cc4dfcef",
+ "mock_mode": null
+}

@@ -1,0 +1,278 @@
+%Warning-PINCONNECTEMPTY: dut.v:34:10: Instance pin connected by name with empty reference: 'full_int'
+   34 |         .full_int(),
+      |          ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:133:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link1_w' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  133 |             req_l1_w = req_link1_w;
+      |                      ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:134:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link2_w' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  134 |             req_l2_w = req_link2_w;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:135:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link3_w' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  135 |             req_l3_w = req_link3_w;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:136:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link4_w' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  136 |             req_l4_w = req_link4_w;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:137:21: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_core_w' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  137 |             req_c_w = req_core_w;
+      |                     ^
+%Warning-WIDTHEXPAND: dut.v:139:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  139 |             req_l1_w = 1'b0;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:140:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  140 |             req_l2_w = 1'b0;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:141:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  141 |             req_l3_w = 1'b0;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:142:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  142 |             req_l4_w = 1'b0;
+      |                      ^
+%Warning-WIDTHEXPAND: dut.v:143:21: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... note: In instance 'ip_chnl'
+  143 |             req_c_w = 1'b0;
+      |                     ^
+%Warning-WIDTHTRUNC: dut.v:152:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l1_w' generates 32 bits.
+                                 : ... note: In instance 'ip_chnl'
+  152 |             req_l1 = req_l1_w;
+      |                    ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:153:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l2_w' generates 32 bits.
+                                 : ... note: In instance 'ip_chnl'
+  153 |             req_l2 = req_l2_w;
+      |                    ^
+%Warning-WIDTHTRUNC: dut.v:154:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l3_w' generates 32 bits.
+                                 : ... note: In instance 'ip_chnl'
+  154 |             req_l3 = req_l3_w;
+      |                    ^
+%Warning-WIDTHTRUNC: dut.v:155:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l4_w' generates 32 bits.
+                                 : ... note: In instance 'ip_chnl'
+  155 |             req_l4 = req_l4_w;
+      |                    ^
+%Warning-WIDTHTRUNC: dut.v:156:19: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_c_w' generates 32 bits.
+                                 : ... note: In instance 'ip_chnl'
+  156 |             req_c = req_c_w;
+      |                   ^
+%Error-PROCASSWIRE: dut.v:150:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+                                : ... note: In instance 'ip_chnl'
+  150 |             full_ext = full_ext_w;
+      |             ^~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:151:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty_synch_rdclk'
+                                : ... note: In instance 'ip_chnl'
+  151 |             empty_synch_rdclk = empty_w;
+      |             ^~~~~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:152:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                                : ... note: In instance 'ip_chnl'
+  152 |             req_l1 = req_l1_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:153:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                                : ... note: In instance 'ip_chnl'
+  153 |             req_l2 = req_l2_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:154:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                                : ... note: In instance 'ip_chnl'
+  154 |             req_l3 = req_l3_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:155:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                                : ... note: In instance 'ip_chnl'
+  155 |             req_l4 = req_l4_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:156:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                                : ... note: In instance 'ip_chnl'
+  156 |             req_c = req_c_w;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:157:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out'
+                                : ... note: In instance 'ip_chnl'
+  157 |             data_out = mux_data_out_w;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:158:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer'
+                                : ... note: In instance 'ip_chnl'
+  158 |             tailer = tailer_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:159:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_org'
+                                : ... note: In instance 'ip_chnl'
+  159 |             tailer_org = tailer_org_w;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:160:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'nxt_reset'
+                                : ... note: In instance 'ip_chnl'
+  160 |             nxt_reset = 1'b0;  
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:161:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+                                : ... note: In instance 'ip_chnl'
+  161 |             data_sel = data_sel;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:162:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header'
+                                : ... note: In instance 'ip_chnl'
+  162 |             header = header_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:163:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                                : ... note: In instance 'ip_chnl'
+  163 |             empty = empty_w;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:164:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'fifo_out'
+                                : ... note: In instance 'ip_chnl'
+  164 |             fifo_out = fifo_out_w;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:165:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_flit'
+                                : ... note: In instance 'ip_chnl'
+  165 |             header_flit = header_flit_w;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:166:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'reg_out'
+                                : ... note: In instance 'ip_chnl'
+  166 |             reg_out = header_flit_w;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:167:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out'
+                                : ... note: In instance 'ip_chnl'
+  167 |             mux_data_out = mux_data_out_w;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:168:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out'
+                                : ... note: In instance 'ip_chnl'
+  168 |             header_out = header_out_w;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:170:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+                                : ... note: In instance 'ip_chnl'
+  170 |             full_ext = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:171:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty_synch_rdclk'
+                                : ... note: In instance 'ip_chnl'
+  171 |             empty_synch_rdclk = 1'b0;
+      |             ^~~~~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:172:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                                : ... note: In instance 'ip_chnl'
+  172 |             req_l1 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:173:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                                : ... note: In instance 'ip_chnl'
+  173 |             req_l2 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:174:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                                : ... note: In instance 'ip_chnl'
+  174 |             req_l3 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:175:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                                : ... note: In instance 'ip_chnl'
+  175 |             req_l4 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:176:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                                : ... note: In instance 'ip_chnl'
+  176 |             req_c = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:177:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out'
+                                : ... note: In instance 'ip_chnl'
+  177 |             data_out = 32'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:178:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer'
+                                : ... note: In instance 'ip_chnl'
+  178 |             tailer = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:179:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_org'
+                                : ... note: In instance 'ip_chnl'
+  179 |             tailer_org = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:180:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'nxt_reset'
+                                : ... note: In instance 'ip_chnl'
+  180 |             nxt_reset = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:181:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+                                : ... note: In instance 'ip_chnl'
+  181 |             data_sel = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:182:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header'
+                                : ... note: In instance 'ip_chnl'
+  182 |             header = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:183:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                                : ... note: In instance 'ip_chnl'
+  183 |             empty = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:184:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'fifo_out'
+                                : ... note: In instance 'ip_chnl'
+  184 |             fifo_out = 32'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:185:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_flit'
+                                : ... note: In instance 'ip_chnl'
+  185 |             header_flit = 32'b0;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:186:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'reg_out'
+                                : ... note: In instance 'ip_chnl'
+  186 |             reg_out = 32'b0;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:187:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out'
+                                : ... note: In instance 'ip_chnl'
+  187 |             mux_data_out = 32'b0;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:188:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out'
+                                : ... note: In instance 'ip_chnl'
+  188 |             header_out = 32'b0;
+      |             ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:22: Signal is not used: 'en1_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                      ^~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:14:36: Signal is not used: 'en4_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                    ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:43: Signal is not used: 'en5_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                           ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:50: Signal is not used: 'en6_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                                  ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:16: Bits of signal are not used: 'req_l1_w'[31:1]
+                                  : ... note: In instance 'ip_chnl'
+   18 |     reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+      |                ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:26: Bits of signal are not used: 'req_l2_w'[31:1]
+                                  : ... note: In instance 'ip_chnl'
+   18 |     reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+      |                          ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:36: Bits of signal are not used: 'req_l3_w'[31:1]
+                                  : ... note: In instance 'ip_chnl'
+   18 |     reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+      |                                    ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:46: Bits of signal are not used: 'req_l4_w'[31:1]
+                                  : ... note: In instance 'ip_chnl'
+   18 |     reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+      |                                              ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:56: Bits of signal are not used: 'req_c_w'[31:1]
+                                  : ... note: In instance 'ip_chnl'
+   18 |     reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+      |                                                        ^~~~~~~
+%Error-PORTSHORT: dut.v:28:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   28 |         .rd_add(3'b000),
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:29:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   29 |         .wr_add(3'b000),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:30:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   30 |         .wr_dir(1'b0),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:31:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   31 |         .rd_dir(1'b0),
+      |          ^~~~~~
+%Error: Exiting due to 42 error(s), 25 warning(s)

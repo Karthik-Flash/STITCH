@@ -1,0 +1,9 @@
+%Error: dut.v:8:13: Duplicate declaration of signal: 'data_out'
+                  : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+    8 | wire [31:0] data_out;
+      |             ^~~~~~~~
+        dut.v:5:19: ... Location of original declaration
+    5 |     output [31:0] data_out
+      |                   ^~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: Exiting due to 1 error(s)

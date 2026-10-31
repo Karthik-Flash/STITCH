@@ -1,0 +1,163 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# router_fifo
+
+## Behaviour
+
+6-entry FIFO of 32-bit words with separate write and read clocks.
+
+- Write: on a rising edge of `wr_clk`, if `wr_en` is 1 and the FIFO is not full (`full_int` = 0),
+  `data_in` is stored and the write pointer advances.
+- Read: on a rising edge of `rd_clk`, if `rd_en` is 1 and the FIFO is not empty (`empty` = 0),
+  `data_out` (registered) takes the oldest entry and the read pointer advances. Otherwise `data_out` holds.
+- `wr_add` and `rd_add` are the current write and read pointers. Both step through the Gray sequence 000,
+  001, 011, 010, 110, 100. `wr_dir` and `rd_dir` toggle each time the matching pointer wraps.
+- `empty` = no entries; `full_int` = 6 entries; `full_ext` = 4 or more entries. All three are
+  combinational in the pointers.
+
+## Reset
+
+Synchronous, active-high `reset`: both pointers return to 000 at their clock's next rising edge, and
+`data_out` becomes 32'h6000_0000 at the next rising `rd_clk` edge. Stored words are not cleared. Each dir
+bit inherits gray_mod6's caveat.
+
+## Ports
+
+14 ports, in this exact order:
+
+```verilog
+input reset, rd_clk, rd_en;
+input [31:0] data_in;
+input wr_clk, wr_en;
+output [2:0] rd_add, wr_add;
+output wr_dir, rd_dir;
+output [31:0] data_out;
+output full_ext, full_int, empty;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `asynch_comparator` x 1: (rd_ptr, wr_ptr, rd_dir, wr_dir, full_ext, full_int, empty)
+- `gray_mod6` x 2: (clk, reset, en, gray_out, dir)
+- `memory` x 1: (reset, rd_clk, rd_add, wr_clk, wr_add, data_in, wr_en, rd_en, data_out)
+
+
+CURRENT RTL:
+```verilog
+module router_fifo (
+    input reset, rd_clk, rd_en,
+    input [31:0] data_in,
+    input wr_clk, wr_en,
+    output [2:0] rd_add, wr_add,
+    output wr_dir, rd_dir,
+    output [31:0] data_out,
+    output full_ext, full_int, empty
+);
+
+    wire [2:0] rd_ptr, wr_ptr;
+    wire rd_dir_int, wr_dir_int;
+    wire [31:0] data_out_int;
+
+    gray_mod6 rd_gray_mod (
+        .clk(rd_clk),
+        .reset(reset),
+        .en(rd_en),
+        .gray_out(rd_add),
+        .dir(rd_dir_int)
+    );
+
+    gray_mod6 wr_gray_mod (
+        .clk(wr_clk),
+        .reset(reset),
+        .en(wr_en),
+        .gray_out(wr_add),
+        .dir(wr_dir_int)
+    );
+
+    memory mem (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_add(rd_ptr),
+        .wr_clk(wr_clk),
+        .wr_add(wr_ptr),
+        .data_in(data_in),
+        .wr_en(wr_en),
+        .rd_en(rd_en),
+        .data_out(data_out_int)
+    );
+
+    asynch_comparator comp (
+        .rd_ptr(rd_ptr),
+        .wr_ptr(wr_ptr),
+        .rd_dir(rd_dir_int),
+        .wr_dir(wr_dir_int),
+        .full_ext(full_ext),
+        .full_int(full_int),
+        .empty(empty)
+    );
+
+    reg [2:0] rd_ptr_reg;
+    reg [2:0] wr_ptr_reg;
+    reg [31:0] data_out_reg;
+    reg rd_dir_reg;
+    reg wr_dir_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            rd_ptr_reg <= 3'b000;
+            data_out_reg <= 32'h6000_0000;
+            rd_dir_reg <= 1'b0;
+        end else begin
+            if (rd_en && !empty) begin
+                rd_ptr_reg <= rd_ptr_reg + 1; // Increment rd_ptr_reg directly
+                data_out_reg <= data_out_int;
+            end
+            rd_dir_reg <= rd_dir_int;
+        end
+    end
+
+    always @(posedge wr_clk or posedge reset) begin
+        if (reset) begin
+            wr_ptr_reg <= 3'b000;
+            wr_dir_reg <= 1'b0;
+        end else begin
+            if (wr_en && !full_int) begin
+                wr_ptr_reg <= wr_ptr_reg + 1; // Increment wr_ptr_reg directly
+            end
+            wr_dir_reg <= wr_dir_int;
+        end
+    end
+
+    assign rd_ptr = rd_ptr_reg;
+    assign wr_ptr = wr_ptr_reg;
+    assign data_out = data_out_reg;
+    assign rd_dir = rd_dir_reg;
+    assign wr_dir = wr_dir_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=59000 cycle 4: rd_add = 1, expected 0
+FAIL t=64000 cycle 5: rd_add = 1, expected 0
+FAIL t=69000 cycle 5: rd_add = 1, expected 0
+FAIL t=74000 cycle 6: rd_add = 1, expected 0
+FAIL t=79000 cycle 6: rd_add = 3, expected 1
+FAIL t=79000 cycle 6: data_out = 5d817e33, expected 07f2f403
+FAIL t=84000 cycle 7: rd_add = 3, expected 1
+FAIL t=84000 cycle 7: data_out = 5d817e33, expected 07f2f403
+FAIL t=89000 cycle 7: rd_add = 3, expected 1
+FAIL t=89000 cycle 7: data_out = 5d817e33, expected 07f2f403
+FAIL t=94000 cycle 8: rd_add = 3, expected 1
+FAIL t=94000 cycle 8: data_out = 5d817e33, expected 07f2f403
+FAIL t=99000 cycle 8: rd_add = 2, expected 3
+FAIL t=99000 cycle 8: data_out = 07f2f403, expected 23074702
+FAIL t=104000 cycle 9: rd_add = 2, expected 3
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

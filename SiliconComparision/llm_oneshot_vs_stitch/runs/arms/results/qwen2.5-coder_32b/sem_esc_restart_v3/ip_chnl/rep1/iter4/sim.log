@@ -1,0 +1,71 @@
+dut.v:27: error: expression not valid in assign l-value: 3'd0
+dut.v:27: error: Output port expression must support a continuous assignment.
+dut.v:27:      : Port 7 (rd_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:28: error: expression not valid in assign l-value: 3'd0
+dut.v:28: error: Output port expression must support a continuous assignment.
+dut.v:28:      : Port 8 (wr_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:29: error: expression not valid in assign l-value: 1'd0
+dut.v:29: error: Output port expression must support a continuous assignment.
+dut.v:29:      : Port 9 (wr_dir) of router_fifo is connected to tb.dut.1'd0
+dut.v:30: error: expression not valid in assign l-value: 1'd0
+dut.v:30: error: Output port expression must support a continuous assignment.
+dut.v:30:      : Port 10 (rd_dir) of router_fifo is connected to tb.dut.1'd0
+dut.v:132: error: 'req_l1' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l1' is declared here as a wire.
+dut.v:133: error: 'req_l2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l2' is declared here as a wire.
+dut.v:134: error: 'req_l3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l3' is declared here as a wire.
+dut.v:135: error: 'req_l4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l4' is declared here as a wire.
+dut.v:136: error: 'req_c' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_c' is declared here as a wire.
+dut.v:138: error: 'req_l1' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l1' is declared here as a wire.
+dut.v:139: error: 'req_l2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l2' is declared here as a wire.
+dut.v:140: error: 'req_l3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l3' is declared here as a wire.
+dut.v:141: error: 'req_l4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l4' is declared here as a wire.
+dut.v:142: error: 'req_c' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_c' is declared here as a wire.
+dut.v:165: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'full_ext' is declared here as a wire.
+dut.v:166: error: 'empty_synch_rdclk' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'empty_synch_rdclk' is declared here as a wire.
+dut.v:167: error: 'req_l1' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l1' is declared here as a wire.
+dut.v:168: error: 'req_l2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l2' is declared here as a wire.
+dut.v:169: error: 'req_l3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l3' is declared here as a wire.
+dut.v:170: error: 'req_l4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l4' is declared here as a wire.
+dut.v:171: error: 'req_c' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_c' is declared here as a wire.
+dut.v:172: error: 'data_out' is not a valid l-value for a procedural assignment.
+dut.v:1:      : 'data_out' is declared here as a wire.
+dut.v:173: error: 'tailer' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'tailer' is declared here as a wire.
+dut.v:174: error: 'tailer_org' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'tailer_org' is declared here as a wire.
+dut.v:175: error: 'nxt_reset' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'nxt_reset' is declared here as a wire.
+dut.v:176: error: 'data_sel' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'data_sel' is declared here as a wire.
+dut.v:177: error: 'header' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'header' is declared here as a wire.
+dut.v:178: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'empty' is declared here as a wire.
+dut.v:179: error: 'fifo_out' is not a valid l-value for a procedural assignment.
+dut.v:1:      : 'fifo_out' is declared here as a wire.
+dut.v:180: error: 'header_flit' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'header_flit' is declared here as a wire.
+dut.v:181: error: 'reg_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'reg_out' is declared here as a wire.
+dut.v:182: error: 'mux_data_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'mux_data_out' is declared here as a wire.
+dut.v:183: error: 'header_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'header_out' is declared here as a wire.
+33 error(s) during elaboration.

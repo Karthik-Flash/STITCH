@@ -1,0 +1,468 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# round_robin_req
+
+## Behaviour
+
+Two-level switch allocator for one output port: picks one of 16 input-VC requests. `req_1` to `req_16`
+are four groups of four (group 1 = `req_1` to `req_4`, ..., group 4 = `req_13` to `req_16`).
+
+- One grant per request: once request i has been granted, it is masked until `req_i` returns to 0.
+  Flag Li (`gi_latched`) becomes 1 on a rising edge of `gi_int` and is held at 0 while `req_i` is 0.
+  The masked request is `reqi` = `req_i` AND NOT Li.
+- First level: within each group, a round-robin arbiter (rr_arbiter, clock `rd_clk`) grants among the
+  four masked requests, giving `gnt1` to `gnt16`.
+- `req_bk` = OR of group k's masked requests; `tk` = `all_vc_not_busy` AND `req_bk`. Second level: a
+  round-robin arbiter over `t1` to `t4` gives `g_b1` to `g_b4`.
+- `gi` = `gnti` AND `g_b`(group of i). `gi_int` = `gi` registered on rising `rd_clk`.
+- `nreq_i` = NOT `req_i`. `tailer1` to `tailer16` have no effect.
+
+## Reset
+
+Active-high `reset`: both arbiter levels reset (see rr_arbiter), and `gi_int` becomes 0 at the next
+rising `rd_clk` edge. Li has no reset pin; it clears while `req_i` is 0.
+
+## Ports
+
+143 ports, in this exact order:
+
+```verilog
+input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      req_11, req_12, req_13, req_14, req_15, req_16;
+output g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      tailer12, tailer13, tailer14, tailer15, tailer16;
+output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+       gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+       req13, req14, req15, req16, g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched,
+       g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched,
+       g15_latched, g16_latched, g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int,
+       g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int, t1, t2, t3, t4, req_b1, req_b2, req_b3,
+       req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+       nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `dff_asynch_clr` x 16: (d, clr, clk, q)
+- `dff_synch_reset` x 16: (d, reset, clk, q)
+- `rr_arbiter` x 5: (req1, req2, req3, req4, reset, gnt1, gnt2, gnt3, gnt4, clk)
+
+
+CURRENT RTL:
+```verilog
+module round_robin_req (
+    input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+          req_11, req_12, req_13, req_14, req_15, req_16,
+    output g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16,
+    input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+          tailer12, tailer13, tailer14, tailer15, tailer16,
+    output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+           gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+           req13, req14, req15, req16, g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched,
+           g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched,
+           g15_latched, g16_latched, g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int,
+           g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int, t1, t2, t3, t4, req_b1, req_b2, req_b3,
+           req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+           nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+);
+
+    wire [15:1] req;
+    wire [15:1] gi;
+    wire [15:1] gi_int;
+    wire [15:1] gi_latched;
+    wire [15:1] nreq;
+    wire [4:1] req_b;
+    wire [4:1] t;
+    wire [15:1] gnt;
+
+    assign req = {req_16, req_15, req_14, req_13, req_12, req_11, req_10, req_9, req_8, req_7, req_6, req_5, req_4, req_3, req_2, req_1};
+    assign nreq = ~req;
+
+    genvar i;
+    generate
+        for (i = 1; i <= 16; i = i + 1) begin : gen_gi
+            assign gi[i] = gnt[i] & gi_latched[i];
+        end
+    endgenerate
+
+    generate
+        for (i = 1; i <= 16; i = i + 1) begin : gen_gi_int
+            dff_synch_reset dff_gi_int (
+                .d(gi[i]),
+                .reset(reset),
+                .clk(rd_clk),
+                .q(gi_int[i])
+            );
+        end
+    endgenerate
+
+    generate
+        for (i = 1; i <= 16; i = i + 1) begin : gen_gi_latched
+            dff_asynch_clr dff_gi_latched (
+                .d(gi_int[i]),
+                .clr(nreq[i]),
+                .clk(rd_clk),
+                .q(gi_latched[i])
+            );
+        end
+    endgenerate
+
+    wire [15:1] req_masked;
+
+    generate
+        for (i = 1; i <= 16; i = i + 1) begin : gen_req_masked
+            assign req_masked[i] = req[i] & ~gi_latched[i];
+        end
+    endgenerate
+
+    assign req_b[1] = req_masked[4] | req_masked[3] | req_masked[2] | req_masked[1];
+    assign req_b[2] = req_masked[8] | req_masked[7] | req_masked[6] | req_masked[5];
+    assign req_b[3] = req_masked[12] | req_masked[11] | req_masked[10] | req_masked[9];
+    assign req_b[4] = req_masked[16] | req_masked[15] | req_masked[14] | req_masked[13];
+
+    assign t[1] = all_vc_not_busy & req_b[1];
+    assign t[2] = all_vc_not_busy & req_b[2];
+    assign t[3] = all_vc_not_busy & req_b[3];
+    assign t[4] = all_vc_not_busy & req_b[4];
+
+    rr_arbiter arb_group1 (
+        .req1(req_masked[1]),
+        .req2(req_masked[2]),
+        .req3(req_masked[3]),
+        .req4(req_masked[4]),
+        .reset(reset),
+        .gnt1(gnt[1]),
+        .gnt2(gnt[2]),
+        .gnt3(gnt[3]),
+        .gnt4(gnt[4]),
+        .clk(rd_clk)
+    );
+
+    rr_arbiter arb_group2 (
+        .req1(req_masked[5]),
+        .req2(req_masked[6]),
+        .req3(req_masked[7]),
+        .req4(req_masked[8]),
+        .reset(reset),
+        .gnt1(gnt[5]),
+        .gnt2(gnt[6]),
+        .gnt3(gnt[7]),
+        .gnt4(gnt[8]),
+        .clk(rd_clk)
+    );
+
+    rr_arbiter arb_group3 (
+        .req1(req_masked[9]),
+        .req2(req_masked[10]),
+        .req3(req_masked[11]),
+        .req4(req_masked[12]),
+        .reset(reset),
+        .gnt1(gnt[9]),
+        .gnt2(gnt[10]),
+        .gnt3(gnt[11]),
+        .gnt4(gnt[12]),
+        .clk(rd_clk)
+    );
+
+    rr_arbiter arb_group4 (
+        .req1(req_masked[13]),
+        .req2(req_masked[14]),
+        .req3(req_masked[15]),
+        .req4(req_masked[16]),
+        .reset(reset),
+        .gnt1(gnt[13]),
+        .gnt2(gnt[14]),
+        .gnt3(gnt[15]),
+        .gnt4(gnt[16]),
+        .clk(rd_clk)
+    );
+
+    rr_arbiter arb_top (
+        .req1(t[1]),
+        .req2(t[2]),
+        .req3(t[3]),
+        .req4(t[4]),
+        .reset(reset),
+        .gnt1(g_b1),
+        .gnt2(g_b2),
+        .gnt3(g_b3),
+        .gnt4(g_b4),
+        .clk(rd_clk)
+    );
+
+    assign g1 = gnt[1] & g_b1;
+    assign g2 = gnt[2] & g_b1;
+    assign g3 = gnt[3] & g_b1;
+    assign g4 = gnt[4] & g_b1;
+    assign g5 = gnt[5] & g_b2;
+    assign g6 = gnt[6] & g_b2;
+    assign g7 = gnt[7] & g_b2;
+    assign g8 = gnt[8] & g_b2;
+    assign g9 = gnt[9] & g_b3;
+    assign g10 = gnt[10] & g_b3;
+    assign g11 = gnt[11] & g_b3;
+    assign g12 = gnt[12] & g_b3;
+    assign g13 = gnt[13] & g_b4;
+    assign g14 = gnt[14] & g_b4;
+    assign g15 = gnt[15] & g_b4;
+    assign g16 = gnt[16] & g_b4;
+
+    assign req1 = req[1];
+    assign req2 = req[2];
+    assign req3 = req[3];
+    assign req4 = req[4];
+    assign req5 = req[5];
+    assign req6 = req[6];
+    assign req7 = req[7];
+    assign req8 = req[8];
+    assign req9 = req[9];
+    assign req10 = req[10];
+    assign req11 = req[11];
+    assign req12 = req[12];
+    assign req13 = req[13];
+    assign req14 = req[14];
+    assign req15 = req[15];
+    assign req16 = req[16];
+
+    assign g1_latched = gi_latched[1];
+    assign g2_latched = gi_latched[2];
+    assign g3_latched = gi_latched[3];
+    assign g4_latched = gi_latched[4];
+    assign g5_latched = gi_latched[5];
+    assign g6_latched = gi_latched[6];
+    assign g7_latched = gi_latched[7];
+    assign g8_latched = gi_latched[8];
+    assign g9_latched = gi_latched[9];
+    assign g10_latched = gi_latched[10];
+    assign g11_latched = gi_latched[11];
+    assign g12_latched = gi_latched[12];
+    assign g13_latched = gi_latched[13];
+    assign g14_latched = gi_latched[14];
+    assign g15_latched = gi_latched[15];
+    assign g16_latched = gi_latched[16];
+
+    assign g1_int = gi_int[1];
+    assign g2_int = gi_int[2];
+    assign g3_int = gi_int[3];
+    assign g4_int = gi_int[4];
+    assign g5_int = gi_int[5];
+    assign g6_int = gi_int[6];
+    assign g7_int = gi_int[7];
+    assign g8_int = gi_int[8];
+    assign g9_int = gi_int[9];
+    assign g10_int = gi_int[10];
+    assign g11_int = gi_int[11];
+    assign g12_int = gi_int[12];
+    assign g13_int = gi_int[13];
+    assign g14_int = gi_int[14];
+    assign g15_int = gi_int[15];
+    assign g16_int = gi_int[16];
+
+    assign req_b1 = req_b[1];
+    assign req_b2 = req_b[2];
+    assign req_b3 = req_b[3];
+    assign req_b4 = req_b[4];
+
+    assign t1 = t[1];
+    assign t2 = t[2];
+    assign t3 = t[3];
+    assign t4 = t[4];
+
+    assign nreq_1 = nreq[1];
+    assign nreq_2 = nreq[2];
+    assign nreq_3 = nreq[3];
+    assign nreq_4 = nreq[4];
+    assign nreq_5 = nreq[5];
+    assign nreq_6 = nreq[6];
+    assign nreq_7 = nreq[7];
+    assign nreq_8 = nreq[8];
+    assign nreq_9 = nreq[9];
+    assign nreq_10 = nreq[10];
+    assign nreq_11 = nreq[11];
+    assign nreq_12 = nreq[12];
+    assign nreq_13 = nreq[13];
+    assign nreq_14 = nreq[14];
+    assign nreq_15 = nreq[15];
+    assign nreq_16 = nreq[16];
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:32: error: Index gi[16] is out of range.
+dut.v:42: error: Index gi_int[16] is out of range.
+dut.v:53: error: Index gi_latched[16] is out of range.
+dut.v:62: error: Index req_masked[16] is out of range.
+dut.v:124: error: Index gnt[16] is out of range.
+5 error(s) during elaboration.
+
+SEMANTIC ANALYSIS (fix these):
+*** CRITICAL: Output 'gnt1' is declared but never assigned. ***
+Add an assignment: 'gnt1 = <value>;' in your always block or use assign.
+
+*** CRITICAL: WIDTH TRUNCATION at line 26: `assign req = {req_16, req_15, req_14, req_13, req_12, req_11, req_10, req_9, req_8, req_7, req_6, req_5, req_4, req_3, req_2, req_1};` -- the right-hand expression is 16 bits but 'req' is only 15 bits, so the top 1 bits are SILENTLY DROPPED. ***
+FIX: make the expression exactly 15 bits. Take each field's width from the spec, slice wider operands explicitly (x[N-1:0]) and write padding as sized constants (<k>'d0), so that the widths of all concatenated parts add up to exactly 15.
+
+*** CRITICAL: Port 'tailer1' is declared but NEVER USED in your always block. ***
+You wrote 'tailer1' in the module port list but forgot to wire it into your logic.
+You MUST condition on 'tailer1':
+  always @(*) begin
+    if (tailer1) begin
+      <your existing case or logic here>
+    end else begin
+      g1 = 1'b0;
+      g2 = 1'b0;
+      g3 = 1'b0;
+      g4 = 1'b0;
+      g5 = 1'b0;
+      g6 = 1'b0;
+      g7 = 1'b0;
+      g8 = 1'b0;
+      g9 = 1'b0;
+      g10 = 1'b0;
+      g11 = 1'b0;
+      g12 = 1'b0;
+      g13 = 1'b0;
+      g14 = 1'b0;
+      g15 = 1'b0;
+      g16 = 1'b0;
+      g_b1 = 1'b0;
+      g_b2 = 1'b0;
+      g_b3 = 1'b0;
+      g_b4 = 1'b0;
+      gnt1 = 1'b0;
+      gnt2 = 1'b0;
+      gnt3 = 1'b0;
+      gnt4 = 1'b0;
+      gnt5 = 1'b0;
+      gnt6 = 1'b0;
+      gnt7 = 1'b0;
+      gnt8 = 1'b0;
+      gnt9 = 1'b0;
+      gnt10 = 1'b0;
+      gnt11 = 1'b0;
+      gnt12 = 1'b0;
+      gnt13 = 1'b0;
+      gnt14 = 1'b0;
+      gnt15 = 1'b0;
+      gnt16 = 1'b0;
+      req1 = 1'b0;
+      req2 = 1'b0;
+      req3 = 1'b0;
+      req4 = 1'b0;
+      req5 = 1'b0;
+      req6 = 1'b0;
+      req7 = 1'b0;
+      req8 = 1'b0;
+      req9 = 1'b0;
+      req10 = 1'b0;
+      req11 = 1'b0;
+      req12 = 1'b0;
+      req13 = 1'b0;
+      req14 = 1'b0;
+      req15 = 1'b0;
+      req16 = 1'b0;
+      g1_latched = 1'b0;
+      g2_latched = 1'b0;
+      g3_latched = 1'b0;
+      g4_latched = 1'b0;
+      g5_latched = 1'b0;
+      g6_latched = 1'b0;
+      g7_latched = 1'b0;
+      g8_latched = 1'b0;
+      g9_latched = 1'b0;
+      g10_latched = 1'b0;
+      g11_latched = 1'b0;
+      g12_latched = 1'b0;
+      g13_latched = 1'b0;
+      g14_latched = 1'b0;
+      g15_latched = 1'b0;
+      g16_latched = 1'b0;
+      g1_int = 1'b0;
+      g2_int = 1'b0;
+      g3_int = 1'b0;
+      g4_int = 1'b0;
+      g5_int = 1'b0;
+      g6_int = 1'b0;
+      g7_int = 1'b0;
+      g8_int = 1'b0;
+      g9_int = 1'b0;
+      g10_int = 1'b0;
+      g11_int = 1'b0;
+      g12_int = 1'b0;
+      g13_int = 1'b0;
+      g14_int = 1'b0;
+      g15_int = 1'b0;
+      g16_int = 1'b0;
+      t1 = 1'b0;
+      t2 = 1'b0;
+      t3 = 1'b0;
+      t4 = 1'b0;
+      req_b1 = 1'b0;
+      req_b2 = 1'b0;
+      req_b3 = 1'b0;
+      req_b4 = 1'b0;
+      nreq_1 = 1'b0;
+      nreq_2 = 1'b0;
+      nreq_3 = 1'b0;
+      nreq_4 = 1'b0;
+      nreq_5 = 1'b0;
+      nreq_6 = 1'b0;
+      nreq_7 = 1'b0;
+      nreq_8 = 1'b0;
+      nreq_9 = 1'b0;
+      nreq_10 = 1'b0;
+      nreq_11 = 1'b0;
+      nreq_12 = 1'b0;
+      nreq_13 = 1'b0;
+      nreq_14 = 1'b0;
+      nreq_15 = 1'b0;
+      nreq_16 = 1'b0;
+    end
+  end
+The FAIL lines (with 'tailer1' deasserted, the output is still non-zero)
+are caused by 'tailer1' being ignored.
+
+VERILATOR LINT OUTPUT:
+%Warning-WIDTHTRUNC: dut.v:26:16: Operator ASSIGNW expects 15 bits on the Assign RHS, but Assign RHS's REPLICATE generates 16 bits.
+%Warning-UNUSEDSIGNAL: dut.v:5:11: Signal is not used: 'tailer1'
+%Warning-UNUSEDSIGNAL: dut.v:5:20: Signal is not used: 'tailer2'
+%Warning-UNUSEDSIGNAL: dut.v:5:29: Signal is not used: 'tailer3'
+%Warning-UNUSEDSIGNAL: dut.v:5:38: Signal is not used: 'tailer4'
+%Warning-UNUSEDSIGNAL: dut.v:5:47: Signal is not used: 'tailer5'
+%Warning-UNUSEDSIGNAL: dut.v:5:56: Signal is not used: 'tailer6'
+%Warning-UNUSEDSIGNAL: dut.v:5:65: Signal is not used: 'tailer7'
+%Warning-UNUSEDSIGNAL: dut.v:5:74: Signal is not used: 'tailer8'
+%Warning-UNUSEDSIGNAL: dut.v:5:83: Signal is not used: 'tailer9'
+%Warning-UNUSEDSIGNAL: dut.v:5:92: Signal is not used: 'tailer10'
+%Warning-UNUSEDSIGNAL: dut.v:5:102: Signal is not used: 'tailer11'
+%Warning-UNUSEDSIGNAL: dut.v:6:11: Signal is not used: 'tailer12'
+%Warning-UNUSEDSIGNAL: dut.v:6:21: Signal is not used: 'tailer13'
+%Warning-UNUSEDSIGNAL: dut.v:6:31: Signal is not used: 'tailer14'
+%Warning-UNUSEDSIGNAL: dut.v:6:41: Signal is not used: 'tailer15'
+%Warning-UNUSEDSIGNAL: dut.v:6:51: Signal is not used: 'tailer16'
+%Warning-UNDRIVEN: dut.v:7:36: Signal is not driven: 'gnt1'
+%Warning-UNDRIVEN: dut.v:7:42: Signal is not driven: 'gnt2'
+%Warning-UNDRIVEN: dut.v:7:48: Signal is not driven: 'gnt3'
+%Warning-UNDRIVEN: dut.v:7:54: Signal is not driven: 'gnt4'
+%Warning-UNDRIVEN: dut.v:7:60: Signal is not driven: 'gnt5'
+%Warning-UNDRIVEN: dut.v:7:66: Signal is not driven: 'gnt6'
+%Warning-UNDRIVEN: dut.v:7:72: Signal is not driven: 'gnt7'
+%Warning-UNDRIVEN: dut.v:7:78: Signal is not driven: 'gnt8'
+%Warning-UNDRIVEN: dut.v:7:84: Signal is not driven: 'gnt9'
+%Warning-UNDRIVEN: dut.v:7:90: Signal is not driven: 'gnt10'
+%Warning-UNDRIVEN: dut.v:7:97: Signal is not driven: 'gnt11'
+%Warning-UNDRIVEN: dut.v:7:104: Signal is not driven: 'gnt12'
+%Warning-UNDRIVEN: dut.v:8:12: Signal is not driven: 'gnt13'
+%Warning-UNDRIVEN: dut.v:8:19: Signal is not driven: 'gnt14'
+%Warning-UNDRIVEN: dut.v:8:26: Signal is not driven: 'gnt15'
+%Warning-UNDRIVEN: dut.v:8:33: Signal is not driven: 'gnt16'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

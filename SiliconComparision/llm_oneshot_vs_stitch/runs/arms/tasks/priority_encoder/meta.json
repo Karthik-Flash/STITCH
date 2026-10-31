@@ -1,0 +1,18 @@
+{
+ "track": "N",
+ "top": "priority_encoder",
+ "source": "golden/handwritten/priority_encoder.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "out0",
+  "out1",
+  "out2",
+  "out3"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

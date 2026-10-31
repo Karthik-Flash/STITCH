@@ -1,0 +1,23 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "0490bcb16e8bb0433eaa8c6f6faf1e722acc225d230f894b4eca78909b294f8b",
+ "file": "outputs/stitch/falling_edge_pulse_generator.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

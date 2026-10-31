@@ -1,0 +1,27 @@
+{
+ "module": "routing_algo_mesh",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 593,
+ "tokens_out": 551,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 593,
+  "eval_count": 551,
+  "total_duration": 123097567066,
+  "load_duration": 10796656,
+  "eval_duration": 121868830000
+ },
+ "wall_s": 123.2,
+ "timestamp": "2026-10-30T13:00:03",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "d9de48b5cb4d18330b3d8fa157be76d04b32e2d462f0c013f39b24951ff863bd",
+ "response_sha256": "94c8097c0021b1837acf5dc36e9af5eb98b9db120a1ec6237a523621ef5ede3c",
+ "output_sha256": "b57882197016b274909f1fcf7f722115f281c37a9285c8d48fa2e2a63c7be201",
+ "mock_mode": null
+}

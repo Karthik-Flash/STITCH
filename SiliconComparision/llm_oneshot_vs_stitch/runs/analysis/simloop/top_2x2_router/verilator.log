@@ -1,0 +1,1753 @@
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link1_vc1'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:971: ... Location of port declaration
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.053
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link1_vc2'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:991: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link1_vc3'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1011: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link1_vc4'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1031: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link2_vc1'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1051: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link2_vc2'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1071: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link2_vc3'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1091: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link2_vc4'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1111: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link3_vc1'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1131: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link3_vc2'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1151: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link3_vc3'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1171: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link3_vc4'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1191: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link4_vc1'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1211: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link4_vc2'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1231: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link4_vc3'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1251: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_link4_vc4'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1271: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_core_vc1'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1291: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_core_vc2'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1310: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_core_vc3'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:151:16: Instance has missing pin: 'data_out_core_vc4'
+  151 |     top_module router1 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1348: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link1_vc1'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link1_vc2'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:991: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link1_vc3'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1011: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link1_vc4'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1031: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link2_vc1'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1051: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link2_vc2'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1071: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link2_vc3'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1091: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link2_vc4'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1111: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link3_vc1'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1131: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link3_vc2'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1151: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link3_vc3'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1171: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link3_vc4'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1191: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link4_vc1'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1211: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link4_vc2'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1231: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link4_vc3'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1251: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_link4_vc4'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1271: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_core_vc1'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1291: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_core_vc2'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1310: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_core_vc3'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:217:16: Instance has missing pin: 'data_out_core_vc4'
+  217 |     top_module router2 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1348: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link1_vc1'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link1_vc2'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:991: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link1_vc3'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1011: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link1_vc4'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1031: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link2_vc1'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1051: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link2_vc2'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1071: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link2_vc3'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1091: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link2_vc4'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1111: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link3_vc1'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1131: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link3_vc2'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1151: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link3_vc3'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1171: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link3_vc4'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1191: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link4_vc1'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1211: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link4_vc2'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1231: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link4_vc3'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1251: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_link4_vc4'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1271: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_core_vc1'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1291: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_core_vc2'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1310: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_core_vc3'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:283:16: Instance has missing pin: 'data_out_core_vc4'
+  283 |     top_module router3 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1348: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link1_vc1'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link1_vc2'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:991: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link1_vc3'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1011: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link1_vc4'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1031: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link2_vc1'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1051: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link2_vc2'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1071: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link2_vc3'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1091: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link2_vc4'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1111: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link3_vc1'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1131: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link3_vc2'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1151: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link3_vc3'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1171: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link3_vc4'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1191: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link4_vc1'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1211: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link4_vc2'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1231: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link4_vc3'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1251: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_link4_vc4'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1271: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_core_vc1'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1291: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_core_vc2'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1310: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_core_vc3'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:349:16: Instance has missing pin: 'data_out_core_vc4'
+  349 |     top_module router4 (
+      |                ^~~~~~~
+                     /mnt/d/Projects/STITCH/SiliconComparision/llm_oneshot_vs_stitch/tasks/top_2x2_router/stubs/top_module.v:3:1348: ... Location of port declaration
+%Warning-WIDTHTRUNC: dut.v:159:10: Input port connection 'full_in_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  159 |         .full_in_link1_vc1(full_in_link1_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:160:10: Input port connection 'full_in_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  160 |         .full_in_link1_vc2(full_in_link1_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:161:10: Input port connection 'full_in_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  161 |         .full_in_link1_vc3(full_in_link1_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:162:10: Input port connection 'full_in_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  162 |         .full_in_link1_vc4(full_in_link1_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:163:10: Input port connection 'full_in_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  163 |         .full_in_link2_vc1(full_in_link2_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:164:10: Input port connection 'full_in_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  164 |         .full_in_link2_vc2(full_in_link2_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:165:10: Input port connection 'full_in_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  165 |         .full_in_link2_vc3(full_in_link2_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:166:10: Input port connection 'full_in_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  166 |         .full_in_link2_vc4(full_in_link2_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:167:10: Input port connection 'full_in_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  167 |         .full_in_link3_vc1(full_in_link3_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:168:10: Input port connection 'full_in_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  168 |         .full_in_link3_vc2(full_in_link3_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:169:10: Input port connection 'full_in_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  169 |         .full_in_link3_vc3(full_in_link3_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:170:10: Input port connection 'full_in_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  170 |         .full_in_link3_vc4(full_in_link3_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:171:10: Input port connection 'full_in_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  171 |         .full_in_link4_vc1(full_in_link4_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:172:10: Input port connection 'full_in_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  172 |         .full_in_link4_vc2(full_in_link4_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:173:10: Input port connection 'full_in_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  173 |         .full_in_link4_vc3(full_in_link4_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:174:10: Input port connection 'full_in_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  174 |         .full_in_link4_vc4(full_in_link4_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:175:10: Input port connection 'full_in_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  175 |         .full_in_core_vc1(full_in_core_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:176:10: Input port connection 'full_in_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  176 |         .full_in_core_vc2(full_in_core_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:177:10: Input port connection 'full_in_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  177 |         .full_in_core_vc3(full_in_core_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:178:10: Input port connection 'full_in_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  178 |         .full_in_core_vc4(full_in_core_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:185:10: Output port connection 'full_out_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  185 |         .full_out_link1_vc1(full_out_link1_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:186:10: Output port connection 'full_out_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  186 |         .full_out_link1_vc2(full_out_link1_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:187:10: Output port connection 'full_out_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  187 |         .full_out_link1_vc3(full_out_link1_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:188:10: Output port connection 'full_out_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  188 |         .full_out_link1_vc4(full_out_link1_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:189:10: Output port connection 'full_out_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  189 |         .full_out_link2_vc1(full_out_link2_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:190:10: Output port connection 'full_out_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  190 |         .full_out_link2_vc2(full_out_link2_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:191:10: Output port connection 'full_out_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  191 |         .full_out_link2_vc3(full_out_link2_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:192:10: Output port connection 'full_out_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  192 |         .full_out_link2_vc4(full_out_link2_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:193:10: Output port connection 'full_out_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  193 |         .full_out_link3_vc1(full_out_link3_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:194:10: Output port connection 'full_out_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  194 |         .full_out_link3_vc2(full_out_link3_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:195:10: Output port connection 'full_out_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  195 |         .full_out_link3_vc3(full_out_link3_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:196:10: Output port connection 'full_out_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  196 |         .full_out_link3_vc4(full_out_link3_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:197:10: Output port connection 'full_out_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  197 |         .full_out_link4_vc1(full_out_link4_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:198:10: Output port connection 'full_out_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  198 |         .full_out_link4_vc2(full_out_link4_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:199:10: Output port connection 'full_out_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  199 |         .full_out_link4_vc3(full_out_link4_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:200:10: Output port connection 'full_out_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  200 |         .full_out_link4_vc4(full_out_link4_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:201:10: Output port connection 'full_out_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc1_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  201 |         .full_out_core_vc1(full_out_core_vc1_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:202:10: Output port connection 'full_out_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc2_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  202 |         .full_out_core_vc2(full_out_core_vc2_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:203:10: Output port connection 'full_out_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc3_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  203 |         .full_out_core_vc3(full_out_core_vc3_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:204:10: Output port connection 'full_out_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc4_r1' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  204 |         .full_out_core_vc4(full_out_core_vc4_r1),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:210:10: Output port connection 'data_out_l1' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l1_r1' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  210 |         .data_out_l1(data_out_l1_r1),
+      |          ^~~~~~~~~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:211:10: Output port connection 'data_out_l2' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l2_r1' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  211 |         .data_out_l2(data_out_l2_r1),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:212:10: Output port connection 'data_out_l3' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l3_r1' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  212 |         .data_out_l3(data_out_l3_r1),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:213:10: Output port connection 'data_out_l4' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l4_r1' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  213 |         .data_out_l4(data_out_l4_r1),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:214:10: Output port connection 'data_out_c' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_c_r1' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  214 |         .data_out_c(data_out_c_r1)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:225:10: Input port connection 'full_in_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  225 |         .full_in_link1_vc1(full_in_link1_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:226:10: Input port connection 'full_in_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  226 |         .full_in_link1_vc2(full_in_link1_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:227:10: Input port connection 'full_in_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  227 |         .full_in_link1_vc3(full_in_link1_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:228:10: Input port connection 'full_in_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  228 |         .full_in_link1_vc4(full_in_link1_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:229:10: Input port connection 'full_in_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  229 |         .full_in_link2_vc1(full_in_link2_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:230:10: Input port connection 'full_in_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  230 |         .full_in_link2_vc2(full_in_link2_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:231:10: Input port connection 'full_in_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  231 |         .full_in_link2_vc3(full_in_link2_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:232:10: Input port connection 'full_in_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  232 |         .full_in_link2_vc4(full_in_link2_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:233:10: Input port connection 'full_in_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  233 |         .full_in_link3_vc1(full_in_link3_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:234:10: Input port connection 'full_in_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  234 |         .full_in_link3_vc2(full_in_link3_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:235:10: Input port connection 'full_in_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  235 |         .full_in_link3_vc3(full_in_link3_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:236:10: Input port connection 'full_in_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  236 |         .full_in_link3_vc4(full_in_link3_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:237:10: Input port connection 'full_in_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  237 |         .full_in_link4_vc1(full_in_link4_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:238:10: Input port connection 'full_in_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  238 |         .full_in_link4_vc2(full_in_link4_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:239:10: Input port connection 'full_in_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  239 |         .full_in_link4_vc3(full_in_link4_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:240:10: Input port connection 'full_in_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  240 |         .full_in_link4_vc4(full_in_link4_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:241:10: Input port connection 'full_in_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  241 |         .full_in_core_vc1(full_in_core_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:242:10: Input port connection 'full_in_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  242 |         .full_in_core_vc2(full_in_core_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:243:10: Input port connection 'full_in_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  243 |         .full_in_core_vc3(full_in_core_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:244:10: Input port connection 'full_in_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  244 |         .full_in_core_vc4(full_in_core_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:251:10: Output port connection 'full_out_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  251 |         .full_out_link1_vc1(full_out_link1_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:252:10: Output port connection 'full_out_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  252 |         .full_out_link1_vc2(full_out_link1_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:253:10: Output port connection 'full_out_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  253 |         .full_out_link1_vc3(full_out_link1_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:254:10: Output port connection 'full_out_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  254 |         .full_out_link1_vc4(full_out_link1_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:255:10: Output port connection 'full_out_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  255 |         .full_out_link2_vc1(full_out_link2_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:256:10: Output port connection 'full_out_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  256 |         .full_out_link2_vc2(full_out_link2_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:257:10: Output port connection 'full_out_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  257 |         .full_out_link2_vc3(full_out_link2_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:258:10: Output port connection 'full_out_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  258 |         .full_out_link2_vc4(full_out_link2_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:259:10: Output port connection 'full_out_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  259 |         .full_out_link3_vc1(full_out_link3_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:260:10: Output port connection 'full_out_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  260 |         .full_out_link3_vc2(full_out_link3_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:261:10: Output port connection 'full_out_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  261 |         .full_out_link3_vc3(full_out_link3_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:262:10: Output port connection 'full_out_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  262 |         .full_out_link3_vc4(full_out_link3_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:263:10: Output port connection 'full_out_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  263 |         .full_out_link4_vc1(full_out_link4_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:264:10: Output port connection 'full_out_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  264 |         .full_out_link4_vc2(full_out_link4_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:265:10: Output port connection 'full_out_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  265 |         .full_out_link4_vc3(full_out_link4_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:266:10: Output port connection 'full_out_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  266 |         .full_out_link4_vc4(full_out_link4_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:267:10: Output port connection 'full_out_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc1_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  267 |         .full_out_core_vc1(full_out_core_vc1_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:268:10: Output port connection 'full_out_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc2_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  268 |         .full_out_core_vc2(full_out_core_vc2_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:269:10: Output port connection 'full_out_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc3_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  269 |         .full_out_core_vc3(full_out_core_vc3_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:270:10: Output port connection 'full_out_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc4_r2' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  270 |         .full_out_core_vc4(full_out_core_vc4_r2),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:276:10: Output port connection 'data_out_l1' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l1_r2' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  276 |         .data_out_l1(data_out_l1_r2),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:277:10: Output port connection 'data_out_l2' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l2_r2' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  277 |         .data_out_l2(data_out_l2_r2),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:278:10: Output port connection 'data_out_l3' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l3_r2' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  278 |         .data_out_l3(data_out_l3_r2),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:279:10: Output port connection 'data_out_l4' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l4_r2' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  279 |         .data_out_l4(data_out_l4_r2),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:280:10: Output port connection 'data_out_c' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_c_r2' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  280 |         .data_out_c(data_out_c_r2)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:291:10: Input port connection 'full_in_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  291 |         .full_in_link1_vc1(full_in_link1_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:292:10: Input port connection 'full_in_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  292 |         .full_in_link1_vc2(full_in_link1_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:293:10: Input port connection 'full_in_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  293 |         .full_in_link1_vc3(full_in_link1_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:294:10: Input port connection 'full_in_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  294 |         .full_in_link1_vc4(full_in_link1_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:295:10: Input port connection 'full_in_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  295 |         .full_in_link2_vc1(full_in_link2_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:296:10: Input port connection 'full_in_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  296 |         .full_in_link2_vc2(full_in_link2_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:297:10: Input port connection 'full_in_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  297 |         .full_in_link2_vc3(full_in_link2_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:298:10: Input port connection 'full_in_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  298 |         .full_in_link2_vc4(full_in_link2_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:299:10: Input port connection 'full_in_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  299 |         .full_in_link3_vc1(full_in_link3_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:300:10: Input port connection 'full_in_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  300 |         .full_in_link3_vc2(full_in_link3_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:301:10: Input port connection 'full_in_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  301 |         .full_in_link3_vc3(full_in_link3_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:302:10: Input port connection 'full_in_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  302 |         .full_in_link3_vc4(full_in_link3_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:303:10: Input port connection 'full_in_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  303 |         .full_in_link4_vc1(full_in_link4_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:304:10: Input port connection 'full_in_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  304 |         .full_in_link4_vc2(full_in_link4_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:305:10: Input port connection 'full_in_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  305 |         .full_in_link4_vc3(full_in_link4_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:306:10: Input port connection 'full_in_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  306 |         .full_in_link4_vc4(full_in_link4_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:307:10: Input port connection 'full_in_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  307 |         .full_in_core_vc1(full_in_core_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:308:10: Input port connection 'full_in_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  308 |         .full_in_core_vc2(full_in_core_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:309:10: Input port connection 'full_in_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  309 |         .full_in_core_vc3(full_in_core_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:310:10: Input port connection 'full_in_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  310 |         .full_in_core_vc4(full_in_core_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:317:10: Output port connection 'full_out_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  317 |         .full_out_link1_vc1(full_out_link1_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:318:10: Output port connection 'full_out_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  318 |         .full_out_link1_vc2(full_out_link1_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:319:10: Output port connection 'full_out_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  319 |         .full_out_link1_vc3(full_out_link1_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:320:10: Output port connection 'full_out_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  320 |         .full_out_link1_vc4(full_out_link1_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:321:10: Output port connection 'full_out_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  321 |         .full_out_link2_vc1(full_out_link2_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:322:10: Output port connection 'full_out_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  322 |         .full_out_link2_vc2(full_out_link2_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:323:10: Output port connection 'full_out_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  323 |         .full_out_link2_vc3(full_out_link2_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:324:10: Output port connection 'full_out_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  324 |         .full_out_link2_vc4(full_out_link2_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:325:10: Output port connection 'full_out_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  325 |         .full_out_link3_vc1(full_out_link3_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:326:10: Output port connection 'full_out_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  326 |         .full_out_link3_vc2(full_out_link3_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:327:10: Output port connection 'full_out_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  327 |         .full_out_link3_vc3(full_out_link3_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:328:10: Output port connection 'full_out_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  328 |         .full_out_link3_vc4(full_out_link3_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:329:10: Output port connection 'full_out_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  329 |         .full_out_link4_vc1(full_out_link4_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:330:10: Output port connection 'full_out_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  330 |         .full_out_link4_vc2(full_out_link4_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:331:10: Output port connection 'full_out_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  331 |         .full_out_link4_vc3(full_out_link4_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:332:10: Output port connection 'full_out_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  332 |         .full_out_link4_vc4(full_out_link4_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:333:10: Output port connection 'full_out_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc1_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  333 |         .full_out_core_vc1(full_out_core_vc1_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:334:10: Output port connection 'full_out_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc2_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  334 |         .full_out_core_vc2(full_out_core_vc2_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:335:10: Output port connection 'full_out_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc3_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  335 |         .full_out_core_vc3(full_out_core_vc3_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:336:10: Output port connection 'full_out_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc4_r3' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  336 |         .full_out_core_vc4(full_out_core_vc4_r3),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:342:10: Output port connection 'data_out_l1' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l1_r3' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  342 |         .data_out_l1(data_out_l1_r3),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:343:10: Output port connection 'data_out_l2' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l2_r3' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  343 |         .data_out_l2(data_out_l2_r3),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:344:10: Output port connection 'data_out_l3' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l3_r3' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  344 |         .data_out_l3(data_out_l3_r3),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:345:10: Output port connection 'data_out_l4' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l4_r3' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  345 |         .data_out_l4(data_out_l4_r3),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:346:10: Output port connection 'data_out_c' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_c_r3' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  346 |         .data_out_c(data_out_c_r3)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:357:10: Input port connection 'full_in_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  357 |         .full_in_link1_vc1(full_in_link1_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:358:10: Input port connection 'full_in_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  358 |         .full_in_link1_vc2(full_in_link1_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:359:10: Input port connection 'full_in_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  359 |         .full_in_link1_vc3(full_in_link1_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:360:10: Input port connection 'full_in_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link1_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  360 |         .full_in_link1_vc4(full_in_link1_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:361:10: Input port connection 'full_in_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  361 |         .full_in_link2_vc1(full_in_link2_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:362:10: Input port connection 'full_in_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  362 |         .full_in_link2_vc2(full_in_link2_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:363:10: Input port connection 'full_in_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  363 |         .full_in_link2_vc3(full_in_link2_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:364:10: Input port connection 'full_in_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link2_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  364 |         .full_in_link2_vc4(full_in_link2_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:365:10: Input port connection 'full_in_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  365 |         .full_in_link3_vc1(full_in_link3_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:366:10: Input port connection 'full_in_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  366 |         .full_in_link3_vc2(full_in_link3_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:367:10: Input port connection 'full_in_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  367 |         .full_in_link3_vc3(full_in_link3_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:368:10: Input port connection 'full_in_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link3_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  368 |         .full_in_link3_vc4(full_in_link3_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:369:10: Input port connection 'full_in_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  369 |         .full_in_link4_vc1(full_in_link4_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:370:10: Input port connection 'full_in_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  370 |         .full_in_link4_vc2(full_in_link4_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:371:10: Input port connection 'full_in_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  371 |         .full_in_link4_vc3(full_in_link4_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:372:10: Input port connection 'full_in_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_link4_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  372 |         .full_in_link4_vc4(full_in_link4_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:373:10: Input port connection 'full_in_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  373 |         .full_in_core_vc1(full_in_core_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:374:10: Input port connection 'full_in_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  374 |         .full_in_core_vc2(full_in_core_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:375:10: Input port connection 'full_in_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  375 |         .full_in_core_vc3(full_in_core_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:376:10: Input port connection 'full_in_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_in_core_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  376 |         .full_in_core_vc4(full_in_core_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:383:10: Output port connection 'full_out_link1_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  383 |         .full_out_link1_vc1(full_out_link1_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:384:10: Output port connection 'full_out_link1_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  384 |         .full_out_link1_vc2(full_out_link1_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:385:10: Output port connection 'full_out_link1_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  385 |         .full_out_link1_vc3(full_out_link1_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:386:10: Output port connection 'full_out_link1_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link1_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  386 |         .full_out_link1_vc4(full_out_link1_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:387:10: Output port connection 'full_out_link2_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  387 |         .full_out_link2_vc1(full_out_link2_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:388:10: Output port connection 'full_out_link2_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  388 |         .full_out_link2_vc2(full_out_link2_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:389:10: Output port connection 'full_out_link2_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  389 |         .full_out_link2_vc3(full_out_link2_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:390:10: Output port connection 'full_out_link2_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link2_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  390 |         .full_out_link2_vc4(full_out_link2_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:391:10: Output port connection 'full_out_link3_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  391 |         .full_out_link3_vc1(full_out_link3_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:392:10: Output port connection 'full_out_link3_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  392 |         .full_out_link3_vc2(full_out_link3_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:393:10: Output port connection 'full_out_link3_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  393 |         .full_out_link3_vc3(full_out_link3_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:394:10: Output port connection 'full_out_link3_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link3_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  394 |         .full_out_link3_vc4(full_out_link3_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:395:10: Output port connection 'full_out_link4_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  395 |         .full_out_link4_vc1(full_out_link4_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:396:10: Output port connection 'full_out_link4_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  396 |         .full_out_link4_vc2(full_out_link4_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:397:10: Output port connection 'full_out_link4_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  397 |         .full_out_link4_vc3(full_out_link4_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:398:10: Output port connection 'full_out_link4_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_link4_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  398 |         .full_out_link4_vc4(full_out_link4_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:399:10: Output port connection 'full_out_core_vc1' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc1_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  399 |         .full_out_core_vc1(full_out_core_vc1_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:400:10: Output port connection 'full_out_core_vc2' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc2_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  400 |         .full_out_core_vc2(full_out_core_vc2_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:401:10: Output port connection 'full_out_core_vc3' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc3_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  401 |         .full_out_core_vc3(full_out_core_vc3_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:402:10: Output port connection 'full_out_core_vc4' expects 1 bits on the pin connection, but pin connection's VARREF 'full_out_core_vc4_r4' generates 4 bits.
+                                 : ... note: In instance 'top_2x2_router'
+  402 |         .full_out_core_vc4(full_out_core_vc4_r4),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:408:10: Output port connection 'data_out_l1' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l1_r4' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  408 |         .data_out_l1(data_out_l1_r4),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:409:10: Output port connection 'data_out_l2' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l2_r4' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  409 |         .data_out_l2(data_out_l2_r4),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:410:10: Output port connection 'data_out_l3' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l3_r4' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  410 |         .data_out_l3(data_out_l3_r4),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:411:10: Output port connection 'data_out_l4' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_l4_r4' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  411 |         .data_out_l4(data_out_l4_r4),
+      |          ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:412:10: Output port connection 'data_out_c' expects 32 bits on the pin connection, but pin connection's VARREF 'data_out_c_r4' generates 4 bits.
+                                  : ... note: In instance 'top_2x2_router'
+  412 |         .data_out_c(data_out_c_r4)
+      |          ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:7:17: Signal is not used: 'data_out_link1_r1'
+                                 : ... note: In instance 'top_2x2_router'
+    7 |     wire [31:0] data_out_link1_r1, data_out_link1_r2, data_out_link1_r3, data_out_link1_r4;
+      |                 ^~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:7:55: Signal is not used: 'data_out_link1_r3'
+                                 : ... note: In instance 'top_2x2_router'
+    7 |     wire [31:0] data_out_link1_r1, data_out_link1_r2, data_out_link1_r3, data_out_link1_r4;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:8:36: Signal is not used: 'data_out_link2_r2'
+                                 : ... note: In instance 'top_2x2_router'
+    8 |     wire [31:0] data_out_link2_r1, data_out_link2_r2, data_out_link2_r3, data_out_link2_r4;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:8:74: Signal is not used: 'data_out_link2_r4'
+                                 : ... note: In instance 'top_2x2_router'
+    8 |     wire [31:0] data_out_link2_r1, data_out_link2_r2, data_out_link2_r3, data_out_link2_r4;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:17: Signal is not used: 'data_out_link3_r1'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                 ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:36: Signal is not used: 'data_out_link3_r2'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:55: Signal is not used: 'data_out_link3_r3'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:74: Signal is not used: 'data_out_link3_r4'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:16: Signal is not used: 'sel_vc_link1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:33: Signal is not used: 'sel_vc_link1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:50: Signal is not used: 'sel_vc_link1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:67: Signal is not used: 'sel_vc_link1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:16: Signal is not used: 'sel_vc_link2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:33: Signal is not used: 'sel_vc_link2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:50: Signal is not used: 'sel_vc_link2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:67: Signal is not used: 'sel_vc_link2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:16: Signal is not used: 'sel_vc_link3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:33: Signal is not used: 'sel_vc_link3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:50: Signal is not used: 'sel_vc_link3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:67: Signal is not used: 'sel_vc_link3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:16: Signal is not used: 'sel_vc_link4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:33: Signal is not used: 'sel_vc_link4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:50: Signal is not used: 'sel_vc_link4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:67: Signal is not used: 'sel_vc_link4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:16: Signal is not used: 'sel_vc_core_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:32: Signal is not used: 'sel_vc_core_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:48: Signal is not used: 'sel_vc_core_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:64: Signal is not used: 'sel_vc_core_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:16: Signal is not used: 'data_out_l1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [3:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:32: Signal is not used: 'data_out_l1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [3:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:48: Signal is not used: 'data_out_l1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [3:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:64: Signal is not used: 'data_out_l1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [3:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:16: Signal is not used: 'data_out_l2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [3:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:32: Signal is not used: 'data_out_l2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [3:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:48: Signal is not used: 'data_out_l2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [3:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:64: Signal is not used: 'data_out_l2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [3:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:16: Signal is not used: 'data_out_l3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [3:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:32: Signal is not used: 'data_out_l3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [3:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:48: Signal is not used: 'data_out_l3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [3:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:64: Signal is not used: 'data_out_l3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [3:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:16: Signal is not used: 'data_out_l4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [3:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:32: Signal is not used: 'data_out_l4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [3:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:48: Signal is not used: 'data_out_l4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [3:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:64: Signal is not used: 'data_out_l4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [3:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:16: Signal is not used: 'data_out_c_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [3:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:31: Signal is not used: 'data_out_c_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [3:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                               ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:46: Signal is not used: 'data_out_c_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [3:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                                              ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:61: Signal is not used: 'data_out_c_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [3:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                                                             ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:16: Signal is not used: 'full_out_link1_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire [3:0] full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:39: Signal is not used: 'full_out_link1_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire [3:0] full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:62: Signal is not used: 'full_out_link1_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire [3:0] full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:85: Signal is not used: 'full_out_link1_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire [3:0] full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:16: Signal is not used: 'full_out_link1_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire [3:0] full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:39: Signal is not used: 'full_out_link1_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire [3:0] full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:62: Signal is not used: 'full_out_link1_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire [3:0] full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:85: Signal is not used: 'full_out_link1_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire [3:0] full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:16: Signal is not used: 'full_out_link2_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire [3:0] full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:39: Signal is not used: 'full_out_link2_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire [3:0] full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:62: Signal is not used: 'full_out_link2_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire [3:0] full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:85: Signal is not used: 'full_out_link2_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire [3:0] full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:16: Signal is not used: 'full_out_link2_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire [3:0] full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:39: Signal is not used: 'full_out_link2_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire [3:0] full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:62: Signal is not used: 'full_out_link2_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire [3:0] full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:85: Signal is not used: 'full_out_link2_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire [3:0] full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:16: Signal is not used: 'full_out_link3_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire [3:0] full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:39: Signal is not used: 'full_out_link3_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire [3:0] full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:62: Signal is not used: 'full_out_link3_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire [3:0] full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:85: Signal is not used: 'full_out_link3_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire [3:0] full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:16: Signal is not used: 'full_out_link3_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire [3:0] full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:39: Signal is not used: 'full_out_link3_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire [3:0] full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:62: Signal is not used: 'full_out_link3_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire [3:0] full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:85: Signal is not used: 'full_out_link3_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire [3:0] full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:16: Signal is not used: 'full_out_link3_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire [3:0] full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:39: Signal is not used: 'full_out_link3_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire [3:0] full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:62: Signal is not used: 'full_out_link3_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire [3:0] full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:85: Signal is not used: 'full_out_link3_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire [3:0] full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:16: Signal is not used: 'full_out_link4_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire [3:0] full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:39: Signal is not used: 'full_out_link4_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire [3:0] full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:62: Signal is not used: 'full_out_link4_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire [3:0] full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:85: Signal is not used: 'full_out_link4_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire [3:0] full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                                                     ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:16: Signal is not used: 'full_out_core_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire [3:0] full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:38: Signal is not used: 'full_out_core_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire [3:0] full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:60: Signal is not used: 'full_out_core_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire [3:0] full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:82: Signal is not used: 'full_out_core_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire [3:0] full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:16: Signal is not used: 'full_out_core_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire [3:0] full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:38: Signal is not used: 'full_out_core_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire [3:0] full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:60: Signal is not used: 'full_out_core_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire [3:0] full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:82: Signal is not used: 'full_out_core_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire [3:0] full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:16: Signal is not used: 'full_out_core_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire [3:0] full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:38: Signal is not used: 'full_out_core_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire [3:0] full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:60: Signal is not used: 'full_out_core_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire [3:0] full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:82: Signal is not used: 'full_out_core_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire [3:0] full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:16: Signal is not used: 'full_out_core_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire [3:0] full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:38: Signal is not used: 'full_out_core_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire [3:0] full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:60: Signal is not used: 'full_out_core_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire [3:0] full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:82: Signal is not used: 'full_out_core_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire [3:0] full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:16: Bits of signal are not used: 'full_in_link1_vc1_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   46 |     wire [3:0] full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:38: Bits of signal are not used: 'full_in_link1_vc2_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   46 |     wire [3:0] full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:60: Bits of signal are not used: 'full_in_link1_vc3_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   46 |     wire [3:0] full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:82: Bits of signal are not used: 'full_in_link1_vc4_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   46 |     wire [3:0] full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:16: Bits of signal are not used: 'full_in_link1_vc1_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   47 |     wire [3:0] full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:38: Bits of signal are not used: 'full_in_link1_vc2_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   47 |     wire [3:0] full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:60: Bits of signal are not used: 'full_in_link1_vc3_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   47 |     wire [3:0] full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:82: Bits of signal are not used: 'full_in_link1_vc4_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   47 |     wire [3:0] full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:16: Bits of signal are not used: 'full_in_link1_vc1_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   48 |     wire [3:0] full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:38: Bits of signal are not used: 'full_in_link1_vc2_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   48 |     wire [3:0] full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:60: Bits of signal are not used: 'full_in_link1_vc3_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   48 |     wire [3:0] full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:82: Bits of signal are not used: 'full_in_link1_vc4_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   48 |     wire [3:0] full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:16: Bits of signal are not used: 'full_in_link1_vc1_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   49 |     wire [3:0] full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:38: Bits of signal are not used: 'full_in_link1_vc2_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   49 |     wire [3:0] full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:60: Bits of signal are not used: 'full_in_link1_vc3_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   49 |     wire [3:0] full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:82: Bits of signal are not used: 'full_in_link1_vc4_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   49 |     wire [3:0] full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:16: Bits of signal are not used: 'full_in_link2_vc1_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   50 |     wire [3:0] full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:38: Bits of signal are not used: 'full_in_link2_vc2_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   50 |     wire [3:0] full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:60: Bits of signal are not used: 'full_in_link2_vc3_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   50 |     wire [3:0] full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:82: Bits of signal are not used: 'full_in_link2_vc4_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   50 |     wire [3:0] full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:16: Bits of signal are not used: 'full_in_link2_vc1_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   51 |     wire [3:0] full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:38: Bits of signal are not used: 'full_in_link2_vc2_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   51 |     wire [3:0] full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:60: Bits of signal are not used: 'full_in_link2_vc3_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   51 |     wire [3:0] full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:82: Bits of signal are not used: 'full_in_link2_vc4_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   51 |     wire [3:0] full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:16: Bits of signal are not used: 'full_in_link2_vc1_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   52 |     wire [3:0] full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:38: Bits of signal are not used: 'full_in_link2_vc2_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   52 |     wire [3:0] full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:60: Bits of signal are not used: 'full_in_link2_vc3_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   52 |     wire [3:0] full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:82: Bits of signal are not used: 'full_in_link2_vc4_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   52 |     wire [3:0] full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:16: Bits of signal are not used: 'full_in_link2_vc1_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   53 |     wire [3:0] full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:38: Bits of signal are not used: 'full_in_link2_vc2_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   53 |     wire [3:0] full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:60: Bits of signal are not used: 'full_in_link2_vc3_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   53 |     wire [3:0] full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:82: Bits of signal are not used: 'full_in_link2_vc4_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   53 |     wire [3:0] full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:16: Bits of signal are not used: 'full_in_link3_vc1_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   54 |     wire [3:0] full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:38: Bits of signal are not used: 'full_in_link3_vc2_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   54 |     wire [3:0] full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:60: Bits of signal are not used: 'full_in_link3_vc3_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   54 |     wire [3:0] full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:82: Bits of signal are not used: 'full_in_link3_vc4_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   54 |     wire [3:0] full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:16: Bits of signal are not used: 'full_in_link3_vc1_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   55 |     wire [3:0] full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:38: Bits of signal are not used: 'full_in_link3_vc2_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   55 |     wire [3:0] full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:60: Bits of signal are not used: 'full_in_link3_vc3_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   55 |     wire [3:0] full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:82: Bits of signal are not used: 'full_in_link3_vc4_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   55 |     wire [3:0] full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:16: Bits of signal are not used: 'full_in_link3_vc1_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   56 |     wire [3:0] full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:38: Bits of signal are not used: 'full_in_link3_vc2_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   56 |     wire [3:0] full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:60: Bits of signal are not used: 'full_in_link3_vc3_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   56 |     wire [3:0] full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:82: Bits of signal are not used: 'full_in_link3_vc4_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   56 |     wire [3:0] full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:16: Bits of signal are not used: 'full_in_link3_vc1_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   57 |     wire [3:0] full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:38: Bits of signal are not used: 'full_in_link3_vc2_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   57 |     wire [3:0] full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:60: Bits of signal are not used: 'full_in_link3_vc3_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   57 |     wire [3:0] full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:82: Bits of signal are not used: 'full_in_link3_vc4_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   57 |     wire [3:0] full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:16: Bits of signal are not used: 'full_in_link4_vc1_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   58 |     wire [3:0] full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:38: Bits of signal are not used: 'full_in_link4_vc2_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   58 |     wire [3:0] full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:60: Bits of signal are not used: 'full_in_link4_vc3_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   58 |     wire [3:0] full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:82: Bits of signal are not used: 'full_in_link4_vc4_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   58 |     wire [3:0] full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:16: Bits of signal are not used: 'full_in_link4_vc1_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   59 |     wire [3:0] full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:38: Bits of signal are not used: 'full_in_link4_vc2_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   59 |     wire [3:0] full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:60: Bits of signal are not used: 'full_in_link4_vc3_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   59 |     wire [3:0] full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:82: Bits of signal are not used: 'full_in_link4_vc4_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   59 |     wire [3:0] full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:16: Bits of signal are not used: 'full_in_link4_vc1_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   60 |     wire [3:0] full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:38: Bits of signal are not used: 'full_in_link4_vc2_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   60 |     wire [3:0] full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:60: Bits of signal are not used: 'full_in_link4_vc3_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   60 |     wire [3:0] full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:82: Bits of signal are not used: 'full_in_link4_vc4_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   60 |     wire [3:0] full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:16: Bits of signal are not used: 'full_in_link4_vc1_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   61 |     wire [3:0] full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:38: Bits of signal are not used: 'full_in_link4_vc2_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   61 |     wire [3:0] full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:60: Bits of signal are not used: 'full_in_link4_vc3_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   61 |     wire [3:0] full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:82: Bits of signal are not used: 'full_in_link4_vc4_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   61 |     wire [3:0] full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                                                                  ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:16: Bits of signal are not used: 'full_in_core_vc1_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   62 |     wire [3:0] full_in_core_vc1_r1, full_in_core_vc2_r1, full_in_core_vc3_r1, full_in_core_vc4_r1;
+      |                ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:37: Bits of signal are not used: 'full_in_core_vc2_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   62 |     wire [3:0] full_in_core_vc1_r1, full_in_core_vc2_r1, full_in_core_vc3_r1, full_in_core_vc4_r1;
+      |                                     ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:58: Bits of signal are not used: 'full_in_core_vc3_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   62 |     wire [3:0] full_in_core_vc1_r1, full_in_core_vc2_r1, full_in_core_vc3_r1, full_in_core_vc4_r1;
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:79: Bits of signal are not used: 'full_in_core_vc4_r1'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   62 |     wire [3:0] full_in_core_vc1_r1, full_in_core_vc2_r1, full_in_core_vc3_r1, full_in_core_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:16: Bits of signal are not used: 'full_in_core_vc1_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   63 |     wire [3:0] full_in_core_vc1_r2, full_in_core_vc2_r2, full_in_core_vc3_r2, full_in_core_vc4_r2;
+      |                ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:37: Bits of signal are not used: 'full_in_core_vc2_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   63 |     wire [3:0] full_in_core_vc1_r2, full_in_core_vc2_r2, full_in_core_vc3_r2, full_in_core_vc4_r2;
+      |                                     ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:58: Bits of signal are not used: 'full_in_core_vc3_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   63 |     wire [3:0] full_in_core_vc1_r2, full_in_core_vc2_r2, full_in_core_vc3_r2, full_in_core_vc4_r2;
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:79: Bits of signal are not used: 'full_in_core_vc4_r2'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   63 |     wire [3:0] full_in_core_vc1_r2, full_in_core_vc2_r2, full_in_core_vc3_r2, full_in_core_vc4_r2;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:16: Bits of signal are not used: 'full_in_core_vc1_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   64 |     wire [3:0] full_in_core_vc1_r3, full_in_core_vc2_r3, full_in_core_vc3_r3, full_in_core_vc4_r3;
+      |                ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:37: Bits of signal are not used: 'full_in_core_vc2_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   64 |     wire [3:0] full_in_core_vc1_r3, full_in_core_vc2_r3, full_in_core_vc3_r3, full_in_core_vc4_r3;
+      |                                     ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:58: Bits of signal are not used: 'full_in_core_vc3_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   64 |     wire [3:0] full_in_core_vc1_r3, full_in_core_vc2_r3, full_in_core_vc3_r3, full_in_core_vc4_r3;
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:79: Bits of signal are not used: 'full_in_core_vc4_r3'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   64 |     wire [3:0] full_in_core_vc1_r3, full_in_core_vc2_r3, full_in_core_vc3_r3, full_in_core_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:65:16: Bits of signal are not used: 'full_in_core_vc1_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   65 |     wire [3:0] full_in_core_vc1_r4, full_in_core_vc2_r4, full_in_core_vc3_r4, full_in_core_vc4_r4;
+      |                ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:65:37: Bits of signal are not used: 'full_in_core_vc2_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   65 |     wire [3:0] full_in_core_vc1_r4, full_in_core_vc2_r4, full_in_core_vc3_r4, full_in_core_vc4_r4;
+      |                                     ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:65:58: Bits of signal are not used: 'full_in_core_vc3_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   65 |     wire [3:0] full_in_core_vc1_r4, full_in_core_vc2_r4, full_in_core_vc3_r4, full_in_core_vc4_r4;
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:65:79: Bits of signal are not used: 'full_in_core_vc4_r4'[3:1]
+                                  : ... note: In instance 'top_2x2_router'
+   65 |     wire [3:0] full_in_core_vc1_r4, full_in_core_vc2_r4, full_in_core_vc3_r4, full_in_core_vc4_r4;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~
+%Error: Exiting due to 436 warning(s)

@@ -73,8 +73,16 @@ private/
 phase3/results/
 # Local silicon PPA analysis inputs and generated plots; summary is tracked separately.
 /SiliconComparision/latch_study/stitch_noc_analysis_bundle/
-# LLM one-shot vs STITCH study: local run output (Yosys intermediates, sims, LLM runs).
-/SiliconComparision/llm_oneshot_vs_stitch/runs/
+# LLM one-shot vs STITCH study: regenerable or duplicate output (see the study README, "Not in git").
+/SiliconComparision/llm_oneshot_vs_stitch/assembled/
+/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/results/**/iter*/tb*.v
+/SiliconComparision/llm_oneshot_vs_stitch/runs/inventory/a1_proc.json
+/SiliconComparision/llm_oneshot_vs_stitch/runs/inventory/handwritten_hierarchy.json
+/SiliconComparision/llm_oneshot_vs_stitch/**/*.vvp
+/SiliconComparision/llm_oneshot_vs_stitch/**/*.vcd
+/SiliconComparision/llm_oneshot_vs_stitch/**/obj_dir/
+# run logs are evidence (cited path:line by reports/TAXONOMY.md and FAILURE_AUDIT.md), despite *.log above
+!/SiliconComparision/llm_oneshot_vs_stitch/runs/**/*.log
 /SiliconComparision/llm_oneshot_vs_stitch/hpc_logs/
 # Drop leftovers: the source archive, and the one-off snippet already merged into .gitattributes.
 STITCH_phase3_drop.zip

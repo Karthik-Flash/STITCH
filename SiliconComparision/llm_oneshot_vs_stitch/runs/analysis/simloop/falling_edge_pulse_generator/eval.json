@@ -1,0 +1,23 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "f21f3d54ee82e285c1994d2ec7caf9228378fbb3bd6e211b312cf46f05ba9817",
+ "file": "outputs/simloop/falling_edge_pulse_generator.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

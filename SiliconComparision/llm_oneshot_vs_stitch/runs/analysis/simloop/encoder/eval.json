@@ -1,0 +1,23 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "427816f1a50f6552ea3b6b2c32f6fb9ac0e068c2a8131fce283272459d946aa2",
+ "file": "outputs/simloop/encoder.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

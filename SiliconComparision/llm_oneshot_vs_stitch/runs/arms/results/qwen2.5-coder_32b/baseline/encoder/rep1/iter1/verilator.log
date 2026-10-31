@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: dut.v:6:12: Signal is not used: 'encoded_addr_w'
+                                 : ... note: In instance 'encoder'
+    6 | wire [3:0] encoded_addr_w;
+      |            ^~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

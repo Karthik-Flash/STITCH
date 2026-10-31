@@ -1,0 +1,318 @@
+%Warning-WIDTHTRUNC: dut.v:26:16: Operator ASSIGNW expects 15 bits on the Assign RHS, but Assign RHS's REPLICATE generates 16 bits.
+                                : ... note: In instance 'round_robin_req'
+   26 |     assign req = {req_16, req_15, req_14, req_13, req_12, req_11, req_10, req_9, req_8, req_7, req_6, req_5, req_4, req_3, req_2, req_1};
+      |                ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:5:11: Signal is not used: 'tailer1'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |           ^~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:5:20: Signal is not used: 'tailer2'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:29: Signal is not used: 'tailer3'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:38: Signal is not used: 'tailer4'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:47: Signal is not used: 'tailer5'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:56: Signal is not used: 'tailer6'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:65: Signal is not used: 'tailer7'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:74: Signal is not used: 'tailer8'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:83: Signal is not used: 'tailer9'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:92: Signal is not used: 'tailer10'
+                                 : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                                                            ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:5:102: Signal is not used: 'tailer11'
+                                  : ... note: In instance 'round_robin_req'
+    5 |     input tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11,
+      |                                                                                                      ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:11: Signal is not used: 'tailer12'
+                                 : ... note: In instance 'round_robin_req'
+    6 |           tailer12, tailer13, tailer14, tailer15, tailer16,
+      |           ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:21: Signal is not used: 'tailer13'
+                                 : ... note: In instance 'round_robin_req'
+    6 |           tailer12, tailer13, tailer14, tailer15, tailer16,
+      |                     ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:31: Signal is not used: 'tailer14'
+                                 : ... note: In instance 'round_robin_req'
+    6 |           tailer12, tailer13, tailer14, tailer15, tailer16,
+      |                               ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:41: Signal is not used: 'tailer15'
+                                 : ... note: In instance 'round_robin_req'
+    6 |           tailer12, tailer13, tailer14, tailer15, tailer16,
+      |                                         ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:6:51: Signal is not used: 'tailer16'
+                                 : ... note: In instance 'round_robin_req'
+    6 |           tailer12, tailer13, tailer14, tailer15, tailer16,
+      |                                                   ^~~~~~~~
+%Warning-UNDRIVEN: dut.v:7:36: Signal is not driven: 'gnt1'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                    ^~~~
+                   ... For warning description see https://verilator.org/warn/UNDRIVEN?v=5.053
+                   ... Use "/* verilator lint_off UNDRIVEN */" and lint_on around source to disable this message.
+%Warning-UNDRIVEN: dut.v:7:42: Signal is not driven: 'gnt2'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                          ^~~~
+%Warning-UNDRIVEN: dut.v:7:48: Signal is not driven: 'gnt3'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                ^~~~
+%Warning-UNDRIVEN: dut.v:7:54: Signal is not driven: 'gnt4'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                      ^~~~
+%Warning-UNDRIVEN: dut.v:7:60: Signal is not driven: 'gnt5'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                            ^~~~
+%Warning-UNDRIVEN: dut.v:7:66: Signal is not driven: 'gnt6'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                  ^~~~
+%Warning-UNDRIVEN: dut.v:7:72: Signal is not driven: 'gnt7'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                        ^~~~
+%Warning-UNDRIVEN: dut.v:7:78: Signal is not driven: 'gnt8'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                              ^~~~
+%Warning-UNDRIVEN: dut.v:7:84: Signal is not driven: 'gnt9'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                                    ^~~~
+%Warning-UNDRIVEN: dut.v:7:90: Signal is not driven: 'gnt10'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                                          ^~~~~
+%Warning-UNDRIVEN: dut.v:7:97: Signal is not driven: 'gnt11'
+                             : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                                                 ^~~~~
+%Warning-UNDRIVEN: dut.v:7:104: Signal is not driven: 'gnt12'
+                              : ... note: In instance 'round_robin_req'
+    7 |     output g_b1, g_b2, g_b3, g_b4, gnt1, gnt2, gnt3, gnt4, gnt5, gnt6, gnt7, gnt8, gnt9, gnt10, gnt11, gnt12,
+      |                                                                                                        ^~~~~
+%Warning-UNDRIVEN: dut.v:8:12: Signal is not driven: 'gnt13'
+                             : ... note: In instance 'round_robin_req'
+    8 |            gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+      |            ^~~~~
+%Warning-UNDRIVEN: dut.v:8:19: Signal is not driven: 'gnt14'
+                             : ... note: In instance 'round_robin_req'
+    8 |            gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+      |                   ^~~~~
+%Warning-UNDRIVEN: dut.v:8:26: Signal is not driven: 'gnt15'
+                             : ... note: In instance 'round_robin_req'
+    8 |            gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+      |                          ^~~~~
+%Warning-UNDRIVEN: dut.v:8:33: Signal is not driven: 'gnt16'
+                             : ... note: In instance 'round_robin_req'
+    8 |            gnt13, gnt14, gnt15, gnt16, req1, req2, req3, req4, req5, req6, req7, req8, req9, req10, req11, req12,
+      |                                 ^~~~~
+%Warning-UNDRIVEN: dut.v:13:20: Signal is not driven: 'nreq_1'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                    ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:28: Signal is not driven: 'nreq_2'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                            ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:36: Signal is not driven: 'nreq_3'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                    ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:44: Signal is not driven: 'nreq_4'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                            ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:52: Signal is not driven: 'nreq_5'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                    ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:60: Signal is not driven: 'nreq_6'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                            ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:68: Signal is not driven: 'nreq_7'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                                    ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:76: Signal is not driven: 'nreq_8'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                                            ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:84: Signal is not driven: 'nreq_9'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                                                    ^~~~~~
+%Warning-UNDRIVEN: dut.v:13:92: Signal is not driven: 'nreq_10'
+                              : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                                                            ^~~~~~~
+%Warning-UNDRIVEN: dut.v:13:101: Signal is not driven: 'nreq_11'
+                               : ... note: In instance 'round_robin_req'
+   13 |            req_b4, nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11,
+      |                                                                                                     ^~~~~~~
+%Warning-UNDRIVEN: dut.v:14:12: Signal is not driven: 'nreq_12'
+                              : ... note: In instance 'round_robin_req'
+   14 |            nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+      |            ^~~~~~~
+%Warning-UNDRIVEN: dut.v:14:21: Signal is not driven: 'nreq_13'
+                              : ... note: In instance 'round_robin_req'
+   14 |            nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+      |                     ^~~~~~~
+%Warning-UNDRIVEN: dut.v:14:30: Signal is not driven: 'nreq_14'
+                              : ... note: In instance 'round_robin_req'
+   14 |            nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+      |                              ^~~~~~~
+%Warning-UNDRIVEN: dut.v:14:39: Signal is not driven: 'nreq_15'
+                              : ... note: In instance 'round_robin_req'
+   14 |            nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+      |                                       ^~~~~~~
+%Warning-UNDRIVEN: dut.v:14:48: Signal is not driven: 'nreq_16'
+                              : ... note: In instance 'round_robin_req'
+   14 |            nreq_12, nreq_13, nreq_14, nreq_15, nreq_16
+      |                                                ^~~~~~~
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [0] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:43: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                           ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+                      ... For warning description see https://verilator.org/warn/MULTIDRIVEN?v=5.053
+                      ... Use "/* verilator lint_off MULTIDRIVEN */" and lint_on around source to disable this message.
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [1] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:50: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                  ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [2] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:57: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                         ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [3] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:64: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [4] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:71: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                       ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [5] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:78: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                              ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [6] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:85: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                     ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [7] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:92: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                            ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [8] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:99: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                                   ^~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [9] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:2:106: ... Location of offending driver
+    2 |     input reset, rd_clk, all_vc_not_busy, req_1, req_2, req_3, req_4, req_5, req_6, req_7, req_8, req_9, req_10,
+      |                                                                                                          ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [10] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:3:11: ... Location of offending driver
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |           ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [11] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:3:19: ... Location of offending driver
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                   ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [12] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:3:27: ... Location of offending driver
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                           ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [13] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:3:35: ... Location of offending driver
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                   ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-MULTIDRIVEN: dut.v:17:17: Bit [14] of signal 'round_robin_req.req' have multiple combinational drivers. This can cause performance degradation.
+                      dut.v:3:43: ... Location of offending driver
+    3 |           req_11, req_12, req_13, req_14, req_15, req_16,
+      |                                           ^~~~~~
+                      dut.v:60:27: ... Location of offending driver
+   60 |             assign req[i] = req[i] & ~gi_latched[i];
+      |                           ^
+%Warning-UNOPTFLAT: dut.v:17:17: Signal unoptimizable: Circular combinational logic: 'round_robin_req.req'
+   17 |     wire [15:1] req;
+      |                 ^~~
+                    ... For warning description see https://verilator.org/warn/UNOPTFLAT?v=5.053
+                    ... Use "/* verilator lint_off UNOPTFLAT */" and lint_on around source to disable this message.
+                    dut.v:17:17:      Example path: round_robin_req.req
+                    dut.v:60:27:      Example path: ASSIGNW
+                    dut.v:17:17:      Example path: round_robin_req.req
+%Error: Exiting due to 65 warning(s)

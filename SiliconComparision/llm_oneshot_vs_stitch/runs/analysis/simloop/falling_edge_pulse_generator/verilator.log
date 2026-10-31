@@ -1,0 +1,16 @@
+%Error-PROCASSWIRE: dut.v:57:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'q0'
+                               : ... note: In instance 'falling_edge_pulse_generator'
+   57 |             q0 = 1'b0;
+      |             ^~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:59:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'q0'
+                               : ... note: In instance 'falling_edge_pulse_generator'
+   59 |             q0 = q0_dff;
+      |             ^~
+%Warning-UNUSEDSIGNAL: dut.v:8:10: Signal is not driven, nor used: 'gnt_d'
+                                 : ... note: In instance 'falling_edge_pulse_generator'
+    8 |     wire gnt_d;
+      |          ^~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 2 error(s), 1 warning(s)

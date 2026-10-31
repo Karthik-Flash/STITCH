@@ -1,0 +1,30 @@
+{
+ "track": "N",
+ "top": "demux_16",
+ "source": "golden/handwritten/demux_16.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "op1",
+  "op2",
+  "op3",
+  "op4",
+  "op5",
+  "op6",
+  "op7",
+  "op8",
+  "op9",
+  "op10",
+  "op11",
+  "op12",
+  "op13",
+  "op14",
+  "op15",
+  "op16"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

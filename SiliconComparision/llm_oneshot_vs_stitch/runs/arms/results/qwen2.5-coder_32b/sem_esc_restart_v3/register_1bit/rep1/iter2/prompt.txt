@@ -1,0 +1,44 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+Module `register_1bit` -- 1-bit router state register with asynchronous reset and synchronous clear.
+Ports (keep exactly, same order): input din, reset, clk, clr, ce; output reg dout.
+reset is ASYNCHRONOUS and active-high: dout goes to 0 immediately when reset rises.
+On a rising clk edge (reset low): if clr==1 dout <= 0; else if ce==1 dout <= din; else hold.
+
+
+CURRENT RTL:
+```verilog
+module register_1bit (
+    input din, reset, clk, clr, ce,
+    output dout
+);
+
+reg dout;
+
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        dout <= 1'b0;
+    end else begin
+        if (clr) begin
+            dout <= 1'b0;
+        end else if (ce) begin
+            dout <= din;
+        end
+    end
+end
+
+assign dout = dout;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:6: error: 'dout' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+
+VERILATOR LINT OUTPUT:
+%Error: dut.v:6:5: Duplicate declaration of signal: 'dout'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

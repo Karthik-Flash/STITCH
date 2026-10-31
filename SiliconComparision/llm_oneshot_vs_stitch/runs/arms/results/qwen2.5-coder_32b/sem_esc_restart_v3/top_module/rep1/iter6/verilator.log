@@ -1,0 +1,144 @@
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_out_l1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:941: ... Location of port declaration
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.053
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_out_l2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:954: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_out_l3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:967: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_out_l4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:980: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_out_c'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:993: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1005: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1014: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1023: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1032: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk_core'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1041: ... Location of port declaration
+%Error-PINNOTFOUND: dut.v:693:10: Pin not found: 'data_to_link1_ch1'
+                                : ... Suggested alternative: 'data_from_link1_ch1'
+  693 |         .data_to_link1_ch1(data_out_link1_vc1),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+                    ... For error description see https://verilator.org/warn/PINNOTFOUND?v=5.053
+%Error-PINNOTFOUND: dut.v:694:10: Pin not found: 'data_to_link1_ch2'
+                                : ... Suggested alternative: 'data_from_link1_ch2'
+  694 |         .data_to_link1_ch2(data_out_link1_vc2),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:695:10: Pin not found: 'data_to_link1_ch3'
+                                : ... Suggested alternative: 'data_from_link1_ch3'
+  695 |         .data_to_link1_ch3(data_out_link1_vc3),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:696:10: Pin not found: 'data_to_link1_ch4'
+                                : ... Suggested alternative: 'data_from_link1_ch4'
+  696 |         .data_to_link1_ch4(data_out_link1_vc4),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:697:10: Pin not found: 'data_to_link2_ch1'
+                                : ... Suggested alternative: 'data_from_link2_ch1'
+  697 |         .data_to_link2_ch1(data_out_link2_vc1),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:698:10: Pin not found: 'data_to_link2_ch2'
+                                : ... Suggested alternative: 'data_from_link2_ch2'
+  698 |         .data_to_link2_ch2(data_out_link2_vc2),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:699:10: Pin not found: 'data_to_link2_ch3'
+                                : ... Suggested alternative: 'data_from_link2_ch3'
+  699 |         .data_to_link2_ch3(data_out_link2_vc3),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:700:10: Pin not found: 'data_to_link2_ch4'
+                                : ... Suggested alternative: 'data_from_link2_ch4'
+  700 |         .data_to_link2_ch4(data_out_link2_vc4),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:701:10: Pin not found: 'data_to_link3_ch1'
+                                : ... Suggested alternative: 'data_from_link3_ch1'
+  701 |         .data_to_link3_ch1(data_out_link3_vc1),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:702:10: Pin not found: 'data_to_link3_ch2'
+                                : ... Suggested alternative: 'data_from_link3_ch2'
+  702 |         .data_to_link3_ch2(data_out_link3_vc2),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:703:10: Pin not found: 'data_to_link3_ch3'
+                                : ... Suggested alternative: 'data_from_link3_ch3'
+  703 |         .data_to_link3_ch3(data_out_link3_vc3),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:704:10: Pin not found: 'data_to_link3_ch4'
+                                : ... Suggested alternative: 'data_from_link3_ch4'
+  704 |         .data_to_link3_ch4(data_out_link3_vc4),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:705:10: Pin not found: 'data_to_link4_ch1'
+                                : ... Suggested alternative: 'data_from_link4_ch1'
+  705 |         .data_to_link4_ch1(data_out_link4_vc1),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:706:10: Pin not found: 'data_to_link4_ch2'
+                                : ... Suggested alternative: 'data_from_link4_ch2'
+  706 |         .data_to_link4_ch2(data_out_link4_vc2),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:707:10: Pin not found: 'data_to_link4_ch3'
+                                : ... Suggested alternative: 'data_from_link4_ch3'
+  707 |         .data_to_link4_ch3(data_out_link4_vc3),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:708:10: Pin not found: 'data_to_link4_ch4'
+                                : ... Suggested alternative: 'data_from_link4_ch4'
+  708 |         .data_to_link4_ch4(data_out_link4_vc4),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:709:10: Pin not found: 'data_to_core_ch1'
+                                : ... Suggested alternative: 'data_from_core_ch1'
+  709 |         .data_to_core_ch1(data_out_core_vc1),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:710:10: Pin not found: 'data_to_core_ch2'
+                                : ... Suggested alternative: 'data_from_core_ch2'
+  710 |         .data_to_core_ch2(data_out_core_vc2),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:711:10: Pin not found: 'data_to_core_ch3'
+                                : ... Suggested alternative: 'data_from_core_ch3'
+  711 |         .data_to_core_ch3(data_out_core_vc3),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:712:10: Pin not found: 'data_to_core_ch4'
+                                : ... Suggested alternative: 'data_from_core_ch4'
+  712 |         .data_to_core_ch4(data_out_core_vc4),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error: Exiting due to 20 error(s), 10 warning(s)

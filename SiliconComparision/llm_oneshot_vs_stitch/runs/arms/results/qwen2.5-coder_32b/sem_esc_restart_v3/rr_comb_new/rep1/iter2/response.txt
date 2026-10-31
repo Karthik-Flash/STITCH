@@ -1,0 +1,86 @@
+```verilog
+module rr_comb_new (
+    input reset, clk, r1, r2, r3, r4,
+    output g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3,
+           and_out4, or_out, b1, b0, b1_logic, b0_logic
+);
+
+    wire g1_w, g2_w, g3_w, g4_w;
+    wire and_out1_w, and_out2_w, and_out3_w, and_out4_w;
+    wire or_out_w;
+    wire b1_w, b0_w;
+    wire l1_w, l2_w, l3_w, l4_w;
+    wire mux_out1_w, mux_out2_w, mux_out3_w, mux_out4_w;
+
+    reg g1_reg, g2_reg, g3_reg, g4_reg;
+
+    // Instantiate DFFs
+    dff_synch_clr dff_g1 (g1_w, reset, clk, g1_reg);
+    dff_synch_clr dff_g2 (g2_w, reset, clk, g2_reg);
+    dff_synch_clr dff_g3 (g3_w, reset, clk, g3_reg);
+    dff_synch_clr dff_g4 (g4_w, reset, clk, g4_reg);
+
+    // Combinational logic
+    assign g1_w = r1 & g1_reg;
+    assign g2_w = r2 & g2_reg;
+    assign g3_w = r3 & g3_reg;
+    assign g4_w = r4 & g4_reg;
+
+    assign and_out1_w = g1_w & ~g2_w & ~g3_w & ~g4_w;
+    assign and_out2_w = g2_w & ~g1_w & ~g3_w & ~g4_w;
+    assign and_out3_w = g3_w & ~g2_w & ~g1_w & ~g4_w;
+    assign and_out4_w = g4_w & ~g2_w & ~g3_w & ~g1_w;
+
+    assign or_out_w = g1_w | g2_w | g3_w | g4_w;
+
+    assign b1_w = and_out3_w | and_out4_w;
+    assign b0_w = and_out2_w | and_out4_w;
+
+    assign l1_w = r1 & ~g2_w & ~g3_w & ~g4_w & ((~r3 & ~r4 & (b0_w | (~b1_w & ~r2))) | (b1_w & (b0_w | ~r4)));
+    assign l2_w = r2 & ~g1_w & ~g3_w & ~g4_w & ((~b0_w & ~r1 & ~r4) | (~r1 & ~r3 & ~r4) | (b1_w & b0_w & ~r1) | (~b1_w & ~b0_w));
+    assign l3_w = r3 & ~g2_w & ~g1_w & ~g4_w & ((~r1 & ~r2 & ~r4) | (b0_w & ~r1 & ~r2) | (~b1_w & ~r2) | (~b1_w & b0_w));
+    assign l4_w = r4 & ~g2_w & ~g3_w & ~g1_w & ((~b1_w & ~r2 & ~r3) | (~r1 & ~r2 & ~r3) | (~b1_w & b0_w & ~r3) | (b1_w & ~b0_w));
+
+    assign mux_out1_w = and_out1_w ? r1 : l1_w;
+    assign mux_out2_w = and_out2_w ? r2 : l2_w;
+    assign mux_out3_w = and_out3_w ? r3 : l3_w;
+    assign mux_out4_w = and_out4_w ? r4 : l4_w;
+
+    // Drive outputs
+    assign g1 = g1_reg;
+    assign g2 = g2_reg;
+    assign g3 = g3_reg;
+    assign g4 = g4_reg;
+    assign and_out1 = and_out1_w;
+    assign and_out2 = and_out2_w;
+    assign and_out3 = and_out3_w;
+    assign and_out4 = and_out4_w;
+    assign or_out = or_out_w;
+    assign b1 = b1_w;
+    assign b0 = b0_w;
+    assign l1 = l1_w;
+    assign l2 = l2_w;
+    assign l3 = l3_w;
+    assign l4 = l4_w;
+    assign mux_out1 = mux_out1_w;
+    assign mux_out2 = mux_out2_w;
+    assign mux_out3 = mux_out3_w;
+    assign mux_out4 = mux_out4_w;
+
+    // Clocked block to update grant signals
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            g1_reg <= 1'b0;
+            g2_reg <= 1'b0;
+            g3_reg <= 1'b0;
+            g4_reg <= 1'b0;
+        end else begin
+            g1_reg <= mux_out1_w;
+            g2_reg <= mux_out2_w;
+            g3_reg <= mux_out3_w;
+            g4_reg <= mux_out4_w;
+        end
+    end
+
+endmodule
+```

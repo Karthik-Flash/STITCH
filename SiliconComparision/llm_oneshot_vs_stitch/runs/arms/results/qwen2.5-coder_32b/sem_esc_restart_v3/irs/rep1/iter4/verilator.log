@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: dut.v:6:24: Signal is not driven, nor used: 'rd_en_out_w'
+                                 : ... note: In instance 'irs'
+    6 |     wire en1_w, en2_w, rd_en_out_w;
+      |                        ^~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

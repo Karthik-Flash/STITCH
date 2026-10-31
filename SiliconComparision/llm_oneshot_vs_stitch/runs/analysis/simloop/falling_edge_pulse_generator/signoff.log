@@ -1,0 +1,5 @@
+dut.v:57: error: 'q0' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'q0' is declared here as a wire.
+dut.v:59: error: 'q0' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'q0' is declared here as a wire.
+2 error(s) during elaboration.

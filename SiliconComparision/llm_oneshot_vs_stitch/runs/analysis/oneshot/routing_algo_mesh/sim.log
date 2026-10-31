@@ -1,0 +1,10 @@
+dut.v:8: error: 'req_link1' has already been declared in this scope.
+dut.v:5:      : It was declared here as a net.
+dut.v:8: error: 'req_link2' has already been declared in this scope.
+dut.v:5:      : It was declared here as a net.
+dut.v:8: error: 'req_core' has already been declared in this scope.
+dut.v:5:      : It was declared here as a net.
+dut.v:8: error: 'req_link3' has already been declared in this scope.
+dut.v:5:      : It was declared here as a net.
+dut.v:8: error: 'req_link4' has already been declared in this scope.
+dut.v:5:      : It was declared here as a net.

@@ -1,0 +1,44 @@
+dut.v:11: error: Unable to bind wire/reg/memory `en4_next' in `tb.dut'
+dut.v:62:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:11: error: Failed to elaborate input port 'd' expression (en4_next) in instance dut.dff_en4 of module: dff_asynch_clr.
+dut.v:19: error: Unable to bind wire/reg/memory `en5_next' in `tb.dut'
+dut.v:72:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:19: error: Failed to elaborate input port 'd' expression (en5_next) in instance dut.dff_en5 of module: dff_asynch_clr.
+dut.v:27: error: Unable to bind wire/reg/memory `en6_next' in `tb.dut'
+dut.v:82:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:27: error: Failed to elaborate input port 'd' expression (en6_next) in instance dut.dff_en6 of module: dff_asynch_clr.
+dut.v:43: error: Unable to bind wire/reg/memory `flag_A_w' in `tb.dut'
+dut.v:103:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:43: error: Failed to elaborate input port 'd' expression (flag_A_w) in instance dut.dff_flag_A of module: dff_asynch_clr.
+dut.v:51: error: Unable to bind wire/reg/memory `flag_B_w' in `tb.dut'
+dut.v:113:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:51: error: Failed to elaborate input port 'd' expression (flag_B_w) in instance dut.dff_flag_B of module: dff_asynch_clr.
+dut.v:125: error: 'rd_en_out' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'rd_en_out' is declared here as a wire.
+dut.v:126: error: 'data_sel' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'data_sel' is declared here as a wire.
+dut.v:127: error: 'en1' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en1' is declared here as a wire.
+dut.v:128: error: 'en2' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en2' is declared here as a wire.
+dut.v:129: error: 'en4' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en4' is declared here as a wire.
+dut.v:130: error: 'en5' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en5' is declared here as a wire.
+dut.v:131: error: 'en6' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en6' is declared here as a wire.
+dut.v:133: error: 'rd_en_out' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'rd_en_out' is declared here as a wire.
+dut.v:134: error: 'data_sel' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'data_sel' is declared here as a wire.
+dut.v:135: error: 'en1' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en1' is declared here as a wire.
+dut.v:136: error: 'en2' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en2' is declared here as a wire.
+dut.v:137: error: 'en4' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en4' is declared here as a wire.
+dut.v:138: error: 'en5' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en5' is declared here as a wire.
+dut.v:139: error: 'en6' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en6' is declared here as a wire.
+24 error(s) during elaboration.

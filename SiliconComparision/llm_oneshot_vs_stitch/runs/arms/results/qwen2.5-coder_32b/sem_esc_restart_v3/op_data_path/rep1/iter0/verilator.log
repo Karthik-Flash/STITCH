@@ -1,0 +1,63 @@
+%Error: dut.v:17:17: Duplicate declaration of signal: 'data_out_l1'
+                   : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+   17 |     wire [31:0] data_out_l1, data_out_l2, data_out_l3, data_out_l4, data_out_c;
+      |                 ^~~~~~~~~~~
+        dut.v:12:98: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                                                                                                  ^~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:17:30: Duplicate declaration of signal: 'data_out_l2'
+   17 |     wire [31:0] data_out_l1, data_out_l2, data_out_l3, data_out_l4, data_out_c;
+      |                              ^~~~~~~~~~~
+        dut.v:13:19: ... Location of original declaration
+   13 |                   data_out_l2, data_out_l3, data_out_l4, data_out_c,
+      |                   ^~~~~~~~~~~
+%Error: dut.v:17:43: Duplicate declaration of signal: 'data_out_l3'
+   17 |     wire [31:0] data_out_l1, data_out_l2, data_out_l3, data_out_l4, data_out_c;
+      |                                           ^~~~~~~~~~~
+        dut.v:13:32: ... Location of original declaration
+   13 |                   data_out_l2, data_out_l3, data_out_l4, data_out_c,
+      |                                ^~~~~~~~~~~
+%Error: dut.v:17:56: Duplicate declaration of signal: 'data_out_l4'
+   17 |     wire [31:0] data_out_l1, data_out_l2, data_out_l3, data_out_l4, data_out_c;
+      |                                                        ^~~~~~~~~~~
+        dut.v:13:45: ... Location of original declaration
+   13 |                   data_out_l2, data_out_l3, data_out_l4, data_out_c,
+      |                                             ^~~~~~~~~~~
+%Error: dut.v:17:69: Duplicate declaration of signal: 'data_out_c'
+   17 |     wire [31:0] data_out_l1, data_out_l2, data_out_l3, data_out_l4, data_out_c;
+      |                                                                     ^~~~~~~~~~
+        dut.v:13:58: ... Location of original declaration
+   13 |                   data_out_l2, data_out_l3, data_out_l4, data_out_c,
+      |                                                          ^~~~~~~~~~
+%Error: dut.v:18:17: Duplicate declaration of signal: 'data_out_link1'
+   18 |     wire [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core;
+      |                 ^~~~~~~~~~~~~~
+        dut.v:12:19: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                   ^~~~~~~~~~~~~~
+%Error: dut.v:18:33: Duplicate declaration of signal: 'data_out_link2'
+   18 |     wire [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core;
+      |                                 ^~~~~~~~~~~~~~
+        dut.v:12:35: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                                   ^~~~~~~~~~~~~~
+%Error: dut.v:18:49: Duplicate declaration of signal: 'data_out_link3'
+   18 |     wire [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core;
+      |                                                 ^~~~~~~~~~~~~~
+        dut.v:12:51: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                                                   ^~~~~~~~~~~~~~
+%Error: dut.v:18:65: Duplicate declaration of signal: 'data_out_link4'
+   18 |     wire [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core;
+      |                                                                 ^~~~~~~~~~~~~~
+        dut.v:12:67: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                                                                   ^~~~~~~~~~~~~~
+%Error: dut.v:18:81: Duplicate declaration of signal: 'data_out_core'
+   18 |     wire [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core;
+      |                                                                                 ^~~~~~~~~~~~~
+        dut.v:12:83: ... Location of original declaration
+   12 |     output [31:0] data_out_link1, data_out_link2, data_out_link3, data_out_link4, data_out_core, data_out_l1,
+      |                                                                                   ^~~~~~~~~~~~~
+%Error: Exiting due to 10 error(s)

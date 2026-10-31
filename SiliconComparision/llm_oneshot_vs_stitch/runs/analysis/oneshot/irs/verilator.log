@@ -1,0 +1,104 @@
+%Error-PROCASSWIRE: dut.v:64:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4_w'
+                               : ... note: In instance 'irs'
+   64 |             en4_w = 1'b0;
+      |             ^~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:66:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4_w'
+                               : ... note: In instance 'irs'
+   66 |             en4_w = 1'b1;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:68:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4_w'
+                               : ... note: In instance 'irs'
+   68 |             en4_w = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:70:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4_w'
+                               : ... note: In instance 'irs'
+   70 |             en4_w = en4_reg;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:77:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5_w'
+                               : ... note: In instance 'irs'
+   77 |             en5_w = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:79:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5_w'
+                               : ... note: In instance 'irs'
+   79 |             en5_w = en4_reg;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:81:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5_w'
+                               : ... note: In instance 'irs'
+   81 |             en5_w = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:83:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5_w'
+                               : ... note: In instance 'irs'
+   83 |             en5_w = en5_reg;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:90:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6_w'
+                               : ... note: In instance 'irs'
+   90 |             en6_w = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:92:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6_w'
+                               : ... note: In instance 'irs'
+   92 |             en6_w = en5_reg;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:94:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6_w'
+                               : ... note: In instance 'irs'
+   94 |             en6_w = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:96:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6_w'
+                               : ... note: In instance 'irs'
+   96 |             en6_w = en6_reg;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:103:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  103 |             data_sel_w = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:105:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  105 |             data_sel_w = 1'b1;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:107:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  107 |             data_sel_w = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:109:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  109 |             data_sel_w = data_sel_reg;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:116:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_A_w'
+                                : ... note: In instance 'irs'
+  116 |             flag_A_w = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:118:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_A_w'
+                                : ... note: In instance 'irs'
+  118 |             flag_A_w = data_sel_reg;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:120:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_A_w'
+                                : ... note: In instance 'irs'
+  120 |             flag_A_w = flag_A_reg;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:127:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_B_w'
+                                : ... note: In instance 'irs'
+  127 |             flag_B_w = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:129:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_B_w'
+                                : ... note: In instance 'irs'
+  129 |             flag_B_w = 1'b1;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:131:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'flag_B_w'
+                                : ... note: In instance 'irs'
+  131 |             flag_B_w = flag_B_reg;
+      |             ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:2:48: Signal is not used: 'tailer_org'
+                                 : ... note: In instance 'irs'
+    2 |     input reset, empty, rd_en, rd_clk, tailer, tailer_org, header,
+      |                                                ^~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:7:9: Signal is not driven, nor used: 'en1_reg'
+                                : ... note: In instance 'irs'
+    7 |     reg en1_reg, en2_reg, en4_reg, en5_reg, en6_reg, data_sel_reg, flag_A_reg, flag_B_reg;
+      |         ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:7:18: Signal is not driven, nor used: 'en2_reg'
+                                 : ... note: In instance 'irs'
+    7 |     reg en1_reg, en2_reg, en4_reg, en5_reg, en6_reg, data_sel_reg, flag_A_reg, flag_B_reg;
+      |                  ^~~~~~~
+%Error: Exiting due to 22 error(s), 3 warning(s)

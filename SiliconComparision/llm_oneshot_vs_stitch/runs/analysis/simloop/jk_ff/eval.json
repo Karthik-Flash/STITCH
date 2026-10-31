@@ -1,0 +1,21 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "8f1c26a58e80e44e0b78ec8ce2088d50ffdb985effbd7bc891d6de98606bdaf2",
+ "file": "outputs/simloop/jk_ff.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

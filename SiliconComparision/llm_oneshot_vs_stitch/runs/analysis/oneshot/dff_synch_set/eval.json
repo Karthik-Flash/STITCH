@@ -1,0 +1,21 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "5ff18e4f8cf7ec1ec9460e71db14f307f2a9df45772b7cdd2e5c7997e3ef1812",
+ "file": "outputs/oneshot/dff_synch_set.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

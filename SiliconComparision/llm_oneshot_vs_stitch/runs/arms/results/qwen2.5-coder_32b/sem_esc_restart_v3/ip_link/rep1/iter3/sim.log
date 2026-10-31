@@ -1,0 +1,61 @@
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:82: error: expression not valid in assign l-value: 1'd0
+dut.v:82: error: Output port expression must support a continuous assignment.
+dut.v:82:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:82: error: expression not valid in assign l-value: 1'd0
+dut.v:82: error: Output port expression must support a continuous assignment.
+dut.v:82:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:82: error: expression not valid in assign l-value: 1'd0
+dut.v:82: error: Output port expression must support a continuous assignment.
+dut.v:82:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:82: error: expression not valid in assign l-value: 1'd0
+dut.v:82: error: Output port expression must support a continuous assignment.
+dut.v:82:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:82: error: expression not valid in assign l-value: 1'd0
+dut.v:82: error: Output port expression must support a continuous assignment.
+dut.v:82:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:92: error: expression not valid in assign l-value: 1'd0
+dut.v:92: error: Output port expression must support a continuous assignment.
+dut.v:92:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:92: error: expression not valid in assign l-value: 1'd0
+dut.v:92: error: Output port expression must support a continuous assignment.
+dut.v:92:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:92: error: expression not valid in assign l-value: 1'd0
+dut.v:92: error: Output port expression must support a continuous assignment.
+dut.v:92:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:92: error: expression not valid in assign l-value: 1'd0
+dut.v:92: error: Output port expression must support a continuous assignment.
+dut.v:92:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:92: error: expression not valid in assign l-value: 1'd0
+dut.v:92: error: Output port expression must support a continuous assignment.
+dut.v:92:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+20 error(s) during elaboration.

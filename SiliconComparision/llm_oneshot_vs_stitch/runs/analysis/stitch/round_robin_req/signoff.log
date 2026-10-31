@@ -1,0 +1,150 @@
+dut.v:32: error: Index gi[16] is out of range.
+dut.v:42: error: Index gi_int[16] is out of range.
+dut.v:53: error: Index gi_latched[16] is out of range.
+dut.v:62: error: Index req_masked[16] is out of range.
+dut.v:124: error: Index gnt[16] is out of range.
+dut.v:320: error: 'g1' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g1' is declared here as a wire.
+dut.v:321: error: 'g2' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g2' is declared here as a wire.
+dut.v:322: error: 'g3' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g3' is declared here as a wire.
+dut.v:323: error: 'g4' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g4' is declared here as a wire.
+dut.v:324: error: 'g5' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g5' is declared here as a wire.
+dut.v:325: error: 'g6' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g6' is declared here as a wire.
+dut.v:326: error: 'g7' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g7' is declared here as a wire.
+dut.v:327: error: 'g8' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g8' is declared here as a wire.
+dut.v:328: error: 'g9' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g9' is declared here as a wire.
+dut.v:329: error: 'g10' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g10' is declared here as a wire.
+dut.v:330: error: 'g11' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g11' is declared here as a wire.
+dut.v:331: error: 'g12' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g12' is declared here as a wire.
+dut.v:332: error: 'g13' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g13' is declared here as a wire.
+dut.v:333: error: 'g14' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g14' is declared here as a wire.
+dut.v:334: error: 'g15' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g15' is declared here as a wire.
+dut.v:335: error: 'g16' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g16' is declared here as a wire.
+dut.v:336: error: 'g_b1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b1' is declared here as a wire.
+dut.v:337: error: 'g_b2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b2' is declared here as a wire.
+dut.v:338: error: 'g_b3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b3' is declared here as a wire.
+dut.v:339: error: 'g_b4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b4' is declared here as a wire.
+dut.v:340: error: 'gnt1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt1' is declared here as a wire.
+dut.v:341: error: 'gnt2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt2' is declared here as a wire.
+dut.v:342: error: 'gnt3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt3' is declared here as a wire.
+dut.v:343: error: 'gnt4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt4' is declared here as a wire.
+dut.v:344: error: 'gnt5' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt5' is declared here as a wire.
+dut.v:345: error: 'gnt6' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt6' is declared here as a wire.
+dut.v:346: error: 'gnt7' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt7' is declared here as a wire.
+dut.v:347: error: 'gnt8' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt8' is declared here as a wire.
+dut.v:348: error: 'gnt9' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt9' is declared here as a wire.
+dut.v:349: error: 'gnt10' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt10' is declared here as a wire.
+dut.v:350: error: 'gnt11' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt11' is declared here as a wire.
+dut.v:351: error: 'gnt12' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt12' is declared here as a wire.
+dut.v:352: error: 'gnt13' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt13' is declared here as a wire.
+dut.v:353: error: 'gnt14' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt14' is declared here as a wire.
+dut.v:354: error: 'gnt15' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt15' is declared here as a wire.
+dut.v:355: error: 'gnt16' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt16' is declared here as a wire.
+dut.v:357: error: 'g1' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g1' is declared here as a wire.
+dut.v:358: error: 'g2' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g2' is declared here as a wire.
+dut.v:359: error: 'g3' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g3' is declared here as a wire.
+dut.v:360: error: 'g4' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g4' is declared here as a wire.
+dut.v:361: error: 'g5' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g5' is declared here as a wire.
+dut.v:362: error: 'g6' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g6' is declared here as a wire.
+dut.v:363: error: 'g7' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g7' is declared here as a wire.
+dut.v:364: error: 'g8' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g8' is declared here as a wire.
+dut.v:365: error: 'g9' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g9' is declared here as a wire.
+dut.v:366: error: 'g10' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g10' is declared here as a wire.
+dut.v:367: error: 'g11' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g11' is declared here as a wire.
+dut.v:368: error: 'g12' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g12' is declared here as a wire.
+dut.v:369: error: 'g13' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g13' is declared here as a wire.
+dut.v:370: error: 'g14' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g14' is declared here as a wire.
+dut.v:371: error: 'g15' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g15' is declared here as a wire.
+dut.v:372: error: 'g16' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'g16' is declared here as a wire.
+dut.v:373: error: 'g_b1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b1' is declared here as a wire.
+dut.v:374: error: 'g_b2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b2' is declared here as a wire.
+dut.v:375: error: 'g_b3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b3' is declared here as a wire.
+dut.v:376: error: 'g_b4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'g_b4' is declared here as a wire.
+dut.v:377: error: 'gnt1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt1' is declared here as a wire.
+dut.v:378: error: 'gnt2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt2' is declared here as a wire.
+dut.v:379: error: 'gnt3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt3' is declared here as a wire.
+dut.v:380: error: 'gnt4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt4' is declared here as a wire.
+dut.v:381: error: 'gnt5' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt5' is declared here as a wire.
+dut.v:382: error: 'gnt6' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt6' is declared here as a wire.
+dut.v:383: error: 'gnt7' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt7' is declared here as a wire.
+dut.v:384: error: 'gnt8' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt8' is declared here as a wire.
+dut.v:385: error: 'gnt9' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt9' is declared here as a wire.
+dut.v:386: error: 'gnt10' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt10' is declared here as a wire.
+dut.v:387: error: 'gnt11' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt11' is declared here as a wire.
+dut.v:388: error: 'gnt12' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'gnt12' is declared here as a wire.
+dut.v:389: error: 'gnt13' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt13' is declared here as a wire.
+dut.v:390: error: 'gnt14' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt14' is declared here as a wire.
+dut.v:391: error: 'gnt15' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt15' is declared here as a wire.
+dut.v:392: error: 'gnt16' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'gnt16' is declared here as a wire.
+77 error(s) during elaboration.

@@ -1,0 +1,10 @@
+dut.v:108: error: 'sel_vc_link1' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:108: error: 'sel_vc_link2' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:108: error: 'sel_vc_link3' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:108: error: 'sel_vc_link4' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+dut.v:108: error: 'sel_vc_core' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.

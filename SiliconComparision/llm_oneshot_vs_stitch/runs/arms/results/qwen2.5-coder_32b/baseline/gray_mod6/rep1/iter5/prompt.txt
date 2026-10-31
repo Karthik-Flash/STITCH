@@ -1,0 +1,112 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# gray_mod6
+
+## Behaviour
+
+Modulo-6 Gray-code counter with enable and a wrap flag.
+
+- On each rising edge of `clk`, when `en` is 1, `gray_out` advances through 000, 001, 011, 010, 110,
+  100 and back to 000. When `en` is 0 it holds.
+- `dir` toggles each time `gray_out` leaves 100 (the wrap from 100 back to 000).
+
+## Reset
+
+Synchronous, active-high `reset`: `gray_out` becomes 000 at the next rising `clk` edge. `dir` is reset
+to 0 only at its own toggle event (when the state leaves 100). In simulation this also happens when the
+state first changes from unknown to 000 during reset.
+
+## Ports
+
+5 ports, in this exact order:
+
+```verilog
+input clk, reset, en;
+output [2:0] gray_out;
+output dir;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `jk_ff` x 4: (j, k, reset, en, clk, q, qbar)
+
+
+CURRENT RTL:
+```verilog
+module gray_mod6 (
+    input clk, reset, en,
+    output [2:0] gray_out,
+    output dir
+);
+
+    wire [2:0] bin_out;
+    reg [2:0] j, k;
+    wire [2:0] q, qbar;
+    reg dir_reg;
+
+    // Instantiate JK flip-flops
+    jk_ff jk_ff0 (j[0], k[0], reset, en, clk, q[0], qbar[0]);
+    jk_ff jk_ff1 (j[1], k[1], reset, en, clk, q[1], qbar[1]);
+    jk_ff jk_ff2 (j[2], k[2], reset, en, clk, q[2], qbar[2]);
+
+    // Binary to Gray conversion
+    assign gray_out[2] = q[2];
+    assign gray_out[1] = q[2] ^ q[1];
+    assign gray_out[0] = q[1] ^ q[0];
+
+    // Determine the binary output from the flip-flops
+    assign bin_out[2] = q[2];
+    assign bin_out[1] = q[1];
+    assign bin_out[0] = q[0];
+
+    // JK inputs logic
+    always @(*) begin
+        case (bin_out)
+            3'b000: begin j = 3'b100; k = 3'b000; end
+            3'b001: begin j = 3'b010; k = 3'b000; end
+            3'b011: begin j = 3'b001; k = 3'b000; end
+            3'b010: begin j = 3'b000; k = 3'b100; end
+            3'b110: begin j = 3'b000; k = 3'b010; end
+            3'b100: begin j = 3'b000; k = 3'b001; end
+            default: begin j = 3'b000; k = 3'b000; end
+        endcase
+    end
+
+    // Direction toggle logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            dir_reg <= 1'b0;
+        end else if (bin_out == 3'b100 && en) begin
+            dir_reg <= ~dir_reg;
+        end
+    end
+
+    assign dir = dir_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=69000 cycle 5: gray_out = 6, expected 1
+FAIL t=74000 cycle 6: gray_out = 6, expected 1
+FAIL t=79000 cycle 6: gray_out = 6, expected 3
+FAIL t=79000 cycle 6: dir = 1, expected 0
+FAIL t=84000 cycle 7: gray_out = 6, expected 3
+FAIL t=84000 cycle 7: dir = 1, expected 0
+FAIL t=89000 cycle 7: gray_out = 6, expected 3
+FAIL t=89000 cycle 7: dir = 1, expected 0
+FAIL t=94000 cycle 8: gray_out = 6, expected 3
+FAIL t=94000 cycle 8: dir = 1, expected 0
+FAIL t=99000 cycle 8: gray_out = 6, expected 2
+FAIL t=104000 cycle 9: gray_out = 6, expected 2
+FAIL t=109000 cycle 9: gray_out = 6, expected 2
+FAIL t=114000 cycle 10: gray_out = 6, expected 2
+FAIL t=119000 cycle 10: dir = 1, expected 0
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

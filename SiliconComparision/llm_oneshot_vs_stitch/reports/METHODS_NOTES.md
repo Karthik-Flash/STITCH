@@ -63,3 +63,34 @@ recorded as an infrastructure error and retried on the next submission.
 The whole router (top_module with all its descendants) as one one-shot prompt was not attempted. The prompt alone is
 32,290 of 32,768 tokens (`pipeline/budget.py`), and a golden-sized answer is about 74,627 tokens. `GEN_FULL_ROUTER`
 defaults to 0, so one-shot produces 34 files.
+
+## Run history
+
+Per-job figures are in `reports/RUN_HISTORY.md` (`pipeline/run_history.py`, from the git-ignored `hpc_logs/`), and
+which job produced each output is in `reports/INTEGRITY.md` (`pipeline/integrity.py`).
+
+- **422841** (gpunode7, H200 NVL, deployed commit e77bf73): smoke run on 3 tasks (encoder, register_4bit, allot_vc),
+  one-shot and both arms. llama-server ran 64 threads; generation 5.32 tok/s. JOB DONE after 1:09:40.
+- **423542** (gpunode4, A100-SXM4-80GB, e77bf73): all tasks, 64 threads, 4.37 tok/s. The one-shot call for op_core
+  hit the 900 s client timeout (`RuntimeError: ollama failed after retries: timed out`) and the job stopped. Its 22
+  finished one-shot records are kept.
+- **424063** (gpunode5, H100 80GB HBM3, deployed commit 62b4131): the remaining 9 one-shot modules and the remaining
+  31 runs per arm. 4 threads; generation 64.91 tok/s pooled, 48.4-74.0 tok/s per call (median 67.9). JOB DONE
+  4:21:38 after its first log line.
+
+Settings common to the runs: num_ctx 32768; options.num_thread 4 from 62b4131 on (a CPU-thread setting, not a
+sampling option); client timeout 3600 s from 62b4131 on (900 s before); `--cpus-per-task=4` (the site allows 4 CPUs
+per GPU). Temperature 0.1 and no seed in every call. The whole-router bonus prompt was not attempted. The cluster
+results were extracted from an archive with sha256 `93c24d50a0c7aa7e8733c60dbb1096df719828933e55d5a60c5d4954c2c10ace`
+(`reports/INTEGRITY.md`).
+
+## Evaluation caveats
+
+- **No sampling seed.** With identical prompts, the two arms' first answers differed in 6 of 25 modules
+  (`reports/STITCH_VS_RETRY.md`). A difference between the arms can come from sampling alone; every gain and
+  regression in that report states whether the arms diverged after a different or an identical prompt.
+- **The mesh tb is cycle-exact against a golden with simulation races.** The golden's blocking-assignment flops
+  (q = d) make the comparison sensitive to event order. Five LLM modules that are formally equivalent to golden fail
+  it (`reports/ASSEMBLY.md`).
+- **The loop tb is cycle-exact even for timing-dependent modules.** Their sign-off verdict is the property checks,
+  so the loop feedback is stricter than the sign-off verdict (`reports/FAILURE_AUDIT.md`).

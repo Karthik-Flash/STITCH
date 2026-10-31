@@ -1,0 +1,68 @@
+module routing_algo_mesh (
+    input [31:0] header_in,
+    input [7:0] current_address,
+    input reset,
+    output req_link1, req_link2, req_core, req_link3, req_link4
+);
+
+    reg req_link1_w, req_link2_w, req_core_w, req_link3_w, req_link4_w;
+
+    assign req_link1 = req_link1_w;
+    assign req_link2 = req_link2_w;
+    assign req_core = req_core_w;
+    assign req_link3 = req_link3_w;
+    assign req_link4 = req_link4_w;
+
+    always @(*) begin
+        if (reset || (header_in[29] != 1'b1 || header_in[30] != 1'b0)) begin
+            req_link1_w = 1'b0;
+            req_link2_w = 1'b0;
+            req_core_w = 1'b0;
+            req_link3_w = 1'b0;
+            req_link4_w = 1'b0;
+        end else begin
+            case (1'b1)
+                (header_in[7:4] > current_address[7:4]): begin
+                    req_link1_w = 1'b1;
+                    req_link2_w = 1'b0;
+                    req_core_w = 1'b0;
+                    req_link3_w = 1'b0;
+                    req_link4_w = 1'b0;
+                end
+                (header_in[7:4] < current_address[7:4]): begin
+                    req_link1_w = 1'b0;
+                    req_link2_w = 1'b1;
+                    req_core_w = 1'b0;
+                    req_link3_w = 1'b0;
+                    req_link4_w = 1'b0;
+                end
+                default: begin
+                    case (1'b1)
+                        (header_in[3:0] > current_address[3:0]): begin
+                            req_link1_w = 1'b0;
+                            req_link2_w = 1'b0;
+                            req_core_w = 1'b0;
+                            req_link3_w = 1'b1;
+                            req_link4_w = 1'b0;
+                        end
+                        (header_in[3:0] < current_address[3:0]): begin
+                            req_link1_w = 1'b0;
+                            req_link2_w = 1'b0;
+                            req_core_w = 1'b0;
+                            req_link3_w = 1'b0;
+                            req_link4_w = 1'b1;
+                        end
+                        default: begin
+                            req_link1_w = 1'b0;
+                            req_link2_w = 1'b0;
+                            req_core_w = 1'b1;
+                            req_link3_w = 1'b0;
+                            req_link4_w = 1'b0;
+                        end
+                    endcase
+                end
+            endcase
+        end
+    end
+
+endmodule

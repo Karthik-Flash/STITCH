@@ -1,0 +1,55 @@
+dut.v:220: warning: Port 57 (e1) of module allot_vc expects 4 bit(s), given 1.
+dut.v:220:        : Padding 3 high bits of the port.
+dut.v:220: warning: Port 58 (e2) of module allot_vc expects 4 bit(s), given 1.
+dut.v:220:        : Padding 3 high bits of the port.
+dut.v:220: warning: Port 59 (e3) of module allot_vc expects 4 bit(s), given 1.
+dut.v:220:        : Padding 3 high bits of the port.
+dut.v:220: warning: Port 60 (e4) of module allot_vc expects 4 bit(s), given 1.
+dut.v:220:        : Padding 3 high bits of the port.
+dut.v:416: error: 'all_vc_not_busy' is not a valid l-value for a procedural assignment.
+dut.v:42:      : 'all_vc_not_busy' is declared here as a wire.
+dut.v:422: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:423: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:424: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:425: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:426: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:427: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:428: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:429: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:430: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:431: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:432: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:433: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:434: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:435: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:436: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:437: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:438: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:445: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:446: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:447: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:448: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:449: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+23 error(s) during elaboration.

@@ -1,0 +1,3 @@
+INFO coverage: 5 of 5 checked outputs toggled, 5 of 5 bits
+ALL TESTS PASSED
+tb.v:97: $finish called at 50009000 (1ps)

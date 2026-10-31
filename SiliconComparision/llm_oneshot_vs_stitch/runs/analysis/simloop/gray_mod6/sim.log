@@ -1,0 +1,18 @@
+FAIL t=69000 cycle 5: gray_out = 6, expected 1
+FAIL t=74000 cycle 6: gray_out = 6, expected 1
+FAIL t=79000 cycle 6: gray_out = 6, expected 3
+FAIL t=79000 cycle 6: dir = 1, expected 0
+FAIL t=84000 cycle 7: gray_out = 6, expected 3
+FAIL t=84000 cycle 7: dir = 1, expected 0
+FAIL t=89000 cycle 7: gray_out = 6, expected 3
+FAIL t=89000 cycle 7: dir = 1, expected 0
+FAIL t=94000 cycle 8: gray_out = 6, expected 3
+FAIL t=94000 cycle 8: dir = 1, expected 0
+FAIL t=99000 cycle 8: gray_out = 6, expected 2
+FAIL t=104000 cycle 9: gray_out = 6, expected 2
+FAIL t=109000 cycle 9: gray_out = 6, expected 2
+FAIL t=114000 cycle 10: gray_out = 6, expected 2
+FAIL t=119000 cycle 10: dir = 1, expected 0
+INFO coverage: 2 of 2 checked outputs toggled, 4 of 4 bits
+FAIL: 508 mismatches, 0 property errors
+tb.v:62: $finish called at 2009000 (1ps)

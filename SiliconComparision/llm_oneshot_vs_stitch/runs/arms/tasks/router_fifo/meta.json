@@ -1,0 +1,31 @@
+{
+ "track": "N",
+ "top": "router_fifo",
+ "source": "golden/handwritten/router_fifo.v",
+ "children": [
+  "asynch_comparator",
+  "gray_mod6",
+  "memory"
+ ],
+ "descendants": [
+  "asynch_comparator",
+  "jk_ff",
+  "gray_mod6",
+  "memory"
+ ],
+ "checked_outputs": [
+  "rd_add",
+  "wr_add",
+  "wr_dir",
+  "rd_dir",
+  "data_out",
+  "full_ext",
+  "full_int",
+  "empty"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "data_out",
+ "phase3_task": null
+}

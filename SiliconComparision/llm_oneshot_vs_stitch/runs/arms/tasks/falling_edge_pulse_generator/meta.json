@@ -1,0 +1,19 @@
+{
+ "track": "N",
+ "top": "falling_edge_pulse_generator",
+ "source": "golden/handwritten/falling_edge_pulse_generator.v",
+ "children": [
+  "dff_asynch_clr"
+ ],
+ "descendants": [
+  "dff_asynch_clr"
+ ],
+ "checked_outputs": [
+  "q0"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "q0",
+ "phase3_task": null
+}

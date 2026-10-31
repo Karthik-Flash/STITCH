@@ -1,0 +1,43 @@
+# ORFS config.mk template for P2_hybrid_signoff_retry.
+# Only VERILOG_FILES is filled in. Every other line: copy it unchanged from your A1 config.mk
+# (sky130hd, 10 ns clock). DESIGN_NAME stays top_2x2_router. Give DESIGN_NICKNAME a per-design value if
+# your runs would otherwise overwrite each other.
+export PLATFORM        = # copy from your A1 config.mk
+export DESIGN_NAME     = # copy from your A1 config.mk (top_2x2_router)
+export DESIGN_NICKNAME = # copy from your A1 config.mk
+export VERILOG_FILES   = $(DESIGN_DIR)/rtl/allot_vc.v \
+                         $(DESIGN_DIR)/rtl/asynch_comparator.v \
+                         $(DESIGN_DIR)/rtl/demux_16.v \
+                         $(DESIGN_DIR)/rtl/dff_asynch_clr.v \
+                         $(DESIGN_DIR)/rtl/dff_synch_clr.v \
+                         $(DESIGN_DIR)/rtl/dff_synch_reset.v \
+                         $(DESIGN_DIR)/rtl/dff_synch_set.v \
+                         $(DESIGN_DIR)/rtl/encoder.v \
+                         $(DESIGN_DIR)/rtl/falling_edge_pulse_generator.v \
+                         $(DESIGN_DIR)/rtl/final_op_data.v \
+                         $(DESIGN_DIR)/rtl/gray_mod6.v \
+                         $(DESIGN_DIR)/rtl/ip_chnl.v \
+                         $(DESIGN_DIR)/rtl/ip_link.v \
+                         $(DESIGN_DIR)/rtl/irs.v \
+                         $(DESIGN_DIR)/rtl/jk_ff.v \
+                         $(DESIGN_DIR)/rtl/memory.v \
+                         $(DESIGN_DIR)/rtl/mux.v \
+                         $(DESIGN_DIR)/rtl/op_core.v \
+                         $(DESIGN_DIR)/rtl/op_data_path.v \
+                         $(DESIGN_DIR)/rtl/op_link1.v \
+                         $(DESIGN_DIR)/rtl/op_link2.v \
+                         $(DESIGN_DIR)/rtl/op_link3.v \
+                         $(DESIGN_DIR)/rtl/op_link4.v \
+                         $(DESIGN_DIR)/rtl/priority_encoder.v \
+                         $(DESIGN_DIR)/rtl/register_1bit.v \
+                         $(DESIGN_DIR)/rtl/register_32bit.v \
+                         $(DESIGN_DIR)/rtl/register_4bit.v \
+                         $(DESIGN_DIR)/rtl/round_robin_req.v \
+                         $(DESIGN_DIR)/rtl/router_fifo.v \
+                         $(DESIGN_DIR)/rtl/routing_algo_mesh.v \
+                         $(DESIGN_DIR)/rtl/rr_arbiter.v \
+                         $(DESIGN_DIR)/rtl/rr_comb_new.v \
+                         $(DESIGN_DIR)/rtl/top_2x2_router.v \
+                         $(DESIGN_DIR)/rtl/top_module.v
+export SDC_FILE        = # copy from your A1 config.mk (use your A1 constraint.sdc unchanged)
+# every other line of your A1 config.mk: copy from your A1 config.mk

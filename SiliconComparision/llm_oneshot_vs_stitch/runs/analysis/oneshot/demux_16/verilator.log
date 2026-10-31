@@ -1,0 +1,99 @@
+%Error: dut.v:7:10: Duplicate declaration of signal: 'op1'
+                  : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |          ^~~
+        dut.v:4:12: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |            ^~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:7:15: Duplicate declaration of signal: 'op2'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |               ^~~
+        dut.v:4:17: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                 ^~~
+%Error: dut.v:7:20: Duplicate declaration of signal: 'op3'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                    ^~~
+        dut.v:4:22: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                      ^~~
+%Error: dut.v:7:25: Duplicate declaration of signal: 'op4'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                         ^~~
+        dut.v:4:27: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                           ^~~
+%Error: dut.v:7:30: Duplicate declaration of signal: 'op5'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                              ^~~
+        dut.v:4:32: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                ^~~
+%Error: dut.v:7:35: Duplicate declaration of signal: 'op6'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                   ^~~
+        dut.v:4:37: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                     ^~~
+%Error: dut.v:7:40: Duplicate declaration of signal: 'op7'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                        ^~~
+        dut.v:4:42: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                          ^~~
+%Error: dut.v:7:45: Duplicate declaration of signal: 'op8'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                             ^~~
+        dut.v:4:47: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                               ^~~
+%Error: dut.v:7:50: Duplicate declaration of signal: 'op9'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                  ^~~
+        dut.v:4:52: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                    ^~~
+%Error: dut.v:7:55: Duplicate declaration of signal: 'op10'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                       ^~~~
+        dut.v:4:57: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                         ^~~~
+%Error: dut.v:7:61: Duplicate declaration of signal: 'op11'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                             ^~~~
+        dut.v:4:63: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                               ^~~~
+%Error: dut.v:7:67: Duplicate declaration of signal: 'op12'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                                   ^~~~
+        dut.v:4:69: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                                     ^~~~
+%Error: dut.v:7:73: Duplicate declaration of signal: 'op13'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                                         ^~~~
+        dut.v:4:75: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                                           ^~~~
+%Error: dut.v:7:79: Duplicate declaration of signal: 'op14'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                                               ^~~~
+        dut.v:4:81: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                                                 ^~~~
+%Error: dut.v:7:85: Duplicate declaration of signal: 'op15'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                                                     ^~~~
+        dut.v:4:87: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                                                       ^~~~
+%Error: dut.v:7:91: Duplicate declaration of signal: 'op16'
+    7 |     wire op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16;
+      |                                                                                           ^~~~
+        dut.v:4:93: ... Location of original declaration
+    4 |     output op1, op2, op3, op4, op5, op6, op7, op8, op9, op10, op11, op12, op13, op14, op15, op16
+      |                                                                                             ^~~~
+%Error: Exiting due to 16 error(s)

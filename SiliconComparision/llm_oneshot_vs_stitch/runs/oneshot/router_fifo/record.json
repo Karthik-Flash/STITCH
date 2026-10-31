@@ -1,0 +1,27 @@
+{
+ "module": "router_fifo",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 845,
+ "tokens_out": 630,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 845,
+  "eval_count": 630,
+  "total_duration": 153341979647,
+  "load_duration": 2136571,
+  "eval_duration": 152452848000
+ },
+ "wall_s": 153.5,
+ "timestamp": "2026-10-30T12:57:59",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "045150e5c0e58e4c66048849d0448bc2709d40eaddb46b355fa4b734a2759dad",
+ "response_sha256": "afd780c1de5418dab419da6f11699f219f2a96877aa998c62537925eb70566be",
+ "output_sha256": "440b92f334ba43bcedbc34a417a83fed83539eb0384f501dab0999a6339fd49f",
+ "mock_mode": null
+}

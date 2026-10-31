@@ -1,0 +1,30 @@
+# register_1bit
+
+## Behaviour (Phase 3 spec, reused verbatim from phase3/tasks/register_1bit/spec.md)
+
+Module `register_1bit` -- 1-bit router state register with asynchronous reset and synchronous clear.
+Ports (keep exactly, same order): input din, reset, clk, clr, ce; output reg dout.
+reset is ASYNCHRONOUS and active-high: dout goes to 0 immediately when reset rises.
+On a rising clk edge (reset low): if clr==1 dout <= 0; else if ce==1 dout <= din; else hold.
+
+## Reset
+
+Covered by the Phase 3 spec above: asynchronous active-high `reset`, synchronous `clr`.
+
+## Ports
+
+6 ports, in this exact order:
+
+```verilog
+input din, reset, clk, clr, ce;
+output dout;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+Write the complete Verilog-2001 module `register_1bit` that meets this specification, with exactly the port list above.
+Return only Verilog: one ```verilog code block, no explanation.

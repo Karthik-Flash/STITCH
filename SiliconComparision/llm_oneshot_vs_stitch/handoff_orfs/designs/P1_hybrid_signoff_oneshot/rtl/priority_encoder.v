@@ -1,0 +1,71 @@
+module priority_encoder (
+    input reset,
+    input en,
+    input in0,
+    input in1,
+    input in2,
+    input in3,
+    output out0,
+    output out1,
+    output out2,
+    output out3,
+    input clk
+);
+
+    reg out0_reg;
+    reg out1_reg;
+    reg out2_reg;
+    reg out3_reg;
+
+    wire in0_eligible;
+    wire in1_eligible;
+    wire in2_eligible;
+    wire in3_eligible;
+
+    assign in0_eligible = in0 & ~out1_reg & ~out2_reg & ~out3_reg;
+    assign in1_eligible = in1 & ~out0_reg & ~out2_reg & ~out3_reg;
+    assign in2_eligible = in2 & ~out0_reg & ~out1_reg & ~out3_reg;
+    assign in3_eligible = in3 & ~out0_reg & ~out1_reg & ~out2_reg;
+
+    always @(posedge clk) begin
+        if (en) begin
+            if (in0_eligible) begin
+                out0_reg <= 1'b1;
+                out1_reg <= 1'b0;
+                out2_reg <= 1'b0;
+                out3_reg <= 1'b0;
+            end else if (in1_eligible) begin
+                out0_reg <= 1'b0;
+                out1_reg <= 1'b1;
+                out2_reg <= 1'b0;
+                out3_reg <= 1'b0;
+            end else if (in2_eligible) begin
+                out0_reg <= 1'b0;
+                out1_reg <= 1'b0;
+                out2_reg <= 1'b1;
+                out3_reg <= 1'b0;
+            end else if (in3_eligible) begin
+                out0_reg <= 1'b0;
+                out1_reg <= 1'b0;
+                out2_reg <= 1'b0;
+                out3_reg <= 1'b1;
+            end else begin
+                out0_reg <= 1'b0;
+                out1_reg <= 1'b0;
+                out2_reg <= 1'b0;
+                out3_reg <= 1'b0;
+            end
+        end else begin
+            out0_reg <= 1'b0;
+            out1_reg <= 1'b0;
+            out2_reg <= 1'b0;
+            out3_reg <= 1'b0;
+        end
+    end
+
+    assign out0 = out0_reg;
+    assign out1 = out1_reg;
+    assign out2 = out2_reg;
+    assign out3 = out3_reg;
+
+endmodule

@@ -1,0 +1,19 @@
+dut.v:11: error: Unable to bind wire/reg/memory `en4_next' in `tb.dut'
+dut.v:62:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:11: error: Failed to elaborate input port 'd' expression (en4_next) in instance dut.dff_en4 of module: dff_asynch_clr.
+dut.v:19: error: Unable to bind wire/reg/memory `en5_next' in `tb.dut'
+dut.v:72:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:19: error: Failed to elaborate input port 'd' expression (en5_next) in instance dut.dff_en5 of module: dff_asynch_clr.
+dut.v:27: error: Unable to bind wire/reg/memory `en6_next' in `tb.dut'
+dut.v:82:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:27: error: Failed to elaborate input port 'd' expression (en6_next) in instance dut.dff_en6 of module: dff_asynch_clr.
+dut.v:35: error: Unable to bind wire/reg/memory `data_sel_next' in `tb.dut'
+dut.v:92:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:35: error: Failed to elaborate input port 'd' expression (data_sel_next) in instance dut.dff_data_sel of module: dff_asynch_clr.
+dut.v:43: error: Unable to bind wire/reg/memory `flag_A_next' in `tb.dut'
+dut.v:104:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:43: error: Failed to elaborate input port 'd' expression (flag_A_next) in instance dut.dff_flag_A of module: dff_asynch_clr.
+dut.v:51: error: Unable to bind wire/reg/memory `flag_B_next' in `tb.dut'
+dut.v:114:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:51: error: Failed to elaborate input port 'd' expression (flag_B_next) in instance dut.dff_flag_B of module: dff_asynch_clr.
+12 error(s) during elaboration.

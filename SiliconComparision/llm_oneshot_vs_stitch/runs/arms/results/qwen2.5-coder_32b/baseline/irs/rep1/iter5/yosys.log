@@ -1,0 +1,94 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -lib /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/irs/stubs/dff_asynch_clr.v; read_verilog dut.v; hierarchy -check -top irs; synth -top irs; check; stat -top irs' --
+
+1. Executing Verilog-2005 frontend: /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/irs/stubs/dff_asynch_clr.v
+Parsing Verilog input from `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/irs/stubs/dff_asynch_clr.v' to AST representation.
+Generating RTLIL representation for module `\dff_asynch_clr'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dut.v
+Parsing Verilog input from `dut.v' to AST representation.
+Generating RTLIL representation for module `\irs'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \irs
+
+3.2. Analyzing design hierarchy..
+Top module:  \irs
+Removed 0 unused modules.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \irs
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \irs
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$dut.v:119$12 in module irs.
+Marked 1 switch rules as full_case in process $proc$dut.v:111$11 in module irs.
+Marked 1 switch rules as full_case in process $proc$dut.v:102$10 in module irs.
+Marked 2 switch rules as full_case in process $proc$dut.v:91$5 in module irs.
+Marked 1 switch rules as full_case in process $proc$dut.v:82$4 in module irs.
+Marked 1 switch rules as full_case in process $proc$dut.v:73$3 in module irs.
+Marked 1 switch rules as full_case in process $proc$dut.v:64$2 in module irs.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 5 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\irs.$proc$dut.v:111$11'.
+Found async reset \reset in `\irs.$proc$dut.v:102$10'.
+Found async reset \reset in `\irs.$proc$dut.v:91$5'.
+Found async reset \reset in `\irs.$proc$dut.v:82$4'.
+Found async reset \reset in `\irs.$proc$dut.v:73$3'.
+Found async reset \reset in `\irs.$proc$dut.v:64$2'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~5 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\irs.$proc$dut.v:119$12'.
+     1/1: $0\flag_B_next[0:0]
+Creating decoders for process `\irs.$proc$dut.v:111$11'.
+     1/1: $0\data_sel_reg_d[0:0]
+Creating decoders for process `\irs.$proc$dut.v:102$10'.
+     1/1: $0\flag_A_next[0:0]
+Creating decoders for process `\irs.$proc$dut.v:91$5'.
+     1/1: $0\data_sel_next[0:0]
+Creating decoders for process `\irs.$proc$dut.v:82$4'.
+     1/1: $0\en6_next[0:0]
+Creating decoders for process `\irs.$proc$dut.v:73$3'.
+     1/1: $0\en5_next[0:0]
+Creating decoders for process `\irs.$proc$dut.v:64$2'.
+     1/1: $0\en4_next[0:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\irs.\flag_B_next' using process `\irs.$proc$dut.v:119$12'.
+ERROR: Multiple edge sensitive events found for this signal!

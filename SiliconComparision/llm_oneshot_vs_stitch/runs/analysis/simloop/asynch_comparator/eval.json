@@ -1,0 +1,21 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "02b45fc164ee097cbbb2eaabc62e2fc0412f4fea5e0a7c9ee6789c68b9e1a62c",
+ "file": "outputs/simloop/asynch_comparator.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

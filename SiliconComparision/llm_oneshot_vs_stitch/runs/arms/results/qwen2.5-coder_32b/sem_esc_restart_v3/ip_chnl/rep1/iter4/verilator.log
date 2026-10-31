@@ -1,0 +1,200 @@
+%Warning-PINCONNECTEMPTY: dut.v:33:10: Instance pin connected by name with empty reference: 'full_int'
+   33 |         .full_int(),
+      |          ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Error-PROCASSWIRE: dut.v:132:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                                : ... note: In instance 'ip_chnl'
+  132 |             req_l1 = req_link1_w;
+      |             ^~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:133:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                                : ... note: In instance 'ip_chnl'
+  133 |             req_l2 = req_link2_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:134:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                                : ... note: In instance 'ip_chnl'
+  134 |             req_l3 = req_link3_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:135:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                                : ... note: In instance 'ip_chnl'
+  135 |             req_l4 = req_link4_w;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:136:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                                : ... note: In instance 'ip_chnl'
+  136 |             req_c = req_core_w;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:138:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                                : ... note: In instance 'ip_chnl'
+  138 |             req_l1 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:139:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                                : ... note: In instance 'ip_chnl'
+  139 |             req_l2 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:140:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                                : ... note: In instance 'ip_chnl'
+  140 |             req_l3 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:141:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                                : ... note: In instance 'ip_chnl'
+  141 |             req_l4 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:142:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                                : ... note: In instance 'ip_chnl'
+  142 |             req_c = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:165:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+                                : ... note: In instance 'ip_chnl'
+  165 |             full_ext = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:166:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty_synch_rdclk'
+                                : ... note: In instance 'ip_chnl'
+  166 |             empty_synch_rdclk = 1'b0;
+      |             ^~~~~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:167:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                                : ... note: In instance 'ip_chnl'
+  167 |             req_l1 = 1'b0;
+      |             ^~~~~~
+%Warning-MULTIDRIVENPROC: dut.v:167:13: Variable written to in always block also written by another always block: 'req_l1'
+                                      : ... note: In instance 'ip_chnl'
+                          dut.v:167:13: 
+  167 |             req_l1 = 1'b0;
+      |             ^~~~~~
+                          dut.v:138:13: ... Location of other write
+  138 |             req_l1 = 1'b0;
+      |             ^~~~~~
+                          ... For warning description see https://verilator.org/warn/MULTIDRIVENPROC?v=5.053
+                          ... Use "/* verilator lint_off MULTIDRIVENPROC */" and lint_on around source to disable this message.
+%Error-PROCASSWIRE: dut.v:168:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                                : ... note: In instance 'ip_chnl'
+  168 |             req_l2 = 1'b0;
+      |             ^~~~~~
+%Warning-MULTIDRIVENPROC: dut.v:168:13: Variable written to in always block also written by another always block: 'req_l2'
+                                      : ... note: In instance 'ip_chnl'
+                          dut.v:168:13: 
+  168 |             req_l2 = 1'b0;
+      |             ^~~~~~
+                          dut.v:139:13: ... Location of other write
+  139 |             req_l2 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:169:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                                : ... note: In instance 'ip_chnl'
+  169 |             req_l3 = 1'b0;
+      |             ^~~~~~
+%Warning-MULTIDRIVENPROC: dut.v:169:13: Variable written to in always block also written by another always block: 'req_l3'
+                                      : ... note: In instance 'ip_chnl'
+                          dut.v:169:13: 
+  169 |             req_l3 = 1'b0;
+      |             ^~~~~~
+                          dut.v:140:13: ... Location of other write
+  140 |             req_l3 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:170:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                                : ... note: In instance 'ip_chnl'
+  170 |             req_l4 = 1'b0;
+      |             ^~~~~~
+%Warning-MULTIDRIVENPROC: dut.v:170:13: Variable written to in always block also written by another always block: 'req_l4'
+                                      : ... note: In instance 'ip_chnl'
+                          dut.v:170:13: 
+  170 |             req_l4 = 1'b0;
+      |             ^~~~~~
+                          dut.v:141:13: ... Location of other write
+  141 |             req_l4 = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:171:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                                : ... note: In instance 'ip_chnl'
+  171 |             req_c = 1'b0;
+      |             ^~~~~
+%Warning-MULTIDRIVENPROC: dut.v:171:13: Variable written to in always block also written by another always block: 'req_c'
+                                      : ... note: In instance 'ip_chnl'
+                          dut.v:171:13: 
+  171 |             req_c = 1'b0;
+      |             ^~~~~
+                          dut.v:142:13: ... Location of other write
+  142 |             req_c = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:172:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out'
+                                : ... note: In instance 'ip_chnl'
+  172 |             data_out = 32'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:173:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer'
+                                : ... note: In instance 'ip_chnl'
+  173 |             tailer = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:174:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_org'
+                                : ... note: In instance 'ip_chnl'
+  174 |             tailer_org = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:175:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'nxt_reset'
+                                : ... note: In instance 'ip_chnl'
+  175 |             nxt_reset = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:176:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+                                : ... note: In instance 'ip_chnl'
+  176 |             data_sel = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:177:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header'
+                                : ... note: In instance 'ip_chnl'
+  177 |             header = 1'b0;
+      |             ^~~~~~
+%Error-PROCASSWIRE: dut.v:178:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                                : ... note: In instance 'ip_chnl'
+  178 |             empty = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:179:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'fifo_out'
+                                : ... note: In instance 'ip_chnl'
+  179 |             fifo_out = 32'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:180:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_flit'
+                                : ... note: In instance 'ip_chnl'
+  180 |             header_flit = 32'b0;
+      |             ^~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:181:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'reg_out'
+                                : ... note: In instance 'ip_chnl'
+  181 |             reg_out = 32'b0;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:182:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out'
+                                : ... note: In instance 'ip_chnl'
+  182 |             mux_data_out = 32'b0;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:183:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out'
+                                : ... note: In instance 'ip_chnl'
+  183 |             header_out = 32'b0;
+      |             ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:29: Signal is not used: 'en2_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                             ^~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:14:36: Signal is not used: 'en4_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                    ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:43: Signal is not used: 'en5_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                           ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:50: Signal is not used: 'en6_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                                  ^~~~~
+%Error-PORTSHORT: dut.v:27:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   27 |         .rd_add(3'b000),
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:28:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   28 |         .wr_add(3'b000),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:29:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   29 |         .wr_dir(1'b0),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:30:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   30 |         .rd_dir(1'b0),
+      |          ^~~~~~
+%Error: Exiting due to 33 error(s), 10 warning(s)

@@ -1,0 +1,21 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {},
+ "verilator_warnings_count": 0,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "ab90bd472292ae135eef408ee9cf329d77c1ec1e91eb79d81c1792830f1289b9",
+ "file": "outputs/oneshot/register_32bit.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

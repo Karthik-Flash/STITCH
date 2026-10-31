@@ -1,0 +1,555 @@
+%Warning-WIDTHEXPAND: dut.v:48:10: Output port connection 'fifo_out' expects 32 bits on the pin connection, but pin connection's VARREF 'fifo_out1' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   48 |         .fifo_out(fifo_out1), .header_flit(header_flit1), .reg_out(reg_out1), .mux_data_out(mux_data_out1), .header_out(header_out1)
+      |          ^~~~~~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:48:32: Output port connection 'header_flit' expects 32 bits on the pin connection, but pin connection's VARREF 'header_flit1' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   48 |         .fifo_out(fifo_out1), .header_flit(header_flit1), .reg_out(reg_out1), .mux_data_out(mux_data_out1), .header_out(header_out1)
+      |                                ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:48:60: Output port connection 'reg_out' expects 32 bits on the pin connection, but pin connection's VARREF 'reg_out1' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   48 |         .fifo_out(fifo_out1), .header_flit(header_flit1), .reg_out(reg_out1), .mux_data_out(mux_data_out1), .header_out(header_out1)
+      |                                                            ^~~~~~~
+%Warning-WIDTHEXPAND: dut.v:48:80: Output port connection 'mux_data_out' expects 32 bits on the pin connection, but pin connection's VARREF 'mux_data_out1' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   48 |         .fifo_out(fifo_out1), .header_flit(header_flit1), .reg_out(reg_out1), .mux_data_out(mux_data_out1), .header_out(header_out1)
+      |                                                                                ^~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:48:110: Output port connection 'header_out' expects 32 bits on the pin connection, but pin connection's VARREF 'header_out1' generates 1 bits.
+                                  : ... note: In instance 'ip_link'
+   48 |         .fifo_out(fifo_out1), .header_flit(header_flit1), .reg_out(reg_out1), .mux_data_out(mux_data_out1), .header_out(header_out1)
+      |                                                                                                              ^~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:58:10: Output port connection 'fifo_out' expects 32 bits on the pin connection, but pin connection's VARREF 'fifo_out2' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   58 |         .fifo_out(fifo_out2), .header_flit(header_flit2), .reg_out(reg_out2), .mux_data_out(mux_data_out2), .header_out(header_out2)
+      |          ^~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:58:32: Output port connection 'header_flit' expects 32 bits on the pin connection, but pin connection's VARREF 'header_flit2' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   58 |         .fifo_out(fifo_out2), .header_flit(header_flit2), .reg_out(reg_out2), .mux_data_out(mux_data_out2), .header_out(header_out2)
+      |                                ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:58:60: Output port connection 'reg_out' expects 32 bits on the pin connection, but pin connection's VARREF 'reg_out2' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   58 |         .fifo_out(fifo_out2), .header_flit(header_flit2), .reg_out(reg_out2), .mux_data_out(mux_data_out2), .header_out(header_out2)
+      |                                                            ^~~~~~~
+%Warning-WIDTHEXPAND: dut.v:58:80: Output port connection 'mux_data_out' expects 32 bits on the pin connection, but pin connection's VARREF 'mux_data_out2' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   58 |         .fifo_out(fifo_out2), .header_flit(header_flit2), .reg_out(reg_out2), .mux_data_out(mux_data_out2), .header_out(header_out2)
+      |                                                                                ^~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:58:110: Output port connection 'header_out' expects 32 bits on the pin connection, but pin connection's VARREF 'header_out2' generates 1 bits.
+                                  : ... note: In instance 'ip_link'
+   58 |         .fifo_out(fifo_out2), .header_flit(header_flit2), .reg_out(reg_out2), .mux_data_out(mux_data_out2), .header_out(header_out2)
+      |                                                                                                              ^~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:68:10: Output port connection 'fifo_out' expects 32 bits on the pin connection, but pin connection's VARREF 'fifo_out3' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   68 |         .fifo_out(fifo_out3), .header_flit(header_flit3), .reg_out(reg_out3), .mux_data_out(mux_data_out3), .header_out(header_out3)
+      |          ^~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:68:32: Output port connection 'header_flit' expects 32 bits on the pin connection, but pin connection's VARREF 'header_flit3' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   68 |         .fifo_out(fifo_out3), .header_flit(header_flit3), .reg_out(reg_out3), .mux_data_out(mux_data_out3), .header_out(header_out3)
+      |                                ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:68:60: Output port connection 'reg_out' expects 32 bits on the pin connection, but pin connection's VARREF 'reg_out3' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   68 |         .fifo_out(fifo_out3), .header_flit(header_flit3), .reg_out(reg_out3), .mux_data_out(mux_data_out3), .header_out(header_out3)
+      |                                                            ^~~~~~~
+%Warning-WIDTHEXPAND: dut.v:68:80: Output port connection 'mux_data_out' expects 32 bits on the pin connection, but pin connection's VARREF 'mux_data_out3' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   68 |         .fifo_out(fifo_out3), .header_flit(header_flit3), .reg_out(reg_out3), .mux_data_out(mux_data_out3), .header_out(header_out3)
+      |                                                                                ^~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:68:110: Output port connection 'header_out' expects 32 bits on the pin connection, but pin connection's VARREF 'header_out3' generates 1 bits.
+                                  : ... note: In instance 'ip_link'
+   68 |         .fifo_out(fifo_out3), .header_flit(header_flit3), .reg_out(reg_out3), .mux_data_out(mux_data_out3), .header_out(header_out3)
+      |                                                                                                              ^~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:78:10: Output port connection 'fifo_out' expects 32 bits on the pin connection, but pin connection's VARREF 'fifo_out4' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   78 |         .fifo_out(fifo_out4), .header_flit(header_flit4), .reg_out(reg_out4), .mux_data_out(mux_data_out4), .header_out(header_out4)
+      |          ^~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:78:32: Output port connection 'header_flit' expects 32 bits on the pin connection, but pin connection's VARREF 'header_flit4' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   78 |         .fifo_out(fifo_out4), .header_flit(header_flit4), .reg_out(reg_out4), .mux_data_out(mux_data_out4), .header_out(header_out4)
+      |                                ^~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:78:60: Output port connection 'reg_out' expects 32 bits on the pin connection, but pin connection's VARREF 'reg_out4' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   78 |         .fifo_out(fifo_out4), .header_flit(header_flit4), .reg_out(reg_out4), .mux_data_out(mux_data_out4), .header_out(header_out4)
+      |                                                            ^~~~~~~
+%Warning-WIDTHEXPAND: dut.v:78:80: Output port connection 'mux_data_out' expects 32 bits on the pin connection, but pin connection's VARREF 'mux_data_out4' generates 1 bits.
+                                 : ... note: In instance 'ip_link'
+   78 |         .fifo_out(fifo_out4), .header_flit(header_flit4), .reg_out(reg_out4), .mux_data_out(mux_data_out4), .header_out(header_out4)
+      |                                                                                ^~~~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:78:110: Output port connection 'header_out' expects 32 bits on the pin connection, but pin connection's VARREF 'header_out4' generates 1 bits.
+                                  : ... note: In instance 'ip_link'
+   78 |         .fifo_out(fifo_out4), .header_flit(header_flit4), .reg_out(reg_out4), .mux_data_out(mux_data_out4), .header_out(header_out4)
+      |                                                                                                              ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:122:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out_vc1'
+                                : ... note: In instance 'ip_link'
+  122 |             data_out_vc1 = 32'b0;
+      |             ^~~~~~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:123:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out_vc2'
+                                : ... note: In instance 'ip_link'
+  123 |             data_out_vc2 = 32'b0;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:124:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out_vc3'
+                                : ... note: In instance 'ip_link'
+  124 |             data_out_vc3 = 32'b0;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:125:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out_vc4'
+                                : ... note: In instance 'ip_link'
+  125 |             data_out_vc4 = 32'b0;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:126:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_vc1'
+                                : ... note: In instance 'ip_link'
+  126 |             full_vc1 = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:127:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_vc2'
+                                : ... note: In instance 'ip_link'
+  127 |             full_vc2 = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:128:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_vc3'
+                                : ... note: In instance 'ip_link'
+  128 |             full_vc3 = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:129:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_vc4'
+                                : ... note: In instance 'ip_link'
+  129 |             full_vc4 = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:130:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1_vc1'
+                                : ... note: In instance 'ip_link'
+  130 |             req_l1_vc1 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:131:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1_vc2'
+                                : ... note: In instance 'ip_link'
+  131 |             req_l1_vc2 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:132:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1_vc3'
+                                : ... note: In instance 'ip_link'
+  132 |             req_l1_vc3 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:133:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1_vc4'
+                                : ... note: In instance 'ip_link'
+  133 |             req_l1_vc4 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:134:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2_vc1'
+                                : ... note: In instance 'ip_link'
+  134 |             req_l2_vc1 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:135:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2_vc2'
+                                : ... note: In instance 'ip_link'
+  135 |             req_l2_vc2 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:136:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2_vc3'
+                                : ... note: In instance 'ip_link'
+  136 |             req_l2_vc3 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:137:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2_vc4'
+                                : ... note: In instance 'ip_link'
+  137 |             req_l2_vc4 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:138:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3_vc1'
+                                : ... note: In instance 'ip_link'
+  138 |             req_l3_vc1 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:139:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3_vc2'
+                                : ... note: In instance 'ip_link'
+  139 |             req_l3_vc2 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:140:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3_vc3'
+                                : ... note: In instance 'ip_link'
+  140 |             req_l3_vc3 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:141:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3_vc4'
+                                : ... note: In instance 'ip_link'
+  141 |             req_l3_vc4 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:142:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4_vc1'
+                                : ... note: In instance 'ip_link'
+  142 |             req_l4_vc1 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:143:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4_vc2'
+                                : ... note: In instance 'ip_link'
+  143 |             req_l4_vc2 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:144:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4_vc3'
+                                : ... note: In instance 'ip_link'
+  144 |             req_l4_vc3 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:145:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4_vc4'
+                                : ... note: In instance 'ip_link'
+  145 |             req_l4_vc4 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:146:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c_vc1'
+                                : ... note: In instance 'ip_link'
+  146 |             req_c_vc1 = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:147:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c_vc2'
+                                : ... note: In instance 'ip_link'
+  147 |             req_c_vc2 = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:148:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c_vc3'
+                                : ... note: In instance 'ip_link'
+  148 |             req_c_vc3 = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:149:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c_vc4'
+                                : ... note: In instance 'ip_link'
+  149 |             req_c_vc4 = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:150:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_vc1'
+                                : ... note: In instance 'ip_link'
+  150 |             tailer_vc1 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:151:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_vc2'
+                                : ... note: In instance 'ip_link'
+  151 |             tailer_vc2 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:152:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_vc3'
+                                : ... note: In instance 'ip_link'
+  152 |             tailer_vc3 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:153:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_vc4'
+                                : ... note: In instance 'ip_link'
+  153 |             tailer_vc4 = 1'b0;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:154:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rok_vc1'
+                                : ... note: In instance 'ip_link'
+  154 |             rok_vc1 = 1'b0;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:155:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rok_vc2'
+                                : ... note: In instance 'ip_link'
+  155 |             rok_vc2 = 1'b0;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:156:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rok_vc3'
+                                : ... note: In instance 'ip_link'
+  156 |             rok_vc3 = 1'b0;
+      |             ^~~~~~~
+%Error-PROCASSWIRE: dut.v:157:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rok_vc4'
+                                : ... note: In instance 'ip_link'
+  157 |             rok_vc4 = 1'b0;
+      |             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:19: Signal is not used: 'rd_en2'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                   ^~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:9:27: Signal is not used: 'rd_en3'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:35: Signal is not used: 'rd_en4'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:43: Signal is not used: 'rd_en5'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:51: Signal is not used: 'rd_en6'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:59: Signal is not used: 'rd_en7'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:67: Signal is not used: 'rd_en8'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:75: Signal is not used: 'rd_en9'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:83: Signal is not used: 'rd_en10'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:92: Signal is not used: 'rd_en11'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:101: Signal is not used: 'rd_en12'
+                                  : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:56: Signal is not used: 'rd_en29'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:65: Signal is not used: 'rd_en30'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:74: Signal is not used: 'rd_en31'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:83: Signal is not used: 'rd_en32'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:92: Signal is not used: 'rd_en33'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:101: Signal is not used: 'rd_en34'
+                                   : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:11: Signal is not used: 'rd_en35'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:20: Signal is not used: 'rd_en36'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:29: Signal is not used: 'rd_en37'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:38: Signal is not used: 'rd_en38'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:47: Signal is not used: 'rd_en39'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:56: Signal is not used: 'rd_en40'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:65: Signal is not used: 'rd_en41'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:74: Signal is not used: 'rd_en42'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:83: Signal is not used: 'rd_en43'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:92: Signal is not used: 'rd_en44'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:101: Signal is not used: 'rd_en45'
+                                   : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:11: Signal is not used: 'rd_en46'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:20: Signal is not used: 'rd_en47'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:29: Signal is not used: 'rd_en48'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:38: Signal is not used: 'rd_en49'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:47: Signal is not used: 'rd_en50'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:56: Signal is not used: 'rd_en51'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:65: Signal is not used: 'rd_en52'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:74: Signal is not used: 'rd_en53'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:83: Signal is not used: 'rd_en54'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:92: Signal is not used: 'rd_en55'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:101: Signal is not used: 'rd_en56'
+                                   : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:11: Signal is not used: 'rd_en57'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:20: Signal is not used: 'rd_en58'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:29: Signal is not used: 'rd_en59'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:38: Signal is not used: 'rd_en60'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:47: Signal is not used: 'rd_en61'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:56: Signal is not used: 'rd_en62'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:65: Signal is not used: 'rd_en63'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:74: Signal is not used: 'rd_en64'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:10: Signal is not used: 'fifo_out1'
+                                  : ... note: In instance 'ip_link'
+   29 |     wire fifo_out1, fifo_out2, fifo_out3, fifo_out4;
+      |          ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:21: Signal is not used: 'fifo_out2'
+                                  : ... note: In instance 'ip_link'
+   29 |     wire fifo_out1, fifo_out2, fifo_out3, fifo_out4;
+      |                     ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:32: Signal is not used: 'fifo_out3'
+                                  : ... note: In instance 'ip_link'
+   29 |     wire fifo_out1, fifo_out2, fifo_out3, fifo_out4;
+      |                                ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:43: Signal is not used: 'fifo_out4'
+                                  : ... note: In instance 'ip_link'
+   29 |     wire fifo_out1, fifo_out2, fifo_out3, fifo_out4;
+      |                                           ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:10: Signal is not used: 'header_flit1'
+                                  : ... note: In instance 'ip_link'
+   30 |     wire header_flit1, header_flit2, header_flit3, header_flit4;
+      |          ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:24: Signal is not used: 'header_flit2'
+                                  : ... note: In instance 'ip_link'
+   30 |     wire header_flit1, header_flit2, header_flit3, header_flit4;
+      |                        ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:38: Signal is not used: 'header_flit3'
+                                  : ... note: In instance 'ip_link'
+   30 |     wire header_flit1, header_flit2, header_flit3, header_flit4;
+      |                                      ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:52: Signal is not used: 'header_flit4'
+                                  : ... note: In instance 'ip_link'
+   30 |     wire header_flit1, header_flit2, header_flit3, header_flit4;
+      |                                                    ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:10: Signal is not used: 'reg_out1'
+                                  : ... note: In instance 'ip_link'
+   31 |     wire reg_out1, reg_out2, reg_out3, reg_out4;
+      |          ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:20: Signal is not used: 'reg_out2'
+                                  : ... note: In instance 'ip_link'
+   31 |     wire reg_out1, reg_out2, reg_out3, reg_out4;
+      |                    ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:30: Signal is not used: 'reg_out3'
+                                  : ... note: In instance 'ip_link'
+   31 |     wire reg_out1, reg_out2, reg_out3, reg_out4;
+      |                              ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:40: Signal is not used: 'reg_out4'
+                                  : ... note: In instance 'ip_link'
+   31 |     wire reg_out1, reg_out2, reg_out3, reg_out4;
+      |                                        ^~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:10: Signal is not used: 'mux_data_out1'
+                                  : ... note: In instance 'ip_link'
+   32 |     wire mux_data_out1, mux_data_out2, mux_data_out3, mux_data_out4;
+      |          ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:25: Signal is not used: 'mux_data_out2'
+                                  : ... note: In instance 'ip_link'
+   32 |     wire mux_data_out1, mux_data_out2, mux_data_out3, mux_data_out4;
+      |                         ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:40: Signal is not used: 'mux_data_out3'
+                                  : ... note: In instance 'ip_link'
+   32 |     wire mux_data_out1, mux_data_out2, mux_data_out3, mux_data_out4;
+      |                                        ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:55: Signal is not used: 'mux_data_out4'
+                                  : ... note: In instance 'ip_link'
+   32 |     wire mux_data_out1, mux_data_out2, mux_data_out3, mux_data_out4;
+      |                                                       ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:10: Signal is not used: 'header_out1'
+                                  : ... note: In instance 'ip_link'
+   33 |     wire header_out1, header_out2, header_out3, header_out4;
+      |          ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:23: Signal is not used: 'header_out2'
+                                  : ... note: In instance 'ip_link'
+   33 |     wire header_out1, header_out2, header_out3, header_out4;
+      |                       ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:36: Signal is not used: 'header_out3'
+                                  : ... note: In instance 'ip_link'
+   33 |     wire header_out1, header_out2, header_out3, header_out4;
+      |                                    ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:49: Signal is not used: 'header_out4'
+                                  : ... note: In instance 'ip_link'
+   33 |     wire header_out1, header_out2, header_out3, header_out4;
+      |                                                 ^~~~~~~~~~~
+%Error-PORTSHORT: dut.v:77:60: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   77 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                            ^~~~~~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:77:79: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   77 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                               ^~~~~~~~~
+%Error-PORTSHORT: dut.v:77:97: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   77 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                 ^~~~~~~~
+%Error-PORTSHORT: dut.v:77:114: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'ip_link'
+   77 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                                  ^~~~~~
+%Error-PORTSHORT: dut.v:77:129: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'ip_link'
+   77 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                                                 ^~~~~
+%Error-PORTSHORT: dut.v:67:60: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   67 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                            ^~~~~~~~~~
+%Error-PORTSHORT: dut.v:67:79: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   67 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                               ^~~~~~~~~
+%Error-PORTSHORT: dut.v:67:97: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   67 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                 ^~~~~~~~
+%Error-PORTSHORT: dut.v:67:114: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'ip_link'
+   67 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                                  ^~~~~~
+%Error-PORTSHORT: dut.v:67:129: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'ip_link'
+   67 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                                                 ^~~~~
+%Error-PORTSHORT: dut.v:57:60: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   57 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                            ^~~~~~~~~~
+%Error-PORTSHORT: dut.v:57:79: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   57 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                               ^~~~~~~~~
+%Error-PORTSHORT: dut.v:57:97: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_link'
+   57 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                 ^~~~~~~~
+%Error-PORTSHORT: dut.v:57:114: Output port is connected to a constant pin, electrical short
+                              : ... note: In instance 'ip_link'
+   57 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+      |                                                                                                                  ^~~~~~
+%Error: Exiting due to too many errors encountered; --error-limit=50

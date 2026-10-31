@@ -1,0 +1,59 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# dff_asynch_clr
+
+## Behaviour
+
+D flip-flop with asynchronous clear. On every rising edge of `clk`, `q` takes the value of `d`.
+While `clr` is 1, `q` is 0 regardless of `clk`.
+
+## Reset
+
+Asynchronous, active-high `clr`: `q` goes to 0 as soon as `clr` rises and stays 0 while `clr` is 1.
+
+## Ports
+
+4 ports, in this exact order:
+
+```verilog
+input d, clr, clk;
+output q;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module dff_asynch_clr (
+    input d, clr, clk;
+    output q
+);
+
+reg q_reg;
+
+always @(posedge clk or posedge clr) begin
+    if (clr == 1'b1) begin
+        q_reg <= 1'b0;
+    end else begin
+        q_reg <= d;
+    end
+end
+
+assign q = q_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:2: error: ';' is an invalid port declaration separator.
+dut.v:3: syntax error
+dut.v:1: Errors in port declarations.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

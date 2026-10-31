@@ -1,0 +1,27 @@
+{
+ "module": "demux_16",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 497,
+ "tokens_out": 2913,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 497,
+  "eval_count": 2913,
+  "total_duration": 662945807429,
+  "load_duration": 10161680,
+  "eval_duration": 662388840000
+ },
+ "wall_s": 663.1,
+ "timestamp": "2026-10-30T13:26:45",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "d23006ebac0bb23759deeaa5e81e6034b29da5b2872fad213ad136bc368ae288",
+ "response_sha256": "75683939595d24687060724020420363f9dd65aa402324645cf9fbb0248da6dd",
+ "output_sha256": "4d1756837ad68139c3e0006abbb2abc497e449468f7753339200068793be954f",
+ "mock_mode": null
+}

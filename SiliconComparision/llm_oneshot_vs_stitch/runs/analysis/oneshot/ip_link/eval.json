@@ -1,0 +1,26 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "PINCONNECTEMPTY": 40,
+  "WIDTHEXPAND": 1,
+  "WIDTHTRUNC": 4,
+  "UNUSEDSIGNAL": 53
+ },
+ "verilator_warnings_count": 98,
+ "verilator_hard": 4,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "1e53e3ffc5c80e11432fecf01b5a44b1f25297a33c9e01a629826efcbd39ec58",
+ "file": "outputs/oneshot/ip_link.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

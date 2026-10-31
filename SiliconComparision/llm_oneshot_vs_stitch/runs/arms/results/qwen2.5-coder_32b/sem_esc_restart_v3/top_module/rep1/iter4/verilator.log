@@ -1,0 +1,414 @@
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link1_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:21: ... Location of port declaration
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.053
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link1_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:42: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link1_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:63: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link1_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:84: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link2_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:105: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link2_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:126: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link2_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:147: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link2_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:168: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link3_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:189: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link3_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:210: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link3_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:231: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link3_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:252: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link4_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:273: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link4_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:294: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link4_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:315: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_link4_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:336: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_core_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:357: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_core_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:377: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_core_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:397: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'data_from_core_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:417: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link1_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:506: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link1_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:524: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link1_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:542: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link1_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:560: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link2_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:578: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link2_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:596: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link2_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:614: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link2_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:632: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link3_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:650: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link3_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:668: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link3_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:686: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link3_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:704: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link4_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:722: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link4_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:740: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link4_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:758: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_link4_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:776: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_core_ch1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:794: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_core_ch2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:811: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_core_ch3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:828: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'gnt_vc_core_ch4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:845: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk1'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1005: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk2'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1014: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk3'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1023: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk4'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1032: ... Location of port declaration
+%Warning-PINMISSING: dut.v:652:18: Instance has missing pin: 'rd_clk_core'
+  652 |     op_data_path op_data_path_inst (
+      |                  ^~~~~~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_data_path.v:3:1041: ... Location of port declaration
+%Error: dut.v:108:15: Duplicate declaration of signal: 'sel_vc_link1'
+                    : ... note: ANSI ports must have type declared with the I/O (IEEE 1800-2023 23.2.2.2)
+  108 |     reg [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+      |               ^~~~~~~~~~~~
+        dut.v:75:18: ... Location of original declaration
+   75 |     output [3:0] sel_vc_link1,
+      |                  ^~~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:108:29: Duplicate declaration of signal: 'sel_vc_link2'
+  108 |     reg [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+      |                             ^~~~~~~~~~~~
+        dut.v:76:18: ... Location of original declaration
+   76 |     output [3:0] sel_vc_link2,
+      |                  ^~~~~~~~~~~~
+%Error: dut.v:108:43: Duplicate declaration of signal: 'sel_vc_link3'
+  108 |     reg [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+      |                                           ^~~~~~~~~~~~
+        dut.v:77:18: ... Location of original declaration
+   77 |     output [3:0] sel_vc_link3,
+      |                  ^~~~~~~~~~~~
+%Error: dut.v:108:57: Duplicate declaration of signal: 'sel_vc_link4'
+  108 |     reg [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+      |                                                         ^~~~~~~~~~~~
+        dut.v:78:18: ... Location of original declaration
+   78 |     output [3:0] sel_vc_link4,
+      |                  ^~~~~~~~~~~~
+%Error: dut.v:108:71: Duplicate declaration of signal: 'sel_vc_core'
+  108 |     reg [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+      |                                                                       ^~~~~~~~~~~
+        dut.v:79:18: ... Location of original declaration
+   79 |     output [3:0] sel_vc_core,
+      |                  ^~~~~~~~~~~
+%Error-PINNOTFOUND: dut.v:653:10: Pin not found: 'clk'
+  653 |         .clk(clk),
+      |          ^~~
+                                : ... Location of instance's module declaration
+                    ... For error description see https://verilator.org/warn/PINNOTFOUND?v=5.053
+%Error-PINNOTFOUND: dut.v:654:10: Pin not found: 'clr'
+  654 |         .clr(clr),
+      |          ^~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:655:10: Pin not found: 'ip_link1_out_vc1'
+  655 |         .ip_link1_out_vc1(ip_link1_out_vc1),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:656:10: Pin not found: 'ip_link1_out_vc2'
+  656 |         .ip_link1_out_vc2(ip_link1_out_vc2),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:657:10: Pin not found: 'ip_link1_out_vc3'
+  657 |         .ip_link1_out_vc3(ip_link1_out_vc3),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:658:10: Pin not found: 'ip_link1_out_vc4'
+  658 |         .ip_link1_out_vc4(ip_link1_out_vc4),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:659:10: Pin not found: 'ip_link2_out_vc1'
+  659 |         .ip_link2_out_vc1(ip_link2_out_vc1),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:660:10: Pin not found: 'ip_link2_out_vc2'
+  660 |         .ip_link2_out_vc2(ip_link2_out_vc2),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:661:10: Pin not found: 'ip_link2_out_vc3'
+  661 |         .ip_link2_out_vc3(ip_link2_out_vc3),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:662:10: Pin not found: 'ip_link2_out_vc4'
+  662 |         .ip_link2_out_vc4(ip_link2_out_vc4),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:663:10: Pin not found: 'ip_link3_out_vc1'
+  663 |         .ip_link3_out_vc1(ip_link3_out_vc1),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:664:10: Pin not found: 'ip_link3_out_vc2'
+  664 |         .ip_link3_out_vc2(ip_link3_out_vc2),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:665:10: Pin not found: 'ip_link3_out_vc3'
+  665 |         .ip_link3_out_vc3(ip_link3_out_vc3),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:666:10: Pin not found: 'ip_link3_out_vc4'
+  666 |         .ip_link3_out_vc4(ip_link3_out_vc4),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:667:10: Pin not found: 'ip_link4_out_vc1'
+  667 |         .ip_link4_out_vc1(ip_link4_out_vc1),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:668:10: Pin not found: 'ip_link4_out_vc2'
+  668 |         .ip_link4_out_vc2(ip_link4_out_vc2),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:669:10: Pin not found: 'ip_link4_out_vc3'
+  669 |         .ip_link4_out_vc3(ip_link4_out_vc3),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:670:10: Pin not found: 'ip_link4_out_vc4'
+  670 |         .ip_link4_out_vc4(ip_link4_out_vc4),
+      |          ^~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:671:10: Pin not found: 'ip_core_out_vc1'
+  671 |         .ip_core_out_vc1(ip_core_out_vc1),
+      |          ^~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:672:10: Pin not found: 'ip_core_out_vc2'
+  672 |         .ip_core_out_vc2(ip_core_out_vc2),
+      |          ^~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:673:10: Pin not found: 'ip_core_out_vc3'
+  673 |         .ip_core_out_vc3(ip_core_out_vc3),
+      |          ^~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:674:10: Pin not found: 'ip_core_out_vc4'
+  674 |         .ip_core_out_vc4(ip_core_out_vc4),
+      |          ^~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:675:10: Pin not found: 'gnt_link1'
+  675 |         .gnt_link1(gnt_link1),
+      |          ^~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:676:10: Pin not found: 'gnt_link2'
+  676 |         .gnt_link2(gnt_link2),
+      |          ^~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:677:10: Pin not found: 'gnt_link3'
+  677 |         .gnt_link3(gnt_link3),
+      |          ^~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:678:10: Pin not found: 'gnt_link4'
+  678 |         .gnt_link4(gnt_link4),
+      |          ^~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:679:10: Pin not found: 'gnt_core'
+  679 |         .gnt_core(gnt_core),
+      |          ^~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:690:10: Pin not found: 'data_out_link1_vc1'
+                                : ... Suggested alternative: 'data_out_link1'
+  690 |         .data_out_link1_vc1(data_out_link1_vc1),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:691:10: Pin not found: 'data_out_link1_vc2'
+                                : ... Suggested alternative: 'data_out_link1'
+  691 |         .data_out_link1_vc2(data_out_link1_vc2),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:692:10: Pin not found: 'data_out_link1_vc3'
+                                : ... Suggested alternative: 'data_out_link1'
+  692 |         .data_out_link1_vc3(data_out_link1_vc3),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:693:10: Pin not found: 'data_out_link1_vc4'
+                                : ... Suggested alternative: 'data_out_link1'
+  693 |         .data_out_link1_vc4(data_out_link1_vc4),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:694:10: Pin not found: 'data_out_link2_vc1'
+                                : ... Suggested alternative: 'data_out_link1'
+  694 |         .data_out_link2_vc1(data_out_link2_vc1),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:695:10: Pin not found: 'data_out_link2_vc2'
+                                : ... Suggested alternative: 'data_out_link2'
+  695 |         .data_out_link2_vc2(data_out_link2_vc2),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:696:10: Pin not found: 'data_out_link2_vc3'
+                                : ... Suggested alternative: 'data_out_link2'
+  696 |         .data_out_link2_vc3(data_out_link2_vc3),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:697:10: Pin not found: 'data_out_link2_vc4'
+                                : ... Suggested alternative: 'data_out_link2'
+  697 |         .data_out_link2_vc4(data_out_link2_vc4),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:698:10: Pin not found: 'data_out_link3_vc1'
+                                : ... Suggested alternative: 'data_out_link1'
+  698 |         .data_out_link3_vc1(data_out_link3_vc1),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:699:10: Pin not found: 'data_out_link3_vc2'
+                                : ... Suggested alternative: 'data_out_link2'
+  699 |         .data_out_link3_vc2(data_out_link3_vc2),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:700:10: Pin not found: 'data_out_link3_vc3'
+                                : ... Suggested alternative: 'data_out_link3'
+  700 |         .data_out_link3_vc3(data_out_link3_vc3),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:701:10: Pin not found: 'data_out_link3_vc4'
+                                : ... Suggested alternative: 'data_out_link3'
+  701 |         .data_out_link3_vc4(data_out_link3_vc4),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:702:10: Pin not found: 'data_out_link4_vc1'
+                                : ... Suggested alternative: 'data_out_link1'
+  702 |         .data_out_link4_vc1(data_out_link4_vc1),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:703:10: Pin not found: 'data_out_link4_vc2'
+                                : ... Suggested alternative: 'data_out_link2'
+  703 |         .data_out_link4_vc2(data_out_link4_vc2),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:704:10: Pin not found: 'data_out_link4_vc3'
+                                : ... Suggested alternative: 'data_out_link3'
+  704 |         .data_out_link4_vc3(data_out_link4_vc3),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:705:10: Pin not found: 'data_out_link4_vc4'
+                                : ... Suggested alternative: 'data_out_link4'
+  705 |         .data_out_link4_vc4(data_out_link4_vc4),
+      |          ^~~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:706:10: Pin not found: 'data_out_core_vc1'
+                                : ... Suggested alternative: 'data_out_core'
+  706 |         .data_out_core_vc1(data_out_core_vc1),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error-PINNOTFOUND: dut.v:707:10: Pin not found: 'data_out_core_vc2'
+                                : ... Suggested alternative: 'data_out_core'
+  707 |         .data_out_core_vc2(data_out_core_vc2),
+      |          ^~~~~~~~~~~~~~~~~
+                                : ... Location of instance's module declaration
+%Error: Exiting due to too many errors encountered; --error-limit=50

@@ -1,0 +1,10 @@
+dut.v:17: error: 'data_out_l1' has already been declared in this scope.
+dut.v:12:      : It was declared here as a net.
+dut.v:17: error: 'data_out_l2' has already been declared in this scope.
+dut.v:13:      : It was declared here as a net.
+dut.v:17: error: 'data_out_l3' has already been declared in this scope.
+dut.v:13:      : It was declared here as a net.
+dut.v:17: error: 'data_out_l4' has already been declared in this scope.
+dut.v:13:      : It was declared here as a net.
+dut.v:17: error: 'data_out_c' has already been declared in this scope.
+dut.v:13:      : It was declared here as a net.

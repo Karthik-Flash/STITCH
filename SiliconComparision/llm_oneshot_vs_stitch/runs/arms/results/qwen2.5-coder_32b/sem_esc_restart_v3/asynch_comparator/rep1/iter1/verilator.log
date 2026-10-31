@@ -1,0 +1,46 @@
+%Error-PROCASSWIRE: dut.v:42:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'diff'
+                              : ... note: In instance 'asynch_comparator'
+   42 |         diff = wr_pos - rd_pos;
+      |         ^~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:48:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'occupancy'
+                               : ... note: In instance 'asynch_comparator'
+   48 |             occupancy = diff;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:50:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'occupancy'
+                               : ... note: In instance 'asynch_comparator'
+   50 |             occupancy = diff + 3'b110;  
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:58:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                               : ... note: In instance 'asynch_comparator'
+   58 |                 empty = 1'b1;
+      |                 ^~~~~
+%Error-PROCASSWIRE: dut.v:59:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_int'
+                               : ... note: In instance 'asynch_comparator'
+   59 |                 full_int = 1'b0;
+      |                 ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:61:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                               : ... note: In instance 'asynch_comparator'
+   61 |                 empty = 1'b0;
+      |                 ^~~~~
+%Error-PROCASSWIRE: dut.v:62:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_int'
+                               : ... note: In instance 'asynch_comparator'
+   62 |                 full_int = 1'b1;
+      |                 ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:65:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                               : ... note: In instance 'asynch_comparator'
+   65 |             empty = 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:66:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_int'
+                               : ... note: In instance 'asynch_comparator'
+   66 |             full_int = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:70:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+                               : ... note: In instance 'asynch_comparator'
+   70 |             full_ext = 1'b1;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:72:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+                               : ... note: In instance 'asynch_comparator'
+   72 |             full_ext = 1'b0;
+      |             ^~~~~~~~
+%Error: Exiting due to 11 error(s)

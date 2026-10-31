@@ -1,0 +1,40 @@
+{
+ "track": "N",
+ "top": "rr_comb_new",
+ "source": "golden/handwritten/rr_comb_new.v",
+ "children": [
+  "dff_synch_clr"
+ ],
+ "descendants": [
+  "dff_synch_clr"
+ ],
+ "checked_outputs": [
+  "g1",
+  "g2",
+  "g3",
+  "g4",
+  "l1",
+  "l2",
+  "l3",
+  "l4",
+  "mux_out1",
+  "mux_out2",
+  "mux_out3",
+  "mux_out4",
+  "and_out1",
+  "and_out2",
+  "and_out3",
+  "and_out4",
+  "or_out",
+  "b1",
+  "b0"
+ ],
+ "not_checked": [
+  "b1_logic",
+  "b0_logic"
+ ],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

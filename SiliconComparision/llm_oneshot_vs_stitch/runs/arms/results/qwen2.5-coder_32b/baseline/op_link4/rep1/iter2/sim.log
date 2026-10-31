@@ -1,0 +1,92 @@
+dut.v:218: warning: Port 57 (e1) of module allot_vc expects 4 bit(s), given 1.
+dut.v:218:        : Padding 3 high bits of the port.
+dut.v:218: warning: Port 58 (e2) of module allot_vc expects 4 bit(s), given 1.
+dut.v:218:        : Padding 3 high bits of the port.
+dut.v:218: warning: Port 59 (e3) of module allot_vc expects 4 bit(s), given 1.
+dut.v:218:        : Padding 3 high bits of the port.
+dut.v:218: warning: Port 60 (e4) of module allot_vc expects 4 bit(s), given 1.
+dut.v:218:        : Padding 3 high bits of the port.
+dut.v:285: error: Unable to bind wire/reg/memory `ready_vc1' in `tb.dut'
+dut.v:398:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:285: error: Failed to elaborate input port 'r1' expression (ready_vc1) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:286: error: Unable to bind wire/reg/memory `ready_vc2' in `tb.dut'
+dut.v:398:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:286: error: Failed to elaborate input port 'r2' expression (ready_vc2) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:287: error: Unable to bind wire/reg/memory `ready_vc3' in `tb.dut'
+dut.v:398:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:287: error: Failed to elaborate input port 'r3' expression (ready_vc3) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:288: error: Unable to bind wire/reg/memory `ready_vc4' in `tb.dut'
+dut.v:398:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:288: error: Failed to elaborate input port 'r4' expression (ready_vc4) in instance dut.u_rr_comb_new of module: rr_comb_new.
+dut.v:313: warning: Port 1 (ip) of module demux_16 expects 1 bit(s), given 4.
+dut.v:313:        : Pruning 3 high bits of the expression.
+dut.v:313: warning: Port 2 (sel) of module demux_16 expects 4 bit(s), given 2.
+dut.v:313:        : Padding 2 high bits of the port.
+dut.v:334: warning: Port 1 (ip) of module demux_16 expects 1 bit(s), given 4.
+dut.v:334:        : Pruning 3 high bits of the expression.
+dut.v:334: warning: Port 2 (sel) of module demux_16 expects 4 bit(s), given 2.
+dut.v:334:        : Padding 2 high bits of the port.
+dut.v:355: warning: Port 1 (ip) of module demux_16 expects 1 bit(s), given 4.
+dut.v:355:        : Pruning 3 high bits of the expression.
+dut.v:355: warning: Port 2 (sel) of module demux_16 expects 4 bit(s), given 2.
+dut.v:355:        : Padding 2 high bits of the port.
+dut.v:376: warning: Port 1 (ip) of module demux_16 expects 1 bit(s), given 4.
+dut.v:376:        : Pruning 3 high bits of the expression.
+dut.v:376: warning: Port 2 (sel) of module demux_16 expects 4 bit(s), given 2.
+dut.v:376:        : Padding 2 high bits of the port.
+dut.v:400: error: 'ready_vc1' is not a valid l-value for a procedural assignment.
+dut.v:398:      : 'ready_vc1' is declared here as a wire.
+dut.v:401: error: 'ready_vc2' is not a valid l-value for a procedural assignment.
+dut.v:398:      : 'ready_vc2' is declared here as a wire.
+dut.v:402: error: 'ready_vc3' is not a valid l-value for a procedural assignment.
+dut.v:398:      : 'ready_vc3' is declared here as a wire.
+dut.v:403: error: 'ready_vc4' is not a valid l-value for a procedural assignment.
+dut.v:398:      : 'ready_vc4' is declared here as a wire.
+dut.v:399: warning: @* found no sensitivities so it will never trigger.
+dut.v:415: error: 'all_vc_not_busy' is not a valid l-value for a procedural assignment.
+dut.v:42:      : 'all_vc_not_busy' is declared here as a wire.
+dut.v:421: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:422: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:423: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:424: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:425: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:426: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:427: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:428: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:429: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:430: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:431: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:432: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:433: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:434: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:435: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:436: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:437: error: 'ip' is not a valid l-value for a procedural assignment.
+dut.v:35:      : 'ip' is declared here as a wire.
+dut.v:444: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:445: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:446: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:447: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+dut.v:448: error: 'sel' is not a valid l-value for a procedural assignment.
+dut.v:36:      : 'sel' is declared here as a wire.
+35 error(s) during elaboration.

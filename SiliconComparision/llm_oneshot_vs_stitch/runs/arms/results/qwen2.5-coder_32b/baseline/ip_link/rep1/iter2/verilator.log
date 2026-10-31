@@ -1,0 +1,361 @@
+%Warning-PINCONNECTEMPTY: dut.v:48:60: Instance pin connected by name with empty reference: 'tailer_org'
+   48 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:48:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   48 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:48:89: Instance pin connected by name with empty reference: 'data_sel'
+   48 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:48:102: Instance pin connected by name with empty reference: 'header'
+   48 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:48:113: Instance pin connected by name with empty reference: 'empty'
+   48 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:49:10: Instance pin connected by name with empty reference: 'fifo_out'
+   49 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:49:23: Instance pin connected by name with empty reference: 'header_flit'
+   49 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:49:39: Instance pin connected by name with empty reference: 'reg_out'
+   49 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:49:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   49 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:49:68: Instance pin connected by name with empty reference: 'header_out'
+   49 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:58:60: Instance pin connected by name with empty reference: 'tailer_org'
+   58 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:58:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   58 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:58:89: Instance pin connected by name with empty reference: 'data_sel'
+   58 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:58:102: Instance pin connected by name with empty reference: 'header'
+   58 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:58:113: Instance pin connected by name with empty reference: 'empty'
+   58 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:59:10: Instance pin connected by name with empty reference: 'fifo_out'
+   59 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:59:23: Instance pin connected by name with empty reference: 'header_flit'
+   59 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:59:39: Instance pin connected by name with empty reference: 'reg_out'
+   59 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:59:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   59 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:59:68: Instance pin connected by name with empty reference: 'header_out'
+   59 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:68:60: Instance pin connected by name with empty reference: 'tailer_org'
+   68 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:68:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   68 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:68:89: Instance pin connected by name with empty reference: 'data_sel'
+   68 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:68:102: Instance pin connected by name with empty reference: 'header'
+   68 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:68:113: Instance pin connected by name with empty reference: 'empty'
+   68 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:69:10: Instance pin connected by name with empty reference: 'fifo_out'
+   69 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:69:23: Instance pin connected by name with empty reference: 'header_flit'
+   69 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:69:39: Instance pin connected by name with empty reference: 'reg_out'
+   69 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:69:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   69 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:69:68: Instance pin connected by name with empty reference: 'header_out'
+   69 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:78:60: Instance pin connected by name with empty reference: 'tailer_org'
+   78 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:78:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   78 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:78:89: Instance pin connected by name with empty reference: 'data_sel'
+   78 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:78:102: Instance pin connected by name with empty reference: 'header'
+   78 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:78:113: Instance pin connected by name with empty reference: 'empty'
+   78 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:79:10: Instance pin connected by name with empty reference: 'fifo_out'
+   79 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:79:23: Instance pin connected by name with empty reference: 'header_flit'
+   79 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:79:39: Instance pin connected by name with empty reference: 'reg_out'
+   79 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:79:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   79 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:79:68: Instance pin connected by name with empty reference: 'header_out'
+   79 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:31:22: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's SEL generates 2 bits.
+                                 : ... note: In instance 'ip_link'
+   31 |     assign vc_select = data_in[28:27];
+      |                      ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:44:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's VARREF 'rd_en_vc1' generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   44 |         .rd_en(rd_en_vc1), .wr_en(wr_en_vc1),
+      |          ^~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:54:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's VARREF 'rd_en_vc2' generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   54 |         .rd_en(rd_en_vc2), .wr_en(wr_en_vc2),
+      |          ^~~~~
+%Warning-WIDTHTRUNC: dut.v:64:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's VARREF 'rd_en_vc3' generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   64 |         .rd_en(rd_en_vc3), .wr_en(wr_en_vc3),
+      |          ^~~~~
+%Warning-WIDTHTRUNC: dut.v:74:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's VARREF 'rd_en_vc4' generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   74 |         .rd_en(rd_en_vc4), .wr_en(wr_en_vc4),
+      |          ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:11: Signal is not used: 'rd_en1'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |           ^~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:9:19: Signal is not used: 'rd_en2'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:27: Signal is not used: 'rd_en3'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:35: Signal is not used: 'rd_en4'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:43: Signal is not used: 'rd_en5'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:51: Signal is not used: 'rd_en6'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:59: Signal is not used: 'rd_en7'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:67: Signal is not used: 'rd_en8'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                   ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:75: Signal is not used: 'rd_en9'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                           ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:83: Signal is not used: 'rd_en10'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:92: Signal is not used: 'rd_en11'
+                                 : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:101: Signal is not used: 'rd_en12'
+                                  : ... note: In instance 'ip_link'
+    9 |     input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:56: Signal is not used: 'rd_en29'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:65: Signal is not used: 'rd_en30'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:74: Signal is not used: 'rd_en31'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:83: Signal is not used: 'rd_en32'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:92: Signal is not used: 'rd_en33'
+                                  : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:101: Signal is not used: 'rd_en34'
+                                   : ... note: In instance 'ip_link'
+   11 |           rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:11: Signal is not used: 'rd_en35'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:20: Signal is not used: 'rd_en36'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:29: Signal is not used: 'rd_en37'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:38: Signal is not used: 'rd_en38'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:47: Signal is not used: 'rd_en39'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:56: Signal is not used: 'rd_en40'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:65: Signal is not used: 'rd_en41'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:74: Signal is not used: 'rd_en42'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:83: Signal is not used: 'rd_en43'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:92: Signal is not used: 'rd_en44'
+                                  : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:101: Signal is not used: 'rd_en45'
+                                   : ... note: In instance 'ip_link'
+   12 |           rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:11: Signal is not used: 'rd_en46'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:20: Signal is not used: 'rd_en47'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:29: Signal is not used: 'rd_en48'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:38: Signal is not used: 'rd_en49'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:47: Signal is not used: 'rd_en50'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:56: Signal is not used: 'rd_en51'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:65: Signal is not used: 'rd_en52'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:74: Signal is not used: 'rd_en53'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:83: Signal is not used: 'rd_en54'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:92: Signal is not used: 'rd_en55'
+                                  : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                            ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:101: Signal is not used: 'rd_en56'
+                                   : ... note: In instance 'ip_link'
+   13 |           rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      |                                                                                                     ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:11: Signal is not used: 'rd_en57'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |           ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:20: Signal is not used: 'rd_en58'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                    ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:29: Signal is not used: 'rd_en59'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                             ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:38: Signal is not used: 'rd_en60'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                      ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:47: Signal is not used: 'rd_en61'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                               ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:56: Signal is not used: 'rd_en62'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                        ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:65: Signal is not used: 'rd_en63'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                                 ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:74: Signal is not used: 'rd_en64'
+                                  : ... note: In instance 'ip_link'
+   14 |           rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+      |                                                                          ^~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:16: Signal is not used: 'vc_select'
+                                  : ... note: In instance 'ip_link'
+   18 |     wire [3:0] vc_select;
+      |                ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:16: Bits of signal are not used: 'rd_en_vc1'[3:1]
+                                  : ... note: In instance 'ip_link'
+   19 |     wire [3:0] rd_en_vc1, rd_en_vc2, rd_en_vc3, rd_en_vc4;
+      |                ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:27: Bits of signal are not used: 'rd_en_vc2'[3:1]
+                                  : ... note: In instance 'ip_link'
+   19 |     wire [3:0] rd_en_vc1, rd_en_vc2, rd_en_vc3, rd_en_vc4;
+      |                           ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:38: Bits of signal are not used: 'rd_en_vc3'[3:1]
+                                  : ... note: In instance 'ip_link'
+   19 |     wire [3:0] rd_en_vc1, rd_en_vc2, rd_en_vc3, rd_en_vc4;
+      |                                      ^~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:49: Bits of signal are not used: 'rd_en_vc4'[3:1]
+                                  : ... note: In instance 'ip_link'
+   19 |     wire [3:0] rd_en_vc1, rd_en_vc2, rd_en_vc3, rd_en_vc4;
+      |                                                 ^~~~~~~~~
+%Error: Exiting due to 98 warning(s)

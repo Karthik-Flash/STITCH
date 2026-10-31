@@ -1,0 +1,58 @@
+%Error-PROCASSWIRE: dut.v:125:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_en_out'
+                                : ... note: In instance 'irs'
+  125 |             rd_en_out = en4_reg ? en2_w : en1_w;
+      |             ^~~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:126:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+                                : ... note: In instance 'irs'
+  126 |             data_sel = data_sel_reg;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:127:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en1'
+                                : ... note: In instance 'irs'
+  127 |             en1 = en1_w;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:128:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en2'
+                                : ... note: In instance 'irs'
+  128 |             en2 = en2_w;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:129:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4'
+                                : ... note: In instance 'irs'
+  129 |             en4 = en4_reg;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:130:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5'
+                                : ... note: In instance 'irs'
+  130 |             en5 = en5_reg;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:131:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6'
+                                : ... note: In instance 'irs'
+  131 |             en6 = en6_reg;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:133:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'rd_en_out'
+                                : ... note: In instance 'irs'
+  133 |             rd_en_out = 1'b0;
+      |             ^~~~~~~~~
+%Error-PROCASSWIRE: dut.v:134:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+                                : ... note: In instance 'irs'
+  134 |             data_sel = 1'b0;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:135:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en1'
+                                : ... note: In instance 'irs'
+  135 |             en1 = 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:136:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en2'
+                                : ... note: In instance 'irs'
+  136 |             en2 = 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:137:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en4'
+                                : ... note: In instance 'irs'
+  137 |             en4 = 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:138:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en5'
+                                : ... note: In instance 'irs'
+  138 |             en5 = 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:139:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'en6'
+                                : ... note: In instance 'irs'
+  139 |             en6 = 1'b0;
+      |             ^~~
+%Error: Exiting due to 14 error(s)

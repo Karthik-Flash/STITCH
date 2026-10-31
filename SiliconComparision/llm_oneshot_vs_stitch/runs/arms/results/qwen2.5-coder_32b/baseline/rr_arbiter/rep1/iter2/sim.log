@@ -1,0 +1,8 @@
+dut.v:7: syntax error
+dut.v:7: error: Invalid module item.
+dut.v:28: syntax error
+dut.v:28: error: Invalid port connection expression.
+dut.v:29: syntax error
+dut.v:29: error: Invalid port connection expression.
+dut.v:95: syntax error
+dut.v:95: error: Invalid port connection expression.

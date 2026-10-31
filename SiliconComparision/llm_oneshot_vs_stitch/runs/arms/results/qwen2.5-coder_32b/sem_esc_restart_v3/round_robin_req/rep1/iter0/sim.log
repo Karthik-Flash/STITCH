@@ -1,0 +1,14 @@
+dut.v:13: error: 'req_10' has already been declared in this scope.
+dut.v:2:      : It was declared here as a net.
+dut.v:13: error: 'req_11' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+dut.v:14: error: 'req_12' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+dut.v:14: error: 'req_13' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+dut.v:14: error: 'req_14' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+dut.v:14: error: 'req_15' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.
+dut.v:14: error: 'req_16' has already been declared in this scope.
+dut.v:3:      : It was declared here as a net.

@@ -1,0 +1,1037 @@
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link1_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1175: ... Location of port declaration
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.053
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link1_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1196: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link1_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1217: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link1_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1238: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link2_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1259: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link2_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1280: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link2_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1301: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link2_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1322: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link3_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1343: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link3_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1364: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link3_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1385: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link3_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1406: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link4_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1427: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link4_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1448: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link4_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1469: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc2_link4_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1490: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link1_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1511: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link1_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1532: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link1_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1553: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link1_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1574: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link2_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1595: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link2_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1616: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link2_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1637: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link2_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1658: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link3_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1679: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link3_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1700: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link3_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1721: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link3_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1742: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link4_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1763: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link4_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1784: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link4_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1805: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc3_link4_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1826: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link1_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1847: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link1_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1868: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link1_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1889: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link1_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1910: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link2_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1931: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link2_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1952: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link2_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1973: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link2_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:1994: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link3_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2015: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link3_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2036: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link3_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2057: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link3_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2078: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link4_vc1'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2099: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link4_vc2'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2120: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link4_vc3'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2141: ... Location of port declaration
+%Warning-PINMISSING: dut.v:50:13: Instance has missing pin: 'rd_en_vc4_link4_vc4'
+   50 |     op_core op_core_inst (
+      |             ^~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_core.v:3:2162: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'req_link2_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:77: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rok_link1_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:268: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rok_link1_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:283: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rok_link1_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:298: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rok_link1_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:313: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link2_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1220: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link2_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1241: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link2_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1262: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link2_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1283: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link3_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1304: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link3_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1325: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link3_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1346: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link3_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1367: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link4_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1388: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link4_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1409: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link4_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1430: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_link4_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1451: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_core_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1472: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_core_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1492: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_core_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1512: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc2_core_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1532: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link2_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1552: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link2_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1573: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link2_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1594: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link2_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1615: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link3_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1636: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link3_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1657: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link3_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1678: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link3_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1699: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link4_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1720: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link4_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1741: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link4_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1762: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_link4_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1783: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_core_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1804: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_core_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1824: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_core_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1844: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc3_core_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1864: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link2_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1884: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link2_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1905: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link2_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1926: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link2_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1947: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link3_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1968: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link3_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:1989: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link3_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2010: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link3_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2031: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link4_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2052: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link4_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2073: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link4_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2094: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_link4_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2115: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_core_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2136: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_core_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2156: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_core_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2176: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'rd_en_vc4_core_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2196: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'all_vc_not_busy'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2264: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'ready_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2281: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'ready_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2292: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'ready_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2303: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'ready_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2314: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'b1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2325: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'b2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'b3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2333: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'b4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2337: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'mux_rok_out_vc1'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2341: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'mux_rok_out_vc2'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2358: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'mux_rok_out_vc3'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2375: ... Location of port declaration
+%Warning-PINMISSING: dut.v:128:14: Instance has missing pin: 'mux_rok_out_vc4'
+  128 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2392: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link1_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1160: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link1_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1181: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link1_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1202: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link1_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1223: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link3_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1244: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link3_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1265: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link3_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1286: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link3_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1307: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link4_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1328: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link4_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1349: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link4_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1370: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_link4_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1391: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_core_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1412: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_core_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1432: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_core_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1452: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc2_core_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1472: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link1_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1492: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link1_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1513: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link1_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1534: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link1_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1555: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link3_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1576: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link3_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1597: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link3_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1618: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link3_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1639: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link4_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1660: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link4_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1681: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link4_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1702: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_link4_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1723: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_core_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1744: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_core_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1764: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_core_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1784: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc3_core_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1804: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link1_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1824: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link1_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1845: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link1_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1866: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link1_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1887: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link3_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1908: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link3_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1929: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link3_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1950: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link3_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link4_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:1992: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link4_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2013: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link4_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2034: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_link4_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2055: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_core_vc1'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2076: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_core_vc2'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2096: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_core_vc3'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2116: ... Location of port declaration
+%Warning-PINMISSING: dut.v:206:14: Instance has missing pin: 'rd_en_vc4_core_vc4'
+  206 |     op_link2 op_link2_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link2.v:3:2136: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link1_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1160: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link1_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1181: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link1_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1202: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link1_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1223: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link2_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1244: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link2_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1265: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link2_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1286: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link2_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1307: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link4_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1328: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link4_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1349: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link4_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1370: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_link4_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1391: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_core_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1412: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_core_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1432: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_core_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1452: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc2_core_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1472: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link1_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1492: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link1_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1513: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link1_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1534: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link1_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1555: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link2_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1576: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link2_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1597: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link2_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1618: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link2_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1639: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link4_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1660: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link4_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1681: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link4_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1702: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_link4_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1723: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_core_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1744: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_core_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1764: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_core_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1784: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc3_core_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1804: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link1_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1824: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link1_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1845: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link1_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1866: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link1_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1887: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link2_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1908: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link2_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1929: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link2_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1950: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link2_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link4_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:1992: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link4_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2013: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link4_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2034: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_link4_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2055: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_core_vc1'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2076: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_core_vc2'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2096: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_core_vc3'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2116: ... Location of port declaration
+%Warning-PINMISSING: dut.v:284:14: Instance has missing pin: 'rd_en_vc4_core_vc4'
+  284 |     op_link3 op_link3_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link3.v:3:2136: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link1_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1160: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link1_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1181: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link1_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1202: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link1_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1223: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link2_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1244: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link2_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1265: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link2_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1286: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link2_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1307: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link3_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1328: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link3_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1349: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link3_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1370: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_link3_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1391: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_core_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1412: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_core_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1432: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_core_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1452: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc2_core_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1472: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link1_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1492: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link1_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1513: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link1_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1534: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link1_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1555: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link2_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1576: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link2_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1597: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link2_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1618: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link2_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1639: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link3_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1660: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link3_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1681: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link3_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1702: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_link3_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1723: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_core_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1744: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_core_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1764: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_core_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1784: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc3_core_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1804: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link1_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1824: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link1_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1845: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link1_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1866: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link1_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1887: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link2_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1908: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link2_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1929: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link2_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1950: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link2_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1971: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link3_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:1992: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link3_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2013: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link3_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2034: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_link3_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2055: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_core_vc1'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2076: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_core_vc2'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2096: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_core_vc3'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2116: ... Location of port declaration
+%Warning-PINMISSING: dut.v:362:14: Instance has missing pin: 'rd_en_vc4_core_vc4'
+  362 |     op_link4 op_link4_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link4.v:3:2136: ... Location of port declaration
+%Error: Specified --top-module 'top_module' was not found in design.
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: Exiting due to 1 error(s), 258 warning(s)

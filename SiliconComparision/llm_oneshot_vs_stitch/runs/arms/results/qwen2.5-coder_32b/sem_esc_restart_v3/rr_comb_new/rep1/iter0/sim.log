@@ -1,0 +1,25 @@
+dut.v:36: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:36: error: Unable to bind wire/reg/memory `r4_w' in `tb.dut'
+dut.v:36: error: Unable to elaborate r-value: ((((r1)&(~(g2_w)))&(~(g3_w)))&(~(g4_w)))&((((~(r3))&(~(r4)))&((b0_w)|((~(b1_w))&(~(r2_w)))))|((b1_w)&((b0_w)|(~(r4_w)))))
+dut.v:37: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:37: error: Unable to bind wire/reg/memory `r4_w' in `tb.dut'
+dut.v:37: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:37: error: Unable to bind wire/reg/memory `r3_w' in `tb.dut'
+dut.v:37: error: Unable to bind wire/reg/memory `r4_w' in `tb.dut'
+dut.v:37: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:37: error: Unable to elaborate r-value: ((((r2)&(~(g1_w)))&(~(g3_w)))&(~(g4_w)))&((((((~(b0_w))&(~(r1_w)))&(~(r4_w)))|(((~(r1_w))&(~(r3_w)))&(~(r4_w))))|(((b1_w)&(b0_w))&(~(r1_w))))|((~(b1_w))&(~(b0_w))))
+dut.v:38: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:38: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:38: error: Unable to bind wire/reg/memory `r4_w' in `tb.dut'
+dut.v:38: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:38: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:38: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:38: error: Unable to elaborate r-value: ((((r3)&(~(g2_w)))&(~(g1_w)))&(~(g4_w)))&((((((~(r1_w))&(~(r2_w)))&(~(r4_w)))|(((b0_w)&(~(r1_w)))&(~(r2_w))))|((~(b1_w))&(~(r2_w))))|((~(b1_w))&(b0_w)))
+dut.v:39: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:39: error: Unable to bind wire/reg/memory `r3_w' in `tb.dut'
+dut.v:39: error: Unable to bind wire/reg/memory `r1_w' in `tb.dut'
+dut.v:39: error: Unable to bind wire/reg/memory `r2_w' in `tb.dut'
+dut.v:39: error: Unable to bind wire/reg/memory `r3_w' in `tb.dut'
+dut.v:39: error: Unable to bind wire/reg/memory `r3_w' in `tb.dut'
+dut.v:39: error: Unable to elaborate r-value: ((((r4)&(~(g2_w)))&(~(g3_w)))&(~(g1_w)))&((((((~(b1_w))&(~(r2_w)))&(~(r3_w)))|(((~(r1_w))&(~(r2_w)))&(~(r3_w))))|(((~(b1_w))&(b0_w))&(~(r3_w))))|((b1_w)&(~(b0_w))))
+24 error(s) during elaboration.

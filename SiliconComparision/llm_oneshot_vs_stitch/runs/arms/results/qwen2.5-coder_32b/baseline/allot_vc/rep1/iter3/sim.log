@@ -1,0 +1,21 @@
+dut.v:23: warning: Port 18 (m_out) of module mux expects 1 bit(s), given 4.
+dut.v:23:        : Padding 3 high bits of the expression.
+
+FAIL t=59000 cycle 4: link_1 = 0, expected 2
+FAIL t=59000 cycle 4: vc_id_1 = 0, expected 1
+FAIL t=59000 cycle 4: b1 = 0, expected 1
+FAIL t=59000 cycle 4: ce_b1 = 1, expected 0
+FAIL t=59000 cycle 4: ce_b2 = 0, expected 1
+FAIL t=59000 cycle 4: e1 = 0, expected 9
+FAIL t=64000 cycle 5: link_1 = 0, expected 2
+FAIL t=64000 cycle 5: vc_id_1 = 0, expected 1
+FAIL t=64000 cycle 5: b1 = 0, expected 1
+FAIL t=64000 cycle 5: ce_b1 = 1, expected 0
+FAIL t=64000 cycle 5: ce_b2 = 0, expected 1
+FAIL t=64000 cycle 5: e1 = 0, expected 9
+FAIL t=69000 cycle 5: link_1 = 0, expected 2
+FAIL t=69000 cycle 5: vc_id_3 = 1, expected 0
+FAIL t=69000 cycle 5: vc_id_4 = 1, expected 0
+INFO coverage: 25 of 25 checked outputs toggled, 45 of 45 bits
+FAIL: 5341 mismatches, 0 property errors
+tb.v:373: $finish called at 2009000 (1ps)

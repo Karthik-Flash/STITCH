@@ -1,0 +1,26 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "IMPLICIT": 1,
+  "WIDTHTRUNC": 2,
+  "WIDTHEXPAND": 1,
+  "UNDRIVEN": 1
+ },
+ "verilator_warnings_count": 5,
+ "verilator_hard": 2,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "846f7f14520b7620443053bbee8c882f0c001b5f96fe0fdcefc1a43ca028f5af",
+ "file": "outputs/stitch/allot_vc.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

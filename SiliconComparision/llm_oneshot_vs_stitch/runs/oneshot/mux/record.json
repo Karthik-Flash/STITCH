@@ -1,0 +1,27 @@
+{
+ "module": "mux",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 505,
+ "tokens_out": 399,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 505,
+  "eval_count": 399,
+  "total_duration": 92060083203,
+  "load_duration": 2518053,
+  "eval_duration": 90357874000
+ },
+ "wall_s": 92.1,
+ "timestamp": "2026-10-30T13:15:18",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "586af1223990dbcad84d8622926ae13981f146741c3a46f52613ef856125a941",
+ "response_sha256": "7a7030dda3c1db702e628ec6da5a87a76fa199095e92f6c820d6f63c5722b6fd",
+ "output_sha256": "2c8500f86be0f4b6f532a5868950087ed12f25c6ac77498100f9d235ae8ee761",
+ "mock_mode": null
+}

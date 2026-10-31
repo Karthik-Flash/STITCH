@@ -1,0 +1,452 @@
+module op_link4 (
+    input rd_clk, reset, req_link1_vc1, req_link1_vc2, req_link1_vc3, req_link1_vc4, req_link2_vc1, req_link2_vc2,
+          req_link2_vc3, req_link2_vc4, req_link3_vc1, req_link3_vc2, req_link3_vc3, req_link3_vc4, req_core_vc1,
+          req_core_vc2, req_core_vc3, req_core_vc4, rok_link1_vc1, rok_link1_vc2, rok_link1_vc3, rok_link1_vc4,
+          rok_link2_vc1, rok_link2_vc2, rok_link2_vc3, rok_link2_vc4, rok_link3_vc1, rok_link3_vc2, rok_link3_vc3,
+          rok_link3_vc4, rok_core_vc1, rok_core_vc2, rok_core_vc3, rok_core_vc4, tailer_link1_vc1,
+          tailer_link1_vc2, tailer_link1_vc3, tailer_link1_vc4, tailer_link2_vc1, tailer_link2_vc2,
+          tailer_link2_vc3, tailer_link2_vc4, tailer_link3_vc1, tailer_link3_vc2, tailer_link3_vc3,
+          tailer_link3_vc4, tailer_core_vc1, tailer_core_vc2, tailer_core_vc3, tailer_core_vc4, full_vc1,
+          full_vc2, full_vc3, full_vc4,
+    output rd_en_vc1_link1_vc1, rd_en_vc1_link1_vc2, rd_en_vc1_link1_vc3, rd_en_vc1_link1_vc4,
+           rd_en_vc1_link2_vc1, rd_en_vc1_link2_vc2, rd_en_vc1_link2_vc3, rd_en_vc1_link2_vc4,
+           rd_en_vc1_link3_vc1, rd_en_vc1_link3_vc2, rd_en_vc1_link3_vc3, rd_en_vc1_link3_vc4, rd_en_vc1_core_vc1,
+           rd_en_vc1_core_vc2, rd_en_vc1_core_vc3, rd_en_vc1_core_vc4, rd_en_vc2_link1_vc1, rd_en_vc2_link1_vc2,
+           rd_en_vc2_link1_vc3, rd_en_vc2_link1_vc4, rd_en_vc2_link2_vc1, rd_en_vc2_link2_vc2,
+           rd_en_vc2_link2_vc3, rd_en_vc2_link2_vc4, rd_en_vc2_link3_vc1, rd_en_vc2_link3_vc2,
+           rd_en_vc2_link3_vc3, rd_en_vc2_link3_vc4, rd_en_vc2_core_vc1, rd_en_vc2_core_vc2, rd_en_vc2_core_vc3,
+           rd_en_vc2_core_vc4, rd_en_vc3_link1_vc1, rd_en_vc3_link1_vc2, rd_en_vc3_link1_vc3, rd_en_vc3_link1_vc4,
+           rd_en_vc3_link2_vc1, rd_en_vc3_link2_vc2, rd_en_vc3_link2_vc3, rd_en_vc3_link2_vc4,
+           rd_en_vc3_link3_vc1, rd_en_vc3_link3_vc2, rd_en_vc3_link3_vc3, rd_en_vc3_link3_vc4, rd_en_vc3_core_vc1,
+           rd_en_vc3_core_vc2, rd_en_vc3_core_vc3, rd_en_vc3_core_vc4, rd_en_vc4_link1_vc1, rd_en_vc4_link1_vc2,
+           rd_en_vc4_link1_vc3, rd_en_vc4_link1_vc4, rd_en_vc4_link2_vc1, rd_en_vc4_link2_vc2,
+           rd_en_vc4_link2_vc3, rd_en_vc4_link2_vc4, rd_en_vc4_link3_vc1, rd_en_vc4_link3_vc2,
+           rd_en_vc4_link3_vc3, rd_en_vc4_link3_vc4, rd_en_vc4_core_vc1, rd_en_vc4_core_vc2, rd_en_vc4_core_vc3,
+           rd_en_vc4_core_vc4, gnt_vc1, gnt_vc2, gnt_vc3, gnt_vc4,
+    output [3:0] ip_link_vc
+);
+
+    wire [3:0] encoded_addr;
+    wire g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+    wire [1:0] link_1, vc_id_1, link_2, vc_id_2, link_3, vc_id_3, link_4, vc_id_4;
+    wire b1, b2, b3, b4;
+    wire tailer1, tailer2, tailer3, tailer4, tailer5, tailer6, tailer7, tailer8, tailer9, tailer10, tailer11, tailer12, tailer13, tailer14, tailer15, tailer16;
+    wire gnt_or, ce_b1, ce_b2, ce_b3, ce_b4, clr_b1, clr_b2, clr_b3, clr_b4, e1, e2, e3, e4;
+    wire [3:0] ip;
+    wire [1:0] sel;
+    wire r1, r2, r3, r4;
+    wire l1, l2, l3, l4;
+    wire mux_out1, mux_out2, mux_out3, mux_out4;
+    wire and_out1, and_out2, and_out3, and_out4;
+    wire or_out, b1_logic, b0_logic;
+    wire all_vc_not_busy;
+    wire g1_latched, g2_latched, g3_latched, g4_latched, g5_latched, g6_latched, g7_latched, g8_latched, g9_latched, g10_latched, g11_latched, g12_latched, g13_latched, g14_latched, g15_latched, g16_latched;
+    wire g1_int, g2_int, g3_int, g4_int, g5_int, g6_int, g7_int, g8_int, g9_int, g10_int, g11_int, g12_int, g13_int, g14_int, g15_int, g16_int;
+    wire t1, t2, t3, t4;
+    wire req_b1, req_b2, req_b3, req_b4;
+    wire nreq_1, nreq_2, nreq_3, nreq_4, nreq_5, nreq_6, nreq_7, nreq_8, nreq_9, nreq_10, nreq_11, nreq_12, nreq_13, nreq_14, nreq_15, nreq_16;
+
+    // Instantiate round_robin_req
+    round_robin_req u_round_robin_req (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .all_vc_not_busy(all_vc_not_busy),
+        .req_1(req_link1_vc1),
+        .req_2(req_link1_vc2),
+        .req_3(req_link1_vc3),
+        .req_4(req_link1_vc4),
+        .req_5(req_link2_vc1),
+        .req_6(req_link2_vc2),
+        .req_7(req_link2_vc3),
+        .req_8(req_link2_vc4),
+        .req_9(req_link3_vc1),
+        .req_10(req_link3_vc2),
+        .req_11(req_link3_vc3),
+        .req_12(req_link3_vc4),
+        .req_13(req_core_vc1),
+        .req_14(req_core_vc2),
+        .req_15(req_core_vc3),
+        .req_16(req_core_vc4),
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .tailer1(tailer_link1_vc1),
+        .tailer2(tailer_link1_vc2),
+        .tailer3(tailer_link1_vc3),
+        .tailer4(tailer_link1_vc4),
+        .tailer5(tailer_link2_vc1),
+        .tailer6(tailer_link2_vc2),
+        .tailer7(tailer_link2_vc3),
+        .tailer8(tailer_link2_vc4),
+        .tailer9(tailer_link3_vc1),
+        .tailer10(tailer_link3_vc2),
+        .tailer11(tailer_link3_vc3),
+        .tailer12(tailer_link3_vc4),
+        .tailer13(tailer_core_vc1),
+        .tailer14(tailer_core_vc2),
+        .tailer15(tailer_core_vc3),
+        .tailer16(tailer_core_vc4),
+        .g_b1(),
+        .g_b2(),
+        .g_b3(),
+        .g_b4(),
+        .gnt1(),
+        .gnt2(),
+        .gnt3(),
+        .gnt4(),
+        .gnt5(),
+        .gnt6(),
+        .gnt7(),
+        .gnt8(),
+        .gnt9(),
+        .gnt10(),
+        .gnt11(),
+        .gnt12(),
+        .gnt13(),
+        .gnt14(),
+        .gnt15(),
+        .gnt16(),
+        .req1(),
+        .req2(),
+        .req3(),
+        .req4(),
+        .req5(),
+        .req6(),
+        .req7(),
+        .req8(),
+        .req9(),
+        .req10(),
+        .req11(),
+        .req12(),
+        .req13(),
+        .req14(),
+        .req15(),
+        .req16(),
+        .g1_latched(g1_latched),
+        .g2_latched(g2_latched),
+        .g3_latched(g3_latched),
+        .g4_latched(g4_latched),
+        .g5_latched(g5_latched),
+        .g6_latched(g6_latched),
+        .g7_latched(g7_latched),
+        .g8_latched(g8_latched),
+        .g9_latched(g9_latched),
+        .g10_latched(g10_latched),
+        .g11_latched(g11_latched),
+        .g12_latched(g12_latched),
+        .g13_latched(g13_latched),
+        .g14_latched(g14_latched),
+        .g15_latched(g15_latched),
+        .g16_latched(g16_latched),
+        .g1_int(),
+        .g2_int(),
+        .g3_int(),
+        .g4_int(),
+        .g5_int(),
+        .g6_int(),
+        .g7_int(),
+        .g8_int(),
+        .g9_int(),
+        .g10_int(),
+        .g11_int(),
+        .g12_int(),
+        .g13_int(),
+        .g14_int(),
+        .g15_int(),
+        .g16_int(),
+        .t1(),
+        .t2(),
+        .t3(),
+        .t4(),
+        .req_b1(),
+        .req_b2(),
+        .req_b3(),
+        .req_b4(),
+        .nreq_1(),
+        .nreq_2(),
+        .nreq_3(),
+        .nreq_4(),
+        .nreq_5(),
+        .nreq_6(),
+        .nreq_7(),
+        .nreq_8(),
+        .nreq_9(),
+        .nreq_10(),
+        .nreq_11(),
+        .nreq_12(),
+        .nreq_13(),
+        .nreq_14(),
+        .nreq_15(),
+        .nreq_16()
+    );
+
+    // Instantiate encoder
+    encoder u_encoder (
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .encoded_addr(encoded_addr)
+    );
+
+    // Instantiate allot_vc
+    allot_vc u_allot_vc (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .encoded_addr(encoded_addr),
+        .g1(g1),
+        .g2(g2),
+        .g3(g3),
+        .g4(g4),
+        .g5(g5),
+        .g6(g6),
+        .g7(g7),
+        .g8(g8),
+        .g9(g9),
+        .g10(g10),
+        .g11(g11),
+        .g12(g12),
+        .g13(g13),
+        .g14(g14),
+        .g15(g15),
+        .g16(g16),
+        .link_1(link_1),
+        .vc_id_1(vc_id_1),
+        .link_2(link_2),
+        .vc_id_2(vc_id_2),
+        .link_3(link_3),
+        .vc_id_3(vc_id_3),
+        .link_4(link_4),
+        .vc_id_4(vc_id_4),
+        .b1(b1),
+        .b2(b2),
+        .b3(b3),
+        .b4(b4),
+        .tailer1(tailer_link1_vc1),
+        .tailer2(tailer_link1_vc2),
+        .tailer3(tailer_link1_vc3),
+        .tailer4(tailer_link1_vc4),
+        .tailer5(tailer_link2_vc1),
+        .tailer6(tailer_link2_vc2),
+        .tailer7(tailer_link2_vc3),
+        .tailer8(tailer_link2_vc4),
+        .tailer9(tailer_link3_vc1),
+        .tailer10(tailer_link3_vc2),
+        .tailer11(tailer_link3_vc3),
+        .tailer12(tailer_link3_vc4),
+        .tailer13(tailer_core_vc1),
+        .tailer14(tailer_core_vc2),
+        .tailer15(tailer_core_vc3),
+        .tailer16(tailer_core_vc4),
+        .gnt_or(gnt_or),
+        .ce_b1(ce_b1),
+        .ce_b2(ce_b2),
+        .ce_b3(ce_b3),
+        .ce_b4(ce_b4),
+        .clr_b1(clr_b1),
+        .clr_b2(clr_b2),
+        .clr_b3(clr_b3),
+        .clr_b4(clr_b4),
+        .e1({3'b000, e1}),
+        .e2({3'b000, e2}),
+        .e3({3'b000, e3}),
+        .e4({3'b000, e4})
+    );
+
+    // Instantiate rr_comb_new
+    rr_comb_new u_rr_comb_new (
+        .reset(reset),
+        .clk(rd_clk),
+        .r1(ready_vc1),
+        .r2(ready_vc2),
+        .r3(ready_vc3),
+        .r4(ready_vc4),
+        .g1(g1_latched),
+        .g2(g2_latched),
+        .g3(g3_latched),
+        .g4(g4_latched),
+        .l1(link_1),
+        .l2(link_2),
+        .l3(link_3),
+        .l4(link_4),
+        .mux_out1(mux_out1),
+        .mux_out2(mux_out2),
+        .mux_out3(mux_out3),
+        .mux_out4(mux_out4),
+        .and_out1(and_out1),
+        .and_out2(and_out2),
+        .and_out3(and_out3),
+        .and_out4(and_out4),
+        .or_out(or_out),
+        .b1(b1),
+        .b0(b0),
+        .b1_logic(b1_logic),
+        .b0_logic(b0_logic)
+    );
+
+    // Instantiate demux_16 for each VC
+    demux_16 u_demux_vc1 (
+        .ip(ip),
+        .sel(sel),
+        .op1(rd_en_vc1_link1_vc1),
+        .op2(rd_en_vc1_link1_vc2),
+        .op3(rd_en_vc1_link1_vc3),
+        .op4(rd_en_vc1_link1_vc4),
+        .op5(rd_en_vc1_link2_vc1),
+        .op6(rd_en_vc1_link2_vc2),
+        .op7(rd_en_vc1_link2_vc3),
+        .op8(rd_en_vc1_link2_vc4),
+        .op9(rd_en_vc1_link3_vc1),
+        .op10(rd_en_vc1_link3_vc2),
+        .op11(rd_en_vc1_link3_vc3),
+        .op12(rd_en_vc1_link3_vc4),
+        .op13(rd_en_vc1_core_vc1),
+        .op14(rd_en_vc1_core_vc2),
+        .op15(rd_en_vc1_core_vc3),
+        .op16(rd_en_vc1_core_vc4)
+    );
+
+    demux_16 u_demux_vc2 (
+        .ip(ip),
+        .sel(sel),
+        .op1(rd_en_vc2_link1_vc1),
+        .op2(rd_en_vc2_link1_vc2),
+        .op3(rd_en_vc2_link1_vc3),
+        .op4(rd_en_vc2_link1_vc4),
+        .op5(rd_en_vc2_link2_vc1),
+        .op6(rd_en_vc2_link2_vc2),
+        .op7(rd_en_vc2_link2_vc3),
+        .op8(rd_en_vc2_link2_vc4),
+        .op9(rd_en_vc2_link3_vc1),
+        .op10(rd_en_vc2_link3_vc2),
+        .op11(rd_en_vc2_link3_vc3),
+        .op12(rd_en_vc2_link3_vc4),
+        .op13(rd_en_vc2_core_vc1),
+        .op14(rd_en_vc2_core_vc2),
+        .op15(rd_en_vc2_core_vc3),
+        .op16(rd_en_vc2_core_vc4)
+    );
+
+    demux_16 u_demux_vc3 (
+        .ip(ip),
+        .sel(sel),
+        .op1(rd_en_vc3_link1_vc1),
+        .op2(rd_en_vc3_link1_vc2),
+        .op3(rd_en_vc3_link1_vc3),
+        .op4(rd_en_vc3_link1_vc4),
+        .op5(rd_en_vc3_link2_vc1),
+        .op6(rd_en_vc3_link2_vc2),
+        .op7(rd_en_vc3_link2_vc3),
+        .op8(rd_en_vc3_link2_vc4),
+        .op9(rd_en_vc3_link3_vc1),
+        .op10(rd_en_vc3_link3_vc2),
+        .op11(rd_en_vc3_link3_vc3),
+        .op12(rd_en_vc3_link3_vc4),
+        .op13(rd_en_vc3_core_vc1),
+        .op14(rd_en_vc3_core_vc2),
+        .op15(rd_en_vc3_core_vc3),
+        .op16(rd_en_vc3_core_vc4)
+    );
+
+    demux_16 u_demux_vc4 (
+        .ip(ip),
+        .sel(sel),
+        .op1(rd_en_vc4_link1_vc1),
+        .op2(rd_en_vc4_link1_vc2),
+        .op3(rd_en_vc4_link1_vc3),
+        .op4(rd_en_vc4_link1_vc4),
+        .op5(rd_en_vc4_link2_vc1),
+        .op6(rd_en_vc4_link2_vc2),
+        .op7(rd_en_vc4_link2_vc3),
+        .op8(rd_en_vc4_link2_vc4),
+        .op9(rd_en_vc4_link3_vc1),
+        .op10(rd_en_vc4_link3_vc2),
+        .op11(rd_en_vc4_link3_vc3),
+        .op12(rd_en_vc4_link3_vc4),
+        .op13(rd_en_vc4_core_vc1),
+        .op14(rd_en_vc4_core_vc2),
+        .op15(rd_en_vc4_core_vc3),
+        .op16(rd_en_vc4_core_vc4)
+    );
+
+    // Combinational logic for ready_vcK
+    wire ready_vc1, ready_vc2, ready_vc3, ready_vc4;
+    always @(*) begin
+        ready_vc1 = b1 & rok_link1_vc1 & ~full_vc1;
+        ready_vc2 = b2 & rok_link2_vc1 & ~full_vc2;
+        ready_vc3 = b3 & rok_link3_vc1 & ~full_vc3;
+        ready_vc4 = b4 & rok_core_vc1 & ~full_vc4;
+    end
+
+    // Assign outputs
+    assign gnt_vc1 = and_out1;
+    assign gnt_vc2 = and_out2;
+    assign gnt_vc3 = and_out3;
+    assign gnt_vc4 = and_out4;
+    assign ip_link_vc = ip;
+
+    // Assign all_vc_not_busy
+    always @(*) begin
+        all_vc_not_busy = ~b1 & ~b2 & ~b3 & ~b4;
+    end
+
+    // Assign ip for demux
+    always @(*) begin
+        case ({link_1, vc_id_1})
+            4'b0000: ip = 4'b0000;
+            4'b0001: ip = 4'b0001;
+            4'b0010: ip = 4'b0010;
+            4'b0011: ip = 4'b0011;
+            4'b0100: ip = 4'b0100;
+            4'b0101: ip = 4'b0101;
+            4'b0110: ip = 4'b0110;
+            4'b0111: ip = 4'b0111;
+            4'b1000: ip = 4'b1000;
+            4'b1001: ip = 4'b1001;
+            4'b1010: ip = 4'b1010;
+            4'b1011: ip = 4'b1011;
+            4'b1100: ip = 4'b1100;
+            4'b1101: ip = 4'b1101;
+            4'b1110: ip = 4'b1110;
+            4'b1111: ip = 4'b1111;
+            default: ip = 4'b0000;
+        endcase
+    end
+
+    // Assign sel for demux
+    always @(*) begin
+        case ({gnt_vc1, gnt_vc2, gnt_vc3, gnt_vc4})
+            4'b0001: sel = 2'b00;
+            4'b0010: sel = 2'b01;
+            4'b0100: sel = 2'b10;
+            4'b1000: sel = 2'b11;
+            default: sel = 2'b00;
+        endcase
+    end
+
+endmodule

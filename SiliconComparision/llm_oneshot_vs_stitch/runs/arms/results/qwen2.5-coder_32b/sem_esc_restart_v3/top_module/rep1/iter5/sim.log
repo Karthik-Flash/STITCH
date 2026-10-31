@@ -1,0 +1,553 @@
+dut.v:652: error: port ``clk'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``clr'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_core'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``clk'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``clr'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link1_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link2_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link3_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_link4_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``ip_core_out_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_link4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``gnt_core'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link1_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link2_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link3_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_link4_vc4'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc1'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc2'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc3'' is not a port of op_data_path_inst.
+dut.v:652: error: port ``data_out_core_vc4'' is not a port of op_data_path_inst.
+dut.v:745: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:746: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:747: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:748: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:749: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:751: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:752: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:753: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:754: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:755: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:757: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:758: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:759: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:760: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:761: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:763: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:764: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:765: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:766: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:767: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:769: error: 'req_l1_core' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_core' is declared here as a wire.
+dut.v:770: error: 'req_l2_core' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_core' is declared here as a wire.
+dut.v:771: error: 'req_l3_core' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_core' is declared here as a wire.
+dut.v:772: error: 'req_l4_core' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_core' is declared here as a wire.
+dut.v:773: error: 'req_c_core' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_core' is declared here as a wire.
+dut.v:778: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:780: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:782: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:784: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:786: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:790: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:792: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:794: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:796: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:798: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:801: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:804: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:811: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:813: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:815: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:817: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:819: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:823: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:825: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:827: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:829: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:831: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:834: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:837: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:844: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:846: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:848: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:850: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:852: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:856: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:858: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:860: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:862: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:864: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:867: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:870: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:877: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:879: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:881: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:883: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:885: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:889: error: 'req_l1_link1' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link1' is declared here as a wire.
+dut.v:891: error: 'req_l2_link1' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link1' is declared here as a wire.
+dut.v:893: error: 'req_l3_link1' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link1' is declared here as a wire.
+dut.v:895: error: 'req_l4_link1' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link1' is declared here as a wire.
+dut.v:897: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:900: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:903: error: 'req_c_link1' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link1' is declared here as a wire.
+dut.v:910: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:912: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:914: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:916: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:918: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:922: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:924: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:926: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:928: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:930: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:933: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:936: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:943: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:945: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:947: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:949: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:951: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:955: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:957: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:959: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:961: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:963: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:966: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:969: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:976: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:978: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:980: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:982: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:984: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:988: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:990: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:992: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:994: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:996: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:999: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1002: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1009: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:1011: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:1013: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:1015: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:1017: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1021: error: 'req_l1_link2' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link2' is declared here as a wire.
+dut.v:1023: error: 'req_l2_link2' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link2' is declared here as a wire.
+dut.v:1025: error: 'req_l3_link2' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link2' is declared here as a wire.
+dut.v:1027: error: 'req_l4_link2' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link2' is declared here as a wire.
+dut.v:1029: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1032: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1035: error: 'req_c_link2' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link2' is declared here as a wire.
+dut.v:1042: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1044: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1046: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1048: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1050: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1054: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1056: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1058: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1060: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1062: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1065: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1068: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1075: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1077: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1079: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1081: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1083: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1087: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1089: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1091: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1093: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1095: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1098: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1101: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1108: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1110: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1112: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1114: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1116: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1120: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1122: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1124: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1126: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1128: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1131: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1134: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1141: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1143: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1145: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1147: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1149: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1153: error: 'req_l1_link3' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link3' is declared here as a wire.
+dut.v:1155: error: 'req_l2_link3' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link3' is declared here as a wire.
+dut.v:1157: error: 'req_l3_link3' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link3' is declared here as a wire.
+dut.v:1159: error: 'req_l4_link3' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link3' is declared here as a wire.
+dut.v:1161: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1164: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1167: error: 'req_c_link3' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link3' is declared here as a wire.
+dut.v:1174: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1176: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1178: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1180: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1182: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1186: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1188: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1190: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1192: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1194: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1197: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1200: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1207: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1209: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1211: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1213: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1215: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1219: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1221: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1223: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1225: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1227: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1230: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1233: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1240: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1242: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1244: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1246: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1248: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1252: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1254: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1256: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1258: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1260: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1263: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1266: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1273: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1275: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1277: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1279: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1281: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1285: error: 'req_l1_link4' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_link4' is declared here as a wire.
+dut.v:1287: error: 'req_l2_link4' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_link4' is declared here as a wire.
+dut.v:1289: error: 'req_l3_link4' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_link4' is declared here as a wire.
+dut.v:1291: error: 'req_l4_link4' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_link4' is declared here as a wire.
+dut.v:1293: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1296: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1299: error: 'req_c_link4' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_link4' is declared here as a wire.
+dut.v:1306: error: 'req_l1_core' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_core' is declared here as a wire.
+dut.v:1308: error: 'req_l2_core' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_core' is declared here as a wire.
+dut.v:1310: error: 'req_l3_core' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_core' is declared here as a wire.
+dut.v:1312: error: 'req_l4_core' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_core' is declared here as a wire.
+dut.v:1314: error: 'req_c_core' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_core' is declared here as a wire.
+dut.v:1318: error: 'req_l1_core' is not a valid l-value for a procedural assignment.
+dut.v:93:      : 'req_l1_core' is declared here as a wire.
+dut.v:1320: error: 'req_l2_core' is not a valid l-value for a procedural assignment.
+dut.v:94:      : 'req_l2_core' is declared here as a wire.
+dut.v:1322: error: 'req_l3_core' is not a valid l-value for a procedural assignment.
+dut.v:95:      : 'req_l3_core' is declared here as a wire.
+dut.v:1324: error: 'req_l4_core' is not a valid l-value for a procedural assignment.
+dut.v:96:      : 'req_l4_core' is declared here as a wire.
+dut.v:1326: error: 'req_c_core' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_core' is declared here as a wire.
+dut.v:1329: error: 'req_c_core' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_core' is declared here as a wire.
+dut.v:1332: error: 'req_c_core' is not a valid l-value for a procedural assignment.
+dut.v:97:      : 'req_c_core' is declared here as a wire.
+323 error(s) during elaboration.

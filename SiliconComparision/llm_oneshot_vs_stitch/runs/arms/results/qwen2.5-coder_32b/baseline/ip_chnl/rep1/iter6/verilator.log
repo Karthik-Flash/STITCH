@@ -1,0 +1,116 @@
+%Warning-PINCONNECTEMPTY: dut.v:33:10: Instance pin connected by name with empty reference: 'full_int'
+   33 |         .full_int(),
+      |          ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:27:10: Output port connection 'rd_add' expects 3 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                 : ... note: In instance 'ip_chnl'
+   27 |         .rd_add(2'b00),
+      |          ^~~~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:28:10: Output port connection 'wr_add' expects 3 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                 : ... note: In instance 'ip_chnl'
+   28 |         .wr_add(2'b00),
+      |          ^~~~~~
+%Warning-WIDTHTRUNC: dut.v:29:10: Output port connection 'wr_dir' expects 1 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                : ... note: In instance 'ip_chnl'
+   29 |         .wr_dir(2'b00),
+      |          ^~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:30:10: Output port connection 'rd_dir' expects 1 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                : ... note: In instance 'ip_chnl'
+   30 |         .rd_dir(2'b00),
+      |          ^~~~~~
+%Error-PROCASSWIRE: dut.v:113:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out_w'
+                                : ... note: In instance 'ip_chnl'
+  113 |             header_out_w = fifo_out_w;
+      |             ^~~~~~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:115:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out_w'
+                                : ... note: In instance 'ip_chnl'
+  115 |             header_out_w = header_flit_w;
+      |             ^~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:120:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out_w'
+                                : ... note: In instance 'ip_chnl'
+  120 |                 mux_data_out_w = header_flit_w;
+      |                 ^~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:122:17: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out_w'
+                                : ... note: In instance 'ip_chnl'
+  122 |                 mux_data_out_w = fifo_out_w;
+      |                 ^~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:125:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out_w'
+                                : ... note: In instance 'ip_chnl'
+  125 |             mux_data_out_w = 32'h6000_0000;
+      |             ^~~~~~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:131:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+                               : ... note: In instance 'ip_chnl'
+  131 |         req_l1 = req_link1_w;
+      |         ^~~~~~
+%Error-PROCASSWIRE: dut.v:132:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+                               : ... note: In instance 'ip_chnl'
+  132 |         req_l2 = req_link2_w;
+      |         ^~~~~~
+%Error-PROCASSWIRE: dut.v:133:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+                               : ... note: In instance 'ip_chnl'
+  133 |         req_l3 = req_link3_w;
+      |         ^~~~~~
+%Error-PROCASSWIRE: dut.v:134:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+                               : ... note: In instance 'ip_chnl'
+  134 |         req_l4 = req_link4_w;
+      |         ^~~~~~
+%Error-PROCASSWIRE: dut.v:135:9: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+                               : ... note: In instance 'ip_chnl'
+  135 |         req_c = req_core_w;
+      |         ^~~~~
+%Warning-UNDRIVEN: dut.v:7:32: Signal is not driven: 'nxt_reset'
+                             : ... note: In instance 'ip_chnl'
+    7 |     output tailer, tailer_org, nxt_reset, data_sel, header, empty,
+      |                                ^~~~~~~~~
+                   ... For warning description see https://verilator.org/warn/UNDRIVEN?v=5.053
+                   ... Use "/* verilator lint_off UNDRIVEN */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:14:9: Signal is not used: 'rd_en_out_w'
+                                 : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |         ^~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:14:22: Signal is not used: 'en1_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                      ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:29: Signal is not used: 'en2_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                             ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:36: Signal is not used: 'en4_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                    ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:43: Signal is not used: 'en5_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                           ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:50: Signal is not used: 'en6_w'
+                                  : ... note: In instance 'ip_chnl'
+   14 |     reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+      |                                                  ^~~~~
+%Error-PORTSHORT: dut.v:27:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   27 |         .rd_add(2'b00),
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:28:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   28 |         .wr_add(2'b00),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:29:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   29 |         .wr_dir(2'b00),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:30:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'ip_chnl'
+   30 |         .rd_dir(2'b00),
+      |          ^~~~~~
+%Error: Exiting due to 14 error(s), 12 warning(s)

@@ -1,0 +1,145 @@
+```verilog
+module irs (
+    input reset, empty, rd_en, rd_clk, tailer, tailer_org, header,
+    output rd_en_out, data_sel, en1, en2, en4, en5, en6
+);
+
+    wire en1_w, en2_w, rd_en_out_w;
+    reg data_sel_reg, flag_A_reg, flag_B_reg, en4_reg, en5_reg, en6_reg;
+
+    // Instantiate dff_asynch_clr for en4
+    dff_asynch_clr dff_en4 (
+        .d(en4_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en4_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en5
+    dff_asynch_clr dff_en5 (
+        .d(en5_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en5_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en6
+    dff_asynch_clr dff_en6 (
+        .d(en6_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en6_reg)
+    );
+
+    // Instantiate dff_asynch_clr for data_sel
+    dff_asynch_clr dff_data_sel (
+        .d(data_sel_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(data_sel_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_A
+    dff_asynch_clr dff_flag_A (
+        .d(flag_A_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_A_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_B
+    dff_asynch_clr dff_flag_B (
+        .d(flag_B_next),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_B_reg)
+    );
+
+    // Assignments for en1 and en2
+    assign en1_w = ~empty;
+    assign en2_w = rd_en;
+
+    // Clocked logic for en4
+    reg en4_next;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            en4_next <= 1'b0;
+        end else if (header) begin
+            en4_next <= 1'b1;
+        end
+    end
+
+    // Clocked logic for en5
+    reg en5_next;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            en5_next <= 1'b0;
+        end else if (tailer) begin
+            en5_next <= en4_reg;
+        end
+    end
+
+    // Clocked logic for en6
+    reg en6_next;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            en6_next <= 1'b0;
+        end else begin
+            en6_next <= en5_reg;
+        end
+    end
+
+    // Clocked logic for data_sel
+    reg data_sel_next;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            data_sel_next <= 1'b0;
+        end else if (rd_en && ~flag_A_reg && ~flag_B_reg) begin
+            data_sel_next <= 1'b1;
+        end else begin
+            data_sel_next <= 1'b0;
+        end
+    end
+
+    // Clocked logic for flag_A
+    reg flag_A_next;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            flag_A_next <= 1'b0;
+        end else begin
+            flag_A_next <= data_sel_reg;
+        end
+    end
+
+    // Clocked logic for flag_B
+    reg flag_B_next;
+    reg data_sel_reg_d;
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            data_sel_reg_d <= 1'b0;
+        end else begin
+            data_sel_reg_d <= data_sel_reg;
+        end
+    end
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset || tailer) begin
+            flag_B_next <= 1'b0;
+        end else if (data_sel_reg && ~data_sel_reg_d) begin
+            flag_B_next <= 1'b1;
+        end else begin
+            flag_B_next <= 1'b0;
+        end
+    end
+
+    // Output assignments
+    assign rd_en_out = en4_reg ? en2_w : en1_w;
+    assign data_sel = data_sel_reg;
+    assign en1 = en1_w;
+    assign en2 = en2_w;
+    assign en4 = en4_reg;
+    assign en5 = en5_reg;
+    assign en6 = en6_reg;
+
+endmodule
+```

@@ -1,0 +1,27 @@
+{
+ "module": "ip_chnl",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 1395,
+ "tokens_out": 1159,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 1395,
+  "eval_count": 1159,
+  "total_duration": 276335913486,
+  "load_duration": 32746888,
+  "eval_duration": 273920053000
+ },
+ "wall_s": 276.4,
+ "timestamp": "2026-10-30T13:04:39",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "4ed6bac1e4aacadcc406d85b4cb8eab357346d1e86ffdd077776faab11df9b78",
+ "response_sha256": "b4802595e709fd4fe18564f628aeaca23d161409a8cea9bfcf4e806b52f4fdd1",
+ "output_sha256": "0bcc72bf7fa9f7f78752b2a0bc48cc09071f64c090465bd4d4507b7b6ae08c42",
+ "mock_mode": null
+}

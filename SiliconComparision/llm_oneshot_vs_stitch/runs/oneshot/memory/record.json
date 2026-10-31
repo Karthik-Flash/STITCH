@@ -1,0 +1,27 @@
+{
+ "module": "memory",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 579,
+ "tokens_out": 206,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 579,
+  "eval_count": 206,
+  "total_duration": 54957670065,
+  "load_duration": 2127411,
+  "eval_duration": 53811844000
+ },
+ "wall_s": 55.0,
+ "timestamp": "2026-10-30T12:55:26",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "90f8383214343f281d2663a6902e167f3a29a3eac7ea3a2c37d7f7475426e08a",
+ "response_sha256": "0d1b85b420247a7e64ce240d85246a696cb24e2da005cb9384f5601b978e62ae",
+ "output_sha256": "624eafe5c24da51c1ef846f613ee839cd7f5ffae0c2ed5cdb78076bc5bfe80f4",
+ "mock_mode": null
+}

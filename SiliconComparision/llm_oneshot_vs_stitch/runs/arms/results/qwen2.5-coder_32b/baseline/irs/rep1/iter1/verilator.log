@@ -1,0 +1,24 @@
+%Error-PROCASSWIRE: dut.v:100:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  100 |             data_sel_w = 1'b0;
+      |             ^~~~~~~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:102:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  102 |             data_sel_w = 1'b1;
+      |             ^~~~~~~~~~
+%Error-PROCASSWIRE: dut.v:104:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel_w'
+                                : ... note: In instance 'irs'
+  104 |             data_sel_w = 1'b0;
+      |             ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:2:48: Signal is not used: 'tailer_org'
+                                 : ... note: In instance 'irs'
+    2 |     input reset, empty, rd_en, rd_clk, tailer, tailer_org, header,
+      |                                                ^~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:6:24: Signal is not driven, nor used: 'rd_en_out_w'
+                                 : ... note: In instance 'irs'
+    6 |     wire en1_w, en2_w, rd_en_out_w, data_sel_w;
+      |                        ^~~~~~~~~~~
+%Error: Exiting due to 3 error(s), 2 warning(s)

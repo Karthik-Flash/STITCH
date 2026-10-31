@@ -1,0 +1,18 @@
+FAIL t=239000 cycle 22: data_out_core_r1 = 60000000, expected 27660500
+FAIL t=244000 cycle 23: data_out_core_r1 = 60000000, expected 27660500
+FAIL t=249000 cycle 23: data_out_core_r1 = 60000000, expected 034ebf00
+FAIL t=254000 cycle 24: data_out_core_r1 = 60000000, expected 034ebf00
+FAIL t=259000 cycle 24: data_out_core_r1 = 60000000, expected 25fdda01
+FAIL t=264000 cycle 25: data_out_core_r1 = 60000000, expected 25fdda01
+FAIL t=269000 cycle 25: data_out_core_r1 = 60000000, expected 4252d000
+FAIL t=274000 cycle 26: data_out_core_r1 = 60000000, expected 4252d000
+FAIL t=339000 cycle 32: data_out_core_r2 = 60000000, expected 20c85401
+FAIL t=344000 cycle 33: data_out_core_r2 = 60000000, expected 20c85401
+FAIL t=349000 cycle 33: data_out_core_r2 = 60000000, expected 236c6a00
+FAIL t=354000 cycle 34: data_out_core_r2 = 60000000, expected 236c6a00
+FAIL t=359000 cycle 34: data_out_core_r2 = 60000000, expected 01d9cd01
+FAIL t=364000 cycle 35: data_out_core_r2 = 60000000, expected 01d9cd01
+FAIL t=369000 cycle 35: data_out_core_r3 = 60000000, expected 263d6010
+INFO coverage: 4 of 4 checked outputs toggled, 98 of 128 bits
+FAIL: 4873 mismatches, 0 property errors
+tb.v:88: $finish called at 50009000 (1ps)

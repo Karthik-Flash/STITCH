@@ -1,0 +1,34 @@
+MISMATCH (secondary, not part of the verdict) t=69000 cycle 5: gray_out = 6, expected 1
+MISMATCH (secondary, not part of the verdict) t=74000 cycle 6: gray_out = 6, expected 1
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: gray_out = 6, expected 3
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: dir = 1, expected 0
+FAIL property: not one Gray step (t=79000)
+FAIL property: dir changed without a wrap (t=79000)
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: gray_out = 6, expected 3
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=89000 cycle 7: gray_out = 6, expected 2
+FAIL property: not one Gray step (t=89000)
+FAIL property: dir changed without a wrap (t=89000)
+MISMATCH (secondary, not part of the verdict) t=94000 cycle 8: gray_out = 6, expected 2
+MISMATCH (secondary, not part of the verdict) t=99000 cycle 8: dir = 1, expected 0
+FAIL property: not one Gray step (t=99000)
+FAIL property: dir changed without a wrap (t=99000)
+MISMATCH (secondary, not part of the verdict) t=104000 cycle 9: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=109000 cycle 9: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=119000 cycle 10: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=124000 cycle 11: dir = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=129000 cycle 11: dir = 1, expected 0
+FAIL property: not one Gray step (t=159000)
+FAIL property: dir changed without a wrap (t=159000)
+FAIL property: not one Gray step (t=169000)
+FAIL property: dir changed without a wrap (t=169000)
+FAIL property: not one Gray step (t=179000)
+FAIL property: dir changed without a wrap (t=179000)
+FAIL property: not one Gray step (t=249000)
+FAIL property: dir changed without a wrap (t=249000)
+FAIL property: not one Gray step (t=329000)
+INFO coverage: 2 of 2 checked outputs toggled, 4 of 4 bits
+INFO cycle-exact mismatches against golden/reference: 13321 (secondary)
+FAIL: 4957 property errors
+tb.v:77: $finish called at 50009000 (1ps)

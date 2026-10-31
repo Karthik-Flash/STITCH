@@ -1,0 +1,172 @@
+dut.v:68: error: Index req[16] is out of range.
+dut.v:102: error: Index mux_rok[16] is out of range.
+dut.v:133: warning: Port 57 (e1) of module allot_vc expects 4 bit(s), given 1.
+dut.v:133:        : Padding 3 high bits of the port.
+dut.v:133: warning: Port 58 (e2) of module allot_vc expects 4 bit(s), given 1.
+dut.v:133:        : Padding 3 high bits of the port.
+dut.v:133: warning: Port 59 (e3) of module allot_vc expects 4 bit(s), given 1.
+dut.v:133:        : Padding 3 high bits of the port.
+dut.v:133: warning: Port 60 (e4) of module allot_vc expects 4 bit(s), given 1.
+dut.v:133:        : Padding 3 high bits of the port.
+dut.v:155: error: Index rd_en[16] is out of range.
+dut.v:162: error: Index rd_en[16] is out of range.
+dut.v:169: error: Index rd_en[16] is out of range.
+dut.v:176: error: Index rd_en[16] is out of range.
+dut.v:189: error: Net b1_logic['sd0] is not defined in this context.
+dut.v:189: error: Output port expression must support a continuous assignment.
+dut.v:189:      : Port 26 (b1_logic) of rr_comb_new is connected to tb.dut.b1_logic['sd0]
+dut.v:219: error: 'b1' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b1' is declared here as a wire.
+dut.v:220: error: 'b2' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b2' is declared here as a wire.
+dut.v:221: error: 'b3' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b3' is declared here as a wire.
+dut.v:222: error: 'b4' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b4' is declared here as a wire.
+dut.v:224: error: 'b1' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b1' is declared here as a wire.
+dut.v:225: error: 'b2' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b2' is declared here as a wire.
+dut.v:226: error: 'b3' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b3' is declared here as a wire.
+dut.v:227: error: 'b4' is not a valid l-value for a procedural assignment.
+dut.v:27:      : 'b4' is declared here as a wire.
+dut.v:232: error: 'ready['sd0]' is not a valid l-value for a procedural assignment.
+dut.v:45:      : 'ready['sd0]' is declared here as a wire.
+dut.v:233: error: 'ready['sd1]' is not a valid l-value for a procedural assignment.
+dut.v:45:      : 'ready['sd1]' is declared here as a wire.
+dut.v:234: error: 'ready['sd2]' is not a valid l-value for a procedural assignment.
+dut.v:45:      : 'ready['sd2]' is declared here as a wire.
+dut.v:235: error: 'ready['sd3]' is not a valid l-value for a procedural assignment.
+dut.v:45:      : 'ready['sd3]' is declared here as a wire.
+dut.v:231: warning: @* found no sensitivities so it will never trigger.
+dut.v:240: error: 'rd_en_vc1_link2_vc1' is not a valid l-value for a procedural assignment.
+dut.v:11:      : 'rd_en_vc1_link2_vc1' is declared here as a wire.
+dut.v:241: error: 'rd_en_vc1_link2_vc2' is not a valid l-value for a procedural assignment.
+dut.v:11:      : 'rd_en_vc1_link2_vc2' is declared here as a wire.
+dut.v:242: error: 'rd_en_vc1_link2_vc3' is not a valid l-value for a procedural assignment.
+dut.v:11:      : 'rd_en_vc1_link2_vc3' is declared here as a wire.
+dut.v:243: error: 'rd_en_vc1_link2_vc4' is not a valid l-value for a procedural assignment.
+dut.v:11:      : 'rd_en_vc1_link2_vc4' is declared here as a wire.
+dut.v:244: error: 'rd_en_vc1_link3_vc1' is not a valid l-value for a procedural assignment.
+dut.v:12:      : 'rd_en_vc1_link3_vc1' is declared here as a wire.
+dut.v:245: error: 'rd_en_vc1_link3_vc2' is not a valid l-value for a procedural assignment.
+dut.v:12:      : 'rd_en_vc1_link3_vc2' is declared here as a wire.
+dut.v:246: error: 'rd_en_vc1_link3_vc3' is not a valid l-value for a procedural assignment.
+dut.v:12:      : 'rd_en_vc1_link3_vc3' is declared here as a wire.
+dut.v:247: error: 'rd_en_vc1_link3_vc4' is not a valid l-value for a procedural assignment.
+dut.v:12:      : 'rd_en_vc1_link3_vc4' is declared here as a wire.
+dut.v:248: error: 'rd_en_vc1_link4_vc1' is not a valid l-value for a procedural assignment.
+dut.v:13:      : 'rd_en_vc1_link4_vc1' is declared here as a wire.
+dut.v:249: error: 'rd_en_vc1_link4_vc2' is not a valid l-value for a procedural assignment.
+dut.v:13:      : 'rd_en_vc1_link4_vc2' is declared here as a wire.
+dut.v:250: error: 'rd_en_vc1_link4_vc3' is not a valid l-value for a procedural assignment.
+dut.v:13:      : 'rd_en_vc1_link4_vc3' is declared here as a wire.
+dut.v:251: error: 'rd_en_vc1_link4_vc4' is not a valid l-value for a procedural assignment.
+dut.v:13:      : 'rd_en_vc1_link4_vc4' is declared here as a wire.
+dut.v:252: error: 'rd_en_vc1_core_vc1' is not a valid l-value for a procedural assignment.
+dut.v:13:      : 'rd_en_vc1_core_vc1' is declared here as a wire.
+dut.v:253: error: 'rd_en_vc1_core_vc2' is not a valid l-value for a procedural assignment.
+dut.v:14:      : 'rd_en_vc1_core_vc2' is declared here as a wire.
+dut.v:254: error: 'rd_en_vc1_core_vc3' is not a valid l-value for a procedural assignment.
+dut.v:14:      : 'rd_en_vc1_core_vc3' is declared here as a wire.
+dut.v:255: error: 'rd_en_vc1_core_vc4' is not a valid l-value for a procedural assignment.
+dut.v:14:      : 'rd_en_vc1_core_vc4' is declared here as a wire.
+dut.v:261: error: 'rd_en_vc2_link2_vc1' is not a valid l-value for a procedural assignment.
+dut.v:14:      : 'rd_en_vc2_link2_vc1' is declared here as a wire.
+dut.v:262: error: 'rd_en_vc2_link2_vc2' is not a valid l-value for a procedural assignment.
+dut.v:14:      : 'rd_en_vc2_link2_vc2' is declared here as a wire.
+dut.v:263: error: 'rd_en_vc2_link2_vc3' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rd_en_vc2_link2_vc3' is declared here as a wire.
+dut.v:264: error: 'rd_en_vc2_link2_vc4' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rd_en_vc2_link2_vc4' is declared here as a wire.
+dut.v:265: error: 'rd_en_vc2_link3_vc1' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rd_en_vc2_link3_vc1' is declared here as a wire.
+dut.v:266: error: 'rd_en_vc2_link3_vc2' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rd_en_vc2_link3_vc2' is declared here as a wire.
+dut.v:267: error: 'rd_en_vc2_link3_vc3' is not a valid l-value for a procedural assignment.
+dut.v:16:      : 'rd_en_vc2_link3_vc3' is declared here as a wire.
+dut.v:268: error: 'rd_en_vc2_link3_vc4' is not a valid l-value for a procedural assignment.
+dut.v:16:      : 'rd_en_vc2_link3_vc4' is declared here as a wire.
+dut.v:269: error: 'rd_en_vc2_link4_vc1' is not a valid l-value for a procedural assignment.
+dut.v:16:      : 'rd_en_vc2_link4_vc1' is declared here as a wire.
+dut.v:270: error: 'rd_en_vc2_link4_vc2' is not a valid l-value for a procedural assignment.
+dut.v:16:      : 'rd_en_vc2_link4_vc2' is declared here as a wire.
+dut.v:271: error: 'rd_en_vc2_link4_vc3' is not a valid l-value for a procedural assignment.
+dut.v:17:      : 'rd_en_vc2_link4_vc3' is declared here as a wire.
+dut.v:272: error: 'rd_en_vc2_link4_vc4' is not a valid l-value for a procedural assignment.
+dut.v:17:      : 'rd_en_vc2_link4_vc4' is declared here as a wire.
+dut.v:273: error: 'rd_en_vc2_core_vc1' is not a valid l-value for a procedural assignment.
+dut.v:17:      : 'rd_en_vc2_core_vc1' is declared here as a wire.
+dut.v:274: error: 'rd_en_vc2_core_vc2' is not a valid l-value for a procedural assignment.
+dut.v:17:      : 'rd_en_vc2_core_vc2' is declared here as a wire.
+dut.v:275: error: 'rd_en_vc2_core_vc3' is not a valid l-value for a procedural assignment.
+dut.v:17:      : 'rd_en_vc2_core_vc3' is declared here as a wire.
+dut.v:276: error: 'rd_en_vc2_core_vc4' is not a valid l-value for a procedural assignment.
+dut.v:18:      : 'rd_en_vc2_core_vc4' is declared here as a wire.
+dut.v:282: error: 'rd_en_vc3_link2_vc1' is not a valid l-value for a procedural assignment.
+dut.v:18:      : 'rd_en_vc3_link2_vc1' is declared here as a wire.
+dut.v:283: error: 'rd_en_vc3_link2_vc2' is not a valid l-value for a procedural assignment.
+dut.v:18:      : 'rd_en_vc3_link2_vc2' is declared here as a wire.
+dut.v:284: error: 'rd_en_vc3_link2_vc3' is not a valid l-value for a procedural assignment.
+dut.v:18:      : 'rd_en_vc3_link2_vc3' is declared here as a wire.
+dut.v:285: error: 'rd_en_vc3_link2_vc4' is not a valid l-value for a procedural assignment.
+dut.v:18:      : 'rd_en_vc3_link2_vc4' is declared here as a wire.
+dut.v:286: error: 'rd_en_vc3_link3_vc1' is not a valid l-value for a procedural assignment.
+dut.v:19:      : 'rd_en_vc3_link3_vc1' is declared here as a wire.
+dut.v:287: error: 'rd_en_vc3_link3_vc2' is not a valid l-value for a procedural assignment.
+dut.v:19:      : 'rd_en_vc3_link3_vc2' is declared here as a wire.
+dut.v:288: error: 'rd_en_vc3_link3_vc3' is not a valid l-value for a procedural assignment.
+dut.v:19:      : 'rd_en_vc3_link3_vc3' is declared here as a wire.
+dut.v:289: error: 'rd_en_vc3_link3_vc4' is not a valid l-value for a procedural assignment.
+dut.v:19:      : 'rd_en_vc3_link3_vc4' is declared here as a wire.
+dut.v:290: error: 'rd_en_vc3_link4_vc1' is not a valid l-value for a procedural assignment.
+dut.v:20:      : 'rd_en_vc3_link4_vc1' is declared here as a wire.
+dut.v:291: error: 'rd_en_vc3_link4_vc2' is not a valid l-value for a procedural assignment.
+dut.v:20:      : 'rd_en_vc3_link4_vc2' is declared here as a wire.
+dut.v:292: error: 'rd_en_vc3_link4_vc3' is not a valid l-value for a procedural assignment.
+dut.v:20:      : 'rd_en_vc3_link4_vc3' is declared here as a wire.
+dut.v:293: error: 'rd_en_vc3_link4_vc4' is not a valid l-value for a procedural assignment.
+dut.v:20:      : 'rd_en_vc3_link4_vc4' is declared here as a wire.
+dut.v:294: error: 'rd_en_vc3_core_vc1' is not a valid l-value for a procedural assignment.
+dut.v:20:      : 'rd_en_vc3_core_vc1' is declared here as a wire.
+dut.v:295: error: 'rd_en_vc3_core_vc2' is not a valid l-value for a procedural assignment.
+dut.v:21:      : 'rd_en_vc3_core_vc2' is declared here as a wire.
+dut.v:296: error: 'rd_en_vc3_core_vc3' is not a valid l-value for a procedural assignment.
+dut.v:21:      : 'rd_en_vc3_core_vc3' is declared here as a wire.
+dut.v:297: error: 'rd_en_vc3_core_vc4' is not a valid l-value for a procedural assignment.
+dut.v:21:      : 'rd_en_vc3_core_vc4' is declared here as a wire.
+dut.v:303: error: 'rd_en_vc4_link2_vc1' is not a valid l-value for a procedural assignment.
+dut.v:21:      : 'rd_en_vc4_link2_vc1' is declared here as a wire.
+dut.v:304: error: 'rd_en_vc4_link2_vc2' is not a valid l-value for a procedural assignment.
+dut.v:21:      : 'rd_en_vc4_link2_vc2' is declared here as a wire.
+dut.v:305: error: 'rd_en_vc4_link2_vc3' is not a valid l-value for a procedural assignment.
+dut.v:22:      : 'rd_en_vc4_link2_vc3' is declared here as a wire.
+dut.v:306: error: 'rd_en_vc4_link2_vc4' is not a valid l-value for a procedural assignment.
+dut.v:22:      : 'rd_en_vc4_link2_vc4' is declared here as a wire.
+dut.v:307: error: 'rd_en_vc4_link3_vc1' is not a valid l-value for a procedural assignment.
+dut.v:22:      : 'rd_en_vc4_link3_vc1' is declared here as a wire.
+dut.v:308: error: 'rd_en_vc4_link3_vc2' is not a valid l-value for a procedural assignment.
+dut.v:22:      : 'rd_en_vc4_link3_vc2' is declared here as a wire.
+dut.v:309: error: 'rd_en_vc4_link3_vc3' is not a valid l-value for a procedural assignment.
+dut.v:23:      : 'rd_en_vc4_link3_vc3' is declared here as a wire.
+dut.v:310: error: 'rd_en_vc4_link3_vc4' is not a valid l-value for a procedural assignment.
+dut.v:23:      : 'rd_en_vc4_link3_vc4' is declared here as a wire.
+dut.v:311: error: 'rd_en_vc4_link4_vc1' is not a valid l-value for a procedural assignment.
+dut.v:23:      : 'rd_en_vc4_link4_vc1' is declared here as a wire.
+dut.v:312: error: 'rd_en_vc4_link4_vc2' is not a valid l-value for a procedural assignment.
+dut.v:23:      : 'rd_en_vc4_link4_vc2' is declared here as a wire.
+dut.v:313: error: 'rd_en_vc4_link4_vc3' is not a valid l-value for a procedural assignment.
+dut.v:24:      : 'rd_en_vc4_link4_vc3' is declared here as a wire.
+dut.v:314: error: 'rd_en_vc4_link4_vc4' is not a valid l-value for a procedural assignment.
+dut.v:24:      : 'rd_en_vc4_link4_vc4' is declared here as a wire.
+dut.v:315: error: 'rd_en_vc4_core_vc1' is not a valid l-value for a procedural assignment.
+dut.v:24:      : 'rd_en_vc4_core_vc1' is declared here as a wire.
+dut.v:316: error: 'rd_en_vc4_core_vc2' is not a valid l-value for a procedural assignment.
+dut.v:24:      : 'rd_en_vc4_core_vc2' is declared here as a wire.
+dut.v:317: error: 'rd_en_vc4_core_vc3' is not a valid l-value for a procedural assignment.
+dut.v:24:      : 'rd_en_vc4_core_vc3' is declared here as a wire.
+dut.v:318: error: 'rd_en_vc4_core_vc4' is not a valid l-value for a procedural assignment.
+dut.v:25:      : 'rd_en_vc4_core_vc4' is declared here as a wire.
+tb.v:145: warning: output port all_vc_not_busy is coerced to inout.
+84 error(s) during elaboration.

@@ -1,0 +1,34 @@
+MISMATCH (secondary, not part of the verdict) t=54000 cycle 4: rd_en_out = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=54000 cycle 4: en4 = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=59000 cycle 4: rd_en_out = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=59000 cycle 4: en4 = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=64000 cycle 5: rd_en_out = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=64000 cycle 5: en4 = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=69000 cycle 5: data_sel = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=74000 cycle 6: data_sel = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: data_sel = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: data_sel = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=94000 cycle 8: data_sel = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: rd_en_out = 0, expected 1
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: en4 = 1, expected 0
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: en5 = 0, expected 1
+FAIL property: data_sel rose without rd_en (t=115000)
+MISMATCH (secondary, not part of the verdict) t=119000 cycle 10: rd_en_out = 0, expected 1
+FAIL property: en5 rose without a tailer edge (t=125000)
+FAIL property: en5 rose without a tailer edge (t=275000)
+FAIL property: en5 rose without a tailer edge (t=405000)
+FAIL property: en5 rose without a tailer edge (t=515000)
+FAIL property: data_sel rose without rd_en (t=555000)
+FAIL property: en4 rose without a header edge (t=565000)
+FAIL property: en5 rose without a tailer edge (t=575000)
+FAIL property: en4 rose without a header edge (t=585000)
+FAIL property: en5 rose without a tailer edge (t=665000)
+FAIL property: en5 rose without a tailer edge (t=815000)
+FAIL property: data_sel rose without rd_en (t=865000)
+FAIL property: en5 rose without a tailer edge (t=875000)
+FAIL property: data_sel rose without rd_en (t=945000)
+FAIL property: en4 rose without a header edge (t=1015000)
+INFO coverage: 7 of 7 checked outputs toggled, 7 of 7 bits
+INFO cycle-exact mismatches against golden/reference: 20039 (secondary)
+FAIL: 670 property errors
+tb.v:129: $finish called at 50009000 (1ps)

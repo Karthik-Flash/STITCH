@@ -1,0 +1,27 @@
+{
+ "module": "irs",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 952,
+ "tokens_out": 1073,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 952,
+  "eval_count": 1073,
+  "total_duration": 247489855236,
+  "load_duration": 117052405,
+  "eval_duration": 246444833000
+ },
+ "wall_s": 247.5,
+ "timestamp": "2026-10-30T12:48:08",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "7a283915bda9b75048775e48eb7d51603361da6651006177258a56e192bcd277",
+ "response_sha256": "ac09b899b75b4e5ab635881112a0c1b5f35b4d889d3b3697edba7b933068cc87",
+ "output_sha256": "cb6b4518e9567e2699f19b85ce4e2f745499b05e87a3af5f4747483837dd5859",
+ "mock_mode": null
+}

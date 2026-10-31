@@ -1,0 +1,68 @@
+%Error-PROCASSWIRE: dut.v:31:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   31 |             3'b000: begin j = 4'b1000; k = 4'b0000; end
+      |                           ^
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:31:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   31 |             3'b000: begin j = 4'b1000; k = 4'b0000; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:32:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   32 |             3'b001: begin j = 4'b0100; k = 4'b0000; end
+      |                           ^
+%Error-PROCASSWIRE: dut.v:32:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   32 |             3'b001: begin j = 4'b0100; k = 4'b0000; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:33:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   33 |             3'b011: begin j = 4'b0010; k = 4'b0000; end
+      |                           ^
+%Error-PROCASSWIRE: dut.v:33:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   33 |             3'b011: begin j = 4'b0010; k = 4'b0000; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:34:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   34 |             3'b010: begin j = 4'b0001; k = 4'b0000; end
+      |                           ^
+%Error-PROCASSWIRE: dut.v:34:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   34 |             3'b010: begin j = 4'b0001; k = 4'b0000; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:35:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   35 |             3'b110: begin j = 4'b0000; k = 4'b1000; end
+      |                           ^
+%Error-PROCASSWIRE: dut.v:35:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   35 |             3'b110: begin j = 4'b0000; k = 4'b1000; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:36:27: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   36 |             3'b100: begin j = 4'b0000; k = 4'b0100; end
+      |                           ^
+%Error-PROCASSWIRE: dut.v:36:40: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   36 |             3'b100: begin j = 4'b0000; k = 4'b0100; end
+      |                                        ^
+%Error-PROCASSWIRE: dut.v:37:28: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'j'
+                               : ... note: In instance 'gray_mod6'
+   37 |             default: begin j = 4'b0000; k = 4'b0000; end
+      |                            ^
+%Error-PROCASSWIRE: dut.v:37:41: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'k'
+                               : ... note: In instance 'gray_mod6'
+   37 |             default: begin j = 4'b0000; k = 4'b0000; end
+      |                                         ^
+%Warning-UNUSEDSIGNAL: dut.v:9:16: Bits of signal are not used: 'q'[3]
+                                 : ... note: In instance 'gray_mod6'
+    9 |     wire [3:0] q, qbar;
+      |                ^
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:9:19: Signal is not used: 'qbar'
+                                 : ... note: In instance 'gray_mod6'
+    9 |     wire [3:0] q, qbar;
+      |                   ^~~~
+%Error: Exiting due to 14 error(s), 2 warning(s)

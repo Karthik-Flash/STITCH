@@ -1,0 +1,27 @@
+dut.v:36: warning: Port 4 (rd_en) of module ip_chnl expects 1 bit(s), given 4.
+dut.v:36:        : Pruning 3 high bits of the expression.
+dut.v:46: warning: Port 4 (rd_en) of module ip_chnl expects 1 bit(s), given 4.
+dut.v:46:        : Pruning 3 high bits of the expression.
+dut.v:56: warning: Port 4 (rd_en) of module ip_chnl expects 1 bit(s), given 4.
+dut.v:56:        : Pruning 3 high bits of the expression.
+dut.v:66: warning: Port 4 (rd_en) of module ip_chnl expects 1 bit(s), given 4.
+dut.v:66:        : Pruning 3 high bits of the expression.
+
+FAIL t=69000 cycle 5: data_out_vc3 = 60000000, expected 54e2c721
+FAIL t=69000 cycle 5: rok_vc2 = 1, expected 0
+FAIL t=69000 cycle 5: rok_vc3 = 0, expected 1
+FAIL t=74000 cycle 6: data_out_vc3 = 60000000, expected 54e2c721
+FAIL t=74000 cycle 6: rok_vc2 = 1, expected 0
+FAIL t=74000 cycle 6: rok_vc3 = 0, expected 1
+FAIL t=79000 cycle 6: data_out_vc3 = 60000000, expected 54e2c721
+FAIL t=79000 cycle 6: tailer_vc2 = 1, expected 0
+FAIL t=79000 cycle 6: tailer_vc3 = 0, expected 1
+FAIL t=79000 cycle 6: rok_vc4 = 1, expected 0
+FAIL t=84000 cycle 7: tailer_vc2 = 1, expected 0
+FAIL t=84000 cycle 7: tailer_vc3 = 0, expected 1
+FAIL t=84000 cycle 7: rok_vc4 = 1, expected 0
+FAIL t=89000 cycle 7: data_out_vc4 = 60000000, expected 3f622e32
+FAIL t=89000 cycle 7: req_l1_vc1 = 1, expected 0
+INFO coverage: 18 of 36 checked outputs toggled, 114 of 160 bits
+FAIL: 3380 mismatches, 0 property errors
+tb.v:533: $finish called at 2009000 (1ps)

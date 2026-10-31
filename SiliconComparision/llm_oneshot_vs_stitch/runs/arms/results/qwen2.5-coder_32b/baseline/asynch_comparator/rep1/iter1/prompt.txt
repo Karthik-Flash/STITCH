@@ -1,0 +1,147 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# asynch_comparator
+
+## Behaviour
+
+Combinational full/empty detector for a 6-entry FIFO. `rd_ptr` and `wr_ptr` step through the 6-state
+Gray sequence 000, 001, 011, 010, 110, 100 (positions 0 to 5) and then wrap to 000. `rd_dir` and `wr_dir`
+toggle on each wrap.
+
+- `empty` = 1 when `rd_ptr` equals `wr_ptr` and `rd_dir` equals `wr_dir`; else 0.
+- `full_int` = 1 when `rd_ptr` equals `wr_ptr` and `rd_dir` differs from `wr_dir`; else 0.
+- `full_ext` = 1 when the FIFO holds 4 or more entries; else 0. The occupancy is
+  pos(`wr_ptr`) - pos(`rd_ptr`) when the dir bits are equal, and pos(`wr_ptr`) - pos(`rd_ptr`) + 6 when
+  they differ. For `full_ext`, the codes 101 and 111 (not in the sequence) count as position 5 (100).
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+7 ports, in this exact order:
+
+```verilog
+input [2:0] rd_ptr, wr_ptr;
+input rd_dir, wr_dir;
+output full_ext, full_int, empty;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module asynch_comparator (
+    input [2:0] rd_ptr, wr_ptr,
+    input rd_dir, wr_dir,
+    output full_ext, full_int, empty
+);
+
+    wire [2:0] rd_pos, wr_pos;
+    wire [2:0] diff;
+    wire [2:0] occupancy;
+
+    // Convert Gray code to binary position
+    always @(*) begin
+        case (rd_ptr)
+            3'b000: rd_pos = 3'b000;
+            3'b001: rd_pos = 3'b001;
+            3'b011: rd_pos = 3'b010;
+            3'b010: rd_pos = 3'b011;
+            3'b110: rd_pos = 3'b100;
+            3'b100: rd_pos = 3'b101;
+            3'b101: rd_pos = 3'b101; // Treat 101 as position 5
+            3'b111: rd_pos = 3'b101; // Treat 111 as position 5
+            default: rd_pos = 3'b000; // Default case
+        endcase
+    end
+
+    always @(*) begin
+        case (wr_ptr)
+            3'b000: wr_pos = 3'b000;
+            3'b001: wr_pos = 3'b001;
+            3'b011: wr_pos = 3'b010;
+            3'b010: wr_pos = 3'b011;
+            3'b110: wr_pos = 3'b100;
+            3'b100: wr_pos = 3'b101;
+            3'b101: wr_pos = 3'b101; // Treat 101 as position 5
+            3'b111: wr_pos = 3'b101; // Treat 111 as position 5
+            default: wr_pos = 3'b000; // Default case
+        endcase
+    end
+
+    // Calculate the difference between positions
+    always @(*) begin
+        diff = wr_pos - rd_pos;
+    end
+
+    // Calculate occupancy
+    always @(*) begin
+        if (rd_dir == wr_dir) begin
+            occupancy = diff;
+        end else begin
+            occupancy = diff + 3'b110; // Add 6 to the difference
+        end
+    end
+
+    // Determine full_int, full_ext, and empty
+    always @(*) begin
+        if (rd_ptr == wr_ptr) begin
+            if (rd_dir == wr_dir) begin
+                empty = 1'b1;
+                full_int = 1'b0;
+            end else begin
+                empty = 1'b0;
+                full_int = 1'b1;
+            end
+        end else begin
+            empty = 1'b0;
+            full_int = 1'b0;
+        end
+
+        if (occupancy >= 3'b100) begin // 4 or more entries
+            full_ext = 1'b1;
+        end else begin
+            full_ext = 1'b0;
+        end
+    end
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:14: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:15: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:16: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:17: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:18: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:19: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:20: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:21: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:22: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:28: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:29: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:30: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:31: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

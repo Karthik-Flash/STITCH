@@ -1,0 +1,18 @@
+dut.v:13: error: 'gnt_or' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:14: error: 'ce_b1' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:14: error: 'ce_b2' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:14: error: 'ce_b3' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:14: error: 'ce_b4' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:15: error: 'clr_b1' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:15: error: 'clr_b2' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:15: error: 'clr_b3' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.
+dut.v:15: error: 'clr_b4' has already been declared in this scope.
+dut.v:9:      : It was declared here as a net.

@@ -1,0 +1,315 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# ip_link
+
+## Behaviour
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body. Bits [28:27] carry the virtual-channel (VC) number, 00 = VC1 to 11 = VC4. In a header flit,
+bits [7:4] are the destination row and bits [3:0] the destination column. The idle word is 32'h6000_0000.
+
+One router input port with four virtual channels.
+
+- Each `data_in` word that is not idle (bits [30:29] not equal to 11) is written into the VC chosen by
+  `data_in[28:27]` (00 = VC1, 01 = VC2, 10 = VC3, 11 = VC4). The write happens on each rising `wr_clk`
+  edge while the word is present.
+- The read enable of VC k is the OR of `rd_en(16(k-1)+1)` to `rd_en(16k)`: VC1 uses `rd_en1` to
+  `rd_en16`, and so on to VC4 with `rd_en49` to `rd_en64`.
+- `rok_vck` = NOT (VC k's `empty_synch_rdclk`): VC k holds data, registered on `rd_clk`.
+- `data_out_vck`, `full_vck`, `req_l1_vck` to `req_l4_vck`, `req_c_vck` and `tailer_vck` are VC k's
+  `data_out`, `full_ext`, routing requests and `tailer` (see ip_chnl).
+
+## Reset
+
+Active-high `reset`, passed to all four channels (see ip_chnl).
+
+## Ports
+
+105 ports, in this exact order:
+
+```verilog
+input reset, rd_clk, wr_clk;
+input [31:0] data_in;
+input [7:0] current_address;
+output [31:0] data_out_vc1, data_out_vc2, data_out_vc3, data_out_vc4;
+output full_vc1, full_vc2, full_vc3, full_vc4, req_l1_vc1, req_l1_vc2, req_l1_vc3, req_l1_vc4, req_l2_vc1,
+       req_l2_vc2, req_l2_vc3, req_l2_vc4, req_l3_vc1, req_l3_vc2, req_l3_vc3, req_l3_vc4, req_l4_vc1,
+       req_l4_vc2, req_l4_vc3, req_l4_vc4, req_c_vc1, req_c_vc2, req_c_vc3, req_c_vc4;
+input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+      rd_en13, rd_en14, rd_en15, rd_en16, rd_en17, rd_en18, rd_en19, rd_en20, rd_en21, rd_en22, rd_en23,
+      rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+      rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+      rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+      rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64;
+output tailer_vc1, tailer_vc2, tailer_vc3, tailer_vc4, rok_vc1, rok_vc2, rok_vc3, rok_vc4;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `ip_chnl` x 4: (reset, rd_clk, wr_clk, rd_en, wr_en, data_in, current_address, full_ext, empty_synch_rdclk, req_l1, req_l2, req_l3, req_l4, req_c, data_out, tailer, tailer_org, nxt_reset, data_sel, header, empty, fifo_out, header_flit, reg_out, mux_data_out, header_out)
+
+
+CURRENT RTL:
+```verilog
+module ip_link (
+    input reset, rd_clk, wr_clk,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    output [31:0] data_out_vc1, data_out_vc2, data_out_vc3, data_out_vc4,
+    output full_vc1, full_vc2, full_vc3, full_vc4, req_l1_vc1, req_l1_vc2, req_l1_vc3, req_l1_vc4, req_l2_vc1,
+           req_l2_vc2, req_l2_vc3, req_l2_vc4, req_l3_vc1, req_l3_vc2, req_l3_vc3, req_l3_vc4, req_l4_vc1,
+           req_l4_vc2, req_l4_vc3, req_l4_vc4, req_c_vc1, req_c_vc2, req_c_vc3, req_c_vc4,
+    input rd_en1, rd_en2, rd_en3, rd_en4, rd_en5, rd_en6, rd_en7, rd_en8, rd_en9, rd_en10, rd_en11, rd_en12,
+          rd_en13, rd_en14, rd_en15, rd_en16, rd_en17, rd_en18, rd_en19, rd_en20, rd_en21, rd_en22, rd_en23,
+          rd_en24, rd_en25, rd_en26, rd_en27, rd_en28, rd_en29, rd_en30, rd_en31, rd_en32, rd_en33, rd_en34,
+          rd_en35, rd_en36, rd_en37, rd_en38, rd_en39, rd_en40, rd_en41, rd_en42, rd_en43, rd_en44, rd_en45,
+          rd_en46, rd_en47, rd_en48, rd_en49, rd_en50, rd_en51, rd_en52, rd_en53, rd_en54, rd_en55, rd_en56,
+          rd_en57, rd_en58, rd_en59, rd_en60, rd_en61, rd_en62, rd_en63, rd_en64,
+    output tailer_vc1, tailer_vc2, tailer_vc3, tailer_vc4, rok_vc1, rok_vc2, rok_vc3, rok_vc4
+);
+
+    wire [1:0] vc_select;
+    wire rd_en_vc1, rd_en_vc2, rd_en_vc3, rd_en_vc4;
+    wire [31:0] data_out_vc1_w, data_out_vc2_w, data_out_vc3_w, data_out_vc4_w;
+    wire full_vc1_w, full_vc2_w, full_vc3_w, full_vc4_w;
+    wire req_l1_vc1_w, req_l1_vc2_w, req_l1_vc3_w, req_l1_vc4_w;
+    wire req_l2_vc1_w, req_l2_vc2_w, req_l2_vc3_w, req_l2_vc4_w;
+    wire req_l3_vc1_w, req_l3_vc2_w, req_l3_vc3_w, req_l3_vc4_w;
+    wire req_l4_vc1_w, req_l4_vc2_w, req_l4_vc3_w, req_l4_vc4_w;
+    wire req_c_vc1_w, req_c_vc2_w, req_c_vc3_w, req_c_vc4_w;
+    wire tailer_vc1_w, tailer_vc2_w, tailer_vc3_w, tailer_vc4_w;
+    wire empty_synch_rdclk_vc1, empty_synch_rdclk_vc2, empty_synch_rdclk_vc3, empty_synch_rdclk_vc4;
+    reg wr_en1, wr_en2, wr_en3, wr_en4;
+
+    assign vc_select = data_in[28:27];
+    assign rd_en_vc1 = |{rd_en16, rd_en15, rd_en14, rd_en13};
+    assign rd_en_vc2 = |{rd_en20, rd_en19, rd_en18, rd_en17};
+    assign rd_en_vc3 = |{rd_en24, rd_en23, rd_en22, rd_en21};
+    assign rd_en_vc4 = |{rd_en28, rd_en27, rd_en26, rd_en25};
+
+    always @(*) begin
+        wr_en1 = 1'b0;
+        wr_en2 = 1'b0;
+        wr_en3 = 1'b0;
+        wr_en4 = 1'b0;
+        case (vc_select)
+            2'b00: wr_en1 = (data_in[30:29] != 2'b11);
+            2'b01: wr_en2 = (data_in[30:29] != 2'b11);
+            2'b10: wr_en3 = (data_in[30:29] != 2'b11);
+            2'b11: wr_en4 = (data_in[30:29] != 2'b11);
+            default: begin
+                wr_en1 = 1'b0;
+                wr_en2 = 1'b0;
+                wr_en3 = 1'b0;
+                wr_en4 = 1'b0;
+            end
+        endcase
+    end
+
+    ip_chnl chnl1 (
+        .reset(reset), .rd_clk(rd_clk), .wr_clk(wr_clk),
+        .rd_en(rd_en_vc1), .wr_en(wr_en1),
+        .data_in(data_in), .current_address(current_address),
+        .full_ext(full_vc1_w), .empty_synch_rdclk(empty_synch_rdclk_vc1),
+        .req_l1(req_l1_vc1_w), .req_l2(req_l2_vc1_w), .req_l3(req_l3_vc1_w), .req_l4(req_l4_vc1_w), .req_c(req_c_vc1_w),
+        .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+        .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+    );
+
+    ip_chnl chnl2 (
+        .reset(reset), .rd_clk(rd_clk), .wr_clk(wr_clk),
+        .rd_en(rd_en_vc2), .wr_en(wr_en2),
+        .data_in(data_in), .current_address(current_address),
+        .full_ext(full_vc2_w), .empty_synch_rdclk(empty_synch_rdclk_vc2),
+        .req_l1(req_l1_vc2_w), .req_l2(req_l2_vc2_w), .req_l3(req_l3_vc2_w), .req_l4(req_l4_vc2_w), .req_c(req_c_vc2_w),
+        .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+        .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+    );
+
+    ip_chnl chnl3 (
+        .reset(reset), .rd_clk(rd_clk), .wr_clk(wr_clk),
+        .rd_en(rd_en_vc3), .wr_en(wr_en3),
+        .data_in(data_in), .current_address(current_address),
+        .full_ext(full_vc3_w), .empty_synch_rdclk(empty_synch_rdclk_vc3),
+        .req_l1(req_l1_vc3_w), .req_l2(req_l2_vc3_w), .req_l3(req_l3_vc3_w), .req_l4(req_l4_vc3_w), .req_c(req_c_vc3_w),
+        .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+        .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+    );
+
+    ip_chnl chnl4 (
+        .reset(reset), .rd_clk(rd_clk), .wr_clk(wr_clk),
+        .rd_en(rd_en_vc4), .wr_en(wr_en4),
+        .data_in(data_in), .current_address(current_address),
+        .full_ext(full_vc4_w), .empty_synch_rdclk(empty_synch_rdclk_vc4),
+        .req_l1(req_l1_vc4_w), .req_l2(req_l2_vc4_w), .req_l3(req_l3_vc4_w), .req_l4(req_l4_vc4_w), .req_c(req_c_vc4_w),
+        .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(1'b0), .nxt_reset(1'b0), .data_sel(1'b0), .header(1'b0), .empty(1'b0),
+        .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+    );
+
+    assign data_out_vc1 = data_out_vc1_w;
+    assign data_out_vc2 = data_out_vc2_w;
+    assign data_out_vc3 = data_out_vc3_w;
+    assign data_out_vc4 = data_out_vc4_w;
+    assign full_vc1 = full_vc1_w;
+    assign full_vc2 = full_vc2_w;
+    assign full_vc3 = full_vc3_w;
+    assign full_vc4 = full_vc4_w;
+    assign req_l1_vc1 = req_l1_vc1_w;
+    assign req_l1_vc2 = req_l1_vc2_w;
+    assign req_l1_vc3 = req_l1_vc3_w;
+    assign req_l1_vc4 = req_l1_vc4_w;
+    assign req_l2_vc1 = req_l2_vc1_w;
+    assign req_l2_vc2 = req_l2_vc2_w;
+    assign req_l2_vc3 = req_l2_vc3_w;
+    assign req_l2_vc4 = req_l2_vc4_w;
+    assign req_l3_vc1 = req_l3_vc1_w;
+    assign req_l3_vc2 = req_l3_vc2_w;
+    assign req_l3_vc3 = req_l3_vc3_w;
+    assign req_l3_vc4 = req_l3_vc4_w;
+    assign req_l4_vc1 = req_l4_vc1_w;
+    assign req_l4_vc2 = req_l4_vc2_w;
+    assign req_l4_vc3 = req_l4_vc3_w;
+    assign req_l4_vc4 = req_l4_vc4_w;
+    assign req_c_vc1 = req_c_vc1_w;
+    assign req_c_vc2 = req_c_vc2_w;
+    assign req_c_vc3 = req_c_vc3_w;
+    assign req_c_vc4 = req_c_vc4_w;
+    assign tailer_vc1 = tailer_vc1_w;
+    assign tailer_vc2 = tailer_vc2_w;
+    assign tailer_vc3 = tailer_vc3_w;
+    assign tailer_vc4 = tailer_vc4_w;
+    assign rok_vc1 = ~empty_synch_rdclk_vc1;
+    assign rok_vc2 = ~empty_synch_rdclk_vc2;
+    assign rok_vc3 = ~empty_synch_rdclk_vc3;
+    assign rok_vc4 = ~empty_synch_rdclk_vc4;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:62: error: expression not valid in assign l-value: 1'd0
+dut.v:62: error: Output port expression must support a continuous assignment.
+dut.v:62:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+dut.v:72: error: Output port expression must support a continuous assignment.
+dut.v:72:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:72: error: expression not valid in assign l-value: 1'd0
+
+SEMANTIC ANALYSIS (fix these):
+*** Instance port(s) left unconnected: fifo_out, header_flit, header_out, mux_data_out, reg_out. Connect every port BY NAME (.port(net)); positional connections silently shift when a port is missing. ***
+
+*** CRITICAL: Port 'rd_en1' is declared but NEVER USED in your always block. ***
+You wrote 'rd_en1' in the module port list but forgot to wire it into your logic.
+You MUST condition on 'rd_en1':
+  always @(*) begin
+    if (rd_en1) begin
+      <your existing case or logic here>
+    end else begin
+      data_out_vc1 = 32'b0;
+      data_out_vc2 = 32'b0;
+      data_out_vc3 = 32'b0;
+      data_out_vc4 = 32'b0;
+      full_vc1 = 1'b0;
+      full_vc2 = 1'b0;
+      full_vc3 = 1'b0;
+      full_vc4 = 1'b0;
+      req_l1_vc1 = 1'b0;
+      req_l1_vc2 = 1'b0;
+      req_l1_vc3 = 1'b0;
+      req_l1_vc4 = 1'b0;
+      req_l2_vc1 = 1'b0;
+      req_l2_vc2 = 1'b0;
+      req_l2_vc3 = 1'b0;
+      req_l2_vc4 = 1'b0;
+      req_l3_vc1 = 1'b0;
+      req_l3_vc2 = 1'b0;
+      req_l3_vc3 = 1'b0;
+      req_l3_vc4 = 1'b0;
+      req_l4_vc1 = 1'b0;
+      req_l4_vc2 = 1'b0;
+      req_l4_vc3 = 1'b0;
+      req_l4_vc4 = 1'b0;
+      req_c_vc1 = 1'b0;
+      req_c_vc2 = 1'b0;
+      req_c_vc3 = 1'b0;
+      req_c_vc4 = 1'b0;
+      tailer_vc1 = 1'b0;
+      tailer_vc2 = 1'b0;
+      tailer_vc3 = 1'b0;
+      tailer_vc4 = 1'b0;
+      rok_vc1 = 1'b0;
+      rok_vc2 = 1'b0;
+      rok_vc3 = 1'b0;
+      rok_vc4 = 1'b0;
+    end
+  end
+The FAIL lines (with 'rd_en1' deasserted, the output is still non-zero)
+are caused by 'rd_en1' being ignored.
+
+VERILATOR LINT OUTPUT:
+%Warning-PINCONNECTEMPTY: dut.v:63:10: Instance pin connected by name with empty reference: 'fifo_out'
+%Warning-PINCONNECTEMPTY: dut.v:63:23: Instance pin connected by name with empty reference: 'header_flit'
+%Warning-PINCONNECTEMPTY: dut.v:63:39: Instance pin connected by name with empty reference: 'reg_out'
+%Warning-PINCONNECTEMPTY: dut.v:63:51: Instance pin connected by name with empty reference: 'mux_data_out'
+%Warning-PINCONNECTEMPTY: dut.v:63:68: Instance pin connected by name with empty reference: 'header_out'
+%Warning-PINCONNECTEMPTY: dut.v:73:10: Instance pin connected by name with empty reference: 'fifo_out'
+%Warning-PINCONNECTEMPTY: dut.v:73:23: Instance pin connected by name with empty reference: 'header_flit'
+%Warning-PINCONNECTEMPTY: dut.v:73:39: Instance pin connected by name with empty reference: 'reg_out'
+%Warning-PINCONNECTEMPTY: dut.v:73:51: Instance pin connected by name with empty reference: 'mux_data_out'
+%Warning-PINCONNECTEMPTY: dut.v:73:68: Instance pin connected by name with empty reference: 'header_out'
+%Warning-PINCONNECTEMPTY: dut.v:83:10: Instance pin connected by name with empty reference: 'fifo_out'
+%Warning-PINCONNECTEMPTY: dut.v:83:23: Instance pin connected by name with empty reference: 'header_flit'
+%Warning-PINCONNECTEMPTY: dut.v:83:39: Instance pin connected by name with empty reference: 'reg_out'
+%Warning-PINCONNECTEMPTY: dut.v:83:51: Instance pin connected by name with empty reference: 'mux_data_out'
+%Warning-PINCONNECTEMPTY: dut.v:83:68: Instance pin connected by name with empty reference: 'header_out'
+%Warning-PINCONNECTEMPTY: dut.v:93:10: Instance pin connected by name with empty reference: 'fifo_out'
+%Warning-PINCONNECTEMPTY: dut.v:93:23: Instance pin connected by name with empty reference: 'header_flit'
+%Warning-PINCONNECTEMPTY: dut.v:93:39: Instance pin connected by name with empty reference: 'reg_out'
+%Warning-PINCONNECTEMPTY: dut.v:93:51: Instance pin connected by name with empty reference: 'mux_data_out'
+%Warning-PINCONNECTEMPTY: dut.v:93:68: Instance pin connected by name with empty reference: 'header_out'
+%Warning-UNUSEDSIGNAL: dut.v:9:11: Signal is not used: 'rd_en1'
+%Warning-UNUSEDSIGNAL: dut.v:9:19: Signal is not used: 'rd_en2'
+%Warning-UNUSEDSIGNAL: dut.v:9:27: Signal is not used: 'rd_en3'
+%Warning-UNUSEDSIGNAL: dut.v:9:35: Signal is not used: 'rd_en4'
+%Warning-UNUSEDSIGNAL: dut.v:9:43: Signal is not used: 'rd_en5'
+%Warning-UNUSEDSIGNAL: dut.v:9:51: Signal is not used: 'rd_en6'
+%Warning-UNUSEDSIGNAL: dut.v:9:59: Signal is not used: 'rd_en7'
+%Warning-UNUSEDSIGNAL: dut.v:9:67: Signal is not used: 'rd_en8'
+%Warning-UNUSEDSIGNAL: dut.v:9:75: Signal is not used: 'rd_en9'
+%Warning-UNUSEDSIGNAL: dut.v:9:83: Signal is not used: 'rd_en10'
+%Warning-UNUSEDSIGNAL: dut.v:9:92: Signal is not used: 'rd_en11'
+%Warning-UNUSEDSIGNAL: dut.v:9:101: Signal is not used: 'rd_en12'
+%Warning-UNUSEDSIGNAL: dut.v:11:56: Signal is not used: 'rd_en29'
+%Warning-UNUSEDSIGNAL: dut.v:11:65: Signal is not used: 'rd_en30'
+%Warning-UNUSEDSIGNAL: dut.v:11:74: Signal is not used: 'rd_en31'
+%Warning-UNUSEDSIGNAL: dut.v:11:83: Signal is not used: 'rd_en32'
+%Warning-UNUSEDSIGNAL: dut.v:11:92: Signal is not used: 'rd_en33'
+%Warning-UNUSEDSIGNAL: dut.v:11:101: Signal is not used: 'rd_en34'
+%Warning-UNUSEDSIGNAL: dut.v:12:11: Signal is not used: 'rd_en35'
+%Warning-UNUSEDSIGNAL: dut.v:12:20: Signal is not used: 'rd_en36'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

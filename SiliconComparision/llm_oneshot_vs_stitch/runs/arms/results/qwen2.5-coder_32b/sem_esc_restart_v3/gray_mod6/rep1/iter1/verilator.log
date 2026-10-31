@@ -1,0 +1,11 @@
+%Warning-UNUSEDSIGNAL: dut.v:9:16: Bits of signal are not used: 'q'[3]
+                                 : ... note: In instance 'gray_mod6'
+    9 |     wire [3:0] q, qbar;
+      |                ^
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:9:19: Signal is not used: 'qbar'
+                                 : ... note: In instance 'gray_mod6'
+    9 |     wire [3:0] q, qbar;
+      |                   ^~~~
+%Error: Exiting due to 2 warning(s)

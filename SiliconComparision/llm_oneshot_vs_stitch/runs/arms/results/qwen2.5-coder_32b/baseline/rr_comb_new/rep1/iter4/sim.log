@@ -1,0 +1,9 @@
+dut.v:71: error: Cannot perform procedural assignment to variable 'g1_reg' because it is also continuously assigned.
+dut.v:72: error: Cannot perform procedural assignment to variable 'g2_reg' because it is also continuously assigned.
+dut.v:73: error: Cannot perform procedural assignment to variable 'g3_reg' because it is also continuously assigned.
+dut.v:74: error: Cannot perform procedural assignment to variable 'g4_reg' because it is also continuously assigned.
+dut.v:76: error: Cannot perform procedural assignment to variable 'g1_reg' because it is also continuously assigned.
+dut.v:77: error: Cannot perform procedural assignment to variable 'g2_reg' because it is also continuously assigned.
+dut.v:78: error: Cannot perform procedural assignment to variable 'g3_reg' because it is also continuously assigned.
+dut.v:79: error: Cannot perform procedural assignment to variable 'g4_reg' because it is also continuously assigned.
+8 error(s) during elaboration.

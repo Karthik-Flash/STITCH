@@ -1,0 +1,29 @@
+dut.v:31: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:31: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:32: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:32: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:33: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:33: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:34: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:34: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:35: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:35: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:36: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:36: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+dut.v:37: error: 'j' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'j' is declared here as a wire.
+dut.v:37: error: 'k' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'k' is declared here as a wire.
+14 error(s) during elaboration.

@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: dut.v:2:18: Bits of signal are not used: 'header_in'[31,28:8]
+                                 : ... note: In instance 'routing_algo_mesh'
+    2 |     input [31:0] header_in,
+      |                  ^~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

@@ -1,0 +1,17 @@
+%Error: dut.v:7:16: syntax error, unexpected priority
+    7 |     wire [1:0] priority;
+      |                ^~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: dut.v:27:15: syntax error, unexpected priority, expecting IDENTIFIER-for-type
+   27 |         .out0(priority[0]),
+      |               ^~~~~~~~
+%Error: dut.v:94:12: syntax error, unexpected priority, expecting IDENTIFIER-for-type
+   94 |         .d(priority),
+      |            ^~~~~~~~
+%Error: dut.v:102:15: syntax error, unexpected priority, expecting IDENTIFIER-for-type
+  102 |         case (priority)
+      |               ^~~~~~~~
+%Error: dut.v:109:13: syntax error, unexpected INTEGER NUMBER
+  109 |             2'b01: begin
+      |             ^~~~~
+%Error: Exiting due to 5 error(s)

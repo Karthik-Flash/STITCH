@@ -1,0 +1,27 @@
+{
+ "module": "falling_edge_pulse_generator",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 575,
+ "tokens_out": 365,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 575,
+  "eval_count": 365,
+  "total_duration": 85847393188,
+  "load_duration": 31868756,
+  "eval_duration": 84104858000
+ },
+ "wall_s": 85.9,
+ "timestamp": "2026-10-30T13:28:11",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "aa2af1e467cd2ff6cefcd3e92637ca4bc59f59a8aa51006ab9a6c2e586409f13",
+ "response_sha256": "5d6cd994436ff4451548b08b41c7e9b8fb2054a4b2a4c61f0ba0e690b02406c7",
+ "output_sha256": "ce2bad082598ecdc4bd7dd2941e24cd0dabe21ae43ca51798dc8877abcd98e49",
+ "mock_mode": null
+}

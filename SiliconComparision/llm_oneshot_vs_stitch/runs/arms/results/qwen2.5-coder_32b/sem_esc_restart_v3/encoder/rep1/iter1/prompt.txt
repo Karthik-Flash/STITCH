@@ -1,0 +1,69 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# encoder
+
+## Behaviour
+
+Combinational one-hot-to-binary encoder. When exactly one of `g1` to `g16` is 1, `encoded_addr` = its
+index minus 1 (`g1` gives 0, `g16` gives 15). Each bit of `encoded_addr` is the OR of the inputs whose
+index-minus-1 has that bit set, so several active inputs give the OR of their codes. All inputs 0 gives 0.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+17 ports, in this exact order:
+
+```verilog
+input g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16;
+output [3:0] encoded_addr;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module encoder (
+    input g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16,
+    output [3:0] encoded_addr
+);
+
+wire [3:0] encoded_addr_w;
+
+assign encoded_addr_w[0] = g1 | g3 | g5 | g7 | g9 | g11 | g13 | g15;
+assign encoded_addr_w[1] = g2 | g3 | g6 | g7 | g10 | g11 | g14 | g15;
+assign encoded_addr_w[2] = g4 | g5 | g6 | g7 | g12 | g13 | g14 | g15;
+assign encoded_addr_w[3] = g8 | g9 | g10 | g11 | g12 | g13 | g14 | g15;
+
+assign encoded_addr = encoded_addr_w;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=14000 cycle 0: encoded_addr = b, expected a
+FAIL t=19000 cycle 0: encoded_addr = b, expected a
+FAIL t=24000 cycle 1: encoded_addr = 9, expected 8
+FAIL t=29000 cycle 1: encoded_addr = 9, expected 8
+FAIL t=34000 cycle 2: encoded_addr = 0, expected f
+FAIL t=39000 cycle 2: encoded_addr = 0, expected f
+FAIL t=44000 cycle 3: encoded_addr = b, expected a
+FAIL t=49000 cycle 3: encoded_addr = b, expected a
+FAIL t=54000 cycle 4: encoded_addr = 6, expected 5
+FAIL t=59000 cycle 4: encoded_addr = 6, expected 5
+FAIL t=64000 cycle 5: encoded_addr = 1, expected 0
+FAIL t=69000 cycle 5: encoded_addr = 1, expected 0
+FAIL t=74000 cycle 6: encoded_addr = 6, expected 5
+FAIL t=79000 cycle 6: encoded_addr = 6, expected 5
+FAIL t=84000 cycle 7: encoded_addr = 0, expected f
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

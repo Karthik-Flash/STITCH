@@ -1,0 +1,24 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "WIDTHTRUNC": 2,
+  "WIDTHEXPAND": 1
+ },
+ "verilator_warnings_count": 3,
+ "verilator_hard": 2,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "751d9c3770540c263c7f2d007be550c57868405a594f560b0d7d23337b75e5a3",
+ "file": "outputs/simloop/allot_vc.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

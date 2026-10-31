@@ -1,0 +1,18 @@
+FAIL t=14000 cycle 0: encoded_addr = b, expected a
+FAIL t=19000 cycle 0: encoded_addr = b, expected a
+FAIL t=24000 cycle 1: encoded_addr = 9, expected 8
+FAIL t=29000 cycle 1: encoded_addr = 9, expected 8
+FAIL t=34000 cycle 2: encoded_addr = 0, expected f
+FAIL t=39000 cycle 2: encoded_addr = 0, expected f
+FAIL t=44000 cycle 3: encoded_addr = b, expected a
+FAIL t=49000 cycle 3: encoded_addr = b, expected a
+FAIL t=54000 cycle 4: encoded_addr = 6, expected 5
+FAIL t=59000 cycle 4: encoded_addr = 6, expected 5
+FAIL t=64000 cycle 5: encoded_addr = 1, expected 0
+FAIL t=69000 cycle 5: encoded_addr = 1, expected 0
+FAIL t=74000 cycle 6: encoded_addr = 6, expected 5
+FAIL t=79000 cycle 6: encoded_addr = 6, expected 5
+FAIL t=84000 cycle 7: encoded_addr = 0, expected f
+INFO coverage: 1 of 1 checked outputs toggled, 4 of 4 bits
+FAIL: 386 mismatches, 0 property errors
+tb.v:96: $finish called at 2009000 (1ps)

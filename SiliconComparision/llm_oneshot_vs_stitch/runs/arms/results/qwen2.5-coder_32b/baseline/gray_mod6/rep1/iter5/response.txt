@@ -1,0 +1,120 @@
+```verilog
+module gray_mod6 (
+    input clk, reset, en,
+    output [2:0] gray_out,
+    output dir
+);
+
+    wire [2:0] bin_out;
+    reg [2:0] j, k;
+    wire [2:0] q, qbar;
+    reg dir_reg;
+
+    // Instantiate JK flip-flops
+    jk_ff jk_ff0 (j[0], k[0], reset, en, clk, q[0], qbar[0]);
+    jk_ff jk_ff1 (j[1], k[1], reset, en, clk, q[1], qbar[1]);
+    jk_ff jk_ff2 (j[2], k[2], reset, en, clk, q[2], qbar[2]);
+
+    // Binary to Gray conversion
+    assign gray_out[2] = q[2];
+    assign gray_out[1] = q[2] ^ q[1];
+    assign gray_out[0] = q[1] ^ q[0];
+
+    // Determine the binary output from the flip-flops
+    assign bin_out[2] = q[2];
+    assign bin_out[1] = q[1];
+    assign bin_out[0] = q[0];
+
+    // JK inputs logic
+    always @(*) begin
+        case (bin_out)
+            3'b000: begin j = 3'b100; k = 3'b000; end
+            3'b001: begin j = 3'b010; k = 3'b000; end
+            3'b011: begin j = 3'b001; k = 3'b000; end
+            3'b010: begin j = 3'b000; k = 3'b100; end
+            3'b110: begin j = 3'b000; k = 3'b010; end
+            3'b100: begin j = 3'b000; k = 3'b001; end
+            default: begin j = 3'b000; k = 3'b000; end
+        endcase
+    end
+
+    // Direction toggle logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            dir_reg <= 1'b0;
+        end else if (bin_out == 3'b100 && en) begin
+            dir_reg <= ~dir_reg;
+        end
+    end
+
+    assign dir = dir_reg;
+
+endmodule
+```
+
+The provided code already follows the rules and seems correct based on the specification. However, the simulation failures suggest there might be an issue with the `jk_ff` module or the initial state handling. Since the `jk_ff` module is not provided, I will assume it is correctly implemented. The issue might be related to the initial state of the flip-flops or the reset behavior.
+
+To ensure the correct behavior, let's add an initial block to set the initial state of the flip-flops to 000 and ensure the `dir_reg` is set correctly during reset.
+
+```verilog
+module gray_mod6 (
+    input clk, reset, en,
+    output [2:0] gray_out,
+    output dir
+);
+
+    wire [2:0] bin_out;
+    reg [2:0] j, k;
+    wire [2:0] q, qbar;
+    reg dir_reg;
+
+    // Instantiate JK flip-flops
+    jk_ff jk_ff0 (j[0], k[0], reset, en, clk, q[0], qbar[0]);
+    jk_ff jk_ff1 (j[1], k[1], reset, en, clk, q[1], qbar[1]);
+    jk_ff jk_ff2 (j[2], k[2], reset, en, clk, q[2], qbar[2]);
+
+    // Binary to Gray conversion
+    assign gray_out[2] = q[2];
+    assign gray_out[1] = q[2] ^ q[1];
+    assign gray_out[0] = q[1] ^ q[0];
+
+    // Determine the binary output from the flip-flops
+    assign bin_out[2] = q[2];
+    assign bin_out[1] = q[1];
+    assign bin_out[0] = q[0];
+
+    // JK inputs logic
+    always @(*) begin
+        case (bin_out)
+            3'b000: begin j = 3'b100; k = 3'b000; end
+            3'b001: begin j = 3'b010; k = 3'b000; end
+            3'b011: begin j = 3'b001; k = 3'b000; end
+            3'b010: begin j = 3'b000; k = 3'b100; end
+            3'b110: begin j = 3'b000; k = 3'b010; end
+            3'b100: begin j = 3'b000; k = 3'b001; end
+            default: begin j = 3'b000; k = 3'b000; end
+        endcase
+    end
+
+    // Direction toggle logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            dir_reg <= 1'b0;
+        end else if (bin_out == 3'b100 && en) begin
+            dir_reg <= ~dir_reg;
+        end
+    end
+
+    assign dir = dir_reg;
+
+    // Initial block to set initial state
+    initial begin
+        q <= 3'b000;
+        qbar <= 3'b111;
+        dir_reg <= 1'b0;
+    end
+
+endmodule
+```
+
+This ensures that the flip-flops start in the correct state (000) and `dir_reg` is initialized to 0. If the `jk_ff` module is correctly implemented, this should resolve the simulation issues.

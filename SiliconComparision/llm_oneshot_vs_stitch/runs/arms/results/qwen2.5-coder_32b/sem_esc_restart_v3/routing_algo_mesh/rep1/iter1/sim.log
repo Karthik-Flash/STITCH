@@ -1,0 +1,61 @@
+dut.v:18: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:19: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:20: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:21: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:22: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+dut.v:26: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:27: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:28: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:29: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:30: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+dut.v:33: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:34: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:35: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:36: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:37: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+dut.v:42: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:43: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:44: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:45: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:46: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+dut.v:49: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:50: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:51: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:52: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:53: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+dut.v:56: error: 'req_link1_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link1_w' is declared here as a wire.
+dut.v:57: error: 'req_link2_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link2_w' is declared here as a wire.
+dut.v:58: error: 'req_core_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_core_w' is declared here as a wire.
+dut.v:59: error: 'req_link3_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link3_w' is declared here as a wire.
+dut.v:60: error: 'req_link4_w' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_link4_w' is declared here as a wire.
+30 error(s) during elaboration.

@@ -1,0 +1,23 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "PASS",
+ "func_pass": true,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": true,
+ "silent_structural_pass": false,
+ "sha256": "a7c3ce4572f42ff9818ecb9bb27701a7a1d8882aa0c14728c01026346ae056f1",
+ "file": "outputs/oneshot/priority_encoder.v",
+ "signoff_outcome": "PASS",
+ "signoff": true,
+ "so_clean": true
+}

@@ -1,0 +1,9 @@
+dut.v:37: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:39: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:41: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+dut.v:43: error: 'q0_int' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'q0_int' is declared here as a wire.
+4 error(s) during elaboration.

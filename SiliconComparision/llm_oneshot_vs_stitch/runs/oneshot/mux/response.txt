@@ -1,0 +1,36 @@
+```verilog
+module mux (
+    input t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16,
+    input [3:0] sel,
+    output m_out,
+    input clk
+);
+
+    reg m_out_reg;
+
+    always @(posedge clk) begin
+        case (sel)
+            4'b0000: m_out_reg <= t1;
+            4'b0001: m_out_reg <= t2;
+            4'b0010: m_out_reg <= t3;
+            4'b0011: m_out_reg <= t4;
+            4'b0100: m_out_reg <= t5;
+            4'b0101: m_out_reg <= t6;
+            4'b0110: m_out_reg <= t7;
+            4'b0111: m_out_reg <= t8;
+            4'b1000: m_out_reg <= t9;
+            4'b1001: m_out_reg <= t10;
+            4'b1010: m_out_reg <= t11;
+            4'b1011: m_out_reg <= t12;
+            4'b1100: m_out_reg <= t13;
+            4'b1101: m_out_reg <= t14;
+            4'b1110: m_out_reg <= t15;
+            4'b1111: m_out_reg <= t16;
+            default: m_out_reg <= 1'b0;
+        endcase
+    end
+
+    assign m_out = m_out_reg;
+
+endmodule
+```

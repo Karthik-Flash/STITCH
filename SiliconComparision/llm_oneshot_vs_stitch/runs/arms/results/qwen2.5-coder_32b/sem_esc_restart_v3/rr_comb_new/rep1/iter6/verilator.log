@@ -1,0 +1,37 @@
+%Warning-UNDRIVEN: dut.v:4:38: Signal is not driven: 'b1_logic'
+                             : ... note: In instance 'rr_comb_new'
+    4 |            and_out4, or_out, b1, b0, b1_logic, b0_logic
+      |                                      ^~~~~~~~
+                   ... For warning description see https://verilator.org/warn/UNDRIVEN?v=5.053
+                   ... Use "/* verilator lint_off UNDRIVEN */" and lint_on around source to disable this message.
+%Warning-UNDRIVEN: dut.v:4:48: Signal is not driven: 'b0_logic'
+                             : ... note: In instance 'rr_comb_new'
+    4 |            and_out4, or_out, b1, b0, b1_logic, b0_logic
+      |                                                ^~~~~~~~
+%Warning-UNOPTFLAT: dut.v:3:12: Signal unoptimizable: Circular combinational logic: 'g1'
+    3 |     output g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3,
+      |            ^~
+                    ... For warning description see https://verilator.org/warn/UNOPTFLAT?v=5.053
+                    ... Use "/* verilator lint_off UNOPTFLAT */" and lint_on around source to disable this message.
+                    dut.v:3:12:      Example path: g1
+                    dut.v:47:15:      Example path: ASSIGNW
+                    dut.v:3:12:      Example path: g1
+%Warning-UNOPTFLAT: dut.v:3:16: Signal unoptimizable: Circular combinational logic: 'g2'
+    3 |     output g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3,
+      |                ^~
+                    dut.v:3:16:      Example path: g2
+                    dut.v:48:15:      Example path: ASSIGNW
+                    dut.v:3:16:      Example path: g2
+%Warning-UNOPTFLAT: dut.v:3:20: Signal unoptimizable: Circular combinational logic: 'g3'
+    3 |     output g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3,
+      |                    ^~
+                    dut.v:3:20:      Example path: g3
+                    dut.v:49:15:      Example path: ASSIGNW
+                    dut.v:3:20:      Example path: g3
+%Warning-UNOPTFLAT: dut.v:3:24: Signal unoptimizable: Circular combinational logic: 'g4'
+    3 |     output g1, g2, g3, g4, l1, l2, l3, l4, mux_out1, mux_out2, mux_out3, mux_out4, and_out1, and_out2, and_out3,
+      |                        ^~
+                    dut.v:3:24:      Example path: g4
+                    dut.v:50:15:      Example path: ASSIGNW
+                    dut.v:3:24:      Example path: g4
+%Error: Exiting due to 6 warning(s)

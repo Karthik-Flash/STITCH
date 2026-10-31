@@ -1,0 +1,15 @@
+{
+ "track": "N",
+ "top": "encoder",
+ "source": "golden/handwritten/encoder.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "encoded_addr"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

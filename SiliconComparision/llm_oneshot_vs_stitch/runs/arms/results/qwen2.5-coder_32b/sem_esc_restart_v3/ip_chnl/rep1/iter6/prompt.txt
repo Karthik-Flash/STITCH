@@ -1,0 +1,344 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# ip_chnl
+
+## Behaviour
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body. Bits [28:27] carry the virtual-channel (VC) number, 00 = VC1 to 11 = VC4. In a header flit,
+bits [7:4] are the destination row and bits [3:0] the destination column. The idle word is 32'h6000_0000.
+
+One input virtual channel: a 6-entry FIFO plus header tracking and the routing decision.
+
+- Writes: on a rising edge of `wr_clk`, `data_in` is stored if `wr_en` is 1 and the FIFO is not full.
+- Reads: the FIFO is read with the read enable from the irs sequencer (see irs). `fifo_out` is the FIFO's
+  registered output word.
+- `header` = 1 when `fifo_out` is a header flit; `tailer_org` = 1 when `fifo_out` is a tailer flit
+  (both combinational). `tailer` = `tailer_org` delayed by one rising `rd_clk` edge.
+- `header_flit`: a 32-bit register holding the header flit (register_32bit: din = `fifo_out`,
+  ce = `header`, clr = `reset` OR `tailer`, clk = `rd_clk`). On each rising `rd_clk` edge it becomes
+  32'h6000_0000 if `reset` or `tailer` is 1, else takes `fifo_out` if `header` is 1, else holds.
+- `header_out` = `fifo_out` when `header` is 1, else `header_flit`. `req_l1`, `req_l2`, `req_l3`,
+  `req_l4`, `req_c` are the XY routing decision for `header_out` at `current_address` (see
+  routing_algo_mesh).
+- `mux_data_out` = 32'h6000_0000 when `rd_en` is 0; when `rd_en` is 1 it is `header_flit` if `data_sel`
+  is 1, else `fifo_out`. `data_out` = `mux_data_out`.
+- `full_ext` = FIFO completely full (6 entries). `empty` = FIFO empty. `empty_synch_rdclk` = `empty`
+  sampled on each rising `rd_clk` edge.
+- `data_sel` comes from the irs sequencer.
+- `nxt_reset` and `reg_out` are not driven in the golden: not checked.
+
+## Reset
+
+Active-high `reset`. The FIFO, `tailer` and the irs state reset as in their own specs.
+`empty_synch_rdclk` becomes 1 at the next rising `rd_clk` edge. `header_flit` becomes 32'h6000_0000 at the
+next rising `rd_clk` edge.
+The routing requests are 0 while `reset` is 1.
+
+## Ports
+
+26 ports, in this exact order:
+
+```verilog
+input reset, rd_clk, wr_clk, rd_en, wr_en;
+input [31:0] data_in;
+input [7:0] current_address;
+output full_ext, empty_synch_rdclk, req_l1, req_l2, req_l3, req_l4, req_c;
+output [31:0] data_out;
+output tailer, tailer_org, nxt_reset, data_sel, header, empty;
+output [31:0] fifo_out, header_flit, reg_out, mux_data_out, header_out;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `dff_synch_reset` x 1: (d, reset, clk, q)
+- `dff_synch_set` x 1: (d, set, clk, q)
+- `irs` x 1: (reset, empty, rd_en, rd_clk, tailer, tailer_org, header, rd_en_out, data_sel, en1, en2, en4, en5, en6)
+- `register_32bit` x 1: (din, clk, clr, ce, dout)
+- `router_fifo` x 1: (reset, rd_clk, rd_en, data_in, wr_clk, wr_en, rd_add, wr_add, wr_dir, rd_dir, data_out, full_ext, full_int, empty)
+- `routing_algo_mesh` x 1: (header_in, current_address, reset, req_link1, req_link2, req_core, req_link3, req_link4)
+
+
+CURRENT RTL:
+```verilog
+module ip_chnl (
+    input reset, rd_clk, wr_clk, rd_en, wr_en,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    output full_ext, empty_synch_rdclk, req_l1, req_l2, req_l3, req_l4, req_c,
+    output [31:0] data_out,
+    output tailer, tailer_org, nxt_reset, data_sel, header, empty,
+    output [31:0] fifo_out, header_flit, reg_out, mux_data_out, header_out
+);
+
+    reg [31:0] fifo_out_w;
+    reg [31:0] header_flit_w;
+    reg header_w, tailer_org_w, tailer_w, empty_w, full_ext_w;
+    reg rd_en_out_w, en1_w, en2_w, en4_w, en5_w, en6_w;
+    reg req_link1_w, req_link2_w, req_core_w, req_link3_w, req_link4_w;
+    reg [31:0] header_out_w;
+    reg [31:0] mux_data_out_w;
+    reg [31:0] req_l1_w, req_l2_w, req_l3_w, req_l4_w, req_c_w;
+
+    // Instantiate router_fifo
+    router_fifo u_router_fifo (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(data_in),
+        .wr_clk(wr_clk),
+        .wr_en(wr_en),
+        .rd_add(3'b000),
+        .wr_add(3'b000),
+        .wr_dir(1'b0),
+        .rd_dir(1'b0),
+        .data_out(fifo_out_w),
+        .full_ext(full_ext_w),
+        .full_int(),
+        .empty(empty_w)
+    );
+
+    // Instantiate register_32bit
+    register_32bit u_register_32bit (
+        .din(fifo_out_w),
+        .clk(rd_clk),
+        .clr(reset | tailer_w),
+        .ce(header_w),
+        .dout(header_flit_w)
+    );
+
+    // Instantiate irs
+    irs u_irs (
+        .reset(reset),
+        .empty(empty_w),
+        .rd_en(rd_en),
+        .rd_clk(rd_clk),
+        .tailer(tailer_w),
+        .tailer_org(tailer_org_w),
+        .header(header_w),
+        .rd_en_out(rd_en_out_w),
+        .data_sel(data_sel),
+        .en1(en1_w),
+        .en2(en2_w),
+        .en4(en4_w),
+        .en5(en5_w),
+        .en6(en6_w)
+    );
+
+    // Instantiate routing_algo_mesh
+    routing_algo_mesh u_routing_algo_mesh (
+        .header_in(header_out_w),
+        .current_address(current_address),
+        .reset(reset),
+        .req_link1(req_link1_w),
+        .req_link2(req_link2_w),
+        .req_core(req_core_w),
+        .req_link3(req_link3_w),
+        .req_link4(req_link4_w)
+    );
+
+    // Instantiate dff_synch_reset for tailer
+    dff_synch_reset u_dff_synch_reset_tailer (
+        .d(tailer_org_w),
+        .reset(reset),
+        .clk(rd_clk),
+        .q(tailer_w)
+    );
+
+    // Instantiate dff_synch_set for empty_synch_rdclk
+    dff_synch_set u_dff_synch_set_empty (
+        .d(empty_w),
+        .set(reset),
+        .clk(rd_clk),
+        .q(empty_synch_rdclk)
+    );
+
+    // Combinational logic for header and tailer detection
+    always @(*) begin
+        case (fifo_out_w[30:29])
+            2'b01: begin
+                header_w = 1'b1;
+                tailer_org_w = 1'b0;
+            end
+            2'b10: begin
+                header_w = 1'b0;
+                tailer_org_w = 1'b1;
+            end
+            default: begin
+                header_w = 1'b0;
+                tailer_org_w = 1'b0;
+            end
+        endcase
+    end
+
+    // Combinational logic for header_out and mux_data_out
+    always @(*) begin
+        if (header_w) begin
+            header_out_w = fifo_out_w;
+        end else begin
+            header_out_w = header_flit_w;
+        end
+
+        if (rd_en) begin
+            if (data_sel) begin
+                mux_data_out_w = header_flit_w;
+            end else begin
+                mux_data_out_w = fifo_out_w;
+            end
+        end else begin
+            mux_data_out_w = 32'h6000_0000;
+        end
+    end
+
+    // Combinational logic for routing requests
+    always @(*) begin
+        if (rd_en_out_w) begin
+            req_l1_w = req_link1_w;
+            req_l2_w = req_link2_w;
+            req_l3_w = req_link3_w;
+            req_l4_w = req_link4_w;
+            req_c_w = req_core_w;
+        end else begin
+            req_l1_w = 1'b0;
+            req_l2_w = 1'b0;
+            req_l3_w = 1'b0;
+            req_l4_w = 1'b0;
+            req_c_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for conditional assignments
+    always @(*) begin
+        if (en2_w) begin
+            full_ext = full_ext_w;
+            empty_synch_rdclk = empty_w;
+            req_l1 = req_l1_w;
+            req_l2 = req_l2_w;
+            req_l3 = req_l3_w;
+            req_l4 = req_l4_w;
+            req_c = req_c_w;
+            data_out = mux_data_out_w;
+            tailer = tailer_w;
+            tailer_org = tailer_org_w;
+            nxt_reset = 1'b0; // Assign a default value to nxt_reset
+            data_sel = data_sel;
+            header = header_w;
+            empty = empty_w;
+            fifo_out = fifo_out_w;
+            header_flit = header_flit_w;
+            reg_out = header_flit_w;
+            mux_data_out = mux_data_out_w;
+            header_out = header_out_w;
+        end else begin
+            full_ext = 1'b0;
+            empty_synch_rdclk = 1'b0;
+            req_l1 = 1'b0;
+            req_l2 = 1'b0;
+            req_l3 = 1'b0;
+            req_l4 = 1'b0;
+            req_c = 1'b0;
+            data_out = 32'b0;
+            tailer = 1'b0;
+            tailer_org = 1'b0;
+            nxt_reset = 1'b0;
+            data_sel = 1'b0;
+            header = 1'b0;
+            empty = 1'b0;
+            fifo_out = 32'b0;
+            header_flit = 32'b0;
+            reg_out = 32'b0;
+            mux_data_out = 32'b0;
+            header_out = 32'b0;
+        end
+    end
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:28: error: expression not valid in assign l-value: 3'd0
+dut.v:28: error: Output port expression must support a continuous assignment.
+dut.v:28:      : Port 7 (rd_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:29: error: expression not valid in assign l-value: 3'd0
+dut.v:29: error: Output port expression must support a continuous assignment.
+dut.v:29:      : Port 8 (wr_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:30: error: expression not valid in assign l-value: 1'd0
+dut.v:30: error: Output port expression must support a continuous assignment.
+dut.v:30:      : Port 9 (wr_dir) of router_fifo is connected to tb.dut.1'd0
+dut.v:31: error: expression not valid in assign l-value: 1'd0
+dut.v:31: error: Output port expression must support a continuous assignment.
+dut.v:31:      : Port 10 (rd_dir) of router_fifo is connected to tb.dut.1'd0
+dut.v:150: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'full_ext' is declared here as a wire.
+dut.v:151: error: 'empty_synch_rdclk' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'empty_synch_rdclk' is declared here as a wire.
+dut.v:152: error: 'req_l1' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l1' is declared here as a wire.
+dut.v:153: error: 'req_l2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l2' is declared here as a wire.
+dut.v:154: error: 'req_l3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l3' is declared here as a wire.
+dut.v:155: error: 'req_l4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l4' is declared here as a wire.
+dut.v:156: error: 'req_c' is not a valid l-value for a procedural assignment.
+
+SEMANTIC ANALYSIS (fix these):
+*** Instance port(s) left unconnected: full_int. Connect every port BY NAME (.port(net)); positional connections silently shift when a port is missing. ***
+
+*** WARNING: Bit-width truncation on 'req_l1_w'. ***
+You are assigning a wider value into a narrower signal.
+Use explicit bit-select to avoid silent truncation: signal[N-1:0] = value[N-1:0];
+
+*** WARNING: Width expansion on 'req_link1_w' — value is zero-extended. ***
+Check that signal widths match your port declarations.
+
+(Fix the above first; 3 lower-priority issue(s) will be reported next iteration.)
+
+VERILATOR LINT OUTPUT:
+%Warning-PINCONNECTEMPTY: dut.v:34:10: Instance pin connected by name with empty reference: 'full_int'
+%Warning-WIDTHEXPAND: dut.v:133:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link1_w' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:134:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link2_w' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:135:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link3_w' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:136:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_link4_w' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:137:21: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'req_core_w' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:139:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:140:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:141:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:142:22: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+%Warning-WIDTHEXPAND: dut.v:143:21: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+%Warning-WIDTHTRUNC: dut.v:152:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l1_w' generates 32 bits.
+%Warning-WIDTHTRUNC: dut.v:153:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l2_w' generates 32 bits.
+%Warning-WIDTHTRUNC: dut.v:154:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l3_w' generates 32 bits.
+%Warning-WIDTHTRUNC: dut.v:155:20: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_l4_w' generates 32 bits.
+%Warning-WIDTHTRUNC: dut.v:156:19: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'req_c_w' generates 32 bits.
+%Error-PROCASSWIRE: dut.v:150:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+%Error-PROCASSWIRE: dut.v:151:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty_synch_rdclk'
+%Error-PROCASSWIRE: dut.v:152:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+%Error-PROCASSWIRE: dut.v:153:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+%Error-PROCASSWIRE: dut.v:154:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+%Error-PROCASSWIRE: dut.v:155:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l4'
+%Error-PROCASSWIRE: dut.v:156:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_c'
+%Error-PROCASSWIRE: dut.v:157:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_out'
+%Error-PROCASSWIRE: dut.v:158:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer'
+%Error-PROCASSWIRE: dut.v:159:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'tailer_org'
+%Error-PROCASSWIRE: dut.v:160:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'nxt_reset'
+%Error-PROCASSWIRE: dut.v:161:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'data_sel'
+%Error-PROCASSWIRE: dut.v:162:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header'
+%Error-PROCASSWIRE: dut.v:163:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+%Error-PROCASSWIRE: dut.v:164:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'fifo_out'
+%Error-PROCASSWIRE: dut.v:165:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_flit'
+%Error-PROCASSWIRE: dut.v:166:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'reg_out'
+%Error-PROCASSWIRE: dut.v:167:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'mux_data_out'
+%Error-PROCASSWIRE: dut.v:168:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'header_out'
+%Error-PROCASSWIRE: dut.v:170:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_ext'
+%Error-PROCASSWIRE: dut.v:171:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty_synch_rdclk'
+%Error-PROCASSWIRE: dut.v:172:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l1'
+%Error-PROCASSWIRE: dut.v:173:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l2'
+%Error-PROCASSWIRE: dut.v:174:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'req_l3'
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

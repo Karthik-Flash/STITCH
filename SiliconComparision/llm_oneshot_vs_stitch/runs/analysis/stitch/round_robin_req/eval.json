@@ -1,0 +1,23 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "WIDTHTRUNC": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 1,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "f59ecd67e294d6f490af8cf7b7d4fdbb79ff413708a8750c59756c6e2f575a25",
+ "file": "outputs/stitch/round_robin_req.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

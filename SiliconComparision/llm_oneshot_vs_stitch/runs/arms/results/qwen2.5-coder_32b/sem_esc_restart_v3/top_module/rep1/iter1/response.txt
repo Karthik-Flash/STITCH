@@ -1,0 +1,1197 @@
+Certainly! Let's address the issues mentioned in the verification feedback. The main issues are:
+
+1. **Port Width Mismatch**: The `ip_link_vc` ports in the `op_core`, `op_link1`, `op_link2`, `op_link3`, and `op_link4` modules expect 4-bit signals, but 32-bit signals are being provided. We need to ensure that only the lower 4 bits of the 32-bit signals are passed to these ports.
+
+2. **Wire Assignment**: The `req_l1_link1`, `req_l1_link2`, `req_l1_link3`, `req_l1_link4`, `req_l1_core`, and similar signals are declared as wires, but they are being assigned values in a procedural block. Wires should be driven by continuous assignments or module outputs, not procedural assignments. We will use registers to hold these values and then assign them to the wires.
+
+Here is the corrected module:
+
+```verilog
+module dut (
+    input clk,
+    input clr,
+    input [31:0] ip_core_out_vc1,
+    input [31:0] ip_core_out_vc2,
+    input [31:0] ip_core_out_vc3,
+    input [31:0] ip_core_out_vc4,
+    input [31:0] ip_link1_out_vc1,
+    input [31:0] ip_link1_out_vc2,
+    input [31:0] ip_link1_out_vc3,
+    input [31:0] ip_link1_out_vc4,
+    input [31:0] ip_link2_out_vc1,
+    input [31:0] ip_link2_out_vc2,
+    input [31:0] ip_link2_out_vc3,
+    input [31:0] ip_link2_out_vc4,
+    input [31:0] ip_link3_out_vc1,
+    input [31:0] ip_link3_out_vc2,
+    input [31:0] ip_link3_out_vc3,
+    input [31:0] ip_link3_out_vc4,
+    input [31:0] ip_link4_out_vc1,
+    input [31:0] ip_link4_out_vc2,
+    input [31:0] ip_link4_out_vc3,
+    input [31:0] ip_link4_out_vc4,
+    input [7:0] current_address,
+    output reg [31:0] data_out_link1,
+    output reg [31:0] data_out_link2,
+    output reg [31:0] data_out_link3,
+    output reg [31:0] data_out_link4,
+    output reg [31:0] data_out_core
+);
+
+    wire [3:0] req_l1_link1, req_l1_link2, req_l1_link3, req_l1_link4, req_l1_core;
+    wire [3:0] req_l2_link1, req_l2_link2, req_l2_link3, req_l2_link4, req_l2_core;
+    wire [3:0] req_l3_link1, req_l3_link2, req_l3_link3, req_l3_link4, req_l3_core;
+    wire [3:0] req_l4_link1, req_l4_link2, req_l4_link3, req_l4_link4, req_l4_core;
+    wire [3:0] req_c_link1, req_c_link2, req_c_link3, req_c_link4, req_c_core;
+
+    wire [3:0] rok_link1, rok_link2, rok_link3, rok_link4, rok_core;
+    wire [3:0] tailer_link1, tailer_link2, tailer_link3, tailer_link4, tailer_core;
+    wire [3:0] full_out_link1_vc1, full_out_link1_vc2, full_out_link1_vc3, full_out_link1_vc4;
+    wire [3:0] full_out_link2_vc1, full_out_link2_vc2, full_out_link2_vc3, full_out_link2_vc4;
+    wire [3:0] full_out_link3_vc1, full_out_link3_vc2, full_out_link3_vc3, full_out_link3_vc4;
+    wire [3:0] full_out_link4_vc1, full_out_link4_vc2, full_out_link4_vc3, full_out_link4_vc4;
+    wire [3:0] rd_en_link1, rd_en_link2, rd_en_link3, rd_en_link4, rd_en_core;
+    wire [3:0] gnt_link1, gnt_link2, gnt_link3, gnt_link4, gnt_core;
+    wire [3:0] sel_vc_link1, sel_vc_link2, sel_vc_link3, sel_vc_link4, sel_vc_core;
+
+    wire [31:0] op_data_path_link1, op_data_path_link2, op_data_path_link3, op_data_path_link4, op_data_path_core;
+
+    op_core op_core_inst (
+        .rd_clk(clk),
+        .reset(clr),
+        .req_link1_vc1(req_l1_core[0]),
+        .req_link1_vc2(req_l1_core[1]),
+        .req_link1_vc3(req_l1_core[2]),
+        .req_link1_vc4(req_l1_core[3]),
+        .req_link2_vc1(req_l2_core[0]),
+        .req_link2_vc2(req_l2_core[1]),
+        .req_link2_vc3(req_l2_core[2]),
+        .req_link2_vc4(req_l2_core[3]),
+        .req_link3_vc1(req_l3_core[0]),
+        .req_link3_vc2(req_l3_core[1]),
+        .req_link3_vc3(req_l3_core[2]),
+        .req_link3_vc4(req_l3_core[3]),
+        .req_link4_vc1(req_l4_core[0]),
+        .req_link4_vc2(req_l4_core[1]),
+        .req_link4_vc3(req_l4_core[2]),
+        .req_link4_vc4(req_l4_core[3]),
+        .rok_link1_vc1(rok_link1[0]),
+        .rok_link1_vc2(rok_link1[1]),
+        .rok_link1_vc3(rok_link1[2]),
+        .rok_link1_vc4(rok_link1[3]),
+        .rok_link2_vc1(rok_link2[0]),
+        .rok_link2_vc2(rok_link2[1]),
+        .rok_link2_vc3(rok_link2[2]),
+        .rok_link2_vc4(rok_link2[3]),
+        .rok_link3_vc1(rok_link3[0]),
+        .rok_link3_vc2(rok_link3[1]),
+        .rok_link3_vc3(rok_link3[2]),
+        .rok_link3_vc4(rok_link3[3]),
+        .rok_link4_vc1(rok_link4[0]),
+        .rok_link4_vc2(rok_link4[1]),
+        .rok_link4_vc3(rok_link4[2]),
+        .rok_link4_vc4(rok_link4[3]),
+        .tailer_link1_vc1(tailer_link1[0]),
+        .tailer_link1_vc2(tailer_link1[1]),
+        .tailer_link1_vc3(tailer_link1[2]),
+        .tailer_link1_vc4(tailer_link1[3]),
+        .tailer_link2_vc1(tailer_link2[0]),
+        .tailer_link2_vc2(tailer_link2[1]),
+        .tailer_link2_vc3(tailer_link2[2]),
+        .tailer_link2_vc4(tailer_link2[3]),
+        .tailer_link3_vc1(tailer_link3[0]),
+        .tailer_link3_vc2(tailer_link3[1]),
+        .tailer_link3_vc3(tailer_link3[2]),
+        .tailer_link3_vc4(tailer_link3[3]),
+        .tailer_link4_vc1(tailer_link4[0]),
+        .tailer_link4_vc2(tailer_link4[1]),
+        .tailer_link4_vc3(tailer_link4[2]),
+        .tailer_link4_vc4(tailer_link4[3]),
+        .full_vc1(full_out_link1_vc1),
+        .full_vc2(full_out_link1_vc2),
+        .full_vc3(full_out_link1_vc3),
+        .full_vc4(full_out_link1_vc4),
+        .rd_en_vc1_link1_vc1(rd_en_link1[0]),
+        .rd_en_vc1_link1_vc2(rd_en_link1[1]),
+        .rd_en_vc1_link1_vc3(rd_en_link1[2]),
+        .rd_en_vc1_link1_vc4(rd_en_link1[3]),
+        .rd_en_vc1_link2_vc1(rd_en_link2[0]),
+        .rd_en_vc1_link2_vc2(rd_en_link2[1]),
+        .rd_en_vc1_link2_vc3(rd_en_link2[2]),
+        .rd_en_vc1_link2_vc4(rd_en_link2[3]),
+        .rd_en_vc1_link3_vc1(rd_en_link3[0]),
+        .rd_en_vc1_link3_vc2(rd_en_link3[1]),
+        .rd_en_vc1_link3_vc3(rd_en_link3[2]),
+        .rd_en_vc1_link3_vc4(rd_en_link3[3]),
+        .rd_en_vc1_link4_vc1(rd_en_link4[0]),
+        .rd_en_vc1_link4_vc2(rd_en_link4[1]),
+        .rd_en_vc1_link4_vc3(rd_en_link4[2]),
+        .rd_en_vc1_link4_vc4(rd_en_link4[3]),
+        .gnt_vc1(gnt_core[0]),
+        .gnt_vc2(gnt_core[1]),
+        .gnt_vc3(gnt_core[2]),
+        .gnt_vc4(gnt_core[3]),
+        .ip_link_vc(ip_core_out_vc1[3:0])
+    );
+
+    op_link1 op_link1_inst (
+        .rd_clk(clk),
+        .reset(clr),
+        .req_link2_vc1(req_l2_link1[0]),
+        .req_link2_vc2(req_l2_link1[1]),
+        .req_link2_vc3(req_l2_link1[2]),
+        .req_link2_vc3(req_l2_link1[3]),
+        .req_link3_vc1(req_l3_link1[0]),
+        .req_link3_vc2(req_l3_link1[1]),
+        .req_link3_vc3(req_l3_link1[2]),
+        .req_link3_vc4(req_l3_link1[3]),
+        .req_link4_vc1(req_l4_link1[0]),
+        .req_link4_vc2(req_l4_link1[1]),
+        .req_link4_vc3(req_l4_link1[2]),
+        .req_link4_vc4(req_l4_link1[3]),
+        .req_core_vc1(req_c_link1[0]),
+        .req_core_vc2(req_c_link1[1]),
+        .req_core_vc3(req_c_link1[2]),
+        .req_core_vc4(req_c_link1[3]),
+        .rok_link2_vc1(rok_link2[0]),
+        .rok_link2_vc2(rok_link2[1]),
+        .rok_link2_vc3(rok_link2[2]),
+        .rok_link2_vc4(rok_link2[3]),
+        .rok_link3_vc1(rok_link3[0]),
+        .rok_link3_vc2(rok_link3[1]),
+        .rok_link3_vc3(rok_link3[2]),
+        .rok_link3_vc4(rok_link3[3]),
+        .rok_link4_vc1(rok_link4[0]),
+        .rok_link4_vc2(rok_link4[1]),
+        .rok_link4_vc3(rok_link4[2]),
+        .rok_link4_vc4(rok_link4[3]),
+        .rok_core_vc1(rok_core[0]),
+        .rok_core_vc2(rok_core[1]),
+        .rok_core_vc3(rok_core[2]),
+        .rok_core_vc4(rok_core[3]),
+        .tailer_link2_vc1(tailer_link2[0]),
+        .tailer_link2_vc2(tailer_link2[1]),
+        .tailer_link2_vc3(tailer_link2[2]),
+        .tailer_link2_vc4(tailer_link2[3]),
+        .tailer_link3_vc1(tailer_link3[0]),
+        .tailer_link3_vc2(tailer_link3[1]),
+        .tailer_link3_vc3(tailer_link3[2]),
+        .tailer_link3_vc4(tailer_link3[3]),
+        .tailer_link4_vc1(tailer_link4[0]),
+        .tailer_link4_vc2(tailer_link4[1]),
+        .tailer_link4_vc3(tailer_link4[2]),
+        .tailer_link4_vc4(tailer_link4[3]),
+        .tailer_core_vc1(tailer_core[0]),
+        .tailer_core_vc2(tailer_core[1]),
+        .tailer_core_vc3(tailer_core[2]),
+        .tailer_core_vc4(tailer_core[3]),
+        .full_vc1(full_out_link2_vc1),
+        .full_vc2(full_out_link2_vc2),
+        .full_vc3(full_out_link2_vc3),
+        .full_vc4(full_out_link2_vc4),
+        .rd_en_vc1_link2_vc1(rd_en_link2[0]),
+        .rd_en_vc1_link2_vc2(rd_en_link2[1]),
+        .rd_en_vc1_link2_vc3(rd_en_link2[2]),
+        .rd_en_vc1_link2_vc4(rd_en_link2[3]),
+        .rd_en_vc1_link3_vc1(rd_en_link3[0]),
+        .rd_en_vc1_link3_vc2(rd_en_link3[1]),
+        .rd_en_vc1_link3_vc3(rd_en_link3[2]),
+        .rd_en_vc1_link3_vc4(rd_en_link3[3]),
+        .rd_en_vc1_link4_vc1(rd_en_link4[0]),
+        .rd_en_vc1_link4_vc2(rd_en_link4[1]),
+        .rd_en_vc1_link4_vc3(rd_en_link4[2]),
+        .rd_en_vc1_link4_vc4(rd_en_link4[3]),
+        .rd_en_vc1_core_vc1(rd_en_core[0]),
+        .rd_en_vc1_core_vc2(rd_en_core[1]),
+        .rd_en_vc1_core_vc3(rd_en_core[2]),
+        .rd_en_vc1_core_vc4(rd_en_core[3]),
+        .gnt_vc1(gnt_link1[0]),
+        .gnt_vc2(gnt_link1[1]),
+        .gnt_vc3(gnt_link1[2]),
+        .gnt_vc4(gnt_link1[3]),
+        .ip_link_vc(ip_link1_out_vc1[3:0])
+    );
+
+    op_link2 op_link2_inst (
+        .rd_clk(clk),
+        .reset(clr),
+        .req_link1_vc1(req_l1_link2[0]),
+        .req_link1_vc2(req_l1_link2[1]),
+        .req_link1_vc3(req_l1_link2[2]),
+        .req_link1_vc4(req_l1_link2[3]),
+        .req_link3_vc1(req_l3_link2[0]),
+        .req_link3_vc2(req_l3_link2[1]),
+        .req_link3_vc3(req_l3_link2[2]),
+        .req_link3_vc4(req_l3_link2[3]),
+        .req_link4_vc1(req_l4_link2[0]),
+        .req_link4_vc2(req_l4_link2[1]),
+        .req_link4_vc3(req_l4_link2[2]),
+        .req_link4_vc4(req_l4_link2[3]),
+        .req_core_vc1(req_c_link2[0]),
+        .req_core_vc2(req_c_link2[1]),
+        .req_core_vc3(req_c_link2[2]),
+        .req_core_vc4(req_c_link2[3]),
+        .rok_link1_vc1(rok_link1[0]),
+        .rok_link1_vc2(rok_link1[1]),
+        .rok_link1_vc3(rok_link1[2]),
+        .rok_link1_vc4(rok_link1[3]),
+        .rok_link3_vc1(rok_link3[0]),
+        .rok_link3_vc2(rok_link3[1]),
+        .rok_link3_vc3(rok_link3[2]),
+        .rok_link3_vc4(rok_link3[3]),
+        .rok_link4_vc1(rok_link4[0]),
+        .rok_link4_vc2(rok_link4[1]),
+        .rok_link4_vc3(rok_link4[2]),
+        .rok_link4_vc4(rok_link4[3]),
+        .rok_core_vc1(rok_core[0]),
+        .rok_core_vc2(rok_core[1]),
+        .rok_core_vc3(rok_core[2]),
+        .rok_core_vc4(rok_core[3]),
+        .tailer_link1_vc1(tailer_link1[0]),
+        .tailer_link1_vc2(tailer_link1[1]),
+        .tailer_link1_vc3(tailer_link1[2]),
+        .tailer_link1_vc4(tailer_link1[3]),
+        .tailer_link3_vc1(tailer_link3[0]),
+        .tailer_link3_vc2(tailer_link3[1]),
+        .tailer_link3_vc3(tailer_link3[2]),
+        .tailer_link3_vc4(tailer_link3[3]),
+        .tailer_link4_vc1(tailer_link4[0]),
+        .tailer_link4_vc2(tailer_link4[1]),
+        .tailer_link4_vc3(tailer_link4[2]),
+        .tailer_link4_vc4(tailer_link4[3]),
+        .tailer_core_vc1(tailer_core[0]),
+        .tailer_core_vc2(tailer_core[1]),
+        .tailer_core_vc3(tailer_core[2]),
+        .tailer_core_vc4(tailer_core[3]),
+        .full_vc1(full_out_link1_vc1),
+        .full_vc2(full_out_link1_vc2),
+        .full_vc3(full_out_link1_vc3),
+        .full_vc4(full_out_link1_vc4),
+        .rd_en_vc1_link1_vc1(rd_en_link1[0]),
+        .rd_en_vc1_link1_vc2(rd_en_link1[1]),
+        .rd_en_vc1_link1_vc3(rd_en_link1[2]),
+        .rd_en_vc1_link1_vc4(rd_en_link1[3]),
+        .rd_en_vc1_link3_vc1(rd_en_link3[0]),
+        .rd_en_vc1_link3_vc2(rd_en_link3[1]),
+        .rd_en_vc1_link3_vc3(rd_en_link3[2]),
+        .rd_en_vc1_link3_vc4(rd_en_link3[3]),
+        .rd_en_vc1_link4_vc1(rd_en_link4[0]),
+        .rd_en_vc1_link4_vc2(rd_en_link4[1]),
+        .rd_en_vc1_link4_vc3(rd_en_link4[2]),
+        .rd_en_vc1_link4_vc4(rd_en_link4[3]),
+        .rd_en_vc1_core_vc1(rd_en_core[0]),
+        .rd_en_vc1_core_vc2(rd_en_core[1]),
+        .rd_en_vc1_core_vc3(rd_en_core[2]),
+        .rd_en_vc1_core_vc4(rd_en_core[3]),
+        .gnt_vc1(gnt_link2[0]),
+        .gnt_vc2(gnt_link2[1]),
+        .gnt_vc3(gnt_link2[2]),
+        .gnt_vc4(gnt_link2[3]),
+        .ip_link_vc(ip_link2_out_vc1[3:0])
+    );
+
+    op_link3 op_link3_inst (
+        .rd_clk(clk),
+        .reset(clr),
+        .req_link1_vc1(req_l1_link3[0]),
+        .req_link1_vc2(req_l1_link3[1]),
+        .req_link1_vc3(req_l1_link3[2]),
+        .req_link1_vc4(req_l1_link3[3]),
+        .req_link2_vc1(req_l2_link3[0]),
+        .req_link2_vc2(req_l2_link3[1]),
+        .req_link2_vc3(req_l2_link3[2]),
+        .req_link2_vc4(req_l2_link3[3]),
+        .req_link4_vc1(req_l4_link3[0]),
+        .req_link4_vc2(req_l4_link3[1]),
+        .req_link4_vc3(req_l4_link3[2]),
+        .req_link4_vc4(req_l4_link3[3]),
+        .req_core_vc1(req_c_link3[0]),
+        .req_core_vc2(req_c_link3[1]),
+        .req_core_vc3(req_c_link3[2]),
+        .req_core_vc4(req_c_link3[3]),
+        .rok_link1_vc1(rok_link1[0]),
+        .rok_link1_vc2(rok_link1[1]),
+        .rok_link1_vc3(rok_link1[2]),
+        .rok_link1_vc4(rok_link1[3]),
+        .rok_link2_vc1(rok_link2[0]),
+        .rok_link2_vc2(rok_link2[1]),
+        .rok_link2_vc3(rok_link2[2]),
+        .rok_link2_vc4(rok_link2[3]),
+        .rok_link4_vc1(rok_link4[0]),
+        .rok_link4_vc2(rok_link4[1]),
+        .rok_link4_vc3(rok_link4[2]),
+        .rok_link4_vc4(rok_link4[3]),
+        .rok_core_vc1(rok_core[0]),
+        .rok_core_vc2(rok_core[1]),
+        .rok_core_vc3(rok_core[2]),
+        .rok_core_vc4(rok_core[3]),
+        .tailer_link1_vc1(tailer_link1[0]),
+        .tailer_link1_vc2(tailer_link1[1]),
+        .tailer_link1_vc3(tailer_link1[2]),
+        .tailer_link1_vc4(tailer_link1[3]),
+        .tailer_link2_vc1(tailer_link2[0]),
+        .tailer_link2_vc2(tailer_link2[1]),
+        .tailer_link2_vc3(tailer_link2[2]),
+        .tailer_link2_vc4(tailer_link2[3]),
+        .tailer_link4_vc1(tailer_link4[0]),
+        .tailer_link4_vc2(tailer_link4[1]),
+        .tailer_link4_vc3(tailer_link4[2]),
+        .tailer_link4_vc4(tailer_link4[3]),
+        .tailer_core_vc1(tailer_core[0]),
+        .tailer_core_vc2(tailer_core[1]),
+        .tailer_core_vc3(tailer_core[2]),
+        .tailer_core_vc4(tailer_core[3]),
+        .full_vc1(full_out_link1_vc1),
+        .full_vc2(full_out_link1_vc2),
+        .full_vc3(full_out_link1_vc3),
+        .full_vc4(full_out_link1_vc4),
+        .rd_en_vc1_link1_vc1(rd_en_link1[0]),
+        .rd_en_vc1_link1_vc2(rd_en_link1[1]),
+        .rd_en_vc1_link1_vc3(rd_en_link1[2]),
+        .rd_en_vc1_link1_vc4(rd_en_link1[3]),
+        .rd_en_vc1_link2_vc1(rd_en_link2[0]),
+        .rd_en_vc1_link2_vc2(rd_en_link2[1]),
+        .rd_en_vc1_link2_vc3(rd_en_link2[2]),
+        .rd_en_vc1_link2_vc4(rd_en_link2[3]),
+        .rd_en_vc1_link4_vc1(rd_en_link4[0]),
+        .rd_en_vc1_link4_vc2(rd_en_link4[1]),
+        .rd_en_vc1_link4_vc3(rd_en_link4[2]),
+        .rd_en_vc1_link4_vc4(rd_en_link4[3]),
+        .rd_en_vc1_core_vc1(rd_en_core[0]),
+        .rd_en_vc1_core_vc2(rd_en_core[1]),
+        .rd_en_vc1_core_vc3(rd_en_core[2]),
+        .rd_en_vc1_core_vc4(rd_en_core[3]),
+        .gnt_vc1(gnt_link3[0]),
+        .gnt_vc2(gnt_link3[1]),
+        .gnt_vc3(gnt_link3[2]),
+        .gnt_vc4(gnt_link3[3]),
+        .ip_link_vc(ip_link3_out_vc1[3:0])
+    );
+
+    op_link4 op_link4_inst (
+        .rd_clk(clk),
+        .reset(clr),
+        .req_link1_vc1(req_l1_link4[0]),
+        .req_link1_vc2(req_l1_link4[1]),
+        .req_link1_vc3(req_l1_link4[2]),
+        .req_link1_vc4(req_l1_link4[3]),
+        .req_link2_vc1(req_l2_link4[0]),
+        .req_link2_vc2(req_l2_link4[1]),
+        .req_link2_vc3(req_l2_link4[2]),
+        .req_link2_vc4(req_l2_link4[3]),
+        .req_link3_vc1(req_l3_link4[0]),
+        .req_link3_vc2(req_l3_link4[1]),
+        .req_link3_vc3(req_l3_link4[2]),
+        .req_link3_vc4(req_l3_link4[3]),
+        .req_core_vc1(req_c_link4[0]),
+        .req_core_vc2(req_c_link4[1]),
+        .req_core_vc3(req_c_link4[2]),
+        .req_core_vc4(req_c_link4[3]),
+        .rok_link1_vc1(rok_link1[0]),
+        .rok_link1_vc2(rok_link1[1]),
+        .rok_link1_vc3(rok_link1[2]),
+        .rok_link1_vc4(rok_link1[3]),
+        .rok_link2_vc1(rok_link2[0]),
+        .rok_link2_vc2(rok_link2[1]),
+        .rok_link2_vc3(rok_link2[2]),
+        .rok_link2_vc4(rok_link2[3]),
+        .rok_link3_vc1(rok_link3[0]),
+        .rok_link3_vc2(rok_link3[1]),
+        .rok_link3_vc3(rok_link3[2]),
+        .rok_link3_vc4(rok_link3[3]),
+        .rok_core_vc1(rok_core[0]),
+        .rok_core_vc2(rok_core[1]),
+        .rok_core_vc3(rok_core[2]),
+        .rok_core_vc4(rok_core[3]),
+        .tailer_link1_vc1(tailer_link1[0]),
+        .tailer_link1_vc2(tailer_link1[1]),
+        .tailer_link1_vc3(tailer_link1[2]),
+        .tailer_link1_vc4(tailer_link1[3]),
+        .tailer_link2_vc1(tailer_link2[0]),
+        .tailer_link2_vc2(tailer_link2[1]),
+        .tailer_link2_vc3(tailer_link2[2]),
+        .tailer_link2_vc4(tailer_link2[3]),
+        .tailer_link3_vc1(tailer_link3[0]),
+        .tailer_link3_vc2(tailer_link3[1]),
+        .tailer_link3_vc3(tailer_link3[2]),
+        .tailer_link3_vc4(tailer_link3[3]),
+        .tailer_core_vc1(tailer_core[0]),
+        .tailer_core_vc2(tailer_core[1]),
+        .tailer_core_vc3(tailer_core[2]),
+        .tailer_core_vc4(tailer_core[3]),
+        .full_vc1(full_out_link1_vc1),
+        .full_vc2(full_out_link1_vc2),
+        .full_vc3(full_out_link1_vc3),
+        .full_vc4(full_out_link1_vc4),
+        .rd_en_vc1_link1_vc1(rd_en_link1[0]),
+        .rd_en_vc1_link1_vc2(rd_en_link1[1]),
+        .rd_en_vc1_link1_vc3(rd_en_link1[2]),
+        .rd_en_vc1_link1_vc4(rd_en_link1[3]),
+        .rd_en_vc1_link2_vc1(rd_en_link2[0]),
+        .rd_en_vc1_link2_vc2(rd_en_link2[1]),
+        .rd_en_vc1_link2_vc3(rd_en_link2[2]),
+        .rd_en_vc1_link2_vc4(rd_en_link2[3]),
+        .rd_en_vc1_link3_vc1(rd_en_link3[0]),
+        .rd_en_vc1_link3_vc2(rd_en_link3[1]),
+        .rd_en_vc1_link3_vc3(rd_en_link3[2]),
+        .rd_en_vc1_link3_vc4(rd_en_link3[3]),
+        .rd_en_vc1_core_vc1(rd_en_core[0]),
+        .rd_en_vc1_core_vc2(rd_en_core[1]),
+        .rd_en_vc1_core_vc3(rd_en_core[2]),
+        .rd_en_vc1_core_vc4(rd_en_core[3]),
+        .gnt_vc1(gnt_link4[0]),
+        .gnt_vc2(gnt_link4[1]),
+        .gnt_vc3(gnt_link4[2]),
+        .gnt_vc4(gnt_link4[3]),
+        .ip_link_vc(ip_link4_out_vc1[3:0])
+    );
+
+    op_data_path op_data_path_inst (
+        .data_from_link1_ch1(ip_link1_out_vc1),
+        .data_from_link1_ch2(ip_link1_out_vc2),
+        .data_from_link1_ch3(ip_link1_out_vc3),
+        .data_from_link1_ch4(ip_link1_out_vc4),
+        .data_from_link2_ch1(ip_link2_out_vc1),
+        .data_from_link2_ch2(ip_link2_out_vc2),
+        .data_from_link2_ch3(ip_link2_out_vc3),
+        .data_from_link2_ch4(ip_link2_out_vc4),
+        .data_from_link3_ch1(ip_link3_out_vc1),
+        .data_from_link3_ch2(ip_link3_out_vc2),
+        .data_from_link3_ch3(ip_link3_out_vc3),
+        .data_from_link3_ch4(ip_link3_out_vc4),
+        .data_from_link4_ch1(ip_link4_out_vc1),
+        .data_from_link4_ch2(ip_link4_out_vc2),
+        .data_from_link4_ch3(ip_link4_out_vc3),
+        .data_from_link4_ch4(ip_link4_out_vc4),
+        .data_from_core_ch1(ip_core_out_vc1),
+        .data_from_core_ch2(ip_core_out_vc2),
+        .data_from_core_ch3(ip_core_out_vc3),
+        .data_from_core_ch4(ip_core_out_vc4),
+        .sel_vc_link1(sel_vc_link1),
+        .sel_vc_link2(sel_vc_link2),
+        .sel_vc_link3(sel_vc_link3),
+        .sel_vc_link4(sel_vc_link4),
+        .sel_vc_core(sel_vc_core),
+        .gnt_vc_link1_ch1(gnt_link1[0]),
+        .gnt_vc_link1_ch2(gnt_link1[1]),
+        .gnt_vc_link1_ch3(gnt_link1[2]),
+        .gnt_vc_link1_ch4(gnt_link1[3]),
+        .gnt_vc_link2_ch1(gnt_link2[0]),
+        .gnt_vc_link2_ch2(gnt_link2[1]),
+        .gnt_vc_link2_ch3(gnt_link2[2]),
+        .gnt_vc_link2_ch4(gnt_link2[3]),
+        .gnt_vc_link3_ch1(gnt_link3[0]),
+        .gnt_vc_link3_ch2(gnt_link3[1]),
+        .gnt_vc_link3_ch3(gnt_link3[2]),
+        .gnt_vc_link3_ch4(gnt_link3[3]),
+        .gnt_vc_link4_ch1(gnt_link4[0]),
+        .gnt_vc_link4_ch2(gnt_link4[1]),
+        .gnt_vc_link4_ch3(gnt_link4[2]),
+        .gnt_vc_link4_ch4(gnt_link4[3]),
+        .gnt_vc_core_ch1(gnt_core[0]),
+        .gnt_vc_core_ch2(gnt_core[1]),
+        .gnt_vc_core_ch3(gnt_core[2]),
+        .gnt_vc_core_ch4(gnt_core[3]),
+        .data_out_link1(op_data_path_link1),
+        .data_out_link2(op_data_path_link2),
+        .data_out_link3(op_data_path_link3),
+        .data_out_link4(op_data_path_link4),
+        .data_out_core(op_data_path_core),
+        .data_out_l1(data_out_l1),
+        .data_out_l2(data_out_l2),
+        .data_out_l3(data_out_l3),
+        .data_out_l4(data_out_l4),
+        .data_out_c(data_out_c),
+        .rd_clk1(clk),
+        .rd_clk2(clk),
+        .rd_clk3(clk),
+        .rd_clk4(clk),
+        .rd_clk_core(clk)
+    );
+
+    assign data_out_link1 = op_data_path_link1;
+    assign data_out_link2 = op_data_path_link2;
+    assign data_out_link3 = op_data_path_link3;
+    assign data_out_link4 = op_data_path_link4;
+    assign data_out_core = op_data_path_core;
+
+    reg [3:0] req_l1_link1_reg, req_l1_link2_reg, req_l1_link3_reg, req_l1_link4_reg, req_l1_core_reg;
+    reg [3:0] req_l2_link1_reg, req_l2_link2_reg, req_l2_link3_reg, req_l2_link4_reg, req_l2_core_reg;
+    reg [3:0] req_l3_link1_reg, req_l3_link2_reg, req_l3_link3_reg, req_l3_link4_reg, req_l3_core_reg;
+    reg [3:0] req_l4_link1_reg, req_l4_link2_reg, req_l4_link3_reg, req_l4_link4_reg, req_l4_core_reg;
+    reg [3:0] req_c_link1_reg, req_c_link2_reg, req_c_link3_reg, req_c_link4_reg, req_c_core_reg;
+
+    always @(posedge clk or posedge clr) begin
+        if (clr) begin
+            req_l1_link1_reg <= 4'b0000;
+            req_l1_link2_reg <= 4'b0000;
+            req_l1_link3_reg <= 4'b0000;
+            req_l1_link4_reg <= 4'b0000;
+            req_l1_core_reg <= 4'b0000;
+            req_l2_link1_reg <= 4'b0000;
+            req_l2_link2_reg <= 4'b0000;
+            req_l2_link3_reg <= 4'b0000;
+            req_l2_link4_reg <= 4'b0000;
+            req_l2_core_reg <= 4'b0000;
+            req_l3_link1_reg <= 4'b0000;
+            req_l3_link2_reg <= 4'b0000;
+            req_l3_link3_reg <= 4'b0000;
+            req_l3_link4_reg <= 4'b0000;
+            req_l3_core_reg <= 4'b0000;
+            req_l4_link1_reg <= 4'b0000;
+            req_l4_link2_reg <= 4'b0000;
+            req_l4_link3_reg <= 4'b0000;
+            req_l4_link4_reg <= 4'b0000;
+            req_l4_core_reg <= 4'b0000;
+            req_c_link1_reg <= 4'b0000;
+            req_c_link2_reg <= 4'b0000;
+            req_c_link3_reg <= 4'b0000;
+            req_c_link4_reg <= 4'b0000;
+            req_c_core_reg <= 4'b0000;
+        end else begin
+            req_l1_link1_reg <= req_l1_link1;
+            req_l1_link2_reg <= req_l1_link2;
+            req_l1_link3_reg <= req_l1_link3;
+            req_l1_link4_reg <= req_l1_link4;
+            req_l1_core_reg <= req_l1_core;
+            req_l2_link1_reg <= req_l2_link1;
+            req_l2_link2_reg <= req_l2_link2;
+            req_l2_link3_reg <= req_l2_link3;
+            req_l2_link4_reg <= req_l2_link4;
+            req_l2_core_reg <= req_l2_core;
+            req_l3_link1_reg <= req_l3_link1;
+            req_l3_link2_reg <= req_l3_link2;
+            req_l3_link3_reg <= req_l3_link3;
+            req_l3_link4_reg <= req_l3_link4;
+            req_l3_core_reg <= req_l3_core;
+            req_l4_link1_reg <= req_l4_link1;
+            req_l4_link2_reg <= req_l4_link2;
+            req_l4_link3_reg <= req_l4_link3;
+            req_l4_link4_reg <= req_l4_link4;
+            req_l4_core_reg <= req_l4_core;
+            req_c_link1_reg <= req_c_link1;
+            req_c_link2_reg <= req_c_link2;
+            req_c_link3_reg <= req_c_link3;
+            req_c_link4_reg <= req_c_link4;
+            req_c_core_reg <= req_c_core;
+        end
+    end
+
+    assign req_l1_link1 = req_l1_link1_reg;
+    assign req_l1_link2 = req_l1_link2_reg;
+    assign req_l1_link3 = req_l1_link3_reg;
+    assign req_l1_link4 = req_l1_link4_reg;
+    assign req_l1_core = req_l1_core_reg;
+    assign req_l2_link1 = req_l2_link1_reg;
+    assign req_l2_link2 = req_l2_link2_reg;
+    assign req_l2_link3 = req_l2_link3_reg;
+    assign req_l2_link4 = req_l2_link4_reg;
+    assign req_l2_core = req_l2_core_reg;
+    assign req_l3_link1 = req_l3_link1_reg;
+    assign req_l3_link2 = req_l3_link2_reg;
+    assign req_l3_link3 = req_l3_link3_reg;
+    assign req_l3_link4 = req_l3_link4_reg;
+    assign req_l3_core = req_l3_core_reg;
+    assign req_l4_link1 = req_l4_link1_reg;
+    assign req_l4_link2 = req_l4_link2_reg;
+    assign req_l4_link3 = req_l4_link3_reg;
+    assign req_l4_link4 = req_l4_link4_reg;
+    assign req_l4_core = req_l4_core_reg;
+    assign req_c_link1 = req_c_link1_reg;
+    assign req_c_link2 = req_c_link2_reg;
+    assign req_c_link3 = req_c_link3_reg;
+    assign req_c_link4 = req_c_link4_reg;
+    assign req_c_core = req_c_core_reg;
+
+    always @(*) begin
+        req_l1_link1_reg = 4'b0000;
+        req_l1_link2_reg = 4'b0000;
+        req_l1_link3_reg = 4'b0000;
+        req_l1_link4_reg = 4'b0000;
+        req_l1_core_reg = 4'b0000;
+        req_l2_link1_reg = 4'b0000;
+        req_l2_link2_reg = 4'b0000;
+        req_l2_link3_reg = 4'b0000;
+        req_l2_link4_reg = 4'b0000;
+        req_l2_core_reg = 4'b0000;
+        req_l3_link1_reg = 4'b0000;
+        req_l3_link2_reg = 4'b0000;
+        req_l3_link3_reg = 4'b0000;
+        req_l3_link4_reg = 4'b0000;
+        req_l3_core_reg = 4'b0000;
+        req_l4_link1_reg = 4'b0000;
+        req_l4_link2_reg = 4'b0000;
+        req_l4_link3_reg = 4'b0000;
+        req_l4_link4_reg = 4'b0000;
+        req_l4_core_reg = 4'b0000;
+        req_c_link1_reg = 4'b0000;
+        req_c_link2_reg = 4'b0000;
+        req_c_link3_reg = 4'b0000;
+        req_c_link4_reg = 4'b0000;
+        req_c_core_reg = 4'b0000;
+
+        case (ip_link1_out_vc1[30:29])
+            2'b01: begin
+                if (ip_link1_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link1_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link1_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link1_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link1_out_vc2[30:29])
+            2'b01: begin
+                if (ip_link1_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link1_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link1_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link1_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link1_out_vc3[30:29])
+            2'b01: begin
+                if (ip_link1_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link1_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link1_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link1_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link1_out_vc4[30:29])
+            2'b01: begin
+                if (ip_link1_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link1_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link1_reg = 4'b1111;
+                else if (ip_link1_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link1_reg = 4'b1111;
+                else
+                    req_c_link1_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link1_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link1_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link2_out_vc1[30:29])
+            2'b01: begin
+                if (ip_link2_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link2_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link2_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link2_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link2_out_vc2[30:29])
+            2'b01: begin
+                if (ip_link2_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link2_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[0:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link2_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link2_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link2_out_vc3[30:29])
+            2'b01: begin
+                if (ip_link2_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link2_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link2_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link2_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link2_out_vc4[30:29])
+            2'b01: begin
+                if (ip_link2_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link2_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link2_reg = 4'b1111;
+                else if (ip_link2_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link2_reg = 4'b1111;
+                else
+                    req_c_link2_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link2_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link2_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link3_out_vc1[30:29])
+            2'b01: begin
+                if (ip_link3_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link3_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link3_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link3_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link3_out_vc2[30:29])
+            2'b01: begin
+                if (ip_link3_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link3_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link3_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link3_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link3_out_vc3[30:29])
+            2'b01: begin
+                if (ip_link3_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link3_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link3_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link3_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link3_out_vc4[30:29])
+            2'b01: begin
+                if (ip_link3_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link3_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link3_reg = 4'b1111;
+                else if (ip_link3_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link3_reg = 4'b1111;
+                else
+                    req_c_link3_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link3_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link3_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link4_out_vc1[30:29])
+            2'b01: begin
+                if (ip_link4_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link4_out_vc1[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc1[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link4_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link4_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link4_out_vc2[30:29])
+            2'b01: begin
+                if (ip_link4_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link4_out_vc2[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc2[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link4_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link4_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link4_out_vc3[30:29])
+            2'b01: begin
+                if (ip_link4_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link4_out_vc3[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc3[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link4_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link4_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_link4_out_vc4[30:29])
+            2'b01: begin
+                if (ip_link4_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_link4_out_vc4[7:4] > current_address[7:4])
+                    req_l1_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[7:4] < current_address[7:4])
+                    req_l2_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[3:0] > current_address[3:0])
+                    req_l3_link4_reg = 4'b1111;
+                else if (ip_link4_out_vc4[3:0] < current_address[3:0])
+                    req_l4_link4_reg = 4'b1111;
+                else
+                    req_c_link4_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_link4_reg = 4'b1111;
+            end
+            default: begin
+                req_c_link4_reg = 4'b1111;
+            end
+        endcase
+
+        case (ip_core_out_vc1[30:29])
+            2'b01: begin
+                if (ip_core_out_vc1[7:4] > current_address[7:4])
+                    req_l1_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[7:4] < current_address[7:4])
+                    req_l2_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[3:0] > current_address[3:0])
+                    req_l3_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[3:0] < current_address[3:0])
+                    req_l4_core_reg = 4'b1111;
+                else
+                    req_c_core_reg = 4'b1111;
+            end
+            2'b10: begin
+                if (ip_core_out_vc1[7:4] > current_address[7:4])
+                    req_l1_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[7:4] < current_address[7:4])
+                    req_l2_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[3:0] > current_address[3:0])
+                    req_l3_core_reg = 4'b1111;
+                else if (ip_core_out_vc1[3:0] < current_address[3:0])
+                    req_l4_core_reg = 4'b1111;
+                else
+                    req_c_core_reg = 4'b1111;
+            end
+            2'b11: begin
+                req_c_core_reg = 4'b1111;
+            end
+            default: begin
+                req_c_core_reg = 4'b1111;
+            end
+        endcase
+    end
+endmodule
+```
+
+This corrected module ensures that the 32-bit signals are properly truncated to 4 bits before being passed to the `ip_link_vc` ports and that the `req` signals are correctly assigned using registers.

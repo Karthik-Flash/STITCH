@@ -1,0 +1,53 @@
+dut.v:11: error: Unable to bind wire/reg/memory `en4_w' in `tb.dut'
+dut.v:62:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:11: error: Failed to elaborate input port 'd' expression (en4_w) in instance dut.dff_en4 of module: dff_asynch_clr.
+dut.v:19: error: Unable to bind wire/reg/memory `en5_w' in `tb.dut'
+dut.v:74:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:19: error: Failed to elaborate input port 'd' expression (en5_w) in instance dut.dff_en5 of module: dff_asynch_clr.
+dut.v:27: error: Unable to bind wire/reg/memory `en6_w' in `tb.dut'
+dut.v:86:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:27: error: Failed to elaborate input port 'd' expression (en6_w) in instance dut.dff_en6 of module: dff_asynch_clr.
+dut.v:35: error: Unable to bind wire/reg/memory `data_sel_w' in `tb.dut'
+dut.v:98:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:35: error: Failed to elaborate input port 'd' expression (data_sel_w) in instance dut.dff_data_sel of module: dff_asynch_clr.
+dut.v:43: error: Unable to bind wire/reg/memory `flag_A_w' in `tb.dut'
+dut.v:110:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:43: error: Failed to elaborate input port 'd' expression (flag_A_w) in instance dut.dff_flag_A of module: dff_asynch_clr.
+dut.v:51: error: Unable to bind wire/reg/memory `flag_B_w' in `tb.dut'
+dut.v:120:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:51: error: Failed to elaborate input port 'd' expression (flag_B_w) in instance dut.dff_flag_B of module: dff_asynch_clr.
+dut.v:65: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:62:      : 'en4_w' is declared here as a wire.
+dut.v:67: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:62:      : 'en4_w' is declared here as a wire.
+dut.v:69: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:62:      : 'en4_w' is declared here as a wire.
+dut.v:77: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:74:      : 'en5_w' is declared here as a wire.
+dut.v:79: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:74:      : 'en5_w' is declared here as a wire.
+dut.v:81: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:74:      : 'en5_w' is declared here as a wire.
+dut.v:89: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:86:      : 'en6_w' is declared here as a wire.
+dut.v:91: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:86:      : 'en6_w' is declared here as a wire.
+dut.v:93: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:86:      : 'en6_w' is declared here as a wire.
+dut.v:101: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:98:      : 'data_sel_w' is declared here as a wire.
+dut.v:103: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:98:      : 'data_sel_w' is declared here as a wire.
+dut.v:105: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:98:      : 'data_sel_w' is declared here as a wire.
+dut.v:113: error: 'flag_A_w' is not a valid l-value for a procedural assignment.
+dut.v:110:      : 'flag_A_w' is declared here as a wire.
+dut.v:115: error: 'flag_A_w' is not a valid l-value for a procedural assignment.
+dut.v:110:      : 'flag_A_w' is declared here as a wire.
+dut.v:123: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:120:      : 'flag_B_w' is declared here as a wire.
+dut.v:125: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:120:      : 'flag_B_w' is declared here as a wire.
+dut.v:127: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:120:      : 'flag_B_w' is declared here as a wire.
+29 error(s) during elaboration.

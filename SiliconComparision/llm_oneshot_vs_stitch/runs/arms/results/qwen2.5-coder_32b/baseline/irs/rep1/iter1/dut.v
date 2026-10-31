@@ -1,0 +1,139 @@
+module irs (
+    input reset, empty, rd_en, rd_clk, tailer, tailer_org, header,
+    output rd_en_out, data_sel, en1, en2, en4, en5, en6
+);
+
+    wire en1_w, en2_w, rd_en_out_w, data_sel_w;
+    reg en4_reg, en5_reg, en6_reg, data_sel_reg, flag_A_reg, flag_B_reg;
+
+    // Instantiate dff_asynch_clr for en4
+    dff_asynch_clr dff_en4 (
+        .d(en4_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en4_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en5
+    dff_asynch_clr dff_en5 (
+        .d(en5_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en5_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en6
+    dff_asynch_clr dff_en6 (
+        .d(en6_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en6_reg)
+    );
+
+    // Instantiate dff_asynch_clr for data_sel
+    dff_asynch_clr dff_data_sel (
+        .d(data_sel_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(data_sel_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_A
+    dff_asynch_clr dff_flag_A (
+        .d(flag_A_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_A_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_B
+    dff_asynch_clr dff_flag_B (
+        .d(flag_B_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_B_reg)
+    );
+
+    // Assignments for en1 and en2
+    assign en1_w = ~empty;
+    assign en2_w = rd_en;
+
+    // Combinational logic for en4
+    reg en4_w;
+    always @(*) begin
+        if (reset) begin
+            en4_w = 1'b0;
+        end else if (header) begin
+            en4_w = 1'b1;
+        end else begin
+            en4_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for en5
+    reg en5_w;
+    always @(*) begin
+        if (reset) begin
+            en5_w = 1'b0;
+        end else if (tailer) begin
+            en5_w = en4_reg;
+        end else begin
+            en5_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for en6
+    reg en6_w;
+    always @(*) begin
+        if (reset) begin
+            en6_w = 1'b0;
+        end else if (rd_clk) begin
+            en6_w = en5_reg;
+        end else begin
+            en6_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for data_sel
+    always @(*) begin
+        if (reset) begin
+            data_sel_w = 1'b0;
+        end else if (rd_en && ~flag_A_reg && ~flag_B_reg) begin
+            data_sel_w = 1'b1;
+        end else begin
+            data_sel_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for flag_A
+    reg flag_A_w;
+    always @(*) begin
+        if (reset) begin
+            flag_A_w = 1'b0;
+        end else begin
+            flag_A_w = data_sel_reg;
+        end
+    end
+
+    // Combinational logic for flag_B
+    reg flag_B_w;
+    always @(*) begin
+        if (reset || tailer) begin
+            flag_B_w = 1'b0;
+        end else if (data_sel_reg && ~data_sel_reg) begin
+            flag_B_w = 1'b1;
+        end else begin
+            flag_B_w = 1'b0;
+        end
+    end
+
+    // Output assignments
+    assign rd_en_out = en4_reg ? en2_w : en1_w;
+    assign data_sel = data_sel_reg;
+    assign en1 = en1_w;
+    assign en2 = en2_w;
+    assign en4 = en4_reg;
+    assign en5 = en5_reg;
+    assign en6 = en6_reg;
+
+endmodule

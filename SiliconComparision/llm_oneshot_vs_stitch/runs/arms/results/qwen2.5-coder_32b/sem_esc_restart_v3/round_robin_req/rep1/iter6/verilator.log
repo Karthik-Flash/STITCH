@@ -1,0 +1,208 @@
+%Warning-WIDTHTRUNC: dut.v:26:16: Operator ASSIGNW expects 15 bits on the Assign RHS, but Assign RHS's REPLICATE generates 16 bits.
+                                : ... note: In instance 'round_robin_req'
+   26 |     assign req = {req_16, req_15, req_14, req_13, req_12, req_11, req_10, req_9, req_8, req_7, req_6, req_5, req_4, req_3, req_2, req_1};
+      |                ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Error-PROCASSWIRE: dut.v:320:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g1'
+                                : ... note: In instance 'round_robin_req'
+  320 |             g1 <= 1'b0;
+      |             ^~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:321:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g2'
+                                : ... note: In instance 'round_robin_req'
+  321 |             g2 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:322:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g3'
+                                : ... note: In instance 'round_robin_req'
+  322 |             g3 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:323:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g4'
+                                : ... note: In instance 'round_robin_req'
+  323 |             g4 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:324:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g5'
+                                : ... note: In instance 'round_robin_req'
+  324 |             g5 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:325:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g6'
+                                : ... note: In instance 'round_robin_req'
+  325 |             g6 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:326:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g7'
+                                : ... note: In instance 'round_robin_req'
+  326 |             g7 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:327:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g8'
+                                : ... note: In instance 'round_robin_req'
+  327 |             g8 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:328:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g9'
+                                : ... note: In instance 'round_robin_req'
+  328 |             g9 <= 1'b0;
+      |             ^~
+%Error-PROCASSWIRE: dut.v:329:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g10'
+                                : ... note: In instance 'round_robin_req'
+  329 |             g10 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:330:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g11'
+                                : ... note: In instance 'round_robin_req'
+  330 |             g11 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:331:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g12'
+                                : ... note: In instance 'round_robin_req'
+  331 |             g12 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:332:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g13'
+                                : ... note: In instance 'round_robin_req'
+  332 |             g13 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:333:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g14'
+                                : ... note: In instance 'round_robin_req'
+  333 |             g14 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:334:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g15'
+                                : ... note: In instance 'round_robin_req'
+  334 |             g15 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:335:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g16'
+                                : ... note: In instance 'round_robin_req'
+  335 |             g16 <= 1'b0;
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:336:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g_b1'
+                                : ... note: In instance 'round_robin_req'
+  336 |             g_b1 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:337:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g_b2'
+                                : ... note: In instance 'round_robin_req'
+  337 |             g_b2 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:338:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g_b3'
+                                : ... note: In instance 'round_robin_req'
+  338 |             g_b3 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:339:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g_b4'
+                                : ... note: In instance 'round_robin_req'
+  339 |             g_b4 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:340:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt1'
+                                : ... note: In instance 'round_robin_req'
+  340 |             gnt1 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:341:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt2'
+                                : ... note: In instance 'round_robin_req'
+  341 |             gnt2 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:342:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt3'
+                                : ... note: In instance 'round_robin_req'
+  342 |             gnt3 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:343:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt4'
+                                : ... note: In instance 'round_robin_req'
+  343 |             gnt4 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:344:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt5'
+                                : ... note: In instance 'round_robin_req'
+  344 |             gnt5 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:345:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt6'
+                                : ... note: In instance 'round_robin_req'
+  345 |             gnt6 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:346:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt7'
+                                : ... note: In instance 'round_robin_req'
+  346 |             gnt7 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:347:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt8'
+                                : ... note: In instance 'round_robin_req'
+  347 |             gnt8 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:348:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt9'
+                                : ... note: In instance 'round_robin_req'
+  348 |             gnt9 <= 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:349:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt10'
+                                : ... note: In instance 'round_robin_req'
+  349 |             gnt10 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:350:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt11'
+                                : ... note: In instance 'round_robin_req'
+  350 |             gnt11 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:351:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt12'
+                                : ... note: In instance 'round_robin_req'
+  351 |             gnt12 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:352:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt13'
+                                : ... note: In instance 'round_robin_req'
+  352 |             gnt13 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:353:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt14'
+                                : ... note: In instance 'round_robin_req'
+  353 |             gnt14 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:354:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt15'
+                                : ... note: In instance 'round_robin_req'
+  354 |             gnt15 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:355:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'gnt16'
+                                : ... note: In instance 'round_robin_req'
+  355 |             gnt16 <= 1'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:357:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g1'
+                                : ... note: In instance 'round_robin_req'
+  357 |             g1 <= g[1];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:358:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g2'
+                                : ... note: In instance 'round_robin_req'
+  358 |             g2 <= g[2];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:359:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g3'
+                                : ... note: In instance 'round_robin_req'
+  359 |             g3 <= g[3];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:360:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g4'
+                                : ... note: In instance 'round_robin_req'
+  360 |             g4 <= g[4];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:361:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g5'
+                                : ... note: In instance 'round_robin_req'
+  361 |             g5 <= g[5];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:362:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g6'
+                                : ... note: In instance 'round_robin_req'
+  362 |             g6 <= g[6];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:363:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g7'
+                                : ... note: In instance 'round_robin_req'
+  363 |             g7 <= g[7];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:364:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g8'
+                                : ... note: In instance 'round_robin_req'
+  364 |             g8 <= g[8];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:365:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g9'
+                                : ... note: In instance 'round_robin_req'
+  365 |             g9 <= g[9];
+      |             ^~
+%Error-PROCASSWIRE: dut.v:366:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g10'
+                                : ... note: In instance 'round_robin_req'
+  366 |             g10 <= g[10];
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:367:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g11'
+                                : ... note: In instance 'round_robin_req'
+  367 |             g11 <= g[11];
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:368:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g12'
+                                : ... note: In instance 'round_robin_req'
+  368 |             g12 <= g[12];
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:369:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g13'
+                                : ... note: In instance 'round_robin_req'
+  369 |             g13 <= g[13];
+      |             ^~~
+%Error-PROCASSWIRE: dut.v:370:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'g14'
+                                : ... note: In instance 'round_robin_req'
+  370 |             g14 <= g[14];
+      |             ^~~
+%Error: Exiting due to too many errors encountered; --error-limit=50

@@ -1,0 +1,26 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "PINCONNECTEMPTY": 40,
+  "WIDTHEXPAND": 1,
+  "WIDTHTRUNC": 4,
+  "UNUSEDSIGNAL": 2
+ },
+ "verilator_warnings_count": 47,
+ "verilator_hard": 4,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "cf42d20568648aeaf311135163c01e8a22a3c5a3057a2dbbdcadb03f409ee787",
+ "file": "outputs/simloop/ip_link.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

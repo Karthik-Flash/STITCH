@@ -1,0 +1,2 @@
+dut.v:96: error: 'data_sel_w' has already been declared in this scope.
+dut.v:6:      : It was declared here as a net.

@@ -1,0 +1,3 @@
+dut.v:2: error: ';' is an invalid port declaration separator.
+dut.v:3: syntax error
+dut.v:1: Errors in port declarations.

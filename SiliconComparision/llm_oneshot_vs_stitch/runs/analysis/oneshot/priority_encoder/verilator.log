@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: dut.v:2:11: Signal is not used: 'reset'
+                                 : ... note: In instance 'priority_encoder'
+    2 |     input reset,
+      |           ^~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

@@ -1,0 +1,173 @@
+dut.v:47: error: expression not valid in assign l-value: 1'd0
+dut.v:47: error: Output port expression must support a continuous assignment.
+dut.v:47:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:47: error: expression not valid in assign l-value: 1'd0
+dut.v:47: error: Output port expression must support a continuous assignment.
+dut.v:47:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:47: error: expression not valid in assign l-value: 1'd0
+dut.v:47: error: Output port expression must support a continuous assignment.
+dut.v:47:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:47: error: expression not valid in assign l-value: 1'd0
+dut.v:47: error: Output port expression must support a continuous assignment.
+dut.v:47:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:47: error: expression not valid in assign l-value: 1'd0
+dut.v:47: error: Output port expression must support a continuous assignment.
+dut.v:47:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:41: warning: Port 22 (fifo_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:41:        : Padding 31 high bits of the port.
+dut.v:41: warning: Port 23 (header_flit) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:41:        : Padding 31 high bits of the port.
+dut.v:41: warning: Port 24 (reg_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:41:        : Padding 31 high bits of the port.
+dut.v:41: warning: Port 25 (mux_data_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:41:        : Padding 31 high bits of the port.
+dut.v:41: warning: Port 26 (header_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:41:        : Padding 31 high bits of the port.
+dut.v:57: error: expression not valid in assign l-value: 1'd0
+dut.v:57: error: Output port expression must support a continuous assignment.
+dut.v:57:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:57: error: expression not valid in assign l-value: 1'd0
+dut.v:57: error: Output port expression must support a continuous assignment.
+dut.v:57:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:57: error: expression not valid in assign l-value: 1'd0
+dut.v:57: error: Output port expression must support a continuous assignment.
+dut.v:57:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:57: error: expression not valid in assign l-value: 1'd0
+dut.v:57: error: Output port expression must support a continuous assignment.
+dut.v:57:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:57: error: expression not valid in assign l-value: 1'd0
+dut.v:57: error: Output port expression must support a continuous assignment.
+dut.v:57:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:51: warning: Port 22 (fifo_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:51:        : Padding 31 high bits of the port.
+dut.v:51: warning: Port 23 (header_flit) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:51:        : Padding 31 high bits of the port.
+dut.v:51: warning: Port 24 (reg_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:51:        : Padding 31 high bits of the port.
+dut.v:51: warning: Port 25 (mux_data_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:51:        : Padding 31 high bits of the port.
+dut.v:51: warning: Port 26 (header_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:51:        : Padding 31 high bits of the port.
+dut.v:67: error: expression not valid in assign l-value: 1'd0
+dut.v:67: error: Output port expression must support a continuous assignment.
+dut.v:67:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:67: error: expression not valid in assign l-value: 1'd0
+dut.v:67: error: Output port expression must support a continuous assignment.
+dut.v:67:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:67: error: expression not valid in assign l-value: 1'd0
+dut.v:67: error: Output port expression must support a continuous assignment.
+dut.v:67:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:67: error: expression not valid in assign l-value: 1'd0
+dut.v:67: error: Output port expression must support a continuous assignment.
+dut.v:67:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:67: error: expression not valid in assign l-value: 1'd0
+dut.v:67: error: Output port expression must support a continuous assignment.
+dut.v:67:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:61: warning: Port 22 (fifo_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:61:        : Padding 31 high bits of the port.
+dut.v:61: warning: Port 23 (header_flit) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:61:        : Padding 31 high bits of the port.
+dut.v:61: warning: Port 24 (reg_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:61:        : Padding 31 high bits of the port.
+dut.v:61: warning: Port 25 (mux_data_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:61:        : Padding 31 high bits of the port.
+dut.v:61: warning: Port 26 (header_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:61:        : Padding 31 high bits of the port.
+dut.v:77: error: expression not valid in assign l-value: 1'd0
+dut.v:77: error: Output port expression must support a continuous assignment.
+dut.v:77:      : Port 17 (tailer_org) of ip_chnl is connected to tb.dut.1'd0
+dut.v:77: error: expression not valid in assign l-value: 1'd0
+dut.v:77: error: Output port expression must support a continuous assignment.
+dut.v:77:      : Port 18 (nxt_reset) of ip_chnl is connected to tb.dut.1'd0
+dut.v:77: error: expression not valid in assign l-value: 1'd0
+dut.v:77: error: Output port expression must support a continuous assignment.
+dut.v:77:      : Port 19 (data_sel) of ip_chnl is connected to tb.dut.1'd0
+dut.v:77: error: expression not valid in assign l-value: 1'd0
+dut.v:77: error: Output port expression must support a continuous assignment.
+dut.v:77:      : Port 20 (header) of ip_chnl is connected to tb.dut.1'd0
+dut.v:77: error: expression not valid in assign l-value: 1'd0
+dut.v:77: error: Output port expression must support a continuous assignment.
+dut.v:77:      : Port 21 (empty) of ip_chnl is connected to tb.dut.1'd0
+dut.v:71: warning: Port 22 (fifo_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:71:        : Padding 31 high bits of the port.
+dut.v:71: warning: Port 23 (header_flit) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:71:        : Padding 31 high bits of the port.
+dut.v:71: warning: Port 24 (reg_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:71:        : Padding 31 high bits of the port.
+dut.v:71: warning: Port 25 (mux_data_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:71:        : Padding 31 high bits of the port.
+dut.v:71: warning: Port 26 (header_out) of module ip_chnl expects 32 bit(s), given 1.
+dut.v:71:        : Padding 31 high bits of the port.
+dut.v:122: error: 'data_out_vc1' is not a valid l-value for a procedural assignment.
+dut.v:1:      : 'data_out_vc1' is declared here as a wire.
+dut.v:123: error: 'data_out_vc2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'data_out_vc2' is declared here as a wire.
+dut.v:124: error: 'data_out_vc3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'data_out_vc3' is declared here as a wire.
+dut.v:125: error: 'data_out_vc4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'data_out_vc4' is declared here as a wire.
+dut.v:126: error: 'full_vc1' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'full_vc1' is declared here as a wire.
+dut.v:127: error: 'full_vc2' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'full_vc2' is declared here as a wire.
+dut.v:128: error: 'full_vc3' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'full_vc3' is declared here as a wire.
+dut.v:129: error: 'full_vc4' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'full_vc4' is declared here as a wire.
+dut.v:130: error: 'req_l1_vc1' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'req_l1_vc1' is declared here as a wire.
+dut.v:131: error: 'req_l1_vc2' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'req_l1_vc2' is declared here as a wire.
+dut.v:132: error: 'req_l1_vc3' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'req_l1_vc3' is declared here as a wire.
+dut.v:133: error: 'req_l1_vc4' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'req_l1_vc4' is declared here as a wire.
+dut.v:134: error: 'req_l2_vc1' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'req_l2_vc1' is declared here as a wire.
+dut.v:135: error: 'req_l2_vc2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l2_vc2' is declared here as a wire.
+dut.v:136: error: 'req_l2_vc3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l2_vc3' is declared here as a wire.
+dut.v:137: error: 'req_l2_vc4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l2_vc4' is declared here as a wire.
+dut.v:138: error: 'req_l3_vc1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l3_vc1' is declared here as a wire.
+dut.v:139: error: 'req_l3_vc2' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l3_vc2' is declared here as a wire.
+dut.v:140: error: 'req_l3_vc3' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l3_vc3' is declared here as a wire.
+dut.v:141: error: 'req_l3_vc4' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l3_vc4' is declared here as a wire.
+dut.v:142: error: 'req_l4_vc1' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'req_l4_vc1' is declared here as a wire.
+dut.v:143: error: 'req_l4_vc2' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_l4_vc2' is declared here as a wire.
+dut.v:144: error: 'req_l4_vc3' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_l4_vc3' is declared here as a wire.
+dut.v:145: error: 'req_l4_vc4' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_l4_vc4' is declared here as a wire.
+dut.v:146: error: 'req_c_vc1' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_c_vc1' is declared here as a wire.
+dut.v:147: error: 'req_c_vc2' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_c_vc2' is declared here as a wire.
+dut.v:148: error: 'req_c_vc3' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_c_vc3' is declared here as a wire.
+dut.v:149: error: 'req_c_vc4' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'req_c_vc4' is declared here as a wire.
+dut.v:150: error: 'tailer_vc1' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'tailer_vc1' is declared here as a wire.
+dut.v:151: error: 'tailer_vc2' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'tailer_vc2' is declared here as a wire.
+dut.v:152: error: 'tailer_vc3' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'tailer_vc3' is declared here as a wire.
+dut.v:153: error: 'tailer_vc4' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'tailer_vc4' is declared here as a wire.
+dut.v:154: error: 'rok_vc1' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rok_vc1' is declared here as a wire.
+dut.v:155: error: 'rok_vc2' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rok_vc2' is declared here as a wire.
+dut.v:156: error: 'rok_vc3' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rok_vc3' is declared here as a wire.
+dut.v:157: error: 'rok_vc4' is not a valid l-value for a procedural assignment.
+dut.v:15:      : 'rok_vc4' is declared here as a wire.
+56 error(s) during elaboration.

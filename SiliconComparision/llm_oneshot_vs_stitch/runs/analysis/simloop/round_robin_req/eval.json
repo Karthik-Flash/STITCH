@@ -1,0 +1,27 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "WIDTHTRUNC": 1,
+  "UNUSEDSIGNAL": 16,
+  "UNDRIVEN": 32,
+  "MULTIDRIVEN": 15,
+  "UNOPTFLAT": 1
+ },
+ "verilator_warnings_count": 65,
+ "verilator_hard": 17,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "cbddcac8aede39de66bfa2cb2aee92685cb3f7a9a61236c691851ddee8429f15",
+ "file": "outputs/simloop/round_robin_req.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

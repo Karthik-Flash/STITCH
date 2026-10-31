@@ -1,0 +1,17 @@
+dut.v:58: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:59: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:61: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:62: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:65: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:66: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:70: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_ext' is declared here as a wire.
+dut.v:72: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_ext' is declared here as a wire.
+8 error(s) during elaboration.

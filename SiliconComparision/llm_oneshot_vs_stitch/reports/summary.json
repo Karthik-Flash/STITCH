@@ -1,0 +1,2539 @@
+{
+ "model": "qwen2.5-coder:32b",
+ "rows": [
+  {
+   "module": "allot_vc",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     1124
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1253,
+     1317,
+     1484,
+     2746,
+     1408,
+     2106
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "WIDTHEXPAND",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1253,
+     1317,
+     1468,
+     1312,
+     1404,
+     1253
+    ]
+   }
+  },
+  {
+   "module": "asynch_comparator",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     732
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     732,
+     753,
+     838,
+     1648,
+     1800,
+     2494
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     732,
+     732,
+     783,
+     732,
+     778,
+     778
+    ]
+   }
+  },
+  {
+   "module": "demux_16",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     2913
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     535,
+     587,
+     601,
+     587,
+     587,
+     587
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     535,
+     587,
+     587,
+     535,
+     587,
+     590
+    ]
+   }
+  },
+  {
+   "module": "dff_asynch_clr",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     88
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "func_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     92
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     92
+    ]
+   }
+  },
+  {
+   "module": "dff_synch_clr",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     88
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "dff_synch_reset",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     88
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "dff_synch_set",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     88
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "encoder",
+   "oneshot": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     243
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "func_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     478
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     478
+    ]
+   }
+  },
+  {
+   "module": "falling_edge_pulse_generator",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     365
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     365,
+     631,
+     592,
+     456,
+     846,
+     383
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNUSEDSIGNAL"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     365,
+     1032,
+     480,
+     489,
+     365,
+     460
+    ]
+   }
+  },
+  {
+   "module": "final_op_data",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     160
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "func_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     174
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     174
+    ]
+   }
+  },
+  {
+   "module": "gray_mod6",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     624
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     624,
+     578,
+     1406,
+     1302,
+     1366,
+     1380
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNUSEDSIGNAL"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     624,
+     578,
+     1924,
+     615,
+     613,
+     729
+    ]
+   }
+  },
+  {
+   "module": "ip_chnl",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     1159
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1159,
+     1211,
+     1378,
+     1363,
+     1329,
+     1333
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "MULTIDRIVEN",
+     "PINMISSING",
+     "UNDRIVEN",
+     "UNUSEDSIGNAL",
+     "WIDTHEXPAND",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1159,
+     1230,
+     1297,
+     1522,
+     1608,
+     1399
+    ]
+   }
+  },
+  {
+   "module": "ip_link",
+   "oneshot": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     2336
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     4718,
+     2414,
+     2433,
+     2695,
+     2695,
+     2695
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING",
+     "UNUSEDSIGNAL",
+     "WIDTHEXPAND",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     2308,
+     2529,
+     2608,
+     2608,
+     2387,
+     3005
+    ]
+   }
+  },
+  {
+   "module": "irs",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     1073
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     985,
+     987,
+     979,
+     1040,
+     1030,
+     1087
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNUSEDSIGNAL"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     971,
+     964,
+     964,
+     1026,
+     1044,
+     1036
+    ]
+   }
+  },
+  {
+   "module": "jk_ff",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     209
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "memory",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     206
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "mux",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     399
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "op_core",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     5432
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5465,
+     5446,
+     5478,
+     5505,
+     5505,
+     5505
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNUSEDSIGNAL",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5465,
+     5445,
+     5477,
+     5504,
+     5504,
+     5512
+    ]
+   }
+  },
+  {
+   "module": "op_data_path",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     3145
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     3113,
+     3113,
+     3113,
+     3113,
+     3113,
+     3113
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     3113,
+     3113,
+     3113,
+     3113,
+     3113,
+     3113
+    ]
+   }
+  },
+  {
+   "module": "op_link1",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     7088
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     7090,
+     7096,
+     7135,
+     7165,
+     7155,
+     7171
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING",
+     "WIDTHEXPAND",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     7090,
+     7096,
+     7135,
+     6933,
+     6883,
+     7149
+    ]
+   }
+  },
+  {
+   "module": "op_link2",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     6226
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     6248,
+     6228,
+     6248,
+     6228,
+     6248,
+     6228
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING",
+     "WIDTHEXPAND"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     6248,
+     6228,
+     6256,
+     6228,
+     6256,
+     6228
+    ]
+   }
+  },
+  {
+   "module": "op_link3",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     4992
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5025,
+     4997,
+     4997,
+     5033,
+     4997,
+     5033
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5025,
+     4997,
+     5017,
+     4897,
+     4869,
+     4889
+    ]
+   }
+  },
+  {
+   "module": "op_link4",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     5412
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5450,
+     5430,
+     5510,
+     5438,
+     5520,
+     5448
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     5450,
+     5431,
+     5511,
+     5439,
+     5521,
+     5449
+    ]
+   }
+  },
+  {
+   "module": "priority_encoder",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     587
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "register_1bit",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     104
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 1,
+    "stop": "func_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     102
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 2,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     236,
+     102
+    ]
+   }
+  },
+  {
+   "module": "register_32bit",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     123
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "register_4bit",
+   "oneshot": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     114
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "func_pass_at_input",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 0,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [],
+    "tokens_out": []
+   }
+  },
+  {
+   "module": "round_robin_req",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     2660
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     2667,
+     2667,
+     2667,
+     2667,
+     2667,
+     2667
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "COMB_LOOP",
+     "UNDRIVEN",
+     "UNUSEDSIGNAL",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     2667,
+     2667,
+     2873,
+     2953,
+     4103,
+     4755
+    ]
+   }
+  },
+  {
+   "module": "router_fifo",
+   "oneshot": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     630
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     652,
+     757,
+     1641,
+     1462,
+     1741,
+     1681
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     650,
+     788,
+     791,
+     650,
+     2444,
+     803
+    ]
+   }
+  },
+  {
+   "module": "routing_algo_mesh",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     551
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 2,
+    "stop": "func_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     639,
+     639
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": true,
+    "struct_clean": true,
+    "clean": true,
+    "latch_events": 0,
+    "signoff": true,
+    "so_clean": true,
+    "iterations": 2,
+    "stop": "clean_pass",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": true,
+    "runner_clean": true,
+    "done_reasons": [
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     639,
+     639
+    ]
+   }
+  },
+  {
+   "module": "rr_arbiter",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     1230
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1224,
+     1236,
+     1287,
+     1356,
+     1299,
+     1303
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1224,
+     1236,
+     1236,
+     1230,
+     1308,
+     1306
+    ]
+   }
+  },
+  {
+   "module": "rr_comb_new",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     1086
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1135,
+     2430,
+     1208,
+     1377,
+     1403,
+     1403
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNDRIVEN"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     1135,
+     1213,
+     1457,
+     1268,
+     1414,
+     1129
+    ]
+   }
+  },
+  {
+   "module": "top_2x2_router",
+   "oneshot": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     7738
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     7738,
+     7738,
+     7738,
+     7738,
+     7738,
+     7738
+    ]
+   },
+   "stitch": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING",
+     "UNUSEDSIGNAL",
+     "WIDTHEXPAND",
+     "WIDTHTRUNC"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     7738,
+     8103,
+     8103,
+     8103,
+     8103,
+     8103
+    ]
+   }
+  },
+  {
+   "module": "top_module",
+   "oneshot": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     27383
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     17252,
+     23050,
+     16595,
+     16899,
+     16977,
+     16796
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "PINMISSING"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     16620,
+     20136,
+     18132,
+     16608,
+     16681,
+     16480
+    ]
+   }
+  }
+ ],
+ "totals": {
+  "oneshot": 9,
+  "simloop": 14,
+  "stitch": 14
+ },
+ "n": {
+  "oneshot": 34,
+  "simloop": 34,
+  "stitch": 34
+ },
+ "full_router": null
+}

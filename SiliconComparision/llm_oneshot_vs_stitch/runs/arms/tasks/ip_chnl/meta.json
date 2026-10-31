@@ -1,0 +1,53 @@
+{
+ "track": "N",
+ "top": "ip_chnl",
+ "source": "golden/handwritten/ip_chnl.v",
+ "children": [
+  "dff_synch_reset",
+  "dff_synch_set",
+  "irs",
+  "register_32bit",
+  "router_fifo",
+  "routing_algo_mesh"
+ ],
+ "descendants": [
+  "dff_synch_reset",
+  "dff_synch_set",
+  "dff_asynch_clr",
+  "irs",
+  "register_32bit",
+  "asynch_comparator",
+  "jk_ff",
+  "gray_mod6",
+  "memory",
+  "router_fifo",
+  "routing_algo_mesh"
+ ],
+ "checked_outputs": [
+  "full_ext",
+  "empty_synch_rdclk",
+  "req_l1",
+  "req_l2",
+  "req_l3",
+  "req_l4",
+  "req_c",
+  "data_out",
+  "tailer",
+  "tailer_org",
+  "data_sel",
+  "header",
+  "empty",
+  "fifo_out",
+  "header_flit",
+  "mux_data_out",
+  "header_out"
+ ],
+ "not_checked": [
+  "nxt_reset",
+  "reg_out"
+ ],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

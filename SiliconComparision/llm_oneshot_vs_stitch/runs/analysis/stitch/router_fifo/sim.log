@@ -1,0 +1,18 @@
+FAIL t=59000 cycle 4: rd_add = 1, expected 0
+FAIL t=64000 cycle 5: rd_add = 1, expected 0
+FAIL t=69000 cycle 5: rd_add = 1, expected 0
+FAIL t=74000 cycle 6: rd_add = 1, expected 0
+FAIL t=79000 cycle 6: rd_add = 3, expected 1
+FAIL t=79000 cycle 6: data_out = 5d817e33, expected 07f2f403
+FAIL t=84000 cycle 7: rd_add = 3, expected 1
+FAIL t=84000 cycle 7: data_out = 5d817e33, expected 07f2f403
+FAIL t=89000 cycle 7: rd_add = 3, expected 1
+FAIL t=89000 cycle 7: data_out = 5d817e33, expected 07f2f403
+FAIL t=94000 cycle 8: rd_add = 3, expected 1
+FAIL t=94000 cycle 8: data_out = 5d817e33, expected 07f2f403
+FAIL t=99000 cycle 8: rd_add = 2, expected 3
+FAIL t=99000 cycle 8: data_out = 07f2f403, expected 23074702
+FAIL t=104000 cycle 9: rd_add = 2, expected 3
+INFO coverage: 8 of 8 checked outputs toggled, 38 of 43 bits
+FAIL: 1419 mismatches, 0 property errors
+tb.v:127: $finish called at 2009000 (1ps)

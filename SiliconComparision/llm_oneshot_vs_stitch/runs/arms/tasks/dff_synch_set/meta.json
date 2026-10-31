@@ -1,0 +1,15 @@
+{
+ "track": "N",
+ "top": "dff_synch_set",
+ "source": "golden/handwritten/dff_synch_set.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "q"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "comparison+properties",
+ "mutant_output": null,
+ "phase3_task": null
+}

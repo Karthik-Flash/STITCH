@@ -1,0 +1,480 @@
+%Warning-PINCONNECTEMPTY: dut.v:95:10: Instance pin connected by name with empty reference: 'g_b1'
+   95 |         .g_b1(),
+      |          ^~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:96:10: Instance pin connected by name with empty reference: 'g_b2'
+   96 |         .g_b2(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:97:10: Instance pin connected by name with empty reference: 'g_b3'
+   97 |         .g_b3(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:98:10: Instance pin connected by name with empty reference: 'g_b4'
+   98 |         .g_b4(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:99:10: Instance pin connected by name with empty reference: 'gnt1'
+   99 |         .gnt1(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:100:10: Instance pin connected by name with empty reference: 'gnt2'
+  100 |         .gnt2(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:101:10: Instance pin connected by name with empty reference: 'gnt3'
+  101 |         .gnt3(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:102:10: Instance pin connected by name with empty reference: 'gnt4'
+  102 |         .gnt4(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:103:10: Instance pin connected by name with empty reference: 'gnt5'
+  103 |         .gnt5(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:104:10: Instance pin connected by name with empty reference: 'gnt6'
+  104 |         .gnt6(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:105:10: Instance pin connected by name with empty reference: 'gnt7'
+  105 |         .gnt7(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:106:10: Instance pin connected by name with empty reference: 'gnt8'
+  106 |         .gnt8(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:107:10: Instance pin connected by name with empty reference: 'gnt9'
+  107 |         .gnt9(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:108:10: Instance pin connected by name with empty reference: 'gnt10'
+  108 |         .gnt10(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:109:10: Instance pin connected by name with empty reference: 'gnt11'
+  109 |         .gnt11(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:110:10: Instance pin connected by name with empty reference: 'gnt12'
+  110 |         .gnt12(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:111:10: Instance pin connected by name with empty reference: 'gnt13'
+  111 |         .gnt13(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:112:10: Instance pin connected by name with empty reference: 'gnt14'
+  112 |         .gnt14(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:113:10: Instance pin connected by name with empty reference: 'gnt15'
+  113 |         .gnt15(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:114:10: Instance pin connected by name with empty reference: 'gnt16'
+  114 |         .gnt16(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:115:10: Instance pin connected by name with empty reference: 'req1'
+  115 |         .req1(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:116:10: Instance pin connected by name with empty reference: 'req2'
+  116 |         .req2(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:117:10: Instance pin connected by name with empty reference: 'req3'
+  117 |         .req3(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:10: Instance pin connected by name with empty reference: 'req4'
+  118 |         .req4(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:10: Instance pin connected by name with empty reference: 'req5'
+  119 |         .req5(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:10: Instance pin connected by name with empty reference: 'req6'
+  120 |         .req6(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:10: Instance pin connected by name with empty reference: 'req7'
+  121 |         .req7(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:122:10: Instance pin connected by name with empty reference: 'req8'
+  122 |         .req8(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:123:10: Instance pin connected by name with empty reference: 'req9'
+  123 |         .req9(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:10: Instance pin connected by name with empty reference: 'req10'
+  124 |         .req10(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:125:10: Instance pin connected by name with empty reference: 'req11'
+  125 |         .req11(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:126:10: Instance pin connected by name with empty reference: 'req12'
+  126 |         .req12(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:127:10: Instance pin connected by name with empty reference: 'req13'
+  127 |         .req13(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:128:10: Instance pin connected by name with empty reference: 'req14'
+  128 |         .req14(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:129:10: Instance pin connected by name with empty reference: 'req15'
+  129 |         .req15(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:130:10: Instance pin connected by name with empty reference: 'req16'
+  130 |         .req16(),
+      |          ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:131:10: Instance pin connected by name with empty reference: 'g1_latched'
+  131 |         .g1_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:132:10: Instance pin connected by name with empty reference: 'g2_latched'
+  132 |         .g2_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:133:10: Instance pin connected by name with empty reference: 'g3_latched'
+  133 |         .g3_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:134:10: Instance pin connected by name with empty reference: 'g4_latched'
+  134 |         .g4_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:135:10: Instance pin connected by name with empty reference: 'g5_latched'
+  135 |         .g5_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:136:10: Instance pin connected by name with empty reference: 'g6_latched'
+  136 |         .g6_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:137:10: Instance pin connected by name with empty reference: 'g7_latched'
+  137 |         .g7_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:138:10: Instance pin connected by name with empty reference: 'g8_latched'
+  138 |         .g8_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:139:10: Instance pin connected by name with empty reference: 'g9_latched'
+  139 |         .g9_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:140:10: Instance pin connected by name with empty reference: 'g10_latched'
+  140 |         .g10_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:141:10: Instance pin connected by name with empty reference: 'g11_latched'
+  141 |         .g11_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:142:10: Instance pin connected by name with empty reference: 'g12_latched'
+  142 |         .g12_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:143:10: Instance pin connected by name with empty reference: 'g13_latched'
+  143 |         .g13_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:144:10: Instance pin connected by name with empty reference: 'g14_latched'
+  144 |         .g14_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:145:10: Instance pin connected by name with empty reference: 'g15_latched'
+  145 |         .g15_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:146:10: Instance pin connected by name with empty reference: 'g16_latched'
+  146 |         .g16_latched(),
+      |          ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:147:10: Instance pin connected by name with empty reference: 'g1_int'
+  147 |         .g1_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:148:10: Instance pin connected by name with empty reference: 'g2_int'
+  148 |         .g2_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:149:10: Instance pin connected by name with empty reference: 'g3_int'
+  149 |         .g3_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:150:10: Instance pin connected by name with empty reference: 'g4_int'
+  150 |         .g4_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:151:10: Instance pin connected by name with empty reference: 'g5_int'
+  151 |         .g5_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:152:10: Instance pin connected by name with empty reference: 'g6_int'
+  152 |         .g6_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:153:10: Instance pin connected by name with empty reference: 'g7_int'
+  153 |         .g7_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:154:10: Instance pin connected by name with empty reference: 'g8_int'
+  154 |         .g8_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:155:10: Instance pin connected by name with empty reference: 'g9_int'
+  155 |         .g9_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:156:10: Instance pin connected by name with empty reference: 'g10_int'
+  156 |         .g10_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:157:10: Instance pin connected by name with empty reference: 'g11_int'
+  157 |         .g11_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:158:10: Instance pin connected by name with empty reference: 'g12_int'
+  158 |         .g12_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:159:10: Instance pin connected by name with empty reference: 'g13_int'
+  159 |         .g13_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:160:10: Instance pin connected by name with empty reference: 'g14_int'
+  160 |         .g14_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:161:10: Instance pin connected by name with empty reference: 'g15_int'
+  161 |         .g15_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:162:10: Instance pin connected by name with empty reference: 'g16_int'
+  162 |         .g16_int(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:163:10: Instance pin connected by name with empty reference: 't1'
+  163 |         .t1(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:164:10: Instance pin connected by name with empty reference: 't2'
+  164 |         .t2(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:165:10: Instance pin connected by name with empty reference: 't3'
+  165 |         .t3(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:166:10: Instance pin connected by name with empty reference: 't4'
+  166 |         .t4(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:167:10: Instance pin connected by name with empty reference: 'req_b1'
+  167 |         .req_b1(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:168:10: Instance pin connected by name with empty reference: 'req_b2'
+  168 |         .req_b2(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:169:10: Instance pin connected by name with empty reference: 'req_b3'
+  169 |         .req_b3(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:170:10: Instance pin connected by name with empty reference: 'req_b4'
+  170 |         .req_b4(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:171:10: Instance pin connected by name with empty reference: 'nreq_1'
+  171 |         .nreq_1(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:172:10: Instance pin connected by name with empty reference: 'nreq_2'
+  172 |         .nreq_2(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:173:10: Instance pin connected by name with empty reference: 'nreq_3'
+  173 |         .nreq_3(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:174:10: Instance pin connected by name with empty reference: 'nreq_4'
+  174 |         .nreq_4(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:175:10: Instance pin connected by name with empty reference: 'nreq_5'
+  175 |         .nreq_5(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:176:10: Instance pin connected by name with empty reference: 'nreq_6'
+  176 |         .nreq_6(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:177:10: Instance pin connected by name with empty reference: 'nreq_7'
+  177 |         .nreq_7(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:178:10: Instance pin connected by name with empty reference: 'nreq_8'
+  178 |         .nreq_8(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:179:10: Instance pin connected by name with empty reference: 'nreq_9'
+  179 |         .nreq_9(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:180:10: Instance pin connected by name with empty reference: 'nreq_10'
+  180 |         .nreq_10(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:181:10: Instance pin connected by name with empty reference: 'nreq_11'
+  181 |         .nreq_11(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:182:10: Instance pin connected by name with empty reference: 'nreq_12'
+  182 |         .nreq_12(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:183:10: Instance pin connected by name with empty reference: 'nreq_13'
+  183 |         .nreq_13(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:184:10: Instance pin connected by name with empty reference: 'nreq_14'
+  184 |         .nreq_14(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:185:10: Instance pin connected by name with empty reference: 'nreq_15'
+  185 |         .nreq_15(),
+      |          ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:186:10: Instance pin connected by name with empty reference: 'nreq_16'
+  186 |         .nreq_16()
+      |          ^~~~~~~
+%Error-PROCASSWIRE: dut.v:388:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  388 |             4'h0: ip1 = link_1[0] & vc_id_1[0];
+      |                   ^~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:389:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  389 |             4'h1: ip1 = link_1[0] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:390:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  390 |             4'h2: ip1 = link_1[1] & vc_id_1[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:391:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  391 |             4'h3: ip1 = link_1[1] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:392:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  392 |             4'h4: ip1 = link_2[0] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:393:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  393 |             4'h5: ip1 = link_2[0] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:394:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  394 |             4'h6: ip1 = link_2[1] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:395:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  395 |             4'h7: ip1 = link_2[1] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:396:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  396 |             4'h8: ip1 = link_3[0] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:397:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  397 |             4'h9: ip1 = link_3[0] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:398:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  398 |             4'ha: ip1 = link_3[1] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:399:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  399 |             4'hb: ip1 = link_3[1] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:400:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  400 |             4'hc: ip1 = link_4[0] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:401:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  401 |             4'hd: ip1 = link_4[0] & vc_id_4[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:402:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  402 |             4'he: ip1 = link_4[1] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:403:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  403 |             4'hf: ip1 = link_4[1] & vc_id_4[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:404:22: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip1'
+                                : ... note: In instance 'op_link2'
+  404 |             default: ip1 = 1'b0;
+      |                      ^~~
+%Error-PROCASSWIRE: dut.v:410:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  410 |             4'h0: ip2 = link_1[0] & vc_id_1[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:411:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  411 |             4'h1: ip2 = link_1[0] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:412:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  412 |             4'h2: ip2 = link_1[1] & vc_id_1[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:413:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  413 |             4'h3: ip2 = link_1[1] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:414:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  414 |             4'h4: ip2 = link_2[0] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:415:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  415 |             4'h5: ip2 = link_2[0] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:416:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  416 |             4'h6: ip2 = link_2[1] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:417:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  417 |             4'h7: ip2 = link_2[1] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:418:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  418 |             4'h8: ip2 = link_3[0] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:419:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  419 |             4'h9: ip2 = link_3[0] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:420:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  420 |             4'ha: ip2 = link_3[1] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:421:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  421 |             4'hb: ip2 = link_3[1] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:422:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  422 |             4'hc: ip2 = link_4[0] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:423:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  423 |             4'hd: ip2 = link_4[0] & vc_id_4[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:424:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  424 |             4'he: ip2 = link_4[1] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:425:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  425 |             4'hf: ip2 = link_4[1] & vc_id_4[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:426:22: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip2'
+                                : ... note: In instance 'op_link2'
+  426 |             default: ip2 = 1'b0;
+      |                      ^~~
+%Error-PROCASSWIRE: dut.v:432:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  432 |             4'h0: ip3 = link_1[0] & vc_id_1[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:433:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  433 |             4'h1: ip3 = link_1[0] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:434:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  434 |             4'h2: ip3 = link_1[1] & vc_id_1[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:435:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  435 |             4'h3: ip3 = link_1[1] & vc_id_1[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:436:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  436 |             4'h4: ip3 = link_2[0] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:437:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  437 |             4'h5: ip3 = link_2[0] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:438:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  438 |             4'h6: ip3 = link_2[1] & vc_id_2[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:439:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  439 |             4'h7: ip3 = link_2[1] & vc_id_2[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:440:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  440 |             4'h8: ip3 = link_3[0] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:441:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  441 |             4'h9: ip3 = link_3[0] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:442:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  442 |             4'ha: ip3 = link_3[1] & vc_id_3[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:443:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  443 |             4'hb: ip3 = link_3[1] & vc_id_3[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:444:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  444 |             4'hc: ip3 = link_4[0] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:445:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  445 |             4'hd: ip3 = link_4[0] & vc_id_4[1];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:446:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  446 |             4'he: ip3 = link_4[1] & vc_id_4[0];
+      |                   ^~~
+%Error-PROCASSWIRE: dut.v:447:19: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'ip3'
+                                : ... note: In instance 'op_link2'
+  447 |             4'hf: ip3 = link_4[1] & vc_id_4[1];
+      |                   ^~~
+%Error: Exiting due to too many errors encountered; --error-limit=50

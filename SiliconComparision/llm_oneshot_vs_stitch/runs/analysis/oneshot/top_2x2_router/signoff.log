@@ -1,0 +1,379 @@
+dut.v:151: warning: Port 8 (full_in_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 9 (full_in_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 10 (full_in_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 11 (full_in_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 12 (full_in_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 13 (full_in_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 14 (full_in_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 15 (full_in_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 16 (full_in_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 17 (full_in_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 18 (full_in_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 19 (full_in_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 20 (full_in_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 21 (full_in_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 22 (full_in_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 23 (full_in_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 24 (full_in_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 25 (full_in_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 26 (full_in_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 27 (full_in_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Pruning 3 high bits of the expression.
+dut.v:151: warning: Port 34 (full_out_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 35 (full_out_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 36 (full_out_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 37 (full_out_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 38 (full_out_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 39 (full_out_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 40 (full_out_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 41 (full_out_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 42 (full_out_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 43 (full_out_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 44 (full_out_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 45 (full_out_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 46 (full_out_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 47 (full_out_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 48 (full_out_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 49 (full_out_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 50 (full_out_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 51 (full_out_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 52 (full_out_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 53 (full_out_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:151:        : Padding 3 high bits of the expression.
+dut.v:151: warning: Port 79 (data_out_l1) of module top_module expects 32 bit(s), given 4.
+dut.v:151:        : Padding 28 high bits of the port.
+dut.v:151: warning: Port 80 (data_out_l2) of module top_module expects 32 bit(s), given 4.
+dut.v:151:        : Padding 28 high bits of the port.
+dut.v:151: warning: Port 81 (data_out_l3) of module top_module expects 32 bit(s), given 4.
+dut.v:151:        : Padding 28 high bits of the port.
+dut.v:151: warning: Port 82 (data_out_l4) of module top_module expects 32 bit(s), given 4.
+dut.v:151:        : Padding 28 high bits of the port.
+dut.v:151: warning: Port 83 (data_out_c) of module top_module expects 32 bit(s), given 4.
+dut.v:151:        : Padding 28 high bits of the port.
+dut.v:217: warning: Port 8 (full_in_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 9 (full_in_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 10 (full_in_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 11 (full_in_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 12 (full_in_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 13 (full_in_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 14 (full_in_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 15 (full_in_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 16 (full_in_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 17 (full_in_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 18 (full_in_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 19 (full_in_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 20 (full_in_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 21 (full_in_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 22 (full_in_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 23 (full_in_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 24 (full_in_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 25 (full_in_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 26 (full_in_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 27 (full_in_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Pruning 3 high bits of the expression.
+dut.v:217: warning: Port 34 (full_out_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 35 (full_out_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 36 (full_out_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 37 (full_out_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 38 (full_out_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 39 (full_out_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 40 (full_out_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 41 (full_out_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 42 (full_out_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 43 (full_out_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 44 (full_out_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 45 (full_out_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 46 (full_out_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 47 (full_out_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 48 (full_out_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 49 (full_out_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 50 (full_out_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 51 (full_out_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 52 (full_out_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 53 (full_out_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:217:        : Padding 3 high bits of the expression.
+dut.v:217: warning: Port 79 (data_out_l1) of module top_module expects 32 bit(s), given 4.
+dut.v:217:        : Padding 28 high bits of the port.
+dut.v:217: warning: Port 80 (data_out_l2) of module top_module expects 32 bit(s), given 4.
+dut.v:217:        : Padding 28 high bits of the port.
+dut.v:217: warning: Port 81 (data_out_l3) of module top_module expects 32 bit(s), given 4.
+dut.v:217:        : Padding 28 high bits of the port.
+dut.v:217: warning: Port 82 (data_out_l4) of module top_module expects 32 bit(s), given 4.
+dut.v:217:        : Padding 28 high bits of the port.
+dut.v:217: warning: Port 83 (data_out_c) of module top_module expects 32 bit(s), given 4.
+dut.v:217:        : Padding 28 high bits of the port.
+dut.v:283: warning: Port 8 (full_in_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 9 (full_in_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 10 (full_in_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 11 (full_in_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 12 (full_in_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 13 (full_in_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 14 (full_in_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 15 (full_in_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 16 (full_in_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 17 (full_in_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 18 (full_in_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 19 (full_in_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 20 (full_in_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 21 (full_in_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 22 (full_in_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 23 (full_in_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 24 (full_in_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 25 (full_in_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 26 (full_in_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 27 (full_in_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Pruning 3 high bits of the expression.
+dut.v:283: warning: Port 34 (full_out_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 35 (full_out_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 36 (full_out_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 37 (full_out_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 38 (full_out_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 39 (full_out_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 40 (full_out_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 41 (full_out_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 42 (full_out_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 43 (full_out_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 44 (full_out_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 45 (full_out_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 46 (full_out_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 47 (full_out_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 48 (full_out_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 49 (full_out_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 50 (full_out_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 51 (full_out_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 52 (full_out_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 53 (full_out_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:283:        : Padding 3 high bits of the expression.
+dut.v:283: warning: Port 79 (data_out_l1) of module top_module expects 32 bit(s), given 4.
+dut.v:283:        : Padding 28 high bits of the port.
+dut.v:283: warning: Port 80 (data_out_l2) of module top_module expects 32 bit(s), given 4.
+dut.v:283:        : Padding 28 high bits of the port.
+dut.v:283: warning: Port 81 (data_out_l3) of module top_module expects 32 bit(s), given 4.
+dut.v:283:        : Padding 28 high bits of the port.
+dut.v:283: warning: Port 82 (data_out_l4) of module top_module expects 32 bit(s), given 4.
+dut.v:283:        : Padding 28 high bits of the port.
+dut.v:283: warning: Port 83 (data_out_c) of module top_module expects 32 bit(s), given 4.
+dut.v:283:        : Padding 28 high bits of the port.
+dut.v:349: warning: Port 8 (full_in_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 9 (full_in_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 10 (full_in_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 11 (full_in_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 12 (full_in_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 13 (full_in_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 14 (full_in_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 15 (full_in_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 16 (full_in_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 17 (full_in_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 18 (full_in_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 19 (full_in_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 20 (full_in_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 21 (full_in_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 22 (full_in_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 23 (full_in_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 24 (full_in_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 25 (full_in_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 26 (full_in_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 27 (full_in_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Pruning 3 high bits of the expression.
+dut.v:349: warning: Port 34 (full_out_link1_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 35 (full_out_link1_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 36 (full_out_link1_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 37 (full_out_link1_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 38 (full_out_link2_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 39 (full_out_link2_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 40 (full_out_link2_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 41 (full_out_link2_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 42 (full_out_link3_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 43 (full_out_link3_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 44 (full_out_link3_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 45 (full_out_link3_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 46 (full_out_link4_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 47 (full_out_link4_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 48 (full_out_link4_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 49 (full_out_link4_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 50 (full_out_core_vc1) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 51 (full_out_core_vc2) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 52 (full_out_core_vc3) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 53 (full_out_core_vc4) of module top_module expects 1 bit(s), given 4.
+dut.v:349:        : Padding 3 high bits of the expression.
+dut.v:349: warning: Port 79 (data_out_l1) of module top_module expects 32 bit(s), given 4.
+dut.v:349:        : Padding 28 high bits of the port.
+dut.v:349: warning: Port 80 (data_out_l2) of module top_module expects 32 bit(s), given 4.
+dut.v:349:        : Padding 28 high bits of the port.
+dut.v:349: warning: Port 81 (data_out_l3) of module top_module expects 32 bit(s), given 4.
+dut.v:349:        : Padding 28 high bits of the port.
+dut.v:349: warning: Port 82 (data_out_l4) of module top_module expects 32 bit(s), given 4.
+dut.v:349:        : Padding 28 high bits of the port.
+dut.v:349: warning: Port 83 (data_out_c) of module top_module expects 32 bit(s), given 4.
+dut.v:349:        : Padding 28 high bits of the port.
+
+FAIL t=239000 cycle 22: data_out_core_r1 = 60000000, expected 27660500
+FAIL t=244000 cycle 23: data_out_core_r1 = 60000000, expected 27660500
+FAIL t=249000 cycle 23: data_out_core_r1 = 60000000, expected 034ebf00
+FAIL t=254000 cycle 24: data_out_core_r1 = 60000000, expected 034ebf00
+FAIL t=259000 cycle 24: data_out_core_r1 = 60000000, expected 25fdda01
+FAIL t=264000 cycle 25: data_out_core_r1 = 60000000, expected 25fdda01
+FAIL t=269000 cycle 25: data_out_core_r1 = 60000000, expected 4252d000
+FAIL t=274000 cycle 26: data_out_core_r1 = 60000000, expected 4252d000
+FAIL t=339000 cycle 32: data_out_core_r2 = 60000000, expected 20c85401
+FAIL t=344000 cycle 33: data_out_core_r2 = 60000000, expected 20c85401
+FAIL t=349000 cycle 33: data_out_core_r2 = 60000000, expected 236c6a00
+FAIL t=354000 cycle 34: data_out_core_r2 = 60000000, expected 236c6a00
+FAIL t=359000 cycle 34: data_out_core_r2 = 60000000, expected 01d9cd01
+FAIL t=364000 cycle 35: data_out_core_r2 = 60000000, expected 01d9cd01
+FAIL t=369000 cycle 35: data_out_core_r3 = 60000000, expected 263d6010
+INFO coverage: 4 of 4 checked outputs toggled, 98 of 128 bits
+FAIL: 4873 mismatches, 0 property errors
+tb.v:88: $finish called at 50009000 (1ps)

@@ -1,0 +1,338 @@
+%Warning-PINCONNECTEMPTY: dut.v:117:10: Instance pin connected by name with empty reference: 'g_b1'
+  117 |         .g_b1(), .g_b2(), .g_b3(), .g_b4(),
+      |          ^~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:117:19: Instance pin connected by name with empty reference: 'g_b2'
+  117 |         .g_b1(), .g_b2(), .g_b3(), .g_b4(),
+      |                   ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:117:28: Instance pin connected by name with empty reference: 'g_b3'
+  117 |         .g_b1(), .g_b2(), .g_b3(), .g_b4(),
+      |                            ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:117:37: Instance pin connected by name with empty reference: 'g_b4'
+  117 |         .g_b1(), .g_b2(), .g_b3(), .g_b4(),
+      |                                     ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:10: Instance pin connected by name with empty reference: 'gnt1'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:19: Instance pin connected by name with empty reference: 'gnt2'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                   ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:28: Instance pin connected by name with empty reference: 'gnt3'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                            ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:37: Instance pin connected by name with empty reference: 'gnt4'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                     ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:46: Instance pin connected by name with empty reference: 'gnt5'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                              ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:55: Instance pin connected by name with empty reference: 'gnt6'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                       ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:64: Instance pin connected by name with empty reference: 'gnt7'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:73: Instance pin connected by name with empty reference: 'gnt8'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                         ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:82: Instance pin connected by name with empty reference: 'gnt9'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                  ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:91: Instance pin connected by name with empty reference: 'gnt10'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                           ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:101: Instance pin connected by name with empty reference: 'gnt11'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                     ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:111: Instance pin connected by name with empty reference: 'gnt12'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                               ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:121: Instance pin connected by name with empty reference: 'gnt13'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                                         ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:131: Instance pin connected by name with empty reference: 'gnt14'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                                                   ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:141: Instance pin connected by name with empty reference: 'gnt15'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                                                             ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:118:151: Instance pin connected by name with empty reference: 'gnt16'
+  118 |         .gnt1(), .gnt2(), .gnt3(), .gnt4(), .gnt5(), .gnt6(), .gnt7(), .gnt8(), .gnt9(), .gnt10(), .gnt11(), .gnt12(), .gnt13(), .gnt14(), .gnt15(), .gnt16(),
+      |                                                                                                                                                       ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:10: Instance pin connected by name with empty reference: 'req1'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |          ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:19: Instance pin connected by name with empty reference: 'req2'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                   ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:28: Instance pin connected by name with empty reference: 'req3'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                            ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:37: Instance pin connected by name with empty reference: 'req4'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                     ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:46: Instance pin connected by name with empty reference: 'req5'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                              ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:55: Instance pin connected by name with empty reference: 'req6'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                       ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:64: Instance pin connected by name with empty reference: 'req7'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:73: Instance pin connected by name with empty reference: 'req8'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                         ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:82: Instance pin connected by name with empty reference: 'req9'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                  ^~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:91: Instance pin connected by name with empty reference: 'req10'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                           ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:101: Instance pin connected by name with empty reference: 'req11'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                     ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:111: Instance pin connected by name with empty reference: 'req12'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                               ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:121: Instance pin connected by name with empty reference: 'req13'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                                         ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:131: Instance pin connected by name with empty reference: 'req14'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                                                   ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:141: Instance pin connected by name with empty reference: 'req15'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                                                             ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:119:151: Instance pin connected by name with empty reference: 'req16'
+  119 |         .req1(), .req2(), .req3(), .req4(), .req5(), .req6(), .req7(), .req8(), .req9(), .req10(), .req11(), .req12(), .req13(), .req14(), .req15(), .req16(),
+      |                                                                                                                                                       ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:10: Instance pin connected by name with empty reference: 'g1_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |          ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:25: Instance pin connected by name with empty reference: 'g2_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                         ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:40: Instance pin connected by name with empty reference: 'g3_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                        ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:55: Instance pin connected by name with empty reference: 'g4_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                       ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:70: Instance pin connected by name with empty reference: 'g5_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                      ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:85: Instance pin connected by name with empty reference: 'g6_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                     ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:100: Instance pin connected by name with empty reference: 'g7_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:115: Instance pin connected by name with empty reference: 'g8_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                   ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:130: Instance pin connected by name with empty reference: 'g9_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                  ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:145: Instance pin connected by name with empty reference: 'g10_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:161: Instance pin connected by name with empty reference: 'g11_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:177: Instance pin connected by name with empty reference: 'g12_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:193: Instance pin connected by name with empty reference: 'g13_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:209: Instance pin connected by name with empty reference: 'g14_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:225: Instance pin connected by name with empty reference: 'g15_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:120:241: Instance pin connected by name with empty reference: 'g16_latched'
+  120 |         .g1_latched(), .g2_latched(), .g3_latched(), .g4_latched(), .g5_latched(), .g6_latched(), .g7_latched(), .g8_latched(), .g9_latched(), .g10_latched(), .g11_latched(), .g12_latched(), .g13_latched(), .g14_latched(), .g15_latched(), .g16_latched(),
+      |                                                                                                                                                                                                                                                 ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:10: Instance pin connected by name with empty reference: 'g1_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:21: Instance pin connected by name with empty reference: 'g2_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                     ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:32: Instance pin connected by name with empty reference: 'g3_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:43: Instance pin connected by name with empty reference: 'g4_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                           ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:54: Instance pin connected by name with empty reference: 'g5_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:65: Instance pin connected by name with empty reference: 'g6_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                 ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:76: Instance pin connected by name with empty reference: 'g7_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                            ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:87: Instance pin connected by name with empty reference: 'g8_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                       ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:98: Instance pin connected by name with empty reference: 'g9_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                  ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:109: Instance pin connected by name with empty reference: 'g10_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                             ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:121: Instance pin connected by name with empty reference: 'g11_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                         ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:133: Instance pin connected by name with empty reference: 'g12_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                                     ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:145: Instance pin connected by name with empty reference: 'g13_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                                                 ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:157: Instance pin connected by name with empty reference: 'g14_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                                                             ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:169: Instance pin connected by name with empty reference: 'g15_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                                                                         ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:121:181: Instance pin connected by name with empty reference: 'g16_int'
+  121 |         .g1_int(), .g2_int(), .g3_int(), .g4_int(), .g5_int(), .g6_int(), .g7_int(), .g8_int(), .g9_int(), .g10_int(), .g11_int(), .g12_int(), .g13_int(), .g14_int(), .g15_int(), .g16_int(),
+      |                                                                                                                                                                                     ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:122:10: Instance pin connected by name with empty reference: 't1'
+  122 |         .t1(), .t2(), .t3(), .t4(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:122:17: Instance pin connected by name with empty reference: 't2'
+  122 |         .t1(), .t2(), .t3(), .t4(),
+      |                 ^~
+%Warning-PINCONNECTEMPTY: dut.v:122:24: Instance pin connected by name with empty reference: 't3'
+  122 |         .t1(), .t2(), .t3(), .t4(),
+      |                        ^~
+%Warning-PINCONNECTEMPTY: dut.v:122:31: Instance pin connected by name with empty reference: 't4'
+  122 |         .t1(), .t2(), .t3(), .t4(),
+      |                               ^~
+%Warning-PINCONNECTEMPTY: dut.v:123:10: Instance pin connected by name with empty reference: 'req_b1'
+  123 |         .req_b1(), .req_b2(), .req_b3(), .req_b4(),
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:123:21: Instance pin connected by name with empty reference: 'req_b2'
+  123 |         .req_b1(), .req_b2(), .req_b3(), .req_b4(),
+      |                     ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:123:32: Instance pin connected by name with empty reference: 'req_b3'
+  123 |         .req_b1(), .req_b2(), .req_b3(), .req_b4(),
+      |                                ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:123:43: Instance pin connected by name with empty reference: 'req_b4'
+  123 |         .req_b1(), .req_b2(), .req_b3(), .req_b4(),
+      |                                           ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:10: Instance pin connected by name with empty reference: 'nreq_1'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |          ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:21: Instance pin connected by name with empty reference: 'nreq_2'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                     ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:32: Instance pin connected by name with empty reference: 'nreq_3'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:43: Instance pin connected by name with empty reference: 'nreq_4'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                           ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:54: Instance pin connected by name with empty reference: 'nreq_5'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:65: Instance pin connected by name with empty reference: 'nreq_6'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                 ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:76: Instance pin connected by name with empty reference: 'nreq_7'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                            ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:87: Instance pin connected by name with empty reference: 'nreq_8'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                       ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:98: Instance pin connected by name with empty reference: 'nreq_9'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                  ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:109: Instance pin connected by name with empty reference: 'nreq_10'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                             ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:121: Instance pin connected by name with empty reference: 'nreq_11'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                         ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:133: Instance pin connected by name with empty reference: 'nreq_12'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                                     ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:145: Instance pin connected by name with empty reference: 'nreq_13'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                                                 ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:157: Instance pin connected by name with empty reference: 'nreq_14'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                                                             ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:169: Instance pin connected by name with empty reference: 'nreq_15'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                                                                         ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:124:181: Instance pin connected by name with empty reference: 'nreq_16'
+  124 |         .nreq_1(), .nreq_2(), .nreq_3(), .nreq_4(), .nreq_5(), .nreq_6(), .nreq_7(), .nreq_8(), .nreq_9(), .nreq_10(), .nreq_11(), .nreq_12(), .nreq_13(), .nreq_14(), .nreq_15(), .nreq_16()
+      |                                                                                                                                                                                     ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:183:10: Instance pin connected by name with empty reference: 'l1'
+  183 |         .l1(), .l2(), .l3(), .l4(),
+      |          ^~
+%Warning-PINCONNECTEMPTY: dut.v:183:17: Instance pin connected by name with empty reference: 'l2'
+  183 |         .l1(), .l2(), .l3(), .l4(),
+      |                 ^~
+%Warning-PINCONNECTEMPTY: dut.v:183:24: Instance pin connected by name with empty reference: 'l3'
+  183 |         .l1(), .l2(), .l3(), .l4(),
+      |                        ^~
+%Warning-PINCONNECTEMPTY: dut.v:183:31: Instance pin connected by name with empty reference: 'l4'
+  183 |         .l1(), .l2(), .l3(), .l4(),
+      |                               ^~
+%Warning-PINCONNECTEMPTY: dut.v:185:10: Instance pin connected by name with empty reference: 'and_out1'
+  185 |         .and_out1(), .and_out2(), .and_out3(), .and_out4(),
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:185:23: Instance pin connected by name with empty reference: 'and_out2'
+  185 |         .and_out1(), .and_out2(), .and_out3(), .and_out4(),
+      |                       ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:185:36: Instance pin connected by name with empty reference: 'and_out3'
+  185 |         .and_out1(), .and_out2(), .and_out3(), .and_out4(),
+      |                                    ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:185:49: Instance pin connected by name with empty reference: 'and_out4'
+  185 |         .and_out1(), .and_out2(), .and_out3(), .and_out4(),
+      |                                                 ^~~~~~~~
+%Warning-IMPLICIT: dut.v:188:19: Signal definition not found, creating implicitly: 'b1_logic'
+                               : ... Suggested alternative: 'b0_logic'
+  188 |         .b1_logic(b1_logic[0]), .b0_logic(b0_logic[0])
+      |                   ^~~~~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.053
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:144:10: Output port connection 'e1' expects 4 bits on the pin connection, but pin connection's VARREF 'e1' generates 1 bits.
+                                  : ... note: In instance 'op_link1'
+  144 |         .e1(e1), .e2(e2), .e3(e3), .e4(e4)
+      |          ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:144:19: Output port connection 'e2' expects 4 bits on the pin connection, but pin connection's VARREF 'e2' generates 1 bits.
+                                  : ... note: In instance 'op_link1'
+  144 |         .e1(e1), .e2(e2), .e3(e3), .e4(e4)
+      |                   ^~
+%Warning-WIDTHEXPAND: dut.v:144:28: Output port connection 'e3' expects 4 bits on the pin connection, but pin connection's VARREF 'e3' generates 1 bits.
+                                  : ... note: In instance 'op_link1'
+  144 |         .e1(e1), .e2(e2), .e3(e3), .e4(e4)
+      |                            ^~
+%Warning-WIDTHEXPAND: dut.v:144:37: Output port connection 'e4' expects 4 bits on the pin connection, but pin connection's VARREF 'e4' generates 1 bits.
+                                  : ... note: In instance 'op_link1'
+  144 |         .e1(e1), .e2(e2), .e3(e3), .e4(e4)
+      |                                     ^~
+%Warning-WIDTHTRUNC: dut.v:147:15: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's REPLICATE generates 16 bits.
+                                 : ... note: In instance 'op_link1'
+  147 |     assign ip = {link_4, vc_id_4, link_3, vc_id_3, link_2, vc_id_2, link_1, vc_id_1};
+      |               ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Error: dut.v:188:27: Illegal bit or array select; type does not have a bit range, or bad dimension: data type is 'logic'
+                    : ... note: In instance 'op_link1'
+  188 |         .b1_logic(b1_logic[0]), .b0_logic(b0_logic[0])
+      |                           ^
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: Exiting due to 1 error(s), 106 warning(s)

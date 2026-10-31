@@ -1,0 +1,24 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 1,
+ "verilator_codes": {
+  "UNDRIVEN": 2,
+  "UNOPTFLAT": 4
+ },
+ "verilator_warnings_count": 6,
+ "verilator_hard": 4,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "b24f94f583a79c9041fd839715acdf7fef659b99c140bf69c50f1d42ad8f5051",
+ "file": "outputs/stitch/rr_comb_new.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

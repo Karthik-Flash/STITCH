@@ -1,0 +1,681 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -lib /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/rr_comb_new/stubs/dff_synch_clr.v; read_verilog dut.v; hierarchy -check -top rr_comb_new; synth -top rr_comb_new; check; stat -top rr_comb_new' --
+
+1. Executing Verilog-2005 frontend: /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/rr_comb_new/stubs/dff_synch_clr.v
+Parsing Verilog input from `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/rr_comb_new/stubs/dff_synch_clr.v' to AST representation.
+Generating RTLIL representation for module `\dff_synch_clr'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dut.v
+Parsing Verilog input from `dut.v' to AST representation.
+Generating RTLIL representation for module `\rr_comb_new'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+
+3.2. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+Removed 0 unused modules.
+Mapping positional arguments of cell rr_comb_new.dff_g4 (dff_synch_clr).
+Mapping positional arguments of cell rr_comb_new.dff_g3 (dff_synch_clr).
+Mapping positional arguments of cell rr_comb_new.dff_g2 (dff_synch_clr).
+Mapping positional arguments of cell rr_comb_new.dff_g1 (dff_synch_clr).
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.4. Executing CHECK pass (checking for obvious problems).
+Checking module rr_comb_new...
+Warning: multiple conflicting drivers for rr_comb_new.$and$dut.v:21$1_Y:
+    port Y[0] of cell $and$dut.v:21$1 ($and)
+    port q[0] of cell dff_g1 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.$and$dut.v:22$2_Y:
+    port Y[0] of cell $and$dut.v:22$2 ($and)
+    port q[0] of cell dff_g2 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.$and$dut.v:23$3_Y:
+    port Y[0] of cell $and$dut.v:23$3 ($and)
+    port q[0] of cell dff_g3 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.$and$dut.v:24$4_Y:
+    port Y[0] of cell $and$dut.v:24$4 ($and)
+    port q[0] of cell dff_g4 (dff_synch_clr)
+Warning: Wire rr_comb_new.\b1_logic is used but has no driver.
+Warning: Wire rr_comb_new.\b0_logic is used but has no driver.
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g1 (dff_synch_clr) source: dut.v:15.19-15.48
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g2 (dff_synch_clr) source: dut.v:16.19-16.48
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g3 (dff_synch_clr) source: dut.v:17.19-17.48
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g4 (dff_synch_clr) source: dut.v:18.19-18.48
+Found and reported 10 problems.
+
+4.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+Removed 0 unused cells and 19 unused wires.
+<suppressed ~1 debug messages>
+
+4.6. Executing OPT pass (performing simple optimizations).
+
+4.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 136 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Computing hashes of 91 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+<suppressed ~147 debug messages>
+Removed a total of 49 cells.
+
+4.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_comb_new..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_comb_new.
+Performed a total of 0 changes.
+
+4.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+Removed 0 unused cells and 49 unused wires.
+<suppressed ~1 debug messages>
+
+4.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_comb_new..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_comb_new.
+Performed a total of 0 changes.
+
+4.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+4.7. Executing FSM pass (extract and optimize FSM).
+
+4.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.8. Executing OPT pass (performing simple optimizations).
+
+4.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_comb_new..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_comb_new.
+Performed a total of 0 changes.
+
+4.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+4.9. Executing WREDUCE pass (reducing word size of cells).
+
+4.10. Executing PEEPOPT pass (run peephole optimizers).
+
+4.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module rr_comb_new:
+  created 0 $alu and 0 $macc cells.
+
+4.13. Executing SHARE pass (SAT-based resource sharing).
+
+4.14. Executing OPT pass (performing simple optimizations).
+
+4.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_comb_new..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_comb_new.
+Performed a total of 0 changes.
+
+4.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+4.15. Executing MEMORY pass.
+
+4.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.17. Executing OPT pass (performing simple optimizations).
+
+4.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+<suppressed ~2 debug messages>
+
+4.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.17.5. Finished fast OPT passes.
+
+4.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.19. Executing OPT pass (performing simple optimizations).
+
+4.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rr_comb_new..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rr_comb_new.
+Performed a total of 0 changes.
+
+4.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.19.6. Executing OPT_SHARE pass.
+
+4.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+4.20. Executing TECHMAP pass (map to technology primitives).
+
+4.20.1. Executing Verilog-2005 frontend: /scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+4.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+No more expansions possible.
+<suppressed ~160 debug messages>
+
+4.21. Executing OPT pass (performing simple optimizations).
+
+4.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 87 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Removed a total of 0 cells.
+
+4.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+
+4.21.5. Finished fast OPT passes.
+
+4.22. Executing ABC pass (technology mapping using ABC).
+
+4.22.1. Summary of detected clock domains:
+  87 cells in clk={ }, en={ }, arst={ }, srst={ }
+
+4.22.2. Extracting gate netlist of module `\rr_comb_new' to `<abc-temp-dir>/input.blif'..
+No matching clock domain found. Not extracting any FF cells.
+Breaking loop using new signal $abcloop$287$0: \b0_w -> $and$dut.v:37$70_Y
+                                               \b0_w -> $or$dut.v:36$49_Y
+                                               \b0_w -> $or$dut.v:36$46_Y
+                                               \b0_w -> $and$dut.v:38$100_Y
+                                               \b0_w -> $not$dut.v:37$59_Y
+                                               \b0_w -> $and$dut.v:38$91_Y
+Breaking loop using new signal $abcloop$287$1: \b1_w -> $and$dut.v:37$70_Y
+                                               \b1_w -> $not$dut.v:36$43_Y
+                                               \b1_w -> $and$dut.v:36$50_Y
+                                               \b1_w -> $and$dut.v:39$126_Y
+Breaking loop using new signal $abcloop$287$2: \g1 -> $or$dut.v:31$29_Y
+                                               \g1 -> $not$dut.v:27$11_Y
+                                               \g1 -> $and$dut.v:26$6_Y
+                                               \g1 -> \g1
+Breaking loop using new signal $abcloop$287$3: \g2 -> $or$dut.v:31$29_Y
+                                               \g2 -> $and$dut.v:27$12_Y
+                                               \g2 -> $not$dut.v:26$5_Y
+                                               \g2 -> \g2
+Breaking loop using new signal $abcloop$287$4: \g3 -> $or$dut.v:31$30_Y
+                                               \g3 -> $and$dut.v:28$18_Y
+                                               \g3 -> $not$dut.v:26$7_Y
+                                               \g3 -> \g3
+Breaking loop using new signal $abcloop$287$5: \g4 -> \or_out
+                                               \g4 -> $and$dut.v:29$24_Y
+                                               \g4 -> $not$dut.v:26$9_Y
+                                               \g4 -> \g4
+
+4.22.2.1. Executed ABC.
+Extracted 83 gates and 93 wires to a netlist network with 10 inputs and 19 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+4.22.2.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       17
+ABC RESULTS:            ANDNOT cells:       11
+ABC RESULTS:               MUX cells:        1
+ABC RESULTS:              NAND cells:       14
+ABC RESULTS:               NOR cells:        4
+ABC RESULTS:                OR cells:        8
+ABC RESULTS:             ORNOT cells:        4
+ABC RESULTS:        internal signals:       64
+ABC RESULTS:           input signals:       10
+ABC RESULTS:          output signals:       19
+Removing temp directory.
+Removing global temp directory.
+
+4.23. Executing OPT pass (performing simple optimizations).
+
+4.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rr_comb_new.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+Couldn't topologically sort cells, optimizing module rr_comb_new may take a longer time.
+
+4.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rr_comb_new'.
+Computing hashes of 63 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+Computing hashes of 62 cells of `\rr_comb_new'.
+Finding duplicate cells in `\rr_comb_new'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+4.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rr_comb_new..
+Removed 0 unused cells and 100 unused wires.
+<suppressed ~1 debug messages>
+
+4.23.5. Finished fast OPT passes.
+
+4.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `rr_comb_new'. Setting top module to rr_comb_new.
+
+4.24.1. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+
+4.24.2. Analyzing design hierarchy..
+Top module:  \rr_comb_new
+Removed 0 unused modules.
+
+4.25. Printing statistics.
+
+=== rr_comb_new ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       85 wires
+       85 wire bits
+       46 public wires
+       46 public wire bits
+       27 ports
+       27 port bits
+       62 cells
+       11   $_ANDNOT_
+       16   $_AND_
+        1   $_MUX_
+       14   $_NAND_
+        4   $_NOR_
+        4   $_ORNOT_
+        8   $_OR_
+        4   dff_synch_clr
+
+4.26. Executing CHECK pass (checking for obvious problems).
+Checking module rr_comb_new...
+Warning: multiple conflicting drivers for rr_comb_new.\g1:
+    port Y[0] of cell $abc$287$blif$287$0 ($_AND_)
+    port q[0] of cell dff_g1 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g4:
+    port Y[0] of cell $abc$287$blif$287$3 ($_AND_)
+    port q[0] of cell dff_g4 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g3:
+    port Y[0] of cell $abc$287$blif$287$2 ($_AND_)
+    port q[0] of cell dff_g3 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g2:
+    port Y[0] of cell $abc$287$blif$287$1 ($_AND_)
+    port q[0] of cell dff_g2 (dff_synch_clr)
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g1 (dff_synch_clr) source: dut.v:15.19-15.48
+    wire \g1 source: dut.v:3.12-3.14
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g2 (dff_synch_clr) source: dut.v:16.19-16.48
+    wire \g2 source: dut.v:3.16-3.18
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g3 (dff_synch_clr) source: dut.v:17.19-17.48
+    wire \g3 source: dut.v:3.20-3.22
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g4 (dff_synch_clr) source: dut.v:18.19-18.48
+    wire \g4 source: dut.v:3.24-3.26
+Found and reported 8 problems.
+
+5. Executing CHECK pass (checking for obvious problems).
+Checking module rr_comb_new...
+Warning: multiple conflicting drivers for rr_comb_new.\g1:
+    port Y[0] of cell $abc$287$blif$287$0 ($_AND_)
+    port q[0] of cell dff_g1 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g4:
+    port Y[0] of cell $abc$287$blif$287$3 ($_AND_)
+    port q[0] of cell dff_g4 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g3:
+    port Y[0] of cell $abc$287$blif$287$2 ($_AND_)
+    port q[0] of cell dff_g3 (dff_synch_clr)
+Warning: multiple conflicting drivers for rr_comb_new.\g2:
+    port Y[0] of cell $abc$287$blif$287$1 ($_AND_)
+    port q[0] of cell dff_g2 (dff_synch_clr)
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g1 (dff_synch_clr) source: dut.v:15.19-15.48
+    wire \g1 source: dut.v:3.12-3.14
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g2 (dff_synch_clr) source: dut.v:16.19-16.48
+    wire \g2 source: dut.v:3.16-3.18
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g3 (dff_synch_clr) source: dut.v:17.19-17.48
+    wire \g3 source: dut.v:3.20-3.22
+Warning: found logic loop in module rr_comb_new:
+    cell dff_g4 (dff_synch_clr) source: dut.v:18.19-18.48
+    wire \g4 source: dut.v:3.24-3.26
+Found and reported 8 problems.
+
+6. Printing statistics.
+
+=== rr_comb_new ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       85 wires
+       85 wire bits
+       46 public wires
+       46 public wire bits
+       27 ports
+       27 port bits
+       62 cells
+       11   $_ANDNOT_
+       16   $_AND_
+        1   $_MUX_
+       14   $_NAND_
+        4   $_NOR_
+        4   $_ORNOT_
+        8   $_OR_
+        4   dff_synch_clr
+
+Warnings: 18 unique messages, 26 total
+End of script. Logfile hash: 5d653ed0ed, time: 0.08s, user: 0.02s, system: 0.02s, MEM: 27.26 MB peak
+Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 59% 1x abc (0 sec), 14% 5x read_verilog (0 sec), ...

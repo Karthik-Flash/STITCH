@@ -1,0 +1,4 @@
+INFO coverage: 1 of 1 checked outputs toggled, 27 of 32 bits
+INFO cycle-exact mismatches against golden/reference: 0 (secondary)
+ALL TESTS PASSED
+tb.v:75: $finish called at 50009000 (1ps)

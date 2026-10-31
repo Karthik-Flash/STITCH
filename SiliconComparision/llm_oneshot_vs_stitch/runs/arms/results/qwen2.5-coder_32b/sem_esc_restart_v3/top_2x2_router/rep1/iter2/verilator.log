@@ -1,0 +1,629 @@
+%Warning-PINCONNECTEMPTY: dut.v:215:10: Instance pin connected by name with empty reference: 'data_out_core_vc1'
+  215 |         .data_out_core_vc1(),
+      |          ^~~~~~~~~~~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:216:10: Instance pin connected by name with empty reference: 'data_out_core_vc2'
+  216 |         .data_out_core_vc2(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:217:10: Instance pin connected by name with empty reference: 'data_out_core_vc3'
+  217 |         .data_out_core_vc3(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:218:10: Instance pin connected by name with empty reference: 'data_out_core_vc4'
+  218 |         .data_out_core_vc4(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:219:10: Instance pin connected by name with empty reference: 'data_out_link1_vc1'
+  219 |         .data_out_link1_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:220:10: Instance pin connected by name with empty reference: 'data_out_link1_vc2'
+  220 |         .data_out_link1_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:221:10: Instance pin connected by name with empty reference: 'data_out_link1_vc3'
+  221 |         .data_out_link1_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:222:10: Instance pin connected by name with empty reference: 'data_out_link1_vc4'
+  222 |         .data_out_link1_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:223:10: Instance pin connected by name with empty reference: 'data_out_link2_vc1'
+  223 |         .data_out_link2_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:224:10: Instance pin connected by name with empty reference: 'data_out_link2_vc2'
+  224 |         .data_out_link2_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:225:10: Instance pin connected by name with empty reference: 'data_out_link2_vc3'
+  225 |         .data_out_link2_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:226:10: Instance pin connected by name with empty reference: 'data_out_link2_vc4'
+  226 |         .data_out_link2_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:227:10: Instance pin connected by name with empty reference: 'data_out_link3_vc1'
+  227 |         .data_out_link3_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:228:10: Instance pin connected by name with empty reference: 'data_out_link3_vc2'
+  228 |         .data_out_link3_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:229:10: Instance pin connected by name with empty reference: 'data_out_link3_vc3'
+  229 |         .data_out_link3_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:230:10: Instance pin connected by name with empty reference: 'data_out_link3_vc4'
+  230 |         .data_out_link3_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:231:10: Instance pin connected by name with empty reference: 'data_out_link4_vc1'
+  231 |         .data_out_link4_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:232:10: Instance pin connected by name with empty reference: 'data_out_link4_vc2'
+  232 |         .data_out_link4_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:233:10: Instance pin connected by name with empty reference: 'data_out_link4_vc3'
+  233 |         .data_out_link4_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:234:10: Instance pin connected by name with empty reference: 'data_out_link4_vc4'
+  234 |         .data_out_link4_vc4()
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:301:10: Instance pin connected by name with empty reference: 'data_out_core_vc1'
+  301 |         .data_out_core_vc1(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:302:10: Instance pin connected by name with empty reference: 'data_out_core_vc2'
+  302 |         .data_out_core_vc2(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:303:10: Instance pin connected by name with empty reference: 'data_out_core_vc3'
+  303 |         .data_out_core_vc3(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:304:10: Instance pin connected by name with empty reference: 'data_out_core_vc4'
+  304 |         .data_out_core_vc4(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:305:10: Instance pin connected by name with empty reference: 'data_out_link1_vc1'
+  305 |         .data_out_link1_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:306:10: Instance pin connected by name with empty reference: 'data_out_link1_vc2'
+  306 |         .data_out_link1_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:307:10: Instance pin connected by name with empty reference: 'data_out_link1_vc3'
+  307 |         .data_out_link1_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:308:10: Instance pin connected by name with empty reference: 'data_out_link1_vc4'
+  308 |         .data_out_link1_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:309:10: Instance pin connected by name with empty reference: 'data_out_link2_vc1'
+  309 |         .data_out_link2_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:310:10: Instance pin connected by name with empty reference: 'data_out_link2_vc2'
+  310 |         .data_out_link2_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:311:10: Instance pin connected by name with empty reference: 'data_out_link2_vc3'
+  311 |         .data_out_link2_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:312:10: Instance pin connected by name with empty reference: 'data_out_link2_vc4'
+  312 |         .data_out_link2_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:313:10: Instance pin connected by name with empty reference: 'data_out_link3_vc1'
+  313 |         .data_out_link3_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:314:10: Instance pin connected by name with empty reference: 'data_out_link3_vc2'
+  314 |         .data_out_link3_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:315:10: Instance pin connected by name with empty reference: 'data_out_link3_vc3'
+  315 |         .data_out_link3_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:316:10: Instance pin connected by name with empty reference: 'data_out_link3_vc4'
+  316 |         .data_out_link3_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:317:10: Instance pin connected by name with empty reference: 'data_out_link4_vc1'
+  317 |         .data_out_link4_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:318:10: Instance pin connected by name with empty reference: 'data_out_link4_vc2'
+  318 |         .data_out_link4_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:319:10: Instance pin connected by name with empty reference: 'data_out_link4_vc3'
+  319 |         .data_out_link4_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:320:10: Instance pin connected by name with empty reference: 'data_out_link4_vc4'
+  320 |         .data_out_link4_vc4()
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:387:10: Instance pin connected by name with empty reference: 'data_out_core_vc1'
+  387 |         .data_out_core_vc1(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:388:10: Instance pin connected by name with empty reference: 'data_out_core_vc2'
+  388 |         .data_out_core_vc2(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:389:10: Instance pin connected by name with empty reference: 'data_out_core_vc3'
+  389 |         .data_out_core_vc3(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:390:10: Instance pin connected by name with empty reference: 'data_out_core_vc4'
+  390 |         .data_out_core_vc4(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:391:10: Instance pin connected by name with empty reference: 'data_out_link1_vc1'
+  391 |         .data_out_link1_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:392:10: Instance pin connected by name with empty reference: 'data_out_link1_vc2'
+  392 |         .data_out_link1_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:393:10: Instance pin connected by name with empty reference: 'data_out_link1_vc3'
+  393 |         .data_out_link1_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:394:10: Instance pin connected by name with empty reference: 'data_out_link1_vc4'
+  394 |         .data_out_link1_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:395:10: Instance pin connected by name with empty reference: 'data_out_link2_vc1'
+  395 |         .data_out_link2_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:396:10: Instance pin connected by name with empty reference: 'data_out_link2_vc2'
+  396 |         .data_out_link2_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:397:10: Instance pin connected by name with empty reference: 'data_out_link2_vc3'
+  397 |         .data_out_link2_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:398:10: Instance pin connected by name with empty reference: 'data_out_link2_vc4'
+  398 |         .data_out_link2_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:399:10: Instance pin connected by name with empty reference: 'data_out_link3_vc1'
+  399 |         .data_out_link3_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:400:10: Instance pin connected by name with empty reference: 'data_out_link3_vc2'
+  400 |         .data_out_link3_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:401:10: Instance pin connected by name with empty reference: 'data_out_link3_vc3'
+  401 |         .data_out_link3_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:402:10: Instance pin connected by name with empty reference: 'data_out_link3_vc4'
+  402 |         .data_out_link3_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:403:10: Instance pin connected by name with empty reference: 'data_out_link4_vc1'
+  403 |         .data_out_link4_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:404:10: Instance pin connected by name with empty reference: 'data_out_link4_vc2'
+  404 |         .data_out_link4_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:405:10: Instance pin connected by name with empty reference: 'data_out_link4_vc3'
+  405 |         .data_out_link4_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:406:10: Instance pin connected by name with empty reference: 'data_out_link4_vc4'
+  406 |         .data_out_link4_vc4()
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:473:10: Instance pin connected by name with empty reference: 'data_out_core_vc1'
+  473 |         .data_out_core_vc1(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:474:10: Instance pin connected by name with empty reference: 'data_out_core_vc2'
+  474 |         .data_out_core_vc2(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:475:10: Instance pin connected by name with empty reference: 'data_out_core_vc3'
+  475 |         .data_out_core_vc3(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:476:10: Instance pin connected by name with empty reference: 'data_out_core_vc4'
+  476 |         .data_out_core_vc4(),
+      |          ^~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:477:10: Instance pin connected by name with empty reference: 'data_out_link1_vc1'
+  477 |         .data_out_link1_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:478:10: Instance pin connected by name with empty reference: 'data_out_link1_vc2'
+  478 |         .data_out_link1_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:479:10: Instance pin connected by name with empty reference: 'data_out_link1_vc3'
+  479 |         .data_out_link1_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:480:10: Instance pin connected by name with empty reference: 'data_out_link1_vc4'
+  480 |         .data_out_link1_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:481:10: Instance pin connected by name with empty reference: 'data_out_link2_vc1'
+  481 |         .data_out_link2_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:482:10: Instance pin connected by name with empty reference: 'data_out_link2_vc2'
+  482 |         .data_out_link2_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:483:10: Instance pin connected by name with empty reference: 'data_out_link2_vc3'
+  483 |         .data_out_link2_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:484:10: Instance pin connected by name with empty reference: 'data_out_link2_vc4'
+  484 |         .data_out_link2_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:485:10: Instance pin connected by name with empty reference: 'data_out_link3_vc1'
+  485 |         .data_out_link3_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:486:10: Instance pin connected by name with empty reference: 'data_out_link3_vc2'
+  486 |         .data_out_link3_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:487:10: Instance pin connected by name with empty reference: 'data_out_link3_vc3'
+  487 |         .data_out_link3_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:488:10: Instance pin connected by name with empty reference: 'data_out_link3_vc4'
+  488 |         .data_out_link3_vc4(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:489:10: Instance pin connected by name with empty reference: 'data_out_link4_vc1'
+  489 |         .data_out_link4_vc1(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:490:10: Instance pin connected by name with empty reference: 'data_out_link4_vc2'
+  490 |         .data_out_link4_vc2(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:491:10: Instance pin connected by name with empty reference: 'data_out_link4_vc3'
+  491 |         .data_out_link4_vc3(),
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:492:10: Instance pin connected by name with empty reference: 'data_out_link4_vc4'
+  492 |         .data_out_link4_vc4()
+      |          ^~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:7:17: Signal is not used: 'data_out_link1_r1'
+                                 : ... note: In instance 'top_2x2_router'
+    7 |     wire [31:0] data_out_link1_r1, data_out_link1_r2, data_out_link1_r3, data_out_link1_r4;
+      |                 ^~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:7:55: Signal is not used: 'data_out_link1_r3'
+                                 : ... note: In instance 'top_2x2_router'
+    7 |     wire [31:0] data_out_link1_r1, data_out_link1_r2, data_out_link1_r3, data_out_link1_r4;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:8:36: Signal is not used: 'data_out_link2_r2'
+                                 : ... note: In instance 'top_2x2_router'
+    8 |     wire [31:0] data_out_link2_r1, data_out_link2_r2, data_out_link2_r3, data_out_link2_r4;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:8:74: Signal is not used: 'data_out_link2_r4'
+                                 : ... note: In instance 'top_2x2_router'
+    8 |     wire [31:0] data_out_link2_r1, data_out_link2_r2, data_out_link2_r3, data_out_link2_r4;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:17: Signal is not used: 'data_out_link3_r1'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                 ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:36: Signal is not used: 'data_out_link3_r2'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:55: Signal is not used: 'data_out_link3_r3'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:74: Signal is not used: 'data_out_link3_r4'
+                                 : ... note: In instance 'top_2x2_router'
+    9 |     wire [31:0] data_out_link3_r1, data_out_link3_r2, data_out_link3_r3, data_out_link3_r4;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:16: Signal is not used: 'sel_vc_link1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:33: Signal is not used: 'sel_vc_link1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:50: Signal is not used: 'sel_vc_link1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:67: Signal is not used: 'sel_vc_link1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   13 |     wire [3:0] sel_vc_link1_r1, sel_vc_link1_r2, sel_vc_link1_r3, sel_vc_link1_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:16: Signal is not used: 'sel_vc_link2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:33: Signal is not used: 'sel_vc_link2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:50: Signal is not used: 'sel_vc_link2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:67: Signal is not used: 'sel_vc_link2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   14 |     wire [3:0] sel_vc_link2_r1, sel_vc_link2_r2, sel_vc_link2_r3, sel_vc_link2_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:16: Signal is not used: 'sel_vc_link3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:33: Signal is not used: 'sel_vc_link3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:50: Signal is not used: 'sel_vc_link3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:67: Signal is not used: 'sel_vc_link3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   15 |     wire [3:0] sel_vc_link3_r1, sel_vc_link3_r2, sel_vc_link3_r3, sel_vc_link3_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:16: Signal is not used: 'sel_vc_link4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:33: Signal is not used: 'sel_vc_link4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:50: Signal is not used: 'sel_vc_link4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:67: Signal is not used: 'sel_vc_link4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   16 |     wire [3:0] sel_vc_link4_r1, sel_vc_link4_r2, sel_vc_link4_r3, sel_vc_link4_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:16: Signal is not used: 'sel_vc_core_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:32: Signal is not used: 'sel_vc_core_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:48: Signal is not used: 'sel_vc_core_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:64: Signal is not used: 'sel_vc_core_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   17 |     wire [3:0] sel_vc_core_r1, sel_vc_core_r2, sel_vc_core_r3, sel_vc_core_r4;
+      |                                                                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:17: Signal is not used: 'data_out_l1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [31:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:33: Signal is not used: 'data_out_l1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [31:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:49: Signal is not used: 'data_out_l1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [31:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:65: Signal is not used: 'data_out_l1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   19 |     wire [31:0] data_out_l1_r1, data_out_l1_r2, data_out_l1_r3, data_out_l1_r4;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:17: Signal is not used: 'data_out_l2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [31:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:33: Signal is not used: 'data_out_l2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [31:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:49: Signal is not used: 'data_out_l2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [31:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:65: Signal is not used: 'data_out_l2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   20 |     wire [31:0] data_out_l2_r1, data_out_l2_r2, data_out_l2_r3, data_out_l2_r4;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:17: Signal is not used: 'data_out_l3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [31:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:33: Signal is not used: 'data_out_l3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [31:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:49: Signal is not used: 'data_out_l3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [31:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:65: Signal is not used: 'data_out_l3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   21 |     wire [31:0] data_out_l3_r1, data_out_l3_r2, data_out_l3_r3, data_out_l3_r4;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:17: Signal is not used: 'data_out_l4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [31:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:33: Signal is not used: 'data_out_l4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [31:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:49: Signal is not used: 'data_out_l4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [31:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:65: Signal is not used: 'data_out_l4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   22 |     wire [31:0] data_out_l4_r1, data_out_l4_r2, data_out_l4_r3, data_out_l4_r4;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:17: Signal is not used: 'data_out_c_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [31:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                 ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:32: Signal is not used: 'data_out_c_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [31:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                                ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:47: Signal is not used: 'data_out_c_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [31:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                                               ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:62: Signal is not used: 'data_out_c_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   23 |     wire [31:0] data_out_c_r1, data_out_c_r2, data_out_c_r3, data_out_c_r4;
+      |                                                              ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:10: Signal is not used: 'full_out_link1_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:33: Signal is not used: 'full_out_link1_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:56: Signal is not used: 'full_out_link1_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:79: Signal is not used: 'full_out_link1_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   25 |     wire full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:10: Signal is not used: 'full_out_link1_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:33: Signal is not used: 'full_out_link1_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:56: Signal is not used: 'full_out_link1_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:28:79: Signal is not used: 'full_out_link1_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   28 |     wire full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:10: Signal is not used: 'full_out_link2_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:33: Signal is not used: 'full_out_link2_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:56: Signal is not used: 'full_out_link2_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:79: Signal is not used: 'full_out_link2_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   30 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:10: Signal is not used: 'full_out_link2_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:33: Signal is not used: 'full_out_link2_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:56: Signal is not used: 'full_out_link2_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:79: Signal is not used: 'full_out_link2_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   31 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:10: Signal is not used: 'full_out_link3_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:33: Signal is not used: 'full_out_link3_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:56: Signal is not used: 'full_out_link3_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:79: Signal is not used: 'full_out_link3_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   34 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:10: Signal is not used: 'full_out_link3_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:33: Signal is not used: 'full_out_link3_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:56: Signal is not used: 'full_out_link3_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:79: Signal is not used: 'full_out_link3_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   35 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:10: Signal is not used: 'full_out_link3_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:33: Signal is not used: 'full_out_link3_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:56: Signal is not used: 'full_out_link3_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:79: Signal is not used: 'full_out_link3_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   36 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:10: Signal is not used: 'full_out_link4_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:33: Signal is not used: 'full_out_link4_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:56: Signal is not used: 'full_out_link4_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:79: Signal is not used: 'full_out_link4_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   37 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:10: Signal is not used: 'full_out_core_vc1_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:32: Signal is not used: 'full_out_core_vc2_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:54: Signal is not used: 'full_out_core_vc3_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:76: Signal is not used: 'full_out_core_vc4_r1'
+                                  : ... note: In instance 'top_2x2_router'
+   41 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:10: Signal is not used: 'full_out_core_vc1_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:32: Signal is not used: 'full_out_core_vc2_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:54: Signal is not used: 'full_out_core_vc3_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:76: Signal is not used: 'full_out_core_vc4_r2'
+                                  : ... note: In instance 'top_2x2_router'
+   42 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:10: Signal is not used: 'full_out_core_vc1_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:32: Signal is not used: 'full_out_core_vc2_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:54: Signal is not used: 'full_out_core_vc3_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:76: Signal is not used: 'full_out_core_vc4_r3'
+                                  : ... note: In instance 'top_2x2_router'
+   43 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:10: Signal is not used: 'full_out_core_vc1_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:32: Signal is not used: 'full_out_core_vc2_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:54: Signal is not used: 'full_out_core_vc3_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:76: Signal is not used: 'full_out_core_vc4_r4'
+                                  : ... note: In instance 'top_2x2_router'
+   44 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Error: Exiting due to 176 warning(s)

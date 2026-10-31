@@ -1,0 +1,59 @@
+dut.v:14: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:15: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:16: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:17: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:18: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:19: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:20: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:21: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:22: error: 'rd_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'rd_pos' is declared here as a wire.
+dut.v:28: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:29: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:30: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:31: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:32: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:33: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:34: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:35: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:36: error: 'wr_pos' is not a valid l-value for a procedural assignment.
+dut.v:7:      : 'wr_pos' is declared here as a wire.
+dut.v:42: error: 'diff' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'diff' is declared here as a wire.
+dut.v:48: error: 'occupancy' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'occupancy' is declared here as a wire.
+dut.v:50: error: 'occupancy' is not a valid l-value for a procedural assignment.
+dut.v:9:      : 'occupancy' is declared here as a wire.
+dut.v:58: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:59: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:61: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:62: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:65: error: 'empty' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'empty' is declared here as a wire.
+dut.v:66: error: 'full_int' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_int' is declared here as a wire.
+dut.v:70: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_ext' is declared here as a wire.
+dut.v:72: error: 'full_ext' is not a valid l-value for a procedural assignment.
+dut.v:4:      : 'full_ext' is declared here as a wire.
+29 error(s) during elaboration.

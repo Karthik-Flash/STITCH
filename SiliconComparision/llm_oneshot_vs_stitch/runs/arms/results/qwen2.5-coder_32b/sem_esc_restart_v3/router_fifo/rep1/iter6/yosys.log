@@ -1,0 +1,669 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -lib /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/asynch_comparator.v; read_verilog -lib /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/gray_mod6.v; read_verilog -lib /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/memory.v; read_verilog dut.v; hierarchy -check -top router_fifo; synth -top router_fifo; check; stat -top router_fifo' --
+
+1. Executing Verilog-2005 frontend: /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/asynch_comparator.v
+Parsing Verilog input from `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/asynch_comparator.v' to AST representation.
+Generating RTLIL representation for module `\asynch_comparator'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/gray_mod6.v
+Parsing Verilog input from `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/gray_mod6.v' to AST representation.
+Generating RTLIL representation for module `\gray_mod6'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/memory.v
+Parsing Verilog input from `/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/router_fifo/stubs/memory.v' to AST representation.
+Generating RTLIL representation for module `\memory'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: dut.v
+Parsing Verilog input from `dut.v' to AST representation.
+Generating RTLIL representation for module `\router_fifo'.
+Successfully finished Verilog frontend.
+
+5. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1. Analyzing design hierarchy..
+Top module:  \router_fifo
+
+5.2. Analyzing design hierarchy..
+Top module:  \router_fifo
+Removed 0 unused modules.
+
+6. Executing SYNTH pass.
+
+6.1. Executing HIERARCHY pass (managing design hierarchy).
+
+6.1.1. Analyzing design hierarchy..
+Top module:  \router_fifo
+
+6.1.2. Analyzing design hierarchy..
+Top module:  \router_fifo
+Removed 0 unused modules.
+
+6.2. Executing PROC pass (convert processes to netlists).
+
+6.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+6.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$dut.v:73$5 in module router_fifo.
+Marked 1 switch rules as full_case in process $proc$dut.v:59$1 in module router_fifo.
+Removed a total of 0 dead cases.
+
+6.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 0 assignments to connections.
+
+6.2.4. Executing PROC_INIT pass (extract init attributes).
+
+6.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\router_fifo.$proc$dut.v:73$5'.
+Found async reset \reset in `\router_fifo.$proc$dut.v:59$1'.
+
+6.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~2 debug messages>
+
+6.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\router_fifo.$proc$dut.v:73$5'.
+     1/2: $0\wr_dir_reg[0:0]
+     2/2: $0\wr_ptr_reg[2:0]
+Creating decoders for process `\router_fifo.$proc$dut.v:59$1'.
+     1/3: $0\rd_dir_reg[0:0]
+     2/3: $0\data_out_reg[31:0]
+     3/3: $0\rd_ptr_reg[2:0]
+
+6.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+6.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\router_fifo.\wr_ptr_reg' using process `\router_fifo.$proc$dut.v:73$5'.
+  created $adff cell `$procdff$17' with positive edge clock and positive level reset.
+Creating register for signal `\router_fifo.\wr_dir_reg' using process `\router_fifo.$proc$dut.v:73$5'.
+  created $adff cell `$procdff$20' with positive edge clock and positive level reset.
+Creating register for signal `\router_fifo.\rd_ptr_reg' using process `\router_fifo.$proc$dut.v:59$1'.
+  created $adff cell `$procdff$23' with positive edge clock and positive level reset.
+Creating register for signal `\router_fifo.\data_out_reg' using process `\router_fifo.$proc$dut.v:59$1'.
+  created $adff cell `$procdff$26' with positive edge clock and positive level reset.
+Creating register for signal `\router_fifo.\rd_dir_reg' using process `\router_fifo.$proc$dut.v:59$1'.
+  created $adff cell `$procdff$29' with positive edge clock and positive level reset.
+
+6.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+6.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\router_fifo.$proc$dut.v:73$5'.
+Removing empty process `router_fifo.$proc$dut.v:73$5'.
+Found and cleaned up 1 empty switch in `\router_fifo.$proc$dut.v:59$1'.
+Removing empty process `router_fifo.$proc$dut.v:59$1'.
+Cleaned up 2 empty switches.
+
+6.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+<suppressed ~5 debug messages>
+
+6.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.4. Executing CHECK pass (checking for obvious problems).
+Checking module router_fifo...
+Found and reported 0 problems.
+
+6.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+Removed 0 unused cells and 13 unused wires.
+<suppressed ~1 debug messages>
+
+6.6. Executing OPT pass (performing simple optimizations).
+
+6.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 18 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \router_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+6.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \router_fifo.
+Performed a total of 0 changes.
+
+6.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 18 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+6.7. Executing FSM pass (extract and optimize FSM).
+
+6.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+6.8. Executing OPT pass (performing simple optimizations).
+
+6.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 18 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \router_fifo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+6.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \router_fifo.
+Performed a total of 0 changes.
+
+6.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 18 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$23 ($adff) from module router_fifo (D = $add$dut.v:66$4_Y [2:0], Q = \rd_ptr_reg).
+Adding EN signal on $procdff$17 ($adff) from module router_fifo (D = $add$dut.v:79$8_Y [2:0], Q = \wr_ptr_reg).
+Adding EN signal on $procdff$26 ($adff) from module router_fifo (D = \data_out_int, Q = \data_out_reg).
+
+6.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+Removed 3 unused cells and 3 unused wires.
+<suppressed ~4 debug messages>
+
+6.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \router_fifo..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+6.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \router_fifo.
+Performed a total of 0 changes.
+
+6.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+6.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 31 bits (of 32) from port B of cell router_fifo.$add$dut.v:66$4 ($add).
+Removed top 29 bits (of 32) from port Y of cell router_fifo.$add$dut.v:66$4 ($add).
+Removed top 31 bits (of 32) from port B of cell router_fifo.$add$dut.v:79$8 ($add).
+Removed top 29 bits (of 32) from port Y of cell router_fifo.$add$dut.v:79$8 ($add).
+Removed top 29 bits (of 32) from wire router_fifo.$add$dut.v:66$4_Y.
+Removed top 29 bits (of 32) from wire router_fifo.$add$dut.v:79$8_Y.
+
+6.10. Executing PEEPOPT pass (run peephole optimizers).
+
+6.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+6.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module router_fifo:
+  creating $macc model for $add$dut.v:79$8 ($add).
+  creating $macc model for $add$dut.v:66$4 ($add).
+  creating $alu model for $macc $add$dut.v:66$4.
+  creating $alu model for $macc $add$dut.v:79$8.
+  creating $alu cell for $add$dut.v:79$8: $auto$alumacc.cc:548:replace_alu$35
+  creating $alu cell for $add$dut.v:66$4: $auto$alumacc.cc:548:replace_alu$38
+  created 2 $alu and 0 $macc cells.
+
+6.13. Executing SHARE pass (SAT-based resource sharing).
+
+6.14. Executing OPT pass (performing simple optimizations).
+
+6.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \router_fifo..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+6.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \router_fifo.
+Performed a total of 0 changes.
+
+6.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+6.15. Executing MEMORY pass.
+
+6.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+6.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+6.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+6.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+6.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+6.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+6.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+6.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+6.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.17. Executing OPT pass (performing simple optimizations).
+
+6.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.17.5. Finished fast OPT passes.
+
+6.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+6.19. Executing OPT pass (performing simple optimizations).
+
+6.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \router_fifo..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+6.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \router_fifo.
+Performed a total of 0 changes.
+
+6.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 15 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.19.6. Executing OPT_SHARE pass.
+
+6.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+
+6.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+6.20. Executing TECHMAP pass (map to technology primitives).
+
+6.20.1. Executing Verilog-2005 frontend: /scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+6.20.2. Continuing TECHMAP pass.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $and.
+No more expansions possible.
+<suppressed ~239 debug messages>
+
+6.21. Executing OPT pass (performing simple optimizations).
+
+6.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+<suppressed ~48 debug messages>
+
+6.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 64 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Computing hashes of 62 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+6.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+Removed 6 unused cells and 86 unused wires.
+<suppressed ~7 debug messages>
+
+6.21.5. Finished fast OPT passes.
+
+6.22. Executing ABC pass (technology mapping using ABC).
+
+6.22.1. Summary of detected clock domains:
+  2 cells in clk=\wr_clk, en={ }, arst=\reset, srst={ }
+  2 cells in clk=\rd_clk, en={ }, arst=\reset, srst={ }
+  10 cells in clk=\wr_clk, en=$logic_and$dut.v:78$7_Y, arst=\reset, srst={ }
+  42 cells in clk=\rd_clk, en=$logic_and$dut.v:65$3_Y, arst=\reset, srst={ }
+
+6.22.2. Extracting gate netlist of module `\router_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, asynchronously reset by \reset
+
+6.22.3. Extracting gate netlist of module `\router_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \rd_clk, asynchronously reset by \reset
+
+6.22.3.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+6.22.4. Extracting gate netlist of module `\router_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, enabled by $logic_and$dut.v:78$7_Y, asynchronously reset by \reset
+
+6.22.4.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+6.22.5. Extracting gate netlist of module `\router_fifo' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \rd_clk, enabled by $logic_and$dut.v:65$3_Y, asynchronously reset by \reset
+
+6.22.5.1. Executed ABC.
+Extracted 6 gates and 11 wires to a netlist network with 5 inputs and 4 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+6.22.5.2. Re-integrating ABC results.
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        1
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:        5
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+
+6.22.5.1. Executed ABC.
+Extracted 6 gates and 11 wires to a netlist network with 5 inputs and 4 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+6.22.5.2. Re-integrating ABC results.
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        1
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:        5
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+Removing global temp directory.
+
+6.23. Executing OPT pass (performing simple optimizations).
+
+6.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module router_fifo.
+
+6.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\router_fifo'.
+Computing hashes of 54 cells of `\router_fifo'.
+Finding duplicate cells in `\router_fifo'.
+Removed a total of 0 cells.
+
+6.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \router_fifo..
+Removed 0 unused cells and 22 unused wires.
+<suppressed ~1 debug messages>
+
+6.23.5. Finished fast OPT passes.
+
+6.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `router_fifo'. Setting top module to router_fifo.
+
+6.24.1. Analyzing design hierarchy..
+Top module:  \router_fifo
+
+6.24.2. Analyzing design hierarchy..
+Top module:  \router_fifo
+Removed 0 unused modules.
+
+6.25. Printing statistics.
+
+=== router_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       32 wires
+      176 wire bits
+       24 public wires
+      160 public wire bits
+       14 ports
+       80 port bits
+       54 cells
+        2   $_ANDNOT_
+       36   $_DFFE_PP0P_
+        2   $_DFFE_PP1P_
+        2   $_DFF_PP0_
+        2   $_NAND_
+        2   $_NOT_
+        2   $_XNOR_
+        2   $_XOR_
+        1   asynch_comparator
+        2   gray_mod6
+        1   memory
+
+6.26. Executing CHECK pass (checking for obvious problems).
+Checking module router_fifo...
+Found and reported 0 problems.
+
+7. Executing CHECK pass (checking for obvious problems).
+Checking module router_fifo...
+Found and reported 0 problems.
+
+8. Printing statistics.
+
+=== router_fifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       32 wires
+      176 wire bits
+       24 public wires
+      160 public wire bits
+       14 ports
+       80 port bits
+       54 cells
+        2   $_ANDNOT_
+       36   $_DFFE_PP0P_
+        2   $_DFFE_PP1P_
+        2   $_DFF_PP0_
+        2   $_NAND_
+        2   $_NOT_
+        2   $_XNOR_
+        2   $_XOR_
+        1   asynch_comparator
+        2   gray_mod6
+        1   memory
+
+End of script. Logfile hash: e4097b9aff, time: 0.07s, user: 0.03s, system: 0.03s, MEM: 27.26 MB peak
+Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 67% 1x abc (0 sec), 9% 9x read_verilog (0 sec), ...

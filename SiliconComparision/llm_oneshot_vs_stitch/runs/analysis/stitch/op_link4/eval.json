@@ -1,0 +1,25 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "PINCONNECTEMPTY": 76,
+  "WIDTHEXPAND": 4,
+  "UNUSEDSIGNAL": 118
+ },
+ "verilator_warnings_count": 198,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "c6d7d4cdcf502ac01c266d00f94c19f290a598c52deabab11955e76844f366eb",
+ "file": "outputs/stitch/op_link4.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

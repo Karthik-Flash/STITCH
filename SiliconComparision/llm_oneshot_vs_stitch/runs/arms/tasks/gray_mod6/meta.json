@@ -1,0 +1,20 @@
+{
+ "track": "N",
+ "top": "gray_mod6",
+ "source": "golden/handwritten/gray_mod6.v",
+ "children": [
+  "jk_ff"
+ ],
+ "descendants": [
+  "jk_ff"
+ ],
+ "checked_outputs": [
+  "gray_out",
+  "dir"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "gray_out",
+ "phase3_task": null
+}

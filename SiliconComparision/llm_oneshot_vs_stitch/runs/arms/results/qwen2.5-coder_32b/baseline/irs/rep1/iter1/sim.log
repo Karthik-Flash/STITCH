@@ -1,0 +1,22 @@
+dut.v:11: error: Unable to bind wire/reg/memory `en4_w' in `tb.dut'
+dut.v:62:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:11: error: Failed to elaborate input port 'd' expression (en4_w) in instance dut.dff_en4 of module: dff_asynch_clr.
+dut.v:19: error: Unable to bind wire/reg/memory `en5_w' in `tb.dut'
+dut.v:74:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:19: error: Failed to elaborate input port 'd' expression (en5_w) in instance dut.dff_en5 of module: dff_asynch_clr.
+dut.v:27: error: Unable to bind wire/reg/memory `en6_w' in `tb.dut'
+dut.v:86:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:27: error: Failed to elaborate input port 'd' expression (en6_w) in instance dut.dff_en6 of module: dff_asynch_clr.
+dut.v:43: error: Unable to bind wire/reg/memory `flag_A_w' in `tb.dut'
+dut.v:109:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:43: error: Failed to elaborate input port 'd' expression (flag_A_w) in instance dut.dff_flag_A of module: dff_asynch_clr.
+dut.v:51: error: Unable to bind wire/reg/memory `flag_B_w' in `tb.dut'
+dut.v:119:      : A symbol with that name was declared here. Check for declaration after use.
+dut.v:51: error: Failed to elaborate input port 'd' expression (flag_B_w) in instance dut.dff_flag_B of module: dff_asynch_clr.
+dut.v:100: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:102: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:104: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+13 error(s) during elaboration.

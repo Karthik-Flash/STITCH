@@ -1,0 +1,15 @@
+{
+ "track": "N",
+ "top": "memory",
+ "source": "golden/handwritten/memory.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "data_out"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "data_out",
+ "phase3_task": null
+}

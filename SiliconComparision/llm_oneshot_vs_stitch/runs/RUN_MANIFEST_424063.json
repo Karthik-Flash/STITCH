@@ -1,0 +1,78 @@
+{
+ "timestamp": "2026-10-30T09:12:04",
+ "git_commit": "62b4131016fcf3b672d8fbce572a1169f1eb809e",
+ "hostname": "gpunode5.hpc.bits-hyderabad.ac.in",
+ "slurm_job_id": "424063",
+ "gpu": [
+  {
+   "name": "NVIDIA H100 80GB HBM3",
+   "memory_total_mib": 81559
+  }
+ ],
+ "gpu_query": "name, memory.total [MiB]\nNVIDIA H100 80GB HBM3, 81559 MiB",
+ "gen_tasks": "all",
+ "cpu_threads": {
+  "SLURM_CPUS_PER_TASK": "4",
+  "LLAMA_ARG_THREADS": "4",
+  "LLAMA_ARG_THREADS_BATCH": "4",
+  "options.num_thread (p3_bridge)": 4
+ },
+ "client_timeout_s": 3600,
+ "first_call_checks": {
+  "exit_below_tok_s": 8.0,
+  "warn_below_tok_s": 15.0,
+  "n_threads_must_equal": 4
+ },
+ "tool_versions": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)",
+  "python": "3.11.6 (/scratch/soumyaj/oss-cad-suite/bin/tabbypy3)",
+  "ollama": "0.34.1"
+ },
+ "ollama_version": "0.34.1",
+ "model": "qwen2.5-coder:32b",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "phase3_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "generation_options": {
+  "model": "qwen2.5-coder:32b",
+  "stream": false,
+  "options": {
+   "temperature": 0.1,
+   "num_ctx": 32768,
+   "num_thread": 4
+  },
+  "client_http_timeout_s": 3600
+ },
+ "generation_options_run_arms": {
+  "model": "qwen2.5-coder:32b",
+  "stream": false,
+  "options": {
+   "temperature": 0.1,
+   "num_ctx": 32768,
+   "num_thread": 4
+  },
+  "client_http_timeout_s": 3600
+ },
+ "job_argv": {
+  "run_arms": [
+   "--model",
+   "qwen2.5-coder:32b",
+   "--host",
+   "http://x",
+   "--max-iters",
+   "6",
+   "--reps",
+   "1"
+  ],
+  "oneshot_gen": [
+   "--model",
+   "qwen2.5-coder:32b",
+   "--host",
+   "http://x",
+   "--temperature",
+   "0.1"
+  ]
+ },
+ "preflight_ok": true
+}

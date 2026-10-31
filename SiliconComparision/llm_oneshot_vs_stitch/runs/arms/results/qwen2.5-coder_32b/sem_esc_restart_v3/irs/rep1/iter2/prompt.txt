@@ -1,0 +1,197 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# irs
+
+## Behaviour
+
+Read sequencer for one input virtual channel. It decides when the channel's FIFO is read and when the
+stored header flit is sent instead of the FIFO output.
+
+- `en1` = NOT `empty`. `en2` = `rd_en`.
+- `en4` (packet in progress): becomes 1 on a rising edge of `header`; it is cleared, and held at 0, while
+  `reset` or `en5` is 1.
+- `en5`: on a rising edge of `tailer` it takes the value of `en4`; it is held at 0 while `reset` or `en6` is 1.
+- `en6`: on a rising edge of `rd_clk` it takes the value of `en5`; it is held at 0 while `reset` is 1.
+- `rd_en_out` = `en1` when `en4` is 0 (before a header has been seen, read whenever the FIFO is not empty,
+  so the next flit is pre-fetched to the FIFO output), and `en2` when `en4` is 1 (inside a packet, read
+  only when the output side grants a read).
+- `data_sel` (send the stored header): becomes 1 on a rising edge of `rd_en`. It is held at 0 while
+  `reset` is 1, while an internal flag A is 1, or while an internal flag B is 1. A takes the value of
+  `data_sel` on each rising edge of `rd_clk` (A is 0 while `reset` is 1). B becomes 1 on each falling edge
+  of `data_sel` and is held at 0 while `reset` or `tailer` is 1. Net effect: after reset or a tailer,
+  the first rising edge of `rd_en` gives a `data_sel` pulse that ends at the next rising `rd_clk` edge,
+  and no further pulse occurs until `tailer` is 1 again.
+- `tailer_org` is an input with no effect on any output.
+
+## Reset
+
+Asynchronous, active-high `reset`: `en4`, `en5`, `en6`, `data_sel` and both internal flags go to 0
+immediately and stay 0 while `reset` is 1.
+
+## Ports
+
+14 ports, in this exact order:
+
+```verilog
+input reset, empty, rd_en, rd_clk, tailer, tailer_org, header;
+output rd_en_out, data_sel, en1, en2, en4, en5, en6;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `dff_asynch_clr` x 6: (d, clr, clk, q)
+
+
+CURRENT RTL:
+```verilog
+module irs (
+    input reset, empty, rd_en, rd_clk, tailer, tailer_org, header,
+    output rd_en_out, data_sel, en1, en2, en4, en5, en6
+);
+
+    wire en1_w, en2_w, rd_en_out_w, data_sel_w;
+    reg en4_reg, en5_reg, en6_reg, data_sel_reg, flag_A_reg, flag_B_reg;
+
+    // Instantiate dff_asynch_clr for en4
+    dff_asynch_clr dff_en4 (
+        .d(en4_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en4_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en5
+    dff_asynch_clr dff_en5 (
+        .d(en5_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en5_reg)
+    );
+
+    // Instantiate dff_asynch_clr for en6
+    dff_asynch_clr dff_en6 (
+        .d(en6_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(en6_reg)
+    );
+
+    // Instantiate dff_asynch_clr for data_sel
+    dff_asynch_clr dff_data_sel (
+        .d(data_sel_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(data_sel_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_A
+    dff_asynch_clr dff_flag_A (
+        .d(flag_A_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_A_reg)
+    );
+
+    // Instantiate dff_asynch_clr for flag_B
+    dff_asynch_clr dff_flag_B (
+        .d(flag_B_w),
+        .clr(reset),
+        .clk(rd_clk),
+        .q(flag_B_reg)
+    );
+
+    // Assignments for en1 and en2
+    assign en1_w = ~empty;
+    assign en2_w = rd_en;
+
+    // Combinational logic for en4
+    reg en4_w;
+    always @(*) begin
+        if (reset) begin
+            en4_w = 1'b0;
+        end else if (header) begin
+            en4_w = 1'b1;
+        end else begin
+            en4_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for en5
+    reg en5_w;
+    always @(*) begin
+        if (reset) begin
+            en5_w = 1'b0;
+        end else if (tailer) begin
+            en5_w = en4_reg;
+        end else begin
+            en5_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for en6
+    reg en6_w;
+    always @(*) begin
+        if (reset) begin
+            en6_w = 1'b0;
+        end else begin
+            en6_w = en5_reg;
+        end
+    end
+
+    // Combinational logic for data_sel
+    reg data_sel_w;
+    always @(*) begin
+        if (reset) begin
+            data_sel_w = 1'b0;
+        end else if (rd_en && ~flag_A_reg && ~flag_B_reg) begin
+            data_sel_w = 1'b1;
+        end else begin
+            data_sel_w = 1'b0;
+        end
+    end
+
+    // Combinational logic for flag_A
+    reg flag_A_w;
+    always @(*) begin
+        if (reset) begin
+            flag_A_w = 1'b0;
+        end else begin
+            flag_A_w = data_sel_reg;
+        end
+    end
+
+    // Combinational logic for flag_B
+    reg flag_B_w;
+    always @(*) begin
+        if (reset || tailer) begin
+            flag_B_w = 1'b0;
+        end else if (data_sel_reg && ~data_sel_reg) begin
+            flag_B_w = 1'b1;
+        end else begin
+            flag_B_w = 1'b0;
+        end
+    end
+
+    // Output assignments
+    assign rd_en_out = en4_reg ? en2_w : en1_w;
+    assign data_sel = data_sel_reg;
+    assign en1 = en1_w;
+    assign en2 = en2_w;
+    assign en4 = en4_reg;
+    assign en5 = en5_reg;
+    assign en6 = en6_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:96: error: 'data_sel_w' has already been declared in this scope.
+dut.v:6:      : It was declared here as a net.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

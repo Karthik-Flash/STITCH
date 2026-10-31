@@ -1,0 +1,158 @@
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'all_vc_not_busy'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2264: ... Location of port declaration
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.053
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'ready_vc1'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2281: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'ready_vc2'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2292: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'ready_vc3'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2303: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'ready_vc4'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2314: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'b1'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2325: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'b2'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2329: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'b3'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2333: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'b4'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2337: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'mux_rok_out_vc1'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2341: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'mux_rok_out_vc2'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2358: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'mux_rok_out_vc3'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2375: ... Location of port declaration
+%Warning-PINMISSING: dut.v:709:14: Instance has missing pin: 'mux_rok_out_vc4'
+  709 |     op_link1 op_link1_inst (
+      |              ^~~~~~~~~~~~~
+                     /scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/runs/arms/tasks/top_module/stubs/op_link1.v:3:2392: ... Location of port declaration
+%Error-ASSIGNIN: dut.v:53:19: Assigning to input/const variable: 'full_in_link1_vc1'
+                            : ... note: In instance 'top_module'
+   53 |         .full_vc1(full_in_link1_vc1),
+      |                   ^~~~~~~~~~~~~~~~~
+                 ... For error description see https://verilator.org/warn/ASSIGNIN?v=5.053
+%Error-ASSIGNIN: dut.v:54:19: Assigning to input/const variable: 'full_in_link1_vc2'
+                            : ... note: In instance 'top_module'
+   54 |         .full_vc2(full_in_link1_vc2),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:55:19: Assigning to input/const variable: 'full_in_link1_vc3'
+                            : ... note: In instance 'top_module'
+   55 |         .full_vc3(full_in_link1_vc3),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:56:19: Assigning to input/const variable: 'full_in_link1_vc4'
+                            : ... note: In instance 'top_module'
+   56 |         .full_vc4(full_in_link1_vc4),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:161:19: Assigning to input/const variable: 'full_in_link2_vc1'
+                             : ... note: In instance 'top_module'
+  161 |         .full_vc1(full_in_link2_vc1),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:162:19: Assigning to input/const variable: 'full_in_link2_vc2'
+                             : ... note: In instance 'top_module'
+  162 |         .full_vc2(full_in_link2_vc2),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:163:19: Assigning to input/const variable: 'full_in_link2_vc3'
+                             : ... note: In instance 'top_module'
+  163 |         .full_vc3(full_in_link2_vc3),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:164:19: Assigning to input/const variable: 'full_in_link2_vc4'
+                             : ... note: In instance 'top_module'
+  164 |         .full_vc4(full_in_link2_vc4),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:269:19: Assigning to input/const variable: 'full_in_link3_vc1'
+                             : ... note: In instance 'top_module'
+  269 |         .full_vc1(full_in_link3_vc1),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:270:19: Assigning to input/const variable: 'full_in_link3_vc2'
+                             : ... note: In instance 'top_module'
+  270 |         .full_vc2(full_in_link3_vc2),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:271:19: Assigning to input/const variable: 'full_in_link3_vc3'
+                             : ... note: In instance 'top_module'
+  271 |         .full_vc3(full_in_link3_vc3),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:272:19: Assigning to input/const variable: 'full_in_link3_vc4'
+                             : ... note: In instance 'top_module'
+  272 |         .full_vc4(full_in_link3_vc4),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:377:19: Assigning to input/const variable: 'full_in_link4_vc1'
+                             : ... note: In instance 'top_module'
+  377 |         .full_vc1(full_in_link4_vc1),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:378:19: Assigning to input/const variable: 'full_in_link4_vc2'
+                             : ... note: In instance 'top_module'
+  378 |         .full_vc2(full_in_link4_vc2),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:379:19: Assigning to input/const variable: 'full_in_link4_vc3'
+                             : ... note: In instance 'top_module'
+  379 |         .full_vc3(full_in_link4_vc3),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:380:19: Assigning to input/const variable: 'full_in_link4_vc4'
+                             : ... note: In instance 'top_module'
+  380 |         .full_vc4(full_in_link4_vc4),
+      |                   ^~~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:485:19: Assigning to input/const variable: 'full_in_core_vc1'
+                             : ... note: In instance 'top_module'
+  485 |         .full_vc1(full_in_core_vc1),
+      |                   ^~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:486:19: Assigning to input/const variable: 'full_in_core_vc2'
+                             : ... note: In instance 'top_module'
+  486 |         .full_vc2(full_in_core_vc2),
+      |                   ^~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:487:19: Assigning to input/const variable: 'full_in_core_vc3'
+                             : ... note: In instance 'top_module'
+  487 |         .full_vc3(full_in_core_vc3),
+      |                   ^~~~~~~~~~~~~~~~
+%Error-ASSIGNIN: dut.v:488:19: Assigning to input/const variable: 'full_in_core_vc4'
+                             : ... note: In instance 'top_module'
+  488 |         .full_vc4(full_in_core_vc4),
+      |                   ^~~~~~~~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:706:10: Output port connection 'ip_link_vc' expects 4 bits on the pin connection, but pin connection's VARREF 'ip_core_out_vc1' generates 32 bits.
+                                 : ... note: In instance 'top_module'
+  706 |         .ip_link_vc(ip_core_out_vc1)
+      |          ^~~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:836:10: Output port connection 'ip_link_vc' expects 4 bits on the pin connection, but pin connection's VARREF 'ip_link1_out_vc1' generates 32 bits.
+                                 : ... note: In instance 'top_module'
+  836 |         .ip_link_vc(ip_link1_out_vc1)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:962:10: Output port connection 'ip_link_vc' expects 4 bits on the pin connection, but pin connection's VARREF 'ip_link2_out_vc1' generates 32 bits.
+                                 : ... note: In instance 'top_module'
+  962 |         .ip_link_vc(ip_link2_out_vc1)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:1088:10: Output port connection 'ip_link_vc' expects 4 bits on the pin connection, but pin connection's VARREF 'ip_link3_out_vc1' generates 32 bits.
+                                  : ... note: In instance 'top_module'
+ 1088 |         .ip_link_vc(ip_link3_out_vc1)
+      |          ^~~~~~~~~~
+%Warning-WIDTHTRUNC: dut.v:1214:10: Output port connection 'ip_link_vc' expects 4 bits on the pin connection, but pin connection's VARREF 'ip_link4_out_vc1' generates 32 bits.
+                                  : ... note: In instance 'top_module'
+ 1214 |         .ip_link_vc(ip_link4_out_vc1)
+      |          ^~~~~~~~~~
+%Error: Exiting due to 20 error(s), 18 warning(s)

@@ -1,0 +1,45 @@
+dut.v:64: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en4_w' is declared here as a wire.
+dut.v:66: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en4_w' is declared here as a wire.
+dut.v:68: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en4_w' is declared here as a wire.
+dut.v:70: error: 'en4_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en4_w' is declared here as a wire.
+dut.v:77: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en5_w' is declared here as a wire.
+dut.v:79: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en5_w' is declared here as a wire.
+dut.v:81: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en5_w' is declared here as a wire.
+dut.v:83: error: 'en5_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en5_w' is declared here as a wire.
+dut.v:90: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en6_w' is declared here as a wire.
+dut.v:92: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en6_w' is declared here as a wire.
+dut.v:94: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en6_w' is declared here as a wire.
+dut.v:96: error: 'en6_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'en6_w' is declared here as a wire.
+dut.v:103: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:105: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:107: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:109: error: 'data_sel_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'data_sel_w' is declared here as a wire.
+dut.v:116: error: 'flag_A_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_A_w' is declared here as a wire.
+dut.v:118: error: 'flag_A_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_A_w' is declared here as a wire.
+dut.v:120: error: 'flag_A_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_A_w' is declared here as a wire.
+dut.v:127: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_B_w' is declared here as a wire.
+dut.v:129: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_B_w' is declared here as a wire.
+dut.v:131: error: 'flag_B_w' is not a valid l-value for a procedural assignment.
+dut.v:6:      : 'flag_B_w' is declared here as a wire.
+22 error(s) during elaboration.

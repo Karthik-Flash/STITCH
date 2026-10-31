@@ -1,0 +1,236 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# rr_arbiter
+
+## Behaviour
+
+Round-robin arbiter for four requesters with registered grants.
+
+- At most one of `gnt1` to `gnt4` is 1. All grants are 0 while `reset` is 1.
+- A grant is issued on a rising `clk` edge and is held while its request stays 1.
+- When the granted request drops, the grant drops at the next rising `clk` edge. The arbiter then
+  rotates priority so the requester after the one just served is first (after requester i: i+1, i+2,
+  i+3, i, wrapping 4 to 1). The next grant is issued at the following rising `clk` edge, which leaves one
+  idle cycle between grants.
+- After reset the priority order is 1, 2, 3, 4. The first grant can take two rising `clk` edges after
+  `reset` falls.
+- Simulation check (all four requesting, each grant released after two cycles): grants go 1, 2, 3, 4, 1,
+  ... with one idle cycle between them.
+
+## Reset
+
+Active-high `reset`: grants forced to 0 combinationally. All internal priority state clears
+asynchronously.
+
+## Ports
+
+10 ports, in this exact order:
+
+```verilog
+input req1, req2, req3, req4, reset;
+output gnt1, gnt2, gnt3, gnt4;
+input clk;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `dff_asynch_clr` x 5: (d, clr, clk, q)
+- `falling_edge_pulse_generator` x 4: (reset, gnt, clk, q0)
+- `priority_encoder` x 4: (reset, en, in0, in1, in2, in3, out0, out1, out2, out3, clk)
+
+
+CURRENT RTL:
+```verilog
+module rr_arbiter (
+    input req1, req2, req3, req4, reset,
+    output gnt1, gnt2, gnt3, gnt4,
+    input clk
+);
+
+    wire [1:0] priority;
+    wire [3:0] req;
+    wire [3:0] gnt;
+    wire [3:0] gnt_q0;
+    wire [3:0] dff_out;
+    wire [3:0] dff_clr;
+    wire [3:0] dff_clk;
+    wire [3:0] dff_q;
+
+    assign req = {req4, req3, req2, req1};
+    assign gnt = {gnt4, gnt3, gnt2, gnt1};
+
+    // Instantiate priority encoder
+    priority_encoder pe (
+        .reset(reset),
+        .en(1'b1),
+        .in0(req[0]),
+        .in1(req[1]),
+        .in2(req[2]),
+        .in3(req[3]),
+        .out0(priority[0]),
+        .out1(priority[1]),
+        .out2(),
+        .out3(),
+        .clk(clk)
+    );
+
+    // Instantiate falling edge pulse generators
+    falling_edge_pulse_generator fepg1 (
+        .reset(reset),
+        .gnt(gnt[0]),
+        .clk(clk),
+        .q0(gnt_q0[0])
+    );
+
+    falling_edge_pulse_generator fepg2 (
+        .reset(reset),
+        .gnt(gnt[1]),
+        .clk(clk),
+        .q0(gnt_q0[1])
+    );
+
+    falling_edge_pulse_generator fepg3 (
+        .reset(reset),
+        .gnt(gnt[2]),
+        .clk(clk),
+        .q0(gnt_q0[2])
+    );
+
+    falling_edge_pulse_generator fepg4 (
+        .reset(reset),
+        .gnt(gnt[3]),
+        .clk(clk),
+        .q0(gnt_q0[3])
+    );
+
+    // Instantiate DFFs for grant signals
+    dff_asynch_clr dff1 (
+        .d(dff_out[0]),
+        .clr(dff_clr[0]),
+        .clk(clk),
+        .q(dff_q[0])
+    );
+
+    dff_asynch_clr dff2 (
+        .d(dff_out[1]),
+        .clr(dff_clr[1]),
+        .clk(clk),
+        .q(dff_q[1])
+    );
+
+    dff_asynch_clr dff3 (
+        .d(dff_out[2]),
+        .clr(dff_clr[2]),
+        .clk(clk),
+        .q(dff_q[2])
+    );
+
+    dff_asynch_clr dff4 (
+        .d(dff_out[3]),
+        .clr(dff_clr[3]),
+        .clk(clk),
+        .q(dff_q[3])
+    );
+
+    // Instantiate DFF for priority state
+    dff_asynch_clr dff_priority (
+        .d(priority),
+        .clr(reset),
+        .clk(clk),
+        .q(priority)
+    );
+
+    // Combinational logic for grant signals
+    always @(*) begin
+        case (priority)
+            2'b00: begin
+                dff_out[0] = req[0];
+                dff_out[1] = 1'b0;
+                dff_out[2] = 1'b0;
+                dff_out[3] = 1'b0;
+            end
+            2'b01: begin
+                dff_out[0] = 1'b0;
+                dff_out[1] = req[1];
+                dff_out[2] = 1'b0;
+                dff_out[3] = 1'b0;
+            end
+            2'b10: begin
+                dff_out[0] = 1'b0;
+                dff_out[1] = 1'b0;
+                dff_out[2] = req[2];
+                dff_out[3] = 1'b0;
+            end
+            2'b11: begin
+                dff_out[0] = 1'b0;
+                dff_out[1] = 1'b0;
+                dff_out[2] = 1'b0;
+                dff_out[3] = req[3];
+            end
+            default: begin
+                dff_out[0] = 1'b0;
+                dff_out[1] = 1'b0;
+                dff_out[2] = 1'b0;
+                dff_out[3] = 1'b0;
+            end
+        endcase
+    end
+
+    // Combinational logic for clear signals
+    always @(*) begin
+        if (reset) begin
+            dff_clr[0] = 1'b1;
+            dff_clr[1] = 1'b1;
+            dff_clr[2] = 1'b1;
+            dff_clr[3] = 1'b1;
+        end else begin
+            dff_clr[0] = gnt_q0[0];
+            dff_clr[1] = gnt_q0[1];
+            dff_clr[2] = gnt_q0[2];
+            dff_clr[3] = gnt_q0[3];
+        end
+    end
+
+    // Assign outputs
+    assign gnt1 = dff_q[0];
+    assign gnt2 = dff_q[1];
+    assign gnt3 = dff_q[2];
+    assign gnt4 = dff_q[3];
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:7: syntax error
+dut.v:7: error: Invalid module item.
+dut.v:27: syntax error
+dut.v:27: error: Invalid port connection expression.
+dut.v:28: syntax error
+dut.v:28: error: Invalid port connection expression.
+dut.v:94: syntax error
+dut.v:94: error: Invalid port connection expression.
+dut.v:97: syntax error
+dut.v:97: error: Invalid port connection expression.
+dut.v:102: syntax error
+dut.v:104: Syntax in assignment statement l-value.
+dut.v:109: syntax error
+dut.v:110: error: Invalid module item.
+dut.v:111: syntax error
+dut.v:111: error: Invalid module item.
+dut.v:112: syntax error
+dut.v:112: error: Invalid module item.
+dut.v:113: syntax error
+dut.v:113: error: Invalid module item.
+dut.v:114: syntax error
+dut.v:116: error: Invalid module item.
+dut.v:117: syntax error
+dut.v:117: error: Invalid module item.
+dut.v:118: syntax error
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

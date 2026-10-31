@@ -1,0 +1,18 @@
+FAIL t=84000 cycle 7: full_ext = 1, expected 0
+FAIL t=89000 cycle 7: full_ext = 1, expected 0
+FAIL t=144000 cycle 13: full_ext = 1, expected 0
+FAIL t=149000 cycle 13: full_ext = 1, expected 0
+FAIL t=214000 cycle 20: full_ext = 1, expected 0
+FAIL t=219000 cycle 20: full_ext = 1, expected 0
+FAIL t=244000 cycle 23: full_ext = 1, expected 0
+FAIL t=249000 cycle 23: full_ext = 1, expected 0
+FAIL t=264000 cycle 25: full_ext = 0, expected 1
+FAIL t=269000 cycle 25: full_ext = 0, expected 1
+FAIL t=314000 cycle 30: full_ext = 1, expected 0
+FAIL t=319000 cycle 30: full_ext = 1, expected 0
+FAIL t=354000 cycle 34: full_ext = 1, expected 0
+FAIL t=359000 cycle 34: full_ext = 1, expected 0
+FAIL t=404000 cycle 39: full_ext = 1, expected 0
+INFO coverage: 3 of 3 checked outputs toggled, 3 of 3 bits
+FAIL: 68 mismatches, 0 property errors
+tb.v:75: $finish called at 2009000 (1ps)

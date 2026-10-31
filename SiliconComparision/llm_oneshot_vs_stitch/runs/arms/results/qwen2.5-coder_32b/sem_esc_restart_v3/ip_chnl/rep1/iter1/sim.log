@@ -1,0 +1,36 @@
+dut.v:25: error: expression not valid in assign l-value: 2'd0
+dut.v:25: error: Output port expression must support a continuous assignment.
+dut.v:25:      : Port 7 (rd_add) of router_fifo is connected to tb.dut.2'd0
+dut.v:26: error: expression not valid in assign l-value: 2'd0
+dut.v:26: error: Output port expression must support a continuous assignment.
+dut.v:26:      : Port 8 (wr_add) of router_fifo is connected to tb.dut.2'd0
+dut.v:27: error: expression not valid in assign l-value: 2'd0
+dut.v:27: error: Output port expression must support a continuous assignment.
+dut.v:27:      : Port 9 (wr_dir) of router_fifo is connected to tb.dut.2'd0
+dut.v:28: error: expression not valid in assign l-value: 2'd0
+dut.v:28: error: Output port expression must support a continuous assignment.
+dut.v:28:      : Port 10 (rd_dir) of router_fifo is connected to tb.dut.2'd0
+dut.v:111: error: 'header_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'header_out' is declared here as a wire.
+dut.v:113: error: 'header_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'header_out' is declared here as a wire.
+dut.v:118: error: 'mux_data_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'mux_data_out' is declared here as a wire.
+dut.v:120: error: 'mux_data_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'mux_data_out' is declared here as a wire.
+dut.v:123: error: 'mux_data_out' is not a valid l-value for a procedural assignment.
+dut.v:8:      : 'mux_data_out' is declared here as a wire.
+dut.v:129: error: 'req_l1' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l1' is declared here as a wire.
+dut.v:130: error: 'req_l2' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l2' is declared here as a wire.
+dut.v:131: error: 'req_l3' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l3' is declared here as a wire.
+dut.v:132: error: 'req_l4' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_l4' is declared here as a wire.
+dut.v:133: error: 'req_c' is not a valid l-value for a procedural assignment.
+dut.v:5:      : 'req_c' is declared here as a wire.
+dut.v:128: warning: @* found no sensitivities so it will never trigger.
+tb.v:31: warning: output port mux_data_out is coerced to inout.
+tb.v:31: warning: output port header_out is coerced to inout.
+14 error(s) during elaboration.

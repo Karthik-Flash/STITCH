@@ -1,0 +1,62 @@
+dut.v:7: syntax error
+dut.v:7: error: Invalid module item.
+dut.v:27: syntax error
+dut.v:27: error: Invalid port connection expression.
+dut.v:28: syntax error
+dut.v:28: error: Invalid port connection expression.
+dut.v:94: syntax error
+dut.v:94: error: Invalid port connection expression.
+dut.v:97: syntax error
+dut.v:97: error: Invalid port connection expression.
+dut.v:102: syntax error
+dut.v:104: Syntax in assignment statement l-value.
+dut.v:109: syntax error
+dut.v:110: error: Invalid module item.
+dut.v:111: syntax error
+dut.v:111: error: Invalid module item.
+dut.v:112: syntax error
+dut.v:112: error: Invalid module item.
+dut.v:113: syntax error
+dut.v:113: error: Invalid module item.
+dut.v:114: syntax error
+dut.v:116: error: Invalid module item.
+dut.v:117: syntax error
+dut.v:117: error: Invalid module item.
+dut.v:118: syntax error
+dut.v:118: error: Invalid module item.
+dut.v:119: syntax error
+dut.v:119: error: Invalid module item.
+dut.v:120: syntax error
+dut.v:122: error: Invalid module item.
+dut.v:123: syntax error
+dut.v:123: error: Invalid module item.
+dut.v:124: syntax error
+dut.v:124: error: Invalid module item.
+dut.v:125: syntax error
+dut.v:125: error: Invalid module item.
+dut.v:126: syntax error
+dut.v:128: error: Invalid module item.
+dut.v:129: syntax error
+dut.v:129: error: Invalid module item.
+dut.v:130: syntax error
+dut.v:130: error: Invalid module item.
+dut.v:131: syntax error
+dut.v:131: error: Invalid module item.
+dut.v:132: syntax error
+dut.v:139: error: Invalid module item.
+dut.v:140: syntax error
+dut.v:140: error: Invalid module item.
+dut.v:141: syntax error
+dut.v:141: error: Invalid module item.
+dut.v:142: syntax error
+dut.v:142: error: Invalid module item.
+dut.v:143: syntax error
+dut.v:144: error: Invalid module item.
+dut.v:145: syntax error
+dut.v:145: error: Invalid module item.
+dut.v:146: syntax error
+dut.v:146: error: Invalid module item.
+dut.v:147: syntax error
+dut.v:147: error: Invalid module item.
+dut.v:148: syntax error
+dut.v:152: error: Invalid module item.

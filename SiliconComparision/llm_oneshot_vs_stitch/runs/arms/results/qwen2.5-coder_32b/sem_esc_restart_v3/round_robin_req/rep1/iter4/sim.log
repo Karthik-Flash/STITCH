@@ -1,0 +1,6 @@
+dut.v:32: error: Index gi[16] is out of range.
+dut.v:42: error: Index gi_int[16] is out of range.
+dut.v:53: error: Index gi_latched[16] is out of range.
+dut.v:62: error: Index req_masked[16] is out of range.
+dut.v:124: error: Index gnt[16] is out of range.
+5 error(s) during elaboration.

@@ -1,0 +1,11 @@
+%Warning-UNDRIVEN: dut.v:4:38: Signal is not driven: 'b1_logic'
+                             : ... note: In instance 'rr_comb_new'
+    4 |            and_out4, or_out, b1, b0, b1_logic, b0_logic
+      |                                      ^~~~~~~~
+                   ... For warning description see https://verilator.org/warn/UNDRIVEN?v=5.053
+                   ... Use "/* verilator lint_off UNDRIVEN */" and lint_on around source to disable this message.
+%Warning-UNDRIVEN: dut.v:4:48: Signal is not driven: 'b0_logic'
+                             : ... note: In instance 'rr_comb_new'
+    4 |            and_out4, or_out, b1, b0, b1_logic, b0_logic
+      |                                                ^~~~~~~~
+%Error: Exiting due to 2 warning(s)

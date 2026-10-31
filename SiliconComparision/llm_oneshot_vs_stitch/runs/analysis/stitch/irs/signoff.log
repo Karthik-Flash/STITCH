@@ -1,0 +1,29 @@
+dut.v:121: error: 'rd_en_out' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'rd_en_out' is declared here as a wire.
+dut.v:122: error: 'data_sel' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'data_sel' is declared here as a wire.
+dut.v:123: error: 'en1' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en1' is declared here as a wire.
+dut.v:124: error: 'en2' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en2' is declared here as a wire.
+dut.v:125: error: 'en4' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en4' is declared here as a wire.
+dut.v:126: error: 'en5' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en5' is declared here as a wire.
+dut.v:127: error: 'en6' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en6' is declared here as a wire.
+dut.v:129: error: 'rd_en_out' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'rd_en_out' is declared here as a wire.
+dut.v:130: error: 'data_sel' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'data_sel' is declared here as a wire.
+dut.v:131: error: 'en1' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en1' is declared here as a wire.
+dut.v:132: error: 'en2' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en2' is declared here as a wire.
+dut.v:133: error: 'en4' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en4' is declared here as a wire.
+dut.v:134: error: 'en5' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en5' is declared here as a wire.
+dut.v:135: error: 'en6' is not a valid l-value for a procedural assignment.
+dut.v:3:      : 'en6' is declared here as a wire.
+14 error(s) during elaboration.

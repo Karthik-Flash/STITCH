@@ -1,0 +1,157 @@
+%Warning-PINCONNECTEMPTY: dut.v:45:60: Instance pin connected by name with empty reference: 'tailer_org'
+   45 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:45:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   45 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:45:89: Instance pin connected by name with empty reference: 'data_sel'
+   45 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:45:102: Instance pin connected by name with empty reference: 'header'
+   45 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:45:113: Instance pin connected by name with empty reference: 'empty'
+   45 |         .data_out(data_out_vc1_w), .tailer(tailer_vc1_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:46:10: Instance pin connected by name with empty reference: 'fifo_out'
+   46 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:46:23: Instance pin connected by name with empty reference: 'header_flit'
+   46 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:46:39: Instance pin connected by name with empty reference: 'reg_out'
+   46 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:46:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   46 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:46:68: Instance pin connected by name with empty reference: 'header_out'
+   46 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:55:60: Instance pin connected by name with empty reference: 'tailer_org'
+   55 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:55:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   55 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:55:89: Instance pin connected by name with empty reference: 'data_sel'
+   55 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:55:102: Instance pin connected by name with empty reference: 'header'
+   55 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:55:113: Instance pin connected by name with empty reference: 'empty'
+   55 |         .data_out(data_out_vc2_w), .tailer(tailer_vc2_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:56:10: Instance pin connected by name with empty reference: 'fifo_out'
+   56 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:56:23: Instance pin connected by name with empty reference: 'header_flit'
+   56 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:56:39: Instance pin connected by name with empty reference: 'reg_out'
+   56 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:56:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   56 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:56:68: Instance pin connected by name with empty reference: 'header_out'
+   56 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:65:60: Instance pin connected by name with empty reference: 'tailer_org'
+   65 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:65:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   65 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:65:89: Instance pin connected by name with empty reference: 'data_sel'
+   65 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:65:102: Instance pin connected by name with empty reference: 'header'
+   65 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:65:113: Instance pin connected by name with empty reference: 'empty'
+   65 |         .data_out(data_out_vc3_w), .tailer(tailer_vc3_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:66:10: Instance pin connected by name with empty reference: 'fifo_out'
+   66 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:66:23: Instance pin connected by name with empty reference: 'header_flit'
+   66 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:66:39: Instance pin connected by name with empty reference: 'reg_out'
+   66 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:66:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   66 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:66:68: Instance pin connected by name with empty reference: 'header_out'
+   66 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:75:60: Instance pin connected by name with empty reference: 'tailer_org'
+   75 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                            ^~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:75:75: Instance pin connected by name with empty reference: 'nxt_reset'
+   75 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                           ^~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:75:89: Instance pin connected by name with empty reference: 'data_sel'
+   75 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                         ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:75:102: Instance pin connected by name with empty reference: 'header'
+   75 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                      ^~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:75:113: Instance pin connected by name with empty reference: 'empty'
+   75 |         .data_out(data_out_vc4_w), .tailer(tailer_vc4_w), .tailer_org(), .nxt_reset(), .data_sel(), .header(), .empty(),
+      |                                                                                                                 ^~~~~
+%Warning-PINCONNECTEMPTY: dut.v:76:10: Instance pin connected by name with empty reference: 'fifo_out'
+   76 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:76:23: Instance pin connected by name with empty reference: 'header_flit'
+   76 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                       ^~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:76:39: Instance pin connected by name with empty reference: 'reg_out'
+   76 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                       ^~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:76:51: Instance pin connected by name with empty reference: 'mux_data_out'
+   76 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                   ^~~~~~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:76:68: Instance pin connected by name with empty reference: 'header_out'
+   76 |         .fifo_out(), .header_flit(), .reg_out(), .mux_data_out(), .header_out()
+      |                                                                    ^~~~~~~~~~
+%Warning-WIDTHEXPAND: dut.v:31:22: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's SEL generates 2 bits.
+                                 : ... note: In instance 'ip_link'
+   31 |     assign vc_select = data_in[28:27];
+      |                      ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:41:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's SEL generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   41 |         .rd_en(rd_en[16:13]), .wr_en(wr_en_vc1),
+      |          ^~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:51:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's SEL generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   51 |         .rd_en(rd_en[20:17]), .wr_en(wr_en_vc2),
+      |          ^~~~~
+%Warning-WIDTHTRUNC: dut.v:61:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's SEL generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   61 |         .rd_en(rd_en[24:21]), .wr_en(wr_en_vc3),
+      |          ^~~~~
+%Warning-WIDTHTRUNC: dut.v:71:10: Input port connection 'rd_en' expects 1 bits on the pin connection, but pin connection's SEL generates 4 bits.
+                                : ... note: In instance 'ip_link'
+   71 |         .rd_en(rd_en[28:25]), .wr_en(wr_en_vc4),
+      |          ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:16: Signal is not used: 'vc_select'
+                                  : ... note: In instance 'ip_link'
+   18 |     wire [3:0] vc_select;
+      |                ^~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:19:17: Bits of signal are not used: 'rd_en'[64:29,12:1]
+                                  : ... note: In instance 'ip_link'
+   19 |     wire [64:1] rd_en;
+      |                 ^~~~~
+%Error: Exiting due to 47 warning(s)

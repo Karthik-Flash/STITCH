@@ -1,0 +1,34 @@
+MISMATCH (secondary, not part of the verdict) t=69000 cycle 5: data_out = 60000000, expected 0ab5b211
+FAIL property: FIFO order: wrong word read (t=69000)
+MISMATCH (secondary, not part of the verdict) t=74000 cycle 6: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=79000 cycle 6: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=84000 cycle 7: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=89000 cycle 7: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=94000 cycle 8: data_out = 60000000, expected 0ab5b211
+MISMATCH (secondary, not part of the verdict) t=99000 cycle 8: data_out = 0ab5b211, expected 503d3120
+FAIL property: FIFO order: wrong word read (t=99000)
+MISMATCH (secondary, not part of the verdict) t=104000 cycle 9: data_out = 0ab5b211, expected 503d3120
+MISMATCH (secondary, not part of the verdict) t=109000 cycle 9: rd_add = 2, expected 3
+MISMATCH (secondary, not part of the verdict) t=109000 cycle 9: data_out = 0ab5b211, expected 503d3120
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: rd_add = 2, expected 3
+MISMATCH (secondary, not part of the verdict) t=114000 cycle 10: data_out = 0ab5b211, expected 503d3120
+MISMATCH (secondary, not part of the verdict) t=119000 cycle 10: rd_add = 6, expected 3
+MISMATCH (secondary, not part of the verdict) t=119000 cycle 10: data_out = 0ab5b211, expected 503d3120
+MISMATCH (secondary, not part of the verdict) t=124000 cycle 11: rd_add = 6, expected 3
+FAIL property: full_ext flag wrong (t=139000)
+FAIL property: full_ext flag wrong (t=144000)
+FAIL property: FIFO order: wrong word read (t=159000)
+FAIL property: full_ext flag wrong (t=179000)
+FAIL property: full_ext flag wrong (t=184000)
+FAIL property: full_int flag wrong (overflow) (t=199000)
+FAIL property: full_int flag wrong (overflow) (t=204000)
+FAIL property: full_int flag wrong (overflow) (t=209000)
+FAIL property: full_int flag wrong (overflow) (t=214000)
+FAIL property: FIFO order: wrong word read (t=219000)
+FAIL property: full_ext flag wrong (t=219000)
+FAIL property: full_ext flag wrong (t=224000)
+FAIL property: FIFO order: wrong word read (t=229000)
+INFO coverage: 8 of 8 checked outputs toggled, 38 of 43 bits
+INFO cycle-exact mismatches against golden/reference: 44707 (secondary)
+FAIL: 9599 property errors
+tb.v:149: $finish called at 50009000 (1ps)

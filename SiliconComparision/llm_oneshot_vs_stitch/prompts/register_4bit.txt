@@ -1,0 +1,30 @@
+# register_4bit
+
+## Behaviour (Phase 3 spec, reused verbatim from phase3/tasks/register_4bit/spec.md)
+
+Module `register_4bit` -- 4-bit pipeline/VC-state register used inside every NoC router.
+Ports (keep exactly, same order): input [3:0] din; input clk; input clr; input ce; output [3:0] dout.
+On every rising edge of clk: if clr==1, dout <= 4'b0000; else if ce==1, dout <= din; otherwise dout holds.
+
+## Reset
+
+Covered by the Phase 3 spec above: synchronous `clr` loads 4'b0000.
+
+## Ports
+
+5 ports, in this exact order:
+
+```verilog
+input [3:0] din;
+input clk, clr, ce;
+output [3:0] dout;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+Write the complete Verilog-2001 module `register_4bit` that meets this specification, with exactly the port list above.
+Return only Verilog: one ```verilog code block, no explanation.

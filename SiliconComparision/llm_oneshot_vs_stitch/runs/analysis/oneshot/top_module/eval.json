@@ -1,0 +1,24 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "PINMISSING": 13,
+  "WIDTHTRUNC": 5
+ },
+ "verilator_warnings_count": 18,
+ "verilator_hard": 5,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "55c17528de6d8fe50094c2c7f00a8e27e5bf3315a3b4e4fc78993341ac3fc1a4",
+ "file": "outputs/oneshot/top_module.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

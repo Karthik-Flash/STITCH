@@ -1,0 +1,32 @@
+dut.v:7: error: 'op1' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op2' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op3' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op4' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op5' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op6' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op7' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op8' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op9' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op10' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op11' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op12' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op13' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op14' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op15' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.
+dut.v:7: error: 'op16' has already been declared in this scope.
+dut.v:4:      : It was declared here as a net.

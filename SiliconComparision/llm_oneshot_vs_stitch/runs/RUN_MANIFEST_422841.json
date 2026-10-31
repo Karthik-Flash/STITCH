@@ -1,0 +1,68 @@
+{
+ "timestamp": "2026-10-30T08:34:31",
+ "git_commit": "e77bf7378c61808f840d83455defd4af890427bc",
+ "hostname": "gpunode7.sharanga.local",
+ "slurm_job_id": "422841",
+ "gpu": [
+  {
+   "name": "NVIDIA H200 NVL",
+   "memory_total_mib": 143771
+  }
+ ],
+ "gpu_query": "name, memory.total [MiB]\nNVIDIA H200 NVL, 143771 MiB",
+ "gen_tasks": [
+  "encoder",
+  "register_4bit",
+  "allot_vc"
+ ],
+ "tool_versions": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)",
+  "python": "3.11.6 (/scratch/soumyaj/oss-cad-suite/bin/tabbypy3)",
+  "ollama": "0.34.1"
+ },
+ "ollama_version": "0.34.1",
+ "model": "qwen2.5-coder:32b",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "phase3_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "generation_options": {
+  "model": "qwen2.5-coder:32b",
+  "stream": false,
+  "options": {
+   "temperature": 0.1,
+   "num_ctx": 32768
+  },
+  "client_http_timeout_s": 900
+ },
+ "generation_options_run_arms": {
+  "model": "qwen2.5-coder:32b",
+  "stream": false,
+  "options": {
+   "temperature": 0.1,
+   "num_ctx": 32768
+  },
+  "client_http_timeout_s": 900
+ },
+ "job_argv": {
+  "run_arms": [
+   "--model",
+   "qwen2.5-coder:32b",
+   "--host",
+   "http://x",
+   "--max-iters",
+   "6",
+   "--reps",
+   "1"
+  ],
+  "oneshot_gen": [
+   "--model",
+   "qwen2.5-coder:32b",
+   "--host",
+   "http://x",
+   "--temperature",
+   "0.1"
+  ]
+ },
+ "preflight_ok": true
+}

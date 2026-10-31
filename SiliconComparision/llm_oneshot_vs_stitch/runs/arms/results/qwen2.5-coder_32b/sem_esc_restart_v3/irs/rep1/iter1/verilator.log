@@ -1,0 +1,8 @@
+%Error: dut.v:96:9: Duplicate declaration of signal: 'data_sel_w'
+   96 |     reg data_sel_w;
+      |         ^~~~~~~~~~
+        dut.v:6:37: ... Location of original declaration
+    6 |     wire en1_w, en2_w, rd_en_out_w, data_sel_w;
+      |                                     ^~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Error: Exiting due to 1 error(s)
