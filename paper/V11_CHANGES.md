@@ -150,4 +150,23 @@ references. Every page was inspected visually after the last edit.
 - A number you change must match its evidence file (`REPO_INDEX.md`, "Canonical evidence for each part of the paper").
 - To change a plot, edit `paper/make_figures.py` (or the shared style in `paper/figstyle.py`) and run
   `python -B paper/make_figures.py`; then re-zip `paper/STITCH_v11_overleaf.zip` if you use Overleaf.
-- The page budget is 13 to 14 pages; the build is at 14, with about a third of the last page free.
+- The page budget is 13 to 14 pages; the build is at 14 and the last page is now full, so any addition needs an
+  equal cut.
+
+## 7. Corrections after the first read (2026-11-01)
+
+- **Tier definition (a factual fix).** v10 and the first v11 said each module is tiered by its *highest* Baseline pass
+  rate in the tiering study. The code (`phase2/twin_analysis_SET2/categorize.py`) has always used the *pooled* count
+  over the module's 15 tiering runs (five configurations x three): ceiling 12 to 15, recoverable 3 to 11, floor 0 to
+  2. A maximum of per-configuration rates could never give "12 of 15". Section 6.1 now says so; no tier, module or
+  number changes. Fixed in the same way in `docs/reSTITCH.md`, `docs/PHASES_EXPLAINED.md` and the Q&A.
+- **C2** states the two rates (Alarm 52%, Escalate-R 72%) instead of "about 20 points".
+- **C5** names its "two first readings" (a harmful effect at scale; an escalation win on larger models).
+- **Table 4 caption** says what a dot means; **Table 5 caption** says the dot marks the stricter sign-off testbench.
+- **Threats:** "one temperature per study"; a new run-in, *Scope*: no timing analysis or test insertion was run.
+- **Cummings (1999)** checked: the SNUG Boston 1999 paper exists with this title, author, venue and year.
+- **Condition names** are kept as they are, by the authors' decision.
+- **Section 6.4:** the sentence on Claude Haiku 4.5's incomplete floor runs (143 of 228, account credit) was removed
+  by the authors; Threats still states that Haiku is incomplete on the floor tier.
+- `docs/reSTITCH_REVISITED_QA.md` now follows v11 (order, names, figure and table numbers), with a guide to every
+  table and new questions on Figure 1, the claims, Tables 4 and 5, and a review-panel part.

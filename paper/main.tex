@@ -277,7 +277,7 @@ every model; with lint and synthesis in the loop, $8$ to $15\%$
 (\cref{sec:mpsoc-results}).
 \item \textbf{The diagnosis, not the alarm, drives repair.} A pre-registered
 control that only says sign-off failed does no better than raw tool output;
-escalating to the interpreter adds about $20$ points over it
+escalating to the interpreter lifts sign-off-clean runs from $52$ to $72\%$
 (\cref{sec:mpsoc-results}).
 \item \textbf{Module-level repairs compose}: the repaired modules restore
 synthesis of both meshes and the MPSoC top, which simulation-only repair never
@@ -288,7 +288,8 @@ $17\%$ less often than always-on interpretation on small open models, and $89\%$
 less on commercial ones (\cref{sec:escalation,sec:rtllm}).
 \item \textbf{On a testbench-scored benchmark the interpreter's pass-rate effect
 is small and model-dependent}, and only replication shows it: two conference
-illustrations replicate, three larger candidates and two first readings do not
+illustrations replicate; three larger candidates, and two of our own first
+readings (a harmful effect at scale, an escalation win on larger models), do not
 (\cref{sec:replication,sec:rtllm}).
 \end{enumerate}
 
@@ -512,9 +513,8 @@ the same runner code, prompts and toolchain.
 \begin{table}[!htbp]
 \centering
 \footnotesize
-\caption{The five studies: which models each ran, on what, under which
-conditions (swatches as in \cref{tab:conditions}), and how many runs. Every
-configuration ran three times.}
+\caption{The five studies. A dot marks a model that ran in the study;
+swatches as in \cref{tab:conditions}. Every configuration ran three times.}
 \label{tab:studies}
 \setlength{\tabcolsep}{4pt}
 \newcommand{\y}{$\bullet$}
@@ -618,9 +618,9 @@ A compatibility screen kept $44$ of RTLLM's $50$ designs (one exclusion is a
 defect in RTLLM's own reference), and we dropped two whose testbenches pass
 outputs stuck at zero, leaving $42$ modules. A feedback condition can only
 matter where \Base{} sometimes fails but can recover, so we tier each module by
-its highest \Base{} pass rate in the tiering study: \emph{ceiling} ($6$ modules,
-at least $80\%$), \emph{recoverable} ($17$, $20$ to $80\%$) and \emph{floor}
-($19$, below $20\%$). The tiers use \Base{} runs from a different study, fixed
+its \Base{} passes in the $15$ runs of the tiering study:
+\emph{ceiling} ($6$ modules, $12$ to $15$), \emph{recoverable} ($17$, $3$ to
+$11$) and \emph{floor} ($19$, $0$ to $2$). The tiers use \Base{} runs from a different study, fixed
 before any condition was compared, so they decide where an effect can be
 measured, not its sign. \Base{} and \Interp{} are capped at six iterations and
 escalation at eight; at an equal cap no conclusion changes.
@@ -720,10 +720,7 @@ models, not of the modules; only \texttt{adder\_pipe\_64bit}, \texttt{alu} and
 failures the interpreter does fire, in $55\%$ of the failing runs under the
 tool conditions, but no pass is attributable to it: only three passes followed
 a directive in a cell whose \Base{} score was $0/3$, and traced individually,
-none was caused by it. No condition differs significantly from \Base{}. Claude
-Haiku~4.5 completed $143$ of its $228$ floor runs (the rest stopped on an
-exhausted account credit), so these results rest on the runs each model
-completed.
+none was caused by it. No condition differs significantly from \Base{}.
 
 \paragraph{The one module every model fails: freq\_divbyfrac} Of the floor
 modules all three commercial models ran, only this divide-by-$3.5$ clock divider
@@ -846,8 +843,8 @@ defect on its first call under every condition.
 \centering
 \footnotesize
 \caption{The eleven repair tasks. Origin: R, a real leaf of the hand-written
-design; S, seeded for a class the design lacks. The last column marks the two
-tasks whose sign-off testbench checks more than the loop testbench.}
+design; S, seeded for a class the design lacks. A dot marks the two tasks
+whose sign-off testbench checks more than the loop testbench.}
 \label{tab:tasks}
 \begin{tabular}{@{}l l l c l c@{}}
 \toprule
@@ -1104,7 +1101,7 @@ networks with $4$ and $9$ routers.
 cell-level intervals; three runs leave the small-model deficit and several
 per-model effects undecided; and the primary contrasts carry no multiplicity
 correction (under Holm, only contrast~1 survives). \runin{Sampling} One
-temperature ($0.5$ in the tiering study) and quantised local models; the
+temperature per study and quantised local models; the
 \Alarm{} arm ran on a different inference backend (Vulkan, not CUDA), with no
 detectable effect on byte-identical prompts. \runin{Toolchains} Diagnostic
 formats change between versions; a live check caught one change.
@@ -1114,9 +1111,10 @@ sign-off testbench is post hoc for the first $990$ MPSoC runs; the loop
 testbench gives the same reading. \runin{Benchmark} RTLLM is public, which may
 inflate commercial models' absolute rates but not comparisons within a model.
 \runin{Coverage} Claude Haiku~4.5 is incomplete on the floor tier.
-\runin{Drift} Hosted models change behind stable names; snapshots were pinned
-where possible and returned model versions logged. \runin{Composition} Composed
-designs were checked by synthesis, not simulated.
+\runin{Drift} Hosted models change behind stable names; we pinned snapshots
+where possible. \runin{Composition} Composed
+designs were checked by synthesis, not simulated. \runin{Scope} No timing
+analysis or test insertion was run.
 
 % ============================================================================
 \section{Conclusion and Directions}
