@@ -1,0 +1,45 @@
+module nidepack (
+    input [31:0] flit,
+    input rd_clk, wr_clk, rd_en, reset,
+    output [31:0] data_out
+);
+
+    wire [31:0] depack_data_out;
+    wire depack_wr_en;
+
+    // Unused ports tied to constants
+    wire [2:0] rd_add = 3'b000;
+    wire [2:0] wr_add = 3'b000;
+    wire wr_dir = 1'b0;
+    wire rd_dir = 1'b0;
+    wire full_ext;
+    wire full_int;
+    wire empty;
+
+    depack depack_inst (
+        .flit(flit),
+        .wr_clk(wr_clk),
+        .reset(reset),
+        .data_out(depack_data_out),
+        .wr_en(depack_wr_en),
+        .c_rd(1'b0) // c_rd is left open, so it can be tied to a constant value
+    );
+
+    router_fifo router_fifo_inst (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(depack_data_out),
+        .wr_clk(wr_clk),
+        .wr_en(depack_wr_en),
+        .rd_add(rd_add),
+        .wr_add(wr_add),
+        .wr_dir(wr_dir),
+        .rd_dir(rd_dir),
+        .data_out(data_out),
+        .full_ext(full_ext),
+        .full_int(full_int),
+        .empty(empty)
+    );
+
+endmodule

@@ -1,0 +1,11 @@
+module,source,reason,sha256
+asynch_comparator,stitch (2x2, reused),LLM final file,575536390da62e28d0154ec058f8caed48caf68b56d14dfd28340284338f4a0a
+depack,stitch,LLM final file,c6bfe6b2cb2872b3ca3c9e1ed43317dee2bc18f42608434ae0510ad014f5b6fb
+gray_mod6,stitch (2x2, reused),LLM final file,6642d20a1f0c08952ea8eaec1230e7e24300d8653e57c416e0f4dd21600a6ca6
+jk_ff,stitch (2x2, reused),LLM final file,8f1c26a58e80e44e0b78ec8ce2088d50ffdb985effbd7bc891d6de98606bdaf2
+memory,stitch (2x2, reused),LLM final file,624eafe5c24da51c1ef846f613ee839cd7f5ffae0c2ed5cdb78076bc5bfe80f4
+new1,golden,final file does not compile,9baa19c4d4c10cdd212b532422bf2d2ad831253c15d2bdd40f471b378e06940e
+ni_pair,wrapper,wrapper (not golden, never generated),1070b47332331e12ead4986dd89b7b805bcc7618ab83273dc825f8ba9f9e63d4
+nidepack,golden,final file does not compile,60821f29970f5b0a8fa12d084d67af9b53b967223c34b0fe937e2782c5c9b572
+router_fifo,stitch (2x2, reused),LLM final file,baf49c3c02fc51b129ca351b3e39afaa9fdfd9523f702cc1e7e136b0800e56eb
+rp1,stitch,LLM final file,11979b7f0f03101efb31371c892327d05007768468d573eb85181819f12efc1d

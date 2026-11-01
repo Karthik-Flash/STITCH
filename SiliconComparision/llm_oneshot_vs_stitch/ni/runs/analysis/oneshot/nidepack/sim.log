@@ -1,0 +1,16 @@
+dut.v:16: error: expression not valid in assign l-value: 1'd0
+dut.v:16: error: Output port expression must support a continuous assignment.
+dut.v:16:      : Port 6 (c_rd) of depack is connected to tb.dut.1'd0
+dut.v:26: error: expression not valid in assign l-value: 3'd0
+dut.v:26: error: Output port expression must support a continuous assignment.
+dut.v:26:      : Port 7 (rd_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:27: error: expression not valid in assign l-value: 3'd0
+dut.v:27: error: Output port expression must support a continuous assignment.
+dut.v:27:      : Port 8 (wr_add) of router_fifo is connected to tb.dut.3'd0
+dut.v:28: error: expression not valid in assign l-value: 1'd0
+dut.v:28: error: Output port expression must support a continuous assignment.
+dut.v:28:      : Port 9 (wr_dir) of router_fifo is connected to tb.dut.1'd0
+dut.v:29: error: expression not valid in assign l-value: 1'd0
+dut.v:29: error: Output port expression must support a continuous assignment.
+dut.v:29:      : Port 10 (rd_dir) of router_fifo is connected to tb.dut.1'd0
+5 error(s) during elaboration.

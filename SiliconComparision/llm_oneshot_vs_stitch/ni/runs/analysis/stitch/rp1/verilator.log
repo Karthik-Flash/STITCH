@@ -1,0 +1,27 @@
+%Warning-WIDTHTRUNC: dut.v:56:39: Operator ASSIGNDLY expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'tailer' generates 32 or 3 bits.
+                                : ... note: In instance 'rp1'
+   56 |                             state_reg <= tailer;
+      |                                       ^~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.053
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: dut.v:68:31: Operator ASSIGNDLY expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'last' generates 32 or 3 bits.
+                                : ... note: In instance 'rp1'
+   68 |                     state_reg <= last;
+      |                               ^~
+%Warning-WIDTHTRUNC: dut.v:72:31: Operator ASSIGNDLY expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'last' generates 32 or 3 bits.
+                                : ... note: In instance 'rp1'
+   72 |                     state_reg <= last;
+      |                               ^~
+%Warning-WIDTHEXPAND: dut.v:31:13: Operator CASE expects 32 or 3 bits on the Case expression, but Case expression's VARREF 'state_reg' generates 2 bits.
+                                 : ... note: In instance 'rp1'
+   31 |             case (state_reg)
+      |             ^~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:4:19: Signal is not used: 'wr_clk'
+                                 : ... note: In instance 'rp1'
+    4 |     input rd_clk, wr_clk, wr_en, reset,
+      |                   ^~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 5 warning(s)

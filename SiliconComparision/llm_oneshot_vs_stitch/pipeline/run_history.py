@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import datetime as dt
 import glob
+import json
 import os
 import re
 import statistics
@@ -21,7 +22,42 @@ import speed  # noqa: E402
 STAMP = re.compile(r"^== \w{3} (\w{3} +\d+ [\d:]+) (\w+) (\d{4})", re.M)
 
 
+# The job log stays on the cluster for mesh3x3 and ni; its sacct line, as reported by the user.
+SACCT = {"426786": "exit 0, elapsed 01:08:57 (sacct, reported by the user)"}
+
+
+def from_records() -> list[str]:
+    """No hpc_logs/ (mesh3x3, ni): rates from Ollama's own eval_count / eval_duration of every LLM call of this
+    study (one-shot record.json llm_meta, arm iter*/llm_meta.json), node and threads from the run manifest."""
+    rates = []
+    for m in A.modules():
+        r = json.load(open(os.path.join(A.STUDY, "runs", "oneshot", m, "record.json")))["llm_meta"]
+        rates.append((r["eval_count"], r["eval_duration"] / 1e9))
+        for arm in ("simloop", "stitch"):
+            for d in A.iter_dirs(arm, m)[1:]:
+                j = json.load(open(os.path.join(d, "llm_meta.json")))
+                rates.append((j["eval_count"], j["eval_duration"] / 1e9))
+    per = [n / s for n, s in rates if s > 0 and n >= 20]
+    md = ["# Run history (pipeline/run_history.py)", "",
+          "The job log and serve log stayed on the cluster (not in the results archive), so the rates come from "
+          "Ollama's own counters of every LLM call of this study (eval_count / eval_duration: generation only, prompt "
+          "evaluation and model load excluded). mesh3x3 and ni ran in the same job.", "",
+          "| job | node | GPU | llama-server threads | calls (this study) | tok/s pooled | tok/s range per call | "
+          "job end |", "|---|---|---|---|---|---|---|---|"]
+    for j, d in sorted(A.manifests().items()):
+        md.append(f"| {j} | {d['hostname'].split('.')[0]} | {d['gpu'][0]['name']} | "
+                  f"{d['cpu_threads']['LLAMA_ARG_THREADS']} | {len(rates)} | "
+                  f"{sum(n for n, _ in rates) / sum(s for _, s in rates):.2f} | {min(per):.1f}-{max(per):.1f} (median "
+                  f"{statistics.median(per):.1f}) | {SACCT.get(j, '?')} |")
+    return md
+
+
 def main() -> int:
+    if not glob.glob(os.path.join(A.LOGS, "gen_*.log")):
+        md = from_records()
+        A.write_report("RUN_HISTORY.md", md)
+        print("\n".join(md))
+        return 0
     md = ["# Run history (pipeline/run_history.py)", "",
           "From hpc_logs/ (gen_<job>.log, ollama_serve_<job>.log). Times are the node's local clock (not comparable "
           "across nodes); a job without JOB DONE ended after its last stamp (no end time). tok/s = generation rate "

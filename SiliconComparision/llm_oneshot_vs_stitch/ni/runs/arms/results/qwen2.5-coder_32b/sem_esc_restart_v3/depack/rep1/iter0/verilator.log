@@ -1,0 +1,37 @@
+%Warning-MULTIDRIVENPROC: dut.v:64:13: Variable written to in always block also written by another always block: 'c_rd_reg'
+                                     : ... note: In instance 'depack'
+                          dut.v:64:13: 
+   64 |             c_rd_reg = 1'b1;
+      |             ^~~~~~~~
+                          dut.v:49:25: ... Location of other write
+   49 |                         c_rd_reg <= 1'b1;
+      |                         ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/MULTIDRIVENPROC?v=5.053
+                          ... Use "/* verilator lint_off MULTIDRIVENPROC */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:2:18: Bits of signal are not used: 'flit'[31,28:16]
+                                 : ... note: In instance 'depack'
+    2 |     input [31:0] flit,
+      |                  ^~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDPARAM: dut.v:10:15: Parameter is not used: 'nextstate'
+                                 : ... note: In instance 'depack'
+   10 |     parameter nextstate = 4;
+      |               ^~~~~~~~~
+                      ... For warning description see https://verilator.org/warn/UNUSEDPARAM?v=5.053
+                      ... Use "/* verilator lint_off UNUSEDPARAM */" and lint_on around source to disable this message.
+%Warning-UNUSEDPARAM: dut.v:11:15: Parameter is not used: 'secondhalf'
+                                 : ... note: In instance 'depack'
+   11 |     parameter secondhalf = 3;
+      |               ^~~~~~~~~~
+%Error-BLKANDNBLK: dut.v:18:9: Unsupported: Blocking and non-blocking assignments to potentially overlapping bits of same packed variable: 'depack.c_rd_reg'
+   18 |     reg c_rd_reg;
+      |         ^~~~~~~~
+                   dut.v:64:22: ... Location of blocking assignment (bits [0:0])
+   64 |             c_rd_reg = 1'b1;
+      |                      ^
+                   dut.v:49:25: ... Location of nonblocking assignment (bits [0:0])
+   49 |                         c_rd_reg <= 1'b1;
+      |                         ^~~~~~~~
+                   ... For error description see https://verilator.org/warn/BLKANDNBLK?v=5.053
+%Error: Exiting due to 1 error(s), 4 warning(s)

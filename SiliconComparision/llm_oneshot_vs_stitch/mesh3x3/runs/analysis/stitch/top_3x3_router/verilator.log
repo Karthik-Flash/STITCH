@@ -1,0 +1,14 @@
+%Error: dut.v:97:79: Duplicate declaration of signal: 'full_out_link4_vc4_r8'
+   97 |     wire full_out_link4_vc1_r8, full_out_link4_vc2_r8, full_out_link4_vc3_r8, full_out_link4_vc4_r8;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+        dut.v:95:79: ... Location of original declaration
+   95 |     wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link4_vc4_r8;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.053 for more assistance.
+%Warning-IMPLICIT: dut.v:328:161: Signal definition not found, creating implicitly: 'full_out_link2_vc4_r8'
+                                : ... Suggested alternative: 'full_out_link1_vc4_r8'
+  328 |         .full_out_link2_vc1(full_out_link2_vc1_r8), .full_out_link2_vc2(full_out_link2_vc2_r8), .full_out_link2_vc3(full_out_link2_vc3_r8), .full_out_link2_vc4(full_out_link2_vc4_r8),
+      |                                                                                                                                                                 ^~~~~~~~~~~~~~~~~~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.053
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 error(s), 1 warning(s)

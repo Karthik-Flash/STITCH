@@ -1,0 +1,132 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# nidepack
+
+## Behaviour
+
+Network-interface depacketiser side: depack rebuilds words from incoming flits and writes them into a FIFO;
+the core reads the FIFO.
+
+Connections (by port name of each child):
+
+- `depack`: `flit`, `wr_clk` and `reset` are nidepack's inputs of the same name; its `data_out` is the FIFO's
+  `data_in` and its `wr_en` is the FIFO's `wr_en`. Its `c_rd` is left open.
+- `router_fifo` (6-entry FIFO): `reset`, `rd_clk`, `rd_en` and `wr_clk` are nidepack's inputs of the same name;
+  its `data_out` is nidepack's output `data_out`. Its `rd_add`, `wr_add`, `rd_dir`, `wr_dir`, `full_ext`,
+  `full_int` and `empty` are not used outside nidepack.
+
+## Reset
+
+`reset` (active high) goes to both children: synchronous in each, at its own clock edges.
+
+## Ports
+
+6 ports, in this exact order:
+
+```verilog
+input [31:0] flit;
+input rd_clk, wr_clk, rd_en, reset;
+output [31:0] data_out;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `depack` x 1: (flit, wr_clk, reset, data_out, wr_en, c_rd)
+- `router_fifo` x 1: (reset, rd_clk, rd_en, data_in, wr_clk, wr_en, rd_add, wr_add, wr_dir, rd_dir, data_out, full_ext, full_int, empty)
+
+
+CURRENT RTL:
+```verilog
+module nidepack (
+    input [31:0] flit,
+    input rd_clk, wr_clk, rd_en, reset,
+    output [31:0] data_out
+);
+
+    wire [31:0] depack_data_out;
+    wire depack_wr_en;
+
+    reg [2:0] rd_add;
+    reg [2:0] wr_add;
+    reg wr_dir;
+    reg rd_dir;
+    reg full_ext;
+    reg full_int;
+    reg empty;
+
+    depack depack_inst (
+        .flit(flit),
+        .wr_clk(wr_clk),
+        .reset(reset),
+        .data_out(depack_data_out),
+        .wr_en(depack_wr_en),
+        .c_rd(1'b0) // c_rd is left open, so it can be tied to a constant value
+    );
+
+    router_fifo router_fifo_inst (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(depack_data_out),
+        .wr_clk(wr_clk),
+        .wr_en(depack_wr_en),
+        .rd_add(rd_add),
+        .wr_add(wr_add),
+        .wr_dir(wr_dir),
+        .rd_dir(rd_dir),
+        .data_out(data_out),
+        .full_ext(full_ext),
+        .full_int(full_int),
+        .empty(empty)
+    );
+
+    // Tie unused ports to constants
+    assign rd_add = 3'b000;
+    assign wr_add = 3'b000;
+    assign wr_dir = 1'b0;
+    assign rd_dir = 1'b0;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:24: error: expression not valid in assign l-value: 1'd0
+dut.v:24: error: Output port expression must support a continuous assignment.
+dut.v:24:      : Port 6 (c_rd) of depack is connected to tb.dut.1'd0
+dut.v:45: error: Variable 'rd_add' cannot have multiple drivers.
+dut.v:46: error: Variable 'wr_add' cannot have multiple drivers.
+dut.v:47: error: Variable 'wr_dir' cannot have multiple drivers.
+dut.v:48: error: Variable 'rd_dir' cannot have multiple drivers.
+5 error(s) during elaboration.
+
+SEMANTIC ANALYSIS (fix these):
+*** CRITICAL: Port 'rd_add' is declared but NEVER USED in your always block. ***
+You wrote 'rd_add' in the module port list but forgot to wire it into your logic.
+You MUST condition on 'rd_add':
+  always @(*) begin
+    if (rd_add) begin
+      <your existing case or logic here>
+    end else begin
+      data_out = 32'b0;
+    end
+  end
+The FAIL lines (with 'rd_add' deasserted, the output is still non-zero)
+are caused by 'rd_add' being ignored.
+
+VERILATOR LINT OUTPUT:
+%Warning-UNUSEDSIGNAL: dut.v:10:15: Signal is not used: 'rd_add'
+%Warning-UNUSEDSIGNAL: dut.v:11:15: Signal is not used: 'wr_add'
+%Warning-UNUSEDSIGNAL: dut.v:12:9: Signal is not used: 'wr_dir'
+%Warning-UNUSEDSIGNAL: dut.v:13:9: Signal is not used: 'rd_dir'
+%Warning-UNUSEDSIGNAL: dut.v:14:9: Signal is not used: 'full_ext'
+%Warning-UNUSEDSIGNAL: dut.v:15:9: Signal is not used: 'full_int'
+%Warning-UNUSEDSIGNAL: dut.v:16:9: Signal is not used: 'empty'
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

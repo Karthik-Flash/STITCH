@@ -1,0 +1,102 @@
+{
+ "model": "qwen2.5-coder:32b",
+ "rows": [
+  {
+   "module": "top_3x3_router",
+   "oneshot": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "done_reasons": [
+     "stop"
+    ],
+    "tokens_out": [
+     14933
+    ]
+   },
+   "status": {
+    "oneshot": null
+   },
+   "simloop": {
+    "compile": true,
+    "func": false,
+    "struct_clean": true,
+    "clean": false,
+    "latch_events": 0,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": false,
+    "classes": [],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     14933,
+     14933,
+     14933,
+     14933,
+     14933,
+     14933
+    ]
+   },
+   "stitch": {
+    "compile": false,
+    "func": false,
+    "struct_clean": false,
+    "clean": false,
+    "latch_events": null,
+    "signoff": false,
+    "so_clean": false,
+    "iterations": 6,
+    "stop": "budget",
+    "semantic_fired": true,
+    "classes": [
+     "UNUSEDSIGNAL",
+     "WIDTHEXPAND"
+    ],
+    "runner_func": false,
+    "runner_clean": false,
+    "done_reasons": [
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop",
+     "stop"
+    ],
+    "tokens_out": [
+     14933,
+     14933,
+     14933,
+     14978,
+     14978,
+     14969
+    ]
+   }
+  }
+ ],
+ "totals": {
+  "oneshot": 0,
+  "simloop": 0,
+  "stitch": 0
+ },
+ "n": {
+  "oneshot": 1,
+  "simloop": 1,
+  "stitch": 1
+ },
+ "full_router": null
+}

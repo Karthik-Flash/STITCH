@@ -1,0 +1,368 @@
+module top_3x3_router (
+    input clk, clr,
+    input [31:0] data_in_core_r1, data_in_core_r2, data_in_core_r3, data_in_core_r4, data_in_core_r5,
+                 data_in_core_r6, data_in_core_r7, data_in_core_r8, data_in_core_r9,
+    output [31:0] data_out_core_r1, data_out_core_r2, data_out_core_r3, data_out_core_r4, data_out_core_r5,
+                  data_out_core_r6, data_out_core_r7, data_out_core_r8, data_out_core_r9
+);
+
+    wire [31:0] data_out_link1_r1, data_out_link2_r1, data_out_link3_r1, data_out_link4_r1;
+    wire [31:0] data_out_link1_r2, data_out_link2_r2, data_out_link3_r2, data_out_link4_r2;
+    wire [31:0] data_out_link1_r3, data_out_link2_r3, data_out_link3_r3, data_out_link4_r3;
+    wire [31:0] data_out_link1_r4, data_out_link2_r4, data_out_link3_r4, data_out_link4_r4;
+    wire [31:0] data_out_link1_r5, data_out_link2_r5, data_out_link3_r5, data_out_link4_r5;
+    wire [31:0] data_out_link1_r6, data_out_link2_r6, data_out_link3_r6, data_out_link4_r6;
+    wire [31:0] data_out_link1_r7, data_out_link2_r7, data_out_link3_r7, data_out_link4_r7;
+    wire [31:0] data_out_link1_r8, data_out_link2_r8, data_out_link3_r8, data_out_link4_r8;
+    wire [31:0] data_out_link1_r9, data_out_link2_r9, data_out_link3_r9, data_out_link4_r9;
+
+    wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+    wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+    wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+    wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+    wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+    wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+    wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+    wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+    wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+
+    wire full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+    wire full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+    wire full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+    wire full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+    wire full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+    wire full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+    wire full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+    wire full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+    wire full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+    wire full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+    wire full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+    wire full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+    wire full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+    wire full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+    wire full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+    wire full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+    wire full_in_link1_vc1_r5, full_in_link1_vc2_r5, full_in_link1_vc3_r5, full_in_link1_vc4_r5;
+    wire full_in_link2_vc1_r5, full_in_link2_vc2_r5, full_in_link2_vc3_r5, full_in_link2_vc4_r5;
+    wire full_in_link3_vc1_r5, full_in_link3_vc2_r5, full_in_link3_vc3_r5, full_in_link3_vc4_r5;
+    wire full_in_link4_vc1_r5, full_in_link4_vc2_r5, full_in_link4_vc3_r5, full_in_link4_vc4_r5;
+    wire full_in_link1_vc1_r6, full_in_link1_vc2_r6, full_in_link1_vc3_r6, full_in_link1_vc4_r6;
+    wire full_in_link2_vc1_r6, full_in_link2_vc2_r6, full_in_link2_vc3_r6, full_in_link2_vc4_r6;
+    wire full_in_link3_vc1_r6, full_in_link3_vc2_r6, full_in_link3_vc3_r6, full_in_link3_vc4_r6;
+    wire full_in_link4_vc1_r6, full_in_link4_vc2_r6, full_in_link4_vc3_r6, full_in_link4_vc4_r6;
+    wire full_in_link1_vc1_r7, full_in_link1_vc2_r7, full_in_link1_vc3_r7, full_in_link1_vc4_r7;
+    wire full_in_link2_vc1_r7, full_in_link2_vc2_r7, full_in_link2_vc3_r7, full_in_link2_vc4_r7;
+    wire full_in_link3_vc1_r7, full_in_link3_vc2_r7, full_in_link3_vc3_r7, full_in_link3_vc4_r7;
+    wire full_in_link4_vc1_r7, full_in_link4_vc2_r7, full_in_link4_vc3_r7, full_in_link4_vc4_r7;
+    wire full_in_link1_vc1_r8, full_in_link1_vc2_r8, full_in_link1_vc3_r8, full_in_link1_vc4_r8;
+    wire full_in_link2_vc1_r8, full_in_link2_vc2_r8, full_in_link2_vc3_r8, full_in_link2_vc4_r8;
+    wire full_in_link3_vc1_r8, full_in_link3_vc2_r8, full_in_link3_vc3_r8, full_in_link3_vc4_r8;
+    wire full_in_link4_vc1_r8, full_in_link4_vc2_r8, full_in_link4_vc3_r8, full_in_link4_vc4_r8;
+    wire full_in_link1_vc1_r9, full_in_link1_vc2_r9, full_in_link1_vc3_r9, full_in_link1_vc4_r9;
+    wire full_in_link2_vc1_r9, full_in_link2_vc2_r9, full_in_link2_vc3_r9, full_in_link2_vc4_r9;
+    wire full_in_link3_vc1_r9, full_in_link3_vc2_r9, full_in_link3_vc3_r9, full_in_link3_vc4_r9;
+    wire full_in_link4_vc1_r9, full_in_link4_vc2_r9, full_in_link4_vc3_r9, full_in_link4_vc4_r9;
+
+    wire full_out_link1_vc1_r1, full_out_link1_vc2_r1, full_out_link1_vc3_r1, full_out_link1_vc4_r1;
+    wire full_out_link2_vc1_r1, full_out_link2_vc2_r1, full_out_link2_vc3_r1, full_out_link2_vc4_r1;
+    wire full_out_link3_vc1_r1, full_out_link3_vc2_r1, full_out_link3_vc3_r1, full_out_link3_vc4_r1;
+    wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+    wire full_out_link1_vc1_r2, full_out_link1_vc2_r2, full_out_link1_vc3_r2, full_out_link1_vc4_r2;
+    wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+    wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+    wire full_out_link4_vc1_r2, full_out_link4_vc2_r2, full_out_link4_vc3_r2, full_out_link4_vc4_r2;
+    wire full_out_link1_vc1_r3, full_out_link1_vc2_r3, full_out_link1_vc3_r3, full_out_link1_vc4_r3;
+    wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+    wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+    wire full_out_link4_vc1_r3, full_out_link4_vc2_r3, full_out_link4_vc3_r3, full_out_link4_vc4_r3;
+    wire full_out_link1_vc1_r4, full_out_link1_vc2_r4, full_out_link1_vc3_r4, full_out_link1_vc4_r4;
+    wire full_out_link2_vc1_r4, full_out_link2_vc2_r4, full_out_link2_vc3_r4, full_out_link2_vc4_r4;
+    wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+    wire full_out_link4_vc1_r4, full_out_link4_vc2_r4, full_out_link4_vc3_r4, full_out_link4_vc4_r4;
+    wire full_out_link1_vc1_r5, full_out_link1_vc2_r5, full_out_link1_vc3_r5, full_out_link1_vc4_r5;
+    wire full_out_link2_vc1_r5, full_out_link2_vc2_r5, full_out_link2_vc3_r5, full_out_link2_vc4_r5;
+    wire full_out_link3_vc1_r5, full_out_link3_vc2_r5, full_out_link3_vc3_r5, full_out_link3_vc4_r5;
+    wire full_out_link4_vc1_r5, full_out_link4_vc2_r5, full_out_link4_vc3_r5, full_out_link4_vc4_r5;
+    wire full_out_link1_vc1_r6, full_out_link1_vc2_r6, full_out_link1_vc3_r6, full_out_link1_vc4_r6;
+    wire full_out_link2_vc1_r6, full_out_link2_vc2_r6, full_out_link2_vc3_r6, full_out_link2_vc4_r6;
+    wire full_out_link3_vc1_r6, full_out_link3_vc2_r6, full_out_link3_vc3_r6, full_out_link3_vc4_r6;
+    wire full_out_link4_vc1_r6, full_out_link4_vc2_r6, full_out_link4_vc3_r6, full_out_link4_vc4_r6;
+    wire full_out_link1_vc1_r7, full_out_link1_vc2_r7, full_out_link1_vc3_r7, full_out_link1_vc4_r7;
+    wire full_out_link2_vc1_r7, full_out_link2_vc2_r7, full_out_link2_vc3_r7, full_out_link2_vc4_r7;
+    wire full_out_link3_vc1_r7, full_out_link3_vc2_r7, full_out_link3_vc3_r7, full_out_link3_vc4_r7;
+    wire full_out_link4_vc1_r7, full_out_link4_vc2_r7, full_out_link4_vc3_r7, full_out_link4_vc4_r7;
+    wire full_out_link1_vc1_r8, full_out_link1_vc2_r8, full_out_link1_vc3_r8, full_out_link1_vc4_r8;
+    wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link4_vc4_r8;
+    wire full_out_link3_vc1_r8, full_out_link3_vc2_r8, full_out_link3_vc3_r8, full_out_link3_vc4_r8;
+    wire full_out_link4_vc1_r8, full_out_link4_vc2_r8, full_out_link4_vc3_r8, full_out_link4_vc4_r8;
+    wire full_out_link1_vc1_r9, full_out_link1_vc2_r9, full_out_link1_vc3_r9, full_out_link1_vc4_r9;
+    wire full_out_link2_vc1_r9, full_out_link2_vc2_r9, full_out_link2_vc3_r9, full_out_link2_vc4_r9;
+    wire full_out_link3_vc1_r9, full_out_link3_vc2_r9, full_out_link3_vc3_r9, full_out_link3_vc4_r9;
+    wire full_out_link4_vc1_r9, full_out_link4_vc2_r9, full_out_link4_vc3_r9, full_out_link4_vc4_r9;
+
+    wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+    wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+    wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+    wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+    wire full_out_core_vc1_r5, full_out_core_vc2_r5, full_out_core_vc3_r5, full_out_core_vc4_r5;
+    wire full_out_core_vc1_r6, full_out_core_vc2_r6, full_out_core_vc3_r6, full_out_core_vc4_r6;
+    wire full_out_core_vc1_r7, full_out_core_vc2_r7, full_out_core_vc3_r7, full_out_core_vc4_r7;
+    wire full_out_core_vc1_r8, full_out_core_vc2_r8, full_out_core_vc3_r8, full_out_core_vc4_r8;
+    wire full_out_core_vc1_r9, full_out_core_vc2_r9, full_out_core_vc3_r9, full_out_core_vc4_r9;
+
+    wire [31:0] data_out_core_r1_vc1, data_out_core_r1_vc2, data_out_core_r1_vc3, data_out_core_r1_vc4;
+    wire [31:0] data_out_core_r2_vc1, data_out_core_r2_vc2, data_out_core_r2_vc3, data_out_core_r2_vc4;
+    wire [31:0] data_out_core_r3_vc1, data_out_core_r3_vc2, data_out_core_r3_vc3, data_out_core_r3_vc4;
+    wire [31:0] data_out_core_r4_vc1, data_out_core_r4_vc2, data_out_core_r4_vc3, data_out_core_r4_vc4;
+    wire [31:0] data_out_core_r5_vc1, data_out_core_r5_vc2, data_out_core_r5_vc3, data_out_core_r5_vc4;
+    wire [31:0] data_out_core_r6_vc1, data_out_core_r6_vc2, data_out_core_r6_vc3, data_out_core_r6_vc4;
+    wire [31:0] data_out_core_r7_vc1, data_out_core_r7_vc2, data_out_core_r7_vc3, data_out_core_r7_vc4;
+    wire [31:0] data_out_core_r8_vc1, data_out_core_r8_vc2, data_out_core_r8_vc3, data_out_core_r8_vc4;
+    wire [31:0] data_out_core_r9_vc1, data_out_core_r9_vc2, data_out_core_r9_vc3, data_out_core_r9_vc4;
+
+    wire [31:0] data_out_l1_r1, data_out_l2_r1, data_out_l3_r1, data_out_l4_r1;
+    wire [31:0] data_out_l1_r2, data_out_l2_r2, data_out_l3_r2, data_out_l4_r2;
+    wire [31:0] data_out_l1_r3, data_out_l2_r3, data_out_l3_r3, data_out_l4_r3;
+    wire [31:0] data_out_l1_r4, data_out_l2_r4, data_out_l3_r4, data_out_l4_r4;
+    wire [31:0] data_out_l1_r5, data_out_l2_r5, data_out_l3_r5, data_out_l4_r5;
+    wire [31:0] data_out_l1_r6, data_out_l2_r6, data_out_l3_r6, data_out_l4_r6;
+    wire [31:0] data_out_l1_r7, data_out_l2_r7, data_out_l3_r7, data_out_l4_r7;
+    wire [31:0] data_out_l1_r8, data_out_l2_r8, data_out_l3_r8, data_out_l4_r8;
+    wire [31:0] data_out_l1_r9, data_out_l2_r9, data_out_l3_r9, data_out_l4_r9;
+
+    // Instantiate routers
+    top_module r1 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(32'h6000_0000), .data_in_link3(data_out_link4_r2), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r1), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(1'b0), .full_in_link2_vc2(1'b0), .full_in_link2_vc3(1'b0), .full_in_link2_vc4(1'b0),
+        .full_in_link3_vc1(full_out_link4_vc1_r2), .full_in_link3_vc2(full_out_link4_vc2_r2), .full_in_link3_vc3(full_out_link4_vc3_r2), .full_in_link3_vc4(full_out_link4_vc4_r2),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h00),
+        .data_out_link1(data_out_link1_r1), .data_out_link2(data_out_link2_r1), .data_out_link3(data_out_link3_r1), .data_out_link4(data_out_link4_r1),
+        .data_out_core(data_out_core_r1),
+        .full_out_link1_vc1(full_out_link1_vc1_r1), .full_out_link1_vc2(full_out_link1_vc2_r1), .full_out_link1_vc3(full_out_link1_vc3_r1), .full_out_link1_vc4(full_out_link1_vc4_r1),
+        .full_out_link2_vc1(full_out_link2_vc1_r1), .full_out_link2_vc2(full_out_link2_vc2_r1), .full_out_link2_vc3(full_out_link2_vc3_r1), .full_out_link2_vc4(full_out_link2_vc4_r1),
+        .full_out_link3_vc1(full_out_link3_vc1_r1), .full_out_link3_vc2(full_out_link3_vc2_r1), .full_out_link3_vc3(full_out_link3_vc3_r1), .full_out_link3_vc4(full_out_link3_vc4_r1),
+        .full_out_link4_vc1(full_out_link4_vc1_r1), .full_out_link4_vc2(full_out_link4_vc2_r1), .full_out_link4_vc3(full_out_link4_vc3_r1), .full_out_link4_vc4(full_out_link4_vc4_r1),
+        .full_out_core_vc1(full_out_core_vc1_r1), .full_out_core_vc2(full_out_core_vc2_r1), .full_out_core_vc3(full_out_core_vc3_r1), .full_out_core_vc4(full_out_core_vc4_r1),
+        .data_out_link1_vc1(data_out_l1_r1), .data_out_link1_vc2(data_out_l1_r1), .data_out_link1_vc3(data_out_l1_r1), .data_out_link1_vc4(data_out_l1_r1),
+        .data_out_link2_vc1(data_out_l2_r1), .data_out_link2_vc2(data_out_l2_r1), .data_out_link2_vc3(data_out_l2_r1), .data_out_link2_vc4(data_out_l2_r1),
+        .data_out_link3_vc1(data_out_l3_r1), .data_out_link3_vc2(data_out_l3_r1), .data_out_link3_vc3(data_out_l3_r1), .data_out_link3_vc4(data_out_l3_r1),
+        .data_out_link4_vc1(data_out_l4_r1), .data_out_link4_vc2(data_out_l4_r1), .data_out_link4_vc3(data_out_l4_r1), .data_out_link4_vc4(data_out_l4_r1),
+        .data_out_core_vc1(data_out_core_r1_vc1), .data_out_core_vc2(data_out_core_r1_vc2), .data_out_core_vc3(data_out_core_r1_vc3), .data_out_core_vc4(data_out_core_r1_vc4),
+        .sel_vc_link1(sel_vc_link1_r1), .sel_vc_link2(sel_vc_link2_r1), .sel_vc_link3(sel_vc_link3_r1), .sel_vc_link4(sel_vc_link4_r1), .sel_vc_core(sel_vc_core_r1),
+        .data_out_l1(data_out_l1_r1), .data_out_l2(data_out_l2_r1), .data_out_l3(data_out_l3_r1), .data_out_l4(data_out_l4_r1),
+        .data_out_c(data_out_core_r1)
+    );
+
+    top_module r2 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(data_out_link1_r1), .data_in_link3(data_out_link4_r3), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r2), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(full_out_link1_vc1_r1), .full_in_link2_vc2(full_out_link1_vc2_r1), .full_in_link2_vc3(full_out_link1_vc3_r1), .full_in_link2_vc4(full_out_link1_vc4_r1),
+        .full_in_link3_vc1(full_out_link4_vc1_r3), .full_in_link3_vc2(full_out_link4_vc2_r3), .full_in_link3_vc3(full_out_link4_vc3_r3), .full_in_link3_vc4(full_out_link4_vc4_r3),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h01),
+        .data_out_link1(data_out_link1_r2), .data_out_link2(data_out_link2_r2), .data_out_link3(data_out_link3_r2), .data_out_link4(data_out_link4_r2),
+        .data_out_core(data_out_core_r2),
+        .full_out_link1_vc1(full_out_link1_vc1_r2), .full_out_link1_vc2(full_out_link1_vc2_r2), .full_out_link1_vc3(full_out_link1_vc3_r2), .full_out_link1_vc4(full_out_link1_vc4_r2),
+        .full_out_link2_vc1(full_out_link2_vc1_r2), .full_out_link2_vc2(full_out_link2_vc2_r2), .full_out_link2_vc3(full_out_link2_vc3_r2), .full_out_link2_vc4(full_out_link2_vc4_r2),
+        .full_out_link3_vc1(full_out_link3_vc1_r2), .full_out_link3_vc2(full_out_link3_vc2_r2), .full_out_link3_vc3(full_out_link3_vc3_r2), .full_out_link3_vc4(full_out_link3_vc4_r2),
+        .full_out_link4_vc1(full_out_link4_vc1_r2), .full_out_link4_vc2(full_out_link4_vc2_r2), .full_out_link4_vc3(full_out_link4_vc3_r2), .full_out_link4_vc4(full_out_link4_vc4_r2),
+        .full_out_core_vc1(full_out_core_vc1_r2), .full_out_core_vc2(full_out_core_vc2_r2), .full_out_core_vc3(full_out_core_vc3_r2), .full_out_core_vc4(full_out_core_vc4_r2),
+        .data_out_link1_vc1(data_out_l1_r2), .data_out_link1_vc2(data_out_l1_r2), .data_out_link1_vc3(data_out_l1_r2), .data_out_link1_vc4(data_out_l1_r2),
+        .data_out_link2_vc1(data_out_l2_r2), .data_out_link2_vc2(data_out_l2_r2), .data_out_link2_vc3(data_out_l2_r2), .data_out_link2_vc4(data_out_l2_r2),
+        .data_out_link3_vc1(data_out_l3_r2), .data_out_link3_vc2(data_out_l3_r2), .data_out_link3_vc3(data_out_l3_r2), .data_out_link3_vc4(data_out_l3_r2),
+        .data_out_link4_vc1(data_out_l4_r2), .data_out_link4_vc2(data_out_l4_r2), .data_out_link4_vc3(data_out_l4_r2), .data_out_link4_vc4(data_out_l4_r2),
+        .data_out_core_vc1(data_out_core_r2_vc1), .data_out_core_vc2(data_out_core_r2_vc2), .data_out_core_vc3(data_out_core_r2_vc3), .data_out_core_vc4(data_out_core_r2_vc4),
+        .sel_vc_link1(sel_vc_link1_r2), .sel_vc_link2(sel_vc_link2_r2), .sel_vc_link3(sel_vc_link3_r2), .sel_vc_link4(sel_vc_link4_r2), .sel_vc_core(sel_vc_core_r2),
+        .data_out_l1(data_out_l1_r2), .data_out_l2(data_out_l2_r2), .data_out_l3(data_out_l3_r2), .data_out_l4(data_out_l4_r2),
+        .data_out_c(data_out_core_r2)
+    );
+
+    top_module r3 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(data_out_link1_r2), .data_in_link3(32'h6000_0000), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r3), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(full_out_link1_vc1_r2), .full_in_link2_vc2(full_out_link1_vc2_r2), .full_in_link2_vc3(full_out_link1_vc3_r2), .full_in_link2_vc4(full_out_link1_vc4_r2),
+        .full_in_link3_vc1(1'b0), .full_in_link3_vc2(1'b0), .full_in_link3_vc3(1'b0), .full_in_link3_vc4(1'b0),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h02),
+        .data_out_link1(data_out_link1_r3), .data_out_link2(data_out_link2_r3), .data_out_link3(data_out_link3_r3), .data_out_link4(data_out_link4_r3),
+        .data_out_core(data_out_core_r3),
+        .full_out_link1_vc1(full_out_link1_vc1_r3), .full_out_link1_vc2(full_out_link1_vc2_r3), .full_out_link1_vc3(full_out_link1_vc3_r3), .full_out_link1_vc4(full_out_link1_vc4_r3),
+        .full_out_link2_vc1(full_out_link2_vc1_r3), .full_out_link2_vc2(full_out_link2_vc2_r3), .full_out_link2_vc3(full_out_link2_vc3_r3), .full_out_link2_vc4(full_out_link2_vc4_r3),
+        .full_out_link3_vc1(full_out_link3_vc1_r3), .full_out_link3_vc2(full_out_link3_vc2_r3), .full_out_link3_vc3(full_out_link3_vc3_r3), .full_out_link3_vc4(full_out_link3_vc4_r3),
+        .full_out_link4_vc1(full_out_link4_vc1_r3), .full_out_link4_vc2(full_out_link4_vc2_r3), .full_out_link4_vc3(full_out_link4_vc3_r3), .full_out_link4_vc4(full_out_link4_vc4_r3),
+        .full_out_core_vc1(full_out_core_vc1_r3), .full_out_core_vc2(full_out_core_vc2_r3), .full_out_core_vc3(full_out_core_vc3_r3), .full_out_core_vc4(full_out_core_vc4_r3),
+        .data_out_link1_vc1(data_out_l1_r3), .data_out_link1_vc2(data_out_l1_r3), .data_out_link1_vc3(data_out_l1_r3), .data_out_link1_vc4(data_out_l1_r3),
+        .data_out_link2_vc1(data_out_l2_r3), .data_out_link2_vc2(data_out_l2_r3), .data_out_link2_vc3(data_out_l2_r3), .data_out_link2_vc4(data_out_l2_r3),
+        .data_out_link3_vc1(data_out_l3_r3), .data_out_link3_vc2(data_out_l3_r3), .data_out_link3_vc3(data_out_l3_r3), .data_out_link3_vc4(data_out_l3_r3),
+        .data_out_link4_vc1(data_out_l4_r3), .data_out_link4_vc2(data_out_l4_r3), .data_out_link4_vc3(data_out_l4_r3), .data_out_link4_vc4(data_out_l4_r3),
+        .data_out_core_vc1(data_out_core_r3_vc1), .data_out_core_vc2(data_out_core_r3_vc2), .data_out_core_vc3(data_out_core_r3_vc3), .data_out_core_vc4(data_out_core_r3_vc4),
+        .sel_vc_link1(sel_vc_link1_r3), .sel_vc_link2(sel_vc_link2_r3), .sel_vc_link3(sel_vc_link3_r3), .sel_vc_link4(sel_vc_link4_r3), .sel_vc_core(sel_vc_core_r3),
+        .data_out_l1(data_out_l1_r3), .data_out_l2(data_out_l2_r3), .data_out_l3(data_out_l3_r3), .data_out_l4(data_out_l4_r3),
+        .data_out_c(data_out_core_r3)
+    );
+
+    top_module r4 (
+        .data_in_link1(data_out_link3_r7), .data_in_link2(32'h6000_0000), .data_in_link3(data_out_link4_r5), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r4), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(full_out_link3_vc1_r7), .full_in_link1_vc2(full_out_link3_vc2_r7), .full_in_link1_vc3(full_out_link3_vc3_r7), .full_in_link1_vc4(full_out_link3_vc4_r7),
+        .full_in_link2_vc1(1'b0), .full_in_link2_vc2(1'b0), .full_in_link2_vc3(1'b0), .full_in_link2_vc4(1'b0),
+        .full_in_link3_vc1(full_out_link4_vc1_r5), .full_in_link3_vc2(full_out_link4_vc2_r5), .full_in_link3_vc3(full_out_link4_vc3_r5), .full_in_link3_vc4(full_out_link4_vc4_r5),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h10),
+        .data_out_link1(data_out_link1_r4), .data_out_link2(data_out_link2_r4), .data_out_link3(data_out_link3_r4), .data_out_link4(data_out_link4_r4),
+        .data_out_core(data_out_core_r4),
+        .full_out_link1_vc1(full_out_link1_vc1_r4), .full_out_link1_vc2(full_out_link1_vc2_r4), .full_out_link1_vc3(full_out_link1_vc3_r4), .full_out_link1_vc4(full_out_link1_vc4_r4),
+        .full_out_link2_vc1(full_out_link2_vc1_r4), .full_out_link2_vc2(full_out_link2_vc2_r4), .full_out_link2_vc3(full_out_link2_vc3_r4), .full_out_link2_vc4(full_out_link2_vc4_r4),
+        .full_out_link3_vc1(full_out_link3_vc1_r4), .full_out_link3_vc2(full_out_link3_vc2_r4), .full_out_link3_vc3(full_out_link3_vc3_r4), .full_out_link3_vc4(full_out_link3_vc4_r4),
+        .full_out_link4_vc1(full_out_link4_vc1_r4), .full_out_link4_vc2(full_out_link4_vc2_r4), .full_out_link4_vc3(full_out_link4_vc3_r4), .full_out_link4_vc4(full_out_link4_vc4_r4),
+        .full_out_core_vc1(full_out_core_vc1_r4), .full_out_core_vc2(full_out_core_vc2_r4), .full_out_core_vc3(full_out_core_vc3_r4), .full_out_core_vc4(full_out_core_vc4_r4),
+        .data_out_link1_vc1(data_out_l1_r4), .data_out_link1_vc2(data_out_l1_r4), .data_out_link1_vc3(data_out_l1_r4), .data_out_link1_vc4(data_out_l1_r4),
+        .data_out_link2_vc1(data_out_l2_r4), .data_out_link2_vc2(data_out_l2_r4), .data_out_link2_vc3(data_out_l2_r4), .data_out_link2_vc4(data_out_l2_r4),
+        .data_out_link3_vc1(data_out_l3_r4), .data_out_link3_vc2(data_out_l3_r4), .data_out_link3_vc3(data_out_l3_r4), .data_out_link3_vc4(data_out_l3_r4),
+        .data_out_link4_vc1(data_out_l4_r4), .data_out_link4_vc2(data_out_l4_r4), .data_out_link4_vc3(data_out_l4_r4), .data_out_link4_vc4(data_out_l4_r4),
+        .data_out_core_vc1(data_out_core_r4_vc1), .data_out_core_vc2(data_out_core_r4_vc2), .data_out_core_vc3(data_out_core_r4_vc3), .data_out_core_vc4(data_out_core_r4_vc4),
+        .sel_vc_link1(sel_vc_link1_r4), .sel_vc_link2(sel_vc_link2_r4), .sel_vc_link3(sel_vc_link3_r4), .sel_vc_link4(sel_vc_link4_r4), .sel_vc_core(sel_vc_core_r4),
+        .data_out_l1(data_out_l1_r4), .data_out_l2(data_out_l2_r4), .data_out_l3(data_out_l3_r4), .data_out_l4(data_out_l4_r4),
+        .data_out_c(data_out_core_r4)
+    );
+
+    top_module r5 (
+        .data_in_link1(data_out_link3_r8), .data_in_link2(data_out_link1_r4), .data_in_link3(data_out_link4_r6), .data_in_link4(data_out_link2_r4),
+        .data_in_core(data_in_core_r5), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(full_out_link3_vc1_r8), .full_in_link1_vc2(full_out_link3_vc2_r8), .full_in_link1_vc3(full_out_link3_vc3_r8), .full_in_link1_vc4(full_out_link3_vc4_r8),
+        .full_in_link2_vc1(full_out_link1_vc1_r4), .full_in_link2_vc2(full_out_link1_vc2_r4), .full_in_link2_vc3(full_out_link1_vc3_r4), .full_in_link2_vc4(full_out_link1_vc4_r4),
+        .full_in_link3_vc1(full_out_link4_vc1_r6), .full_in_link3_vc2(full_out_link4_vc2_r6), .full_in_link3_vc3(full_out_link4_vc3_r6), .full_in_link3_vc4(full_out_link4_vc4_r6),
+        .full_in_link4_vc1(full_out_link2_vc1_r4), .full_in_link4_vc2(full_out_link2_vc2_r4), .full_in_link4_vc3(full_out_link2_vc3_r4), .full_in_link4_vc4(full_out_link2_vc4_r4),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h11),
+        .data_out_link1(data_out_link1_r5), .data_out_link2(data_out_link2_r5), .data_out_link3(data_out_link3_r5), .data_out_link4(data_out_link4_r5),
+        .data_out_core(data_out_core_r5),
+        .full_out_link1_vc1(full_out_link1_vc1_r5), .full_out_link1_vc2(full_out_link1_vc2_r5), .full_out_link1_vc3(full_out_link1_vc3_r5), .full_out_link1_vc4(full_out_link1_vc4_r5),
+        .full_out_link2_vc1(full_out_link2_vc1_r5), .full_out_link2_vc2(full_out_link2_vc2_r5), .full_out_link2_vc3(full_out_link2_vc3_r5), .full_out_link2_vc4(full_out_link2_vc4_r5),
+        .full_out_link3_vc1(full_out_link3_vc1_r5), .full_out_link3_vc2(full_out_link3_vc2_r5), .full_out_link3_vc3(full_out_link3_vc3_r5), .full_out_link3_vc4(full_out_link3_vc4_r5),
+        .full_out_link4_vc1(full_out_link4_vc1_r5), .full_out_link4_vc2(full_out_link4_vc2_r5), .full_out_link4_vc3(full_out_link4_vc3_r5), .full_out_link4_vc4(full_out_link4_vc4_r5),
+        .full_out_core_vc1(full_out_core_vc1_r5), .full_out_core_vc2(full_out_core_vc2_r5), .full_out_core_vc3(full_out_core_vc3_r5), .full_out_core_vc4(full_out_core_vc4_r5),
+        .data_out_link1_vc1(data_out_l1_r5), .data_out_link1_vc2(data_out_l1_r5), .data_out_link1_vc3(data_out_l1_r5), .data_out_link1_vc4(data_out_l1_r5),
+        .data_out_link2_vc1(data_out_l2_r5), .data_out_link2_vc2(data_out_l2_r5), .data_out_link2_vc3(data_out_l2_r5), .data_out_link2_vc4(data_out_l2_r5),
+        .data_out_link3_vc1(data_out_l3_r5), .data_out_link3_vc2(data_out_l3_r5), .data_out_link3_vc3(data_out_l3_r5), .data_out_link3_vc4(data_out_l3_r5),
+        .data_out_link4_vc1(data_out_l4_r5), .data_out_link4_vc2(data_out_l4_r5), .data_out_link4_vc3(data_out_l4_r5), .data_out_link4_vc4(data_out_l4_r5),
+        .data_out_core_vc1(data_out_core_r5_vc1), .data_out_core_vc2(data_out_core_r5_vc2), .data_out_core_vc3(data_out_core_r5_vc3), .data_out_core_vc4(data_out_core_r5_vc4),
+        .sel_vc_link1(sel_vc_link1_r5), .sel_vc_link2(sel_vc_link2_r5), .sel_vc_link3(sel_vc_link3_r5), .sel_vc_link4(sel_vc_link4_r5), .sel_vc_core(sel_vc_core_r5),
+        .data_out_l1(data_out_l1_r5), .data_out_l2(data_out_l2_r5), .data_out_l3(data_out_l3_r5), .data_out_l4(data_out_l4_r5),
+        .data_out_c(data_out_core_r5)
+    );
+
+    top_module r6 (
+        .data_in_link1(data_out_link3_r9), .data_in_link2(data_out_link1_r5), .data_in_link3(32'h6000_0000), .data_in_link4(data_out_link2_r5),
+        .data_in_core(data_in_core_r6), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(full_out_link3_vc1_r9), .full_in_link1_vc2(full_out_link3_vc2_r9), .full_in_link1_vc3(full_out_link3_vc3_r9), .full_in_link1_vc4(full_out_link3_vc4_r9),
+        .full_in_link2_vc1(full_out_link1_vc1_r5), .full_in_link2_vc2(full_out_link1_vc2_r5), .full_in_link2_vc3(full_out_link1_vc3_r5), .full_in_link2_vc4(full_out_link1_vc4_r5),
+        .full_in_link3_vc1(1'b0), .full_in_link3_vc2(1'b0), .full_in_link3_vc3(1'b0), .full_in_link3_vc4(1'b0),
+        .full_in_link4_vc1(full_out_link2_vc1_r5), .full_in_link4_vc2(full_out_link2_vc2_r5), .full_in_link4_vc3(full_out_link2_vc3_r5), .full_in_link4_vc4(full_out_link2_vc4_r5),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h12),
+        .data_out_link1(data_out_link1_r6), .data_out_link2(data_out_link2_r6), .data_out_link3(data_out_link3_r6), .data_out_link4(data_out_link4_r6),
+        .data_out_core(data_out_core_r6),
+        .full_out_link1_vc1(full_out_link1_vc1_r6), .full_out_link1_vc2(full_out_link1_vc2_r6), .full_out_link1_vc3(full_out_link1_vc3_r6), .full_out_link1_vc4(full_out_link1_vc4_r6),
+        .full_out_link2_vc1(full_out_link2_vc1_r6), .full_out_link2_vc2(full_out_link2_vc2_r6), .full_out_link2_vc3(full_out_link2_vc3_r6), .full_out_link2_vc4(full_out_link2_vc4_r6),
+        .full_out_link3_vc1(full_out_link3_vc1_r6), .full_out_link3_vc2(full_out_link3_vc2_r6), .full_out_link3_vc3(full_out_link3_vc3_r6), .full_out_link3_vc4(full_out_link3_vc4_r6),
+        .full_out_link4_vc1(full_out_link4_vc1_r6), .full_out_link4_vc2(full_out_link4_vc2_r6), .full_out_link4_vc3(full_out_link4_vc3_r6), .full_out_link4_vc4(full_out_link4_vc4_r6),
+        .full_out_core_vc1(full_out_core_vc1_r6), .full_out_core_vc2(full_out_core_vc2_r6), .full_out_core_vc3(full_out_core_vc3_r6), .full_out_core_vc4(full_out_core_vc4_r6),
+        .data_out_link1_vc1(data_out_l1_r6), .data_out_link1_vc2(data_out_l1_r6), .data_out_link1_vc3(data_out_l1_r6), .data_out_link1_vc4(data_out_l1_r6),
+        .data_out_link2_vc1(data_out_l2_r6), .data_out_link2_vc2(data_out_l2_r6), .data_out_link2_vc3(data_out_l2_r6), .data_out_link2_vc4(data_out_l2_r6),
+        .data_out_link3_vc1(data_out_l3_r6), .data_out_link3_vc2(data_out_l3_r6), .data_out_link3_vc3(data_out_l3_r6), .data_out_link3_vc4(data_out_l3_r6),
+        .data_out_link4_vc1(data_out_l4_r6), .data_out_link4_vc2(data_out_l4_r6), .data_out_link4_vc3(data_out_l4_r6), .data_out_link4_vc4(data_out_l4_r6),
+        .data_out_core_vc1(data_out_core_r6_vc1), .data_out_core_vc2(data_out_core_r6_vc2), .data_out_core_vc3(data_out_core_r6_vc3), .data_out_core_vc4(data_out_core_r6_vc4),
+        .sel_vc_link1(sel_vc_link1_r6), .sel_vc_link2(sel_vc_link2_r6), .sel_vc_link3(sel_vc_link3_r6), .sel_vc_link4(sel_vc_link4_r6), .sel_vc_core(sel_vc_core_r6),
+        .data_out_l1(data_out_l1_r6), .data_out_l2(data_out_l2_r6), .data_out_l3(data_out_l3_r6), .data_out_l4(data_out_l4_r6),
+        .data_out_c(data_out_core_r6)
+    );
+
+    top_module r7 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(data_out_link1_r7), .data_in_link3(32'h6000_0000), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r7), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(full_out_link1_vc1_r7), .full_in_link2_vc2(full_out_link1_vc2_r7), .full_in_link2_vc3(full_out_link1_vc3_r7), .full_in_link2_vc4(full_out_link1_vc4_r7),
+        .full_in_link3_vc1(1'b0), .full_in_link3_vc2(1'b0), .full_in_link3_vc3(1'b0), .full_in_link3_vc4(1'b0),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h20),
+        .data_out_link1(data_out_link1_r7), .data_out_link2(data_out_link2_r7), .data_out_link3(data_out_link3_r7), .data_out_link4(data_out_link4_r7),
+        .data_out_core(data_out_core_r7),
+        .full_out_link1_vc1(full_out_link1_vc1_r7), .full_out_link1_vc2(full_out_link1_vc2_r7), .full_out_link1_vc3(full_out_link1_vc3_r7), .full_out_link1_vc4(full_out_link1_vc4_r7),
+        .full_out_link2_vc1(full_out_link2_vc1_r7), .full_out_link2_vc2(full_out_link2_vc2_r7), .full_out_link2_vc3(full_out_link2_vc3_r7), .full_out_link2_vc4(full_out_link2_vc4_r7),
+        .full_out_link3_vc1(full_out_link3_vc1_r7), .full_out_link3_vc2(full_out_link3_vc2_r7), .full_out_link3_vc3(full_out_link3_vc3_r7), .full_out_link3_vc4(full_out_link3_vc4_r7),
+        .full_out_link4_vc1(full_out_link4_vc1_r7), .full_out_link4_vc2(full_out_link4_vc2_r7), .full_out_link4_vc3(full_out_link4_vc3_r7), .full_out_link4_vc4(full_out_link4_vc4_r7),
+        .full_out_core_vc1(full_out_core_vc1_r7), .full_out_core_vc2(full_out_core_vc2_r7), .full_out_core_vc3(full_out_core_vc3_r7), .full_out_core_vc4(full_out_core_vc4_r7),
+        .data_out_link1_vc1(data_out_l1_r7), .data_out_link1_vc2(data_out_l1_r7), .data_out_link1_vc3(data_out_l1_r7), .data_out_link1_vc4(data_out_l1_r7),
+        .data_out_link2_vc1(data_out_l2_r7), .data_out_link2_vc2(data_out_l2_r7), .data_out_link2_vc3(data_out_l2_r7), .data_out_link2_vc4(data_out_l2_r7),
+        .data_out_link3_vc1(data_out_l3_r7), .data_out_link3_vc2(data_out_l3_r7), .data_out_link3_vc3(data_out_l3_r7), .data_out_link3_vc4(data_out_l3_r7),
+        .data_out_link4_vc1(data_out_l4_r7), .data_out_link4_vc2(data_out_l4_r7), .data_out_link4_vc3(data_out_l4_r7), .data_out_link4_vc4(data_out_l4_r7),
+        .data_out_core_vc1(data_out_core_r7_vc1), .data_out_core_vc2(data_out_core_r7_vc2), .data_out_core_vc3(data_out_core_r7_vc3), .data_out_core_vc4(data_out_core_r7_vc4),
+        .sel_vc_link1(sel_vc_link1_r7), .sel_vc_link2(sel_vc_link2_r7), .sel_vc_link3(sel_vc_link3_r7), .sel_vc_link4(sel_vc_link4_r7), .sel_vc_core(sel_vc_core_r7),
+        .data_out_l1(data_out_l1_r7), .data_out_l2(data_out_l2_r7), .data_out_l3(data_out_l3_r7), .data_out_l4(data_out_l4_r7),
+        .data_out_c(data_out_core_r7)
+    );
+
+    top_module r8 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(data_out_link1_r8), .data_in_link3(data_out_link4_r8), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r8), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(full_out_link1_vc1_r8), .full_in_link2_vc2(full_out_link1_vc2_r8), .full_in_link2_vc3(full_out_link1_vc3_r8), .full_in_link2_vc4(full_out_link1_vc4_r8),
+        .full_in_link3_vc1(full_out_link4_vc1_r8), .full_in_link3_vc2(full_out_link4_vc2_r8), .full_in_link3_vc3(full_out_link4_vc3_r8), .full_in_link3_vc4(full_out_link4_vc4_r8),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h21),
+        .data_out_link1(data_out_link1_r8), .data_out_link2(data_out_link2_r8), .data_out_link3(data_out_link3_r8), .data_out_link4(data_out_link4_r8),
+        .data_out_core(data_out_core_r8),
+        .full_out_link1_vc1(full_out_link1_vc1_r8), .full_out_link1_vc2(full_out_link1_vc2_r8), .full_out_link1_vc3(full_out_link1_vc3_r8), .full_out_link1_vc4(full_out_link1_vc4_r8),
+        .full_out_link2_vc1(full_out_link2_vc1_r8), .full_out_link2_vc2(full_out_link2_vc2_r8), .full_out_link2_vc3(full_out_link2_vc3_r8), .full_out_link2_vc4(full_out_link2_vc4_r8),
+        .full_out_link3_vc1(full_out_link3_vc1_r8), .full_out_link3_vc2(full_out_link3_vc2_r8), .full_out_link3_vc3(full_out_link3_vc3_r8), .full_out_link3_vc4(full_out_link3_vc4_r8),
+        .full_out_link4_vc1(full_out_link4_vc1_r8), .full_out_link4_vc2(full_out_link4_vc2_r8), .full_out_link4_vc3(full_out_link4_vc3_r8), .full_out_link4_vc4(full_out_link4_vc4_r8),
+        .full_out_core_vc1(full_out_core_vc1_r8), .full_out_core_vc2(full_out_core_vc2_r8), .full_out_core_vc3(full_out_core_vc3_r8), .full_out_core_vc4(full_out_core_vc4_r8),
+        .data_out_link1_vc1(data_out_l1_r8), .data_out_link1_vc2(data_out_l1_r8), .data_out_link1_vc3(data_out_l1_r8), .data_out_link1_vc4(data_out_l1_r8),
+        .data_out_link2_vc1(data_out_l2_r8), .data_out_link2_vc2(data_out_l2_r8), .data_out_link2_vc3(data_out_l2_r8), .data_out_link2_vc4(data_out_l2_r8),
+        .data_out_link3_vc1(data_out_l3_r8), .data_out_link3_vc2(data_out_l3_r8), .data_out_link3_vc3(data_out_l3_r8), .data_out_link3_vc4(data_out_l3_r8),
+        .data_out_link4_vc1(data_out_l4_r8), .data_out_link4_vc2(data_out_l4_r8), .data_out_link4_vc3(data_out_l4_r8), .data_out_link4_vc4(data_out_l4_r8),
+        .data_out_core_vc1(data_out_core_r8_vc1), .data_out_core_vc2(data_out_core_r8_vc2), .data_out_core_vc3(data_out_core_r8_vc3), .data_out_core_vc4(data_out_core_r8_vc4),
+        .sel_vc_link1(sel_vc_link1_r8), .sel_vc_link2(sel_vc_link2_r8), .sel_vc_link3(sel_vc_link3_r8), .sel_vc_link4(sel_vc_link4_r8), .sel_vc_core(sel_vc_core_r8),
+        .data_out_l1(data_out_l1_r8), .data_out_l2(data_out_l2_r8), .data_out_l3(data_out_l3_r8), .data_out_l4(data_out_l4_r8),
+        .data_out_c(data_out_core_r8)
+    );
+
+    top_module r9 (
+        .data_in_link1(32'h6000_0000), .data_in_link2(data_out_link1_r9), .data_in_link3(32'h6000_0000), .data_in_link4(32'h6000_0000),
+        .data_in_core(data_in_core_r9), .clr(clr), .clk(clk),
+        .full_in_link1_vc1(1'b0), .full_in_link1_vc2(1'b0), .full_in_link1_vc3(1'b0), .full_in_link1_vc4(1'b0),
+        .full_in_link2_vc1(full_out_link1_vc1_r9), .full_in_link2_vc2(full_out_link1_vc2_r9), .full_in_link2_vc3(full_out_link1_vc3_r9), .full_in_link2_vc4(full_out_link1_vc4_r9),
+        .full_in_link3_vc1(1'b0), .full_in_link3_vc2(1'b0), .full_in_link3_vc3(1'b0), .full_in_link3_vc4(1'b0),
+        .full_in_link4_vc1(1'b0), .full_in_link4_vc2(1'b0), .full_in_link4_vc3(1'b0), .full_in_link4_vc4(1'b0),
+        .full_in_core_vc1(1'b0), .full_in_core_vc2(1'b0), .full_in_core_vc3(1'b0), .full_in_core_vc4(1'b0),
+        .current_address(8'h22),
+        .data_out_link1(data_out_link1_r9), .data_out_link2(data_out_link2_r9), .data_out_link3(data_out_link3_r9), .data_out_link4(data_out_link4_r9),
+        .data_out_core(data_out_core_r9),
+        .full_out_link1_vc1(full_out_link1_vc1_r9), .full_out_link1_vc2(full_out_link1_vc2_r9), .full_out_link1_vc3(full_out_link1_vc3_r9), .full_out_link1_vc4(full_out_link1_vc4_r9),
+        .full_out_link2_vc1(full_out_link2_vc1_r9), .full_out_link2_vc2(full_out_link2_vc2_r9), .full_out_link2_vc3(full_out_link2_vc3_r9), .full_out_link2_vc4(full_out_link2_vc4_r9),
+        .full_out_link3_vc1(full_out_link3_vc1_r9), .full_out_link3_vc2(full_out_link3_vc2_r9), .full_out_link3_vc3(full_out_link3_vc3_r9), .full_out_link3_vc4(full_out_link3_vc4_r9),
+        .full_out_link4_vc1(full_out_link4_vc1_r9), .full_out_link4_vc2(full_out_link4_vc2_r9), .full_out_link4_vc3(full_out_link4_vc3_r9), .full_out_link4_vc4(full_out_link4_vc4_r9),
+        .full_out_core_vc1(full_out_core_vc1_r9), .full_out_core_vc2(full_out_core_vc2_r9), .full_out_core_vc3(full_out_core_vc3_r9), .full_out_core_vc4(full_out_core_vc4_r9),
+        .data_out_link1_vc1(data_out_l1_r9), .data_out_link1_vc2(data_out_l1_r9), .data_out_link1_vc3(data_out_l1_r9), .data_out_link1_vc4(data_out_l1_r9),
+        .data_out_link2_vc1(data_out_l2_r9), .data_out_link2_vc2(data_out_l2_r9), .data_out_link2_vc3(data_out_l2_r9), .data_out_link2_vc4(data_out_l2_r9),
+        .data_out_link3_vc1(data_out_l3_r9), .data_out_link3_vc2(data_out_l3_r9), .data_out_link3_vc3(data_out_l3_r9), .data_out_link3_vc4(data_out_l3_r9),
+        .data_out_link4_vc1(data_out_l4_r9), .data_out_link4_vc2(data_out_l4_r9), .data_out_link4_vc3(data_out_l4_r9), .data_out_link4_vc4(data_out_l4_r9),
+        .data_out_core_vc1(data_out_core_r9_vc1), .data_out_core_vc2(data_out_core_r9_vc2), .data_out_core_vc3(data_out_core_r9_vc3), .data_out_core_vc4(data_out_core_r9_vc4),
+        .sel_vc_link1(sel_vc_link1_r9), .sel_vc_link2(sel_vc_link2_r9), .sel_vc_link3(sel_vc_link3_r9), .sel_vc_link4(sel_vc_link4_r9), .sel_vc_core(sel_vc_core_r9),
+        .data_out_l1(data_out_l1_r9), .data_out_l2(data_out_l2_r9), .data_out_l3(data_out_l3_r9), .data_out_l4(data_out_l4_r9),
+        .data_out_c(data_out_core_r9)
+    );
+
+endmodule

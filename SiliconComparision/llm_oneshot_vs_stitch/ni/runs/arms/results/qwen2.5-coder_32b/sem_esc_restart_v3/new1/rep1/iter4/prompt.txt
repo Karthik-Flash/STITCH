@@ -1,0 +1,137 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# new1
+
+## Behaviour
+
+Network-interface packetiser side: the core writes 32-bit words into a FIFO, and the packetiser reads them and
+sends each as a packet of flits on `niout`.
+
+Connections (by port name of each child):
+
+- `router_fifo` (6-entry FIFO): `reset`, `rd_clk`, `data_in`, `wr_clk` and `wr_en` are new1's inputs of the same
+  name; its `rd_en` is rp1's `rd_en`; its `data_out` feeds rp1's `data_in`. Its `full_ext` (4 or more entries)
+  drives new1's output `full_int`, and its `full_int` (6 entries, full) drives new1's output `empty`. Its
+  `empty`, `rd_add`, `wr_add`, `rd_dir` and `wr_dir` are not used.
+- `rp1` (packetiser): `dest`, `source`, `rd_clk`, `wr_clk`, `wr_en` and `reset` are new1's inputs of the same
+  name; its `niout` and `wr_o` are new1's outputs of the same name.
+
+So `wr_en` both writes `data_in` into the FIFO (rising `wr_clk`) and starts a packet in rp1 (sampled on rising
+`rd_clk`). rp1 pops the FIFO through `rd_en` while it sends the packet.
+
+## Reset
+
+`reset` (active high) goes to both children: synchronous in each, at its own clock edges.
+
+## Ports
+
+11 ports, in this exact order:
+
+```verilog
+input rd_clk, wr_clk;
+input [31:0] data_in;
+input reset, wr_en;
+input [7:0] dest, source;
+output empty, full_int;
+output [31:0] niout;
+output wr_o;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules (ports listed in each child's own order):
+
+- `router_fifo` x 1: (reset, rd_clk, rd_en, data_in, wr_clk, wr_en, rd_add, wr_add, wr_dir, rd_dir, data_out, full_ext, full_int, empty)
+- `rp1` x 1: (data_in, dest, source, rd_clk, wr_clk, wr_en, reset, niout, rd_en, wr_o)
+
+
+CURRENT RTL:
+```verilog
+module new1 (
+    input rd_clk, wr_clk,
+    input [31:0] data_in,
+    input reset, wr_en,
+    input [7:0] dest, source,
+    output empty, full_int,
+    output [31:0] niout,
+    output wr_o
+);
+
+    wire rd_en;
+    wire [31:0] data_out;
+    wire full_ext, full_int_fifo, empty_fifo;
+
+    reg [2:0] rd_add_reg;
+    reg [2:0] wr_add_reg;
+    reg wr_dir_reg;
+    reg rd_dir_reg;
+
+    router_fifo router_fifo_inst (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(data_in),
+        .wr_clk(wr_clk),
+        .wr_en(wr_en),
+        .rd_add(rd_add_reg),
+        .wr_add(wr_add_reg),
+        .wr_dir(wr_dir_reg),
+        .rd_dir(rd_dir_reg),
+        .data_out(data_out),
+        .full_ext(full_ext),
+        .full_int(full_int_fifo),
+        .empty(empty_fifo)
+    );
+
+    rp1 rp1_inst (
+        .data_in(data_out),
+        .dest(dest),
+        .source(source),
+        .rd_clk(rd_clk),
+        .wr_clk(wr_clk),
+        .wr_en(wr_en),
+        .reset(reset),
+        .niout(niout),
+        .rd_en(rd_en),
+        .wr_o(wr_o)
+    );
+
+    reg rd_en_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            rd_en_reg <= 1'b0;
+        end else begin
+            rd_en_reg <= wr_en;
+        end
+    end
+
+    assign rd_en = rd_en_reg;
+    assign full_int = full_ext;
+    assign empty = empty_fifo;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=14000 cycle 0: empty = 1, expected 0
+FAIL t=19000 cycle 0: empty = 1, expected 0
+FAIL t=24000 cycle 1: empty = 1, expected 0
+FAIL t=29000 cycle 1: empty = 1, expected 0
+FAIL t=34000 cycle 2: empty = 1, expected 0
+FAIL t=39000 cycle 2: empty = 1, expected 0
+FAIL t=44000 cycle 3: empty = 1, expected 0
+FAIL t=49000 cycle 3: empty = 1, expected 0
+FAIL t=54000 cycle 4: empty = 1, expected 0
+FAIL t=69000 cycle 5: empty = 1, expected 0
+FAIL t=74000 cycle 6: empty = 1, expected 0
+FAIL t=79000 cycle 6: empty = 1, expected 0
+FAIL t=84000 cycle 7: empty = 1, expected 0
+FAIL t=89000 cycle 7: empty = 1, expected 0
+FAIL t=94000 cycle 8: empty = 1, expected 0
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

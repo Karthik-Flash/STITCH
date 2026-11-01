@@ -37,7 +37,7 @@ def audit_classes() -> dict:
     out = {}
     for l in open(os.path.join(A.STUDY, "reports", "FAILURE_AUDIT.md"), encoding="utf-8"):
         c = [x.strip() for x in l.split("|")]
-        if len(c) > 5 and c[2] in A.ARMS and c[4] in ("LLM_BUG", "SPEC_AMBIGUITY", "TB_ARTIFACT"):
+        if len(c) > 5 and c[2] in A.ARMS and c[4] in ("LLM_BUG", "SPEC_AMBIGUITY", "TB_ARTIFACT", "GOLDEN_DEFECT"):
             out[(c[1], c[2])] = c[4]
     return out
 

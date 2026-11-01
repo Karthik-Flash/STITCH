@@ -1,0 +1,877 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog dut.v; hierarchy -check -top depack; synth -top depack; check; stat -top depack' --
+
+1. Executing Verilog-2005 frontend: dut.v
+Parsing Verilog input from `dut.v' to AST representation.
+Generating RTLIL representation for module `\depack'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \depack
+
+2.2. Analyzing design hierarchy..
+Top module:  \depack
+Removed 0 unused modules.
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \depack
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \depack
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$dut.v:61$5 in module depack.
+Marked 5 switch rules as full_case in process $proc$dut.v:18$1 in module depack.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 1 assignment to connection.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~6 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\depack.$proc$dut.v:61$5'.
+     1/1: $2\c_rd_reg[0:0]
+Creating decoders for process `\depack.$proc$dut.v:18$1'.
+     1/5: $0\state[1:0]
+     2/5: $0\c_rd_reg[0:0]
+     3/5: $0\wr_en_reg[0:0]
+     4/5: $0\low_half[15:0]
+     5/5: $0\data_out_reg[31:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\depack.\c_rd_reg' from process `\depack.$proc$dut.v:61$5'.
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\depack.\data_out_reg' using process `\depack.$proc$dut.v:18$1'.
+  created $dff cell `$procdff$69' with positive edge clock.
+Creating register for signal `\depack.\low_half' using process `\depack.$proc$dut.v:18$1'.
+  created $dff cell `$procdff$70' with positive edge clock.
+Creating register for signal `\depack.\state' using process `\depack.$proc$dut.v:18$1'.
+  created $dff cell `$procdff$71' with positive edge clock.
+Creating register for signal `\depack.\wr_en_reg' using process `\depack.$proc$dut.v:18$1'.
+  created $dff cell `$procdff$72' with positive edge clock.
+Creating register for signal `\depack.\c_rd_reg' using process `\depack.$proc$dut.v:18$1'.
+  created $dff cell `$procdff$73' with positive edge clock.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\depack.$proc$dut.v:61$5'.
+Removing empty process `depack.$proc$dut.v:61$5'.
+Found and cleaned up 5 empty switches in `\depack.$proc$dut.v:18$1'.
+Removing empty process `depack.$proc$dut.v:18$1'.
+Cleaned up 6 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+<suppressed ~2 debug messages>
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.4. Executing CHECK pass (checking for obvious problems).
+Checking module depack...
+Warning: multiple conflicting drivers for depack.$procmux$10_Y:
+    port Q[0] of cell $procdff$73 ($dff)
+    port Y[0] of cell $procmux$10 ($mux)
+Found and reported 1 problems.
+
+3.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 0 unused cells and 21 unused wires.
+<suppressed ~1 debug messages>
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 37 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 31 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 31 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 31 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+3.7. Executing FSM pass (extract and optimize FSM).
+
+3.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register depack.state.
+
+3.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\depack'.
+  found $dff cell for state register: $procdff$71
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \reset
+  found ctrl input: $eq$dut.v:63$6_Y
+  found ctrl input: $procmux$21_CMP
+  found ctrl input: $procmux$25_CMP
+  found state code: 2'00
+  found ctrl input: $eq$dut.v:43$4_Y
+  found state code: 2'01
+  found ctrl input: $eq$dut.v:35$3_Y
+  found state code: 2'10
+  found ctrl input: $eq$dut.v:26$2_Y
+  found ctrl output: $procmux$25_CMP
+  found ctrl output: $procmux$21_CMP
+  found ctrl output: $eq$dut.v:63$6_Y
+  ctrl inputs: { $eq$dut.v:43$4_Y $eq$dut.v:35$3_Y $eq$dut.v:26$2_Y \reset }
+  ctrl outputs: { $procmux$25_CMP $procmux$21_CMP $eq$dut.v:63$6_Y $0\state[1:0] }
+  transition:       2'00 4'--00 ->       2'00 5'10000
+  transition:       2'00 4'--10 ->       2'01 5'10001
+  transition:       2'00 4'---1 ->       2'00 5'10000
+  transition:       2'10 4'0--0 ->       2'01 5'00101
+  transition:       2'10 4'1--0 ->       2'00 5'00100
+  transition:       2'10 4'---1 ->       2'00 5'00100
+  transition:       2'01 4'-0-0 ->       2'01 5'01001
+  transition:       2'01 4'-1-0 ->       2'10 5'01010
+  transition:       2'01 4'---1 ->       2'00 5'01000
+
+3.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$74' from module `\depack'.
+
+3.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 9 unused cells and 9 unused wires.
+<suppressed ~10 debug messages>
+
+3.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$74' from module `\depack'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+  Removing unused output signal $procmux$25_CMP.
+
+3.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$74' from module `\depack' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+
+3.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$74' from module `depack':
+-------------------------------------
+
+  Information on FSM $fsm$\state$74 (\state):
+
+  Number of input signals:    4
+  Number of output signals:   2
+  Number of state bits:       3
+
+  Input signals:
+    0: \reset
+    1: $eq$dut.v:26$2_Y
+    2: $eq$dut.v:35$3_Y
+    3: $eq$dut.v:43$4_Y
+
+  Output signals:
+    0: $eq$dut.v:63$6_Y
+    1: $procmux$21_CMP
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'--00   ->     0 2'00
+      1:     0 4'---1   ->     0 2'00
+      2:     0 4'--10   ->     2 2'00
+      3:     1 4'1--0   ->     0 2'01
+      4:     1 4'---1   ->     0 2'01
+      5:     1 4'0--0   ->     2 2'01
+      6:     2 4'---1   ->     0 2'10
+      7:     2 4'-1-0   ->     1 2'10
+      8:     2 4'-0-0   ->     2 2'10
+
+-------------------------------------
+
+3.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$74' from module `\depack'.
+
+3.8. Executing OPT pass (performing simple optimizations).
+
+3.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+<suppressed ~4 debug messages>
+
+3.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 37 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+3.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 37 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$69 ($dff) from module depack (D = { \flit [15:0] \low_half }, Q = \data_out_reg).
+Adding EN signal on $procdff$70 ($dff) from module depack (D = \flit [15:0], Q = \low_half).
+Adding SRST signal on $procdff$72 ($dff) from module depack (D = $procmux$42_Y, Q = \wr_en_reg, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$123 ($sdff) from module depack (D = $procmux$42_Y, Q = \wr_en_reg).
+Adding SRST signal on $procdff$73 ($dff) from module depack (D = $procmux$33_Y, Q = \c_rd_reg, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$127 ($sdff) from module depack (D = 1'1, Q = \c_rd_reg).
+
+3.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 10 unused cells and 17 unused wires.
+<suppressed ~11 debug messages>
+
+3.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+<suppressed ~2 debug messages>
+
+3.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 35 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 33 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+3.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 1 unused cells and 3 unused wires.
+<suppressed ~2 debug messages>
+
+3.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 32 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+3.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell depack.$eq$dut.v:26$2 ($eq).
+
+3.10. Executing PEEPOPT pass (run peephole optimizers).
+
+3.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module depack:
+  created 0 $alu and 0 $macc cells.
+
+3.13. Executing SHARE pass (SAT-based resource sharing).
+
+3.14. Executing OPT pass (performing simple optimizations).
+
+3.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 32 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 32 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+3.15. Executing MEMORY pass.
+
+3.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+3.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+3.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+3.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+3.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+3.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+3.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+3.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.17. Executing OPT pass (performing simple optimizations).
+
+3.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+<suppressed ~4 debug messages>
+
+3.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 31 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 30 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+3.17.5. Finished fast OPT passes.
+
+3.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+3.19. Executing OPT pass (performing simple optimizations).
+
+3.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 30 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \depack..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+3.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \depack.
+Performed a total of 0 changes.
+
+3.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 30 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Removed a total of 0 cells.
+
+3.19.6. Executing OPT_SHARE pass.
+
+3.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+
+3.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+3.20. Executing TECHMAP pass (map to technology primitives).
+
+3.20.1. Executing Verilog-2005 frontend: /scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/scratch/soumyaj/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+3.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $logic_and.
+No more expansions possible.
+<suppressed ~107 debug messages>
+
+3.21. Executing OPT pass (performing simple optimizations).
+
+3.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+<suppressed ~16 debug messages>
+
+3.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 93 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 91 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 90 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 89 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+3.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 0 unused cells and 25 unused wires.
+<suppressed ~1 debug messages>
+
+3.21.5. Finished fast OPT passes.
+
+3.22. Executing ABC pass (technology mapping using ABC).
+
+3.22.1. Summary of detected clock domains:
+  4 cells in clk=\wr_clk, en=!\state [2], arst={ }, srst=\reset
+  1 cells in clk=\wr_clk, en=\c_rd_reg, arst={ }, srst=\reset
+  19 cells in clk=\wr_clk, en=$auto$simple.cc:210:make_patterns_logic$121, arst={ }, srst={ }
+  34 cells in clk=\wr_clk, en=$auto$simple.cc:210:make_patterns_logic$116, arst={ }, srst={ }
+  31 cells in clk=\wr_clk, en={ }, arst={ }, srst={ }
+
+3.22.2. Extracting gate netlist of module `\depack' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, enabled by !\state [2], synchronously reset by \reset
+
+3.22.3. Extracting gate netlist of module `\depack' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, enabled by \c_rd_reg, synchronously reset by \reset
+
+3.22.4. Extracting gate netlist of module `\depack' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, enabled by $auto$simple.cc:210:make_patterns_logic$121
+
+3.22.5. Extracting gate netlist of module `\depack' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk, enabled by $auto$simple.cc:210:make_patterns_logic$116
+
+3.22.6. Extracting gate netlist of module `\depack' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \wr_clk
+
+3.22.6.1. Executed ABC.
+Extracted 3 gates and 6 wires to a netlist network with 3 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+3.22.6.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:             ORNOT cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+
+3.22.6.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+3.22.6.1. Executed ABC.
+Extracted 3 gates and 6 wires to a netlist network with 3 inputs and 3 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+3.22.6.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        3
+Removing temp directory.
+
+3.22.6.1. Executed ABC.
+Extracted 2 gates and 5 wires to a netlist network with 3 inputs and 1 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+3.22.6.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        1
+Removing temp directory.
+
+3.22.6.1. Executed ABC.
+Extracted 28 gates and 37 wires to a netlist network with 9 inputs and 5 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Sep 17 2026 05:16:02)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+3.22.6.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        3
+ABC RESULTS:            ANDNOT cells:        2
+ABC RESULTS:              NAND cells:        4
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:             ORNOT cells:        3
+ABC RESULTS:        internal signals:       23
+ABC RESULTS:           input signals:        9
+ABC RESULTS:          output signals:        5
+Removing temp directory.
+Removing global temp directory.
+
+3.23. Executing OPT pass (performing simple optimizations).
+
+3.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module depack.
+
+3.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\depack'.
+Computing hashes of 75 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+Computing hashes of 74 cells of `\depack'.
+Finding duplicate cells in `\depack'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \depack..
+Removed 0 unused cells and 54 unused wires.
+<suppressed ~1 debug messages>
+
+3.23.5. Finished fast OPT passes.
+
+3.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `depack'. Setting top module to depack.
+
+3.24.1. Analyzing design hierarchy..
+Top module:  \depack
+
+3.24.2. Analyzing design hierarchy..
+Top module:  \depack
+Removed 0 unused modules.
+
+3.25. Printing statistics.
+
+=== depack ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       31 wires
+      141 wire bits
+       11 public wires
+      121 public wire bits
+        6 ports
+       68 port bits
+       74 cells
+        2   $_ANDNOT_
+        6   $_AND_
+       48   $_DFFE_PP_
+        3   $_DFF_P_
+        4   $_NAND_
+        3   $_NOT_
+        4   $_ORNOT_
+        2   $_OR_
+        1   $_SDFFE_PP0N_
+        1   $_SDFFE_PP0P_
+
+3.26. Executing CHECK pass (checking for obvious problems).
+Checking module depack...
+Warning: multiple conflicting drivers for depack.\c_rd_reg:
+    port Y[0] of cell $abc$369$blif$369$0 ($_AND_)
+    port Q[0] of cell $auto$ff.cc:337:slice$206 ($_SDFFE_PP0P_)
+Found and reported 1 problems.
+
+4. Executing CHECK pass (checking for obvious problems).
+Checking module depack...
+Warning: multiple conflicting drivers for depack.\c_rd_reg:
+    port Y[0] of cell $abc$369$blif$369$0 ($_AND_)
+    port Q[0] of cell $auto$ff.cc:337:slice$206 ($_SDFFE_PP0P_)
+Found and reported 1 problems.
+
+5. Printing statistics.
+
+=== depack ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       31 wires
+      141 wire bits
+       11 public wires
+      121 public wire bits
+        6 ports
+       68 port bits
+       74 cells
+        2   $_ANDNOT_
+        6   $_AND_
+       48   $_DFFE_PP_
+        3   $_DFF_P_
+        4   $_NAND_
+        3   $_NOT_
+        4   $_ORNOT_
+        2   $_OR_
+        1   $_SDFFE_PP0N_
+        1   $_SDFFE_PP0P_
+
+Warnings: 2 unique messages, 3 total
+End of script. Logfile hash: d067c2298c, time: 0.08s, user: 0.02s, system: 0.00s, MEM: 30.47 MB peak
+Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 83% 1x abc (0 sec), 5% 3x read_verilog (0 sec), ...

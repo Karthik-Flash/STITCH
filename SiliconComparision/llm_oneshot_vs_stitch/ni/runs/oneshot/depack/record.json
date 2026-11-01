@@ -1,0 +1,29 @@
+{
+ "module": "depack",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "status": "ok",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "timeout_s": 3600,
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 862,
+ "tokens_out": 526,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 862,
+  "eval_count": 526,
+  "total_duration": 8371143695,
+  "load_duration": 1593585,
+  "eval_duration": 8026738000
+ },
+ "wall_s": 8.4,
+ "timestamp": "2026-11-01T02:51:22",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "5a47f072e0424f00783c46140a947fd057a698e61cf62d3536f0f335c011bf92",
+ "response_sha256": "559b1653295d67ee6cd7125ffecb72e7c5cf9d3dc1c56bbad2032cbd5a3940d0",
+ "output_sha256": "e5948d6d96622b68afe067af6919406dcd2ead3202324997d00e05b095c416ef",
+ "mock_mode": null
+}

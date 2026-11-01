@@ -1,0 +1,179 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# rp1
+
+## Behaviour
+
+Network-interface packetiser: turns one 32-bit word from the core-side FIFO into a packet of flits.
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body. Bits [28:27] carry the virtual-channel (VC) number, 00 = VC1. The idle word is 32'h6000_0000.
+
+A state machine advances on each rising edge of `rd_clk` (when `reset` is 0). `niout`, `wr_o` and the state
+are registered; `wr_clk` is not used. Two internal counters, `i` (packet words sent) and `j` (body pairs sent),
+are compared with parameter `N` (= 1).
+
+| state | `niout` written on this edge | next state |
+|---|---|---|
+| idle | unchanged | header if `wr_en` = 1, else idle |
+| header | `{1'b0, 2'b01, 2'b00, 11'd0, source, dest}` (header flit, VC1) | payload1 |
+| payload1 | `{1'b0, 2'b00, 2'b00, 11'd0, data_in[15:0]}` (body flit); `j` increments | payload2 |
+| payload2 | `{1'b0, 2'b00, 2'b00, 11'd0, data_in[31:16]}` (body flit); `i` increments | see below |
+| tailer | `{1'b0, 2'b10, 29'd0}` = 32'h4000_0000 (tailer flit) | last |
+| last | 32'h7FFF_FFFF | last |
+
+In payload2, after `i` increments: if `i` = N the next state is tailer. Then, if `j` = N, `wr_o` becomes 1 and
+the next state stays as just set (tailer if `i` = N, otherwise payload2); if `j` != N the next state is
+payload1, overriding tailer.
+
+`rd_en` (the FIFO read enable) is updated on each falling edge of `rd_clk`: 1 when the state is header or
+payload2, otherwise 0.
+
+## Reset
+
+Synchronous, active-high `reset`. On a rising `rd_clk` edge with `reset` = 1: `niout` = 32'h6000_0000, state
+idle, `i` = 0, `wr_o` = 0. On a falling `rd_clk` edge with `reset` = 1: `rd_en` = 0. `j` is initialised to 0 at
+declaration and is not cleared by reset: it keeps counting across resets.
+
+## Ports
+
+10 ports, in this exact order:
+
+```verilog
+input [31:0] data_in;
+input [7:0] dest, source;
+input rd_clk, wr_clk, wr_en, reset;
+output [31:0] niout;
+output rd_en, wr_o;
+```
+
+Parameters: N=1;header=1;idle=0;last=5;payload1=2;payload2=3;tailer=4.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module rp1 (
+    input [31:0] data_in,
+    input [7:0] dest, source,
+    input rd_clk, wr_clk, wr_en, reset,
+    output [31:0] niout,
+    output rd_en, wr_o
+);
+
+    parameter N = 1;
+    parameter header = 1;
+    parameter idle = 0;
+    parameter last = 5;
+    parameter payload1 = 2;
+    parameter payload2 = 3;
+    parameter tailer = 4;
+
+    reg [31:0] niout_reg;
+    reg [1:0] state_reg;
+    reg [3:0] i;
+    reg [3:0] j;
+    reg rd_en_reg;
+    reg wr_o_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            niout_reg <= 32'h6000_0000;
+            state_reg <= idle;
+            i <= 0;
+            wr_o_reg <= 0;
+        end else begin
+            case (state_reg)
+                idle: begin
+                    if (wr_en) begin
+                        niout_reg <= {1'b0, 2'b01, 2'b00, 11'd0, source, dest};
+                        state_reg <= header;
+                    end else begin
+                        niout_reg <= niout_reg;
+                        state_reg <= idle;
+                    end
+                end
+                header: begin
+                    niout_reg <= {1'b0, 2'b00, 2'b00, 11'd0, data_in[15:0]};
+                    state_reg <= payload1;
+                end
+                payload1: begin
+                    niout_reg <= {1'b0, 2'b00, 2'b00, 11'd0, data_in[31:16]};
+                    state_reg <= payload2;
+                    j <= j + 1;
+                end
+                payload2: begin
+                    niout_reg <= {1'b0, 2'b10, 29'd0};
+                    state_reg <= tailer;
+                    i <= i + 1;
+                    if (i == N) begin
+                        if (j == N) begin
+                            wr_o_reg <= 1;
+                            state_reg <= tailer;
+                        end else begin
+                            wr_o_reg <= 0;
+                            state_reg <= payload1;
+                        end
+                    end else begin
+                        wr_o_reg <= 0;
+                        state_reg <= payload2;
+                    end
+                end
+                tailer: begin
+                    niout_reg <= 32'h7FFF_FFFF;
+                    state_reg <= last;
+                end
+                last: begin
+                    niout_reg <= 32'h7FFF_FFFF;
+                    state_reg <= last;
+                end
+                default: begin
+                    niout_reg <= 32'h6000_0000;
+                    state_reg <= idle;
+                end
+            endcase
+        end
+    end
+
+    always @(negedge rd_clk or posedge reset) begin
+        if (reset) begin
+            rd_en_reg <= 0;
+        end else begin
+            case (state_reg)
+                header: rd_en_reg <= 1;
+                payload2: rd_en_reg <= 1;
+                default: rd_en_reg <= 0;
+            endcase
+        end
+    end
+
+    assign niout = niout_reg;
+    assign rd_en = rd_en_reg;
+    assign wr_o = wr_o_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=69000 cycle 5: niout = 20006046, expected 60000000
+FAIL t=74000 cycle 6: niout = 20006046, expected 60000000
+FAIL t=79000 cycle 6: niout = 00005e13, expected 2000c8f6
+FAIL t=84000 cycle 7: niout = 00005e13, expected 2000c8f6
+FAIL t=89000 cycle 7: niout = 00001848, expected 0000a330
+FAIL t=94000 cycle 8: niout = 00001848, expected 0000a330
+FAIL t=99000 cycle 8: niout = 40000000, expected 000064d8
+FAIL t=99000 cycle 8: wr_o = 0, expected 1
+FAIL t=104000 cycle 9: niout = 40000000, expected 000064d8
+FAIL t=104000 cycle 9: rd_en = 1, expected 0
+FAIL t=104000 cycle 9: wr_o = 0, expected 1
+FAIL t=109000 cycle 9: rd_en = 1, expected 0
+FAIL t=109000 cycle 9: wr_o = 0, expected 1
+FAIL t=114000 cycle 10: wr_o = 0, expected 1
+FAIL t=119000 cycle 10: niout = 00003faf, expected 7fffffff
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

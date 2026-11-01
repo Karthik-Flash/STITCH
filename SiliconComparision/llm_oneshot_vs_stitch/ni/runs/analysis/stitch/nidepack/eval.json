@@ -1,0 +1,24 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "PINCONNECTEMPTY": 3,
+  "UNUSEDSIGNAL": 4
+ },
+ "verilator_warnings_count": 7,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "b93308d237454d3a46f7bede6fa78d19e4202736351464535120eb7c2ee03c64",
+ "file": "outputs/stitch/nidepack.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

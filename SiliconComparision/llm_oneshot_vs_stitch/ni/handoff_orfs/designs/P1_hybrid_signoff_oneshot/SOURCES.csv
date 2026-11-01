@@ -1,0 +1,11 @@
+module,source,reason,sha256
+asynch_comparator,golden,final file not so_clean (....),84a8e723d738b55cbcbfad39f207a5aa708fa17863d47c0b6f585ebf29a32a20
+depack,golden,final file not so_clean (C..K),528bbb992d99e612214520e23d1c133dd33f25d162cf66a4268ab9fe4034d2c1
+gray_mod6,golden,final file not so_clean (....),639283c274348b5008749d2e47f17c7d926eaf5a35b70ad4744a51dd7ac635d9
+jk_ff,oneshot (2x2, reused),LLM final file,8f1c26a58e80e44e0b78ec8ce2088d50ffdb985effbd7bc891d6de98606bdaf2
+memory,oneshot (2x2, reused),LLM final file,624eafe5c24da51c1ef846f613ee839cd7f5ffae0c2ed5cdb78076bc5bfe80f4
+new1,golden,final file not so_clean (....),9baa19c4d4c10cdd212b532422bf2d2ad831253c15d2bdd40f471b378e06940e
+ni_pair,wrapper,wrapper (not golden, never generated),1070b47332331e12ead4986dd89b7b805bcc7618ab83273dc825f8ba9f9e63d4
+nidepack,golden,final file not so_clean (....),60821f29970f5b0a8fa12d084d67af9b53b967223c34b0fe937e2782c5c9b572
+router_fifo,golden,final file not so_clean (C..K),1a909695cc74aee24183549c9f2c79a067d79bf943cb2221ca2d5550f725fbb7
+rp1,golden,final file not so_clean (C...),c4fdb1b6d0e2c94ad0e6f07d9edbcaceafdc3f40de540189ec81a70a0ac04427

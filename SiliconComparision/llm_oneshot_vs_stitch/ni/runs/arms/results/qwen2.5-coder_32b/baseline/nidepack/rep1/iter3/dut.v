@@ -1,0 +1,36 @@
+module nidepack (
+    input [31:0] flit,
+    input rd_clk, wr_clk, rd_en, reset,
+    output [31:0] data_out
+);
+
+    wire [31:0] depack_data_out;
+    wire depack_wr_en;
+
+    depack depack_inst (
+        .flit(flit),
+        .wr_clk(wr_clk),
+        .reset(reset),
+        .data_out(depack_data_out),
+        .wr_en(depack_wr_en),
+        .c_rd(1'b0) // c_rd is left open, so it can be tied to a constant value
+    );
+
+    router_fifo router_fifo_inst (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(depack_data_out),
+        .wr_clk(wr_clk),
+        .wr_en(depack_wr_en),
+        .rd_add(3'b000), // rd_add is not used outside nidepack, so it can be tied to a constant value
+        .wr_add(3'b000), // wr_add is not used outside nidepack, so it can be tied to a constant value
+        .wr_dir(1'b0),  // wr_dir is not used outside nidepack, so it can be tied to a constant value
+        .rd_dir(1'b0),  // rd_dir is not used outside nidepack, so it can be tied to a constant value
+        .data_out(data_out),
+        .full_ext(),    // full_ext is not used outside nidepack, so it can be left open
+        .full_int(),    // full_int is not used outside nidepack, so it can be left open
+        .empty()        // empty is not used outside nidepack, so it can be left open
+    );
+
+endmodule

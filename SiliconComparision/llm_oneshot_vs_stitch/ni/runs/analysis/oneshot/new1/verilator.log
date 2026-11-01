@@ -1,0 +1,34 @@
+%Warning-WIDTHEXPAND: dut.v:22:10: Output port connection 'rd_add' expects 3 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                 : ... note: In instance 'new1'
+   22 |         .rd_add(2'b00),
+      |          ^~~~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:23:10: Output port connection 'wr_add' expects 3 bits on the pin connection, but pin connection's CONST '2'h0' generates 2 bits.
+                                 : ... note: In instance 'new1'
+   23 |         .wr_add(2'b00),
+      |          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:20: Signal is not used: 'full_int_fifo'
+                                  : ... note: In instance 'new1'
+   13 |     wire full_ext, full_int_fifo, empty_fifo;
+      |                    ^~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error-PORTSHORT: dut.v:22:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   22 |         .rd_add(2'b00),
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:23:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   23 |         .wr_add(2'b00),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   24 |         .wr_dir(1'b0),
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:25:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   25 |         .rd_dir(1'b0),
+      |          ^~~~~~
+%Error: Exiting due to 4 error(s), 3 warning(s)

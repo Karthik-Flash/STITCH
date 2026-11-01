@@ -24,6 +24,10 @@ PPA_TABLE.md, one row per design. Also run `check_setup -verbose` (OpenSTA) and 
 - O1_hybrid_compile_oneshot: optional: every one-shot module that compiles, golden for the rest; fails the mesh tb, PPA indicative only.
 - O2_hybrid_compile_stitch: optional: every STITCH module that compiles, golden for the rest; fails the mesh tb, PPA indicative only.
 
+## Correction
+
+P2's encoder (simloop/stitch) passes its tests but is not equivalent to golden: on multi-hot inputs it behaves as a priority encoder where the spec says OR. Found later by the clocks=True equivalence check (mesh3x3 docs). P2 therefore contains one module that is not equivalent to golden.
+
 ## Checklist
 
 - [ ] C0  - [ ] P1  - [ ] P2  - [ ] O1 (optional)  - [ ] O2 (optional)

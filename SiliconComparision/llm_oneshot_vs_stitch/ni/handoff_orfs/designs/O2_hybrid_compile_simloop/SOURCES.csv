@@ -1,0 +1,11 @@
+module,source,reason,sha256
+asynch_comparator,simloop (2x2, reused),LLM final file,02b45fc164ee097cbbb2eaabc62e2fc0412f4fea5e0a7c9ee6789c68b9e1a62c
+depack,simloop,LLM final file,35f222f265b394690b1658a4ea3ac9741312cd5ff9a4856feb713174a99a6191
+gray_mod6,simloop (2x2, reused),LLM final file,b58c96c4fea70f6741dbf31e9e7bc3ab38fdeecaed3cf79548657b98efc16136
+jk_ff,simloop (2x2, reused),LLM final file,8f1c26a58e80e44e0b78ec8ce2088d50ffdb985effbd7bc891d6de98606bdaf2
+memory,simloop (2x2, reused),LLM final file,624eafe5c24da51c1ef846f613ee839cd7f5ffae0c2ed5cdb78076bc5bfe80f4
+new1,simloop,LLM final file,5c3d852b4b38986d907793ddbcc2f9de29f466b914fcf0a0a87bfcb2258c1c6d
+ni_pair,wrapper,wrapper (not golden, never generated),1070b47332331e12ead4986dd89b7b805bcc7618ab83273dc825f8ba9f9e63d4
+nidepack,golden,final file does not compile,60821f29970f5b0a8fa12d084d67af9b53b967223c34b0fe937e2782c5c9b572
+router_fifo,simloop (2x2, reused),LLM final file,bdf084e7e346648ec1910a54b5628a26b62e810424862487295d0a25a9b586ce
+rp1,simloop,LLM final file,5a287f48a56d5d792254a35fae155bfd910764f073560654ace17f4b532c1b74

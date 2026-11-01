@@ -1,0 +1,2 @@
+dut.v:91: error: 'full_out_link3_vc4_r9' has already been declared in this scope.
+dut.v:90:      : It was declared here as a net.

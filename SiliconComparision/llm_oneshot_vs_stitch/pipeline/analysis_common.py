@@ -18,6 +18,8 @@ sys.path.insert(0, HERE)
 import studies  # noqa: E402
 
 STUDY = studies.STUDY
+NAME = studies.NAME
+ROOT = studies.ROOT                                   # the 2x2 study (REUSED modules take its results)
 MODEL_DIR = "qwen2.5-coder_32b"
 RES = os.path.join(STUDY, "runs", "arms", "results", MODEL_DIR)
 CONDITION = {"simloop": "baseline", "stitch": "sem_esc_restart_v3"}
@@ -25,10 +27,17 @@ ARMS = ("oneshot", "simloop", "stitch")
 HPC_STUDY = "/scratch/soumyaj/STITCH_GEN/SiliconComparision/llm_oneshot_vs_stitch/"
 LOGS = os.path.join(STUDY, "hpc_logs")
 TIMING = ("rr_arbiter", "irs", "round_robin_req", "falling_edge_pulse_generator", "gray_mod6", "memory", "router_fifo")
+TIMING += {"ni": ("new1", "nidepack")}.get(NAME, ())  # CP1: property checks are the primary verdict
 
 
 def modules() -> list[str]:
     return sorted(m for m in os.listdir(os.path.join(STUDY, "tasks")) if os.path.isdir(os.path.join(STUDY, "tasks", m)))
+
+
+def reused() -> list[str]:
+    """Modules of this study that take the 2x2 results (reports/reuse.json, pipeline/reuse.py); none for 2x2."""
+    p = os.path.join(STUDY, "reports", "reuse.json")
+    return sorted(m for m, r in json.load(open(p)).items() if r["status"] == "REUSED") if NAME != "2x2" else []
 
 
 def rel(p: str) -> str:
@@ -36,7 +45,7 @@ def rel(p: str) -> str:
 
 
 def local(p: str) -> str:
-    return os.path.join(STUDY, p[len(HPC_STUDY):]) if p.startswith(HPC_STUDY) else p
+    return os.path.join(ROOT, p[len(HPC_STUDY):]) if p.startswith(HPC_STUDY) else p  # cluster paths start at the 2x2 root
 
 
 def sha(path: str) -> str:

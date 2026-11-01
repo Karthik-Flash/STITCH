@@ -1,0 +1,4 @@
+dut.v:25: error: expression not valid in assign l-value: 1'd0
+dut.v:25: error: Output port expression must support a continuous assignment.
+dut.v:25:      : Port 6 (c_rd) of depack is connected to tb.dut.1'd0
+1 error(s) during elaboration.

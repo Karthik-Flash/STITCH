@@ -1,0 +1,23 @@
+%Warning-UNUSEDSIGNAL: dut.v:13:20: Signal is not used: 'full_int_fifo'
+                                  : ... note: In instance 'new1'
+   13 |     wire full_ext, full_int_fifo, empty_fifo;
+      |                    ^~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:15:15: Signal is not used: 'rd_add_reg'
+                                  : ... note: In instance 'new1'
+   15 |     reg [2:0] rd_add_reg;
+      |               ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:15: Signal is not used: 'wr_add_reg'
+                                  : ... note: In instance 'new1'
+   16 |     reg [2:0] wr_add_reg;
+      |               ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:9: Signal is not used: 'wr_dir_reg'
+                                 : ... note: In instance 'new1'
+   17 |     reg wr_dir_reg;
+      |         ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:18:9: Signal is not used: 'rd_dir_reg'
+                                 : ... note: In instance 'new1'
+   18 |     reg rd_dir_reg;
+      |         ^~~~~~~~~~
+%Error: Exiting due to 5 warning(s)

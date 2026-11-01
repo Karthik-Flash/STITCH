@@ -1,3 +1,42 @@
+# Start here (one page)
+
+**What we did.** A local LLM (Qwen2.5-Coder 32B) wrote every module of our NoC router from written specs: the 2x2
+mesh first, then the new parts of the 3x3 mesh and of the network interface (NI). Each module was tested against
+the hand-written RTL. Failing modules got up to 6 retries, either with simulation feedback only or with STITCH's
+repair feedback.
+
+**What it showed.**
+
+- The LLM writes small leaf modules (flip-flops, registers, mux, memory): 9 of 34 modules correct first time in
+  2x2, 14 after retries.
+- It fails every module that contains other modules, in every study. No fully LLM-written design works.
+- Small control modules are hard too: both NI state machines (rp1, depack) failed in every arm. Retries fixed none
+  of the 5 new 3x3 and NI modules.
+- STITCH never fixed a module that plain retry could not. Its effects were small: 2 structural gains in 2x2 and
+  1 regression in 3x3.
+- Testing the LLM's work exposed real bugs in our hand-written RTL (flip-flop simulation races, NI port shift, rp1
+  counter, depack write-enable, 3x3 edge wiring), listed in each study README.
+
+One model, one run per setting: these are case-study counts, not rates.
+
+**What we need from you** (ORFS, same setup as your A1 runs):
+
+| study | runs | instructions |
+|---|---|---|
+| 2x2 | C0, P1, P2 | [handoff_orfs/README.md](handoff_orfs/README.md) |
+| 3x3 | C0, P1, P2 | [mesh3x3/handoff_orfs/README.md](mesh3x3/handoff_orfs/README.md) |
+| NI | nothing required (optional only) | [ni/handoff_orfs/README.md](ni/handoff_orfs/README.md) |
+
+Run C0 first in each; it must reproduce B. Fill PPA_TABLE.md and send back your A1 config.mk and constraint.sdc.
+
+**Where things are.** [The details below](#llm-one-shot-vs-stitch-on-the-2x2-noc-mesh) ·
+[reports/CROSS_STUDY.md](reports/CROSS_STUDY.md) · [2x2 hand-off](handoff_orfs/README.md) ·
+[3x3 hand-off](mesh3x3/handoff_orfs/README.md)
+
+---
+
+Details (for reference) below.
+
 # LLM one-shot vs STITCH on the 2x2 NoC mesh
 
 ## Studies
@@ -5,8 +44,32 @@
 | study | folder | status |
 |---|---|---|
 | 2x2 mesh (top_2x2_router) | this folder | done: results below, ORFS hand-off in `handoff_orfs/` |
-| 3x3 mesh (top_3x3_router) | [mesh3x3/](mesh3x3/README.md) | tasks ready; HPC generation pending |
-| network interface (new1, nidepack; ORFS top ni_pair) | [ni/](ni/README.md) | tasks ready; HPC generation pending |
+| 3x3 mesh (top_3x3_router) | [mesh3x3/](mesh3x3/README.md) | done: results in its README, ORFS hand-off in `mesh3x3/handoff_orfs/` |
+| network interface (new1, nidepack; ORFS top ni_pair) | [ni/](ni/README.md) | done: results in its README, ORFS hand-off in `ni/handoff_orfs/` |
+
+## Cross-study summary
+
+[reports/CROSS_STUDY.md](reports/CROSS_STUDY.md) (`pipeline/cross_study.py`) puts the three studies side by side,
+one column per study: NEW and REUSED modules, so_clean per arm, STITCH-only fixes, attributable gains and
+regressions, dominant failure classes, which whole designs compose, and the golden-RTL findings, followed by the
+conclusions that hold across the studies (including where 3x3 or NI contradicts a 2x2 conclusion).
+
+## For the coworker
+
+Three ORFS hand-offs, each with its own README, PPA_TABLE.md and per-design config.mk templates:
+
+- 2x2: [handoff_orfs/README.md](handoff_orfs/README.md)
+- 3x3: [mesh3x3/handoff_orfs/README.md](mesh3x3/handoff_orfs/README.md)
+- NI: [ni/handoff_orfs/README.md](ni/handoff_orfs/README.md) (two clocks: ships its own `constraint.sdc`)
+
+Required ORFS runs, in this order:
+
+1. 2x2: C0, P1, P2.
+2. 3x3: C0 (must reproduce B / 3x3), P1, P2. A1 / 3x3 is already measured (`../latch_study/PPA_SUMMARY.md`).
+3. NI: nothing required. No newly generated NI module signed off, so no NI design measures LLM output.
+
+Then the optional runs (O1, O2 in 2x2; A1_style_3x3, O1, O2 in 3x3; everything in NI). Please send your A1 config.mk and constraint.sdc
+back with the results (we store them in `../latch_study/orfs_A1/`).
 
 qwen2.5-coder:32b writes each of the 34 modules of the hand-written 2x2 mesh (top `top_2x2_router`) from a
 behavioural spec. Three arms: one-shot (one call), simloop (the Phase 3 simulation-only retry loop, `baseline`) and
@@ -101,6 +164,10 @@ never fired, the prompts were byte-identical to simloop's throughout, so those r
 measure the area, fmax and power of the LLM-written modules that pass their own sign-off checks, inside the
 otherwise golden mesh, against A1 (primary) and B (like-for-like). O1 and O2 are functionally incorrect meshes;
 their PPA is indicative only.
+
+**Correction.** P2's encoder (simloop/stitch) passes its tests but is not equivalent to golden: on multi-hot inputs
+it behaves as a priority encoder where the spec says OR. Found later by the clocks=True equivalence check (mesh3x3
+docs). P2 therefore contains one module that is not equivalent to golden.
 
 ### Audit findings
 

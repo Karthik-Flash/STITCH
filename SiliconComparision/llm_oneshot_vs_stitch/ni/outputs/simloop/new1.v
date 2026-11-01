@@ -1,0 +1,62 @@
+module new1 (
+    input rd_clk, wr_clk,
+    input [31:0] data_in,
+    input reset, wr_en,
+    input [7:0] dest, source,
+    output empty, full_int,
+    output [31:0] niout,
+    output wr_o
+);
+
+    wire rd_en;
+    wire [31:0] data_out;
+    wire full_ext, full_int_fifo, empty_fifo;
+
+    reg [2:0] rd_add_reg, wr_add_reg;
+    reg wr_dir_reg, rd_dir_reg;
+
+    router_fifo router_fifo_inst (
+        .reset(reset),
+        .rd_clk(rd_clk),
+        .rd_en(rd_en),
+        .data_in(data_in),
+        .wr_clk(wr_clk),
+        .wr_en(wr_en),
+        .rd_add(rd_add_reg),
+        .wr_add(wr_add_reg),
+        .wr_dir(wr_dir_reg),
+        .rd_dir(rd_dir_reg),
+        .data_out(data_out),
+        .full_ext(full_ext),
+        .full_int(full_int_fifo),
+        .empty(empty_fifo)
+    );
+
+    rp1 rp1_inst (
+        .data_in(data_out),
+        .dest(dest),
+        .source(source),
+        .rd_clk(rd_clk),
+        .wr_clk(wr_clk),
+        .wr_en(wr_en),
+        .reset(reset),
+        .niout(niout),
+        .rd_en(rd_en),
+        .wr_o(wr_o)
+    );
+
+    reg rd_en_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            rd_en_reg <= 1'b0;
+        end else begin
+            rd_en_reg <= wr_en;
+        end
+    end
+
+    assign rd_en = rd_en_reg;
+    assign full_int = full_ext;
+    assign empty = empty_fifo;
+
+endmodule

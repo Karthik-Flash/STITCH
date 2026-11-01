@@ -1,0 +1,37 @@
+tb.v:595: warning: Port 31 (data_out_link3) of module top_module expects 32 bit(s), given 1.
+tb.v:595:        : Padding 31 high bits of the port.
+tb.v:661: warning: Port 30 (data_out_link2) of module top_module expects 32 bit(s), given 1.
+tb.v:661:        : Padding 31 high bits of the port.
+tb.v:661: warning: Port 32 (data_out_link4) of module top_module expects 32 bit(s), given 1.
+tb.v:661:        : Padding 31 high bits of the port.
+tb.v:720: warning: Port 30 (data_out_link2) of module top_module expects 32 bit(s), given 1.
+tb.v:720:        : Padding 31 high bits of the port.
+tb.v:720: warning: Port 31 (data_out_link3) of module top_module expects 32 bit(s), given 1.
+tb.v:720:        : Padding 31 high bits of the port.
+tb.v:779: warning: Port 29 (data_out_link1) of module top_module expects 32 bit(s), given 1.
+tb.v:779:        : Padding 31 high bits of the port.
+tb.v:779: warning: Port 32 (data_out_link4) of module top_module expects 32 bit(s), given 1.
+tb.v:779:        : Padding 31 high bits of the port.
+tb.v:838: warning: Port 29 (data_out_link1) of module top_module expects 32 bit(s), given 1.
+tb.v:838:        : Padding 31 high bits of the port.
+tb.v:838: warning: Port 31 (data_out_link3) of module top_module expects 32 bit(s), given 1.
+tb.v:838:        : Padding 31 high bits of the port.
+
+FAIL t=14000 cycle 0: data_out_core_r1 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r2 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r3 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r4 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r5 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r6 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r7 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r8 = xxxxxxxx, expected 60000000
+FAIL t=14000 cycle 0: data_out_core_r9 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r1 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r2 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r3 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r4 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r5 = xxxxxxxx, expected 60000000
+FAIL t=19000 cycle 0: data_out_core_r6 = xxxxxxxx, expected 60000000
+INFO coverage: 9 of 9 checked outputs toggled, 230 of 288 bits
+FAIL: 3600 mismatches, 0 property errors
+tb.v:148: $finish called at 2009000 (1ps)

@@ -1,0 +1,24 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "WIDTHEXPAND": 45,
+  "UNUSEDSIGNAL": 387
+ },
+ "verilator_warnings_count": 432,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "d5fe30c31f186e5c6611f3402386082b890f8047c76c3bcf9076f325860dc5b5",
+ "file": "outputs/simloop/top_3x3_router.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

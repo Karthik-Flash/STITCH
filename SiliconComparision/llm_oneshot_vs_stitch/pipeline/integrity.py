@@ -19,7 +19,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import analysis_common as A  # noqa: E402
 
-ARCHIVE_SHA = "93c24d50a0c7aa7e8733c60dbb1096df719828933e55d5a60c5d4954c2c10ace"
+ARCHIVE_SHA = {"2x2": "93c24d50a0c7aa7e8733c60dbb1096df719828933e55d5a60c5d4954c2c10ace",
+               "mesh3x3": "7cb51ed4bd3ca5fbf5215190f2752f3df72cca5d2e2185dedf91d064c5976aa3",   # one archive for
+               "ni": "7cb51ed4bd3ca5fbf5215190f2752f3df72cca5d2e2185dedf91d064c5976aa3"}[A.NAME]  # mesh3x3 + ni
 
 
 def gen_log_lines() -> dict:
@@ -46,6 +48,8 @@ def main() -> int:
         r = json.load(open(rp))
         ok_sha = os.path.exists(out) and A.sha(out) == r.get("output_sha256")
         jobs = [j for j, d in logs.items() if m in d and d[m] == (r["tokens_in"], r["tokens_out"], r["wall_s"])]
+        if not logs and len(man) == 1:   # gen log not in the archive (mesh3x3, ni): the study's only run manifest
+            jobs = list(man)
         job = jobs[-1] if jobs else "?"
         gpu = man[job]["gpu"][0]["name"] if job in man else "?"
         commit = man[job]["git_commit"][:7] if job in man else "?"
@@ -78,6 +82,11 @@ def main() -> int:
     md = ["# Integrity of the HPC results (pipeline/integrity.py)", "",
           f"Archive extracted into the study folder: sha256 `{ARCHIVE_SHA}` (excludes *.vvp/*.vcd; value as "
           "recorded at download, the archive itself is not in the repository).", "",
+          *([] if logs else ["No gen log in hpc_logs/ (the job log stayed on the cluster): each one-shot record is "
+                             "attributed to the study's only run manifest. The manifest's git_commit is `UNKNOWN`: "
+                             "preflight.py looked for DEPLOYED_COMMIT.txt in the study sub-folder instead of the study "
+                             "root (fixed after this job). The deployed commit, 0fa68c9, was checked on the cluster "
+                             "(DEPLOYED_COMMIT.txt, reported by the user).", ""]),
           "## Summary", "",
           f"- one-shot records: {sum(os.path.exists(os.path.join(A.STUDY, 'runs', 'oneshot', m, 'record.json')) for m in mods)} "
           f"of {len(mods)}; arm runs with metrics.json: {len(arm_rows)} of {2 * len(mods)}",

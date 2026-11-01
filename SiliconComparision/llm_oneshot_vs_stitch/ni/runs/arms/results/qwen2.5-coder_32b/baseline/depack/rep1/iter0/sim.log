@@ -1,0 +1,18 @@
+FAIL t=119000 cycle 10: wr_en = 1, expected 0
+FAIL t=124000 cycle 11: wr_en = 1, expected 0
+FAIL t=159000 cycle 14: wr_en = 1, expected 0
+FAIL t=164000 cycle 15: wr_en = 1, expected 0
+FAIL t=339000 cycle 32: wr_en = 1, expected 0
+FAIL t=344000 cycle 33: wr_en = 1, expected 0
+FAIL t=589000 cycle 57: wr_en = 1, expected 0
+FAIL t=594000 cycle 58: wr_en = 1, expected 0
+FAIL t=649000 cycle 63: wr_en = 1, expected 0
+FAIL t=654000 cycle 64: wr_en = 1, expected 0
+FAIL t=669000 cycle 65: wr_en = 1, expected 0
+FAIL t=674000 cycle 66: wr_en = 1, expected 0
+FAIL t=719000 cycle 70: wr_en = 1, expected 0
+FAIL t=724000 cycle 71: wr_en = 1, expected 0
+FAIL t=739000 cycle 72: wr_en = 1, expected 0
+INFO coverage: 2 of 2 checked outputs toggled, 31 of 33 bits
+FAIL: 32 mismatches, 0 property errors
+tb.v:63: $finish called at 2009000 (1ps)

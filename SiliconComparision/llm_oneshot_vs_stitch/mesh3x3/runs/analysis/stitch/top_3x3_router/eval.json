@@ -1,0 +1,23 @@
+{
+ "compile_ok": false,
+ "sim_outcome": "COMPILE_ERROR",
+ "func_pass": false,
+ "yosys_ok": false,
+ "yosys_error": "not run (compile error)",
+ "latch_events": null,
+ "latch_cells": null,
+ "yosys_loops": null,
+ "verilator_codes": {
+  "IMPLICIT": 1
+ },
+ "verilator_warnings_count": 1,
+ "verilator_hard": 0,
+ "struct_clean": false,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "e334d35bb8074d4a35ba3f1a86d08f8a47b45396b8a73199ab5723ff13374960",
+ "file": "outputs/stitch/top_3x3_router.v",
+ "signoff_outcome": "COMPILE_ERROR",
+ "signoff": false,
+ "so_clean": false
+}

@@ -6,7 +6,8 @@ Stages, in order: compiles (iverilog, task context) -> loop tb (tb.v) -> sign-of
 module from the arm compiles and passes tasks/top_2x2_router/tb_signoff.v: the drop-in test of pipeline/assemble.py).
 The first failing stage is marked; later stages are not evaluated. Also: LLM calls and sf (STITCH semantic feedback
 fired) from reports/summary.json, and the Yosys formal-equivalence result for modules that fail only at composes.
-Usage: python pipeline/funnel.py   (after reeval.py and assemble.py)
+mesh3x3 / ni: the funnel covers the NEW modules; the REUSED ones are listed with their 2x2 flags, "reused (2x2)".
+Usage: python pipeline/funnel.py [--study mesh3x3|ni]   (after reeval.py and assemble.py / assemble_study.py)
 """
 from __future__ import annotations
 
@@ -16,8 +17,12 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import analysis_common as A  # noqa: E402
-import assemble as S  # noqa: E402
 import reeval  # noqa: E402
+
+if A.NAME == "2x2":
+    import assemble as S  # noqa: E402
+else:   # mesh3x3, ni: the study's own design (top_3x3_router; the ni_pair wrapper) with all its modules
+    import assemble_study as S  # noqa: E402
 
 STAGES = ("compiles", "loop tb", "sign-off tb", "synthesises", "latch/loop-free", "composes")
 
@@ -59,18 +64,28 @@ def main() -> int:
                 notes.append(f"{m} ({arm}): passes every module stage but fails in the mesh; Yosys formal "
                              f"equivalence with golden: {extra.get('equivalent')}")
         rows.append(f"| {m} | " + " | ".join(cells) + " |")
+    mesh = "golden 2x2 mesh" if A.NAME == "2x2" else f"golden {A.studies.TOP} design"
     md = ["# Stage funnel (pipeline/funnel.py)", "",
           "Per module and arm: the first failing stage (bold), or ok. Stages: " + " -> ".join(STAGES) + ". "
-          "composes = golden 2x2 mesh with only this module from the arm passes the top-level sign-off tb (drop-in). "
+          f"composes = {mesh} with only this module from the arm passes the top-level sign-off tb (drop-in). "
           "it = LLM calls, sf = STITCH semantic feedback fired.", "",
-          "## Totals: modules reaching each stage (counts of 34)", "",
+          f"## Totals: modules reaching each stage (counts of {len(A.modules())})", "",
           "| stage | " + " | ".join(A.ARMS) + " |", "|---|---|---|---|"]
     md += [f"| {st} | " + " | ".join(str(reached[a][i]) for a in A.ARMS) + " |" for i, st in enumerate(STAGES)]
     md += ["", "## Totals: first failing stage", "", "| first failing stage | " + " | ".join(A.ARMS) + " |",
            "|---|---|---|---|"]
     md += [f"| {st} | " + " | ".join(str(first_fail[a][st]) for a in A.ARMS) + " |" for st in STAGES + ("passes all",)]
-    md += ["", "Bonus whole-router row: not attempted: prompt alone 32,290 of 32,768 tokens (budget.py).", "",
-           "## Modules that fail only at composes", ""] + [f"- {n}" for n in notes]
+    md += ["", "Bonus whole-router row: not attempted: prompt alone 32,290 of 32,768 tokens (budget.py)."] \
+        if A.NAME == "2x2" else []
+    md += ["", "## Modules that fail only at composes", ""] + ([f"- {n}" for n in notes] or
+                                                                ([] if A.NAME == "2x2" else ["- none"]))
+    if A.reused():
+        two = {r["module"]: r for r in json.load(open(os.path.join(A.ROOT, "reports", "summary.json")))["rows"]}
+        md += ["", f"## REUSED modules: {len(A.reused())}, results of the 2x2 study (`../reports/FUNNEL.md`)", "",
+               "Flags of the 2x2 final file (C compile, F tb.v, S tb_signoff.v, K struct_clean); so_clean = S and K.",
+               "", "| module | " + " | ".join(A.ARMS) + " |", "|---|---|---|---|"]
+        md += [f"| {m} | " + " | ".join(f"reused (2x2): {A.flags(two[m][a])}" + (" **so_clean**" if two[m][a]["so_clean"] else "") for a in A.ARMS) + " |"
+               for m in A.reused()]
     md += ["", "## Per module", "", "| module | " + " | ".join(A.ARMS) + " |", "|---|---|---|---|", *rows]
     A.write_report("FUNNEL.md", md)
     print("\n".join(md[:30 + len(notes)]))

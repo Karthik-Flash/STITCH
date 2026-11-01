@@ -1,0 +1,35 @@
+%Warning-PINCONNECTEMPTY: dut.v:39:10: Instance pin connected by name with empty reference: 'full_ext'
+   39 |         .full_ext(),  
+      |          ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.053
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: dut.v:40:10: Instance pin connected by name with empty reference: 'full_int'
+   40 |         .full_int(),  
+      |          ^~~~~~~~
+%Warning-PINCONNECTEMPTY: dut.v:41:10: Instance pin connected by name with empty reference: 'empty'
+   41 |         .empty()    
+      |          ^~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:16: Signal is not used: 'rd_add_reg'
+                                  : ... note: In instance 'nidepack'
+   11 |     wire [2:0] rd_add_reg = 3'b000;
+      |                ^~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:12:16: Signal is not used: 'wr_add_reg'
+                                  : ... note: In instance 'nidepack'
+   12 |     wire [2:0] wr_add_reg = 3'b000;
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:10: Signal is not used: 'wr_dir_reg'
+                                  : ... note: In instance 'nidepack'
+   13 |     wire wr_dir_reg = 1'b0;
+      |          ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:10: Signal is not used: 'rd_dir_reg'
+                                  : ... note: In instance 'nidepack'
+   14 |     wire rd_dir_reg = 1'b0;
+      |          ^~~~~~~~~~
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'nidepack'
+   24 |         .c_rd(1'b0)  
+      |          ^~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error: Exiting due to 1 error(s), 7 warning(s)

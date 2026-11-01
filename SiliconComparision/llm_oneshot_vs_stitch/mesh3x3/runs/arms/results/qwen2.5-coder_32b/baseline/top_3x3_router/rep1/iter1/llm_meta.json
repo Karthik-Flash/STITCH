@@ -1,0 +1,11 @@
+{
+ "done_reason": "stop",
+ "prompt_eval_count": 17002,
+ "eval_count": 14933,
+ "total_duration": 251626122551,
+ "load_duration": 2247243,
+ "eval_duration": 242672945000,
+ "gpu_offload": "offloaded 65/65 layers to GPU",
+ "llama_n_threads": "n_threads = 4 (n_threads_batch = 4) / 64",
+ "tok_s": 61.54
+}

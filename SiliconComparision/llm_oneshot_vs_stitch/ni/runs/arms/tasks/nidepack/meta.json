@@ -1,0 +1,25 @@
+{
+ "track": "N",
+ "top": "nidepack",
+ "source": "golden/handwritten/nidepack.v",
+ "children": [
+  "depack",
+  "router_fifo"
+ ],
+ "descendants": [
+  "depack",
+  "asynch_comparator",
+  "jk_ff",
+  "gray_mod6",
+  "memory",
+  "router_fifo"
+ ],
+ "checked_outputs": [
+  "data_out"
+ ],
+ "not_checked": [],
+ "timing_dependent": true,
+ "signoff_verdict": "properties",
+ "mutant_output": "data_out",
+ "phase3_task": null
+}

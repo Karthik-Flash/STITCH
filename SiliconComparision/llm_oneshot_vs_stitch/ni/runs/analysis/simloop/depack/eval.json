@@ -1,0 +1,24 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "MULTIDRIVENPROC": 1,
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 2,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "35f222f265b394690b1658a4ea3ac9741312cd5ff9a4856feb713174a99a6191",
+ "file": "outputs/simloop/depack.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

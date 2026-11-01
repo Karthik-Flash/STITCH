@@ -1,0 +1,7 @@
+%Warning-UNUSEDSIGNAL: dut.v:4:19: Signal is not used: 'wr_clk'
+                                 : ... note: In instance 'rp1'
+    4 |     input rd_clk, wr_clk, wr_en, reset,
+      |                   ^~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)

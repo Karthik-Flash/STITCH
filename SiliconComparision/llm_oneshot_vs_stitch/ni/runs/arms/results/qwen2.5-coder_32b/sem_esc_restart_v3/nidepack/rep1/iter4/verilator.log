@@ -1,0 +1,36 @@
+%Warning-UNUSEDSIGNAL: dut.v:10:15: Signal is not used: 'rd_add_reg'
+                                  : ... note: In instance 'nidepack'
+   10 |     reg [2:0] rd_add_reg;
+      |               ^~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:11:15: Signal is not used: 'wr_add_reg'
+                                  : ... note: In instance 'nidepack'
+   11 |     reg [2:0] wr_add_reg;
+      |               ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:9: Signal is not used: 'wr_dir_reg'
+                                 : ... note: In instance 'nidepack'
+   12 |     reg wr_dir_reg;
+      |         ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:9: Signal is not used: 'rd_dir_reg'
+                                 : ... note: In instance 'nidepack'
+   13 |     reg rd_dir_reg;
+      |         ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:9: Signal is not used: 'full_ext_reg'
+                                 : ... note: In instance 'nidepack'
+   14 |     reg full_ext_reg;
+      |         ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:9: Signal is not used: 'full_int_reg'
+                                 : ... note: In instance 'nidepack'
+   15 |     reg full_int_reg;
+      |         ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:9: Signal is not used: 'empty_reg'
+                                 : ... note: In instance 'nidepack'
+   16 |     reg empty_reg;
+      |         ^~~~~~~~~
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'nidepack'
+   24 |         .c_rd(1'b0)  
+      |          ^~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error: Exiting due to 1 error(s), 7 warning(s)

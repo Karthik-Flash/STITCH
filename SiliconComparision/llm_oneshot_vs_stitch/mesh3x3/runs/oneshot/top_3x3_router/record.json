@@ -1,0 +1,32 @@
+{
+ "module": "top_3x3_router",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "status": "ok",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "timeout_s": 3600,
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "tokens_in": 1583,
+ "tokens_out": 14933,
+ "done_reason": "stop",
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 1583,
+  "eval_count": 14933,
+  "total_duration": 305096602847,
+  "load_duration": 70371060065,
+  "eval_duration": 232355724000,
+  "gpu_offload": "offloaded 65/65 layers to GPU",
+  "llama_n_threads": "n_threads = 4 (n_threads_batch = 4) / 64",
+  "tok_s": 64.27
+ },
+ "wall_s": 305.1,
+ "timestamp": "2026-11-01T01:58:30",
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "6b1b7aba73a86d0e2cdf1d599ad3f614dda9dee8a32700552121ae5b0bb32ea5",
+ "response_sha256": "8cea1d1d452096241ed652821574c60a9d10878b13909982a456cedb62271abb",
+ "output_sha256": "d5fe30c31f186e5c6611f3402386082b890f8047c76c3bcf9076f325860dc5b5",
+ "mock_mode": null
+}

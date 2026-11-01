@@ -1,0 +1,8 @@
+dut.v:24: error: expression not valid in assign l-value: 1'd0
+dut.v:24: error: Output port expression must support a continuous assignment.
+dut.v:24:      : Port 6 (c_rd) of depack is connected to tb.dut.1'd0
+dut.v:45: error: Variable 'rd_add_reg' cannot have multiple drivers.
+dut.v:46: error: Variable 'wr_add_reg' cannot have multiple drivers.
+dut.v:47: error: Variable 'wr_dir_reg' cannot have multiple drivers.
+dut.v:48: error: Variable 'rd_dir_reg' cannot have multiple drivers.
+5 error(s) during elaboration.

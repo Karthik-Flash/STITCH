@@ -1,3 +1,5 @@
+LLM vs STITCH study: start at llm_oneshot_vs_stitch/README.md (one-page summary at the top).
+
 # SiliconComparision
 
 Silicon-level studies of the STITCH NoC designs. Each study lives in its own folder.

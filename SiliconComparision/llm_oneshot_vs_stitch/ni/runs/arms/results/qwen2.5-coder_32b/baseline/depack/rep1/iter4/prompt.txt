@@ -1,0 +1,148 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# depack
+
+## Behaviour
+
+Network-interface depacketiser: rebuilds 32-bit words from the body flits of incoming packets.
+
+Flit format (32-bit word): bits [30:29] give the flit type: 01 = header, 10 = tailer, 11 = idle,
+00 = body.
+
+A state machine advances on each rising edge of `wr_clk` (when `reset` is 0). All outputs are registered.
+
+| state | condition on `flit[30:29]` | action | next state |
+|---|---|---|---|
+| state0 | 01 (header) | `wr_en` = 0 | header |
+| state0 | otherwise | `wr_en` = 0 | state0 |
+| header | 00 (body) | `wr_en` = 0; store `flit[15:0]` as the low half | firsthalf |
+| header | otherwise | none (`wr_en` holds its value) | header |
+| firsthalf | 10 (tailer) | `wr_en` = 0 | state0 |
+| firsthalf | otherwise | `wr_en` = 1, `c_rd` = 1, `data_out` = `{flit[15:0], low half}` | header |
+
+`data_out` changes only in the last row. `c_rd` is only ever set to 1.
+
+`wr_en` is held: after a completed word (firsthalf to header with `wr_en` = 1) it stays 1 while the machine waits in
+header, and is cleared only by the next body flit or by reset. While it is held, `data_out` keeps the completed word.
+
+- `c_rd` is not used by the parent (nidepack leaves it open): not checked.
+
+## Reset
+
+Synchronous, active-high `reset`: on a rising `wr_clk` edge with `reset` = 1, state0 and `wr_en` = 0.
+`data_out`, `c_rd` and the stored low half are not reset (unknown until first written).
+
+## Ports
+
+6 ports, in this exact order:
+
+```verilog
+input [31:0] flit;
+input wr_clk, reset;
+output [31:0] data_out;
+output wr_en, c_rd;
+```
+
+Parameters: firsthalf=2;header=1;nextstate=4;secondhalf=3;state0=0.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module depack (
+    input [31:0] flit,
+    input wr_clk, reset,
+    output [31:0] data_out,
+    output wr_en, c_rd
+);
+
+    parameter firsthalf = 2;
+    parameter header = 1;
+    parameter state0 = 0;
+
+    reg [31:0] data_out_reg;
+    reg [15:0] low_half;
+    reg [1:0] state;
+    reg wr_en_reg;
+    reg c_rd_reg;
+
+    always @(posedge wr_clk) begin
+        if (reset) begin
+            state <= state0;
+            wr_en_reg <= 1'b0;
+            c_rd_reg <= 1'b0;
+        end else begin
+            case (state)
+                state0: begin
+                    if (flit[30:29] == 2'b01) begin
+                        wr_en_reg <= 1'b0;
+                        state <= header;
+                    end else begin
+                        wr_en_reg <= 1'b0;
+                        state <= state0;
+                    end
+                end
+                header: begin
+                    if (flit[30:29] == 2'b00) begin
+                        low_half <= flit[15:0];
+                        state <= firsthalf;
+                    end else begin
+                        state <= header;
+                    end
+                end
+                firsthalf: begin
+                    if (flit[30:29] == 2'b10) begin
+                        wr_en_reg <= 1'b0;
+                        state <= state0;
+                    end else begin
+                        wr_en_reg <= 1'b1;
+                        c_rd_reg <= 1'b1;
+                        data_out_reg <= {flit[15:0], low_half};
+                        state <= header;
+                    end
+                end
+                default: begin
+                    state <= state0;
+                    wr_en_reg <= 1'b0;
+                end
+            endcase
+        end
+    end
+
+    always @(*) begin
+        c_rd_reg = 1'b0;
+        if (state == firsthalf && flit[30:29] != 2'b10) begin
+            c_rd_reg = 1'b1;
+        end
+    end
+
+    assign data_out = data_out_reg;
+    assign wr_en = wr_en_reg;
+    assign c_rd = c_rd_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL t=119000 cycle 10: wr_en = 1, expected 0
+FAIL t=124000 cycle 11: wr_en = 1, expected 0
+FAIL t=159000 cycle 14: wr_en = 1, expected 0
+FAIL t=164000 cycle 15: wr_en = 1, expected 0
+FAIL t=339000 cycle 32: wr_en = 1, expected 0
+FAIL t=344000 cycle 33: wr_en = 1, expected 0
+FAIL t=589000 cycle 57: wr_en = 1, expected 0
+FAIL t=594000 cycle 58: wr_en = 1, expected 0
+FAIL t=649000 cycle 63: wr_en = 1, expected 0
+FAIL t=654000 cycle 64: wr_en = 1, expected 0
+FAIL t=669000 cycle 65: wr_en = 1, expected 0
+FAIL t=674000 cycle 66: wr_en = 1, expected 0
+FAIL t=719000 cycle 70: wr_en = 1, expected 0
+FAIL t=724000 cycle 71: wr_en = 1, expected 0
+FAIL t=739000 cycle 72: wr_en = 1, expected 0
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

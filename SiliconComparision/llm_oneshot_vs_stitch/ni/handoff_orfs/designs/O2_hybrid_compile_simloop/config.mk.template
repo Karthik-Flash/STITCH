@@ -1,0 +1,20 @@
+# ORFS config.mk template for O2_hybrid_compile_simloop.
+# DESIGN_NAME and VERILOG_FILES are filled in. Every other line: copy it unchanged from your A1 config.mk
+# (sky130hd, 10 ns clock), including CORE_UTILIZATION and the flow settings. Give DESIGN_NICKNAME a
+# per-design value if your runs would otherwise overwrite each other.
+# Floorplan: if your A1 config.mk fixes DIE_AREA / CORE_AREA, scale each side by sqrt(0.015) = 0.123 (Yosys cell count of this study's C0 over the 2x2 C0) and use the same values for every design of this hand-off (README, flow notes).
+export PLATFORM        = # copy from your A1 config.mk
+export DESIGN_NAME     = ni_pair
+export DESIGN_NICKNAME = # copy from your A1 config.mk
+export VERILOG_FILES   = $(DESIGN_DIR)/rtl/asynch_comparator.v \
+                         $(DESIGN_DIR)/rtl/depack.v \
+                         $(DESIGN_DIR)/rtl/gray_mod6.v \
+                         $(DESIGN_DIR)/rtl/jk_ff.v \
+                         $(DESIGN_DIR)/rtl/memory.v \
+                         $(DESIGN_DIR)/rtl/new1.v \
+                         $(DESIGN_DIR)/rtl/ni_pair.v \
+                         $(DESIGN_DIR)/rtl/nidepack.v \
+                         $(DESIGN_DIR)/rtl/router_fifo.v \
+                         $(DESIGN_DIR)/rtl/rp1.v
+export SDC_FILE        = $(DESIGN_DIR)/../../constraint.sdc  # shipped in handoff_orfs/
+# every other line of your A1 config.mk: copy from your A1 config.mk

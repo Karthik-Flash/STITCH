@@ -1,0 +1,100 @@
+```verilog
+module rp1 (
+    input [31:0] data_in,
+    input [7:0] dest, source,
+    input rd_clk, wr_clk, wr_en, reset,
+    output [31:0] niout,
+    output rd_en, wr_o
+);
+
+    parameter N = 1;
+    parameter header = 1;
+    parameter idle = 0;
+    parameter last = 5;
+    parameter payload1 = 2;
+    parameter payload2 = 3;
+    parameter tailer = 4;
+
+    reg [31:0] niout_reg;
+    reg [1:0] state_reg;
+    reg [3:0] i;
+    reg [3:0] j;
+    reg rd_en_reg;
+    reg wr_o_reg;
+
+    always @(posedge rd_clk or posedge reset) begin
+        if (reset) begin
+            niout_reg <= 32'h6000_0000;
+            state_reg <= idle;
+            i <= 0;
+            wr_o_reg <= 0;
+        end else begin
+            case (state_reg)
+                idle: begin
+                    if (wr_en) begin
+                        niout_reg <= {1'b0, 2'b01, 2'b00, 11'd0, source, dest};
+                        state_reg <= header;
+                    end else begin
+                        niout_reg <= niout_reg;
+                        state_reg <= idle;
+                    end
+                end
+                header: begin
+                    niout_reg <= {1'b0, 2'b00, 2'b00, 11'd0, data_in[15:0]};
+                    state_reg <= payload1;
+                end
+                payload1: begin
+                    niout_reg <= {1'b0, 2'b00, 2'b00, 11'd0, data_in[31:16]};
+                    state_reg <= payload2;
+                    j <= j + 1;
+                end
+                payload2: begin
+                    niout_reg <= {1'b0, 2'b00, 2'b00, 11'd0, data_in[31:16]};
+                    i <= i + 1;
+                    if (i == N) begin
+                        if (j == N) begin
+                            wr_o_reg <= 1;
+                            state_reg <= tailer;
+                        end else begin
+                            wr_o_reg <= 0;
+                            state_reg <= payload1;
+                        end
+                    end else begin
+                        wr_o_reg <= 0;
+                        state_reg <= payload2;
+                    end
+                end
+                tailer: begin
+                    niout_reg <= 32'h4000_0000;
+                    state_reg <= last;
+                end
+                last: begin
+                    niout_reg <= 32'h7FFF_FFFF;
+                    state_reg <= last;
+                end
+                default: begin
+                    niout_reg <= 32'h6000_0000;
+                    state_reg <= idle;
+                end
+            endcase
+        end
+    end
+
+    always @(negedge rd_clk or posedge reset) begin
+        if (reset) begin
+            rd_en_reg <= 0;
+        end else begin
+            case (state_reg)
+                header: rd_en_reg <= 1;
+                payload2: rd_en_reg <= 1;
+                default: rd_en_reg <= 0;
+            endcase
+        end
+    end
+
+    assign niout = niout_reg;
+    assign rd_en = rd_en_reg;
+    assign wr_o = wr_o_reg;
+
+endmodule
+```

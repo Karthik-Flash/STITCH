@@ -8,6 +8,6 @@ A1 and B: ORFS, SKY130HD, 10 ns clock, from latch_study/PPA_SUMMARY.md. Yosys la
 | B (like-for-like ref) | 808319 | 108.0 | 151.1 | not measured | - | 0 | yes (golden) |
 | C0_control_all_golden |  |  |  |  |  | 0 | yes (passes the mesh tb) |
 | P1_hybrid_signoff_oneshot |  |  |  |  |  | 0 | no: fails the cycle-exact mesh tb only through 3 formally equivalent modules (PREFLIGHT.md) |
-| P2_hybrid_signoff_retry |  |  |  |  |  | 0 | no: fails the cycle-exact mesh tb only through 5 formally equivalent modules (PREFLIGHT.md) |
+| P2_hybrid_signoff_retry |  |  |  |  |  | 0 | no: fails the cycle-exact mesh tb only through 5 formally equivalent modules (PREFLIGHT.md). Correction: P2's encoder (simloop/stitch) passes its tests but is not equivalent to golden: on multi-hot inputs it behaves as a priority encoder where the spec says OR. Found later by the clocks=True equivalence check (mesh3x3 docs). P2 therefore contains one module that is not equivalent to golden. |
 | O1_hybrid_compile_oneshot |  |  |  |  |  | 0 | no (fails the mesh tb) |
 | O2_hybrid_compile_stitch |  |  |  |  |  | 0 | no (fails the mesh tb) |

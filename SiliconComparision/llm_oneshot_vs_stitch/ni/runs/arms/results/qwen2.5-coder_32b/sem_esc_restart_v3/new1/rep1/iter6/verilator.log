@@ -1,0 +1,18 @@
+%Error-PORTSHORT: dut.v:22:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   22 |         .rd_add(3'b000),  
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:23:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   23 |         .wr_add(3'b000),  
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   24 |         .wr_dir(1'b0),   
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:25:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   25 |         .rd_dir(1'b0),   
+      |          ^~~~~~
+%Error: Exiting due to 4 error(s)

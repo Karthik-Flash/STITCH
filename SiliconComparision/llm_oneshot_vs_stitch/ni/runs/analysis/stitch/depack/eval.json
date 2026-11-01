@@ -1,0 +1,24 @@
+{
+ "compile_ok": true,
+ "sim_outcome": "FAIL",
+ "func_pass": false,
+ "yosys_ok": true,
+ "yosys_error": null,
+ "latch_events": 0,
+ "latch_cells": 0,
+ "yosys_loops": 0,
+ "verilator_codes": {
+  "MULTIDRIVENPROC": 1,
+  "UNUSEDSIGNAL": 1
+ },
+ "verilator_warnings_count": 2,
+ "verilator_hard": 0,
+ "struct_clean": true,
+ "clean_pass": false,
+ "silent_structural_pass": false,
+ "sha256": "c6bfe6b2cb2872b3ca3c9e1ed43317dee2bc18f42608434ae0510ad014f5b6fb",
+ "file": "outputs/stitch/depack.v",
+ "signoff_outcome": "FAIL",
+ "signoff": false,
+ "so_clean": false
+}

@@ -1,0 +1,18 @@
+FAIL t=14000 cycle 0: empty = 1, expected 0
+FAIL t=19000 cycle 0: empty = 1, expected 0
+FAIL t=24000 cycle 1: empty = 1, expected 0
+FAIL t=29000 cycle 1: empty = 1, expected 0
+FAIL t=34000 cycle 2: empty = 1, expected 0
+FAIL t=39000 cycle 2: empty = 1, expected 0
+FAIL t=44000 cycle 3: empty = 1, expected 0
+FAIL t=49000 cycle 3: empty = 1, expected 0
+FAIL t=54000 cycle 4: empty = 1, expected 0
+FAIL t=69000 cycle 5: empty = 1, expected 0
+FAIL t=74000 cycle 6: empty = 1, expected 0
+FAIL t=79000 cycle 6: empty = 1, expected 0
+FAIL t=84000 cycle 7: empty = 1, expected 0
+FAIL t=89000 cycle 7: empty = 1, expected 0
+FAIL t=94000 cycle 8: empty = 1, expected 0
+INFO coverage: 4 of 4 checked outputs toggled, 34 of 35 bits
+FAIL: 388 mismatches, 0 property errors
+tb.v:89: $finish called at 2009000 (1ps)

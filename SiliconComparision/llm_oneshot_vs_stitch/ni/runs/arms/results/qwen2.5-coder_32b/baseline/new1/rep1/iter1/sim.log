@@ -1,0 +1,13 @@
+dut.v:18: warning: Port 7 (rd_add) of module router_fifo expects 3 bit(s), given 2.
+dut.v:18:        : Padding 1 high bits of the port.
+dut.v:18: warning: Port 8 (wr_add) of module router_fifo expects 3 bit(s), given 2.
+dut.v:18:        : Padding 1 high bits of the port.
+dut.v:60: error: Cannot perform procedural assignment to variable 'rd_add_reg' because it is also continuously assigned.
+dut.v:61: error: Cannot perform procedural assignment to variable 'wr_add_reg' because it is also continuously assigned.
+dut.v:62: error: Cannot perform procedural assignment to variable 'wr_dir_reg' because it is also continuously assigned.
+dut.v:63: error: Cannot perform procedural assignment to variable 'rd_dir_reg' because it is also continuously assigned.
+dut.v:66: error: Cannot perform procedural assignment to variable 'rd_add_reg' because it is also continuously assigned.
+dut.v:67: error: Cannot perform procedural assignment to variable 'wr_add_reg' because it is also continuously assigned.
+dut.v:68: error: Cannot perform procedural assignment to variable 'wr_dir_reg' because it is also continuously assigned.
+dut.v:69: error: Cannot perform procedural assignment to variable 'rd_dir_reg' because it is also continuously assigned.
+8 error(s) during elaboration.

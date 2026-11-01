@@ -1,0 +1,11 @@
+module,source,reason,sha256
+asynch_comparator,golden,final file does not compile,84a8e723d738b55cbcbfad39f207a5aa708fa17863d47c0b6f585ebf29a32a20
+depack,oneshot,LLM final file,e5948d6d96622b68afe067af6919406dcd2ead3202324997d00e05b095c416ef
+gray_mod6,golden,final file does not compile,639283c274348b5008749d2e47f17c7d926eaf5a35b70ad4744a51dd7ac635d9
+jk_ff,oneshot (2x2, reused),LLM final file,8f1c26a58e80e44e0b78ec8ce2088d50ffdb985effbd7bc891d6de98606bdaf2
+memory,oneshot (2x2, reused),LLM final file,624eafe5c24da51c1ef846f613ee839cd7f5ffae0c2ed5cdb78076bc5bfe80f4
+new1,golden,final file does not compile,9baa19c4d4c10cdd212b532422bf2d2ad831253c15d2bdd40f471b378e06940e
+ni_pair,wrapper,wrapper (not golden, never generated),1070b47332331e12ead4986dd89b7b805bcc7618ab83273dc825f8ba9f9e63d4
+nidepack,golden,final file does not compile,60821f29970f5b0a8fa12d084d67af9b53b967223c34b0fe937e2782c5c9b572
+router_fifo,oneshot (2x2, reused),LLM final file,440b92f334ba43bcedbc34a417a83fed83539eb0384f501dab0999a6339fd49f
+rp1,oneshot,LLM final file,0b9f55278c37908490ce1f86c5963a15a72631e26562d1db3facf4d383cf2490

@@ -37,6 +37,8 @@ DESIGNS = [
     ("O2_hybrid_compile_stitch", "hybrid_compile_stitch", False,
      "optional: every STITCH module that compiles, golden for the rest; fails the mesh tb, PPA indicative only"),
 ]
+# Erratum found by the mesh3x3 study (assemble_study.py, clocks=True equivalence); the 2x2 data stay as they were.
+CORRECTION = ("P2's encoder (simloop/stitch) passes its tests but is not equivalent to golden: on multi-hot inputs it behaves as a priority encoder where the spec says OR. Found later by the clocks=True equivalence check (mesh3x3 docs). P2 therefore contains one module that is not equivalent to golden.")
 COLS = ["area um2", "fmax MHz", "total power mW", "check_setup unconstrained endpoints", "flow errors / notes",
         "Yosys latch cells", "functionally correct"]
 
@@ -124,6 +126,7 @@ def readme(refs: dict) -> str:
         "unconstrained endpoints.", "",
         "## What each design means", "",
         *[f"- {hid}: {meaning}." for hid, _, _, meaning in DESIGNS], "",
+        "## Correction", "", CORRECTION, "",
         "## Checklist", "",
         "- [ ] C0  - [ ] P1  - [ ] P2  - [ ] O1 (optional)  - [ ] O2 (optional)",
         "- [ ] PPA_TABLE.md filled",
@@ -175,7 +178,8 @@ def main() -> int:
         shutil.copy(os.path.join(S.OUT, did, "SOURCES.csv"), os.path.join(d, "SOURCES.csv"))
         n_llm = sum(1 for l in open(os.path.join(d, "SOURCES.csv")).read().splitlines()[1:] if l.split(",")[1] != "golden")
         open(os.path.join(d, "PREFLIGHT.md"), "w", newline="\n").write(preflight(hid, did, req, meaning, r, mc, n_llm))
-        rows.append((hid, r["latch_cells"], correct(did, r, mc)))
+        rows.append((hid, r["latch_cells"], correct(did, r, mc) + (f". Correction: {CORRECTION}" if hid.startswith("P2")
+                                                                    else "")))
     assert "hybrid_signoff_stitch" in result("hybrid_signoff_simloop")["aliases"], "P2 alias changed"
     open(os.path.join(HO, "README.md"), "w", newline="\n").write(readme(refs))
     open(os.path.join(HO, "PPA_TABLE.md"), "w", newline="\n").write(ppa_table(refs, rows))

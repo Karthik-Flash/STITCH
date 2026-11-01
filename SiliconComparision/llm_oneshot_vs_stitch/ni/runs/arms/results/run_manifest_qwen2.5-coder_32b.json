@@ -1,0 +1,30 @@
+{
+ "host": "gpunode7.sharanga.local",
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "started": "2026-11-01T02:51:29",
+ "tasks": [
+  "depack",
+  "new1",
+  "nidepack",
+  "rp1"
+ ],
+ "conditions": [
+  "baseline",
+  "sem_esc_restart_v3"
+ ],
+ "reps": 1,
+ "temperature": 0.1,
+ "max_iters": 6,
+ "max_directives": 3,
+ "sem_include_raw": 1,
+ "system_prompt_file": "/scratch/soumyaj/STITCH_GEN/phase3/runner/system_prompt.txt",
+ "interpreter_dir": "/scratch/soumyaj/STITCH_GEN/src/interpreter",
+ "base_interp_sha256_lf": "42f61a493e4544e027b880ba5ae16ef1677c52f9b328cce2e13c25028fb2abff",
+ "v3_version": "3.0.1",
+ "toolchain": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)"
+ }
+}

@@ -1,0 +1,27 @@
+%Warning-MULTIDRIVENPROC: dut.v:62:9: Variable written to in always block also written by another always block: 'c_rd_reg'
+                                    : ... note: In instance 'depack'
+                          dut.v:62:9: 
+   62 |         c_rd_reg = 1'b0;
+      |         ^~~~~~~~
+                          dut.v:48:25: ... Location of other write
+   48 |                         c_rd_reg <= 1'b1;
+      |                         ^~~~~~~~
+                          ... For warning description see https://verilator.org/warn/MULTIDRIVENPROC?v=5.053
+                          ... Use "/* verilator lint_off MULTIDRIVENPROC */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:2:18: Bits of signal are not used: 'flit'[31,28:16]
+                                 : ... note: In instance 'depack'
+    2 |     input [31:0] flit,
+      |                  ^~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Error-BLKANDNBLK: dut.v:16:9: Unsupported: Blocking and non-blocking assignments to potentially overlapping bits of same packed variable: 'depack.c_rd_reg'
+   16 |     reg c_rd_reg;
+      |         ^~~~~~~~
+                   dut.v:62:9: ... Location of blocking assignment (bits [0:0])
+   62 |         c_rd_reg = 1'b0;
+      |         ^~~~~~~~
+                   dut.v:22:13: ... Location of nonblocking assignment (bits [0:0])
+   22 |             c_rd_reg <= 1'b0;
+      |             ^~~~~~~~
+                   ... For error description see https://verilator.org/warn/BLKANDNBLK?v=5.053
+%Error: Exiting due to 1 error(s), 2 warning(s)

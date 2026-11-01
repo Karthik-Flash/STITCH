@@ -1,0 +1,43 @@
+%Error-PROCASSWIRE: dut.v:60:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                               : ... note: In instance 'new1'
+   60 |             empty = 1'b1;
+      |             ^~~~~
+                    ... For error description see https://verilator.org/warn/PROCASSWIRE?v=5.053
+%Error-PROCASSWIRE: dut.v:61:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_int'
+                               : ... note: In instance 'new1'
+   61 |             full_int = 1'b1;
+      |             ^~~~~~~~
+%Error-PROCASSWIRE: dut.v:62:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'niout'
+                               : ... note: In instance 'new1'
+   62 |             niout = 32'b0;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:63:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'wr_o'
+                               : ... note: In instance 'new1'
+   63 |             wr_o = 1'b0;
+      |             ^~~~
+%Error-PROCASSWIRE: dut.v:65:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'empty'
+                               : ... note: In instance 'new1'
+   65 |             empty = empty_fifo;
+      |             ^~~~~
+%Error-PROCASSWIRE: dut.v:66:13: Procedural assignment to wire, perhaps intended var (IEEE 1800-2023 6.5): 'full_int'
+                               : ... note: In instance 'new1'
+   66 |             full_int = full_ext;
+      |             ^~~~~~~~
+%Error-PORTSHORT: dut.v:22:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   22 |         .rd_add(3'b000),  
+      |          ^~~~~~
+                  ... For error description see https://verilator.org/warn/PORTSHORT?v=5.053
+%Error-PORTSHORT: dut.v:23:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   23 |         .wr_add(3'b000),  
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:24:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   24 |         .wr_dir(1'b0),   
+      |          ^~~~~~
+%Error-PORTSHORT: dut.v:25:10: Output port is connected to a constant pin, electrical short
+                             : ... note: In instance 'new1'
+   25 |         .rd_dir(1'b0),   
+      |          ^~~~~~
+%Error: Exiting due to 10 error(s)

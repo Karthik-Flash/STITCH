@@ -53,7 +53,8 @@ def get(url: str):
 
 
 def git_commit(study: str) -> str:
-    f = os.path.join(study, "DEPLOYED_COMMIT.txt")             # written by deploy_gen.ps1 (no .git on the cluster)
+    # written by deploy_gen.ps1 in the study root (no .git on the cluster); mesh3x3/ and ni/ read the same file
+    f = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "DEPLOYED_COMMIT.txt")
     if os.path.exists(f):
         return open(f).read().strip()
     p = subprocess.run(["git", "rev-parse", "HEAD"], cwd=study, capture_output=True, text=True)

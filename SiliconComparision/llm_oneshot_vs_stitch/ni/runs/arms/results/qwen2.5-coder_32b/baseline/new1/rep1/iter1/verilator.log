@@ -1,0 +1,33 @@
+%Warning-WIDTHEXPAND: dut.v:25:10: Output port connection 'rd_add' expects 3 bits on the pin connection, but pin connection's VARREF 'rd_add_reg' generates 2 bits.
+                                 : ... note: In instance 'new1'
+   25 |         .rd_add(rd_add_reg),
+      |          ^~~~~~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.053
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: dut.v:26:10: Output port connection 'wr_add' expects 3 bits on the pin connection, but pin connection's VARREF 'wr_add_reg' generates 2 bits.
+                                 : ... note: In instance 'new1'
+   26 |         .wr_add(wr_add_reg),
+      |          ^~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:20: Signal is not used: 'full_int_fifo'
+                                  : ... note: In instance 'new1'
+   13 |     wire full_ext, full_int_fifo, empty_fifo;
+      |                    ^~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:15:15: Signal is not used: 'rd_add_reg'
+                                  : ... note: In instance 'new1'
+   15 |     reg [1:0] rd_add_reg, wr_add_reg;
+      |               ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:27: Signal is not used: 'wr_add_reg'
+                                  : ... note: In instance 'new1'
+   15 |     reg [1:0] rd_add_reg, wr_add_reg;
+      |                           ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:9: Signal is not used: 'wr_dir_reg'
+                                 : ... note: In instance 'new1'
+   16 |     reg wr_dir_reg, rd_dir_reg;
+      |         ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:21: Signal is not used: 'rd_dir_reg'
+                                  : ... note: In instance 'new1'
+   16 |     reg wr_dir_reg, rd_dir_reg;
+      |                     ^~~~~~~~~~
+%Error: Exiting due to 7 warning(s)

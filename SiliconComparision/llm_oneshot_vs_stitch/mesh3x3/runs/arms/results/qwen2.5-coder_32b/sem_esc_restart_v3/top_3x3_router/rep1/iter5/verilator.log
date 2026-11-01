@@ -1,0 +1,1551 @@
+%Warning-UNUSEDSIGNAL: dut.v:9:36: Signal is not used: 'data_out_link2_r1'
+                                 : ... note: In instance 'top_3x3_router'
+    9 |     wire [31:0] data_out_link1_r1, data_out_link2_r1, data_out_link3_r1, data_out_link4_r1;
+      |                                    ^~~~~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.053
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: dut.v:9:55: Signal is not used: 'data_out_link3_r1'
+                                 : ... note: In instance 'top_3x3_router'
+    9 |     wire [31:0] data_out_link1_r1, data_out_link2_r1, data_out_link3_r1, data_out_link4_r1;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:9:74: Signal is not used: 'data_out_link4_r1'
+                                 : ... note: In instance 'top_3x3_router'
+    9 |     wire [31:0] data_out_link1_r1, data_out_link2_r1, data_out_link3_r1, data_out_link4_r1;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:10:36: Signal is not used: 'data_out_link2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   10 |     wire [31:0] data_out_link1_r2, data_out_link2_r2, data_out_link3_r2, data_out_link4_r2;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:10:55: Signal is not used: 'data_out_link3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   10 |     wire [31:0] data_out_link1_r2, data_out_link2_r2, data_out_link3_r2, data_out_link4_r2;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:17: Signal is not used: 'data_out_link1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   11 |     wire [31:0] data_out_link1_r3, data_out_link2_r3, data_out_link3_r3, data_out_link4_r3;
+      |                 ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:36: Signal is not used: 'data_out_link2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   11 |     wire [31:0] data_out_link1_r3, data_out_link2_r3, data_out_link3_r3, data_out_link4_r3;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:11:55: Signal is not used: 'data_out_link3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   11 |     wire [31:0] data_out_link1_r3, data_out_link2_r3, data_out_link3_r3, data_out_link4_r3;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:55: Signal is not used: 'data_out_link3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   12 |     wire [31:0] data_out_link1_r4, data_out_link2_r4, data_out_link3_r4, data_out_link4_r4;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:12:74: Signal is not used: 'data_out_link4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   12 |     wire [31:0] data_out_link1_r4, data_out_link2_r4, data_out_link3_r4, data_out_link4_r4;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:13:55: Signal is not used: 'data_out_link3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   13 |     wire [31:0] data_out_link1_r5, data_out_link2_r5, data_out_link3_r5, data_out_link4_r5;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:17: Signal is not used: 'data_out_link1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   14 |     wire [31:0] data_out_link1_r6, data_out_link2_r6, data_out_link3_r6, data_out_link4_r6;
+      |                 ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:36: Signal is not used: 'data_out_link2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   14 |     wire [31:0] data_out_link1_r6, data_out_link2_r6, data_out_link3_r6, data_out_link4_r6;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:14:55: Signal is not used: 'data_out_link3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   14 |     wire [31:0] data_out_link1_r6, data_out_link2_r6, data_out_link3_r6, data_out_link4_r6;
+      |                                                       ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:36: Signal is not used: 'data_out_link2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   15 |     wire [31:0] data_out_link1_r7, data_out_link2_r7, data_out_link3_r7, data_out_link4_r7;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:15:74: Signal is not used: 'data_out_link4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   15 |     wire [31:0] data_out_link1_r7, data_out_link2_r7, data_out_link3_r7, data_out_link4_r7;
+      |                                                                          ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:16:36: Signal is not used: 'data_out_link2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   16 |     wire [31:0] data_out_link1_r8, data_out_link2_r8, data_out_link3_r8, data_out_link4_r8;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:17:36: Signal is not used: 'data_out_link2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   17 |     wire [31:0] data_out_link1_r9, data_out_link2_r9, data_out_link3_r9, data_out_link4_r9;
+      |                                    ^~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:16: Signal is not used: 'sel_vc_link1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   19 |     wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:33: Signal is not used: 'sel_vc_link2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   19 |     wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:50: Signal is not used: 'sel_vc_link3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   19 |     wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:67: Signal is not used: 'sel_vc_link4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   19 |     wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:19:84: Signal is not used: 'sel_vc_core_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   19 |     wire [3:0] sel_vc_link1_r1, sel_vc_link2_r1, sel_vc_link3_r1, sel_vc_link4_r1, sel_vc_core_r1;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:16: Signal is not used: 'sel_vc_link1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   20 |     wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:33: Signal is not used: 'sel_vc_link2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   20 |     wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:50: Signal is not used: 'sel_vc_link3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   20 |     wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:67: Signal is not used: 'sel_vc_link4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   20 |     wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:20:84: Signal is not used: 'sel_vc_core_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   20 |     wire [3:0] sel_vc_link1_r2, sel_vc_link2_r2, sel_vc_link3_r2, sel_vc_link4_r2, sel_vc_core_r2;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:16: Signal is not used: 'sel_vc_link1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   21 |     wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:33: Signal is not used: 'sel_vc_link2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   21 |     wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:50: Signal is not used: 'sel_vc_link3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   21 |     wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:67: Signal is not used: 'sel_vc_link4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   21 |     wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:21:84: Signal is not used: 'sel_vc_core_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   21 |     wire [3:0] sel_vc_link1_r3, sel_vc_link2_r3, sel_vc_link3_r3, sel_vc_link4_r3, sel_vc_core_r3;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:16: Signal is not used: 'sel_vc_link1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   22 |     wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:33: Signal is not used: 'sel_vc_link2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   22 |     wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:50: Signal is not used: 'sel_vc_link3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   22 |     wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:67: Signal is not used: 'sel_vc_link4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   22 |     wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:22:84: Signal is not used: 'sel_vc_core_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   22 |     wire [3:0] sel_vc_link1_r4, sel_vc_link2_r4, sel_vc_link3_r4, sel_vc_link4_r4, sel_vc_core_r4;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:16: Signal is not used: 'sel_vc_link1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   23 |     wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:33: Signal is not used: 'sel_vc_link2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   23 |     wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:50: Signal is not used: 'sel_vc_link3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   23 |     wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:67: Signal is not used: 'sel_vc_link4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   23 |     wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:23:84: Signal is not used: 'sel_vc_core_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   23 |     wire [3:0] sel_vc_link1_r5, sel_vc_link2_r5, sel_vc_link3_r5, sel_vc_link4_r5, sel_vc_core_r5;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:24:16: Signal is not used: 'sel_vc_link1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   24 |     wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:24:33: Signal is not used: 'sel_vc_link2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   24 |     wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:24:50: Signal is not used: 'sel_vc_link3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   24 |     wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:24:67: Signal is not used: 'sel_vc_link4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   24 |     wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:24:84: Signal is not used: 'sel_vc_core_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   24 |     wire [3:0] sel_vc_link1_r6, sel_vc_link2_r6, sel_vc_link3_r6, sel_vc_link4_r6, sel_vc_core_r6;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:16: Signal is not used: 'sel_vc_link1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   25 |     wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:33: Signal is not used: 'sel_vc_link2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   25 |     wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:50: Signal is not used: 'sel_vc_link3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   25 |     wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:67: Signal is not used: 'sel_vc_link4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   25 |     wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:25:84: Signal is not used: 'sel_vc_core_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   25 |     wire [3:0] sel_vc_link1_r7, sel_vc_link2_r7, sel_vc_link3_r7, sel_vc_link4_r7, sel_vc_core_r7;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:26:16: Signal is not used: 'sel_vc_link1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   26 |     wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:26:33: Signal is not used: 'sel_vc_link2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   26 |     wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:26:50: Signal is not used: 'sel_vc_link3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   26 |     wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:26:67: Signal is not used: 'sel_vc_link4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   26 |     wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:26:84: Signal is not used: 'sel_vc_core_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   26 |     wire [3:0] sel_vc_link1_r8, sel_vc_link2_r8, sel_vc_link3_r8, sel_vc_link4_r8, sel_vc_core_r8;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:27:16: Signal is not used: 'sel_vc_link1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   27 |     wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+      |                ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:27:33: Signal is not used: 'sel_vc_link2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   27 |     wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+      |                                 ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:27:50: Signal is not used: 'sel_vc_link3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   27 |     wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+      |                                                  ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:27:67: Signal is not used: 'sel_vc_link4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   27 |     wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+      |                                                                   ^~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:27:84: Signal is not used: 'sel_vc_core_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   27 |     wire [3:0] sel_vc_link1_r9, sel_vc_link2_r9, sel_vc_link3_r9, sel_vc_link4_r9, sel_vc_core_r9;
+      |                                                                                    ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:10: Signal is not driven, nor used: 'full_in_link1_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   29 |     wire full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:32: Signal is not driven, nor used: 'full_in_link1_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   29 |     wire full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:54: Signal is not driven, nor used: 'full_in_link1_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   29 |     wire full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:29:76: Signal is not driven, nor used: 'full_in_link1_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   29 |     wire full_in_link1_vc1_r1, full_in_link1_vc2_r1, full_in_link1_vc3_r1, full_in_link1_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:10: Signal is not driven, nor used: 'full_in_link2_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   30 |     wire full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:32: Signal is not driven, nor used: 'full_in_link2_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   30 |     wire full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:54: Signal is not driven, nor used: 'full_in_link2_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   30 |     wire full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:30:76: Signal is not driven, nor used: 'full_in_link2_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   30 |     wire full_in_link2_vc1_r1, full_in_link2_vc2_r1, full_in_link2_vc3_r1, full_in_link2_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:10: Signal is not driven, nor used: 'full_in_link3_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   31 |     wire full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:32: Signal is not driven, nor used: 'full_in_link3_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   31 |     wire full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:54: Signal is not driven, nor used: 'full_in_link3_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   31 |     wire full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:31:76: Signal is not driven, nor used: 'full_in_link3_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   31 |     wire full_in_link3_vc1_r1, full_in_link3_vc2_r1, full_in_link3_vc3_r1, full_in_link3_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:10: Signal is not driven, nor used: 'full_in_link4_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   32 |     wire full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:32: Signal is not driven, nor used: 'full_in_link4_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   32 |     wire full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:54: Signal is not driven, nor used: 'full_in_link4_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   32 |     wire full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:32:76: Signal is not driven, nor used: 'full_in_link4_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   32 |     wire full_in_link4_vc1_r1, full_in_link4_vc2_r1, full_in_link4_vc3_r1, full_in_link4_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:10: Signal is not driven, nor used: 'full_in_link1_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   33 |     wire full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:32: Signal is not driven, nor used: 'full_in_link1_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   33 |     wire full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:54: Signal is not driven, nor used: 'full_in_link1_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   33 |     wire full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:33:76: Signal is not driven, nor used: 'full_in_link1_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   33 |     wire full_in_link1_vc1_r2, full_in_link1_vc2_r2, full_in_link1_vc3_r2, full_in_link1_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:10: Signal is not driven, nor used: 'full_in_link2_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   34 |     wire full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:32: Signal is not driven, nor used: 'full_in_link2_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   34 |     wire full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:54: Signal is not driven, nor used: 'full_in_link2_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   34 |     wire full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:34:76: Signal is not driven, nor used: 'full_in_link2_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   34 |     wire full_in_link2_vc1_r2, full_in_link2_vc2_r2, full_in_link2_vc3_r2, full_in_link2_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:10: Signal is not driven, nor used: 'full_in_link3_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   35 |     wire full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:32: Signal is not driven, nor used: 'full_in_link3_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   35 |     wire full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:54: Signal is not driven, nor used: 'full_in_link3_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   35 |     wire full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:35:76: Signal is not driven, nor used: 'full_in_link3_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   35 |     wire full_in_link3_vc1_r2, full_in_link3_vc2_r2, full_in_link3_vc3_r2, full_in_link3_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:10: Signal is not driven, nor used: 'full_in_link4_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   36 |     wire full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:32: Signal is not driven, nor used: 'full_in_link4_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   36 |     wire full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:54: Signal is not driven, nor used: 'full_in_link4_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   36 |     wire full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:36:76: Signal is not driven, nor used: 'full_in_link4_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   36 |     wire full_in_link4_vc1_r2, full_in_link4_vc2_r2, full_in_link4_vc3_r2, full_in_link4_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:10: Signal is not driven, nor used: 'full_in_link1_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   37 |     wire full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:32: Signal is not driven, nor used: 'full_in_link1_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   37 |     wire full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:54: Signal is not driven, nor used: 'full_in_link1_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   37 |     wire full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:37:76: Signal is not driven, nor used: 'full_in_link1_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   37 |     wire full_in_link1_vc1_r3, full_in_link1_vc2_r3, full_in_link1_vc3_r3, full_in_link1_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:38:10: Signal is not driven, nor used: 'full_in_link2_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   38 |     wire full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:38:32: Signal is not driven, nor used: 'full_in_link2_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   38 |     wire full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:38:54: Signal is not driven, nor used: 'full_in_link2_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   38 |     wire full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:38:76: Signal is not driven, nor used: 'full_in_link2_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   38 |     wire full_in_link2_vc1_r3, full_in_link2_vc2_r3, full_in_link2_vc3_r3, full_in_link2_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:10: Signal is not driven, nor used: 'full_in_link3_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   39 |     wire full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:32: Signal is not driven, nor used: 'full_in_link3_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   39 |     wire full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:54: Signal is not driven, nor used: 'full_in_link3_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   39 |     wire full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:39:76: Signal is not driven, nor used: 'full_in_link3_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   39 |     wire full_in_link3_vc1_r3, full_in_link3_vc2_r3, full_in_link3_vc3_r3, full_in_link3_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:40:10: Signal is not driven, nor used: 'full_in_link4_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   40 |     wire full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:40:32: Signal is not driven, nor used: 'full_in_link4_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   40 |     wire full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:40:54: Signal is not driven, nor used: 'full_in_link4_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   40 |     wire full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:40:76: Signal is not driven, nor used: 'full_in_link4_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   40 |     wire full_in_link4_vc1_r3, full_in_link4_vc2_r3, full_in_link4_vc3_r3, full_in_link4_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:10: Signal is not driven, nor used: 'full_in_link1_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   41 |     wire full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:32: Signal is not driven, nor used: 'full_in_link1_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   41 |     wire full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:54: Signal is not driven, nor used: 'full_in_link1_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   41 |     wire full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:41:76: Signal is not driven, nor used: 'full_in_link1_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   41 |     wire full_in_link1_vc1_r4, full_in_link1_vc2_r4, full_in_link1_vc3_r4, full_in_link1_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:10: Signal is not driven, nor used: 'full_in_link2_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   42 |     wire full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:32: Signal is not driven, nor used: 'full_in_link2_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   42 |     wire full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:54: Signal is not driven, nor used: 'full_in_link2_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   42 |     wire full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:42:76: Signal is not driven, nor used: 'full_in_link2_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   42 |     wire full_in_link2_vc1_r4, full_in_link2_vc2_r4, full_in_link2_vc3_r4, full_in_link2_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:10: Signal is not driven, nor used: 'full_in_link3_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   43 |     wire full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:32: Signal is not driven, nor used: 'full_in_link3_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   43 |     wire full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:54: Signal is not driven, nor used: 'full_in_link3_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   43 |     wire full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:43:76: Signal is not driven, nor used: 'full_in_link3_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   43 |     wire full_in_link3_vc1_r4, full_in_link3_vc2_r4, full_in_link3_vc3_r4, full_in_link3_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:10: Signal is not driven, nor used: 'full_in_link4_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   44 |     wire full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:32: Signal is not driven, nor used: 'full_in_link4_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   44 |     wire full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:54: Signal is not driven, nor used: 'full_in_link4_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   44 |     wire full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:44:76: Signal is not driven, nor used: 'full_in_link4_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   44 |     wire full_in_link4_vc1_r4, full_in_link4_vc2_r4, full_in_link4_vc3_r4, full_in_link4_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:10: Signal is not driven, nor used: 'full_in_link1_vc1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   45 |     wire full_in_link1_vc1_r5, full_in_link1_vc2_r5, full_in_link1_vc3_r5, full_in_link1_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:32: Signal is not driven, nor used: 'full_in_link1_vc2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   45 |     wire full_in_link1_vc1_r5, full_in_link1_vc2_r5, full_in_link1_vc3_r5, full_in_link1_vc4_r5;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:54: Signal is not driven, nor used: 'full_in_link1_vc3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   45 |     wire full_in_link1_vc1_r5, full_in_link1_vc2_r5, full_in_link1_vc3_r5, full_in_link1_vc4_r5;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:45:76: Signal is not driven, nor used: 'full_in_link1_vc4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   45 |     wire full_in_link1_vc1_r5, full_in_link1_vc2_r5, full_in_link1_vc3_r5, full_in_link1_vc4_r5;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:10: Signal is not driven, nor used: 'full_in_link2_vc1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   46 |     wire full_in_link2_vc1_r5, full_in_link2_vc2_r5, full_in_link2_vc3_r5, full_in_link2_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:32: Signal is not driven, nor used: 'full_in_link2_vc2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   46 |     wire full_in_link2_vc1_r5, full_in_link2_vc2_r5, full_in_link2_vc3_r5, full_in_link2_vc4_r5;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:54: Signal is not driven, nor used: 'full_in_link2_vc3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   46 |     wire full_in_link2_vc1_r5, full_in_link2_vc2_r5, full_in_link2_vc3_r5, full_in_link2_vc4_r5;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:46:76: Signal is not driven, nor used: 'full_in_link2_vc4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   46 |     wire full_in_link2_vc1_r5, full_in_link2_vc2_r5, full_in_link2_vc3_r5, full_in_link2_vc4_r5;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:10: Signal is not driven, nor used: 'full_in_link3_vc1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   47 |     wire full_in_link3_vc1_r5, full_in_link3_vc2_r5, full_in_link3_vc3_r5, full_in_link3_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:32: Signal is not driven, nor used: 'full_in_link3_vc2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   47 |     wire full_in_link3_vc1_r5, full_in_link3_vc2_r5, full_in_link3_vc3_r5, full_in_link3_vc4_r5;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:54: Signal is not driven, nor used: 'full_in_link3_vc3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   47 |     wire full_in_link3_vc1_r5, full_in_link3_vc2_r5, full_in_link3_vc3_r5, full_in_link3_vc4_r5;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:47:76: Signal is not driven, nor used: 'full_in_link3_vc4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   47 |     wire full_in_link3_vc1_r5, full_in_link3_vc2_r5, full_in_link3_vc3_r5, full_in_link3_vc4_r5;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:10: Signal is not driven, nor used: 'full_in_link4_vc1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   48 |     wire full_in_link4_vc1_r5, full_in_link4_vc2_r5, full_in_link4_vc3_r5, full_in_link4_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:32: Signal is not driven, nor used: 'full_in_link4_vc2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   48 |     wire full_in_link4_vc1_r5, full_in_link4_vc2_r5, full_in_link4_vc3_r5, full_in_link4_vc4_r5;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:54: Signal is not driven, nor used: 'full_in_link4_vc3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   48 |     wire full_in_link4_vc1_r5, full_in_link4_vc2_r5, full_in_link4_vc3_r5, full_in_link4_vc4_r5;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:48:76: Signal is not driven, nor used: 'full_in_link4_vc4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   48 |     wire full_in_link4_vc1_r5, full_in_link4_vc2_r5, full_in_link4_vc3_r5, full_in_link4_vc4_r5;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:10: Signal is not driven, nor used: 'full_in_link1_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   49 |     wire full_in_link1_vc1_r6, full_in_link1_vc2_r6, full_in_link1_vc3_r6, full_in_link1_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:32: Signal is not driven, nor used: 'full_in_link1_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   49 |     wire full_in_link1_vc1_r6, full_in_link1_vc2_r6, full_in_link1_vc3_r6, full_in_link1_vc4_r6;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:54: Signal is not driven, nor used: 'full_in_link1_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   49 |     wire full_in_link1_vc1_r6, full_in_link1_vc2_r6, full_in_link1_vc3_r6, full_in_link1_vc4_r6;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:49:76: Signal is not driven, nor used: 'full_in_link1_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   49 |     wire full_in_link1_vc1_r6, full_in_link1_vc2_r6, full_in_link1_vc3_r6, full_in_link1_vc4_r6;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:10: Signal is not driven, nor used: 'full_in_link2_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   50 |     wire full_in_link2_vc1_r6, full_in_link2_vc2_r6, full_in_link2_vc3_r6, full_in_link2_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:32: Signal is not driven, nor used: 'full_in_link2_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   50 |     wire full_in_link2_vc1_r6, full_in_link2_vc2_r6, full_in_link2_vc3_r6, full_in_link2_vc4_r6;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:54: Signal is not driven, nor used: 'full_in_link2_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   50 |     wire full_in_link2_vc1_r6, full_in_link2_vc2_r6, full_in_link2_vc3_r6, full_in_link2_vc4_r6;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:50:76: Signal is not driven, nor used: 'full_in_link2_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   50 |     wire full_in_link2_vc1_r6, full_in_link2_vc2_r6, full_in_link2_vc3_r6, full_in_link2_vc4_r6;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:10: Signal is not driven, nor used: 'full_in_link3_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   51 |     wire full_in_link3_vc1_r6, full_in_link3_vc2_r6, full_in_link3_vc3_r6, full_in_link3_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:32: Signal is not driven, nor used: 'full_in_link3_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   51 |     wire full_in_link3_vc1_r6, full_in_link3_vc2_r6, full_in_link3_vc3_r6, full_in_link3_vc4_r6;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:54: Signal is not driven, nor used: 'full_in_link3_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   51 |     wire full_in_link3_vc1_r6, full_in_link3_vc2_r6, full_in_link3_vc3_r6, full_in_link3_vc4_r6;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:51:76: Signal is not driven, nor used: 'full_in_link3_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   51 |     wire full_in_link3_vc1_r6, full_in_link3_vc2_r6, full_in_link3_vc3_r6, full_in_link3_vc4_r6;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:10: Signal is not driven, nor used: 'full_in_link4_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   52 |     wire full_in_link4_vc1_r6, full_in_link4_vc2_r6, full_in_link4_vc3_r6, full_in_link4_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:32: Signal is not driven, nor used: 'full_in_link4_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   52 |     wire full_in_link4_vc1_r6, full_in_link4_vc2_r6, full_in_link4_vc3_r6, full_in_link4_vc4_r6;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:54: Signal is not driven, nor used: 'full_in_link4_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   52 |     wire full_in_link4_vc1_r6, full_in_link4_vc2_r6, full_in_link4_vc3_r6, full_in_link4_vc4_r6;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:52:76: Signal is not driven, nor used: 'full_in_link4_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   52 |     wire full_in_link4_vc1_r6, full_in_link4_vc2_r6, full_in_link4_vc3_r6, full_in_link4_vc4_r6;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:10: Signal is not driven, nor used: 'full_in_link1_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   53 |     wire full_in_link1_vc1_r7, full_in_link1_vc2_r7, full_in_link1_vc3_r7, full_in_link1_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:32: Signal is not driven, nor used: 'full_in_link1_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   53 |     wire full_in_link1_vc1_r7, full_in_link1_vc2_r7, full_in_link1_vc3_r7, full_in_link1_vc4_r7;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:54: Signal is not driven, nor used: 'full_in_link1_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   53 |     wire full_in_link1_vc1_r7, full_in_link1_vc2_r7, full_in_link1_vc3_r7, full_in_link1_vc4_r7;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:53:76: Signal is not driven, nor used: 'full_in_link1_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   53 |     wire full_in_link1_vc1_r7, full_in_link1_vc2_r7, full_in_link1_vc3_r7, full_in_link1_vc4_r7;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:10: Signal is not driven, nor used: 'full_in_link2_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   54 |     wire full_in_link2_vc1_r7, full_in_link2_vc2_r7, full_in_link2_vc3_r7, full_in_link2_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:32: Signal is not driven, nor used: 'full_in_link2_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   54 |     wire full_in_link2_vc1_r7, full_in_link2_vc2_r7, full_in_link2_vc3_r7, full_in_link2_vc4_r7;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:54: Signal is not driven, nor used: 'full_in_link2_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   54 |     wire full_in_link2_vc1_r7, full_in_link2_vc2_r7, full_in_link2_vc3_r7, full_in_link2_vc4_r7;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:54:76: Signal is not driven, nor used: 'full_in_link2_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   54 |     wire full_in_link2_vc1_r7, full_in_link2_vc2_r7, full_in_link2_vc3_r7, full_in_link2_vc4_r7;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:10: Signal is not driven, nor used: 'full_in_link3_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   55 |     wire full_in_link3_vc1_r7, full_in_link3_vc2_r7, full_in_link3_vc3_r7, full_in_link3_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:32: Signal is not driven, nor used: 'full_in_link3_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   55 |     wire full_in_link3_vc1_r7, full_in_link3_vc2_r7, full_in_link3_vc3_r7, full_in_link3_vc4_r7;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:54: Signal is not driven, nor used: 'full_in_link3_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   55 |     wire full_in_link3_vc1_r7, full_in_link3_vc2_r7, full_in_link3_vc3_r7, full_in_link3_vc4_r7;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:55:76: Signal is not driven, nor used: 'full_in_link3_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   55 |     wire full_in_link3_vc1_r7, full_in_link3_vc2_r7, full_in_link3_vc3_r7, full_in_link3_vc4_r7;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:10: Signal is not driven, nor used: 'full_in_link4_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   56 |     wire full_in_link4_vc1_r7, full_in_link4_vc2_r7, full_in_link4_vc3_r7, full_in_link4_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:32: Signal is not driven, nor used: 'full_in_link4_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   56 |     wire full_in_link4_vc1_r7, full_in_link4_vc2_r7, full_in_link4_vc3_r7, full_in_link4_vc4_r7;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:54: Signal is not driven, nor used: 'full_in_link4_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   56 |     wire full_in_link4_vc1_r7, full_in_link4_vc2_r7, full_in_link4_vc3_r7, full_in_link4_vc4_r7;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:56:76: Signal is not driven, nor used: 'full_in_link4_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   56 |     wire full_in_link4_vc1_r7, full_in_link4_vc2_r7, full_in_link4_vc3_r7, full_in_link4_vc4_r7;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:10: Signal is not driven, nor used: 'full_in_link1_vc1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   57 |     wire full_in_link1_vc1_r8, full_in_link1_vc2_r8, full_in_link1_vc3_r8, full_in_link1_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:32: Signal is not driven, nor used: 'full_in_link1_vc2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   57 |     wire full_in_link1_vc1_r8, full_in_link1_vc2_r8, full_in_link1_vc3_r8, full_in_link1_vc4_r8;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:54: Signal is not driven, nor used: 'full_in_link1_vc3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   57 |     wire full_in_link1_vc1_r8, full_in_link1_vc2_r8, full_in_link1_vc3_r8, full_in_link1_vc4_r8;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:57:76: Signal is not driven, nor used: 'full_in_link1_vc4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   57 |     wire full_in_link1_vc1_r8, full_in_link1_vc2_r8, full_in_link1_vc3_r8, full_in_link1_vc4_r8;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:10: Signal is not driven, nor used: 'full_in_link2_vc1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   58 |     wire full_in_link2_vc1_r8, full_in_link2_vc2_r8, full_in_link2_vc3_r8, full_in_link2_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:32: Signal is not driven, nor used: 'full_in_link2_vc2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   58 |     wire full_in_link2_vc1_r8, full_in_link2_vc2_r8, full_in_link2_vc3_r8, full_in_link2_vc4_r8;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:54: Signal is not driven, nor used: 'full_in_link2_vc3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   58 |     wire full_in_link2_vc1_r8, full_in_link2_vc2_r8, full_in_link2_vc3_r8, full_in_link2_vc4_r8;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:58:76: Signal is not driven, nor used: 'full_in_link2_vc4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   58 |     wire full_in_link2_vc1_r8, full_in_link2_vc2_r8, full_in_link2_vc3_r8, full_in_link2_vc4_r8;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:10: Signal is not driven, nor used: 'full_in_link3_vc1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   59 |     wire full_in_link3_vc1_r8, full_in_link3_vc2_r8, full_in_link3_vc3_r8, full_in_link3_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:32: Signal is not driven, nor used: 'full_in_link3_vc2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   59 |     wire full_in_link3_vc1_r8, full_in_link3_vc2_r8, full_in_link3_vc3_r8, full_in_link3_vc4_r8;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:54: Signal is not driven, nor used: 'full_in_link3_vc3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   59 |     wire full_in_link3_vc1_r8, full_in_link3_vc2_r8, full_in_link3_vc3_r8, full_in_link3_vc4_r8;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:59:76: Signal is not driven, nor used: 'full_in_link3_vc4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   59 |     wire full_in_link3_vc1_r8, full_in_link3_vc2_r8, full_in_link3_vc3_r8, full_in_link3_vc4_r8;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:10: Signal is not driven, nor used: 'full_in_link4_vc1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   60 |     wire full_in_link4_vc1_r8, full_in_link4_vc2_r8, full_in_link4_vc3_r8, full_in_link4_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:32: Signal is not driven, nor used: 'full_in_link4_vc2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   60 |     wire full_in_link4_vc1_r8, full_in_link4_vc2_r8, full_in_link4_vc3_r8, full_in_link4_vc4_r8;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:54: Signal is not driven, nor used: 'full_in_link4_vc3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   60 |     wire full_in_link4_vc1_r8, full_in_link4_vc2_r8, full_in_link4_vc3_r8, full_in_link4_vc4_r8;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:60:76: Signal is not driven, nor used: 'full_in_link4_vc4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   60 |     wire full_in_link4_vc1_r8, full_in_link4_vc2_r8, full_in_link4_vc3_r8, full_in_link4_vc4_r8;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:10: Signal is not driven, nor used: 'full_in_link1_vc1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   61 |     wire full_in_link1_vc1_r9, full_in_link1_vc2_r9, full_in_link1_vc3_r9, full_in_link1_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:32: Signal is not driven, nor used: 'full_in_link1_vc2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   61 |     wire full_in_link1_vc1_r9, full_in_link1_vc2_r9, full_in_link1_vc3_r9, full_in_link1_vc4_r9;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:54: Signal is not driven, nor used: 'full_in_link1_vc3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   61 |     wire full_in_link1_vc1_r9, full_in_link1_vc2_r9, full_in_link1_vc3_r9, full_in_link1_vc4_r9;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:61:76: Signal is not driven, nor used: 'full_in_link1_vc4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   61 |     wire full_in_link1_vc1_r9, full_in_link1_vc2_r9, full_in_link1_vc3_r9, full_in_link1_vc4_r9;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:10: Signal is not driven, nor used: 'full_in_link2_vc1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   62 |     wire full_in_link2_vc1_r9, full_in_link2_vc2_r9, full_in_link2_vc3_r9, full_in_link2_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:32: Signal is not driven, nor used: 'full_in_link2_vc2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   62 |     wire full_in_link2_vc1_r9, full_in_link2_vc2_r9, full_in_link2_vc3_r9, full_in_link2_vc4_r9;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:54: Signal is not driven, nor used: 'full_in_link2_vc3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   62 |     wire full_in_link2_vc1_r9, full_in_link2_vc2_r9, full_in_link2_vc3_r9, full_in_link2_vc4_r9;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:62:76: Signal is not driven, nor used: 'full_in_link2_vc4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   62 |     wire full_in_link2_vc1_r9, full_in_link2_vc2_r9, full_in_link2_vc3_r9, full_in_link2_vc4_r9;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:10: Signal is not driven, nor used: 'full_in_link3_vc1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   63 |     wire full_in_link3_vc1_r9, full_in_link3_vc2_r9, full_in_link3_vc3_r9, full_in_link3_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:32: Signal is not driven, nor used: 'full_in_link3_vc2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   63 |     wire full_in_link3_vc1_r9, full_in_link3_vc2_r9, full_in_link3_vc3_r9, full_in_link3_vc4_r9;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:54: Signal is not driven, nor used: 'full_in_link3_vc3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   63 |     wire full_in_link3_vc1_r9, full_in_link3_vc2_r9, full_in_link3_vc3_r9, full_in_link3_vc4_r9;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:63:76: Signal is not driven, nor used: 'full_in_link3_vc4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   63 |     wire full_in_link3_vc1_r9, full_in_link3_vc2_r9, full_in_link3_vc3_r9, full_in_link3_vc4_r9;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:10: Signal is not driven, nor used: 'full_in_link4_vc1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   64 |     wire full_in_link4_vc1_r9, full_in_link4_vc2_r9, full_in_link4_vc3_r9, full_in_link4_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:32: Signal is not driven, nor used: 'full_in_link4_vc2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   64 |     wire full_in_link4_vc1_r9, full_in_link4_vc2_r9, full_in_link4_vc3_r9, full_in_link4_vc4_r9;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:54: Signal is not driven, nor used: 'full_in_link4_vc3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   64 |     wire full_in_link4_vc1_r9, full_in_link4_vc2_r9, full_in_link4_vc3_r9, full_in_link4_vc4_r9;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:64:76: Signal is not driven, nor used: 'full_in_link4_vc4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   64 |     wire full_in_link4_vc1_r9, full_in_link4_vc2_r9, full_in_link4_vc3_r9, full_in_link4_vc4_r9;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:67:10: Signal is not used: 'full_out_link2_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   67 |     wire full_out_link2_vc1_r1, full_out_link2_vc2_r1, full_out_link2_vc3_r1, full_out_link2_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:67:33: Signal is not used: 'full_out_link2_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   67 |     wire full_out_link2_vc1_r1, full_out_link2_vc2_r1, full_out_link2_vc3_r1, full_out_link2_vc4_r1;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:67:56: Signal is not used: 'full_out_link2_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   67 |     wire full_out_link2_vc1_r1, full_out_link2_vc2_r1, full_out_link2_vc3_r1, full_out_link2_vc4_r1;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:67:79: Signal is not used: 'full_out_link2_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   67 |     wire full_out_link2_vc1_r1, full_out_link2_vc2_r1, full_out_link2_vc3_r1, full_out_link2_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:68:10: Signal is not used: 'full_out_link3_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   68 |     wire full_out_link3_vc1_r1, full_out_link3_vc2_r1, full_out_link3_vc3_r1, full_out_link3_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:68:33: Signal is not used: 'full_out_link3_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   68 |     wire full_out_link3_vc1_r1, full_out_link3_vc2_r1, full_out_link3_vc3_r1, full_out_link3_vc4_r1;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:68:56: Signal is not used: 'full_out_link3_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   68 |     wire full_out_link3_vc1_r1, full_out_link3_vc2_r1, full_out_link3_vc3_r1, full_out_link3_vc4_r1;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:68:79: Signal is not used: 'full_out_link3_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   68 |     wire full_out_link3_vc1_r1, full_out_link3_vc2_r1, full_out_link3_vc3_r1, full_out_link3_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:69:10: Signal is not used: 'full_out_link4_vc1_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   69 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:69:33: Signal is not used: 'full_out_link4_vc2_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   69 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:69:56: Signal is not used: 'full_out_link4_vc3_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   69 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:69:79: Signal is not used: 'full_out_link4_vc4_r1'
+                                  : ... note: In instance 'top_3x3_router'
+   69 |     wire full_out_link4_vc1_r1, full_out_link4_vc2_r1, full_out_link4_vc3_r1, full_out_link4_vc4_r1;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:71:10: Signal is not used: 'full_out_link2_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   71 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:71:33: Signal is not used: 'full_out_link2_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   71 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:71:56: Signal is not used: 'full_out_link2_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   71 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:71:79: Signal is not used: 'full_out_link2_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   71 |     wire full_out_link2_vc1_r2, full_out_link2_vc2_r2, full_out_link2_vc3_r2, full_out_link2_vc4_r2;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:72:10: Signal is not used: 'full_out_link3_vc1_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   72 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:72:33: Signal is not used: 'full_out_link3_vc2_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   72 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:72:56: Signal is not used: 'full_out_link3_vc3_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   72 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:72:79: Signal is not used: 'full_out_link3_vc4_r2'
+                                  : ... note: In instance 'top_3x3_router'
+   72 |     wire full_out_link3_vc1_r2, full_out_link3_vc2_r2, full_out_link3_vc3_r2, full_out_link3_vc4_r2;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:74:10: Signal is not used: 'full_out_link1_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   74 |     wire full_out_link1_vc1_r3, full_out_link1_vc2_r3, full_out_link1_vc3_r3, full_out_link1_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:74:33: Signal is not used: 'full_out_link1_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   74 |     wire full_out_link1_vc1_r3, full_out_link1_vc2_r3, full_out_link1_vc3_r3, full_out_link1_vc4_r3;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:74:56: Signal is not used: 'full_out_link1_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   74 |     wire full_out_link1_vc1_r3, full_out_link1_vc2_r3, full_out_link1_vc3_r3, full_out_link1_vc4_r3;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:74:79: Signal is not used: 'full_out_link1_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   74 |     wire full_out_link1_vc1_r3, full_out_link1_vc2_r3, full_out_link1_vc3_r3, full_out_link1_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:75:10: Signal is not used: 'full_out_link2_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   75 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:75:33: Signal is not used: 'full_out_link2_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   75 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:75:56: Signal is not used: 'full_out_link2_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   75 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:75:79: Signal is not used: 'full_out_link2_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   75 |     wire full_out_link2_vc1_r3, full_out_link2_vc2_r3, full_out_link2_vc3_r3, full_out_link2_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:76:10: Signal is not used: 'full_out_link3_vc1_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   76 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:76:33: Signal is not used: 'full_out_link3_vc2_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   76 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:76:56: Signal is not used: 'full_out_link3_vc3_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   76 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:76:79: Signal is not used: 'full_out_link3_vc4_r3'
+                                  : ... note: In instance 'top_3x3_router'
+   76 |     wire full_out_link3_vc1_r3, full_out_link3_vc2_r3, full_out_link3_vc3_r3, full_out_link3_vc4_r3;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:80:10: Signal is not used: 'full_out_link3_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   80 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:80:33: Signal is not used: 'full_out_link3_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   80 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:80:56: Signal is not used: 'full_out_link3_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   80 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:80:79: Signal is not used: 'full_out_link3_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   80 |     wire full_out_link3_vc1_r4, full_out_link3_vc2_r4, full_out_link3_vc3_r4, full_out_link3_vc4_r4;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:81:10: Signal is not used: 'full_out_link4_vc1_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   81 |     wire full_out_link4_vc1_r4, full_out_link4_vc2_r4, full_out_link4_vc3_r4, full_out_link4_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:81:33: Signal is not used: 'full_out_link4_vc2_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   81 |     wire full_out_link4_vc1_r4, full_out_link4_vc2_r4, full_out_link4_vc3_r4, full_out_link4_vc4_r4;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:81:56: Signal is not used: 'full_out_link4_vc3_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   81 |     wire full_out_link4_vc1_r4, full_out_link4_vc2_r4, full_out_link4_vc3_r4, full_out_link4_vc4_r4;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:81:79: Signal is not used: 'full_out_link4_vc4_r4'
+                                  : ... note: In instance 'top_3x3_router'
+   81 |     wire full_out_link4_vc1_r4, full_out_link4_vc2_r4, full_out_link4_vc3_r4, full_out_link4_vc4_r4;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:84:10: Signal is not used: 'full_out_link3_vc1_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   84 |     wire full_out_link3_vc1_r5, full_out_link3_vc2_r5, full_out_link3_vc3_r5, full_out_link3_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:84:33: Signal is not used: 'full_out_link3_vc2_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   84 |     wire full_out_link3_vc1_r5, full_out_link3_vc2_r5, full_out_link3_vc3_r5, full_out_link3_vc4_r5;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:84:56: Signal is not used: 'full_out_link3_vc3_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   84 |     wire full_out_link3_vc1_r5, full_out_link3_vc2_r5, full_out_link3_vc3_r5, full_out_link3_vc4_r5;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:84:79: Signal is not used: 'full_out_link3_vc4_r5'
+                                  : ... note: In instance 'top_3x3_router'
+   84 |     wire full_out_link3_vc1_r5, full_out_link3_vc2_r5, full_out_link3_vc3_r5, full_out_link3_vc4_r5;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:86:10: Signal is not used: 'full_out_link1_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   86 |     wire full_out_link1_vc1_r6, full_out_link1_vc2_r6, full_out_link1_vc3_r6, full_out_link1_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:86:33: Signal is not used: 'full_out_link1_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   86 |     wire full_out_link1_vc1_r6, full_out_link1_vc2_r6, full_out_link1_vc3_r6, full_out_link1_vc4_r6;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:86:56: Signal is not used: 'full_out_link1_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   86 |     wire full_out_link1_vc1_r6, full_out_link1_vc2_r6, full_out_link1_vc3_r6, full_out_link1_vc4_r6;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:86:79: Signal is not used: 'full_out_link1_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   86 |     wire full_out_link1_vc1_r6, full_out_link1_vc2_r6, full_out_link1_vc3_r6, full_out_link1_vc4_r6;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:87:10: Signal is not used: 'full_out_link2_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   87 |     wire full_out_link2_vc1_r6, full_out_link2_vc2_r6, full_out_link2_vc3_r6, full_out_link2_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:87:33: Signal is not used: 'full_out_link2_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   87 |     wire full_out_link2_vc1_r6, full_out_link2_vc2_r6, full_out_link2_vc3_r6, full_out_link2_vc4_r6;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:87:56: Signal is not used: 'full_out_link2_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   87 |     wire full_out_link2_vc1_r6, full_out_link2_vc2_r6, full_out_link2_vc3_r6, full_out_link2_vc4_r6;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:87:79: Signal is not used: 'full_out_link2_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   87 |     wire full_out_link2_vc1_r6, full_out_link2_vc2_r6, full_out_link2_vc3_r6, full_out_link2_vc4_r6;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:88:10: Signal is not used: 'full_out_link3_vc1_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   88 |     wire full_out_link3_vc1_r6, full_out_link3_vc2_r6, full_out_link3_vc3_r6, full_out_link3_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:88:33: Signal is not used: 'full_out_link3_vc2_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   88 |     wire full_out_link3_vc1_r6, full_out_link3_vc2_r6, full_out_link3_vc3_r6, full_out_link3_vc4_r6;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:88:56: Signal is not used: 'full_out_link3_vc3_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   88 |     wire full_out_link3_vc1_r6, full_out_link3_vc2_r6, full_out_link3_vc3_r6, full_out_link3_vc4_r6;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:88:79: Signal is not used: 'full_out_link3_vc4_r6'
+                                  : ... note: In instance 'top_3x3_router'
+   88 |     wire full_out_link3_vc1_r6, full_out_link3_vc2_r6, full_out_link3_vc3_r6, full_out_link3_vc4_r6;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:91:10: Signal is not used: 'full_out_link2_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   91 |     wire full_out_link2_vc1_r7, full_out_link2_vc2_r7, full_out_link2_vc3_r7, full_out_link2_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:91:33: Signal is not used: 'full_out_link2_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   91 |     wire full_out_link2_vc1_r7, full_out_link2_vc2_r7, full_out_link2_vc3_r7, full_out_link2_vc4_r7;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:91:56: Signal is not used: 'full_out_link2_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   91 |     wire full_out_link2_vc1_r7, full_out_link2_vc2_r7, full_out_link2_vc3_r7, full_out_link2_vc4_r7;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:91:79: Signal is not used: 'full_out_link2_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   91 |     wire full_out_link2_vc1_r7, full_out_link2_vc2_r7, full_out_link2_vc3_r7, full_out_link2_vc4_r7;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:93:10: Signal is not used: 'full_out_link4_vc1_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   93 |     wire full_out_link4_vc1_r7, full_out_link4_vc2_r7, full_out_link4_vc3_r7, full_out_link4_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:93:33: Signal is not used: 'full_out_link4_vc2_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   93 |     wire full_out_link4_vc1_r7, full_out_link4_vc2_r7, full_out_link4_vc3_r7, full_out_link4_vc4_r7;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:93:56: Signal is not used: 'full_out_link4_vc3_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   93 |     wire full_out_link4_vc1_r7, full_out_link4_vc2_r7, full_out_link4_vc3_r7, full_out_link4_vc4_r7;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:93:79: Signal is not used: 'full_out_link4_vc4_r7'
+                                  : ... note: In instance 'top_3x3_router'
+   93 |     wire full_out_link4_vc1_r7, full_out_link4_vc2_r7, full_out_link4_vc3_r7, full_out_link4_vc4_r7;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:95:10: Signal is not used: 'full_out_link2_vc1_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   95 |     wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link2_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:95:33: Signal is not used: 'full_out_link2_vc2_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   95 |     wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link2_vc4_r8;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:95:56: Signal is not used: 'full_out_link2_vc3_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   95 |     wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link2_vc4_r8;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:95:79: Signal is not used: 'full_out_link2_vc4_r8'
+                                  : ... note: In instance 'top_3x3_router'
+   95 |     wire full_out_link2_vc1_r8, full_out_link2_vc2_r8, full_out_link2_vc3_r8, full_out_link2_vc4_r8;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:99:10: Signal is not used: 'full_out_link2_vc1_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   99 |     wire full_out_link2_vc1_r9, full_out_link2_vc2_r9, full_out_link2_vc3_r9, full_out_link2_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:99:33: Signal is not used: 'full_out_link2_vc2_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   99 |     wire full_out_link2_vc1_r9, full_out_link2_vc2_r9, full_out_link2_vc3_r9, full_out_link2_vc4_r9;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:99:56: Signal is not used: 'full_out_link2_vc3_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   99 |     wire full_out_link2_vc1_r9, full_out_link2_vc2_r9, full_out_link2_vc3_r9, full_out_link2_vc4_r9;
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:99:79: Signal is not used: 'full_out_link2_vc4_r9'
+                                  : ... note: In instance 'top_3x3_router'
+   99 |     wire full_out_link2_vc1_r9, full_out_link2_vc2_r9, full_out_link2_vc3_r9, full_out_link2_vc4_r9;
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:103:10: Signal is not used: 'full_out_core_vc1_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  103 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:103:32: Signal is not used: 'full_out_core_vc2_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  103 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:103:54: Signal is not used: 'full_out_core_vc3_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  103 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:103:76: Signal is not used: 'full_out_core_vc4_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  103 |     wire full_out_core_vc1_r1, full_out_core_vc2_r1, full_out_core_vc3_r1, full_out_core_vc4_r1;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:104:10: Signal is not used: 'full_out_core_vc1_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  104 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:104:32: Signal is not used: 'full_out_core_vc2_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  104 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:104:54: Signal is not used: 'full_out_core_vc3_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  104 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:104:76: Signal is not used: 'full_out_core_vc4_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  104 |     wire full_out_core_vc1_r2, full_out_core_vc2_r2, full_out_core_vc3_r2, full_out_core_vc4_r2;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:105:10: Signal is not used: 'full_out_core_vc1_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  105 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:105:32: Signal is not used: 'full_out_core_vc2_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  105 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:105:54: Signal is not used: 'full_out_core_vc3_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  105 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:105:76: Signal is not used: 'full_out_core_vc4_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  105 |     wire full_out_core_vc1_r3, full_out_core_vc2_r3, full_out_core_vc3_r3, full_out_core_vc4_r3;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:106:10: Signal is not used: 'full_out_core_vc1_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  106 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:106:32: Signal is not used: 'full_out_core_vc2_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  106 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:106:54: Signal is not used: 'full_out_core_vc3_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  106 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:106:76: Signal is not used: 'full_out_core_vc4_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  106 |     wire full_out_core_vc1_r4, full_out_core_vc2_r4, full_out_core_vc3_r4, full_out_core_vc4_r4;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:107:10: Signal is not used: 'full_out_core_vc1_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  107 |     wire full_out_core_vc1_r5, full_out_core_vc2_r5, full_out_core_vc3_r5, full_out_core_vc4_r5;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:107:32: Signal is not used: 'full_out_core_vc2_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  107 |     wire full_out_core_vc1_r5, full_out_core_vc2_r5, full_out_core_vc3_r5, full_out_core_vc4_r5;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:107:54: Signal is not used: 'full_out_core_vc3_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  107 |     wire full_out_core_vc1_r5, full_out_core_vc2_r5, full_out_core_vc3_r5, full_out_core_vc4_r5;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:107:76: Signal is not used: 'full_out_core_vc4_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  107 |     wire full_out_core_vc1_r5, full_out_core_vc2_r5, full_out_core_vc3_r5, full_out_core_vc4_r5;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:108:10: Signal is not used: 'full_out_core_vc1_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  108 |     wire full_out_core_vc1_r6, full_out_core_vc2_r6, full_out_core_vc3_r6, full_out_core_vc4_r6;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:108:32: Signal is not used: 'full_out_core_vc2_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  108 |     wire full_out_core_vc1_r6, full_out_core_vc2_r6, full_out_core_vc3_r6, full_out_core_vc4_r6;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:108:54: Signal is not used: 'full_out_core_vc3_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  108 |     wire full_out_core_vc1_r6, full_out_core_vc2_r6, full_out_core_vc3_r6, full_out_core_vc4_r6;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:108:76: Signal is not used: 'full_out_core_vc4_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  108 |     wire full_out_core_vc1_r6, full_out_core_vc2_r6, full_out_core_vc3_r6, full_out_core_vc4_r6;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:109:10: Signal is not used: 'full_out_core_vc1_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  109 |     wire full_out_core_vc1_r7, full_out_core_vc2_r7, full_out_core_vc3_r7, full_out_core_vc4_r7;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:109:32: Signal is not used: 'full_out_core_vc2_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  109 |     wire full_out_core_vc1_r7, full_out_core_vc2_r7, full_out_core_vc3_r7, full_out_core_vc4_r7;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:109:54: Signal is not used: 'full_out_core_vc3_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  109 |     wire full_out_core_vc1_r7, full_out_core_vc2_r7, full_out_core_vc3_r7, full_out_core_vc4_r7;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:109:76: Signal is not used: 'full_out_core_vc4_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  109 |     wire full_out_core_vc1_r7, full_out_core_vc2_r7, full_out_core_vc3_r7, full_out_core_vc4_r7;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:110:10: Signal is not used: 'full_out_core_vc1_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  110 |     wire full_out_core_vc1_r8, full_out_core_vc2_r8, full_out_core_vc3_r8, full_out_core_vc4_r8;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:110:32: Signal is not used: 'full_out_core_vc2_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  110 |     wire full_out_core_vc1_r8, full_out_core_vc2_r8, full_out_core_vc3_r8, full_out_core_vc4_r8;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:110:54: Signal is not used: 'full_out_core_vc3_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  110 |     wire full_out_core_vc1_r8, full_out_core_vc2_r8, full_out_core_vc3_r8, full_out_core_vc4_r8;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:110:76: Signal is not used: 'full_out_core_vc4_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  110 |     wire full_out_core_vc1_r8, full_out_core_vc2_r8, full_out_core_vc3_r8, full_out_core_vc4_r8;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:111:10: Signal is not used: 'full_out_core_vc1_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  111 |     wire full_out_core_vc1_r9, full_out_core_vc2_r9, full_out_core_vc3_r9, full_out_core_vc4_r9;
+      |          ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:111:32: Signal is not used: 'full_out_core_vc2_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  111 |     wire full_out_core_vc1_r9, full_out_core_vc2_r9, full_out_core_vc3_r9, full_out_core_vc4_r9;
+      |                                ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:111:54: Signal is not used: 'full_out_core_vc3_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  111 |     wire full_out_core_vc1_r9, full_out_core_vc2_r9, full_out_core_vc3_r9, full_out_core_vc4_r9;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:111:76: Signal is not used: 'full_out_core_vc4_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  111 |     wire full_out_core_vc1_r9, full_out_core_vc2_r9, full_out_core_vc3_r9, full_out_core_vc4_r9;
+      |                                                                            ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:113:17: Signal is not used: 'data_out_core_r1_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  113 |     wire [31:0] data_out_core_r1_vc1, data_out_core_r1_vc2, data_out_core_r1_vc3, data_out_core_r1_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:113:39: Signal is not used: 'data_out_core_r1_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  113 |     wire [31:0] data_out_core_r1_vc1, data_out_core_r1_vc2, data_out_core_r1_vc3, data_out_core_r1_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:113:61: Signal is not used: 'data_out_core_r1_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  113 |     wire [31:0] data_out_core_r1_vc1, data_out_core_r1_vc2, data_out_core_r1_vc3, data_out_core_r1_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:113:83: Signal is not used: 'data_out_core_r1_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  113 |     wire [31:0] data_out_core_r1_vc1, data_out_core_r1_vc2, data_out_core_r1_vc3, data_out_core_r1_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:114:17: Signal is not used: 'data_out_core_r2_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  114 |     wire [31:0] data_out_core_r2_vc1, data_out_core_r2_vc2, data_out_core_r2_vc3, data_out_core_r2_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:114:39: Signal is not used: 'data_out_core_r2_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  114 |     wire [31:0] data_out_core_r2_vc1, data_out_core_r2_vc2, data_out_core_r2_vc3, data_out_core_r2_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:114:61: Signal is not used: 'data_out_core_r2_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  114 |     wire [31:0] data_out_core_r2_vc1, data_out_core_r2_vc2, data_out_core_r2_vc3, data_out_core_r2_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:114:83: Signal is not used: 'data_out_core_r2_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  114 |     wire [31:0] data_out_core_r2_vc1, data_out_core_r2_vc2, data_out_core_r2_vc3, data_out_core_r2_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:115:17: Signal is not used: 'data_out_core_r3_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  115 |     wire [31:0] data_out_core_r3_vc1, data_out_core_r3_vc2, data_out_core_r3_vc3, data_out_core_r3_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:115:39: Signal is not used: 'data_out_core_r3_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  115 |     wire [31:0] data_out_core_r3_vc1, data_out_core_r3_vc2, data_out_core_r3_vc3, data_out_core_r3_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:115:61: Signal is not used: 'data_out_core_r3_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  115 |     wire [31:0] data_out_core_r3_vc1, data_out_core_r3_vc2, data_out_core_r3_vc3, data_out_core_r3_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:115:83: Signal is not used: 'data_out_core_r3_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  115 |     wire [31:0] data_out_core_r3_vc1, data_out_core_r3_vc2, data_out_core_r3_vc3, data_out_core_r3_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:116:17: Signal is not used: 'data_out_core_r4_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  116 |     wire [31:0] data_out_core_r4_vc1, data_out_core_r4_vc2, data_out_core_r4_vc3, data_out_core_r4_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:116:39: Signal is not used: 'data_out_core_r4_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  116 |     wire [31:0] data_out_core_r4_vc1, data_out_core_r4_vc2, data_out_core_r4_vc3, data_out_core_r4_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:116:61: Signal is not used: 'data_out_core_r4_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  116 |     wire [31:0] data_out_core_r4_vc1, data_out_core_r4_vc2, data_out_core_r4_vc3, data_out_core_r4_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:116:83: Signal is not used: 'data_out_core_r4_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  116 |     wire [31:0] data_out_core_r4_vc1, data_out_core_r4_vc2, data_out_core_r4_vc3, data_out_core_r4_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:117:17: Signal is not used: 'data_out_core_r5_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  117 |     wire [31:0] data_out_core_r5_vc1, data_out_core_r5_vc2, data_out_core_r5_vc3, data_out_core_r5_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:117:39: Signal is not used: 'data_out_core_r5_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  117 |     wire [31:0] data_out_core_r5_vc1, data_out_core_r5_vc2, data_out_core_r5_vc3, data_out_core_r5_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:117:61: Signal is not used: 'data_out_core_r5_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  117 |     wire [31:0] data_out_core_r5_vc1, data_out_core_r5_vc2, data_out_core_r5_vc3, data_out_core_r5_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:117:83: Signal is not used: 'data_out_core_r5_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  117 |     wire [31:0] data_out_core_r5_vc1, data_out_core_r5_vc2, data_out_core_r5_vc3, data_out_core_r5_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:118:17: Signal is not used: 'data_out_core_r6_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  118 |     wire [31:0] data_out_core_r6_vc1, data_out_core_r6_vc2, data_out_core_r6_vc3, data_out_core_r6_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:118:39: Signal is not used: 'data_out_core_r6_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  118 |     wire [31:0] data_out_core_r6_vc1, data_out_core_r6_vc2, data_out_core_r6_vc3, data_out_core_r6_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:118:61: Signal is not used: 'data_out_core_r6_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  118 |     wire [31:0] data_out_core_r6_vc1, data_out_core_r6_vc2, data_out_core_r6_vc3, data_out_core_r6_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:118:83: Signal is not used: 'data_out_core_r6_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  118 |     wire [31:0] data_out_core_r6_vc1, data_out_core_r6_vc2, data_out_core_r6_vc3, data_out_core_r6_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:119:17: Signal is not used: 'data_out_core_r7_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  119 |     wire [31:0] data_out_core_r7_vc1, data_out_core_r7_vc2, data_out_core_r7_vc3, data_out_core_r7_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:119:39: Signal is not used: 'data_out_core_r7_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  119 |     wire [31:0] data_out_core_r7_vc1, data_out_core_r7_vc2, data_out_core_r7_vc3, data_out_core_r7_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:119:61: Signal is not used: 'data_out_core_r7_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  119 |     wire [31:0] data_out_core_r7_vc1, data_out_core_r7_vc2, data_out_core_r7_vc3, data_out_core_r7_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:119:83: Signal is not used: 'data_out_core_r7_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  119 |     wire [31:0] data_out_core_r7_vc1, data_out_core_r7_vc2, data_out_core_r7_vc3, data_out_core_r7_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:120:17: Signal is not used: 'data_out_core_r8_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  120 |     wire [31:0] data_out_core_r8_vc1, data_out_core_r8_vc2, data_out_core_r8_vc3, data_out_core_r8_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:120:39: Signal is not used: 'data_out_core_r8_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  120 |     wire [31:0] data_out_core_r8_vc1, data_out_core_r8_vc2, data_out_core_r8_vc3, data_out_core_r8_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:120:61: Signal is not used: 'data_out_core_r8_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  120 |     wire [31:0] data_out_core_r8_vc1, data_out_core_r8_vc2, data_out_core_r8_vc3, data_out_core_r8_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:120:83: Signal is not used: 'data_out_core_r8_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  120 |     wire [31:0] data_out_core_r8_vc1, data_out_core_r8_vc2, data_out_core_r8_vc3, data_out_core_r8_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:121:17: Signal is not used: 'data_out_core_r9_vc1'
+                                   : ... note: In instance 'top_3x3_router'
+  121 |     wire [31:0] data_out_core_r9_vc1, data_out_core_r9_vc2, data_out_core_r9_vc3, data_out_core_r9_vc4;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:121:39: Signal is not used: 'data_out_core_r9_vc2'
+                                   : ... note: In instance 'top_3x3_router'
+  121 |     wire [31:0] data_out_core_r9_vc1, data_out_core_r9_vc2, data_out_core_r9_vc3, data_out_core_r9_vc4;
+      |                                       ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:121:61: Signal is not used: 'data_out_core_r9_vc3'
+                                   : ... note: In instance 'top_3x3_router'
+  121 |     wire [31:0] data_out_core_r9_vc1, data_out_core_r9_vc2, data_out_core_r9_vc3, data_out_core_r9_vc4;
+      |                                                             ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:121:83: Signal is not used: 'data_out_core_r9_vc4'
+                                   : ... note: In instance 'top_3x3_router'
+  121 |     wire [31:0] data_out_core_r9_vc1, data_out_core_r9_vc2, data_out_core_r9_vc3, data_out_core_r9_vc4;
+      |                                                                                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:123:17: Signal is not used: 'data_out_l1_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  123 |     wire [31:0] data_out_l1_r1, data_out_l2_r1, data_out_l3_r1, data_out_l4_r1;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:123:33: Signal is not used: 'data_out_l2_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  123 |     wire [31:0] data_out_l1_r1, data_out_l2_r1, data_out_l3_r1, data_out_l4_r1;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:123:49: Signal is not used: 'data_out_l3_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  123 |     wire [31:0] data_out_l1_r1, data_out_l2_r1, data_out_l3_r1, data_out_l4_r1;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:123:65: Signal is not used: 'data_out_l4_r1'
+                                   : ... note: In instance 'top_3x3_router'
+  123 |     wire [31:0] data_out_l1_r1, data_out_l2_r1, data_out_l3_r1, data_out_l4_r1;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:124:17: Signal is not used: 'data_out_l1_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  124 |     wire [31:0] data_out_l1_r2, data_out_l2_r2, data_out_l3_r2, data_out_l4_r2;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:124:33: Signal is not used: 'data_out_l2_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  124 |     wire [31:0] data_out_l1_r2, data_out_l2_r2, data_out_l3_r2, data_out_l4_r2;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:124:49: Signal is not used: 'data_out_l3_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  124 |     wire [31:0] data_out_l1_r2, data_out_l2_r2, data_out_l3_r2, data_out_l4_r2;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:124:65: Signal is not used: 'data_out_l4_r2'
+                                   : ... note: In instance 'top_3x3_router'
+  124 |     wire [31:0] data_out_l1_r2, data_out_l2_r2, data_out_l3_r2, data_out_l4_r2;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:125:17: Signal is not used: 'data_out_l1_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  125 |     wire [31:0] data_out_l1_r3, data_out_l2_r3, data_out_l3_r3, data_out_l4_r3;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:125:33: Signal is not used: 'data_out_l2_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  125 |     wire [31:0] data_out_l1_r3, data_out_l2_r3, data_out_l3_r3, data_out_l4_r3;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:125:49: Signal is not used: 'data_out_l3_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  125 |     wire [31:0] data_out_l1_r3, data_out_l2_r3, data_out_l3_r3, data_out_l4_r3;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:125:65: Signal is not used: 'data_out_l4_r3'
+                                   : ... note: In instance 'top_3x3_router'
+  125 |     wire [31:0] data_out_l1_r3, data_out_l2_r3, data_out_l3_r3, data_out_l4_r3;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:126:17: Signal is not used: 'data_out_l1_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  126 |     wire [31:0] data_out_l1_r4, data_out_l2_r4, data_out_l3_r4, data_out_l4_r4;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:126:33: Signal is not used: 'data_out_l2_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  126 |     wire [31:0] data_out_l1_r4, data_out_l2_r4, data_out_l3_r4, data_out_l4_r4;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:126:49: Signal is not used: 'data_out_l3_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  126 |     wire [31:0] data_out_l1_r4, data_out_l2_r4, data_out_l3_r4, data_out_l4_r4;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:126:65: Signal is not used: 'data_out_l4_r4'
+                                   : ... note: In instance 'top_3x3_router'
+  126 |     wire [31:0] data_out_l1_r4, data_out_l2_r4, data_out_l3_r4, data_out_l4_r4;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:127:17: Signal is not used: 'data_out_l1_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  127 |     wire [31:0] data_out_l1_r5, data_out_l2_r5, data_out_l3_r5, data_out_l4_r5;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:127:33: Signal is not used: 'data_out_l2_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  127 |     wire [31:0] data_out_l1_r5, data_out_l2_r5, data_out_l3_r5, data_out_l4_r5;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:127:49: Signal is not used: 'data_out_l3_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  127 |     wire [31:0] data_out_l1_r5, data_out_l2_r5, data_out_l3_r5, data_out_l4_r5;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:127:65: Signal is not used: 'data_out_l4_r5'
+                                   : ... note: In instance 'top_3x3_router'
+  127 |     wire [31:0] data_out_l1_r5, data_out_l2_r5, data_out_l3_r5, data_out_l4_r5;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:128:17: Signal is not used: 'data_out_l1_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  128 |     wire [31:0] data_out_l1_r6, data_out_l2_r6, data_out_l3_r6, data_out_l4_r6;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:128:33: Signal is not used: 'data_out_l2_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  128 |     wire [31:0] data_out_l1_r6, data_out_l2_r6, data_out_l3_r6, data_out_l4_r6;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:128:49: Signal is not used: 'data_out_l3_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  128 |     wire [31:0] data_out_l1_r6, data_out_l2_r6, data_out_l3_r6, data_out_l4_r6;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:128:65: Signal is not used: 'data_out_l4_r6'
+                                   : ... note: In instance 'top_3x3_router'
+  128 |     wire [31:0] data_out_l1_r6, data_out_l2_r6, data_out_l3_r6, data_out_l4_r6;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:129:17: Signal is not used: 'data_out_l1_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  129 |     wire [31:0] data_out_l1_r7, data_out_l2_r7, data_out_l3_r7, data_out_l4_r7;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:129:33: Signal is not used: 'data_out_l2_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  129 |     wire [31:0] data_out_l1_r7, data_out_l2_r7, data_out_l3_r7, data_out_l4_r7;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:129:49: Signal is not used: 'data_out_l3_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  129 |     wire [31:0] data_out_l1_r7, data_out_l2_r7, data_out_l3_r7, data_out_l4_r7;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:129:65: Signal is not used: 'data_out_l4_r7'
+                                   : ... note: In instance 'top_3x3_router'
+  129 |     wire [31:0] data_out_l1_r7, data_out_l2_r7, data_out_l3_r7, data_out_l4_r7;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:130:17: Signal is not used: 'data_out_l1_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  130 |     wire [31:0] data_out_l1_r8, data_out_l2_r8, data_out_l3_r8, data_out_l4_r8;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:130:33: Signal is not used: 'data_out_l2_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  130 |     wire [31:0] data_out_l1_r8, data_out_l2_r8, data_out_l3_r8, data_out_l4_r8;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:130:49: Signal is not used: 'data_out_l3_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  130 |     wire [31:0] data_out_l1_r8, data_out_l2_r8, data_out_l3_r8, data_out_l4_r8;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:130:65: Signal is not used: 'data_out_l4_r8'
+                                   : ... note: In instance 'top_3x3_router'
+  130 |     wire [31:0] data_out_l1_r8, data_out_l2_r8, data_out_l3_r8, data_out_l4_r8;
+      |                                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:131:17: Signal is not used: 'data_out_l1_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  131 |     wire [31:0] data_out_l1_r9, data_out_l2_r9, data_out_l3_r9, data_out_l4_r9;
+      |                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:131:33: Signal is not used: 'data_out_l2_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  131 |     wire [31:0] data_out_l1_r9, data_out_l2_r9, data_out_l3_r9, data_out_l4_r9;
+      |                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:131:49: Signal is not used: 'data_out_l3_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  131 |     wire [31:0] data_out_l1_r9, data_out_l2_r9, data_out_l3_r9, data_out_l4_r9;
+      |                                                 ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: dut.v:131:65: Signal is not used: 'data_out_l4_r9'
+                                   : ... note: In instance 'top_3x3_router'
+  131 |     wire [31:0] data_out_l1_r9, data_out_l2_r9, data_out_l3_r9, data_out_l4_r9;
+      |                                                                 ^~~~~~~~~~~~~~
+%Error: Exiting due to 387 warning(s)
