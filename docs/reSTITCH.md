@@ -60,6 +60,9 @@ GPT-4.1 mini; `gemini-2.5-flash` Gemini 2.5 Flash; `claude-haiku-4-5-20251001` C
 *signed off defective* = the loop testbench passes but the design is not sign-off clean; *loop-clean*
 (`clean_pass` in the code) = the loop testbench passes and the design is structurally clean.
 
+**Reading the paper's tables.** Every table of v11 (Tables 1 to 8), column by column, with what each mark means (the
+dots in Tables 4 and 5) and its takeaway: `docs/reSTITCH_REVISITED_QA.md`, "Reading the tables of v11".
+
 ---
 
 ## Part 0. The problem and the vocabulary
@@ -296,11 +299,14 @@ designs from another group.
 
 **Difficulty tiers, the organising idea.** Think of testing whether a tutor helps students. On trivial questions
 everyone passes; on impossible ones everyone fails. The tutor's effect is only visible on medium questions.
-- **How a tier is set:** by each module's **maximum** Baseline pass rate across the five model configurations of the
-  tiering study:
-  - **ceiling:** 6 modules, 80% or more;
-  - **recoverable:** 17 modules, 20 to 80%;
-  - **floor:** 19 modules, under 20%.
+- **How a tier is set:** by each module's **pooled** Baseline pass count over all 15 runs of the tiering study (five
+  model configurations, three runs each), computed by `phase2/twin_analysis_SET2/categorize.py`:
+  - **ceiling:** 6 modules, 12 to 15 of 15 (80% or more);
+  - **recoverable:** 17 modules, 3 to 11 of 15 (20% to under 80%);
+  - **floor:** 19 modules, 0 to 2 of 15 (under 20%).
+  - It is a pooled count, not a per-model maximum: one configuration's rate can only be 0, 1, 2 or 3 of 3, so a
+    maximum could never land on 12 of 15. Earlier drafts of this document and of the paper said "maximum"; v11
+    corrects it.
 - **How they are used:** computed once and reused by every later study.
 - **Why it matters:** pooled over all 42 modules, the four small-model conditions lie within 1.6 points, and any signal
   vanishes.

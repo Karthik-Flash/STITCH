@@ -141,10 +141,11 @@ page 5; Supplementary Material S3):
 
 - **The pool.** 44 compatible designs, minus `edge_detect` and `square_wave`, whose testbenches pass outputs stuck at
   0 (weak oracles). That leaves 42 modules.
-- **The tiers.** A module's tier is its **maximum** baseline pass rate across the five Twin model-conditions:
-  - **ceiling:** 6 modules, 80% or more;
-  - **recoverable:** 17 modules, 20 to 80%;
-  - **floor:** 19 modules, under 20%.
+- **The tiers.** A module's tier is its **pooled** baseline pass count over all 15 Twin runs (five model-conditions,
+  N=3), not a per-model maximum:
+  - **ceiling:** 6 modules, 12 to 15 of 15 (80% or more);
+  - **recoverable:** 17 modules, 3 to 11 of 15;
+  - **floor:** 19 modules, 0 to 2 of 15 (under 20%).
 - **Why tiers.** STITCH's effect can only show where baseline sometimes fails but can recover. Pooling the
   ceilings and floors flattens any signal.
 - **How they are used.** Computed once (`phase2/twin_analysis_SET2/categorize.py`) and inherited by every later set.
