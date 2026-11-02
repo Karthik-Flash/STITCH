@@ -19,15 +19,18 @@ repair feedback.
 
 One model, one run per setting: these are case-study counts, not rates.
 
-**What we need from you** (ORFS, same setup as your A1 runs):
+**What we need from you** (ORFS, same setup as your A1 runs): 8 runs, one per folder under `designs/`.
 
 | study | runs | instructions |
 |---|---|---|
 | 2x2 | C0, P1, P2 | [handoff_orfs/README.md](handoff_orfs/README.md) |
 | 3x3 | C0, P1, P2 | [mesh3x3/handoff_orfs/README.md](mesh3x3/handoff_orfs/README.md) |
-| NI | nothing required (optional only) | [ni/handoff_orfs/README.md](ni/handoff_orfs/README.md) |
+| NI | C0, P1 (small) | [ni/handoff_orfs/README.md](ni/handoff_orfs/README.md) |
 
-Run C0 first in each; it must reproduce B. Fill PPA_TABLE.md and send back your A1 config.mk and constraint.sdc.
+Identical designs are merged: simloop and stitch give the same design in 2x2 and 3x3 (one P2 each), and all three
+arms give the same design in NI (one P1). Run C0 first in each; in 2x2 and 3x3 it must reproduce B. Every other
+folder (A1_style_3x3, O1 to O3) is optional. Fill PPA_TABLE.md and send back your A1 config.mk and constraint.sdc.
+No Vivado anywhere: simulation in Icarus Verilog, lint in Verilator, synthesis checks in Yosys; PPA only in ORFS.
 
 **Where things are.** [The details below](#llm-one-shot-vs-stitch-on-the-2x2-noc-mesh) ·
 [reports/CROSS_STUDY.md](reports/CROSS_STUDY.md) · [2x2 hand-off](handoff_orfs/README.md) ·
@@ -62,14 +65,18 @@ Three ORFS hand-offs, each with its own README, PPA_TABLE.md and per-design conf
 - 3x3: [mesh3x3/handoff_orfs/README.md](mesh3x3/handoff_orfs/README.md)
 - NI: [ni/handoff_orfs/README.md](ni/handoff_orfs/README.md) (two clocks: ships its own `constraint.sdc`)
 
-Required ORFS runs, in this order:
+Required ORFS runs (8), in this order:
 
-1. 2x2: C0, P1, P2.
+1. 2x2: C0 (must reproduce B / 2x2), P1, P2.
 2. 3x3: C0 (must reproduce B / 3x3), P1, P2. A1 / 3x3 is already measured (`../latch_study/PPA_SUMMARY.md`).
-3. NI: nothing required. No newly generated NI module signed off, so no NI design measures LLM output.
+3. NI: C0, P1. Small. No newly generated NI module signed off, so P1 differs from C0 only by two reused 2x2 leaves.
 
-Then the optional runs (O1, O2 in 2x2; A1_style_3x3, O1, O2 in 3x3; everything in NI). Please send your A1 config.mk and constraint.sdc
-back with the results (we store them in `../latch_study/orfs_A1/`).
+Then the optional runs (O1, O2 in 2x2; A1_style_3x3, O1, O2 in 3x3; O1 to O3 in NI). Please send your A1 config.mk
+and constraint.sdc back with the results (we store them in `../latch_study/orfs_A1/`).
+
+Folder map: this folder is the 2x2 study. `specs/` and `prompts/` hold what the LLM was given, `golden/reference`
+the hand-written RTL with its three latch registers repaired (the testbench reference), `outputs/` what the LLM
+returned, `handoff_orfs/` the designs for ORFS. `mesh3x3/` and `ni/` have the same layout.
 
 qwen2.5-coder:32b writes each of the 34 modules of the hand-written 2x2 mesh (top `top_2x2_router`) from a
 behavioural spec. Three arms: one-shot (one call), simloop (the Phase 3 simulation-only retry loop, `baseline`) and

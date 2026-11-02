@@ -21,8 +21,9 @@ Latch versus no-latch comparison on the 2x2 and 3x3 meshes and the MPSoC.
 
 ## llm_oneshot_vs_stitch/
 
-LLM one-shot generation versus STITCH on the 2x2 mesh (OpenROAD path). The golden reference is the hand-written
-2x2 hierarchy rooted at `top_2x2_router`.
+LLM one-shot generation versus STITCH: the 2x2 mesh (this folder), the new top of the 3x3 mesh (`mesh3x3/`) and
+the network interface (`ni/`). OpenROAD path; no Vivado (Icarus Verilog, Verilator, Yosys). The 2x2 golden reference
+is the hand-written 2x2 hierarchy rooted at `top_2x2_router`.
 
 - `golden/handwritten`, `golden/A1`: copies of `latch_study/A_original/mesh2x2` and
   `latch_study/A1_original_synthesisable/mesh2x2`.
@@ -46,5 +47,5 @@ LLM one-shot generation versus STITCH on the 2x2 mesh (OpenROAD path). The golde
   --time arithmetic: `reports/SPEED.md`), `test_failures.py` (resume and infra-error handling), and the cluster files
   `hpc_env.sh`, `gen_job.slurm`, `deploy_gen.ps1`, `HPC_RUN.md`.
 - `hpc_logs/` (cluster logs copied back for `speed.py`) is local-only (gitignored, never deployed).
-- `prompts/`, `outputs/{oneshot,simloop,stitch}/`, `assembled/`, `reports/`: study outputs.
-- `runs/` is local-only (gitignored).
+- `prompts/`, `outputs/{oneshot,simloop,stitch}/`, `reports/`, `runs/`, `handoff_orfs/`: study outputs.
+  `assembled/`, the per-iteration testbench copies and the Yosys JSON dumps are local-only (gitignored).

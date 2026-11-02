@@ -1,15 +1,15 @@
 # ni ORFS hand-off: LLM-generated modules
 
-Optional. No newly generated NI module signed off, so no design here measures LLM output; P1 differs from C0 only by two reused 2x2 leaves.
+Run C0 and P1 (both small and quick). No newly generated NI module signed off, so P1 differs from C0 only by two reused 2x2 leaves (jk_ff, memory): expect nearly the same numbers.
 
-These are network-interface pairs (top `ni_pair`: the packetiser new1 driving the depacketiser nidepack directly, a wrapper we wrote; every design includes it) in which some modules were written by an LLM (qwen2.5-coder:32b) and the rest are golden, plus the reference designs. If you run them, measure them the same way as A1 and B in the 2x2 hand-off.
+These are network-interface pairs (top `ni_pair`: the packetiser new1 driving the depacketiser nidepack directly, a wrapper we wrote; every design includes it) in which some modules were written by an LLM (qwen2.5-coder:32b) and the rest are golden, plus the reference designs. We need their PPA, measured the same way as A1 and B in the 2x2 hand-off.
 
 ## How to run
 
 1. Use your exact A1 ORFS setup: sky130hd, 10 ns clock, the same config.mk settings (keep A1's CORE_UTILIZATION and flow settings).
 2. Per design, take `designs/<ID>/config.mk.template`: DESIGN_NAME (`ni_pair`) and VERILOG_FILES (the files in `designs/<ID>/VERILOG_FILES.txt`, under `designs/<ID>/rtl/`) are filled in; copy every other line from your A1 config.mk.
 3. SDC: use `constraint.sdc` from this folder. It is the only SDC change versus A1: one 10 ns clock on each clock port of `ni_pair` (`rd_clk`, `wr_clk`, read from wrapper/ni_pair.v by the script) and `set_clock_groups -asynchronous` between them (the FIFOs between the two clocks are asynchronous). If your A1 constraint.sdc has further lines (I/O delays, ...), keep them and point them at these clocks.
-4. Nothing is required. Optional, in this order: C0_control_all_golden, P1_hybrid_signoff_oneshot, O1_hybrid_compile_oneshot, O2_hybrid_compile_simloop, O3_hybrid_compile_stitch.
+4. Run in this order: C0_control_all_golden, P1_hybrid_signoff_all_arms; then, optional: O1_hybrid_compile_oneshot, O2_hybrid_compile_simloop, O3_hybrid_compile_stitch.
 
 ## Flow notes
 
@@ -25,14 +25,14 @@ PPA_TABLE.md, one row per design. Also run `check_setup -verbose` (OpenSTA) and 
 ## What each design means
 
 - C0_control_all_golden: every module golden, through our assembly: like-for-like reference (B-style RTL); byte-identical to A1_style_ni (the hand-written NI RTL synthesises without latches, nothing to fix), so it is also the A1-style reference.
-- P1_hybrid_signoff_oneshot: PRIMARY: oneshot LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest; byte-identical to hybrid_signoff_simloop, hybrid_signoff_stitch.
+- P1_hybrid_signoff_all_arms: PRIMARY: LLM modules of all three arms (they give byte-identical designs) that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest.
 - O1_hybrid_compile_oneshot: optional: every oneshot module that compiles, golden for the rest; fails the top tb, PPA indicative only.
 - O2_hybrid_compile_simloop: optional: every simloop module that compiles, golden for the rest; fails the top tb, PPA indicative only.
 - O3_hybrid_compile_stitch: optional: every stitch module that compiles, golden for the rest; fails the top tb, PPA indicative only.
 
 ## Checklist
 
-- [ ] C0 (optional)  [ ] P1 (optional)  [ ] O1 (optional)  [ ] O2 (optional)  [ ] O3 (optional)
+- [ ] C0  [ ] P1  [ ] O1 (optional)  [ ] O2 (optional)  [ ] O3 (optional)
 - [ ] PPA_TABLE.md filled
 - [ ] ORFS reports/logs dir per design zipped and sent back
 - [ ] A1 config.mk + constraint.sdc sent back if not sent with the 2x2 hand-off (we store them in latch_study/orfs_A1/)

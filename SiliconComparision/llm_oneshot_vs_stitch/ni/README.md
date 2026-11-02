@@ -43,8 +43,8 @@ Whole designs (top ni_pair, 9 modules + the wrapper; composes = passes the ni_pa
 
 | design | LLM modules NEW / REUSED | composes | Yosys cells | latch cells | hand-off |
 |---|---|---|---|---|---|
-| control_all_golden = A1_style_ni | 0 / 0 | yes | 1799 | 0 | C0 (optional; also the A1-style reference) |
-| hybrid_signoff_oneshot = _simloop = _stitch | 0 / 2 (jk_ff, memory) | yes | 1767 | 0 | P1 (optional) |
+| control_all_golden = A1_style_ni | 0 / 0 | yes | 1799 | 0 | C0 (also the A1-style reference) |
+| hybrid_signoff_oneshot = _simloop = _stitch | 0 / 2 (jk_ff, memory) | yes | 1767 | 0 | P1 (P1_hybrid_signoff_all_arms) |
 | hybrid_compile_oneshot | 2 / 3 | no | 1580 | 0 | O1 optional |
 | hybrid_compile_simloop | 3 / 5 | no | 1578 | 0 | O2 optional |
 | hybrid_compile_stitch | 2 / 5 | no | 1587 | 0 | O3 optional |
@@ -77,8 +77,8 @@ only difference between the arms is new1, which compiles in simloop and not in s
 first prompt and the answers already differ there, so the difference is sampling, not STITCH
 (`reports/STITCH_VS_RETRY.md`). Retrying did not repair any NEW module either: so_clean is 0 in all three arms.
 
-**Q4. PPA.** No ORFS run is required (`handoff_orfs/`, all optional): no NEW NI module signed off, so no NI design
-measures LLM output. P1 measures two REUSED 2x2 modules inside the NI. O1 to O3 contain NEW LLM modules that compile but fail
+**Q4. PPA.** Pending the coworker's ORFS runs (`handoff_orfs/`): C0 and P1 requested (small), O1 to O3 optional.
+No NEW NI module signed off, so P1 differs from C0 only by the REUSED jk_ff and memory. P1 measures two REUSED 2x2 modules inside the NI. O1 to O3 contain NEW LLM modules that compile but fail
 the ni_pair properties; their PPA is indicative only.
 
 ### Audit findings

@@ -1,6 +1,6 @@
-# P1_hybrid_signoff_oneshot preflight (pipeline/handoff_study.py)
+# P1_hybrid_signoff_all_arms preflight (pipeline/handoff_study.py)
 
-PRIMARY: oneshot LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest; byte-identical to hybrid_signoff_simloop, hybrid_signoff_stitch. Optional.
+PRIMARY: LLM modules of all three arms (they give byte-identical designs) that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest. Required.
 
 Source: `assembled/hybrid_signoff_oneshot` (pipeline/assemble_study.py); identical designs: hybrid_signoff_simloop, hybrid_signoff_stitch.
 Modules: 10 (2 LLM-generated, 7 golden, 0 hand-written A1, 1 wrapper; see SOURCES.csv). Top: ni_pair.

@@ -1,6 +1,6 @@
-# P2_hybrid_signoff_simloop preflight (pipeline/handoff_study.py)
+# P2_hybrid_signoff_retry preflight (pipeline/handoff_study.py)
 
-PRIMARY: simloop LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest; byte-identical to hybrid_signoff_stitch. Required.
+PRIMARY: LLM modules of simloop and stitch (they give byte-identical designs) that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest. Required.
 
 Source: `assembled/hybrid_signoff_simloop` (pipeline/assemble_study.py); identical designs: hybrid_signoff_stitch.
 Modules: 34 (14 LLM-generated, 20 golden, 0 hand-written A1, 0 wrapper; see SOURCES.csv). Top: top_3x3_router.

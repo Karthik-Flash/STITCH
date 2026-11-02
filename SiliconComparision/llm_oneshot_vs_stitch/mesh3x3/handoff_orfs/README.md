@@ -7,7 +7,7 @@ These are 3x3 mesh routers (top `top_3x3_router`) in which some modules were wri
 1. Use your exact A1 ORFS setup: sky130hd, 10 ns clock, the same config.mk settings (keep A1's CORE_UTILIZATION and flow settings).
 2. Per design, take `designs/<ID>/config.mk.template`: DESIGN_NAME (`top_3x3_router`) and VERILOG_FILES (the files in `designs/<ID>/VERILOG_FILES.txt`, under `designs/<ID>/rtl/`) are filled in; copy every other line from your A1 config.mk.
 3. SDC: use your A1 constraint.sdc unchanged: `top_3x3_router` has the same clock port as `top_2x2_router` (`clk`; modules.csv, checked by pipeline/handoff_study.py).
-4. Run in this order: C0_control_all_golden, P1_hybrid_signoff_oneshot, P2_hybrid_signoff_simloop; then, optional: A1_style_3x3, O1_hybrid_compile_oneshot, O2_hybrid_compile_stitch.
+4. Run in this order: C0_control_all_golden, P1_hybrid_signoff_oneshot, P2_hybrid_signoff_retry; then, optional: A1_style_3x3, O1_hybrid_compile_oneshot, O2_hybrid_compile_stitch.
 
 ## Sanity check
 
@@ -27,8 +27,8 @@ PPA_TABLE.md, one row per design. Also run `check_setup -verbose` (OpenSTA) and 
 
 - A1_style_3x3: optional: the hand-written RTL with only the Yosys-aborting modules fixed; already measured as A1 / 3x3 (latch_study/PPA_SUMMARY.md, PPA_TABLE.md).
 - C0_control_all_golden: every module golden, through our assembly: like-for-like reference (B-style RTL).
-- P1_hybrid_signoff_oneshot: PRIMARY: oneshot LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest.
-- P2_hybrid_signoff_simloop: PRIMARY: simloop LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest; byte-identical to hybrid_signoff_stitch.
+- P1_hybrid_signoff_oneshot: PRIMARY: LLM modules of oneshot that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest.
+- P2_hybrid_signoff_retry: PRIMARY: LLM modules of simloop and stitch (they give byte-identical designs) that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest.
 - O1_hybrid_compile_oneshot: optional: every oneshot module that compiles, golden for the rest; fails the top tb, PPA indicative only.
 - O2_hybrid_compile_stitch: optional: every stitch module that compiles, golden for the rest; fails the top tb, PPA indicative only.
 

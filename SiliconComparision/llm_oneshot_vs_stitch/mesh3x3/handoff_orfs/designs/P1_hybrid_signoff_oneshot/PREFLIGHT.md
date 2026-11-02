@@ -1,6 +1,6 @@
 # P1_hybrid_signoff_oneshot preflight (pipeline/handoff_study.py)
 
-PRIMARY: oneshot LLM modules that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest. Required.
+PRIMARY: LLM modules of oneshot that pass their own sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest. Required.
 
 Source: `assembled/hybrid_signoff_oneshot` (pipeline/assemble_study.py); identical designs: none.
 Modules: 34 (9 LLM-generated, 25 golden, 0 hand-written A1, 0 wrapper; see SOURCES.csv). Top: top_3x3_router.

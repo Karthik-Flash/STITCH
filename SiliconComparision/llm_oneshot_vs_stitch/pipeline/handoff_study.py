@@ -72,9 +72,12 @@ def designs() -> tuple[list, list]:
         if did in have:
             n += 1
             al = have[did]["aliases"]
-            out.append((f"P{n}_{did}", did, True, f"PRIMARY: {arm} LLM modules that pass their own sign-off checks "
-                        "(REUSED modules: the 2x2 result of the same arm), golden for the rest" +
-                        (f"; byte-identical to {', '.join(al)}" if al else "")))
+            arms = [arm] + [a for a in A.ARMS if f"hybrid_signoff_{a}" in al]
+            tag, who = (("all_arms", "all three arms (they give byte-identical designs)") if len(arms) == 3 else
+                        ("retry", "simloop and stitch (they give byte-identical designs)") if arms == ["simloop", "stitch"]
+                        else (arm, arm))
+            out.append((f"P{n}_hybrid_signoff_{tag}", did, True, f"PRIMARY: LLM modules of {who} that pass their own "
+                        "sign-off checks (REUSED modules: the 2x2 result of the same arm), golden for the rest"))
         elif alias_of.get(did) == "control_all_golden":
             notes.append(f"{did}: byte-identical to control_all_golden: no LLM-generated module to measure")
     k = 0
@@ -88,8 +91,6 @@ def designs() -> tuple[list, list]:
                         (f"; byte-identical to {', '.join(al)}" if al else "")))
         elif did in have:
             notes.append(f"{did}: does not synthesise (Yosys: `{have[did]['yosys_error']}`)")
-    if A.NAME == "ni":   # no NEW NI module signed off: nothing here measures LLM output, so nothing is required
-        out = [(h, d, False, m) for h, d, _, m in out]
     return out, notes
 
 
@@ -250,11 +251,11 @@ def readme(ds: list, notes: list, ratio: float, sdc_text: str) -> str:
         order = f"4. Nothing is required. Optional, in this order: {', '.join(opt)}."
     return "\n".join([
         f"# {TAG} ORFS hand-off: LLM-generated modules", "",
-        *(["Optional. No newly generated NI module signed off, so no design here measures LLM output; P1 differs from "
-           "C0 only by two reused 2x2 leaves.", ""] if A.NAME == "ni" else []),
+        *(["Run C0 and P1 (both small and quick). No newly generated NI module signed off, so P1 differs from C0 "
+           "only by two reused 2x2 leaves (jk_ff, memory): expect nearly the same numbers.", ""]
+          if A.NAME == "ni" else []),
         f"These are {what} in which some modules were written by an LLM (qwen2.5-coder:32b) and the rest are golden, "
-        "plus the reference designs. " + ("If you run them, measure them" if A.NAME == "ni" else "We need their PPA, "
-                                           "measured") + " the same way as A1 and B in the 2x2 hand-off.", "",
+        "plus the reference designs. We need their PPA, measured the same way as A1 and B in the 2x2 hand-off.", "",
         "## How to run", "",
         "1. Use your exact A1 ORFS setup: sky130hd, 10 ns clock, the same config.mk settings (keep A1's "
         "CORE_UTILIZATION and flow settings).",

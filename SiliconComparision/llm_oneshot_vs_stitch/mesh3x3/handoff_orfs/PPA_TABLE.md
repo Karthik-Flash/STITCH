@@ -9,7 +9,7 @@
 | A1_style_3x3 |  |  |  |  |  | 6480 | reference (hand-written RTL, with latches); not simulated: the design does not compile in Icarus (PREFLIGHT.md) |
 | C0_control_all_golden |  |  |  |  |  | 0 | yes (passes the top tb) |
 | P1_hybrid_signoff_oneshot |  |  |  |  |  | 0 | no: fails the top tb only through 3 formally equivalent modules (PREFLIGHT.md) |
-| P2_hybrid_signoff_simloop |  |  |  |  |  | 0 | no: fails the top tb only through 5 formally equivalent modules (PREFLIGHT.md) |
+| P2_hybrid_signoff_retry |  |  |  |  |  | 0 | no: fails the top tb only through 5 formally equivalent modules (PREFLIGHT.md) |
 | O1_hybrid_compile_oneshot |  |  |  |  |  | 0 | no (fails the top tb) |
 | O2_hybrid_compile_stitch |  |  |  |  |  | 0 | no (fails the top tb) |
 

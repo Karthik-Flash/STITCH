@@ -1,4 +1,4 @@
-# ORFS config.mk template for P2_hybrid_signoff_simloop.
+# ORFS config.mk template for P2_hybrid_signoff_retry.
 # DESIGN_NAME and VERILOG_FILES are filled in. Every other line: copy it unchanged from your A1 config.mk
 # (sky130hd, 10 ns clock), including CORE_UTILIZATION and the flow settings. Give DESIGN_NICKNAME a
 # per-design value if your runs would otherwise overwrite each other.
