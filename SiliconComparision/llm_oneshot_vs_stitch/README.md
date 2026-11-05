@@ -1,3 +1,12 @@
+> **Closed on 2026-11-05.** qwen2.5-coder:32b passed none of the 18 hierarchical modules of the 2x2 mesh, nor the
+> 3x3 top, nor any of the 4 new NI modules. So no fully LLM-written design existed to synthesise, and the hybrid
+> designs below are mostly hand-written RTL. STITCH fixed no module that plain retry could not. The findings below
+> stand as recorded. The ORFS runs requested below (`handoff_orfs/`, Karthik-Flash/STITCH_ORFS) are not needed for
+> the follow-up study.
+>
+> Follow-up: `../LLM_generation_study/`, a smaller, clean 5-port router written entirely by the LLM and measured
+> in Vivado.
+
 # Start here (one page)
 
 **What we did.** A local LLM (Qwen2.5-Coder 32B) wrote every module of our NoC router from written specs: the 2x2

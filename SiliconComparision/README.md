@@ -1,12 +1,24 @@
-LLM vs STITCH study: start at llm_oneshot_vs_stitch/README.md (one-page summary at the top).
+Current study: `LLM_generation_study/README.md` (golden router ready; LLM generation next). The two earlier
+studies are closed.
 
 # SiliconComparision
 
 Silicon-level studies of the STITCH NoC designs. Each study lives in its own folder.
 
-## latch_study/
+## LLM_generation_study/ (current)
 
-Latch versus no-latch comparison on the 2x2 and 3x3 meshes and the MPSoC.
+An LLM writes every module of a 5-port NoC router (one-shot, retry loop, STITCH); each fully LLM-written router is
+simulated and implemented in Vivado for the ZedBoard against a golden reference.
+
+- `original_2x2_mesh_zedboard/`: the MPSoC's 2x2 mesh as built and tested on the ZedBoard (Vivado 2014.4).
+- `golden/`: the golden `router_5port` (7 modules), testbenches, constraints, and `DESIGN.md` (plain-language
+  explanation).
+- `scripts/`, `reports/`: every check and its report (testbenches, STITCH's struct_clean check, routing proof,
+  mutation test, Vivado).
+
+## latch_study/ (closed)
+
+Latch versus no-latch comparison on the 2x2 and 3x3 meshes and the MPSoC. Status: `latch_study/README.md`.
 
 - `A_original`: the hand-written design as received. Yosys aborts on it.
 - `A1_original_synthesisable`: A with only `register_1bit` replaced, so it synthesises. Keeps the inferred latches
@@ -19,9 +31,9 @@ Latch versus no-latch comparison on the 2x2 and 3x3 meshes and the MPSoC.
 - `COWORKER_BRIEF.md`, `PPA_SUMMARY.md`, `MANIFEST.md`: brief, PPA results and file inventory with SHA-256.
 - `stitch_noc_analysis_bundle/` is local-only (gitignored).
 
-## llm_oneshot_vs_stitch/
+## llm_oneshot_vs_stitch/ (closed)
 
-LLM one-shot generation versus STITCH: the 2x2 mesh (this folder), the new top of the 3x3 mesh (`mesh3x3/`) and
+Closed on 2026-11-05 (banner at the top of its README). LLM one-shot generation versus STITCH: the 2x2 mesh (this folder), the new top of the 3x3 mesh (`mesh3x3/`) and
 the network interface (`ni/`). OpenROAD path; no Vivado (Icarus Verilog, Verilator, Yosys). The 2x2 golden reference
 is the hand-written 2x2 hierarchy rooted at `top_2x2_router`.
 
