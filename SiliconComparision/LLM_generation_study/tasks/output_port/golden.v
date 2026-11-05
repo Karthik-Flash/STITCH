@@ -1,5 +1,3 @@
-// One router output. When free, it grants one of 4 requesters round-robin; the granted requester then
-// holds the output until its tail flit has been sent (wormhole). The flit leaves on a register.
 module output_port (
     input             clk,
     input             reset,

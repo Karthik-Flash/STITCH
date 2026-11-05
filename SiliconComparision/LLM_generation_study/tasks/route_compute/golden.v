@@ -1,5 +1,3 @@
-// Row-first routing of a head flit, as routing_algo_mesh in the MPSoC router.
-// req is one-hot: [0] link1, [1] link2, [2] link3, [3] link4, [4] core. Zero unless flit is a head flit.
 module route_compute (
     input  [31:0] flit,
     input  [7:0]  current_address,

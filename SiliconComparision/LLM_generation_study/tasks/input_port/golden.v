@@ -1,5 +1,3 @@
-// One router input: buffers incoming flits and requests an output for the flit at the head of the buffer.
-// The route of a packet is computed from its head flit and held until the packet's tail flit is read.
 module input_port (
     input         clk,
     input         reset,

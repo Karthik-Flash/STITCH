@@ -4,7 +4,9 @@ llm_oneshot_vs_stitch pipeline read) for the 7 modules of the golden router. tas
 golden/ and run this again.
 
   spec.md            specs/<m>.md without the generated-block markers: the only text the LLM gets about the module
-  golden.v           golden/rtl/<m>.v
+  golden.v           golden/rtl/<m>.v from its `module` line on. The header comment is left out: the runner's
+                     extract_code() starts at the first "module" in a reply, and router_5port's comment says
+                     "top_module", so the runner's mock (which replies with golden.v) would cut the code there.
   input.v            port-only stub of the module (placeholder: the pipeline puts the one-shot output here in its
                      per-run copy of the task)
   tb.v               golden/tb/tb_<m>.v, unchanged: the testbench whose results the loop arms see
@@ -80,7 +82,8 @@ def main():
     for m in SP.MODULES:
         d = os.path.join(TASKS, m)
         write(os.path.join(d, "spec.md"), MARKER.sub("", open(os.path.join(SP.SPECS, m + ".md"), encoding="utf-8").read()))
-        write(os.path.join(d, "golden.v"), open(os.path.join(SP.RTL, m + ".v")).read())
+        src = open(os.path.join(SP.RTL, m + ".v")).read()
+        write(os.path.join(d, "golden.v"), src[src.index(f"module {m} ("):])
         write(os.path.join(d, "input.v"), stub(m))
         write(os.path.join(d, "tb.v"), open(os.path.join(TB, f"tb_{m}.v")).read())
         write(os.path.join(d, "tb_signoff.v"), signoff(f"tb_{m}.v"))

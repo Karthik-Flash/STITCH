@@ -1,5 +1,3 @@
-// Input buffer: synchronous FIFO, 4 entries of 32 bits, first-word fall-through.
-// A write when 4 flits are stored, or a read when none are, is ignored.
 module fifo (
     input         clk,
     input         reset,

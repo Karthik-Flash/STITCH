@@ -31,7 +31,7 @@ Spec port blocks equal the golden ports: yes.
 | output_port | `tb_signoff.v` | PASS | 0.5 | ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in) |
 | output_port | struct_clean (task mode) | yes | | Yosys ok True, latches 0, loops 0, hard lint 0 |
 | router_5port | `tb.v` | PASS | 0.4 | ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles) |
-| router_5port | `tb_signoff.v` | PASS | 0.7 | ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles) |
+| router_5port | `tb_signoff.v` | PASS | 0.8 | ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles) |
 | router_5port | `tb_signoff_mesh.v` | PASS | 0.4 | ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles) |
 | router_5port | struct_clean (task mode) | yes | | Yosys ok True, latches 0, loops 0, hard lint 0 |
 

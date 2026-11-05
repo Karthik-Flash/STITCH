@@ -7,8 +7,8 @@ This page lists every command for the BITS Hyderabad HPC, in order. Copy each co
 - Study folder on the cluster: `/scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study`
 - Job logs on the cluster: `hpc_logs/` in the study folder
 
-Phase 0 (this page, for now): check that the cluster is ready, get both models, pick the fastest node, and run a
-10-minute GPU smoke test. Generation jobs are added in phase 2.
+Phase 0 (sections 1 to 6, done 2026-11-05, smoke job 434111): cluster checks, both models, node choice, GPU smoke
+test. Generation (section 7): one job per model, both at the same time.
 
 | file in `hpc/` | runs on | what it does |
 |---|---|---|
@@ -19,6 +19,7 @@ Phase 0 (this page, for now): check that the cluster is ready, get both models, 
 | `step3_pick_node.sh` | login node | start time on every H200/H100/A100 node; prints the sbatch line for the best one |
 | `step4_smoke_test.slurm` | GPU node | GPU memory, golden checks on the cluster tools, both models answer |
 | `model_check.py` | GPU node | one prompt to one model; digest, quantisation, tok/s (used by step 4) |
+| `gen_job.slurm` | GPU node | generation for one model: freeze check, mock test, preflight, `pipeline/generate.py` |
 
 Models:
 
@@ -31,7 +32,8 @@ Models:
 
 1. **Paste one line at a time.** Pasting several lines at once can garble them.
 2. **Never edit files on the HPC.** Change the repository on the laptop, commit, and deploy again (step 1).
-3. **One job of this study at a time.** Before you submit, `squeue -u soumyaj` must show no `llmgen_` job.
+3. **One job per model at a time.** The qwen job and the Gemma job may run together (each writes only to
+   `results/<model>/` and has its own Ollama port), but never two jobs of the same model.
 4. **The site allows 4 CPUs per GPU.** The job scripts ask for 4. Do not add `--cpus-per-task`.
 
 ## 1. Deploy (laptop, PowerShell)
@@ -205,6 +207,138 @@ scp "soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/STITCH_GEN/SiliconCompari
 
 The folder then holds `smoke_<JOBID>.log`, `golden_checks_hpc_<JOBID>.md`, `MODELS.txt`, `JOBIDS.txt` and the
 Ollama server logs. Phase 0 is done when `SMOKE: ALL PASSED`.
+
+## 7. Generation: qwen and Gemma at the same time
+
+Each job: freeze check (`FREEZE.sha256`), mock end-to-end test, Ollama, preflight (GPU, cluster tools, the golden of
+every task through the pipeline's own checks, model digest), then `pipeline/generate.py`: one-shot, simloop and stitch
+for 7 modules x 5 reps. Results go to `results/qwen2.5-coder_32b/` and `results/gemma4_31b-it-q4_K_M/`.
+
+Deploy the frozen commit first (section 1), then on the HPC:
+
+```bash
+cd /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study
+```
+
+It must show the commit you deployed:
+
+```bash
+cat DEPLOYED_COMMIT.txt
+```
+
+Must show no `llmgen_qwen` or `llmgen_gemma` job:
+
+```bash
+squeue -u soumyaj
+```
+
+Pick the node for qwen (24-hour limit):
+
+```bash
+bash hpc/step3_pick_node.sh hpc/gen_job.slurm --time=24:00:00 -J llmgen_qwen --export=ALL,GEN=qwen
+```
+
+Paste the `JOB=$(sbatch ...)` line it prints, then save it:
+
+```bash
+QJOB=$JOB; echo "$QJOB $(date '+%F %T') gen qwen $(squeue -h -j $QJOB -o '%P %N')" >> hpc_logs/JOBIDS.txt
+```
+
+Pick the node for Gemma. Slurm now counts the qwen job, so the answer may differ:
+
+```bash
+bash hpc/step3_pick_node.sh hpc/gen_job.slurm --time=24:00:00 -J llmgen_gemma --export=ALL,GEN=gemma
+```
+
+Paste the `JOB=$(sbatch ...)` line it prints, then save it:
+
+```bash
+GJOB=$JOB; echo "$GJOB $(date '+%F %T') gen gemma $(squeue -h -j $GJOB -o '%P %N')" >> hpc_logs/JOBIDS.txt
+```
+
+Expected starts:
+
+```bash
+squeue --start -u soumyaj
+```
+
+New terminal later? Set both job numbers again:
+
+```bash
+QJOB=$(grep ' gen qwen' hpc_logs/JOBIDS.txt | tail -1 | cut -d' ' -f1); GJOB=$(grep ' gen gemma' hpc_logs/JOBIDS.txt | tail -1 | cut -d' ' -f1); echo $QJOB $GJOB
+```
+
+### First check, about 15 minutes after a job shows `R`
+
+```bash
+grep -hE "^\[(freeze|gpu|tools|golden|digest|gpu offload|threads|speed)\]|MOCK E2E|PREFLIGHT|FAILED" hpc_logs/gen_llmgen_qwen_$QJOB.log hpc_logs/gen_llmgen_gemma_$GJOB.log
+```
+
+Expected for each job: `[freeze] ok`, `MOCK E2E: PASS`, `[gpu] ok`, 3 `[tools] ok`, 7 `[golden] ok`, `[digest] ok`,
+`PREFLIGHT: ALL PASSED`, then `[gpu offload] offloaded N/N layers`, `[threads] ok`, `[speed] ok`.
+
+### Monitor
+
+```bash
+squeue -u soumyaj -o "%.10i %.14j %.8T %.10M %.10L %.10N %R"
+```
+
+Finished outputs per model (oneshot, simloop, stitch; 35 35 35 when done):
+
+```bash
+for d in results/*/; do echo "$d $(ls $d/outputs/oneshot/rep*/*.v 2>/dev/null | wc -l) $(ls $d/outputs/simloop/rep*/*.v 2>/dev/null | wc -l) $(ls $d/outputs/stitch/rep*/*.v 2>/dev/null | wc -l)"; done
+```
+
+Last lines of both logs:
+
+```bash
+tail -3 hpc_logs/gen_llmgen_qwen_$QJOB.log hpc_logs/gen_llmgen_gemma_$GJOB.log
+```
+
+### When a job ends
+
+```bash
+sacct -j $QJOB,$GJOB -X -o JobID,JobName,State,ExitCode,Elapsed
+```
+
+| State / ExitCode | Meaning | What to do |
+|---|---|---|
+| `COMPLETED` `0:0` | `GENERATION DONE`: 35 outputs per arm. | Copy back (below). |
+| `FAILED` `2:0` or `TIMEOUT` | Unfinished work (listed at the end of the log). | Resubmit the same model (pick a node again); finished work is skipped. |
+| `FAILED` `1:0` | Freeze check, mock test or preflight failed; nothing generated. | Send `tail -40` of the log. |
+| `FAILED` `3:0` | First-call check: wrong thread count or below 8 tok/s. | Do not resubmit; send `tail -40` of the log. |
+
+### Copy the results back (both jobs ended)
+
+On the HPC, in the study folder:
+
+```bash
+tar -czf /scratch/soumyaj/STITCH_GEN/llmgen_results.tgz results hpc_logs
+```
+
+```bash
+sha256sum /scratch/soumyaj/STITCH_GEN/llmgen_results.tgz
+```
+
+On the laptop (PowerShell):
+
+```powershell
+cd D:\Projects\STITCH
+```
+
+```powershell
+scp soumyaj@hpc.bits-hyderabad.ac.in:/scratch/soumyaj/STITCH_GEN/llmgen_results.tgz $env:TEMP\llmgen_results.tgz
+```
+
+It must equal the HPC hash (PowerShell prints capitals):
+
+```powershell
+Get-FileHash -Algorithm SHA256 $env:TEMP\llmgen_results.tgz
+```
+
+```powershell
+tar -xzf $env:TEMP\llmgen_results.tgz -C SiliconComparision\LLM_generation_study
+```
 
 ## Troubleshooting
 

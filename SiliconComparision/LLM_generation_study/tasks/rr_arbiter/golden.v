@@ -1,5 +1,3 @@
-// Round-robin arbiter for 4 requesters. gnt is one-hot, or zero when no requester asks.
-// The requester after the last one granted has the highest priority; after reset requester 0 has it.
 module rr_arbiter (
     input            clk,
     input            reset,

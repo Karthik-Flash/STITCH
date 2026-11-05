@@ -7,5 +7,7 @@ reports/** text eol=lf
 specs/** text eol=lf
 tasks/** text eol=lf
 hpc/** text eol=lf
+pipeline/** text eol=lf
+FREEZE.sha256 text eol=lf
 # Images are binary everywhere (overrides the text rules above).
 *.png binary

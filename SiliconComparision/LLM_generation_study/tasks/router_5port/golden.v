@@ -1,6 +1,3 @@
-// 5-port mesh router (link1..link4, core), one virtual channel, wormhole switching, row-first routing.
-// Pins and flit format follow the MPSoC router top_module. Each output serves the 4 other inputs, in the
-// order link1, link2, link3, link4, core with its own port left out (a packet never leaves where it came in).
 module router_5port (
     input         clk,
     input         reset,
