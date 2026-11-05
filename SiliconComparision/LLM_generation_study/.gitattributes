@@ -1,0 +1,8 @@
+# The original project is kept byte for byte as downloaded (CRLF included).
+original_2x2_mesh_zedboard/** -text
+# Golden files and scripts: LF everywhere, so the sha256 values in reports/GOLDEN_CHECKS.md hold on any OS.
+golden/** text eol=lf
+scripts/** text eol=lf
+reports/** text eol=lf
+# Images are binary everywhere (overrides the text rules above).
+*.png binary

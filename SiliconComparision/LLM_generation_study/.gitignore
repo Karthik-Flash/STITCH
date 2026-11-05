@@ -1,0 +1,21 @@
+# Vivado runs and the GUI project: regenerate with scripts/vivado/run_vivado.py and scripts/vivado/create_project.tcl
+/vivado/
+.Xil/
+*.jou
+
+# Original ZedBoard project, as downloaded: track its sources, constraints, project file, IP configurations,
+# board screenshots and the routed-run reports that reports/ORIGINAL.md is generated from. Everything else
+# (caches, simulation and run folders, generated IP, checkpoints, the bitstream) stays local.
+/original_2x2_mesh_zedboard/**
+!/original_2x2_mesh_zedboard/**/
+!/original_2x2_mesh_zedboard/Outputs_2x2/*.png
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.xpr
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.srcs/sources_1/imports/**/*.v
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.srcs/sim_1/**/*.v
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.srcs/constrs_1/**/*.xdc
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.srcs/sources_1/ip/*/*.xci
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_utilization_placed.rpt
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_timing_summary_routed.rpt
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_drc_routed.rpt
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_power_routed.rpt
+!/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/synth_3/runme.log
