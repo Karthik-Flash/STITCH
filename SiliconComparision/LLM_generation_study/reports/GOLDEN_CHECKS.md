@@ -67,5 +67,5 @@ The golden is frozen at these contents; any change means rerunning every check.
 | `golden/tb/tb_output_port.v` | `b6a744dc3474e6775520c05c088f0f6a028c4aad873ca965ceb442cdfdab7c3b` |
 | `golden/tb/tb_route_compute.v` | `de64fa546f31f92096200e7c78019a4894d4b2a05707e221b4212aedfac0d642` |
 | `golden/tb/tb_router_5port.v` | `e4c5f0d2cae6a7362295fc05161bea6c4a98f00b80776c029bfecafb3ca09a6b` |
-| `golden/tb/tb_rr_arbiter.v` | `d3c3316b410641cd7887e506d71b8da8aa6fb931bc6056c0ad8900481ef0b084` |
+| `golden/tb/tb_rr_arbiter.v` | `0fe26e3c0423ac6c19c207a9dc1a674e71d4fccb85befc6fddb80496979591aa` |
 | `golden/constraints/router_5port.xdc` | `be639b9453de1bf2426ea1595752498f0090c42287df8bbf6a29bc4ee21884d0` |

@@ -1,0 +1,26 @@
+module router_5port (
+    input clk,
+    input reset,
+    input [7:0] current_address,
+    input [31:0] data_in_link1,
+    input [31:0] data_in_link2,
+    input [31:0] data_in_link3,
+    input [31:0] data_in_link4,
+    input [31:0] data_in_core,
+    input full_in_link1,
+    input full_in_link2,
+    input full_in_link3,
+    input full_in_link4,
+    input full_in_core,
+    output [31:0] data_out_link1,
+    output [31:0] data_out_link2,
+    output [31:0] data_out_link3,
+    output [31:0] data_out_link4,
+    output [31:0] data_out_core,
+    output full_out_link1,
+    output full_out_link2,
+    output full_out_link3,
+    output full_out_link4,
+    output full_out_core
+);
+endmodule

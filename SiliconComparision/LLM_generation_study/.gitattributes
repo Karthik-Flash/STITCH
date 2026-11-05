@@ -4,5 +4,8 @@ original_2x2_mesh_zedboard/** -text
 golden/** text eol=lf
 scripts/** text eol=lf
 reports/** text eol=lf
+specs/** text eol=lf
+tasks/** text eol=lf
+hpc/** text eol=lf
 # Images are binary everywhere (overrides the text rules above).
 *.png binary

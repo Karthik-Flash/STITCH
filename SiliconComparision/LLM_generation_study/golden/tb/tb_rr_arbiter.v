@@ -23,6 +23,7 @@ module tb;
             advance = ($random(seed) % 3) != 0;
             if (cyc == 12345) begin
                 reset = 1; @(posedge clk); last = 3; @(negedge clk); reset = 0;
+                for (k = 0; k < 4; k = k + 1) waiting[k] = 0;   // the reset restarts the priority: restart the count
             end
             #1;
             expected = 4'b0000;
