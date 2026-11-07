@@ -25,3 +25,6 @@
 /results/**/*.vvp
 /results/**/*.log
 /results/**/*.tmp
+
+# Two-page brief for coworkers (LaTeX source, screenshots, PDF): local only
+/brief/
