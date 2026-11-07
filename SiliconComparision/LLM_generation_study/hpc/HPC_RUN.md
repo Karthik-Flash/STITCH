@@ -268,6 +268,23 @@ New terminal later? Set both job numbers again:
 QJOB=$(grep ' gen qwen' hpc_logs/JOBIDS.txt | tail -1 | cut -d' ' -f1); GJOB=$(grep ' gen gemma' hpc_logs/JOBIDS.txt | tail -1 | cut -d' ' -f1); echo $QJOB $GJOB
 ```
 
+### As actually run (2026-11-05 to 2026-11-07): 2-hour chunks
+
+A 24-hour job would have waited until 2026-11-08 (an 8-hour one until 2026-11-16), and the cluster rejects a job
+that names two partitions ("Multiple partition job request not supported"). The work therefore ran in 2-hour jobs
+with the same job name and `--dependency=singleton`: Slurm runs them one at a time, each continues where the last
+stopped (finished work is skipped), and a job with nothing left ends in a few minutes. From the study folder:
+
+```bash
+for i in 1 2 3; do sbatch --parsable --partition=gpu_h200_8 --time=2:00:00 -J llmgen_qwen --dependency=singleton --export=ALL,GEN=qwen hpc/gen_job.slurm; sbatch --parsable --partition=gpu_h100_4 --time=2:00:00 -J llmgen_qwen --dependency=singleton --export=ALL,GEN=qwen hpc/gen_job.slurm; done
+```
+
+(the same with `-J llmgen_gemma` and `GEN=gemma` for Gemma). When `results/<model>/outputs/*/rep*/*.v` holds 35
+files per arm, cancel the jobs still waiting: `scancel -u soumyaj -t PENDING -n llmgen_qwen`. Jobs that ran: Gemma
+434462 and 434463; qwen 434444, 436070 and 436071 (`hpc_logs/gen_llmgen_*.log`).
+
+Pack the results from the study folder (`cd` first; a `tar` started elsewhere packs nothing).
+
 ### First check, about 15 minutes after a job shows `R`
 
 ```bash

@@ -1,20 +1,24 @@
-Current study: `LLM_generation_study/README.md` (golden router ready; LLM generation next). The two earlier
-studies are closed.
+Latest study: `LLM_generation_study/README.md` (done 2026-11-07). The two earlier studies are closed.
 
 # SiliconComparision
 
 Silicon-level studies of the STITCH NoC designs. Each study lives in its own folder.
 
-## LLM_generation_study/ (current)
+## LLM_generation_study/ (done 2026-11-07)
 
-An LLM writes every module of a 5-port NoC router (one-shot, retry loop, STITCH); each fully LLM-written router is
-simulated and implemented in Vivado for the ZedBoard against a golden reference.
+An LLM writes every module of a 5-port NoC router from specs (one-shot, simulation loop, STITCH loop; 5 reps each);
+each fully LLM-written router is simulated and implemented in Vivado for the ZedBoard against a golden reference.
+Result: Gemma 4 31B gives working routers only with feedback (0 of 5 one-shot, 3 of 5 simulation loop, 4 of 5
+STITCH loop), all meeting timing with Vivado numbers close to the golden's; qwen2.5-coder 32B gives none in any arm.
+The README starts with a plain-language account, then the technical record.
 
 - `original_2x2_mesh_zedboard/`: the MPSoC's 2x2 mesh as built and tested on the ZedBoard (Vivado 2014.4).
 - `golden/`: the golden `router_5port` (7 modules), testbenches, constraints, and `DESIGN.md` (plain-language
   explanation).
 - `scripts/`, `reports/`: every check and its report (testbenches, STITCH's struct_clean check, routing proof,
   mutation test, Vivado).
+- `specs/`, `tasks/`: what each model was given; `pipeline/`, `hpc/`: the frozen generation job and its cluster
+  commands; `results/`: everything the models produced; `hpc_logs/`: the job logs.
 
 ## latch_study/ (closed)
 
