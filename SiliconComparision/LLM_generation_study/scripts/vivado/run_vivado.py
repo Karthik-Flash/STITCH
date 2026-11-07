@@ -54,14 +54,14 @@ def xsim(tb):
     return ("PASS" if "ALL TESTS PASSED" in log and "FAIL" not in log else "FAIL"), line
 
 
-def flow():
-    out = os.path.join(OUT, TOP)
+def flow(rtl=RTL, out=os.path.join(OUT, TOP)):
+    """flow.tcl on every .v in rtl (default: the golden); reports go to out."""
     shutil.rmtree(out, ignore_errors=True)
     os.makedirs(out, exist_ok=True)
     tcl = os.path.join(STUDY, "scripts", "vivado", "flow.tcl")
     rc, _ = run([tool("vivado"), "-mode", "batch", "-nojournal", "-log", os.path.join(out, "vivado.log"),
-                 "-source", tcl, "-tclargs", RTL.replace("\\", "/"), XDC.replace("\\", "/"), TOP,
-                 out.replace("\\", "/")], STUDY, "vivado/flow.out")
+                 "-source", tcl, "-tclargs", rtl.replace("\\", "/"), XDC.replace("\\", "/"), TOP,
+                 out.replace("\\", "/")], out, "flow.out")
     return out
 
 

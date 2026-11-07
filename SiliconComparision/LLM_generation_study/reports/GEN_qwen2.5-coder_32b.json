@@ -1,0 +1,3221 @@
+{
+ "rows": {
+  "fifo|oneshot|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 302,
+   "sha": "369fd6fe45975608ae64d58fcdddd44cd61c3336a501f6a4ec0b8236873bc585",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 310,
+   "sha": "3529fe7cb7a8500ba9d1b2950ba0f85d3efcc579c4beaaf6b5492b6cd73a1c03",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 346,
+   "sha": "e4f1ad18c497226e0dc9938a7b7f66840452c46dd21f9d707779e96aae0505aa",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 612,
+   "sha": "c74a5c95a533fc7f5fc1f8b274af9152652216516186e69498501ce6545ccbac",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 355,
+   "sha": "7cfd8a59912a929827f65d2a53341eff8711fac03fa15f1c391df7fd416e55f7",
+   "extraction_cut": false
+  },
+  "fifo|simloop|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 5: almost_full=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 5601,
+   "sha": "6394bf263d35ea53bbc9f18a6414a2fd2f0962427d2bd0f4c40430d485ec7322",
+   "extraction_cut": false
+  },
+  "fifo|simloop|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 5: almost_full=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 5317,
+   "sha": "25f56063092984086d5d3c4029ef3f39425af60032869e791bc561e330b2f1c6",
+   "extraction_cut": false
+  },
+  "fifo|simloop|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 6
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 6169,
+   "sha": "e975d717b3e2aac67b727469a0fb0715ba280358417508036d5cdc77fc84a9a1",
+   "extraction_cut": false
+  },
+  "fifo|simloop|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3423,
+   "sha": "a92d4f09bc5d6a095d23dd1228fbbae37560ea9ed4340ac71cc72cce2e714268",
+   "extraction_cut": false
+  },
+  "fifo|simloop|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 6
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8727,
+   "sha": "daefd008f52443f0e7e8ed66a900436a9a92f5eb0edd7a329924689c53a795f5",
+   "extraction_cut": false
+  },
+  "fifo|stitch|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 3: almost_full=1, model count 2"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3470,
+   "sha": "ecf630e7f81c1132de1dff64a435560f12657695d5d0003f2e609c1bea1a63b0",
+   "extraction_cut": false
+  },
+  "fifo|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 5: almost_full=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3704,
+   "sha": "1e022b1097c26c29157d36fb70131134c5f29f61d2052ca6adddf570113b01ea",
+   "extraction_cut": false
+  },
+  "fifo|stitch|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "WIDTHEXPAND"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 3229,
+   "sha": "43786abd2f667650bead3ffe5d433209c6887bf6322870ecb3e7cf0c20a4e47d",
+   "extraction_cut": false
+  },
+  "fifo|stitch|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3401,
+   "sha": "a92d4f09bc5d6a095d23dd1228fbbae37560ea9ed4340ac71cc72cce2e714268",
+   "extraction_cut": false
+  },
+  "fifo|stitch|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 2: empty=1, model count 1"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "WIDTHEXPAND"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 4240,
+   "sha": "d8b4bab4b073ce7c8421a4f81b448168268a1a1dde0c73651f912ade12db3c51",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 392,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 392,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 392,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 392,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 392,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": false
+  },
+  "route_compute|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+   "extraction_cut": null
+  },
+  "rr_arbiter|oneshot|1": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 631,
+   "sha": "f186fdf041be55ecbb997cee6d35f99663276911dc6fe8538042b3f7369c8e61",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|2": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 650,
+   "sha": "986677e3d2074211feb667d6f8132b30434a8210b8e1711769ab4706f46880fb",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "13b7cc463e59ade3b24eba8edbb56dfcdfd25cba1a71af25b17727ed78aaf1e5",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "92a85ddf113ac14244314df4e4ccffa0a2bcc6ec3df4e9677f0e5b7a5df264ba",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 651,
+   "sha": "efa38d0def09bbcbd3572c096077e96d0228517c596681c839b54a7cdfa4f96e",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 631,
+   "sha": "2cdafa7a1c12001dd8cfa33a8710881b49e9bdd08898fa9e6890cd54665804fb",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 650,
+   "sha": "8361d44723f03aa16fd8fd39c6e124d0e08eaf6b812e6e9159ae9ffd5612561e",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "63f5653aaa4d62e31082c90ac2ccf7c6fdbcc3f7eb02dadb1e00fdab0904dac8",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "677267526a1ad8f9eecde26993dba5d98f6e9e0893f8dd98af0944cd251cc4e3",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 651,
+   "sha": "9a72f28d4b0db92e7d0f0eba5a9c4781a2ed6b9e6c341449d17dbbfc491485ea",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 631,
+   "sha": "2cdafa7a1c12001dd8cfa33a8710881b49e9bdd08898fa9e6890cd54665804fb",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 650,
+   "sha": "8361d44723f03aa16fd8fd39c6e124d0e08eaf6b812e6e9159ae9ffd5612561e",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "63f5653aaa4d62e31082c90ac2ccf7c6fdbcc3f7eb02dadb1e00fdab0904dac8",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 633,
+   "sha": "677267526a1ad8f9eecde26993dba5d98f6e9e0893f8dd98af0944cd251cc4e3",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 651,
+   "sha": "9a72f28d4b0db92e7d0f0eba5a9c4781a2ed6b9e6c341449d17dbbfc491485ea",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|1": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 178,
+   "sha": "240317bbcea101594abe57faa5bf8f189b7b671677ac4f670080188dbb54ab35",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|2": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 168,
+   "sha": "dfff4c46341a7fb788ce2b36bdd7fe55fdf37a92ae2290a10a41725700a81b21",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 168,
+   "sha": "dfff4c46341a7fb788ce2b36bdd7fe55fdf37a92ae2290a10a41725700a81b21",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 178,
+   "sha": "240317bbcea101594abe57faa5bf8f189b7b671677ac4f670080188dbb54ab35",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 168,
+   "sha": "dfff4c46341a7fb788ce2b36bdd7fe55fdf37a92ae2290a10a41725700a81b21",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 190,
+   "sha": "0229439b25e90a809ec2e7705118233d020d9077d92fbe7c80a0f5d35f3b0733",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 190,
+   "sha": "0229439b25e90a809ec2e7705118233d020d9077d92fbe7c80a0f5d35f3b0733",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "flit_mux|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 190,
+   "sha": "0229439b25e90a809ec2e7705118233d020d9077d92fbe7c80a0f5d35f3b0733",
+   "extraction_cut": false
+  },
+  "flit_mux|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "flit_mux|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "flit_mux|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 190,
+   "sha": "0229439b25e90a809ec2e7705118233d020d9077d92fbe7c80a0f5d35f3b0733",
+   "extraction_cut": false
+  },
+  "flit_mux|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 159,
+   "sha": "6a0b98dfe686a6783f634cd068475eb5e35294972e5866b4f37774a8dd9636d6",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|1": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 394,
+   "sha": "4d4cc68a56e9fa24fdf0943b38fff405484c3c43f69f0873a4e9f60041582a0c",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|2": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 459,
+   "sha": "e65627f5bc3d1e98522c64f20df0e71a945573a45b1ff8d20c32ff3d33b6a677",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 381,
+   "sha": "f19eda21c8c2f8910fc137752a672bf45eb993b07c08ae42288cdbbfdbe3a23b",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 459,
+   "sha": "e65627f5bc3d1e98522c64f20df0e71a945573a45b1ff8d20c32ff3d33b6a677",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 381,
+   "sha": "f19eda21c8c2f8910fc137752a672bf45eb993b07c08ae42288cdbbfdbe3a23b",
+   "extraction_cut": false
+  },
+  "input_port|simloop|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 15: full_out=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3211,
+   "sha": "0127bbf50df71b2830fb98190cf43b88c1f529ff36a7de8d5f58af7927d9df0c",
+   "extraction_cut": false
+  },
+  "input_port|simloop|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=00000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 4558,
+   "sha": "cab077b4206f1526ba428a3311610686dd6f915326a700c9c2edd4bd12519e47",
+   "extraction_cut": false
+  },
+  "input_port|simloop|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3372,
+   "sha": "87bda1a1aca5018b87065090be41d26f4e063708e6d2399b9c11ab1ed35dea95",
+   "extraction_cut": false
+  },
+  "input_port|simloop|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=00000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 5507,
+   "sha": "cab077b4206f1526ba428a3311610686dd6f915326a700c9c2edd4bd12519e47",
+   "extraction_cut": false
+  },
+  "input_port|simloop|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 3176,
+   "sha": "80e93c2c56f4d5d48f5be13cf6148901b9c3d5fa332d39d456656d465a1d6a3c",
+   "extraction_cut": false
+  },
+  "input_port|stitch|1": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 2639,
+   "sha": "5c4df3666f7b01c0cdf63c2ee9f3b0845a432ecc6852f69c7e28cd6f97ba74a8",
+   "extraction_cut": false
+  },
+  "input_port|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 15: full_out=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 2851,
+   "sha": "dcd9fa6e1202718806b8f2b4aa1303891f93fa0d729f6ecee1bb0cbf80c78bc3",
+   "extraction_cut": false
+  },
+  "input_port|stitch|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 15: full_out=0, model count 3"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 2543,
+   "sha": "3a08fc442a7ba04c328de647de8d5ada088331004213152dbd32d8267bfdf74e",
+   "extraction_cut": false
+  },
+  "input_port|stitch|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 3124,
+   "sha": "d7f07e44fe035ec61e3bf206b315534f1ec081f1f2e2f7fbfeaaf25adb476217",
+   "extraction_cut": false
+  },
+  "input_port|stitch|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 2685,
+   "sha": "a2205261343e2df022f30ef97a17d018cef07aeaf1224d7ab624d8c8d074610a",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 674,
+   "sha": "6187c78c7963e1e1ec67635cd07756d398a66332bf9158692b5581e6ad82ffc4",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 674,
+   "sha": "6187c78c7963e1e1ec67635cd07756d398a66332bf9158692b5581e6ad82ffc4",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 686,
+   "sha": "393d147248b9bd21e8c676a449c79888ec3329b66c3e6e6fddc1f67ce7ab0b1e",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 672,
+   "sha": "27923570a9e537703ab00523dc52fbdd3fcf0eff880dce68ffbff91b0f3499f9",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 674,
+   "sha": "6187c78c7963e1e1ec67635cd07756d398a66332bf9158692b5581e6ad82ffc4",
+   "extraction_cut": false
+  },
+  "output_port|simloop|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "MULTIDRIVENPROC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: data_out=60000000, expected 9e8fa2bd"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 6218,
+   "sha": "e61f71ac897be795ffd0cf161fff9a6d300575bcb4d91e9ad02e9035d553701a",
+   "extraction_cut": false
+  },
+  "output_port|simloop|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "MULTIDRIVENPROC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: data_out=60000000, expected 9e8fa2bd"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 7517,
+   "sha": "e61f71ac897be795ffd0cf161fff9a6d300575bcb4d91e9ad02e9035d553701a",
+   "extraction_cut": false
+  },
+  "output_port|simloop|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 4807,
+   "sha": "8315f1dd162061e3e37b68adce9bf84f7481e601096b0df8250c835c68d85d70",
+   "extraction_cut": false
+  },
+  "output_port|simloop|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 5245,
+   "sha": "b8b2a18780ce455209d42de769f47ebd07f55aa19b46de0313972e3b69c5f714",
+   "extraction_cut": false
+  },
+  "output_port|simloop|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "MULTIDRIVENPROC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: data_out=60000000, expected 9e8fa2bd"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 6525,
+   "sha": "e61f71ac897be795ffd0cf161fff9a6d300575bcb4d91e9ad02e9035d553701a",
+   "extraction_cut": false
+  },
+  "output_port|stitch|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 6064,
+   "sha": "53c91e4586762335704222844fce133da8c23a0b98e7a95b023dcb2ce5456c66",
+   "extraction_cut": false
+  },
+  "output_port|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 6587,
+   "sha": "53c91e4586762335704222844fce133da8c23a0b98e7a95b023dcb2ce5456c66",
+   "extraction_cut": false
+  },
+  "output_port|stitch|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 5457,
+   "sha": "d27a44b0012d4a7af53b02eeb87835b7810c8176e6dfa1ee97e8a35c66c2dec6",
+   "extraction_cut": false
+  },
+  "output_port|stitch|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 4877,
+   "sha": "d110cccf9fb3e397430824d398c8776264da5288f08eddb23e52b61726601071",
+   "extraction_cut": false
+  },
+  "output_port|stitch|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 10,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 0: req 1000 owner 0000: pop=0000, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 5996,
+   "sha": "53c91e4586762335704222844fce133da8c23a0b98e7a95b023dcb2ce5456c66",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|1": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR",
+    "tb_signoff_mesh.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 1431,
+   "sha": "38bbe6e3bf9dfb6cd3ec69615c270cc2142bb208d6c37b227a809ddaa6929606",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|2": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR",
+    "tb_signoff_mesh.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 1431,
+   "sha": "bce759269143f6a8f0ac447921091c380831f3191012f50f671ab374b88b3495",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|3": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR",
+    "tb_signoff_mesh.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 1431,
+   "sha": "38bbe6e3bf9dfb6cd3ec69615c270cc2142bb208d6c37b227a809ddaa6929606",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|4": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR",
+    "tb_signoff_mesh.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 1431,
+   "sha": "38bbe6e3bf9dfb6cd3ec69615c270cc2142bb208d6c37b227a809ddaa6929606",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR",
+    "tb_signoff_mesh.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 1431,
+   "sha": "38bbe6e3bf9dfb6cd3ec69615c270cc2142bb208d6c37b227a809ddaa6929606",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8586,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8586,
+   "sha": "37d4b39efa048bff5fb5f800c23ae28634651e5f2e8f98d3a2b52aa7565c8322",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8586,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8586,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 8586,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 13700,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 12293,
+   "sha": "37d4b39efa048bff5fb5f800c23ae28634651e5f2e8f98d3a2b52aa7565c8322",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 9379,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 10637,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 0,
+   "tokens_out": 10549,
+   "sha": "35557e87e8887effe9678e45d2123c9b8a6dff24cc3ec415f83e1c0c66d4927b",
+   "extraction_cut": false
+  }
+ },
+ "routers": {
+  "oneshot|1": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 1,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "oneshot|2": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 1,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "oneshot|3": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 1,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "oneshot|4": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 1,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "oneshot|5": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 1,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "simloop|1": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 5: body or tail flit without a head flit",
+    "tb_signoff.v": "FAIL cycle 4: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "simloop|2": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 4: body or tail flit without a head flit",
+    "tb_signoff.v": "FAIL cycle 4: body or tail flit without a head flit",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHTRUNC": 2,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "simloop|3": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHEXPAND": 6,
+    "WIDTHTRUNC": 2,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "simloop|4": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": true
+  },
+  "simloop|5": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 2,
+   "lint_codes": {
+    "WIDTHEXPAND": 6,
+    "WIDTHTRUNC": 2,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "stitch|1": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "stitch|2": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 5: body or tail flit without a head flit",
+    "tb_signoff.v": "FAIL cycle 4: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "stitch|3": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 5: unexpected flit (misrouted or duplicated)",
+    "tb_signoff.v": "FAIL cycle 4: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  },
+  "stitch|4": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": true
+  },
+  "stitch|5": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "SELRANGE": 4,
+    "UNUSEDSIGNAL": 10
+   },
+   "works": false,
+   "clean": false
+  }
+ },
+ "problems": [],
+ "tools": "Icarus Verilog version 12.0 (stable) (); Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060)"
+}

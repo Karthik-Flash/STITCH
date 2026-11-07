@@ -1,0 +1,3140 @@
+{
+ "rows": {
+  "fifo|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 10469,
+   "tokens_out": 4422,
+   "sha": "5c7329beff61ca4fe41968a67c1287bc40f41b5c3ad2b56970ba98eed2ef7062",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 15157,
+   "tokens_out": 5661,
+   "sha": "989edfe4c8922ac24517ec7b3c19bf87ad4322155c345bea1a135864f7991c05",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 15678,
+   "tokens_out": 6048,
+   "sha": "bf2e196261df3358a9f92b46d64e9eed47eb552c41ad7764296ac3ae960445c7",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 12375,
+   "tokens_out": 4975,
+   "sha": "aef9ebc5f6cf5fbd41027522263daf4ec83fcf534f08e81a41dc70917ccdec68",
+   "extraction_cut": false
+  },
+  "fifo|oneshot|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 12688,
+   "tokens_out": 4815,
+   "sha": "edfe7af8fa3bfd29c80ece12e677edc685a5e3a4ad645efdd240ff1bc278b3eb",
+   "extraction_cut": false
+  },
+  "fifo|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "5c7329beff61ca4fe41968a67c1287bc40f41b5c3ad2b56970ba98eed2ef7062",
+   "extraction_cut": null
+  },
+  "fifo|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "989edfe4c8922ac24517ec7b3c19bf87ad4322155c345bea1a135864f7991c05",
+   "extraction_cut": null
+  },
+  "fifo|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "bf2e196261df3358a9f92b46d64e9eed47eb552c41ad7764296ac3ae960445c7",
+   "extraction_cut": null
+  },
+  "fifo|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "aef9ebc5f6cf5fbd41027522263daf4ec83fcf534f08e81a41dc70917ccdec68",
+   "extraction_cut": null
+  },
+  "fifo|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "edfe7af8fa3bfd29c80ece12e677edc685a5e3a4ad645efdd240ff1bc278b3eb",
+   "extraction_cut": null
+  },
+  "fifo|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "5c7329beff61ca4fe41968a67c1287bc40f41b5c3ad2b56970ba98eed2ef7062",
+   "extraction_cut": null
+  },
+  "fifo|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "989edfe4c8922ac24517ec7b3c19bf87ad4322155c345bea1a135864f7991c05",
+   "extraction_cut": null
+  },
+  "fifo|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "bf2e196261df3358a9f92b46d64e9eed47eb552c41ad7764296ac3ae960445c7",
+   "extraction_cut": null
+  },
+  "fifo|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "aef9ebc5f6cf5fbd41027522263daf4ec83fcf534f08e81a41dc70917ccdec68",
+   "extraction_cut": null
+  },
+  "fifo|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 10003 writes when full, 9919 reads when empty)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "edfe7af8fa3bfd29c80ece12e677edc685a5e3a4ad645efdd240ff1bc278b3eb",
+   "extraction_cut": null
+  },
+  "route_compute|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 5473,
+   "tokens_out": 2300,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 7101,
+   "tokens_out": 2875,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 5525,
+   "tokens_out": 2344,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 7521,
+   "tokens_out": 3179,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": false
+  },
+  "route_compute|oneshot|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 5606,
+   "tokens_out": 2560,
+   "sha": "ee67998e0d1f61b5b2244744aa4e9ec4f0f35b8b5a359c3a426cba9adef3bffb",
+   "extraction_cut": false
+  },
+  "route_compute|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ee67998e0d1f61b5b2244744aa4e9ec4f0f35b8b5a359c3a426cba9adef3bffb",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "544791cc1060b9b0f3c41f19232017b40e9b7f87f9f58c8eeed349f886900301",
+   "extraction_cut": null
+  },
+  "route_compute|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 1
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (262144 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "ee67998e0d1f61b5b2244744aa4e9ec4f0f35b8b5a359c3a426cba9adef3bffb",
+   "extraction_cut": null
+  },
+  "rr_arbiter|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 11622,
+   "tokens_out": 5949,
+   "sha": "031b6f6c7988950090c557c2424aa3ae0d308c5e6037a046aec6d145d22c90b1",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 9391,
+   "tokens_out": 4854,
+   "sha": "25e09c08aee917f6fc2e37a76c9aecc80191e7972e2a448a87bd5736c2623444",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 12830,
+   "tokens_out": 5496,
+   "sha": "f5ed772722202702f50874fc5c10379912156ab498beddcbef3f9de1bc37fd0a",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 8989,
+   "tokens_out": 4308,
+   "sha": "78239ca39779c4ba0dc0f42079fccf6896ef7798f53e2edc95d3274bfd71704a",
+   "extraction_cut": false
+  },
+  "rr_arbiter|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 13425,
+   "tokens_out": 5841,
+   "sha": "1a4dd0762714d4abb3218ff8f38e7d3a3e9b2af05da7b3f9933ab53a86503649",
+   "extraction_cut": false
+  },
+  "rr_arbiter|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "031b6f6c7988950090c557c2424aa3ae0d308c5e6037a046aec6d145d22c90b1",
+   "extraction_cut": null
+  },
+  "rr_arbiter|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "25e09c08aee917f6fc2e37a76c9aecc80191e7972e2a448a87bd5736c2623444",
+   "extraction_cut": null
+  },
+  "rr_arbiter|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "f5ed772722202702f50874fc5c10379912156ab498beddcbef3f9de1bc37fd0a",
+   "extraction_cut": null
+  },
+  "rr_arbiter|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "78239ca39779c4ba0dc0f42079fccf6896ef7798f53e2edc95d3274bfd71704a",
+   "extraction_cut": null
+  },
+  "rr_arbiter|simloop|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 81272,
+   "tokens_out": 36038,
+   "sha": "8c64c336f18d24dbacfa8d4b1f62a2841e2891a64e2dae928656c3b0a49c4e75",
+   "extraction_cut": false
+  },
+  "rr_arbiter|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "031b6f6c7988950090c557c2424aa3ae0d308c5e6037a046aec6d145d22c90b1",
+   "extraction_cut": null
+  },
+  "rr_arbiter|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "25e09c08aee917f6fc2e37a76c9aecc80191e7972e2a448a87bd5736c2623444",
+   "extraction_cut": null
+  },
+  "rr_arbiter|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "f5ed772722202702f50874fc5c10379912156ab498beddcbef3f9de1bc37fd0a",
+   "extraction_cut": null
+  },
+  "rr_arbiter|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "78239ca39779c4ba0dc0f42079fccf6896ef7798f53e2edc95d3274bfd71704a",
+   "extraction_cut": null
+  },
+  "rr_arbiter|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (40000 cycles, 25761 grants taken)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 5,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 58424,
+   "tokens_out": 26478,
+   "sha": "0832e9f3f76f23745fb072a1f572875f6d1dc764926a16258fac63e3143a284d",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 4596,
+   "tokens_out": 2006,
+   "sha": "a23403c01abb077206a10578e8cea3f6d29393eda18002e3ec8631e0dbbfac0f",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 5297,
+   "tokens_out": 2203,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 6481,
+   "tokens_out": 2647,
+   "sha": "d61328fe5f7e439498b9787f2e9db705881280be12cfd802f21eb42f750f8600",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 3953,
+   "tokens_out": 1750,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": false
+  },
+  "flit_mux|oneshot|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 3633,
+   "tokens_out": 1647,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": false
+  },
+  "flit_mux|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "a23403c01abb077206a10578e8cea3f6d29393eda18002e3ec8631e0dbbfac0f",
+   "extraction_cut": null
+  },
+  "flit_mux|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "flit_mux|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "d61328fe5f7e439498b9787f2e9db705881280be12cfd802f21eb42f750f8600",
+   "extraction_cut": null
+  },
+  "flit_mux|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "flit_mux|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "flit_mux|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "a23403c01abb077206a10578e8cea3f6d29393eda18002e3ec8631e0dbbfac0f",
+   "extraction_cut": null
+  },
+  "flit_mux|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "flit_mux|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "d61328fe5f7e439498b9787f2e9db705881280be12cfd802f21eb42f750f8600",
+   "extraction_cut": null
+  },
+  "flit_mux|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "flit_mux|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (3200 cases)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "423377cafd5f413f028ada97b760bd55107343e0acf824ab76918d49bf646a5d",
+   "extraction_cut": null
+  },
+  "input_port|oneshot|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 14799,
+   "tokens_out": 5919,
+   "sha": "65da5c4a4597e8fbf441f3e6c9f7fc51ba07ae4e2ba61d12bcd6eb1a6cad289e",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 13498,
+   "tokens_out": 5304,
+   "sha": "26a2df22fde64fa296876174c216b11139e10c35e668574b5d35d08506a2bacc",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 15561,
+   "tokens_out": 6216,
+   "sha": "596d810ae72e99b876435267ae4ffa2fafd85e43c9e146119abc5147e92d3799",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 13851,
+   "tokens_out": 5441,
+   "sha": "f8f59f63d81db3c9e224176f9aa4e7dac354ab037a96c2407876b83a3c8aee8c",
+   "extraction_cut": false
+  },
+  "input_port|oneshot|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 11425,
+   "tokens_out": 4564,
+   "sha": "1cf92211be080ad8db0d1631af57eea04c4149d74f5c9891380c2fd0eb5e73a8",
+   "extraction_cut": false
+  },
+  "input_port|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 17153,
+   "tokens_out": 6598,
+   "sha": "da77d10083ea7666904ebf072c97fcf132e82576091dd9cf101ae222d64ad3cf",
+   "extraction_cut": false
+  },
+  "input_port|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 4,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 167365,
+   "tokens_out": 57045,
+   "sha": "b2e758b0f18e5534c9757e512d3856be37e47351b963eed3b2dab04200bcda21",
+   "extraction_cut": false
+  },
+  "input_port|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 20248,
+   "tokens_out": 7494,
+   "sha": "4d792b9b7a6a9fea8923c02355ead684776e40933d4afc17c50979a8b728b592",
+   "extraction_cut": false
+  },
+  "input_port|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 24018,
+   "tokens_out": 8703,
+   "sha": "906a86ff63e10b85418fa81abe0dcd532a27f179ac7183340bc149e11e72a30d",
+   "extraction_cut": false
+  },
+  "input_port|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 9332,
+   "tokens_out": 4219,
+   "sha": "761bab92ae91b85f2dc3d0d5347a85d88adb2e0e200da79e7fb37a329e355299",
+   "extraction_cut": false
+  },
+  "input_port|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 18361,
+   "tokens_out": 6984,
+   "sha": "c3074a7c54594ccfa0594d12b57c29648c843db382a0feac39b139581d566a2b",
+   "extraction_cut": false
+  },
+  "input_port|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: flit=60000000, expected 842b9e00"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 94170,
+   "tokens_out": 35079,
+   "sha": "d25db3170e3084d1b72e40cc691dc6e707d9a5549118f37830f6fdce6c1949b7",
+   "extraction_cut": false
+  },
+  "input_port|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 11007,
+   "tokens_out": 4545,
+   "sha": "70402ad4fd08d7c266e7bf11f9d31cc478988daf429fe29492d64ed729ff3f83",
+   "extraction_cut": false
+  },
+  "input_port|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 8629,
+   "tokens_out": 3817,
+   "sha": "274650536aa7f93233f83f35eeaf0229b6a49e355a2a10a617c90df92cc977c7",
+   "extraction_cut": false
+  },
+  "input_port|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 7,
+    "UNDRIVEN": 4
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 29260 flits written, held route used 38908 times)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 8346,
+   "tokens_out": 3861,
+   "sha": "0c635e770c17b33072dfec23a754a52703fc8a623e268100e2519eb0883f1af0",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|1": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 3: req 1111 owner 0010: pop=0010, expected 0000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 16537,
+   "tokens_out": 6915,
+   "sha": "8d4304f7ce90aafd3c9a14553ad11563296a1192da648abf58a895368bdb6697",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: req 1001 owner 1000: pop=0001, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 13034,
+   "tokens_out": 6126,
+   "sha": "49ff894d32a8fcd9acdb29e773885fd886d424bd4d3709a144b6d48899a92ef6",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|3": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: req 1001 owner 1000: pop=0001, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 17761,
+   "tokens_out": 7457,
+   "sha": "4ac296d5c424443253624482e615ca734b03c7f84e22e4d1d9de7fe09208fe77",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|4": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: req 1001 owner 1000: pop=0001, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 16426,
+   "tokens_out": 7029,
+   "sha": "bfa7d8f4952bc2a0f5426aded19e5a1aaefddbcfbbf86b9ab4c176b349db772c",
+   "extraction_cut": false
+  },
+  "output_port|oneshot|5": {
+   "compile": false,
+   "tb": false,
+   "struct_clean": false,
+   "latches": null,
+   "loops": null,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "signoff": {
+    "tb_signoff.v": "COMPILE_ERROR"
+   },
+   "signoff_line": {
+    "tb_signoff.v": ""
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 77672,
+   "tokens_out": 31207,
+   "sha": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "extraction_cut": null
+  },
+  "output_port|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 18497,
+   "tokens_out": 7514,
+   "sha": "4141eb31de0c7035ff5964dfe8f0cb64e0cc9640c4e2b93e220607f0255d9d34",
+   "extraction_cut": false
+  },
+  "output_port|simloop|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 3: req 1111 owner 0010: pop=0010, expected 0000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 192122,
+   "tokens_out": 80462,
+   "sha": "4143fb1826a1db66ad1873ab0f648642e57c92535c93632e5ae1b5c97d4f788c",
+   "extraction_cut": false
+  },
+  "output_port|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 4,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 103896,
+   "tokens_out": 40046,
+   "sha": "38adec98a170e01f1081a063a9a99d47123851f075367f50622c283279f13b7b",
+   "extraction_cut": false
+  },
+  "output_port|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": false,
+   "calls": 4,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 135707,
+   "tokens_out": 56999,
+   "sha": "1198d58b50f1ad06b977f23c636f0a5539c2e62b58da604381e27442237c6b55",
+   "extraction_cut": false
+  },
+  "output_port|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 5,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 151213,
+   "tokens_out": 64050,
+   "sha": "98d659283ed9d2c434688377a080db7e3ab3aea47e2efe20d874a4a4fc08e801",
+   "extraction_cut": false
+  },
+  "output_port|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 2,
+   "stop": "clean_pass",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "WIDTHEXPAND"
+   ],
+   "fired": true,
+   "thinking_chars": 32784,
+   "tokens_out": 13879,
+   "sha": "bf01b1e9e67f921ba72ccad0fad4a9a58f212b6f14cdf678743b799cb1e4bff6",
+   "extraction_cut": false
+  },
+  "output_port|stitch|2": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 1: req 1001 owner 1000: pop=0001, expected 1000"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 6,
+   "stop": "budget",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "UNUSEDSIGNAL"
+   ],
+   "fired": true,
+   "thinking_chars": 248500,
+   "tokens_out": 112379,
+   "sha": "f2c4f8077d1a17ffbea078d10c561f8973081a3686ebf254a4c96746c8c2a849",
+   "extraction_cut": false
+  },
+  "output_port|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 2,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 84755,
+   "tokens_out": 36422,
+   "sha": "d5ea999e5c21bdc2adabdd05022108d18925337e7dc7d00efed4719ce52b5716",
+   "extraction_cut": false
+  },
+  "output_port|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 2,
+   "stop": "clean_pass",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "WIDTHEXPAND"
+   ],
+   "fired": true,
+   "thinking_chars": 50241,
+   "tokens_out": 19849,
+   "sha": "64f0e9238adcff56e3612306cc593b6f735c864775a01567f6687489d9fb9c2a",
+   "extraction_cut": false
+  },
+  "output_port|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 9,
+    "UNDRIVEN": 2
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (60000 cycles, 18621 flits sent, 55737 cycles held, 13251 blocked by full_in)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 3,
+   "stop": "clean_pass",
+   "classes": [
+    "CLOCK_UNUSED",
+    "UNDRIVEN",
+    "WIDTHEXPAND"
+   ],
+   "fired": true,
+   "thinking_chars": 91542,
+   "tokens_out": 42028,
+   "sha": "4fb2f15bd21e1bb336ffd7a1ca1dfcee25b778935328b01beb797864addda4d5",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 13889,
+   "tokens_out": 8505,
+   "sha": "6c89121883989b415bf070bccb8b411f3f80dc63d9f6712dc508c438b7646fd3",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 18150,
+   "tokens_out": 10413,
+   "sha": "bf21299eb28ee84c201c703b75c7b25283f189e5545d7a8ccd022c7a332fb7f5",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 18299,
+   "tokens_out": 10210,
+   "sha": "5317468b4d83a0d7a3acd6cc9d67c505ef883655655c2251bdcd290a50f7f472",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 14801,
+   "tokens_out": 8737,
+   "sha": "d43890d36cf9df3e3bcd9cd795f1893c774e7a2ad4121651045f98f6bf5b6cf3",
+   "extraction_cut": false
+  },
+  "router_5port|oneshot|5": {
+   "compile": true,
+   "tb": false,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "FAIL",
+    "tb_signoff_mesh.v": "FAIL"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "FAIL cycle 6: unexpected flit (misrouted or duplicated)",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "signoff_pass": false,
+   "so_clean": false,
+   "calls": 1,
+   "stop": "-",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 10717,
+   "tokens_out": 6469,
+   "sha": "21ab4cbfd852b49f14cfbf2868dc195ce37cfb2799f27f723f174017213c297a",
+   "extraction_cut": false
+  },
+  "router_5port|simloop|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "6c89121883989b415bf070bccb8b411f3f80dc63d9f6712dc508c438b7646fd3",
+   "extraction_cut": null
+  },
+  "router_5port|simloop|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "bf21299eb28ee84c201c703b75c7b25283f189e5545d7a8ccd022c7a332fb7f5",
+   "extraction_cut": null
+  },
+  "router_5port|simloop|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "5317468b4d83a0d7a3acd6cc9d67c505ef883655655c2251bdcd290a50f7f472",
+   "extraction_cut": null
+  },
+  "router_5port|simloop|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "func_pass_at_input",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "d43890d36cf9df3e3bcd9cd795f1893c774e7a2ad4121651045f98f6bf5b6cf3",
+   "extraction_cut": null
+  },
+  "router_5port|simloop|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "func_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 19824,
+   "tokens_out": 9579,
+   "sha": "f41395bb12ba30a9325206d0058dba859443c59ff7de8f95b6ed927383ba2810",
+   "extraction_cut": false
+  },
+  "router_5port|stitch|1": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "6c89121883989b415bf070bccb8b411f3f80dc63d9f6712dc508c438b7646fd3",
+   "extraction_cut": null
+  },
+  "router_5port|stitch|2": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "bf21299eb28ee84c201c703b75c7b25283f189e5545d7a8ccd022c7a332fb7f5",
+   "extraction_cut": null
+  },
+  "router_5port|stitch|3": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "5317468b4d83a0d7a3acd6cc9d67c505ef883655655c2251bdcd290a50f7f472",
+   "extraction_cut": null
+  },
+  "router_5port|stitch|4": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 0,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 0,
+   "tokens_out": 0,
+   "sha": "d43890d36cf9df3e3bcd9cd795f1893c774e7a2ad4121651045f98f6bf5b6cf3",
+   "extraction_cut": null
+  },
+  "router_5port|stitch|5": {
+   "compile": true,
+   "tb": true,
+   "struct_clean": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 18,
+    "UNDRIVEN": 5
+   },
+   "signoff": {
+    "tb_signoff.v": "PASS",
+    "tb_signoff_mesh.v": "PASS"
+   },
+   "signoff_line": {
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "signoff_pass": true,
+   "so_clean": true,
+   "calls": 1,
+   "stop": "clean_pass",
+   "classes": [],
+   "fired": false,
+   "thinking_chars": 23034,
+   "tokens_out": 11021,
+   "sha": "f41395bb12ba30a9325206d0058dba859443c59ff7de8f95b6ed927383ba2810",
+   "extraction_cut": false
+  }
+ },
+ "routers": {
+  "oneshot|1": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 100000: traffic not finished after 100000 cycles",
+    "tb_signoff.v": "FAIL cycle 200000: traffic not finished after 100000 cycles",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": false
+  },
+  "oneshot|2": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 100000: traffic not finished after 100000 cycles",
+    "tb_signoff.v": "FAIL cycle 200000: traffic not finished after 100000 cycles",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": true
+  },
+  "oneshot|3": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 100000: traffic not finished after 100000 cycles",
+    "tb_signoff.v": "FAIL cycle 200000: traffic not finished after 100000 cycles",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": true
+  },
+  "oneshot|4": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 100000: traffic not finished after 100000 cycles",
+    "tb_signoff.v": "FAIL cycle 200000: traffic not finished after 100000 cycles",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": true
+  },
+  "oneshot|5": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "simloop|1": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": false
+  },
+  "simloop|2": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 3: flit sent while full_in was high",
+    "tb_signoff.v": "FAIL cycle 6: flit sent while full_in was high",
+    "tb_signoff_mesh.v": "FAIL cycle 96: flit sent to a core while its full_in was high"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "WIDTHEXPAND": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": true
+  },
+  "simloop|3": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": true
+  },
+  "simloop|4": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 1,
+   "lint_codes": {
+    "WIDTHTRUNC": 1,
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": false
+  },
+  "simloop|5": {
+   "tb": "COMPILE_ERROR",
+   "signoff": "COMPILE_ERROR",
+   "mesh": "COMPILE_ERROR",
+   "lines": {
+    "tb.v": "",
+    "tb_signoff.v": "",
+    "tb_signoff_mesh.v": ""
+   },
+   "yosys_ok": false,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {},
+   "works": false,
+   "clean": false
+  },
+  "stitch|1": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": true
+  },
+  "stitch|2": {
+   "tb": "FAIL",
+   "signoff": "FAIL",
+   "mesh": "FAIL",
+   "lines": {
+    "tb.v": "FAIL cycle 100000: traffic not finished after 100000 cycles",
+    "tb_signoff.v": "FAIL cycle 200000: traffic not finished after 100000 cycles",
+    "tb_signoff_mesh.v": "FAIL cycle 90: board test packets not delivered as on the ZedBoard"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": false,
+   "clean": true
+  },
+  "stitch|3": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": true
+  },
+  "stitch|4": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": true
+  },
+  "stitch|5": {
+   "tb": "PASS",
+   "signoff": "PASS",
+   "mesh": "PASS",
+   "lines": {
+    "tb.v": "ALL TESTS PASSED (9755 cycles, 2000 packets, 7941 flits sent and received, 19465 output stall cycles, 29784 full_out cycles)",
+    "tb_signoff.v": "ALL TESTS PASSED (17177 cycles, 4000 packets, 16092 flits sent and received, 34848 output stall cycles, 52521 full_out cycles)",
+    "tb_signoff_mesh.v": "ALL TESTS PASSED (board test: 9 flits to r2, r3, r4 delivered; random: 2400 packets, 9567 flits, 4741 cycles)"
+   },
+   "yosys_ok": true,
+   "latches": 0,
+   "loops": 0,
+   "hard_lint": 0,
+   "lint_codes": {
+    "UNUSEDSIGNAL": 6
+   },
+   "works": true,
+   "clean": true
+  }
+ },
+ "problems": [],
+ "tools": "Icarus Verilog version 12.0 (stable) (); Verilator 5.020 2024-01-01 rev (Debian 5.020-1); Yosys 0.33 (git sha1 2584903a060)"
+}
