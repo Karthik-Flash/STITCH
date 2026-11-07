@@ -1,0 +1,93 @@
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    // State
+    reg [2:0] owner; // 0-3: requester, 4: free
+    reg [31:0] data_out_reg;
+    
+    // Internal signals
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    wire advance;
+    reg [3:0] selected_req_onehot;
+    reg [3:0] pop_reg;
+
+    // Combinational logic for selected requester
+    always @(*) begin
+        if (owner != 3'd4) begin
+            selected_req_onehot = 4'b0000;
+            selected_req_onehot[owner] = 1'b1;
+        end else begin
+            selected_req_onehot = gnt;
+        end
+    end
+
+    // Combinational logic for pop
+    always @(*) begin
+        if (!full_in && (selected_req_onehot & req) != 4'b0000) begin
+            pop_reg = selected_req_onehot & req;
+        end else begin
+            pop_reg = 4'b0000;
+        end
+    end
+
+    // Advance signal for round-robin arbiter
+    assign advance = (owner == 3'd4) && (pop_reg != 4'b0000);
+
+    // Instantiate child modules
+    rr_arbiter arb_inst (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(advance),
+        .gnt(gnt)
+    );
+
+    flit_mux mux_inst (
+        .sel(pop_reg),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    // Sequential logic for owner and data_out
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 3'd4;
+            data_out_reg <= 32'h6000_0000;
+        end else if (pop_reg != 4'b0000) begin
+            data_out_reg <= mux_out;
+            if (mux_out[31:29] == 2'b10) begin
+                owner <= 3'd4;
+            end else begin
+                case (pop_reg)
+                    4'b0001: owner <= 3'd0;
+                    4'b0010: owner <= 3'd1;
+                    4'b0100: owner <= 3'd2;
+                    4'b1000: owner <= 3'd3;
+                    default: owner <= owner;
+                endcase
+            end
+        end else begin
+            data_out_reg <= 32'h6000_0000;
+            owner <= owner;
+        end
+    end
+
+    // Output assignments
+    assign data_out = data_out_reg;
+    assign pop = pop_reg;
+
+endmodule

@@ -1,0 +1,133 @@
+== 2026-11-06 21:04:40 node gpunode7.sharanga.local partition gpu_h200_8 job 434463 cpus 4 model gemma4:31b-it-q4_K_M
+== deployed commit 2017dcaecec72af4395b91bb0b0937f041fe511c
+== 2026-11-06 21:04:40 [1/4] freeze check
+freeze: 79 files, all unchanged
+== 2026-11-06 21:04:43 [2/4] mock end-to-end test (no model)
+[selftest]              baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 fifo             sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 route_compute    baseline            it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 route_compute    sem_esc_restart_v3  it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 rr_arbiter       baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 rr_arbiter       sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 flit_mux         baseline            it=0 func=True  clean=False sf=0 []
+[selftest] [mock] rep1 flit_mux         sem_esc_restart_v3  it=2 func=True  clean=True  sf=1 ['COMB_LOOP', 'LATCH']
+[selftest] [mock] rep1 input_port       baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 input_port       sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 output_port      baseline            it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 output_port      sem_esc_restart_v3  it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 router_5port     baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 router_5port     sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] done: 14 new runs
+[selftest] == 2026-11-06 21:04:54 arms rep2
+[selftest] == arms rep2: runner --model mock --backend mock --mock-mode fix_on_2 --host http://127.0.0.1:11897 --conditions baseline sem_esc_restart_v3 --tasks fifo route_compute rr_arbiter flit_mux input_port output_port router_5port --reps 1 --temperature 0.1 --max-iters 6 --num-ctx 32768 --timeout 3600 --system-prompt-file /scratch/soumyaj/STITCH_GEN/phase3/runner/system_prompt.txt --out /tmp/llmgen_e2e_zj832wok/arms/rep2/results
+[selftest] [mock] rep1 fifo             baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 fifo             sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 route_compute    baseline            it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 route_compute    sem_esc_restart_v3  it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 rr_arbiter       baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 rr_arbiter       sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 flit_mux         baseline            it=0 func=True  clean=False sf=0 []
+[selftest] [mock] rep1 flit_mux         sem_esc_restart_v3  it=2 func=True  clean=True  sf=1 ['COMB_LOOP', 'LATCH']
+[selftest] [mock] rep1 input_port       baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 input_port       sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 output_port      baseline            it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 output_port      sem_esc_restart_v3  it=2 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 router_5port     baseline            it=0 func=True  clean=True  sf=0 []
+[selftest] [mock] rep1 router_5port     sem_esc_restart_v3  it=0 func=True  clean=True  sf=0 []
+[selftest] done: 14 new runs
+[selftest] == 2026-11-06 21:05:00 outputs: oneshot 14, simloop 14, stitch 14 (expected 14 each)
+[selftest] GENERATION DONE
+[selftest] 
+[selftest] 
+[selftest]   ok  first run exit 0
+[selftest]   ok  every arm wrote 14 outputs
+[selftest]   ok  oneshot golden fifo: clean_pass
+[selftest]   ok  oneshot broken route_compute: compile error
+[selftest]   ok  oneshot latched flit_mux: testbench pass, not struct_clean
+[selftest]   ok  simloop fixes broken route_compute
+[selftest]   ok  stitch fixes broken output_port, clean
+[selftest]   ok  simloop stops on latched flit_mux with 0 calls, not clean
+[selftest]   ok  stitch on latched flit_mux: fired, ends clean
+[selftest]   ok  golden router through both arms: clean, 0 calls
+[selftest]   ok  rep 2 paired with one-shot rep 2
+[selftest]   ok  rerun skips everything, exit 0
+[selftest] MOCK E2E: PASS | work dir: /tmp/llmgen_e2e_zj832wok
+GPU 0: NVIDIA H200 NVL (UUID: GPU-a7eeb5e4-12fa-497b-058d-2d7f7e2933a9)
+ollama serve: /scratch/soumyaj/Phase3_HPC/bin/ollama 0.34.1, OLLAMA_MODELS=/scratch/soumyaj/STITCH_GEN/ollama_models, OLLAMA_HOST=127.0.0.1:11897
+ollama up after 25 s
+== 2026-11-06 21:05:37 [3/4] preflight
+[freeze] ok  79 files
+[gpu] ok  NVIDIA H200 NVL, 143771 (need >= 40960 MiB)
+[tools] ok  Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8) (want Yosys 0.69)
+[tools] ok  Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod) (want Verilator 5.053)
+[tools] ok  Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty) (want Icarus Verilog version 14)
+[golden] ok  fifo: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  route_compute: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  rr_arbiter: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  flit_mux: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  input_port: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  output_port: tb.v PASS, struct_clean True, tb_signoff.v PASS
+[golden] ok  router_5port: tb.v PASS, struct_clean True, tb_signoff.v PASS, tb_signoff_mesh.v PASS
+[digest] ok  gemma4:31b-it-q4_K_M: 17ba34c06c801ba22f6047bab21ced9429c6d43e0e42ecf339b0f3e5a61e8d97 (recorded 17ba34c06c801ba22f6047bab21ced9429c6d43e0e42ecf339b0f3e5a61e8d97), ollama 0.34.1
+manifest: /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study/results/gemma4_31b-it-q4_K_M/RUN_MANIFEST.json
+PREFLIGHT: ALL PASSED
+== 2026-11-06 21:05:43 [4/4] generation
+== 2026-11-06 21:05:44 generate: model gemma4:31b-it-q4_K_M, backend ollama, reps 5, modules fifo route_compute rr_arbiter flit_mux input_port output_port router_5port, work /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study/results/gemma4_31b-it-q4_K_M
+== 2026-11-06 21:05:44 one-shot: 7 modules x 5 reps
+skip oneshot rep1 fifo (done)
+skip oneshot rep1 route_compute (done)
+skip oneshot rep1 rr_arbiter (done)
+skip oneshot rep1 flit_mux (done)
+skip oneshot rep1 input_port (done)
+skip oneshot rep1 output_port (done)
+skip oneshot rep1 router_5port (done)
+skip oneshot rep2 fifo (done)
+skip oneshot rep2 route_compute (done)
+skip oneshot rep2 rr_arbiter (done)
+skip oneshot rep2 flit_mux (done)
+skip oneshot rep2 input_port (done)
+skip oneshot rep2 output_port (done)
+skip oneshot rep2 router_5port (done)
+skip oneshot rep3 fifo (done)
+skip oneshot rep3 route_compute (done)
+skip oneshot rep3 rr_arbiter (done)
+skip oneshot rep3 flit_mux (done)
+skip oneshot rep3 input_port (done)
+skip oneshot rep3 output_port (done)
+skip oneshot rep3 router_5port (done)
+skip oneshot rep4 fifo (done)
+skip oneshot rep4 route_compute (done)
+skip oneshot rep4 rr_arbiter (done)
+skip oneshot rep4 flit_mux (done)
+skip oneshot rep4 input_port (done)
+skip oneshot rep4 output_port (done)
+skip oneshot rep4 router_5port (done)
+skip oneshot rep5 fifo (done)
+skip oneshot rep5 route_compute (done)
+skip oneshot rep5 rr_arbiter (done)
+skip oneshot rep5 flit_mux (done)
+skip oneshot rep5 input_port (done)
+skip oneshot rep5 output_port (done)
+skip oneshot rep5 router_5port (done)
+== 2026-11-06 21:05:46 arms rep1
+== 2026-11-06 21:05:47 arms rep2
+== 2026-11-06 21:05:47 arms rep3
+== 2026-11-06 21:05:48 arms rep4
+== 2026-11-06 21:05:49 arms rep5
+retry rep5 sem_esc_restart_v3 output_port (earlier attempt kept as rep1.failed_20261106_210549)
+== arms rep5: runner --model gemma4:31b-it-q4_K_M --backend ollama --mock-mode fix_on_2 --host http://127.0.0.1:11897 --conditions baseline sem_esc_restart_v3 --tasks router_5port output_port --reps 1 --temperature 0.1 --max-iters 6 --num-ctx 32768 --timeout 3600 --system-prompt-file /scratch/soumyaj/STITCH_GEN/phase3/runner/system_prompt.txt --out /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study/results/gemma4_31b-it-q4_K_M/arms/rep5/results
+[gpu offload] offloaded 5/5 layers to GPU
+[threads] ok  llama-server n_threads = 4 (n_threads_batch = 4) / 64 (configured 4)
+[speed] ok  131.25 tok/s generation (eval_count/eval_duration, model load excluded; exit below 8.0, warn below 15.0)
+[gemma4_31b-it-q4_K_M] rep1 router_5port     baseline            it=1 func=True  clean=True  sf=0 []
+[gemma4_31b-it-q4_K_M] rep1 router_5port     sem_esc_restart_v3  it=1 func=True  clean=True  sf=0 []
+[gemma4_31b-it-q4_K_M] rep1 output_port      sem_esc_restart_v3  it=3 func=True  clean=True  sf=1 ['CLOCK_UNUSED', 'UNDRIVEN', 'WIDTHEXPAND']
+done: 3 new runs
+== 2026-11-06 21:15:31 outputs: oneshot 35, simloop 35, stitch 35 (expected 35 each)
+GENERATION DONE
+GPU offload and thread lines in /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study/hpc_logs/ollama_serve_434463.log:
+      1 cmn  common_param: system_info: n_threads = 4 (n_threads_batch = 4) / 64 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | REPACK = 1 | CUDA : ARCHS = 750,800,860,870,890,900,1000,1030,1100,1200,1210 | USE_GRAPHS = 1 | 
+      1 cmn          init: llama threadpool init, n_threads = 4
+      1 load_tensors: offloaded 5/5 layers to GPU
+      1 load_tensors: offloaded 61/61 layers to GPU
+== 2026-11-06 21:15:31 JOB DONE

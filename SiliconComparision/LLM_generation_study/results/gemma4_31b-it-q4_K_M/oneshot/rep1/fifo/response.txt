@@ -1,0 +1,49 @@
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [0:3];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire write_cond = wr_en && (count < 3'd4);
+    wire read_cond = rd_en && (count > 3'd0);
+
+    always @(posedge clk) begin
+        if (reset) begin
+            count <= 3'd0;
+            wr_ptr <= 2'd0;
+            rd_ptr <= 2'd0;
+        end else begin
+            if (write_cond && !read_cond) begin
+                count <= count + 3'd1;
+            end else if (!write_cond && read_cond) begin
+                count <= count - 3'd1;
+            end
+
+            if (write_cond) begin
+                mem[wr_ptr] <= din;
+                wr_ptr <= wr_ptr + 2'd1;
+            end
+
+            if (read_cond) begin
+                rd_ptr <= rd_ptr + 2'd1;
+            end
+        end
+    end
+
+    assign dout = mem[rd_ptr];
+    assign empty = (count == 3'd0);
+    assign almost_full = (count >= 3'd3);
+
+endmodule
+```

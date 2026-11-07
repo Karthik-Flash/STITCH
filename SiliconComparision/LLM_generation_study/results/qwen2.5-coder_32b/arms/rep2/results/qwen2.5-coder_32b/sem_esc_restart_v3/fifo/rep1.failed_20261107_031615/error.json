@@ -1,0 +1,1 @@
+{"model": "qwen2.5-coder:32b", "condition": "sem_esc_restart_v3", "task": "fifo", "rep": 1, "error": "RuntimeError('ollama failed after retries: identical /api/chat request already timed out in this process (fast fail)')"}

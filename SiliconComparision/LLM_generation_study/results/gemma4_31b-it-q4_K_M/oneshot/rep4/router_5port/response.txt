@@ -1,0 +1,160 @@
+```verilog
+module router_5port (
+    input clk,
+    input reset,
+    input [7:0] current_address,
+    input [31:0] data_in_link1,
+    input [31:0] data_in_link2,
+    input [31:0] data_in_link3,
+    input [31:0] data_in_link4,
+    input [31:0] data_in_core,
+    input full_in_link1,
+    input full_in_link2,
+    input full_in_link3,
+    input full_in_link4,
+    input full_in_core,
+    output [31:0] data_out_link1,
+    output [31:0] data_out_link2,
+    output [31:0] data_out_link3,
+    output [31:0] data_out_link4,
+    output [31:0] data_out_core,
+    output full_out_link1,
+    output full_out_link2,
+    output full_out_link3,
+    output full_out_link4,
+    output full_out_core
+);
+
+    wire [31:0] f1, f2, f3, f4, fc;
+    wire [4:0] r1, r2, r3, r4, rc;
+    wire [3:0] p1, p2, p3, p4, pc;
+    wire rd_en1, rd_en2, rd_en3, rd_en4, rd_enc;
+
+    input_port ip1 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link1),
+        .current_address(current_address),
+        .rd_en(rd_en1),
+        .full_out(full_out_link1),
+        .flit(f1),
+        .req(r1)
+    );
+
+    input_port ip2 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link2),
+        .current_address(current_address),
+        .rd_en(rd_en2),
+        .full_out(full_out_link2),
+        .flit(f2),
+        .req(r2)
+    );
+
+    input_port ip3 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link3),
+        .current_address(current_address),
+        .rd_en(rd_en3),
+        .full_out(full_out_link3),
+        .flit(f3),
+        .req(r3)
+    );
+
+    input_port ip4 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link4),
+        .current_address(current_address),
+        .rd_en(rd_en4),
+        .full_out(full_out_link4),
+        .flit(f4),
+        .req(r4)
+    );
+
+    input_port ipc (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_core),
+        .current_address(current_address),
+        .rd_en(rd_enc),
+        .full_out(full_out_core),
+        .flit(fc),
+        .req(rc)
+    );
+
+    output_port op1 (
+        .clk(clk),
+        .reset(reset),
+        .req({rc[0], r4[0], r3[0], r2[0]}),
+        .flit0(f2),
+        .flit1(f3),
+        .flit2(f4),
+        .flit3(fc),
+        .full_in(full_in_link1),
+        .data_out(data_out_link1),
+        .pop(p1)
+    );
+
+    output_port op2 (
+        .clk(clk),
+        .reset(reset),
+        .req({rc[1], r4[1], r3[1], r1[1]}),
+        .flit0(f1),
+        .flit1(f3),
+        .flit2(f4),
+        .flit3(fc),
+        .full_in(full_in_link2),
+        .data_out(data_out_link2),
+        .pop(p2)
+    );
+
+    output_port op3 (
+        .clk(clk),
+        .reset(reset),
+        .req({rc[2], r4[2], r2[2], r1[2]}),
+        .flit0(f1),
+        .flit1(f2),
+        .flit2(f4),
+        .flit3(fc),
+        .full_in(full_in_link3),
+        .data_out(data_out_link3),
+        .pop(p3)
+    );
+
+    output_port op4 (
+        .clk(clk),
+        .reset(reset),
+        .req({rc[3], r3[3], r2[3], r1[3]}),
+        .flit0(f1),
+        .flit1(f2),
+        .flit2(f3),
+        .flit3(fc),
+        .full_in(full_in_link4),
+        .data_out(data_out_link4),
+        .pop(p4)
+    );
+
+    output_port opc (
+        .clk(clk),
+        .reset(reset),
+        .req({r4[4], r3[4], r2[4], r1[4]}),
+        .flit0(f1),
+        .flit1(f2),
+        .flit2(f3),
+        .flit3(f4),
+        .full_in(full_in_core),
+        .data_out(data_out_core),
+        .pop(pc)
+    );
+
+    assign rd_en1 = p2[0] | p3[0] | p4[0] | pc[0];
+    assign rd_en2 = p1[0] | p3[1] | p4[1] | pc[1];
+    assign rd_en3 = p1[1] | p2[1] | p4[2] | pc[2];
+    assign rd_en4 = p1[2] | p2[2] | p3[2] | pc[3];
+    assign rd_enc = p1[3] | p2[3] | p3[3] | p4[3];
+
+endmodule
+```

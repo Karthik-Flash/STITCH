@@ -1,0 +1,20 @@
+{
+ "track": "N",
+ "top": "fifo",
+ "source": "golden/rtl/fifo.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "dout",
+  "empty",
+  "almost_full"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "testbench",
+ "signoff_tbs": [
+  "tb_signoff.v"
+ ],
+ "mutant_output": null,
+ "phase3_task": null
+}

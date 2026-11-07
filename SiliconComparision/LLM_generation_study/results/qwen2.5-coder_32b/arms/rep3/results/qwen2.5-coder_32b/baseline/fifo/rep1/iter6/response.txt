@@ -1,0 +1,143 @@
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [3:0];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire full = (count == 3'b100);
+    wire almost_full_w = (count >= 3'b11);
+
+    assign dout = (empty) ? 32'hxxxxxxxx : mem[rd_ptr];
+    assign empty = (count == 3'b000);
+    assign almost_full = almost_full_w;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            wr_ptr <= 2'b00;
+            rd_ptr <= 2'b00;
+            count <= 3'b000;
+        end else begin
+            case ({wr_en, rd_en, full, empty})
+                3'b100: begin // Write only, not full
+                    mem[wr_ptr] <= din;
+                    wr_ptr <= wr_ptr + 1;
+                    count <= count + 1;
+                end
+                3'b010: begin // Read only, not empty
+                    rd_ptr <= rd_ptr + 1;
+                    count <= count - 1;
+                end
+                3'b110: begin // Write and read, not full, not empty
+                    mem[wr_ptr] <= din;
+                    wr_ptr <= wr_ptr + 1;
+                    rd_ptr <= rd_ptr + 1;
+                end
+                3'b101: begin // Write only, full
+                    // Do nothing
+                end
+                3'b011: begin // Read only, empty
+                    // Do nothing
+                end
+                3'b111: begin // Write and read, full or empty
+                    // Do nothing
+                end
+                default: begin // No operation or invalid conditions
+                    // Do nothing
+                end
+            endcase
+        end
+    end
+
+endmodule
+```
+
+The provided RTL code seems mostly correct, but the verification feedback indicates issues with the `dout` and `count` values. The issue might be related to the initial state and the handling of the `dout` assignment. Let's ensure that `dout` is correctly assigned and that the `count` is properly managed.
+
+Here is the corrected module:
+
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [3:0];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire full = (count == 3'b100);
+    wire almost_full_w = (count >= 3'b11);
+
+    reg [31:0] dout_reg;
+
+    assign dout = dout_reg;
+    assign empty = (count == 3'b000);
+    assign almost_full = almost_full_w;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            wr_ptr <= 2'b00;
+            rd_ptr <= 2'b00;
+            count <= 3'b000;
+            dout_reg <= 32'hxxxxxxxx;
+        end else begin
+            case ({wr_en, rd_en, full, empty})
+                3'b100: begin // Write only, not full
+                    mem[wr_ptr] <= din;
+                    wr_ptr <= wr_ptr + 1;
+                    count <= count + 1;
+                    dout_reg <= mem[rd_ptr];
+                end
+                3'b010: begin // Read only, not empty
+                    rd_ptr <= rd_ptr + 1;
+                    count <= count - 1;
+                    dout_reg <= mem[rd_ptr];
+                end
+                3'b110: begin // Write and read, not full, not empty
+                    mem[wr_ptr] <= din;
+                    wr_ptr <= wr_ptr + 1;
+                    rd_ptr <= rd_ptr + 1;
+                    dout_reg <= mem[rd_ptr];
+                end
+                3'b101: begin // Write only, full
+                    // Do nothing
+                    dout_reg <= mem[rd_ptr];
+                end
+                3'b011: begin // Read only, empty
+                    // Do nothing
+                    dout_reg <= mem[rd_ptr];
+                end
+                3'b111: begin // Write and read, full or empty
+                    // Do nothing
+                    dout_reg <= mem[rd_ptr];
+                end
+                default: begin // No operation or invalid conditions
+                    // Do nothing
+                    dout_reg <= mem[rd_ptr];
+                end
+            endcase
+        end
+    end
+
+endmodule
+```
+
+In this corrected version, I introduced a `dout_reg` register to hold the value of `dout`. This ensures that `dout` is correctly updated based on the current state of the FIFO. The `dout_reg` is updated in all branches of the `case` statement to ensure that it reflects the correct value of the oldest stored word.

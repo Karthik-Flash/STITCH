@@ -1,0 +1,99 @@
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [3:0];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire full;
+    wire almost_full_int;
+
+    assign full = (count == 3'b100);
+    assign almost_full_int = (count >= 3'b11);
+    assign almost_full = almost_full_int;
+    assign empty = (count == 3'b000);
+    assign dout = (empty) ? 32'hxxxxxxxx : mem[rd_ptr];
+
+    always @(posedge clk) begin
+        if (reset) begin
+            wr_ptr <= 2'b00;
+            rd_ptr <= 2'b00;
+            count <= 3'b000;
+        end else begin
+            if (wr_en && !full) begin
+                mem[wr_ptr] <= din;
+                wr_ptr <= wr_ptr + 1'b1;
+                count <= count + 1'b1;
+            end
+            if (rd_en && !empty) begin
+                rd_ptr <= rd_ptr + 1'b1;
+                count <= count - 1'b1;
+            end
+        end
+    end
+
+endmodule
+```
+
+The provided RTL code seems mostly correct, but the issues in the simulation feedback suggest that the `dout` assignment might not be handling the read and write operations correctly, especially when both operations occur simultaneously. To ensure that the `dout` reflects the correct value after a read and write operation, we need to ensure that the read pointer is updated before the write pointer is used to write new data. This can be achieved by using non-blocking assignments and ensuring the correct order of operations.
+
+Here is the corrected module:
+
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [3:0];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire full;
+    wire almost_full_int;
+
+    assign full = (count == 3'b100);
+    assign almost_full_int = (count >= 3'b11);
+    assign almost_full = almost_full_int;
+    assign empty = (count == 3'b000);
+    assign dout = (empty) ? 32'hxxxxxxxx : mem[rd_ptr];
+
+    always @(posedge clk) begin
+        if (reset) begin
+            wr_ptr <= 2'b00;
+            rd_ptr <= 2'b00;
+            count <= 3'b000;
+        end else begin
+            if (rd_en && !empty) begin
+                rd_ptr <= rd_ptr + 1'b1;
+                count <= count - 1'b1;
+            end
+            if (wr_en && !full) begin
+                mem[wr_ptr] <= din;
+                wr_ptr <= wr_ptr + 1'b1;
+                count <= count + 1'b1;
+            end
+        end
+    end
+
+endmodule
+```
+
+This ensures that the read pointer is updated before the write pointer is used, which should resolve the issues in the simulation feedback.

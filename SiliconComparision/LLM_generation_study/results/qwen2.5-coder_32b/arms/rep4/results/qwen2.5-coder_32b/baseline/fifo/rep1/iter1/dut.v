@@ -1,0 +1,75 @@
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] buffer [3:0];
+    reg [1:0] count;
+    reg [1:0] read_ptr;
+    reg [1:0] write_ptr;
+    reg [31:0] dout_int;
+    reg empty_int;
+    reg almost_full_int;
+
+    assign dout = dout_int;
+    assign empty = empty_int;
+    assign almost_full = almost_full_int;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            count <= 2'b00;
+            read_ptr <= 2'b00;
+            write_ptr <= 2'b00;
+        end else begin
+            if (wr_en && !almost_full_int && !rd_en) begin
+                buffer[write_ptr] <= din;
+                write_ptr <= write_ptr + 2'b01;
+                count <= count + 2'b01;
+            end else if (!wr_en && rd_en && !empty_int) begin
+                read_ptr <= read_ptr + 2'b01;
+                count <= count - 2'b01;
+            end else if (wr_en && rd_en && !empty_int && !almost_full_int) begin
+                buffer[write_ptr] <= din;
+                write_ptr <= write_ptr + 2'b01;
+                read_ptr <= read_ptr + 2'b01;
+            end
+        end
+    end
+
+    always @(*) begin
+        case (count)
+            2'b00: begin
+                dout_int = 32'b0;
+                empty_int = 1'b1;
+                almost_full_int = 1'b0;
+            end
+            2'b01: begin
+                dout_int = buffer[read_ptr];
+                empty_int = 1'b0;
+                almost_full_int = 1'b0;
+            end
+            2'b10: begin
+                dout_int = buffer[read_ptr];
+                empty_int = 1'b0;
+                almost_full_int = 1'b0;
+            end
+            2'b11: begin
+                dout_int = buffer[read_ptr];
+                empty_int = 1'b0;
+                almost_full_int = 1'b1;
+            end
+            default: begin
+                dout_int = 32'b0;
+                empty_int = 1'b1;
+                almost_full_int = 1'b0;
+            end
+        endcase
+    end
+
+endmodule

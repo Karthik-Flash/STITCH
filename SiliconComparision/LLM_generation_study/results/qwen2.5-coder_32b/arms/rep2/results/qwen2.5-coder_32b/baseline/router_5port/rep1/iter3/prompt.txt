@@ -1,0 +1,307 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# router_5port
+
+## Behaviour
+
+Top level of a 5-port router for a 2D mesh network-on-chip, with one clock and wormhole switching. The five
+ports are link1, link2, link3, link4 and core; this order (link1 first, core last) is used everywhere below.
+Each port has an input side (`data_in_<port>`, `full_out_<port>`) and an output side (`data_out_<port>`,
+`full_in_<port>`).
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). A packet is
+a head flit, then any number of body flits, then a tail flit. Bits [7:4] and [3:0] of a head flit are the
+destination row and column. `current_address` is this router's row (bits [7:4]) and column (bits [3:0]). An
+output with nothing to send shows the idle flit 32'h6000_0000.
+
+What the router does:
+
+- Each input side buffers the non-idle flits arriving on `data_in_<port>` (up to 4) and raises
+  `full_out_<port>` when 3 or more are stored, so the sender stops.
+- The head flit of a packet chooses the output, row first: destination row greater than this router's row:
+  link1; less: link2; same row and destination column greater: link3; less: link4; same column: core. The body
+  and tail flits of the packet follow the same output.
+- Each output serves the 4 other inputs round-robin. Once it sends a packet's first flit, it keeps serving that
+  input until the packet's tail flit has left (wormhole switching): packets are never interleaved on an output.
+- An output sends one flit per clock cycle, from a register, and only at a rising `clk` edge where its
+  `full_in_<port>` = 0. In a cycle with nothing sent, its `data_out_<port>` is 32'h6000_0000.
+- A packet never leaves by the port it came in on; such a request is never served.
+
+Structure: 5 `input_port` instances (one per port, input side) and 5 `output_port` instances (one per port,
+output side), all with the same `clk`, `reset` and (for the inputs) `current_address`.
+
+- Input X: `data_in` = `data_in_X`, `full_out` = `full_out_X`. Its `req` names the output its front flit wants
+  (bit 0 = link1, bit 1 = link2, bit 2 = link3, bit 3 = link4, bit 4 = core), and its `flit` is that front flit.
+- Output Y: `data_out` = `data_out_Y`, `full_in` = `full_in_Y`. Its requesters 0 to 3 are the 4 inputs other
+  than Y, in the port order with Y left out. For example, output link1's requesters 0 to 3 are inputs link2,
+  link3, link4, core; output core's are inputs link1, link2, link3, link4. Requester i's `req[i]` is the bit of
+  that input's `req` that names output Y, and `flit<i>` is that input's `flit`.
+- Input X's `rd_en` is 1 when any output's `pop` bit for input X is 1 (the front flit of X is being sent).
+
+What the two child modules do:
+
+- `input_port`: buffers non-idle flits (4 flits; `full_out` = 1 at 3 or more); `flit` is the oldest stored
+  flit; `rd_en` = 1 removes it at the next rising `clk` edge. `req` is one-hot: 0 when empty; for a head flit
+  at the front, its row-first route; for a body or tail flit at the front, the route held from the packet's
+  head flit (stored when that head flit was removed).
+- `output_port`: 4 requesters; when free, picks one round-robin among those with `req` = 1; once it sends a
+  flit, holds that requester until a tail flit is sent. It sends the selected requester's flit at a rising
+  `clk` edge when that requester's `req` bit is 1 and `full_in` = 0; `pop` (one-hot, combinational) names the
+  requester whose flit is sent at that edge. `data_out` is a register: the sent flit, or 32'h6000_0000 after an
+  edge where nothing is sent.
+
+## Reset
+
+Synchronous, active-high `reset`, shared by all instances: at a rising `clk` edge with `reset` = 1 every buffer
+becomes empty, every output becomes free with `data_out` = 32'h6000_0000, and every round-robin priority starts
+again from requester 0.
+
+## Ports
+
+23 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [7:0] current_address;
+input [31:0] data_in_link1;
+input [31:0] data_in_link2;
+input [31:0] data_in_link3;
+input [31:0] data_in_link4;
+input [31:0] data_in_core;
+input full_in_link1;
+input full_in_link2;
+input full_in_link3;
+input full_in_link4;
+input full_in_core;
+output [31:0] data_out_link1;
+output [31:0] data_out_link2;
+output [31:0] data_out_link3;
+output [31:0] data_out_link4;
+output [31:0] data_out_core;
+output full_out_link1;
+output full_out_link2;
+output full_out_link3;
+output full_out_link4;
+output full_out_core;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules. Their files are provided; do not write them again.
+
+`input_port` x 5, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [31:0] data_in;
+input [7:0] current_address;
+input rd_en;
+output full_out;
+output [31:0] flit;
+output [4:0] req;
+```
+
+`output_port` x 5, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input [31:0] flit0;
+input [31:0] flit1;
+input [31:0] flit2;
+input [31:0] flit3;
+input full_in;
+output [31:0] data_out;
+output [3:0] pop;
+```
+
+
+CURRENT RTL:
+```verilog
+module router_5port (
+    input clk,
+    input reset,
+    input [7:0] current_address,
+    input [31:0] data_in_link1,
+    input [31:0] data_in_link2,
+    input [31:0] data_in_link3,
+    input [31:0] data_in_link4,
+    input [31:0] data_in_core,
+    input full_in_link1,
+    input full_in_link2,
+    input full_in_link3,
+    input full_in_link4,
+    input full_in_core,
+    output [31:0] data_out_link1,
+    output [31:0] data_out_link2,
+    output [31:0] data_out_link3,
+    output [31:0] data_out_link4,
+    output [31:0] data_out_core,
+    output full_out_link1,
+    output full_out_link2,
+    output full_out_link3,
+    output full_out_link4,
+    output full_out_core
+);
+
+    wire [31:0] flit_link1, flit_link2, flit_link3, flit_link4, flit_core;
+    wire [4:0] req_link1, req_link2, req_link3, req_link4, req_core;
+    wire [3:0] pop_link1, pop_link2, pop_link3, pop_link4, pop_core;
+    reg rd_en_link1, rd_en_link2, rd_en_link3, rd_en_link4, rd_en_core;
+
+    input_port u_input_link1 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link1),
+        .current_address(current_address),
+        .rd_en(rd_en_link1),
+        .full_out(full_out_link1),
+        .flit(flit_link1),
+        .req(req_link1)
+    );
+
+    input_port u_input_link2 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link2),
+        .current_address(current_address),
+        .rd_en(rd_en_link2),
+        .full_out(full_out_link2),
+        .flit(flit_link2),
+        .req(req_link2)
+    );
+
+    input_port u_input_link3 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link3),
+        .current_address(current_address),
+        .rd_en(rd_en_link3),
+        .full_out(full_out_link3),
+        .flit(flit_link3),
+        .req(req_link3)
+    );
+
+    input_port u_input_link4 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link4),
+        .current_address(current_address),
+        .rd_en(rd_en_link4),
+        .full_out(full_out_link4),
+        .flit(flit_link4),
+        .req(req_link4)
+    );
+
+    input_port u_input_core (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_core),
+        .current_address(current_address),
+        .rd_en(rd_en_core),
+        .full_out(full_out_core),
+        .flit(flit_core),
+        .req(req_core)
+    );
+
+    output_port u_output_link1 (
+        .clk(clk),
+        .reset(reset),
+        .req({req_link2[0], req_link3[0], req_link4[0], req_core[0]}),
+        .flit0(flit_link2),
+        .flit1(flit_link3),
+        .flit2(flit_link4),
+        .flit3(flit_core),
+        .full_in(full_in_link1),
+        .data_out(data_out_link1),
+        .pop(pop_link1)
+    );
+
+    output_port u_output_link2 (
+        .clk(clk),
+        .reset(reset),
+        .req({req_link1[1], req_link3[1], req_link4[1], req_core[1]}),
+        .flit0(flit_link1),
+        .flit1(flit_link3),
+        .flit2(flit_link4),
+        .flit3(flit_core),
+        .full_in(full_in_link2),
+        .data_out(data_out_link2),
+        .pop(pop_link2)
+    );
+
+    output_port u_output_link3 (
+        .clk(clk),
+        .reset(reset),
+        .req({req_link1[2], req_link2[2], req_link4[2], req_core[2]}),
+        .flit0(flit_link1),
+        .flit1(flit_link2),
+        .flit2(flit_link4),
+        .flit3(flit_core),
+        .full_in(full_in_link3),
+        .data_out(data_out_link3),
+        .pop(pop_link3)
+    );
+
+    output_port u_output_link4 (
+        .clk(clk),
+        .reset(reset),
+        .req({req_link1[3], req_link2[3], req_link3[3], req_core[3]}),
+        .flit0(flit_link1),
+        .flit1(flit_link2),
+        .flit2(flit_link3),
+        .flit3(flit_core),
+        .full_in(full_in_link4),
+        .data_out(data_out_link4),
+        .pop(pop_link4)
+    );
+
+    output_port u_output_core (
+        .clk(clk),
+        .reset(reset),
+        .req({req_link1[4], req_link2[4], req_link3[4], req_link4[4]}),
+        .flit0(flit_link1),
+        .flit1(flit_link2),
+        .flit2(flit_link3),
+        .flit3(flit_link4),
+        .full_in(full_in_core),
+        .data_out(data_out_core),
+        .pop(pop_core)
+    );
+
+    always @(*) begin
+        rd_en_link1 = pop_link2[0] | pop_link3[0] | pop_link4[0] | pop_core[0];
+        rd_en_link2 = pop_link1[1] | pop_link3[1] | pop_link4[1] | pop_core[1];
+        rd_en_link3 = pop_link1[2] | pop_link2[2] | pop_link4[2] | pop_core[2];
+        rd_en_link4 = pop_link1[3] | pop_link2[3] | pop_link3[3] | pop_core[3];
+        rd_en_core = pop_link1[4] | pop_link2[4] | pop_link3[4] | pop_link4[4];
+    end
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL cycle 4: unexpected flit (misrouted or duplicated)
+FAIL cycle 5: unexpected flit (misrouted or duplicated)
+FAIL cycle 6: unexpected flit (misrouted or duplicated)
+FAIL cycle 7: body or tail flit without a head flit
+FAIL cycle 7: unexpected flit (misrouted or duplicated)
+FAIL cycle 7: unexpected flit (misrouted or duplicated)
+FAIL cycle 8: head flit inside a packet
+FAIL cycle 8: unexpected flit (misrouted or duplicated)
+FAIL cycle 9: body or tail flit without a head flit
+FAIL cycle 9: unexpected flit (misrouted or duplicated)
+FAIL cycle 9: unexpected flit (misrouted or duplicated)
+FAIL cycle 10: body or tail flit without a head flit
+FAIL cycle 10: unexpected flit (misrouted or duplicated)
+FAIL cycle 10: body or tail flit without a head flit
+FAIL cycle 10: flit differs from the next expected one
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

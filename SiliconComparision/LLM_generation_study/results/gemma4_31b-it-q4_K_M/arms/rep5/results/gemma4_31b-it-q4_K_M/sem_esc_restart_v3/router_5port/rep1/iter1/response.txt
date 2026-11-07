@@ -1,0 +1,160 @@
+```verilog
+module router_5port (
+    input clk,
+    input reset,
+    input [7:0] current_address,
+    input [31:0] data_in_link1,
+    input [31:0] data_in_link2,
+    input [31:0] data_in_link3,
+    input [31:0] data_in_link4,
+    input [31:0] data_in_core,
+    input full_in_link1,
+    input full_in_link2,
+    input full_in_link3,
+    input full_in_link4,
+    input full_in_core,
+    output [31:0] data_out_link1,
+    output [31:0] data_out_link2,
+    output [31:0] data_out_link3,
+    output [31:0] data_out_link4,
+    output [31:0] data_out_core,
+    output full_out_link1,
+    output full_out_link2,
+    output full_out_link3,
+    output full_out_link4,
+    output full_out_core
+);
+
+    wire [31:0] flit1, flit2, flit3, flit4, flitc;
+    wire [4:0] req1, req2, req3, req4, reqc;
+    wire rd_en1, rd_en2, rd_en3, rd_en4, rd_enc;
+    wire [3:0] pop1, pop2, pop3, pop4, popc;
+
+    input_port ip1 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link1),
+        .current_address(current_address),
+        .rd_en(rd_en1),
+        .full_out(full_out_link1),
+        .flit(flit1),
+        .req(req1)
+    );
+
+    input_port ip2 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link2),
+        .current_address(current_address),
+        .rd_en(rd_en2),
+        .full_out(full_out_link2),
+        .flit(flit2),
+        .req(req2)
+    );
+
+    input_port ip3 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link3),
+        .current_address(current_address),
+        .rd_en(rd_en3),
+        .full_out(full_out_link3),
+        .flit(flit3),
+        .req(req3)
+    );
+
+    input_port ip4 (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_link4),
+        .current_address(current_address),
+        .rd_en(rd_en4),
+        .full_out(full_out_link4),
+        .flit(flit4),
+        .req(req4)
+    );
+
+    input_port ipc (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in_core),
+        .current_address(current_address),
+        .rd_en(rd_enc),
+        .full_out(full_out_core),
+        .flit(flitc),
+        .req(reqc)
+    );
+
+    output_port op1 (
+        .clk(clk),
+        .reset(reset),
+        .req({reqc[0], req4[0], req3[0], req2[0]}),
+        .flit0(flit2),
+        .flit1(flit3),
+        .flit2(flit4),
+        .flit3(flitc),
+        .full_in(full_in_link1),
+        .data_out(data_out_link1),
+        .pop(pop1)
+    );
+
+    output_port op2 (
+        .clk(clk),
+        .reset(reset),
+        .req({reqc[1], req4[1], req3[1], req1[1]}),
+        .flit0(flit1),
+        .flit1(flit3),
+        .flit2(flit4),
+        .flit3(flitc),
+        .full_in(full_in_link2),
+        .data_out(data_out_link2),
+        .pop(pop2)
+    );
+
+    output_port op3 (
+        .clk(clk),
+        .reset(reset),
+        .req({reqc[2], req4[2], req2[2], req1[2]}),
+        .flit0(flit1),
+        .flit1(flit2),
+        .flit2(flit4),
+        .flit3(flitc),
+        .full_in(full_in_link3),
+        .data_out(data_out_link3),
+        .pop(pop3)
+    );
+
+    output_port op4 (
+        .clk(clk),
+        .reset(reset),
+        .req({reqc[3], req3[3], req2[3], req1[3]}),
+        .flit0(flit1),
+        .flit1(flit2),
+        .flit2(flit3),
+        .flit3(flitc),
+        .full_in(full_in_link4),
+        .data_out(data_out_link4),
+        .pop(pop4)
+    );
+
+    output_port opc (
+        .clk(clk),
+        .reset(reset),
+        .req({req4[4], req3[4], req2[4], req1[4]}),
+        .flit0(flit1),
+        .flit1(flit2),
+        .flit2(flit3),
+        .flit3(flit4),
+        .full_in(full_in_core),
+        .data_out(data_out_core),
+        .pop(popc)
+    );
+
+    assign rd_en1 = pop2[0] | pop3[0] | pop4[0] | popc[0];
+    assign rd_en2 = pop1[0] | pop3[1] | pop4[1] | popc[1];
+    assign rd_en3 = pop1[1] | pop2[1] | pop4[2] | popc[2];
+    assign rd_en4 = pop1[2] | pop2[2] | pop3[2] | popc[3];
+    assign rd_enc = pop1[3] | pop2[3] | pop3[3] | pop4[3];
+
+endmodule
+```

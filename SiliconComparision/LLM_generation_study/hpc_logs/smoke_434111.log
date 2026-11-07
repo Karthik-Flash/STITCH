@@ -1,0 +1,63 @@
+== 2026-11-05 16:59:45 node gpunode4.hpc.bits-hyderabad.ac.in partition gpu_a100_8 job 434111 cpus 4
+== deployed commit ee411ddda0f3d00b0add1bf4b02517fb173a8a32
+== 1/3 GPU
+NVIDIA A100-SXM4-80GB, 81920 MiB, 580.126.20
+[gpu] ok   81920 MiB
+== 2/3 golden checks on the cluster toolchain
+python3 3.11.6; Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8); Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod); Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)
+| fifo | PASS | none | 0 | 0 | 0 | 0 | 264 | yes |
+| route_compute | PASS | UNUSEDSIGNAL 1 | 0 | 0 | 0 | 0 | 47 | yes |
+| rr_arbiter | PASS | none | 0 | 0 | 0 | 0 | 46 | yes |
+| flit_mux | PASS | none | 0 | 0 | 0 | 0 | 238 | yes |
+| input_port | PASS | UNUSEDSIGNAL 1 | 0 | 0 | 0 | 0 | 331 | yes |
+| output_port | PASS | none | 0 | 0 | 0 | 0 | 357 | yes |
+| router_5port | PASS | UNUSEDSIGNAL 6 | 0 | 0 | 0 | 0 | 3455 | yes |
+route equivalence: True SAT proof finished - no model found: SUCCESS!
+OK
+[golden] ok
+== 3/3 both models
+ollama serve: /scratch/soumyaj/Phase3_HPC/bin/ollama 0.34.1, OLLAMA_MODELS=/scratch/soumyaj/STITCH_GEN/ollama_models, OLLAMA_HOST=127.0.0.1:11545
+ollama up after 37 s
+[model] qwen2.5-coder:32b: digest b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41, quantisation Q4_K_M, 32.8B parameters, family qwen2, format gguf, ollama 0.34.1
+[capabilities] completion, tools, insert
+[load] 62.9 s (model load into GPU memory, first call only)
+[speed] ok   27.2 tok/s over 33 tokens (need 8), done_reason stop
+[thinking] 0 characters of thinking returned with options {'temperature': 0.1, 'num_ctx': 32768}
+[answer] --- first 15 lines ---
+```verilog
+module and2 (
+    input a,
+    input b,
+    output y
+);
+assign y = a & b;
+endmodule
+```
+[answer] ---
+MODEL qwen2.5-coder:32b: OK
+[model] gemma4:31b-it-q4_K_M: digest 17ba34c06c801ba22f6047bab21ced9429c6d43e0e42ecf339b0f3e5a61e8d97, quantisation Q4_K_M, 30.7B parameters, family gemma4, format gguf, ollama 0.34.1
+[capabilities] completion, vision, tools, thinking
+[load] 115.0 s (model load into GPU memory, first call only)
+[speed] ok   86.6 tok/s over 204 tokens (need 8), done_reason stop
+[thinking] 466 characters of thinking returned with options {'temperature': 0.1, 'num_ctx': 32768}
+[answer] --- first 15 lines ---
+```verilog
+module and2 (
+    input a,
+    input b,
+    output y
+);
+    assign y = a & b;
+endmodule
+```
+[answer] ---
+MODEL gemma4:31b-it-q4_K_M: OK
+GPU offload and thread lines from /scratch/soumyaj/STITCH_GEN/SiliconComparision/LLM_generation_study/hpc_logs/ollama_serve_434111.log:
+      2 cmn  common_param: system_info: n_threads = 4 (n_threads_batch = 4) / 64 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | REPACK = 1 | CUDA : ARCHS = 750,800,860,870,890,900,1000,1030,1100,1200,1210 | USE_GRAPHS = 1 | 
+      2 cmn          init: llama threadpool init, n_threads = 4
+      1 load_tensors: offloaded 5/5 layers to GPU
+      1 load_tensors: offloaded 61/61 layers to GPU
+      1 load_tensors: offloaded 65/65 layers to GPU
+[offload] ok   both models fully on the GPU
+
+SMOKE: ALL PASSED

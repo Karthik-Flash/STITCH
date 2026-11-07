@@ -1,0 +1,32 @@
+{
+ "module": "router_5port",
+ "rep": 5,
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "e09f19a41c5c63c709696547105eae35fcbe129b01817a05ab705240bacbd82c",
+ "status": "ok",
+ "tokens_in": 1920,
+ "tokens_out": 1431,
+ "done_reason": "stop",
+ "thinking_chars": 0,
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 1920,
+  "eval_count": 1431,
+  "total_duration": 21146284532,
+  "load_duration": 1738449,
+  "eval_duration": 20871923000,
+  "thinking_chars": 0,
+  "thinking": ""
+ },
+ "wall_s": 21.2,
+ "timestamp": "2026-11-05T22:54:54",
+ "response_sha256": "7a051ce3336a2f7a920772586772754ade83eaf0c1a1f529e451996d625ad350",
+ "output_sha256": "38bbe6e3bf9dfb6cd3ec69615c270cc2142bb208d6c37b227a809ddaa6929606",
+ "mock_mode": null
+}

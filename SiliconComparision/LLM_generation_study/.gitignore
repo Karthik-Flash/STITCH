@@ -19,3 +19,9 @@
 !/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_drc_routed.rpt
 !/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/impl_3/main_power_routed.rpt
 !/original_2x2_mesh_zedboard/project_4on2014edition/project_4on2014edition.runs/synth_3/runme.log
+
+# Generation results: keep the generated RTL, prompts, responses, records and metrics; the compiled simulations
+# and the tool logs are regenerated from them (scripts/analyze_gen.py reruns the checks).
+/results/**/*.vvp
+/results/**/*.log
+/results/**/*.tmp

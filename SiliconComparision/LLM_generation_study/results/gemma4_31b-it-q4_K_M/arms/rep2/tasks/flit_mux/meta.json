@@ -1,0 +1,18 @@
+{
+ "track": "N",
+ "top": "flit_mux",
+ "source": "golden/rtl/flit_mux.v",
+ "children": [],
+ "descendants": [],
+ "checked_outputs": [
+  "out"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "testbench",
+ "signoff_tbs": [
+  "tb_signoff.v"
+ ],
+ "mutant_output": null,
+ "phase3_task": null
+}

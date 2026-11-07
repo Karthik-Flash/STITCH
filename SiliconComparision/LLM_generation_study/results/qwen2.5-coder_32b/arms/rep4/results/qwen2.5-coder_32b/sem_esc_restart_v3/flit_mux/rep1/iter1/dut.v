@@ -1,0 +1,24 @@
+module flit_mux (
+    input [3:0] sel,
+    input [31:0] in0,
+    input [31:0] in1,
+    input [31:0] in2,
+    input [31:0] in3,
+    output [31:0] out
+);
+
+reg [31:0] out_reg;
+
+always @(*) begin
+    case (sel)
+        4'b0001: out_reg = in0;
+        4'b0010: out_reg = in1;
+        4'b0100: out_reg = in2;
+        4'b1000: out_reg = in3;
+        default: out_reg = 32'h6000_0000;
+    endcase
+end
+
+assign out = out_reg;
+
+endmodule

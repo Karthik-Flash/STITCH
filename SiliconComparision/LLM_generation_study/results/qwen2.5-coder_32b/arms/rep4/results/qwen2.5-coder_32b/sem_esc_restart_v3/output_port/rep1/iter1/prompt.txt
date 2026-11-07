@@ -1,0 +1,209 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# output_port
+
+## Behaviour
+
+One output of a 5-port mesh router. Four requesters, numbered 0 to 3, share it: requester i offers the flit
+`flit<i>` and asks for this output when `req[i]` = 1. The output sends at most one flit per clock cycle, on a
+register, and keeps a packet together (wormhole switching). All state changes happen at rising `clk` edges.
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). The idle flit
+is 32'h6000_0000.
+
+State:
+
+- The owner: either no requester (the output is free) or one requester that holds the output.
+- The last granted requester, for round-robin priority.
+
+Selected requester, during each clock cycle:
+
+- If the output has an owner, the selected requester is the owner.
+- If the output is free, the selected requester is chosen round-robin among the requesters with `req` = 1: if
+  the last granted requester is L, the order is L+1, L+2, L+3, L (modulo 4), and the first one asking is
+  selected. If no requester asks, none is selected.
+
+Sending:
+
+- A flit is sent at a rising `clk` edge when a requester is selected, that requester's `req` bit is 1, and
+  `full_in` = 0. `full_in` = 1 means the next router cannot take a flit; then nothing is sent.
+- `pop` is one-hot and shows, during the cycle before that edge, which requester's flit will be sent:
+  `pop[i]` = 1 when requester i is selected and the flit will be sent; `pop` = 0 when nothing will be sent.
+  `pop` follows `req`, `full_in` and the state with no clock edge needed.
+- At an edge where a flit is sent:
+  - `data_out` becomes the selected requester's flit;
+  - if that flit is a tail flit (type 10), the output becomes free; otherwise the selected requester becomes
+    (or stays) the owner;
+  - if the output was free before the edge, the selected requester becomes the last granted requester. While
+    the output has an owner, the last granted requester does not change.
+- At an edge where no flit is sent, `data_out` becomes the idle flit 32'h6000_0000 and the owner does not
+  change. An owner whose `req` bit is 0 keeps the output; no other requester is served meanwhile.
+
+What the two child modules do:
+
+- `rr_arbiter`: 4-requester round-robin arbiter. `gnt` is one-hot and combinational from `req` and the last
+  granted requester L: the first requester asking in the order L+1, L+2, L+3, L; `gnt` = 0 if none asks. At a
+  rising `clk` edge with `advance` = 1 and `gnt` not 0, the granted requester becomes L. Synchronous
+  active-high `reset` sets L = 3.
+- `flit_mux`: combinational 4-to-1 multiplexer: `out` = `in<i>` when `sel` is one-hot with bit i set, and
+  32'h6000_0000 for any other `sel` value.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the output becomes free, `data_out`
+becomes 32'h6000_0000, and the last granted requester becomes 3, so the priority order after reset is 0, 1, 2,
+3. Nothing is sent at that edge.
+
+## Ports
+
+10 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input [31:0] flit0;
+input [31:0] flit1;
+input [31:0] flit2;
+input [31:0] flit3;
+input full_in;
+output [31:0] data_out;
+output [3:0] pop;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules. Their files are provided; do not write them again.
+
+`rr_arbiter` x 1, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input advance;
+output [3:0] gnt;
+```
+
+`flit_mux` x 1, ports in this exact order:
+
+```verilog
+input [3:0] sel;
+input [31:0] in0;
+input [31:0] in1;
+input [31:0] in2;
+input [31:0] in3;
+output [31:0] out;
+```
+
+
+CURRENT RTL:
+```verilog
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    reg [3:0] owner;
+    reg [3:0] last_granted;
+    reg [31:0] data_out_reg;
+    reg [3:0] pop_reg;
+
+    rr_arbiter arbiter (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(gnt != 4'b0000),
+        .gnt(gnt)
+    );
+
+    flit_mux mux (
+        .sel(owner),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 4'b0000;
+            last_granted <= 4'b1000;
+            data_out_reg <= 32'h6000_0000;
+            pop_reg <= 4'b0000;
+        end else begin
+            case (1'b1)
+                owner != 4'b0000: begin
+                    if (req[owner[1:0]] && !full_in) begin
+                        data_out_reg <= mux_out;
+                        pop_reg <= owner;
+                        if (mux_out[30:29] == 2'b10) begin
+                            owner <= 4'b0000;
+                        end
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end
+                default: begin
+                    if (gnt != 4'b0000) begin
+                        owner <= gnt;
+                        last_granted <= gnt;
+                        if (!full_in) begin
+                            data_out_reg <= mux_out;
+                            pop_reg <= gnt;
+                            if (mux_out[30:29] == 2'b10) begin
+                                owner <= 4'b0000;
+                            end
+                        end else begin
+                            data_out_reg <= 32'h6000_0000;
+                            pop_reg <= 4'b0000;
+                        end
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end
+            endcase
+        end
+    end
+
+    assign data_out = data_out_reg;
+    assign pop = pop_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL cycle 3: req 0101 owner 0000: pop=0000, expected 0001
+FAIL cycle 4: data_out=1a91bb35, expected 113d6122
+FAIL cycle 4: req 1011 owner 0001: pop=0100, expected 0001
+FAIL cycle 5: data_out=c3d04487, expected 2c539d58
+FAIL cycle 5: req 0110 owner 0001: pop=0100, expected 0000
+FAIL cycle 6: req 0010 owner 0001: pop=0100, expected 0000
+FAIL cycle 10: req 0011 owner 0001: pop=0000, expected 0001
+FAIL cycle 11: data_out=22828145, expected 32af1765
+FAIL cycle 11: req 1100 owner 0001: pop=0100, expected 0000
+FAIL cycle 14: req 0001 owner 0001: pop=0000, expected 0001
+FAIL cycle 15: data_out=fa955ef5, expected d99694b3
+FAIL cycle 15: req 1100 owner 0000: pop=0100, expected 0000
+FAIL cycle 16: req 1111 owner 0000: pop=0000, expected 0010
+FAIL cycle 17: data_out=add3565b, expected 8548480a
+FAIL cycle 17: req 1100 owner 0010: pop=0100, expected 0000
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

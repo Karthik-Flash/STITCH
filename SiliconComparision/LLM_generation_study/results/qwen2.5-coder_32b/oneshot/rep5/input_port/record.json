@@ -1,0 +1,32 @@
+{
+ "module": "input_port",
+ "rep": 5,
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "990f6bb85dce5b05299ba80940e7f425e065b1c080556a47c44ca17edd8c3c99",
+ "status": "ok",
+ "tokens_in": 1353,
+ "tokens_out": 381,
+ "done_reason": "stop",
+ "thinking_chars": 0,
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 1353,
+  "eval_count": 381,
+  "total_duration": 5768795073,
+  "load_duration": 1847652,
+  "eval_duration": 5638845000,
+  "thinking_chars": 0,
+  "thinking": ""
+ },
+ "wall_s": 5.8,
+ "timestamp": "2026-11-05T22:54:23",
+ "response_sha256": "c9a860a7ef1b6a1c910949fea2ce03ba4ef0a250d2fbf63447f0c5104be6a3c4",
+ "output_sha256": "f19eda21c8c2f8910fc137752a672bf45eb993b07c08ae42288cdbbfdbe3a23b",
+ "mock_mode": null
+}

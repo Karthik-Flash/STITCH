@@ -1,0 +1,24 @@
+```verilog
+module flit_mux (
+    input [3:0] sel,
+    input [31:0] in0,
+    input [31:0] in1,
+    input [31:0] in2,
+    input [31:0] in3,
+    output [31:0] out
+);
+
+wire [31:0] out;
+
+always @(*) begin
+    case (sel)
+        4'b0001: out = in0;
+        4'b0010: out = in1;
+        4'b0100: out = in2;
+        4'b1000: out = in3;
+        default: out = 32'h6000_0000;
+    endcase
+end
+
+endmodule
+```

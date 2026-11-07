@@ -1,0 +1,82 @@
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    // State registers
+    reg [3:0] owner_reg;
+    reg [31:0] data_out_reg;
+
+    // Internal wires
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    wire [3:0] selected_req;
+    wire advance;
+
+    // Combinational logic for selected requester
+    // If the output has an owner, the selected requester is the owner.
+    // If the output is free, the selected requester is chosen by the round-robin arbiter.
+    assign selected_req = (owner_reg != 4'b0000) ? owner_reg : gnt;
+
+    // Combinational logic for pop
+    // pop[i] = 1 when requester i is selected, req[i] is 1, and full_in is 0.
+    assign pop = (selected_req & req) & (~full_in);
+
+    // Combinational logic for arbiter advance
+    // The last granted requester is updated if the output was free and a flit is sent.
+    assign advance = (owner_reg == 4'b0000) && (pop != 4'b0000);
+
+    // Instantiate the round-robin arbiter
+    rr_arbiter arb (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(advance),
+        .gnt(gnt)
+    );
+
+    // Instantiate the flit multiplexer
+    flit_mux mux (
+        .sel(selected_req),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    // Synchronous state updates
+    always @(posedge clk) begin
+        if (reset) begin
+            owner_reg <= 4'b0000;
+            data_out_reg <= 32'h6000_0000;
+        end else if (pop != 4'b0000) begin
+            // A flit is sent
+            data_out_reg <= mux_out;
+            
+            // If the flit is a tail flit (type 10), the output becomes free.
+            // Otherwise, the selected requester becomes (or stays) the owner.
+            if (mux_out[30:29] == 2'b10) begin
+                owner_reg <= 4'b0000;
+            end else begin
+                owner_reg <= selected_req;
+            end
+        end else begin
+            // No flit is sent
+            data_out_reg <= 32'h6000_0000;
+            owner_reg <= owner_reg;
+        end
+    end
+
+    // Assign registered data_out to output port
+    assign data_out = data_out_reg;
+
+endmodule

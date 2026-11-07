@@ -1,0 +1,136 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# rr_arbiter
+
+## Behaviour
+
+Round-robin arbiter for 4 requesters, numbered 0 to 3. Requester i asks for a grant when `req[i]` = 1.
+
+The arbiter remembers the number of the requester it granted last (the "last" requester). The grant is
+combinational, from `req` and the last requester:
+
+- `gnt` is one-hot: `gnt[i]` = 1 means requester i is granted. `gnt` = 0 when no requester asks.
+- Priority starts at the requester after the last one and goes round: if the last requester is L, the order
+  is L+1, L+2, L+3, L (numbers taken modulo 4). The first requester in this order with `req` = 1 is granted.
+
+The last requester changes only at a rising `clk` edge where `advance` = 1 and `gnt` is not 0: it becomes
+the requester granted at that edge. Otherwise it keeps its value. `advance` = 1 with `gnt` = 0 changes nothing.
+
+So a requester that keeps asking is granted within 4 edges with `advance` = 1 and a grant.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the last requester becomes 3, so
+the priority order after reset is 0, 1, 2, 3. `advance` at that edge is ignored.
+
+## Ports
+
+5 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input advance;
+output [3:0] gnt;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module rr_arbiter (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input advance,
+    output [3:0] gnt
+);
+
+    reg [1:0] last;
+    wire [3:0] gnt_comb;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            last <= 2'b11; // Last requester is 3 after reset
+        end else if (advance && |gnt_comb) begin
+            last <= gnt_comb[0] ? 2'b00 :
+                   gnt_comb[1] ? 2'b01 :
+                   gnt_comb[2] ? 2'b10 : 2'b11;
+        end
+    end
+
+    always @(*) begin
+        case (last)
+            2'b00: begin
+                if (req[1]) gnt_comb = 4'b0010;
+                else if (req[2]) gnt_comb = 4'b0100;
+                else if (req[3]) gnt_comb = 4'b1000;
+                else if (req[0]) gnt_comb = 4'b0001;
+                else gnt_comb = 4'b0000;
+            end
+            2'b01: begin
+                if (req[2]) gnt_comb = 4'b0100;
+                else if (req[3]) gnt_comb = 4'b1000;
+                else if (req[0]) gnt_comb = 4'b0001;
+                else if (req[1]) gnt_comb = 4'b0010;
+                else gnt_comb = 4'b0000;
+            end
+            2'b10: begin
+                if (req[3]) gnt_comb = 4'b1000;
+                else if (req[0]) gnt_comb = 4'b0001;
+                else if (req[1]) gnt_comb = 4'b0010;
+                else if (req[2]) gnt_comb = 4'b0100;
+                else gnt_comb = 4'b0000;
+            end
+            2'b11: begin
+                if (req[0]) gnt_comb = 4'b0001;
+                else if (req[1]) gnt_comb = 4'b0010;
+                else if (req[2]) gnt_comb = 4'b0100;
+                else if (req[3]) gnt_comb = 4'b1000;
+                else gnt_comb = 4'b0000;
+            end
+            default: gnt_comb = 4'b0000;
+        endcase
+    end
+
+    assign gnt = gnt_comb;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:25: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:26: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:27: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:28: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:29: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:32: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:33: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:34: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:35: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:36: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:39: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:40: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+dut.v:10:      : 'gnt_comb' is declared here as a wire.
+dut.v:41: error: 'gnt_comb' is not a valid l-value for a procedural assignment.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

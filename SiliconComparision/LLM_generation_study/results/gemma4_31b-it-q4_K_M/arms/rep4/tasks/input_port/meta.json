@@ -1,0 +1,26 @@
+{
+ "track": "N",
+ "top": "input_port",
+ "source": "golden/rtl/input_port.v",
+ "children": [
+  "fifo",
+  "route_compute"
+ ],
+ "descendants": [
+  "fifo",
+  "route_compute"
+ ],
+ "checked_outputs": [
+  "full_out",
+  "flit",
+  "req"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "testbench",
+ "signoff_tbs": [
+  "tb_signoff.v"
+ ],
+ "mutant_output": null,
+ "phase3_task": null
+}

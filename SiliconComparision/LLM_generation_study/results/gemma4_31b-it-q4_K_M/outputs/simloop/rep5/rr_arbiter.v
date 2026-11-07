@@ -1,0 +1,103 @@
+module rr_arbiter (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input advance,
+    output reg [3:0] gnt
+);
+
+    reg [1:0] last;
+    reg [1:0] gnt_idx;
+
+    // Combinational logic to determine the grant and its index based on the last requester
+    always @(*) begin
+        case (last)
+            2'b00: begin
+                if (req[1]) begin
+                    gnt = 4'b0010;
+                    gnt_idx = 2'b01;
+                end else if (req[2]) begin
+                    gnt = 4'b0100;
+                    gnt_idx = 2'b10;
+                end else if (req[3]) begin
+                    gnt = 4'b1000;
+                    gnt_idx = 2'b11;
+                end else if (req[0]) begin
+                    gnt = 4'b0001;
+                    gnt_idx = 2'b00;
+                end else begin
+                    gnt = 4'b0000;
+                    gnt_idx = 2'b00;
+                end
+            end
+            2'b01: begin
+                if (req[2]) begin
+                    gnt = 4'b0100;
+                    gnt_idx = 2'b10;
+                end else if (req[3]) begin
+                    gnt = 4'b1000;
+                    gnt_idx = 2'b11;
+                end else if (req[0]) begin
+                    gnt = 4'b0001;
+                    gnt_idx = 2'b00;
+                end else if (req[1]) begin
+                    gnt = 4'b0010;
+                    gnt_idx = 2'b01;
+                end else begin
+                    gnt = 4'b0000;
+                    gnt_idx = 2'b00;
+                end
+            end
+            2'b10: begin
+                if (req[3]) begin
+                    gnt = 4'b1000;
+                    gnt_idx = 2'b11;
+                end else if (req[0]) begin
+                    gnt = 4'b0001;
+                    gnt_idx = 2'b00;
+                end else if (req[1]) begin
+                    gnt = 4'b0010;
+                    gnt_idx = 2'b01;
+                end else if (req[2]) begin
+                    gnt = 4'b0100;
+                    gnt_idx = 2'b10;
+                end else begin
+                    gnt = 4'b0000;
+                    gnt_idx = 2'b00;
+                end
+            end
+            2'b11: begin
+                if (req[0]) begin
+                    gnt = 4'b0001;
+                    gnt_idx = 2'b00;
+                end else if (req[1]) begin
+                    gnt = 4'b0010;
+                    gnt_idx = 2'b01;
+                end else if (req[2]) begin
+                    gnt = 4'b0100;
+                    gnt_idx = 2'b10;
+                end else if (req[3]) begin
+                    gnt = 4'b1000;
+                    gnt_idx = 2'b11;
+                end else begin
+                    gnt = 4'b0000;
+                    gnt_idx = 2'b00;
+                end
+            end
+            default: begin
+                gnt = 4'b0000;
+                gnt_idx = 2'b00;
+            end
+        end
+    end
+
+    // Sequential logic to update the last requester
+    always @(posedge clk) begin
+        if (reset) begin
+            last <= 2'b11;
+        end else if (advance && (gnt != 4'b0000)) begin
+            last <= gnt_idx;
+        end
+    end
+
+endmodule

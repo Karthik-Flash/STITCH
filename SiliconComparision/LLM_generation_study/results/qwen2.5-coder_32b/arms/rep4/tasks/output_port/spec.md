@@ -1,0 +1,97 @@
+# output_port
+
+## Behaviour
+
+One output of a 5-port mesh router. Four requesters, numbered 0 to 3, share it: requester i offers the flit
+`flit<i>` and asks for this output when `req[i]` = 1. The output sends at most one flit per clock cycle, on a
+register, and keeps a packet together (wormhole switching). All state changes happen at rising `clk` edges.
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). The idle flit
+is 32'h6000_0000.
+
+State:
+
+- The owner: either no requester (the output is free) or one requester that holds the output.
+- The last granted requester, for round-robin priority.
+
+Selected requester, during each clock cycle:
+
+- If the output has an owner, the selected requester is the owner.
+- If the output is free, the selected requester is chosen round-robin among the requesters with `req` = 1: if
+  the last granted requester is L, the order is L+1, L+2, L+3, L (modulo 4), and the first one asking is
+  selected. If no requester asks, none is selected.
+
+Sending:
+
+- A flit is sent at a rising `clk` edge when a requester is selected, that requester's `req` bit is 1, and
+  `full_in` = 0. `full_in` = 1 means the next router cannot take a flit; then nothing is sent.
+- `pop` is one-hot and shows, during the cycle before that edge, which requester's flit will be sent:
+  `pop[i]` = 1 when requester i is selected and the flit will be sent; `pop` = 0 when nothing will be sent.
+  `pop` follows `req`, `full_in` and the state with no clock edge needed.
+- At an edge where a flit is sent:
+  - `data_out` becomes the selected requester's flit;
+  - if that flit is a tail flit (type 10), the output becomes free; otherwise the selected requester becomes
+    (or stays) the owner;
+  - if the output was free before the edge, the selected requester becomes the last granted requester. While
+    the output has an owner, the last granted requester does not change.
+- At an edge where no flit is sent, `data_out` becomes the idle flit 32'h6000_0000 and the owner does not
+  change. An owner whose `req` bit is 0 keeps the output; no other requester is served meanwhile.
+
+What the two child modules do:
+
+- `rr_arbiter`: 4-requester round-robin arbiter. `gnt` is one-hot and combinational from `req` and the last
+  granted requester L: the first requester asking in the order L+1, L+2, L+3, L; `gnt` = 0 if none asks. At a
+  rising `clk` edge with `advance` = 1 and `gnt` not 0, the granted requester becomes L. Synchronous
+  active-high `reset` sets L = 3.
+- `flit_mux`: combinational 4-to-1 multiplexer: `out` = `in<i>` when `sel` is one-hot with bit i set, and
+  32'h6000_0000 for any other `sel` value.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the output becomes free, `data_out`
+becomes 32'h6000_0000, and the last granted requester becomes 3, so the priority order after reset is 0, 1, 2,
+3. Nothing is sent at that edge.
+
+## Ports
+
+10 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input [31:0] flit0;
+input [31:0] flit1;
+input [31:0] flit2;
+input [31:0] flit3;
+input full_in;
+output [31:0] data_out;
+output [3:0] pop;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules. Their files are provided; do not write them again.
+
+`rr_arbiter` x 1, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input advance;
+output [3:0] gnt;
+```
+
+`flit_mux` x 1, ports in this exact order:
+
+```verilog
+input [3:0] sel;
+input [31:0] in0;
+input [31:0] in1;
+input [31:0] in2;
+input [31:0] in3;
+output [31:0] out;
+```

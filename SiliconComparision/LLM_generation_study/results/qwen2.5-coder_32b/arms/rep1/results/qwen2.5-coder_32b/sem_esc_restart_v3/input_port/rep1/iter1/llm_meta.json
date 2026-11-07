@@ -1,0 +1,10 @@
+{
+ "done_reason": "stop",
+ "prompt_eval_count": 1833,
+ "eval_count": 425,
+ "total_duration": 7002601506,
+ "load_duration": 1928143,
+ "eval_duration": 6589041000,
+ "thinking_chars": 0,
+ "thinking": ""
+}

@@ -1,0 +1,46 @@
+# route_compute
+
+## Behaviour
+
+Routing decision of a 5-port mesh router, for one 32-bit flit. Combinational.
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). In a head
+flit, bits [7:4] are the destination row and bits [3:0] the destination column. `current_address` is this
+router's address: row in bits [7:4], column in bits [3:0]. Rows and columns are unsigned numbers.
+
+`req` is one-hot and names the output the flit must leave by: bit 0 = link1, bit 1 = link2, bit 2 = link3,
+bit 3 = link4, bit 4 = core.
+
+- If the flit is not a head flit, `req` = 0.
+- Otherwise the row is compared first:
+  - destination row greater than this router's row: `req` = 5'b00001 (link1);
+  - destination row less than this router's row: `req` = 5'b00010 (link2);
+  - same row: the column is compared:
+    - destination column greater than this router's column: `req` = 5'b00100 (link3);
+    - destination column less than this router's column: `req` = 5'b01000 (link4);
+    - same column: `req` = 5'b10000 (core).
+
+All other flit bits (31, 28:8) have no effect on `req`.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+3 ports, in this exact order:
+
+```verilog
+input [31:0] flit;
+input [7:0] current_address;
+output [4:0] req;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+Write the complete Verilog-2001 module `route_compute` that meets this specification, with exactly the port list above.
+Return only Verilog: one ```verilog code block, no explanation.

@@ -1,0 +1,162 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# input_port
+
+## Behaviour
+
+One input of a 5-port mesh router: it buffers the arriving flits and asks for an output for the flit at the
+front of its buffer. All state changes happen at rising `clk` edges.
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). A packet is
+a head flit, then any number of body flits, then a tail flit. Bits [7:4] and [3:0] of a head flit are the
+destination row and column; `current_address` is this router's row (bits [7:4]) and column (bits [3:0]).
+
+Buffer:
+
+- At every rising `clk` edge, `data_in` is stored in the buffer if its type is not 11. Idle flits (type 11)
+  are never stored. The buffer holds up to 4 flits; a flit that arrives while 4 are stored is dropped.
+- `flit` shows the oldest stored flit (the front flit), with no clock edge needed. While the buffer is empty,
+  the value of `flit` does not matter.
+- At a rising `clk` edge with `rd_en` = 1, the front flit is removed. `rd_en` = 1 while the buffer is empty
+  does nothing.
+- `full_out` = 1 when 3 or 4 flits are stored. It tells the sender to stop sending.
+
+Route request (`req` is one-hot: bit 0 = link1, bit 1 = link2, bit 2 = link3, bit 3 = link4, bit 4 = core):
+
+- Buffer empty: `req` = 0.
+- Front flit is a head flit: `req` is the route of that head flit, computed by `route_compute` from the front
+  flit and `current_address`, with no clock edge needed.
+- Front flit is a body or tail flit: `req` is the held route, so the whole packet follows its head flit.
+- The held route is set at a rising `clk` edge where `rd_en` = 1, the buffer is not empty and the front flit is
+  a head flit: it becomes the route of that head flit at that edge. It keeps its value otherwise; removing a
+  tail flit does not clear it.
+
+What the two child modules do:
+
+- `fifo`: a first-in first-out buffer of up to 4 words of 32 bits with first-word fall-through. A write
+  (`wr_en` = 1) when 4 words are held, or a read (`rd_en` = 1) when none are, is ignored; a write and a read at
+  the same edge both take effect when allowed. `dout` is the oldest word, `empty` = 1 when 0 words are held,
+  `almost_full` = 1 when 3 or 4 are held. Synchronous active-high `reset` empties it.
+- `route_compute`: combinational. For a head flit, `req` is one-hot: destination row greater than the router's
+  row: link1; less: link2; same row and destination column greater: link3; less: link4; same column: core.
+  `req` = 0 for any flit that is not a head flit.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the buffer becomes empty and the held
+route becomes 0. `data_in` and `rd_en` at that edge are ignored.
+
+## Ports
+
+8 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [31:0] data_in;
+input [7:0] current_address;
+input rd_en;
+output full_out;
+output [31:0] flit;
+output [4:0] req;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules. Their files are provided; do not write them again.
+
+`fifo` x 1, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input wr_en;
+input [31:0] din;
+input rd_en;
+output [31:0] dout;
+output empty;
+output almost_full;
+```
+
+`route_compute` x 1, ports in this exact order:
+
+```verilog
+input [31:0] flit;
+input [7:0] current_address;
+output [4:0] req;
+```
+
+
+CURRENT RTL:
+```verilog
+module input_port (
+    input clk,
+    input reset,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    input rd_en,
+    output full_out,
+    output [31:0] flit,
+    output [4:0] req
+);
+
+    wire [31:0] fifo_dout;
+    wire fifo_empty;
+    wire fifo_almost_full;
+    reg [4:0] held_route;
+    reg [4:0] req_reg;
+
+    fifo fifo_inst (
+        .clk(clk),
+        .reset(reset),
+        .wr_en(data_in[30:29] != 2'b11 && !fifo_almost_full),
+        .din(data_in),
+        .rd_en(rd_en && !fifo_empty),
+        .dout(fifo_dout),
+        .empty(fifo_empty),
+        .almost_full(fifo_almost_full)
+    );
+
+    route_compute route_compute_inst (
+        .flit(fifo_dout),
+        .current_address(current_address),
+        .req(req_reg)
+    );
+
+    assign full_out = fifo_almost_full;
+    assign flit = fifo_dout;
+    assign req = req_reg;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            held_route <= 5'b0;
+            req_reg <= 5'b0;
+        end else if (rd_en && !fifo_empty && fifo_dout[30:29] == 2'b01) begin
+            held_route <= req_reg;
+        end
+    end
+
+    always @(*) begin
+        if (fifo_empty) begin
+            req_reg = 5'b0;
+        end else if (fifo_dout[30:29] == 2'b01) begin
+            // req_reg is already assigned by route_compute
+        end else begin
+            req_reg = held_route;
+        end
+    end
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:42: error: Cannot perform procedural assignment to variable 'req_reg' because it is also continuously assigned.
+dut.v:50: error: Cannot perform procedural assignment to variable 'req_reg' because it is also continuously assigned.
+dut.v:54: error: Cannot perform procedural assignment to variable 'req_reg' because it is also continuously assigned.
+3 error(s) during elaboration.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

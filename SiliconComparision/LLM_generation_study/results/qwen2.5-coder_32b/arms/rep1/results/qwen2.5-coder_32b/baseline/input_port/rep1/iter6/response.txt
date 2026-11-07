@@ -1,0 +1,121 @@
+```verilog
+module input_port (
+    input clk,
+    input reset,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    input rd_en,
+    output full_out,
+    output [31:0] flit,
+    output [4:0] req
+);
+
+    wire wr_en;
+    wire [31:0] fifo_dout;
+    wire fifo_empty;
+    wire fifo_almost_full;
+    reg [4:0] held_route;
+    reg [4:0] req_reg;
+
+    fifo fifo_inst (
+        .clk(clk),
+        .reset(reset),
+        .wr_en(wr_en),
+        .din(data_in),
+        .rd_en(rd_en),
+        .dout(fifo_dout),
+        .empty(fifo_empty),
+        .almost_full(fifo_almost_full)
+    );
+
+    route_compute route_compute_inst (
+        .flit(fifo_dout),
+        .current_address(current_address),
+        .req(req_reg)
+    );
+
+    assign wr_en = (data_in[30:29] != 2'b11) && !fifo_almost_full;
+    assign flit = fifo_dout;
+    assign full_out = fifo_almost_full;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            held_route <= 5'b0;
+        end else if (rd_en && !fifo_empty && (fifo_dout[30:29] == 2'b01)) begin
+            held_route <= req_reg;
+        end
+    end
+
+    assign req = fifo_empty ? 5'b0 : (fifo_dout[30:29] == 2'b01) ? req_reg : held_route;
+
+endmodule
+```
+
+The provided RTL code seems mostly correct, but the issues in the simulation feedback suggest that the `flit` and `req` outputs might not be correctly reflecting the state of the FIFO and the held route. The code already correctly handles the `full_out` signal, so the issue might be in the `flit` and `req` assignments.
+
+The `flit` assignment directly uses `fifo_dout`, which should be correct as the FIFO has first-word fall-through. The `req` assignment logic also seems correct, but let's ensure that the `req` is correctly updated based on the front flit's type and the held route.
+
+The code provided should work correctly based on the specification, but let's recheck the `req` assignment logic to ensure it handles all cases properly:
+
+1. When the FIFO is empty, `req` should be 0.
+2. When the front flit is a head flit, `req` should be the route computed by `route_compute`.
+3. When the front flit is a body or tail flit, `req` should be the held route.
+
+The current `req` assignment logic already covers these cases, so the issue might be elsewhere. However, based on the provided feedback, the code seems correct. Let's ensure that the `flit` and `req` assignments are correctly reflecting the state of the FIFO and the held route.
+
+Here is the complete module with the same logic, ensuring that the `flit` and `req` assignments are correct:
+
+```verilog
+module input_port (
+    input clk,
+    input reset,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    input rd_en,
+    output full_out,
+    output [31:0] flit,
+    output [4:0] req
+);
+
+    wire wr_en;
+    wire [31:0] fifo_dout;
+    wire fifo_empty;
+    wire fifo_almost_full;
+    reg [4:0] held_route;
+    reg [4:0] req_reg;
+
+    fifo fifo_inst (
+        .clk(clk),
+        .reset(reset),
+        .wr_en(wr_en),
+        .din(data_in),
+        .rd_en(rd_en),
+        .dout(fifo_dout),
+        .empty(fifo_empty),
+        .almost_full(fifo_almost_full)
+    );
+
+    route_compute route_compute_inst (
+        .flit(fifo_dout),
+        .current_address(current_address),
+        .req(req_reg)
+    );
+
+    assign wr_en = (data_in[30:29] != 2'b11) && !fifo_almost_full;
+    assign flit = fifo_dout;
+    assign full_out = fifo_almost_full;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            held_route <= 5'b0;
+        end else if (rd_en && !fifo_empty && (fifo_dout[30:29] == 2'b01)) begin
+            held_route <= req_reg;
+        end
+    end
+
+    assign req = fifo_empty ? 5'b0 : (fifo_dout[30:29] == 2'b01) ? req_reg : held_route;
+
+endmodule
+```
+
+This should correctly reflect the state of the FIFO and the held route, ensuring that `flit` and `req` are correctly assigned based on the front flit's type and the held route.

@@ -1,0 +1,47 @@
+module input_port (
+    input clk,
+    input reset,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    input rd_en,
+    output full_out,
+    output [31:0] flit,
+    output [4:0] req
+);
+
+    wire [31:0] fifo_dout;
+    wire fifo_empty;
+    wire fifo_almost_full;
+    reg [4:0] held_route;
+    reg [4:0] req_reg;
+
+    fifo fifo_inst (
+        .clk(clk),
+        .reset(reset),
+        .wr_en(data_in[30:29] != 2'b11 && !fifo_almost_full),
+        .din(data_in),
+        .rd_en(rd_en && !fifo_empty),
+        .dout(fifo_dout),
+        .empty(fifo_empty),
+        .almost_full(fifo_almost_full)
+    );
+
+    route_compute route_compute_inst (
+        .flit(fifo_dout),
+        .current_address(current_address),
+        .req(req_reg)
+    );
+
+    assign full_out = fifo_almost_full;
+    assign flit = fifo_dout;
+    assign req = fifo_empty ? 5'b0 : (fifo_dout[30:29] == 2'b01) ? req_reg : held_route;
+
+    always @(posedge clk) begin
+        if (reset) begin
+            held_route <= 5'b0;
+        end else if (rd_en && !fifo_empty && fifo_dout[30:29] == 2'b01) begin
+            held_route <= req_reg;
+        end
+    end
+
+endmodule

@@ -1,0 +1,247 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# output_port
+
+## Behaviour
+
+One output of a 5-port mesh router. Four requesters, numbered 0 to 3, share it: requester i offers the flit
+`flit<i>` and asks for this output when `req[i]` = 1. The output sends at most one flit per clock cycle, on a
+register, and keeps a packet together (wormhole switching). All state changes happen at rising `clk` edges.
+
+Flit format: bits [30:29] are the flit type: 01 = head, 00 = body, 10 = tail, 11 = idle (no flit). The idle flit
+is 32'h6000_0000.
+
+State:
+
+- The owner: either no requester (the output is free) or one requester that holds the output.
+- The last granted requester, for round-robin priority.
+
+Selected requester, during each clock cycle:
+
+- If the output has an owner, the selected requester is the owner.
+- If the output is free, the selected requester is chosen round-robin among the requesters with `req` = 1: if
+  the last granted requester is L, the order is L+1, L+2, L+3, L (modulo 4), and the first one asking is
+  selected. If no requester asks, none is selected.
+
+Sending:
+
+- A flit is sent at a rising `clk` edge when a requester is selected, that requester's `req` bit is 1, and
+  `full_in` = 0. `full_in` = 1 means the next router cannot take a flit; then nothing is sent.
+- `pop` is one-hot and shows, during the cycle before that edge, which requester's flit will be sent:
+  `pop[i]` = 1 when requester i is selected and the flit will be sent; `pop` = 0 when nothing will be sent.
+  `pop` follows `req`, `full_in` and the state with no clock edge needed.
+- At an edge where a flit is sent:
+  - `data_out` becomes the selected requester's flit;
+  - if that flit is a tail flit (type 10), the output becomes free; otherwise the selected requester becomes
+    (or stays) the owner;
+  - if the output was free before the edge, the selected requester becomes the last granted requester. While
+    the output has an owner, the last granted requester does not change.
+- At an edge where no flit is sent, `data_out` becomes the idle flit 32'h6000_0000 and the owner does not
+  change. An owner whose `req` bit is 0 keeps the output; no other requester is served meanwhile.
+
+What the two child modules do:
+
+- `rr_arbiter`: 4-requester round-robin arbiter. `gnt` is one-hot and combinational from `req` and the last
+  granted requester L: the first requester asking in the order L+1, L+2, L+3, L; `gnt` = 0 if none asks. At a
+  rising `clk` edge with `advance` = 1 and `gnt` not 0, the granted requester becomes L. Synchronous
+  active-high `reset` sets L = 3.
+- `flit_mux`: combinational 4-to-1 multiplexer: `out` = `in<i>` when `sel` is one-hot with bit i set, and
+  32'h6000_0000 for any other `sel` value.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the output becomes free, `data_out`
+becomes 32'h6000_0000, and the last granted requester becomes 3, so the priority order after reset is 0, 1, 2,
+3. Nothing is sent at that edge.
+
+## Ports
+
+10 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input [31:0] flit0;
+input [31:0] flit1;
+input [31:0] flit2;
+input [31:0] flit3;
+input full_in;
+output [31:0] data_out;
+output [3:0] pop;
+```
+
+Parameters: none.
+
+## Children
+
+Must instantiate exactly these modules. Their files are provided; do not write them again.
+
+`rr_arbiter` x 1, ports in this exact order:
+
+```verilog
+input clk;
+input reset;
+input [3:0] req;
+input advance;
+output [3:0] gnt;
+```
+
+`flit_mux` x 1, ports in this exact order:
+
+```verilog
+input [3:0] sel;
+input [31:0] in0;
+input [31:0] in1;
+input [31:0] in2;
+input [31:0] in3;
+output [31:0] out;
+```
+
+
+CURRENT RTL:
+```verilog
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    // State
+    reg [2:0] owner; // 0-3: requester, 4: free
+    reg [31:0] data_out_reg;
+
+    // Internal signals
+    wire [3:0] gnt;
+    wire advance;
+    wire [3:0] sel_vec;
+    wire [31:0] mux_out;
+    wire [3:0] pop_val;
+
+    // Round-robin arbiter instantiation
+    rr_arbiter arb (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(advance),
+        .gnt(gnt)
+    );
+
+    // Flit multiplexer instantiation
+    flit_mux mux (
+        .sel(pop_val),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    // Combinational logic for selected requester
+    reg [3:0] sel_vec_reg;
+    always @(*) begin
+        if (owner == 3'd4) begin
+            sel_vec_reg = gnt;
+        end else begin
+            sel_vec_reg = 4'b0000;
+            sel_vec_reg[owner] = 1'b1;
+        end
+    }
+
+    assign sel_vec = sel_vec_reg;
+
+    // pop is 1 if a requester is selected, they are requesting, and the output is not full
+    assign pop_val = sel_vec & req & (full_in == 1'b0 ? 4'b1111 : 4'b0000);
+    assign pop = pop_val;
+
+    // advance is high when a new requester is granted the output
+    assign advance = (owner == 3'd4) && (pop_val != 4'b0000);
+
+    // Registered output and state updates
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 3'd4;
+            data_out_reg <= 32'h6000_0000;
+        end else begin
+            if (pop_val != 4'b0000) begin
+                data_out_reg <= mux_out;
+                // Update owner based on flit type: 10 is tail
+                if (mux_out[30:29] == 2'b10) begin
+                    owner <= 3'd4;
+                end else begin
+                    if (pop_val[0]) begin
+                        owner <= 3'd0;
+                    end else if (pop_val[1]) begin
+                        owner <= 3'd1;
+                    end else if (pop_val[2]) begin
+                        owner <= 3'd2;
+                    end else if (pop_val[3]) begin
+                        owner <= 3'd3;
+                    end else begin
+                        owner <= owner;
+                    end
+                end
+            end else begin
+                data_out_reg <= 32'h6000_0000;
+                owner <= owner;
+            end
+        end
+    end
+
+    assign data_out = data_out_reg;
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:53: syntax error
+dut.v:55: Syntax in assignment statement l-value.
+dut.v:65: syntax error
+dut.v:67: Syntax in assignment statement l-value.
+dut.v:71: syntax error
+dut.v:71: error: Invalid module item.
+dut.v:74: syntax error
+dut.v:74: error: Invalid module item.
+dut.v:77: syntax error
+dut.v:77: error: Invalid module item.
+dut.v:79: syntax error
+dut.v:79: error: Invalid module item.
+dut.v:81: syntax error
+dut.v:81: error: Invalid module item.
+dut.v:83: syntax error
+dut.v:83: error: Invalid module item.
+dut.v:85: syntax error
+dut.v:85: error: Invalid module item.
+dut.v:89: syntax error
+dut.v:89: error: Invalid module item.
+dut.v:90: syntax error
+dut.v:90: error: Invalid module item.
+dut.v:69: error: generate else is missing matching if.
+dut.v:93: syntax error
+dut.v:95: error: Invalid module item.
+
+VERILATOR LINT OUTPUT:
+%Error: dut.v:53:5: syntax error, unexpected '}'
+%Warning-IEEEMAYDEPRECATE: dut.v:58:5: Feature may be deprecated in future IEEE standard
+%Warning-IEEEMAYDEPRECATE: dut.v:59:5: Feature may be deprecated in future IEEE standard
+%Warning-IEEEMAYDEPRECATE: dut.v:62:5: Feature may be deprecated in future IEEE standard
+%Error: dut.v:65:5: syntax error, unexpected always
+%Error: dut.v:69:13: syntax error, unexpected else
+%Error: dut.v:74:27: syntax error, unexpected <=, expecting '('
+%Error: dut.v:77:31: syntax error, unexpected <=, expecting '('
+%Error: dut.v:79:31: syntax error, unexpected <=, expecting '('
+%Error: dut.v:81:31: syntax error, unexpected <=, expecting '('
+%Error: dut.v:83:31: syntax error, unexpected <=, expecting '('
+%Error: dut.v:85:31: syntax error, unexpected <=, expecting '('
+%Error: dut.v:88:13: syntax error, unexpected end
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

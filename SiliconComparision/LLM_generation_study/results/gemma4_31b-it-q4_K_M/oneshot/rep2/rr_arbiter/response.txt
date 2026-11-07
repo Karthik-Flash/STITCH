@@ -1,0 +1,88 @@
+```verilog
+module rr_arbiter (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input advance,
+    output reg [3:0] gnt
+);
+
+    reg [1:0] last;
+
+    always @(*) begin
+        case (last)
+            2'd0: begin
+                if (req[1]) 
+                    gnt = 4'b0010;
+                else if (req[2]) 
+                    gnt = 4'b0100;
+                else if (req[3]) 
+                    gnt = 4'b1000;
+                else if (req[0]) 
+                    gnt = 4'b0001;
+                else 
+                    gnt = 4'b0000;
+            end
+            2'd1: begin
+                if (req[2]) 
+                    gnt = 4'b0100;
+                else if (req[3]) 
+                    gnt = 4'b1000;
+                else if (req[0]) 
+                    gnt = 4'b0001;
+                else if (req[1]) 
+                    gnt = 4'b0010;
+                else 
+                    gnt = 4'b0000;
+            end
+            2'd2: begin
+                if (req[3]) 
+                    gnt = 4'b1000;
+                else if (req[0]) 
+                    gnt = 4'b0001;
+                else if (req[1]) 
+                    gnt = 4'b0010;
+                else if (req[2]) 
+                    gnt = 4'b0100;
+                else 
+                    gnt = 4'b0000;
+            end
+            2'd3: begin
+                if (req[0]) 
+                    gnt = 4'b0001;
+                else if (req[1]) 
+                    gnt = 4'b0010;
+                else if (req[2]) 
+                    gnt = 4'b0100;
+                else if (req[3]) 
+                    gnt = 4'b1000;
+                else 
+                    gnt = 4'b0000;
+            end
+            default: begin
+                gnt = 4'b0000;
+            end
+        endcase
+    end
+
+    always @(posedge clk) begin
+        if (reset) begin
+            last <= 2'd3;
+        end else if (advance && (gnt != 4'b0000)) begin
+            if (gnt[0]) 
+                last <= 2'd0;
+            else if (gnt[1]) 
+                last <= 2'd1;
+            else if (gnt[2]) 
+                last <= 2'd2;
+            else if (gnt[3]) 
+                last <= 2'd3;
+            else 
+                last <= last;
+        end else begin
+            last <= last;
+        end
+    end
+
+endmodule
+```

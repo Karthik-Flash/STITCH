@@ -1,0 +1,31 @@
+{
+ "timestamp": "2026-11-06T21:05:43",
+ "host": "gpunode7.sharanga.local",
+ "slurm_job_id": "434463",
+ "partition": "gpu_h200_8",
+ "deployed_commit": "2017dcaecec72af4395b91bb0b0937f041fe511c",
+ "gpu": "NVIDIA H200 NVL, 143771",
+ "tools": {
+  "yosys": "Yosys 0.69+71 (git sha1 150c32b03-dirty, Release, Clang /usr/bin/clang++ 21.1.8)",
+  "verilator": "Verilator 5.053 devel rev v5.052-103-g1aa87913c (mod)",
+  "iverilog": "Icarus Verilog version 14.0 (devel) (s20260301-451-gc9ed76463-dirty)"
+ },
+ "python": "3.11.6",
+ "ollama_version": "0.34.1",
+ "model": "gemma4:31b-it-q4_K_M",
+ "model_digest": "17ba34c06c801ba22f6047bab21ced9429c6d43e0e42ecf339b0f3e5a61e8d97",
+ "num_thread": 4,
+ "settings": {
+  "reps": 5,
+  "temperature": 0.1,
+  "num_ctx": 32768,
+  "max_iters": 6,
+  "arms": {
+   "oneshot": "one call",
+   "simloop": "baseline",
+   "stitch": "sem_esc_restart_v3"
+  }
+ },
+ "frozen_files": 79,
+ "preflight_failures": []
+}

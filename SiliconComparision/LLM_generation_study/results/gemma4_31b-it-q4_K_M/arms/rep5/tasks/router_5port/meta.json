@@ -1,0 +1,38 @@
+{
+ "track": "N",
+ "top": "router_5port",
+ "source": "golden/rtl/router_5port.v",
+ "children": [
+  "input_port",
+  "output_port"
+ ],
+ "descendants": [
+  "fifo",
+  "route_compute",
+  "input_port",
+  "rr_arbiter",
+  "flit_mux",
+  "output_port"
+ ],
+ "checked_outputs": [
+  "data_out_link1",
+  "data_out_link2",
+  "data_out_link3",
+  "data_out_link4",
+  "data_out_core",
+  "full_out_link1",
+  "full_out_link2",
+  "full_out_link3",
+  "full_out_link4",
+  "full_out_core"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "testbench",
+ "signoff_tbs": [
+  "tb_signoff.v",
+  "tb_signoff_mesh.v"
+ ],
+ "mutant_output": null,
+ "phase3_task": null
+}

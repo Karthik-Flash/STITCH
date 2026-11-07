@@ -1,0 +1,89 @@
+module rr_arbiter (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input advance,
+    output [3:0] gnt
+);
+
+    reg [3:0] gnt_reg;
+    reg [1:0] last_granted;
+
+    assign gnt = gnt_reg;
+
+    always @(*) begin
+        case (last_granted)
+            2'b00: begin
+                if (req[1] == 1'b1)
+                    gnt_reg = 4'b0010;
+                else if (req[2] == 1'b1)
+                    gnt_reg = 4'b0100;
+                else if (req[3] == 1'b1)
+                    gnt_reg = 4'b1000;
+                else if (req[0] == 1'b1)
+                    gnt_reg = 4'b0001;
+                else
+                    gnt_reg = 4'b0000;
+            end
+            2'b01: begin
+                if (req[2] == 1'b1)
+                    gnt_reg = 4'b0100;
+                else if (req[3] == 1'b1)
+                    gnt_reg = 4'b1000;
+                else if (req[0] == 1'b1)
+                    gnt_reg = 4'b0001;
+                else if (req[1] == 1'b1)
+                    gnt_reg = 4'b0010;
+                else
+                    gnt_reg = 4'b0000;
+            end
+            2'b10: begin
+                if (req[3] == 1'b1)
+                    gnt_reg = 4'b1000;
+                else if (req[0] == 1'b1)
+                    gnt_reg = 4'b0001;
+                else if (req[1] == 1'b1)
+                    gnt_reg = 4'b0010;
+                else if (req[2] == 1'b1)
+                    gnt_reg = 4'b0100;
+                else
+                    gnt_reg = 4'b0000;
+            end
+            2'b11: begin
+                if (req[0] == 1'b1)
+                    gnt_reg = 4'b0001;
+                else if (req[1] == 1'b1)
+                    gnt_reg = 4'b0010;
+                else if (req[2] == 1'b1)
+                    gnt_reg = 4'b0100;
+                else if (req[3] == 1'b1)
+                    gnt_reg = 4'b1000;
+                else
+                    gnt_reg = 4'b0000;
+            end
+            default: begin
+                gnt_reg = 4'b0000;
+            end
+        endcase
+    end
+
+    always @(posedge clk) begin
+        if (reset == 1'b1) begin
+            last_granted <= 2'b11;
+        end else if (advance == 1'b1 && gnt_reg != 4'b0000) begin
+            if (gnt_reg[0] == 1'b1)
+                last_granted <= 2'b00;
+            else if (gnt_reg[1] == 1'b1)
+                last_granted <= 2'b01;
+            else if (gnt_reg[2] == 1'b1)
+                last_granted <= 2'b10;
+            else if (gnt_reg[3] == 1'b1)
+                last_granted <= 2'b11;
+            else
+                last_granted <= last_granted;
+        end else begin
+            last_granted <= last_granted;
+        end
+    end
+
+endmodule

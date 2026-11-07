@@ -1,0 +1,131 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# fifo
+
+## Behaviour
+
+Input buffer of one router port: a first-in first-out queue of up to 4 words of 32 bits.
+
+- On a rising `clk` edge with `wr_en` = 1, `din` is stored behind the words already held. If 4 words are
+  already held before that edge, the write is ignored, even when `rd_en` = 1 at the same edge.
+- On a rising `clk` edge with `rd_en` = 1, the oldest stored word is removed. If no word is held before that
+  edge, the read is ignored.
+- A write and a read at the same edge both take effect (when allowed by the two rules above): the oldest word
+  leaves and `din` is stored, so the number of stored words does not change.
+- `dout` always shows the oldest stored word, with no clock edge needed: after the edge that stores a word
+  into an empty buffer, `dout` already shows that word; after the edge that removes the oldest word, `dout`
+  shows the next one. While the buffer is empty, the value of `dout` does not matter.
+- `empty` = 1 when 0 words are stored.
+- `almost_full` = 1 when 3 or 4 words are stored.
+
+## Reset
+
+Synchronous, active-high `reset`: at a rising `clk` edge with `reset` = 1 the buffer becomes empty, and
+`wr_en` and `rd_en` at that edge are ignored. The stored data values do not need to be cleared.
+
+## Ports
+
+8 ports, in this exact order:
+
+```verilog
+input clk;
+input reset;
+input wr_en;
+input [31:0] din;
+input rd_en;
+output [31:0] dout;
+output empty;
+output almost_full;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module fifo (
+    input clk,
+    input reset,
+    input wr_en,
+    input [31:0] din,
+    input rd_en,
+    output [31:0] dout,
+    output empty,
+    output almost_full
+);
+
+    reg [31:0] mem [3:0];
+    reg [1:0] wr_ptr;
+    reg [1:0] rd_ptr;
+    reg [2:0] count;
+
+    wire full;
+    wire not_empty;
+
+    assign full = (count == 3'b100);
+    assign not_empty = (count != 3'b000);
+    assign dout = not_empty ? mem[rd_ptr] : 32'b0;
+    assign empty = ~not_empty;
+    assign almost_full = (count >= 3'b11);
+
+    always @(posedge clk) begin
+        if (reset) begin
+            wr_ptr <= 2'b00;
+            rd_ptr <= 2'b00;
+            count <= 3'b000;
+        end else begin
+            case ({wr_en, rd_en, full, not_empty})
+                3'b111: begin
+                    // Write and read at the same time, do nothing
+                end
+                3'b101: begin
+                    // Write when full, do nothing
+                end
+                3'b100: begin
+                    // Write when not full
+                    mem[wr_ptr] <= din;
+                    wr_ptr <= wr_ptr + 1;
+                    count <= count + 1;
+                end
+                3'b011: begin
+                    // Read when not empty
+                    rd_ptr <= rd_ptr + 1;
+                    count <= count - 1;
+                end
+                3'b010: begin
+                    // Read when empty, do nothing
+                end
+                default: begin
+                    // Default case, do nothing
+                end
+            endcase
+        end
+    end
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+SIMULATION FAIL:
+FAIL cycle 2: empty=1, model count 1
+FAIL cycle 2: dout=00000000, expected 426c2f84
+FAIL cycle 3: empty=1, model count 2
+FAIL cycle 3: dout=00000000, expected 426c2f84
+FAIL cycle 4: empty=1, model count 3
+FAIL cycle 4: almost_full=0, model count 3
+FAIL cycle 4: dout=00000000, expected 426c2f84
+FAIL cycle 5: empty=1, model count 4
+FAIL cycle 5: almost_full=0, model count 4
+FAIL cycle 5: dout=00000000, expected 426c2f84
+FAIL cycle 6: empty=1, model count 4
+FAIL cycle 6: almost_full=0, model count 4
+FAIL cycle 6: dout=00000000, expected 426c2f84
+FAIL cycle 7: empty=1, model count 4
+FAIL cycle 7: almost_full=0, model count 4
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

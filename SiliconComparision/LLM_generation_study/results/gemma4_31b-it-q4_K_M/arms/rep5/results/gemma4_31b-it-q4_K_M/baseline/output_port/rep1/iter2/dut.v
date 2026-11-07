@@ -1,0 +1,86 @@
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    // Internal state
+    reg has_owner;
+    reg [3:0] owner_onehot;
+    reg [31:0] data_out_reg;
+
+    // Internal wires
+    wire [3:0] gnt;
+    wire [3:0] selected;
+    wire [3:0] pop_wire;
+    wire [31:0] mux_out;
+    wire advance;
+
+    // Combinational logic for selection
+    assign selected = has_owner ? owner_onehot : gnt;
+
+    // pop is one-hot and shows which requester's flit will be sent
+    assign pop_wire = (selected & req) & (~full_in);
+    assign pop = pop_wire;
+
+    // advance is high when a new requester is granted and the output was free
+    assign advance = (!has_owner && (pop_wire != 4'b0000));
+
+    // Instantiate the round-robin arbiter
+    rr_arbiter arb (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(advance),
+        .gnt(gnt)
+    );
+
+    // Instantiate the flit multiplexer
+    flit_mux mux (
+        .sel(pop_wire),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    // Output assignment
+    assign data_out = data_out_reg;
+
+    // Synchronous state updates
+    always @(posedge clk) begin
+        if (reset) begin
+            has_owner <= 1'b0;
+            owner_onehot <= 4'b0000;
+            data_out_reg <= 32'h6000_0000;
+        end else begin
+            // data_out becomes the selected flit if pop is non-zero, else idle flit
+            // Since flit_mux returns 32'h6000_0000 when sel is 0, we can assign directly
+            data_out_reg <= mux_out;
+
+            if (pop_wire != 4'b0000) begin
+                // A flit is sent. Check if it is a tail flit (type 10)
+                if (mux_out[30:29] == 2'b10) begin
+                    has_owner <= 1'b0;
+                    owner_onehot <= 4'b0000;
+                end else begin
+                    has_owner <= 1'b1;
+                    owner_onehot <= pop_wire;
+                end
+            end else begin
+                // No flit is sent, owner state remains unchanged
+                has_owner <= has_owner;
+                owner_onehot <= owner_onehot;
+            end
+        end
+    end
+
+endmodule

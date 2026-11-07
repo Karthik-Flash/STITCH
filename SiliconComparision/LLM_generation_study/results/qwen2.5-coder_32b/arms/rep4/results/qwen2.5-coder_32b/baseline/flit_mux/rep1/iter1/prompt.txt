@@ -1,0 +1,71 @@
+Here is a Verilog-2001 module and its specification.
+
+SPECIFICATION:
+# flit_mux
+
+## Behaviour
+
+4-to-1 multiplexer of 32-bit flits with a one-hot select. Combinational.
+
+- `sel` = 4'b0001: `out` = `in0`.
+- `sel` = 4'b0010: `out` = `in1`.
+- `sel` = 4'b0100: `out` = `in2`.
+- `sel` = 4'b1000: `out` = `in3`.
+- Any other value of `sel` (no bit set, or more than one bit set): `out` = 32'h6000_0000, the idle flit.
+
+## Reset
+
+None. The module is combinational.
+
+## Ports
+
+6 ports, in this exact order:
+
+```verilog
+input [3:0] sel;
+input [31:0] in0;
+input [31:0] in1;
+input [31:0] in2;
+input [31:0] in3;
+output [31:0] out;
+```
+
+Parameters: none.
+
+## Children
+
+None. This module instantiates no other module.
+
+
+CURRENT RTL:
+```verilog
+module flit_mux (
+    input [3:0] sel,
+    input [31:0] in0,
+    input [31:0] in1,
+    input [31:0] in2,
+    input [31:0] in3,
+    output [31:0] out
+);
+
+wire [31:0] out;
+
+always @(*) begin
+    case (sel)
+        4'b0001: out = in0;
+        4'b0010: out = in1;
+        4'b0100: out = in2;
+        4'b1000: out = in3;
+        default: out = 32'h6000_0000;
+    endcase
+end
+
+endmodule
+```
+
+VERIFICATION FEEDBACK ON THE CURRENT RTL:
+COMPILATION FAILED:
+dut.v:10: error: 'out' has already been declared in this scope.
+dut.v:1:      : It was declared here as a net.
+
+Return the COMPLETE module in one ```verilog block, corrected where the feedback shows a problem. Keep the module name and port names as specified.

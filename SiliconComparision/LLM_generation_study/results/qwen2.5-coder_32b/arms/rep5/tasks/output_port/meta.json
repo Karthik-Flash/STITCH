@@ -1,0 +1,25 @@
+{
+ "track": "N",
+ "top": "output_port",
+ "source": "golden/rtl/output_port.v",
+ "children": [
+  "rr_arbiter",
+  "flit_mux"
+ ],
+ "descendants": [
+  "rr_arbiter",
+  "flit_mux"
+ ],
+ "checked_outputs": [
+  "data_out",
+  "pop"
+ ],
+ "not_checked": [],
+ "timing_dependent": false,
+ "signoff_verdict": "testbench",
+ "signoff_tbs": [
+  "tb_signoff.v"
+ ],
+ "mutant_output": null,
+ "phase3_task": null
+}

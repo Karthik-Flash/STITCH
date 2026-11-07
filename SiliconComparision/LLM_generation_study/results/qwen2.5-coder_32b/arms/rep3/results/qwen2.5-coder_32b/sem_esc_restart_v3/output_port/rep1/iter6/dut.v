@@ -1,0 +1,84 @@
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    reg [3:0] owner;
+    reg [3:0] last_granted;
+    reg [31:0] data_out_reg;
+    reg [3:0] pop_reg;
+
+    rr_arbiter arbiter (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(gnt != 4'b0000),
+        .gnt(gnt)
+    );
+
+    flit_mux mux (
+        .sel(owner),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 4'b0000;
+            last_granted <= 4'b1000;
+            data_out_reg <= 32'h6000_0000;
+            pop_reg <= 4'b0000;
+        end else begin
+            if (owner != 4'b0000) begin
+                if (req & owner) begin
+                    if (!full_in) begin
+                        data_out_reg <= mux_out;
+                        pop_reg <= owner;
+                        if (mux_out[30:29] == 2'b10) begin
+                            owner <= 4'b0000;
+                        end
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                    owner <= 4'b0000;
+                end
+            end else begin
+                if (gnt != 4'b0000) begin
+                    if (!full_in) begin
+                        data_out_reg <= mux_out;
+                        pop_reg <= gnt;
+                        owner <= gnt;
+                        last_granted <= gnt;
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                end
+            end
+        end
+    end
+
+    assign data_out = data_out_reg;
+    assign pop = pop_reg;
+
+endmodule

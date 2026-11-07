@@ -1,0 +1,249 @@
+```verilog
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    reg [3:0] owner;
+    reg [3:0] last_granted;
+    reg [31:0] data_out_reg;
+    reg [3:0] pop_reg;
+
+    rr_arbiter arbiter (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(gnt != 4'b0000),
+        .gnt(gnt)
+    );
+
+    flit_mux mux (
+        .sel(owner),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 4'b0000;
+            last_granted <= 4'b1000;
+            data_out_reg <= 32'h6000_0000;
+            pop_reg <= 4'b0000;
+        end else begin
+            if (owner != 4'b0000) begin
+                if (req & owner) begin
+                    if (!full_in) begin
+                        data_out_reg <= mux_out;
+                        pop_reg <= owner;
+                        if (mux_out[30:29] == 2'b10) begin
+                            owner <= 4'b0000;
+                        end
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                end
+            end else begin
+                if (gnt != 4'b0000) begin
+                    data_out_reg <= mux_out;
+                    pop_reg <= gnt;
+                    owner <= gnt;
+                    last_granted <= gnt;
+                    if (mux_out[30:29] == 2'b10) begin
+                        owner <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                end
+            end
+        end
+    end
+
+    always @(*) begin
+        if (owner != 4'b0000) begin
+            if (req & owner) begin
+                if (!full_in) begin
+                    pop_reg = owner;
+                end else begin
+                    pop_reg = 4'b0000;
+                end
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end else begin
+            if (gnt != 4'b0000) begin
+                pop_reg = gnt;
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end
+    end
+
+    assign data_out = data_out_reg;
+    assign pop = pop_reg;
+
+endmodule
+```
+
+The provided code already follows the rules and the logic seems correct based on the specification. However, the simulation feedback indicates issues with the `pop` signal and `data_out` values. The issue might be in the `rr_arbiter` or `flit_mux` modules, but based on the given specification and the current RTL, the logic appears correct. 
+
+To ensure correctness, let's re-evaluate the `pop` logic in the combinational block:
+
+1. If the output has an owner, `pop` should reflect the owner if the owner is requesting and `full_in` is 0.
+2. If the output is free, `pop` should reflect the granted requester if `gnt` is not 0 and `full_in` is 0.
+3. Otherwise, `pop` should be 0.
+
+Here is the corrected combinational block:
+
+```verilog
+always @(*) begin
+    if (owner != 4'b0000) begin
+        if (req & owner) begin
+            if (!full_in) begin
+                pop_reg = owner;
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end else begin
+            pop_reg = 4'b0000;
+        end
+    end else begin
+        if (gnt != 4'b0000) begin
+            if (!full_in) begin
+                pop_reg = gnt;
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end else begin
+            pop_reg = 4'b0000;
+        end
+    end
+end
+```
+
+This ensures that `pop` is only set when `full_in` is 0, which aligns with the specification. Here is the complete corrected module:
+
+```verilog
+module output_port (
+    input clk,
+    input reset,
+    input [3:0] req,
+    input [31:0] flit0,
+    input [31:0] flit1,
+    input [31:0] flit2,
+    input [31:0] flit3,
+    input full_in,
+    output [31:0] data_out,
+    output [3:0] pop
+);
+
+    wire [3:0] gnt;
+    wire [31:0] mux_out;
+    reg [3:0] owner;
+    reg [3:0] last_granted;
+    reg [31:0] data_out_reg;
+    reg [3:0] pop_reg;
+
+    rr_arbiter arbiter (
+        .clk(clk),
+        .reset(reset),
+        .req(req),
+        .advance(gnt != 4'b0000),
+        .gnt(gnt)
+    );
+
+    flit_mux mux (
+        .sel(owner),
+        .in0(flit0),
+        .in1(flit1),
+        .in2(flit2),
+        .in3(flit3),
+        .out(mux_out)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            owner <= 4'b0000;
+            last_granted <= 4'b1000;
+            data_out_reg <= 32'h6000_0000;
+            pop_reg <= 4'b0000;
+        end else begin
+            if (owner != 4'b0000) begin
+                if (req & owner) begin
+                    if (!full_in) begin
+                        data_out_reg <= mux_out;
+                        pop_reg <= owner;
+                        if (mux_out[30:29] == 2'b10) begin
+                            owner <= 4'b0000;
+                        end
+                    end else begin
+                        data_out_reg <= 32'h6000_0000;
+                        pop_reg <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                end
+            end else begin
+                if (gnt != 4'b0000) begin
+                    data_out_reg <= mux_out;
+                    pop_reg <= gnt;
+                    owner <= gnt;
+                    last_granted <= gnt;
+                    if (mux_out[30:29] == 2'b10) begin
+                        owner <= 4'b0000;
+                    end
+                end else begin
+                    data_out_reg <= 32'h6000_0000;
+                    pop_reg <= 4'b0000;
+                end
+            end
+        end
+    end
+
+    always @(*) begin
+        if (owner != 4'b0000) begin
+            if (req & owner) begin
+                if (!full_in) begin
+                    pop_reg = owner;
+                end else begin
+                    pop_reg = 4'b0000;
+                end
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end else begin
+            if (gnt != 4'b0000) begin
+                if (!full_in) begin
+                    pop_reg = gnt;
+                end else begin
+                    pop_reg = 4'b0000;
+                end
+            end else begin
+                pop_reg = 4'b0000;
+            end
+        end
+    end
+
+    assign data_out = data_out_reg;
+    assign pop = pop_reg;
+
+endmodule
+```

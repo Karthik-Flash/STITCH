@@ -1,0 +1,68 @@
+```verilog
+module input_port (
+    input clk,
+    input reset,
+    input [31:0] data_in,
+    input [7:0] current_address,
+    input rd_en,
+    output full_out,
+    output [31:0] flit,
+    output [4:0] req
+);
+
+    wire [31:0] fifo_dout;
+    wire fifo_empty;
+    wire fifo_almost_full;
+    reg [4:0] held_route;
+    reg [4:0] req_reg;
+    reg [31:0] flit_reg;
+    reg full_out_reg;
+
+    fifo fifo_inst (
+        .clk(clk),
+        .reset(reset),
+        .wr_en(data_in[30:29] != 2'b11 && !fifo_almost_full),
+        .din(data_in),
+        .rd_en(rd_en && !fifo_empty),
+        .dout(fifo_dout),
+        .empty(fifo_empty),
+        .almost_full(fifo_almost_full)
+    );
+
+    route_compute route_compute_inst (
+        .flit(fifo_dout),
+        .current_address(current_address),
+        .req(req_reg)
+    );
+
+    always @(posedge clk) begin
+        if (reset) begin
+            held_route <= 5'b0;
+            flit_reg <= 32'b0;
+            full_out_reg <= 1'b0;
+        end else begin
+            if (rd_en && !fifo_empty && fifo_dout[30:29] == 2'b01) begin
+                held_route <= req_reg;
+            end
+            flit_reg <= fifo_dout;
+            full_out_reg <= fifo_almost_full;
+        end
+    end
+
+    always @(*) begin
+        if (fifo_empty) begin
+            req = 5'b0;
+        end else if (fifo_dout[30:29] == 2'b01) begin
+            req = req_reg;
+        end else begin
+            req = held_route;
+        end
+    end
+
+    assign full_out = full_out_reg;
+    assign flit = flit_reg;
+
+endmodule
+```
+
+The provided code has been corrected to address the issues mentioned in the verification feedback. The `req` output is now correctly assigned in a combinational block, and the `fifo` and `route_compute` modules are properly instantiated and used. The `clk` signal is used in the `always @(posedge clk)` block, and the `wr_en` condition is handled within the `fifo` instantiation.

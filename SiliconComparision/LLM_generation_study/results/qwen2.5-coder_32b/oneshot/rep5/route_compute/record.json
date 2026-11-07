@@ -1,0 +1,32 @@
+{
+ "module": "route_compute",
+ "rep": 5,
+ "model": "qwen2.5-coder:32b",
+ "backend": "ollama",
+ "model_digest": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+ "ollama_version": "0.34.1",
+ "temperature": 0.1,
+ "num_ctx": 32768,
+ "system_prompt_sha256_lf": "886bb444f1cf7585fd4c9587c6b527a8e1beebc72d6926231869c277808cf847",
+ "prompt_sha256_lf": "b555c0bb467df0d60f4be2fb7e8a2b0c36363bba6a123246d380eacab46a7403",
+ "status": "ok",
+ "tokens_in": 760,
+ "tokens_out": 392,
+ "done_reason": "stop",
+ "thinking_chars": 0,
+ "llm_meta": {
+  "done_reason": "stop",
+  "prompt_eval_count": 760,
+  "eval_count": 392,
+  "total_duration": 6153523872,
+  "load_duration": 11265231,
+  "eval_duration": 6003544000,
+  "thinking_chars": 0,
+  "thinking": ""
+ },
+ "wall_s": 6.2,
+ "timestamp": "2026-11-05T22:54:05",
+ "response_sha256": "9891d9b4ff73db4e6d34ead730e12a81f4c9f2797f658bf785d4e69af68f5da2",
+ "output_sha256": "ed05fa74ccf465ade3181e9c3d1e91ce979d6bf74c1b2190b3b53090a6f5c1ba",
+ "mock_mode": null
+}
